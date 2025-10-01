@@ -12,7 +12,20 @@
           "package_name": "com.example.sparkup_app"
         }
       },
-      "oauth_client": [],
+      "oauth_client": [
+        {
+          "client_id": "894503455701-8m3vfm86518f0lj00jq6dlbudf66tdjj.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.sparkup_app",
+            "certificate_hash": "8cb27d1c4c041bb48666320900c656dabd876600"
+          }
+        },
+        {
+          "client_id": "894503455701-8nn0tmsu248vqser1haesafoamq5ir6m.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
       "api_key": [
         {
           "current_key": "AIzaSyDl1GeLR_-JVWO1zzQWosd3Qimv1A-4f6E"
@@ -20,7 +33,19 @@
       ],
       "services": {
         "appinvite_service": {
-          "other_platform_oauth_client": []
+          "other_platform_oauth_client": [
+            {
+              "client_id": "894503455701-8nn0tmsu248vqser1haesafoamq5ir6m.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "894503455701-vth3po63emf77qm9vaqv4q7itfu9gcsg.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.sparkupApp"
+              }
+            }
+          ]
         }
       }
     }
