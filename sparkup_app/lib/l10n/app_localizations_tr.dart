@@ -9,25 +9,87 @@ class AppLocalizationsTr extends AppLocalizations {
   AppLocalizationsTr([String locale = 'tr']) : super(locale);
 
   @override
-  String get marketWatcher => 'Piyasa Gözcüsü';
+  String get appName => 'Spark Up';
 
   @override
-  String get instantMarketAlarms => 'Anlık piyasa alarmları';
+  String get appSlogan => 'Günlük bilgi, meydan okuma ve sınav dozunuz.';
 
   @override
-  String get continueWithGoogle => 'Google ile devam et';
+  String get dailyFact => 'Günün Bilgisi';
 
   @override
-  String get followedAlarms => 'Takip Edilen Alarmlar';
+  String get source => 'Kaynak';
 
   @override
-  String get noAlarmsYet => 'Henüz alarm kurulmadı.';
+  String get tapToLoadNewChallenge =>
+      'Yeni bir meydan okuma yüklemek için dokunun';
 
   @override
-  String get setAlarm => 'Kur';
+  String get noChallengeAvailable => 'Yeni meydan okuma mevcut değil.';
 
   @override
-  String get watchMarkets => 'Piyasaları Takip Et';
+  String get challengeCouldNotBeLoaded => 'Meydan okuma yüklenemedi.';
+
+  @override
+  String get startNewQuiz => 'Yeni Sınav Başlat';
+
+  @override
+  String get quizFinished => 'Sınav Bitti!';
+
+  @override
+  String get yourScore => 'Puanınız';
+
+  @override
+  String get great => 'Harika!';
+
+  @override
+  String get question => 'Soru';
+
+  @override
+  String get quizCouldNotStart => 'Sınav başlatılamadı';
+
+  @override
+  String get questionDataIsEmpty => 'Sınav verisi boş.';
+
+  @override
+  String get navMainMenu => 'Konular';
+
+  @override
+  String get navInfo => 'Bilgi';
+
+  @override
+  String get navQuiz => 'Sınav';
+
+  @override
+  String get navChallenge => 'Meydan Okuma';
+
+  @override
+  String get navSettings => 'Ayarlar';
+
+  @override
+  String get loginFailedMessage =>
+      'Giriş başarısız oldu. Lütfen ağ bağlantınızı kontrol edin ve tekrar deneyin.';
+
+  @override
+  String get continueWithGoogle => 'Google ile Devam Et';
+
+  @override
+  String get infoNotFound => 'Tercih ettiğiniz konular için bilgi bulunamadı.';
+
+  @override
+  String get selectYourInterests => 'İlgi Alanlarınızı Seçin';
+
+  @override
+  String get preferencesSaved => 'Tercihler başarıyla kaydedildi!';
+
+  @override
+  String get preferencesCouldNotBeSaved => 'Tercihler kaydedilemedi.';
+
+  @override
+  String get error => 'Hata';
+
+  @override
+  String get saving => 'Kaydediliyor';
 
   @override
   String get settings => 'Ayarlar';
@@ -42,7 +104,7 @@ class AppLocalizationsTr extends AppLocalizations {
   String get notifications => 'Bildirimler';
 
   @override
-  String get forAllAlarms => 'Tüm alarmlar için';
+  String get forAllAlarms => 'Tüm bilgiler ve meydan okumalar için';
 
   @override
   String get account => 'Hesap';
@@ -51,97 +113,20 @@ class AppLocalizationsTr extends AppLocalizations {
   String get signOut => 'Çıkış Yap';
 
   @override
-  String get language => 'Türkçe';
-
-  @override
-  String get selectLanguage => 'Dil Seç';
-
-  @override
   String get cancel => 'İptal';
-
-  @override
-  String get delete => 'Sil';
-
-  @override
-  String get edit => 'Düzenle';
 
   @override
   String get save => 'Kaydet';
 
   @override
-  String get symbol => 'Sembol';
+  String get language => 'Türkçe';
 
   @override
-  String get name => 'İsim';
+  String get selectLanguage => 'Dil Seçin';
 
   @override
-  String get price => 'Fiyat';
+  String get refresh => 'Yenile';
 
   @override
   String get noDataFound => 'Veri bulunamadı';
-
-  @override
-  String get theAlarmHasNotBeenSetYet => 'Henüz alarm kurulmadı.';
-
-  @override
-  String get selectMarket => 'Piyasa Seç';
-
-  @override
-  String get selectSymbol => 'Sembol Seç';
-
-  @override
-  String get selectChangePercent => 'Değişim % Seç';
-
-  @override
-  String get editAlarm => 'Alarmı Düzenle';
-
-  @override
-  String get watchMarket => 'Piyasayı Takip Et';
-
-  @override
-  String get signInWithGoogle => 'Google ile giriş yap';
-
-  @override
-  String get crypto => 'KRİPTO';
-
-  @override
-  String get metals => 'METALLER';
-
-  @override
-  String get noData => 'Veri Yok';
-
-  @override
-  String get pleaseSignInFirst => 'Lütfen önce giriş yapın';
-
-  @override
-  String get couldNotGetNotificationToken =>
-      'Bildirim anahtarı alınamadı. Lütfen tekrar deneyin.';
-
-  @override
-  String alarmAlreadyExists(Object displaySymbol, Object market) {
-    return '$market içinde $displaySymbol için alarm zaten mevcut';
-  }
-
-  @override
-  String marketSymbolsCouldNotBeLoaded(Object market) {
-    return '$market sembolleri yüklenemedi.';
-  }
-
-  @override
-  String get noMarketDataFound => 'Piyasa verisi bulunamadı';
-
-  @override
-  String get watchMarketChart => 'Piyasayı Takip Et 📈';
-
-  @override
-  String get gram => 'Gram';
-
-  @override
-  String get metalGold => 'Altın';
-
-  @override
-  String get metalSilver => 'Gümüş';
-
-  @override
-  String get metalCopper => 'Bakır';
 }

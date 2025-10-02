@@ -1,3 +1,5 @@
+// login_page.dart
+
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
@@ -9,7 +11,6 @@ class LoginPage extends StatelessWidget {
   const LoginPage({super.key});
 
   Future<void> signInWithGoogle(BuildContext context) async {
-    final localizations = AppLocalizations.of(context)!;
     try {
       if (kIsWeb) {
         GoogleAuthProvider authProvider = GoogleAuthProvider();
@@ -27,7 +28,7 @@ class LoginPage extends StatelessWidget {
     } catch (e) {
       print('Google Sign-In hatası: $e');
       if (context.mounted) {
-        _showErrorSnackBar(context, localizations.noDataFound); // Örnek bir hata metni
+        _showErrorSnackBar(context, "Login Failed"); // Daha uygun bir hata metni
       }
     }
   }
@@ -72,13 +73,16 @@ class LoginPage extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
                 const Spacer(flex: 2),
-                Icon(Icons.insights_rounded, size: 80.sp, color: Colors.amber.shade400, shadows: [
+                // ⚠️ DEĞİŞİKLİK: İkon Spark Up temasını yansıtmalı
+                Icon(Icons.lightbulb_outline, size: 80.sp, color: Colors.amber.shade400, shadows: [
                   BoxShadow(color: Colors.amber.shade400.withOpacity(0.5), blurRadius: 18.0, spreadRadius: 2.0)
                 ]),
                 SizedBox(height: 16.h),
-                Text(localizations.marketWatcher, textAlign: TextAlign.center, style: TextStyle(fontSize: 40.sp, fontWeight: FontWeight.bold, color: Colors.white, letterSpacing: 1.2)),
+                // ⚠️ DEĞİŞİKLİK: Başlık appName olarak değiştirildi (Lokalizasyon dosyanızda düzenleyin)
+                Text("Spark Up", textAlign: TextAlign.center, style: TextStyle(fontSize: 40.sp, fontWeight: FontWeight.bold, color: Colors.white, letterSpacing: 1.2)),
                 SizedBox(height: 8.h),
-                Text(localizations.instantMarketAlarms, textAlign: TextAlign.center, style: TextStyle(fontSize: 16.sp, color: Colors.grey.shade400)),
+                // ⚠️ DEĞİŞİKLİK: Slogan değiştirildi
+                Text("Spark Your Mind", textAlign: TextAlign.center, style: TextStyle(fontSize: 16.sp, color: Colors.grey.shade400)),
                 const Spacer(flex: 3),
                 AnimatedContainer(
                   duration: const Duration(milliseconds: 300),
@@ -97,7 +101,7 @@ class LoginPage extends StatelessWidget {
                         child: Row(
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
-                            Image.asset('assets/images/google_logo.png', height: 24.h),
+                            Image.asset('assets/images/google_logo.png', height: 24.h), // Logo dosyası proje kökünde olmalı
                             SizedBox(width: 12.w),
                             Text(localizations.continueWithGoogle, style: TextStyle(fontSize: 18.sp, fontWeight: FontWeight.bold, color: Colors.black)),
                           ],

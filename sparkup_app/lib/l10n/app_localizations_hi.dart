@@ -9,25 +9,86 @@ class AppLocalizationsHi extends AppLocalizations {
   AppLocalizationsHi([String locale = 'hi']) : super(locale);
 
   @override
-  String get marketWatcher => 'मार्केट वॉचर';
+  String get appName => 'Spark Up';
 
   @override
-  String get instantMarketAlarms => 'तुरंत बाजार अलार्म';
+  String get appSlogan => 'ज्ञान, चुनौती और प्रश्नोत्तरी की आपकी दैनिक खुराक।';
 
   @override
-  String get continueWithGoogle => 'Google से जारी रखें';
+  String get dailyFact => 'दैनिक तथ्य';
 
   @override
-  String get followedAlarms => 'अनुसरण किए गए अलार्म';
+  String get source => 'स्रोत';
 
   @override
-  String get noAlarmsYet => 'अभी तक कोई अलार्म सेट नहीं किया गया है।';
+  String get tapToLoadNewChallenge => 'नई चुनौती लोड करने के लिए टैप करें';
 
   @override
-  String get setAlarm => 'सेट करें';
+  String get noChallengeAvailable => 'कोई नई चुनौती उपलब्ध नहीं है।';
 
   @override
-  String get watchMarkets => 'बाजार देखें';
+  String get challengeCouldNotBeLoaded => 'चुनौती लोड नहीं की जा सकी।';
+
+  @override
+  String get startNewQuiz => 'नई प्रश्नोत्तरी शुरू करें';
+
+  @override
+  String get quizFinished => 'प्रश्नोत्तरी समाप्त!';
+
+  @override
+  String get yourScore => 'आपका स्कोर';
+
+  @override
+  String get great => 'महान!';
+
+  @override
+  String get question => 'प्रश्न';
+
+  @override
+  String get quizCouldNotStart => 'प्रश्नोत्तरी शुरू नहीं हो सकी';
+
+  @override
+  String get questionDataIsEmpty => 'प्रश्नोत्तरी डेटा खाली है।';
+
+  @override
+  String get navMainMenu => 'विषय';
+
+  @override
+  String get navInfo => 'तथ्य';
+
+  @override
+  String get navQuiz => 'प्रश्नोत्तरी';
+
+  @override
+  String get navChallenge => 'चुनौती';
+
+  @override
+  String get navSettings => 'सेटिंग्स';
+
+  @override
+  String get loginFailedMessage =>
+      'साइन-इन विफल रहा। कृपया अपना नेटवर्क जांचें और पुनः प्रयास करें।';
+
+  @override
+  String get continueWithGoogle => 'Google के साथ जारी रखें';
+
+  @override
+  String get infoNotFound => 'आपके पसंदीदा विषयों के लिए ज्ञान नहीं मिला।';
+
+  @override
+  String get selectYourInterests => 'अपनी रुचि चुनें';
+
+  @override
+  String get preferencesSaved => 'प्राथमिकताएँ सफलतापूर्वक सहेजी गईं!';
+
+  @override
+  String get preferencesCouldNotBeSaved => 'प्राथमिकताएँ सहेजी नहीं जा सकीं।';
+
+  @override
+  String get error => 'त्रुटि';
+
+  @override
+  String get saving => 'सहेजा जा रहा है';
 
   @override
   String get settings => 'सेटिंग्स';
@@ -39,16 +100,22 @@ class AppLocalizationsHi extends AppLocalizations {
   String get applicationLanguage => 'एप्लिकेशन भाषा';
 
   @override
-  String get notifications => 'सूचनाएँ';
+  String get notifications => 'सूचनाएं';
 
   @override
-  String get forAllAlarms => 'सभी अलार्म के लिए';
+  String get forAllAlarms => 'सभी तथ्यों और चुनौतियों के लिए';
 
   @override
   String get account => 'खाता';
 
   @override
-  String get signOut => 'साइन आउट';
+  String get signOut => 'साइन आउट करें';
+
+  @override
+  String get cancel => 'रद्द करें';
+
+  @override
+  String get save => 'सहेजें';
 
   @override
   String get language => 'हिन्दी';
@@ -57,91 +124,8 @@ class AppLocalizationsHi extends AppLocalizations {
   String get selectLanguage => 'भाषा चुनें';
 
   @override
-  String get cancel => 'रद्द करें';
-
-  @override
-  String get delete => 'हटाएँ';
-
-  @override
-  String get edit => 'संपादित करें';
-
-  @override
-  String get save => 'सहेजें';
-
-  @override
-  String get symbol => 'प्रतीक';
-
-  @override
-  String get name => 'नाम';
-
-  @override
-  String get price => 'मूल्य';
+  String get refresh => 'ताज़ा करें';
 
   @override
   String get noDataFound => 'कोई डेटा नहीं मिला';
-
-  @override
-  String get theAlarmHasNotBeenSetYet => 'अलार्म अभी तक सेट नहीं किया गया है।';
-
-  @override
-  String get selectMarket => 'बाजार चुनें';
-
-  @override
-  String get selectSymbol => 'प्रतीक चुनें';
-
-  @override
-  String get selectChangePercent => 'बदलाव % चुनें';
-
-  @override
-  String get editAlarm => 'अलार्म संपादित करें';
-
-  @override
-  String get watchMarket => 'बाजार देखें';
-
-  @override
-  String get signInWithGoogle => 'Google से साइन इन करें';
-
-  @override
-  String get crypto => 'क्रिप्टो';
-
-  @override
-  String get metals => 'धातुएँ';
-
-  @override
-  String get noData => 'कोई डेटा नहीं';
-
-  @override
-  String get pleaseSignInFirst => 'कृपया पहले साइन इन करें';
-
-  @override
-  String get couldNotGetNotificationToken =>
-      'सूचना टोकन प्राप्त नहीं हो सका। कृपया पुनः प्रयास करें।';
-
-  @override
-  String alarmAlreadyExists(Object displaySymbol, Object market) {
-    return '$market में $displaySymbol के लिए अलार्म पहले से मौजूद है';
-  }
-
-  @override
-  String marketSymbolsCouldNotBeLoaded(Object market) {
-    return '$market प्रतीक लोड नहीं किए जा सके।';
-  }
-
-  @override
-  String get noMarketDataFound => 'कोई बाजार डेटा नहीं मिला';
-
-  @override
-  String get watchMarketChart => 'बाजार देखें 📈';
-
-  @override
-  String get gram => 'ग्राम';
-
-  @override
-  String get metalGold => 'सोना';
-
-  @override
-  String get metalSilver => 'चांदी';
-
-  @override
-  String get metalCopper => 'ताँबा';
 }

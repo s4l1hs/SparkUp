@@ -116,17 +116,125 @@ abstract class AppLocalizations {
     Locale('zh')
   ];
 
-  /// No description provided for @marketWatcher.
+  /// No description provided for @appName.
   ///
   /// In en, this message translates to:
-  /// **'Market Watcher'**
-  String get marketWatcher;
+  /// **'Spark Up'**
+  String get appName;
 
-  /// No description provided for @instantMarketAlarms.
+  /// No description provided for @appSlogan.
   ///
   /// In en, this message translates to:
-  /// **'Instant market alarms'**
-  String get instantMarketAlarms;
+  /// **'Your daily dose of knowledge, challenge, and quiz.'**
+  String get appSlogan;
+
+  /// No description provided for @dailyFact.
+  ///
+  /// In en, this message translates to:
+  /// **'Daily Fact'**
+  String get dailyFact;
+
+  /// No description provided for @source.
+  ///
+  /// In en, this message translates to:
+  /// **'Source'**
+  String get source;
+
+  /// No description provided for @tapToLoadNewChallenge.
+  ///
+  /// In en, this message translates to:
+  /// **'Tap to load a new challenge'**
+  String get tapToLoadNewChallenge;
+
+  /// No description provided for @noChallengeAvailable.
+  ///
+  /// In en, this message translates to:
+  /// **'No new challenge available.'**
+  String get noChallengeAvailable;
+
+  /// No description provided for @challengeCouldNotBeLoaded.
+  ///
+  /// In en, this message translates to:
+  /// **'Challenge could not be loaded.'**
+  String get challengeCouldNotBeLoaded;
+
+  /// No description provided for @startNewQuiz.
+  ///
+  /// In en, this message translates to:
+  /// **'Start New Quiz'**
+  String get startNewQuiz;
+
+  /// No description provided for @quizFinished.
+  ///
+  /// In en, this message translates to:
+  /// **'Quiz Finished!'**
+  String get quizFinished;
+
+  /// No description provided for @yourScore.
+  ///
+  /// In en, this message translates to:
+  /// **'Your Score'**
+  String get yourScore;
+
+  /// No description provided for @great.
+  ///
+  /// In en, this message translates to:
+  /// **'Great!'**
+  String get great;
+
+  /// No description provided for @question.
+  ///
+  /// In en, this message translates to:
+  /// **'Question'**
+  String get question;
+
+  /// No description provided for @quizCouldNotStart.
+  ///
+  /// In en, this message translates to:
+  /// **'Quiz could not start'**
+  String get quizCouldNotStart;
+
+  /// No description provided for @questionDataIsEmpty.
+  ///
+  /// In en, this message translates to:
+  /// **'Question data is empty.'**
+  String get questionDataIsEmpty;
+
+  /// No description provided for @navMainMenu.
+  ///
+  /// In en, this message translates to:
+  /// **'Main Menu'**
+  String get navMainMenu;
+
+  /// No description provided for @navInfo.
+  ///
+  /// In en, this message translates to:
+  /// **'Fact'**
+  String get navInfo;
+
+  /// No description provided for @navQuiz.
+  ///
+  /// In en, this message translates to:
+  /// **'Quiz'**
+  String get navQuiz;
+
+  /// No description provided for @navChallenge.
+  ///
+  /// In en, this message translates to:
+  /// **'Challenge'**
+  String get navChallenge;
+
+  /// No description provided for @navSettings.
+  ///
+  /// In en, this message translates to:
+  /// **'Settings'**
+  String get navSettings;
+
+  /// No description provided for @loginFailedMessage.
+  ///
+  /// In en, this message translates to:
+  /// **'Sign-in failed. Please check your network and try again.'**
+  String get loginFailedMessage;
 
   /// No description provided for @continueWithGoogle.
   ///
@@ -134,29 +242,41 @@ abstract class AppLocalizations {
   /// **'Continue with Google'**
   String get continueWithGoogle;
 
-  /// No description provided for @followedAlarms.
+  /// No description provided for @infoNotFound.
   ///
   /// In en, this message translates to:
-  /// **'Followed Alarms'**
-  String get followedAlarms;
+  /// **'Knowledge not found for your preferred topics.'**
+  String get infoNotFound;
 
-  /// No description provided for @noAlarmsYet.
+  /// No description provided for @selectYourInterests.
   ///
   /// In en, this message translates to:
-  /// **'No alarms have been set yet.'**
-  String get noAlarmsYet;
+  /// **'Select Your Interests'**
+  String get selectYourInterests;
 
-  /// No description provided for @setAlarm.
+  /// No description provided for @preferencesSaved.
   ///
   /// In en, this message translates to:
-  /// **'Set'**
-  String get setAlarm;
+  /// **'Preferences saved successfully!'**
+  String get preferencesSaved;
 
-  /// No description provided for @watchMarkets.
+  /// No description provided for @preferencesCouldNotBeSaved.
   ///
   /// In en, this message translates to:
-  /// **'Watch Markets'**
-  String get watchMarkets;
+  /// **'Preferences could not be saved.'**
+  String get preferencesCouldNotBeSaved;
+
+  /// No description provided for @error.
+  ///
+  /// In en, this message translates to:
+  /// **'Error'**
+  String get error;
+
+  /// No description provided for @saving.
+  ///
+  /// In en, this message translates to:
+  /// **'Saving'**
+  String get saving;
 
   /// No description provided for @settings.
   ///
@@ -185,7 +305,7 @@ abstract class AppLocalizations {
   /// No description provided for @forAllAlarms.
   ///
   /// In en, this message translates to:
-  /// **'For all alarms'**
+  /// **'For all facts and challenges'**
   String get forAllAlarms;
 
   /// No description provided for @account.
@@ -200,6 +320,18 @@ abstract class AppLocalizations {
   /// **'Sign Out'**
   String get signOut;
 
+  /// No description provided for @cancel.
+  ///
+  /// In en, this message translates to:
+  /// **'Cancel'**
+  String get cancel;
+
+  /// No description provided for @save.
+  ///
+  /// In en, this message translates to:
+  /// **'Save'**
+  String get save;
+
   /// No description provided for @language.
   ///
   /// In en, this message translates to:
@@ -212,173 +344,17 @@ abstract class AppLocalizations {
   /// **'Select Language'**
   String get selectLanguage;
 
-  /// No description provided for @cancel.
+  /// No description provided for @refresh.
   ///
   /// In en, this message translates to:
-  /// **'Cancel'**
-  String get cancel;
-
-  /// No description provided for @delete.
-  ///
-  /// In en, this message translates to:
-  /// **'Delete'**
-  String get delete;
-
-  /// No description provided for @edit.
-  ///
-  /// In en, this message translates to:
-  /// **'Edit'**
-  String get edit;
-
-  /// No description provided for @save.
-  ///
-  /// In en, this message translates to:
-  /// **'Save'**
-  String get save;
-
-  /// No description provided for @symbol.
-  ///
-  /// In en, this message translates to:
-  /// **'Symbol'**
-  String get symbol;
-
-  /// No description provided for @name.
-  ///
-  /// In en, this message translates to:
-  /// **'Name'**
-  String get name;
-
-  /// No description provided for @price.
-  ///
-  /// In en, this message translates to:
-  /// **'Price'**
-  String get price;
+  /// **'Refresh'**
+  String get refresh;
 
   /// No description provided for @noDataFound.
   ///
   /// In en, this message translates to:
   /// **'No data found'**
   String get noDataFound;
-
-  /// No description provided for @theAlarmHasNotBeenSetYet.
-  ///
-  /// In en, this message translates to:
-  /// **'The alarm has not been set yet.'**
-  String get theAlarmHasNotBeenSetYet;
-
-  /// No description provided for @selectMarket.
-  ///
-  /// In en, this message translates to:
-  /// **'Select Market'**
-  String get selectMarket;
-
-  /// No description provided for @selectSymbol.
-  ///
-  /// In en, this message translates to:
-  /// **'Select Symbol'**
-  String get selectSymbol;
-
-  /// No description provided for @selectChangePercent.
-  ///
-  /// In en, this message translates to:
-  /// **'Select Change %'**
-  String get selectChangePercent;
-
-  /// No description provided for @editAlarm.
-  ///
-  /// In en, this message translates to:
-  /// **'Edit Alarm'**
-  String get editAlarm;
-
-  /// No description provided for @watchMarket.
-  ///
-  /// In en, this message translates to:
-  /// **'Watch Market'**
-  String get watchMarket;
-
-  /// No description provided for @signInWithGoogle.
-  ///
-  /// In en, this message translates to:
-  /// **'Sign in with Google'**
-  String get signInWithGoogle;
-
-  /// No description provided for @crypto.
-  ///
-  /// In en, this message translates to:
-  /// **'CRYPTO'**
-  String get crypto;
-
-  /// No description provided for @metals.
-  ///
-  /// In en, this message translates to:
-  /// **'METALS'**
-  String get metals;
-
-  /// No description provided for @noData.
-  ///
-  /// In en, this message translates to:
-  /// **'No Data'**
-  String get noData;
-
-  /// No description provided for @pleaseSignInFirst.
-  ///
-  /// In en, this message translates to:
-  /// **'Please sign in first'**
-  String get pleaseSignInFirst;
-
-  /// No description provided for @couldNotGetNotificationToken.
-  ///
-  /// In en, this message translates to:
-  /// **'Could not get notification token. Please try again.'**
-  String get couldNotGetNotificationToken;
-
-  /// No description provided for @alarmAlreadyExists.
-  ///
-  /// In en, this message translates to:
-  /// **'Alarm already exists for {displaySymbol} in {market}'**
-  String alarmAlreadyExists(Object displaySymbol, Object market);
-
-  /// No description provided for @marketSymbolsCouldNotBeLoaded.
-  ///
-  /// In en, this message translates to:
-  /// **'{market} symbols could not be loaded.'**
-  String marketSymbolsCouldNotBeLoaded(Object market);
-
-  /// No description provided for @noMarketDataFound.
-  ///
-  /// In en, this message translates to:
-  /// **'No Market Data Found'**
-  String get noMarketDataFound;
-
-  /// No description provided for @watchMarketChart.
-  ///
-  /// In en, this message translates to:
-  /// **'Watch Market 📈'**
-  String get watchMarketChart;
-
-  /// No description provided for @gram.
-  ///
-  /// In en, this message translates to:
-  /// **'Gram'**
-  String get gram;
-
-  /// No description provided for @metalGold.
-  ///
-  /// In en, this message translates to:
-  /// **'Gold'**
-  String get metalGold;
-
-  /// No description provided for @metalSilver.
-  ///
-  /// In en, this message translates to:
-  /// **'Silver'**
-  String get metalSilver;
-
-  /// No description provided for @metalCopper.
-  ///
-  /// In en, this message translates to:
-  /// **'Copper'**
-  String get metalCopper;
 }
 
 class _AppLocalizationsDelegate

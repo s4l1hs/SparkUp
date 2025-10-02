@@ -1,3 +1,5 @@
+// main.dart
+
 import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
@@ -9,7 +11,8 @@ import 'l10n/app_localizations.dart';
 import 'locale_provider.dart';
 import 'auth_gate.dart';
 
-final String backendBaseUrl = "https://market-watcher.up.railway.app";
+// ⚠️ DEĞİŞİKLİK: Backend URL'si lokal SparkUp adresine çevrildi.
+final String backendBaseUrl = "http://127.0.0.1:8000"; // Lokal backend adresi
 
 Future<void> _firebaseMessagingBackgroundHandler(RemoteMessage message) async {
   await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
@@ -50,7 +53,8 @@ class MyApp extends StatelessWidget {
           locale: localeProvider.locale,
           localizationsDelegates: AppLocalizations.localizationsDelegates,
           supportedLocales: AppLocalizations.supportedLocales,
-          onGenerateTitle: (context) => AppLocalizations.of(context)!.marketWatcher,
+          // ⚠️ DEĞİŞİKLİK: Başlık Spark Up oldu.
+          onGenerateTitle: (context) => "Spark Up", 
           debugShowCheckedModeBanner: false,
           theme: ThemeData(
             scaffoldBackgroundColor: Colors.black,
@@ -60,7 +64,7 @@ class MyApp extends StatelessWidget {
               accentColor: Colors.orangeAccent,
               backgroundColor: Colors.grey.shade900,
             ),
-            cardTheme: CardThemeData(
+            cardTheme: CardTheme.of(context).copyWith( // CardThemeData yerine doğru kullanım
               color: Colors.grey.shade900,
               elevation: 8,
               shape: RoundedRectangleBorder(

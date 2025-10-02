@@ -9,25 +9,86 @@ class AppLocalizationsAr extends AppLocalizations {
   AppLocalizationsAr([String locale = 'ar']) : super(locale);
 
   @override
-  String get marketWatcher => 'مراقب السوق';
+  String get appName => 'Spark Up';
 
   @override
-  String get instantMarketAlarms => 'تنبيهات فورية للسوق';
+  String get appSlogan => 'جرعتك اليومية من المعرفة والتحدي والاختبار.';
+
+  @override
+  String get dailyFact => 'حقيقة اليوم';
+
+  @override
+  String get source => 'المصدر';
+
+  @override
+  String get tapToLoadNewChallenge => 'انقر لتحميل تحدي جديد';
+
+  @override
+  String get noChallengeAvailable => 'لا يوجد تحدي جديد متاح.';
+
+  @override
+  String get challengeCouldNotBeLoaded => 'تعذر تحميل التحدي.';
+
+  @override
+  String get startNewQuiz => 'ابدأ اختباراً جديداً';
+
+  @override
+  String get quizFinished => 'انتهى الاختبار!';
+
+  @override
+  String get yourScore => 'درجتك';
+
+  @override
+  String get great => 'عظيم!';
+
+  @override
+  String get question => 'سؤال';
+
+  @override
+  String get quizCouldNotStart => 'تعذر بدء الاختبار';
+
+  @override
+  String get questionDataIsEmpty => 'بيانات الاختبار فارغة.';
+
+  @override
+  String get navMainMenu => 'المواضيع';
+
+  @override
+  String get navInfo => 'حقيقة';
+
+  @override
+  String get navQuiz => 'اختبار';
+
+  @override
+  String get navChallenge => 'تحدي';
+
+  @override
+  String get navSettings => 'الإعدادات';
+
+  @override
+  String get loginFailedMessage =>
+      'فشل تسجيل الدخول. يرجى التحقق من شبكتك والمحاولة مرة أخرى.';
 
   @override
   String get continueWithGoogle => 'المتابعة باستخدام جوجل';
 
   @override
-  String get followedAlarms => 'التنبيهات المتبعة';
+  String get infoNotFound => 'لم يتم العثور على معلومات لمواضيعك المفضلة.';
 
   @override
-  String get noAlarmsYet => 'لم يتم تعيين أي تنبيهات بعد.';
+  String get selectYourInterests => 'حدد اهتماماتك';
 
   @override
-  String get setAlarm => 'ضبط';
+  String get preferencesSaved => 'تم حفظ التفضيلات بنجاح!';
 
   @override
-  String get watchMarkets => 'مراقبة الأسواق';
+  String get preferencesCouldNotBeSaved => 'تعذر حفظ التفضيلات.';
+
+  @override
+  String get error => 'خطأ';
+
+  @override
+  String get saving => 'جارٍ الحفظ';
 
   @override
   String get settings => 'الإعدادات';
@@ -42,7 +103,7 @@ class AppLocalizationsAr extends AppLocalizations {
   String get notifications => 'الإشعارات';
 
   @override
-  String get forAllAlarms => 'لجميع التنبيهات';
+  String get forAllAlarms => 'لجميع الحقائق والتحديات';
 
   @override
   String get account => 'الحساب';
@@ -51,97 +112,20 @@ class AppLocalizationsAr extends AppLocalizations {
   String get signOut => 'تسجيل الخروج';
 
   @override
-  String get language => 'العربية';
-
-  @override
-  String get selectLanguage => 'اختر اللغة';
-
-  @override
   String get cancel => 'إلغاء';
-
-  @override
-  String get delete => 'حذف';
-
-  @override
-  String get edit => 'تعديل';
 
   @override
   String get save => 'حفظ';
 
   @override
-  String get symbol => 'الرمز';
+  String get language => 'العربية';
 
   @override
-  String get name => 'الاسم';
+  String get selectLanguage => 'اختيار اللغة';
 
   @override
-  String get price => 'السعر';
+  String get refresh => 'تحديث';
 
   @override
-  String get noDataFound => 'لا توجد بيانات';
-
-  @override
-  String get theAlarmHasNotBeenSetYet => 'لم يتم تعيين التنبيه بعد.';
-
-  @override
-  String get selectMarket => 'اختر السوق';
-
-  @override
-  String get selectSymbol => 'اختر الرمز';
-
-  @override
-  String get selectChangePercent => 'اختر نسبة التغيير %';
-
-  @override
-  String get editAlarm => 'تعديل التنبيه';
-
-  @override
-  String get watchMarket => 'مراقبة السوق';
-
-  @override
-  String get signInWithGoogle => 'تسجيل الدخول باستخدام جوجل';
-
-  @override
-  String get crypto => 'عملات مشفرة';
-
-  @override
-  String get metals => 'معادن';
-
-  @override
-  String get noData => 'لا توجد بيانات';
-
-  @override
-  String get pleaseSignInFirst => 'يرجى تسجيل الدخول أولاً';
-
-  @override
-  String get couldNotGetNotificationToken =>
-      'لا يمكن الحصول على رمز الإشعار. يرجى المحاولة مرة أخرى.';
-
-  @override
-  String alarmAlreadyExists(Object displaySymbol, Object market) {
-    return 'التنبيه موجود بالفعل لـ $displaySymbol في $market';
-  }
-
-  @override
-  String marketSymbolsCouldNotBeLoaded(Object market) {
-    return 'لا يمكن تحميل رموز $market.';
-  }
-
-  @override
-  String get noMarketDataFound => 'لم يتم العثور على بيانات للسوق';
-
-  @override
-  String get watchMarketChart => 'مراقبة السوق 📈';
-
-  @override
-  String get gram => 'جرام';
-
-  @override
-  String get metalGold => 'ذهب';
-
-  @override
-  String get metalSilver => 'فضة';
-
-  @override
-  String get metalCopper => 'نحاس';
+  String get noDataFound => 'لم يتم العثور على بيانات';
 }

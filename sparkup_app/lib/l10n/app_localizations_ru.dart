@@ -9,25 +9,86 @@ class AppLocalizationsRu extends AppLocalizations {
   AppLocalizationsRu([String locale = 'ru']) : super(locale);
 
   @override
-  String get marketWatcher => 'Наблюдатель за рынком';
+  String get appName => 'Spark Up';
 
   @override
-  String get instantMarketAlarms => 'Мгновенные рыночные оповещения';
+  String get appSlogan => 'Ваша ежедневная доза знаний, вызовов и викторин.';
 
   @override
-  String get continueWithGoogle => 'Продолжить через Google';
+  String get dailyFact => 'Ежедневный факт';
 
   @override
-  String get followedAlarms => 'Отслеживаемые оповещения';
+  String get source => 'Источник';
 
   @override
-  String get noAlarmsYet => 'Оповещения ещё не установлены.';
+  String get tapToLoadNewChallenge => 'Нажмите, чтобы загрузить новый вызов';
 
   @override
-  String get setAlarm => 'Установить';
+  String get noChallengeAvailable => 'Новый вызов недоступен.';
 
   @override
-  String get watchMarkets => 'Следить за рынками';
+  String get challengeCouldNotBeLoaded => 'Не удалось загрузить вызов.';
+
+  @override
+  String get startNewQuiz => 'Начать новую викторину';
+
+  @override
+  String get quizFinished => 'Викторина завершена!';
+
+  @override
+  String get yourScore => 'Ваш счет';
+
+  @override
+  String get great => 'Отлично!';
+
+  @override
+  String get question => 'Вопрос';
+
+  @override
+  String get quizCouldNotStart => 'Не удалось запустить викторину';
+
+  @override
+  String get questionDataIsEmpty => 'Данные викторины пусты.';
+
+  @override
+  String get navMainMenu => 'Темы';
+
+  @override
+  String get navInfo => 'Факт';
+
+  @override
+  String get navQuiz => 'Викторина';
+
+  @override
+  String get navChallenge => 'Вызов';
+
+  @override
+  String get navSettings => 'Настройки';
+
+  @override
+  String get loginFailedMessage =>
+      'Сбой входа. Пожалуйста, проверьте свою сеть и повторите попытку.';
+
+  @override
+  String get continueWithGoogle => 'Продолжить с Google';
+
+  @override
+  String get infoNotFound => 'Знания по выбранным темам не найдены.';
+
+  @override
+  String get selectYourInterests => 'Выберите ваши интересы';
+
+  @override
+  String get preferencesSaved => 'Настройки успешно сохранены!';
+
+  @override
+  String get preferencesCouldNotBeSaved => 'Не удалось сохранить настройки.';
+
+  @override
+  String get error => 'Ошибка';
+
+  @override
+  String get saving => 'Сохранение';
 
   @override
   String get settings => 'Настройки';
@@ -42,7 +103,7 @@ class AppLocalizationsRu extends AppLocalizations {
   String get notifications => 'Уведомления';
 
   @override
-  String get forAllAlarms => 'Для всех оповещений';
+  String get forAllAlarms => 'Для всех фактов и вызовов';
 
   @override
   String get account => 'Аккаунт';
@@ -51,97 +112,20 @@ class AppLocalizationsRu extends AppLocalizations {
   String get signOut => 'Выйти';
 
   @override
-  String get language => 'Русский';
-
-  @override
-  String get selectLanguage => 'Выбрать язык';
-
-  @override
   String get cancel => 'Отмена';
-
-  @override
-  String get delete => 'Удалить';
-
-  @override
-  String get edit => 'Редактировать';
 
   @override
   String get save => 'Сохранить';
 
   @override
-  String get symbol => 'Символ';
+  String get language => 'Русский';
 
   @override
-  String get name => 'Имя';
+  String get selectLanguage => 'Выберите язык';
 
   @override
-  String get price => 'Цена';
+  String get refresh => 'Обновить';
 
   @override
   String get noDataFound => 'Данные не найдены';
-
-  @override
-  String get theAlarmHasNotBeenSetYet => 'Оповещение ещё не установлено.';
-
-  @override
-  String get selectMarket => 'Выбрать рынок';
-
-  @override
-  String get selectSymbol => 'Выбрать символ';
-
-  @override
-  String get selectChangePercent => 'Выбрать изменение %';
-
-  @override
-  String get editAlarm => 'Редактировать оповещение';
-
-  @override
-  String get watchMarket => 'Следить за рынком';
-
-  @override
-  String get signInWithGoogle => 'Войти через Google';
-
-  @override
-  String get crypto => 'КРИПТО';
-
-  @override
-  String get metals => 'МЕТАЛЛЫ';
-
-  @override
-  String get noData => 'Нет данных';
-
-  @override
-  String get pleaseSignInFirst => 'Пожалуйста, сначала войдите';
-
-  @override
-  String get couldNotGetNotificationToken =>
-      'Не удалось получить токен уведомлений. Попробуйте снова.';
-
-  @override
-  String alarmAlreadyExists(Object displaySymbol, Object market) {
-    return 'Оповещение для $displaySymbol на $market уже существует';
-  }
-
-  @override
-  String marketSymbolsCouldNotBeLoaded(Object market) {
-    return 'Не удалось загрузить символы $market.';
-  }
-
-  @override
-  String get noMarketDataFound => 'Рыночные данные не найдены';
-
-  @override
-  String get watchMarketChart => 'Следить за рынком 📈';
-
-  @override
-  String get gram => 'Грамм';
-
-  @override
-  String get metalGold => 'Золото';
-
-  @override
-  String get metalSilver => 'Серебро';
-
-  @override
-  String get metalCopper => 'Медь';
 }

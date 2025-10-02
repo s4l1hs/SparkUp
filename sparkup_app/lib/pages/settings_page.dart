@@ -5,9 +5,9 @@ import 'package:provider/provider.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'l10n/app_localizations.dart';
-import 'locale_provider.dart';
-import 'main.dart';
+import '../l10n/app_localizations.dart';
+import '../locale_provider.dart';
+import '../main.dart';
 
 class SettingsPage extends StatefulWidget {
   const SettingsPage({super.key});
@@ -110,10 +110,6 @@ class _SettingsPageState extends State<SettingsPage> {
         elevation: 0,
         backgroundColor: Colors.black,
         title: Text(localizations.settings, style: TextStyle(color: Colors.white, fontSize: 20.sp)),
-        leading: IconButton(
-          icon: const Icon(Icons.arrow_back, color: Colors.amber),
-          onPressed: () => Navigator.pop(context),
-        ),
       ),
       body: _isLoading
           ? const Center(child: CircularProgressIndicator(color: Colors.amber))
@@ -138,7 +134,7 @@ class _SettingsPageState extends State<SettingsPage> {
                 SizedBox(height: 30.h),
                 Center(
                   child: Text(
-                    'Market Watcher v1.0.0',
+                    'Spark Up v1.0.0',
                     style: TextStyle(color: Colors.grey.shade700, fontSize: 12.sp),
                   ),
                 )

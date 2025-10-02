@@ -9,25 +9,91 @@ class AppLocalizationsDe extends AppLocalizations {
   AppLocalizationsDe([String locale = 'de']) : super(locale);
 
   @override
-  String get marketWatcher => 'Marktbeobachter';
+  String get appName => 'Spark Up';
 
   @override
-  String get instantMarketAlarms => 'Sofortige Marktalarme';
+  String get appSlogan =>
+      'Ihre tägliche Dosis Wissen, Herausforderung und Quiz.';
+
+  @override
+  String get dailyFact => 'Tägliche Tatsache';
+
+  @override
+  String get source => 'Quelle';
+
+  @override
+  String get tapToLoadNewChallenge =>
+      'Tippen Sie, um eine neue Herausforderung zu laden';
+
+  @override
+  String get noChallengeAvailable => 'Keine neue Herausforderung verfügbar.';
+
+  @override
+  String get challengeCouldNotBeLoaded =>
+      'Herausforderung konnte nicht geladen werden.';
+
+  @override
+  String get startNewQuiz => 'Neues Quiz starten';
+
+  @override
+  String get quizFinished => 'Quiz beendet!';
+
+  @override
+  String get yourScore => 'Ihre Punktzahl';
+
+  @override
+  String get great => 'Großartig!';
+
+  @override
+  String get question => 'Frage';
+
+  @override
+  String get quizCouldNotStart => 'Quiz konnte nicht gestartet werden';
+
+  @override
+  String get questionDataIsEmpty => 'Quizdaten sind leer.';
+
+  @override
+  String get navMainMenu => 'Themen';
+
+  @override
+  String get navInfo => 'Fakt';
+
+  @override
+  String get navQuiz => 'Quiz';
+
+  @override
+  String get navChallenge => 'Herausforderung';
+
+  @override
+  String get navSettings => 'Einstellungen';
+
+  @override
+  String get loginFailedMessage =>
+      'Anmeldung fehlgeschlagen. Bitte überprüfen Sie Ihr Netzwerk und versuchen Sie es erneut.';
 
   @override
   String get continueWithGoogle => 'Mit Google fortfahren';
 
   @override
-  String get followedAlarms => 'Verfolgte Alarme';
+  String get infoNotFound =>
+      'Keine Informationen zu Ihren bevorzugten Themen gefunden.';
 
   @override
-  String get noAlarmsYet => 'Es wurden noch keine Alarme gesetzt.';
+  String get selectYourInterests => 'Wählen Sie Ihre Interessen';
 
   @override
-  String get setAlarm => 'Setzen';
+  String get preferencesSaved => 'Präferenzen erfolgreich gespeichert!';
 
   @override
-  String get watchMarkets => 'Märkte beobachten';
+  String get preferencesCouldNotBeSaved =>
+      'Präferenzen konnten nicht gespeichert werden.';
+
+  @override
+  String get error => 'Fehler';
+
+  @override
+  String get saving => 'Speichern';
 
   @override
   String get settings => 'Einstellungen';
@@ -42,7 +108,7 @@ class AppLocalizationsDe extends AppLocalizations {
   String get notifications => 'Benachrichtigungen';
 
   @override
-  String get forAllAlarms => 'Für alle Alarme';
+  String get forAllAlarms => 'Für alle Fakten und Herausforderungen';
 
   @override
   String get account => 'Konto';
@@ -51,97 +117,20 @@ class AppLocalizationsDe extends AppLocalizations {
   String get signOut => 'Abmelden';
 
   @override
+  String get cancel => 'Abbrechen';
+
+  @override
+  String get save => 'Speichern';
+
+  @override
   String get language => 'Deutsch';
 
   @override
   String get selectLanguage => 'Sprache auswählen';
 
   @override
-  String get cancel => 'Abbrechen';
-
-  @override
-  String get delete => 'Löschen';
-
-  @override
-  String get edit => 'Bearbeiten';
-
-  @override
-  String get save => 'Speichern';
-
-  @override
-  String get symbol => 'Symbol';
-
-  @override
-  String get name => 'Name';
-
-  @override
-  String get price => 'Preis';
+  String get refresh => 'Aktualisieren';
 
   @override
   String get noDataFound => 'Keine Daten gefunden';
-
-  @override
-  String get theAlarmHasNotBeenSetYet => 'Der Alarm wurde noch nicht gesetzt.';
-
-  @override
-  String get selectMarket => 'Markt auswählen';
-
-  @override
-  String get selectSymbol => 'Symbol auswählen';
-
-  @override
-  String get selectChangePercent => 'Änderung % auswählen';
-
-  @override
-  String get editAlarm => 'Alarm bearbeiten';
-
-  @override
-  String get watchMarket => 'Markt beobachten';
-
-  @override
-  String get signInWithGoogle => 'Mit Google anmelden';
-
-  @override
-  String get crypto => 'KRYPTO';
-
-  @override
-  String get metals => 'METALLE';
-
-  @override
-  String get noData => 'Keine Daten';
-
-  @override
-  String get pleaseSignInFirst => 'Bitte zuerst anmelden';
-
-  @override
-  String get couldNotGetNotificationToken =>
-      'Benachrichtigungstoken konnte nicht abgerufen werden. Bitte erneut versuchen.';
-
-  @override
-  String alarmAlreadyExists(Object displaySymbol, Object market) {
-    return 'Alarm für $displaySymbol in $market existiert bereits';
-  }
-
-  @override
-  String marketSymbolsCouldNotBeLoaded(Object market) {
-    return '$market-Symbole konnten nicht geladen werden.';
-  }
-
-  @override
-  String get noMarketDataFound => 'Keine Marktdaten gefunden';
-
-  @override
-  String get watchMarketChart => 'Markt beobachten 📈';
-
-  @override
-  String get gram => 'Gramm';
-
-  @override
-  String get metalGold => 'Gold';
-
-  @override
-  String get metalSilver => 'Silber';
-
-  @override
-  String get metalCopper => 'Kupfer';
 }

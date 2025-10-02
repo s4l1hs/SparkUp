@@ -9,25 +9,85 @@ class AppLocalizationsJa extends AppLocalizations {
   AppLocalizationsJa([String locale = 'ja']) : super(locale);
 
   @override
-  String get marketWatcher => 'マーケットウォッチャー';
+  String get appName => 'Spark Up';
 
   @override
-  String get instantMarketAlarms => '即時マーケットアラーム';
+  String get appSlogan => '知識、チャレンジ、クイズの毎日の摂取量。';
 
   @override
-  String get continueWithGoogle => 'Googleで続行';
+  String get dailyFact => '今日の事実';
 
   @override
-  String get followedAlarms => 'フォロー中のアラーム';
+  String get source => '情報源';
 
   @override
-  String get noAlarmsYet => 'まだアラームが設定されていません。';
+  String get tapToLoadNewChallenge => 'タップして新しいチャレンジをロード';
 
   @override
-  String get setAlarm => '設定';
+  String get noChallengeAvailable => '新しいチャレンジはありません。';
 
   @override
-  String get watchMarkets => 'マーケットを監視';
+  String get challengeCouldNotBeLoaded => 'チャレンジをロードできませんでした。';
+
+  @override
+  String get startNewQuiz => '新しいクイズを開始';
+
+  @override
+  String get quizFinished => 'クイズ終了！';
+
+  @override
+  String get yourScore => 'あなたのスコア';
+
+  @override
+  String get great => '素晴らしい！';
+
+  @override
+  String get question => '質問';
+
+  @override
+  String get quizCouldNotStart => 'クイズを開始できませんでした';
+
+  @override
+  String get questionDataIsEmpty => 'クイズデータが空です。';
+
+  @override
+  String get navMainMenu => 'トピック';
+
+  @override
+  String get navInfo => '事実';
+
+  @override
+  String get navQuiz => 'クイズ';
+
+  @override
+  String get navChallenge => 'チャレンジ';
+
+  @override
+  String get navSettings => '設定';
+
+  @override
+  String get loginFailedMessage => 'サインインに失敗しました。ネットワークを確認して再試行してください。';
+
+  @override
+  String get continueWithGoogle => 'Google で続行';
+
+  @override
+  String get infoNotFound => 'お気に入りのトピックに関する知識は見つかりませんでした。';
+
+  @override
+  String get selectYourInterests => '興味を選択';
+
+  @override
+  String get preferencesSaved => '設定が正常に保存されました！';
+
+  @override
+  String get preferencesCouldNotBeSaved => '設定を保存できませんでした。';
+
+  @override
+  String get error => 'エラー';
+
+  @override
+  String get saving => '保存中';
 
   @override
   String get settings => '設定';
@@ -36,19 +96,25 @@ class AppLocalizationsJa extends AppLocalizations {
   String get general => '一般';
 
   @override
-  String get applicationLanguage => 'アプリの言語';
+  String get applicationLanguage => 'アプリケーションの言語';
 
   @override
   String get notifications => '通知';
 
   @override
-  String get forAllAlarms => 'すべてのアラームに対して';
+  String get forAllAlarms => 'すべての事実とチャレンジに対して';
 
   @override
   String get account => 'アカウント';
 
   @override
-  String get signOut => 'ログアウト';
+  String get signOut => 'サインアウト';
+
+  @override
+  String get cancel => 'キャンセル';
+
+  @override
+  String get save => '保存';
 
   @override
   String get language => '日本語';
@@ -57,90 +123,8 @@ class AppLocalizationsJa extends AppLocalizations {
   String get selectLanguage => '言語を選択';
 
   @override
-  String get cancel => 'キャンセル';
+  String get refresh => '更新';
 
   @override
-  String get delete => '削除';
-
-  @override
-  String get edit => '編集';
-
-  @override
-  String get save => '保存';
-
-  @override
-  String get symbol => 'シンボル';
-
-  @override
-  String get name => '名前';
-
-  @override
-  String get price => '価格';
-
-  @override
-  String get noDataFound => 'データが見つかりません';
-
-  @override
-  String get theAlarmHasNotBeenSetYet => 'アラームはまだ設定されていません。';
-
-  @override
-  String get selectMarket => 'マーケットを選択';
-
-  @override
-  String get selectSymbol => 'シンボルを選択';
-
-  @override
-  String get selectChangePercent => '変化率 % を選択';
-
-  @override
-  String get editAlarm => 'アラームを編集';
-
-  @override
-  String get watchMarket => 'マーケットを監視';
-
-  @override
-  String get signInWithGoogle => 'Googleでログイン';
-
-  @override
-  String get crypto => '暗号資産';
-
-  @override
-  String get metals => '金属';
-
-  @override
-  String get noData => 'データなし';
-
-  @override
-  String get pleaseSignInFirst => 'まずサインインしてください';
-
-  @override
-  String get couldNotGetNotificationToken => '通知トークンを取得できませんでした。再試行してください。';
-
-  @override
-  String alarmAlreadyExists(Object displaySymbol, Object market) {
-    return '$market に $displaySymbol のアラームはすでに存在します';
-  }
-
-  @override
-  String marketSymbolsCouldNotBeLoaded(Object market) {
-    return '$market のシンボルを読み込めませんでした。';
-  }
-
-  @override
-  String get noMarketDataFound => 'マーケットデータが見つかりません';
-
-  @override
-  String get watchMarketChart => 'マーケットを監視 📈';
-
-  @override
-  String get gram => 'グラム';
-
-  @override
-  String get metalGold => 'ゴールド';
-
-  @override
-  String get metalSilver => '銀';
-
-  @override
-  String get metalCopper => '銅';
+  String get noDataFound => 'データが見つかりませんでした';
 }
