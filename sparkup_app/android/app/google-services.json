@@ -7,17 +7,17 @@
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:894503455701:android:615e7579f9563e970b0b5c",
+        "mobilesdk_app_id": "1:894503455701:android:a4606a914ec2984c0b0b5c",
         "android_client_info": {
-          "package_name": "com.example.sparkup_app"
+          "package_name": "com.example.sparkupApp"
         }
       },
       "oauth_client": [
         {
-          "client_id": "894503455701-8m3vfm86518f0lj00jq6dlbudf66tdjj.apps.googleusercontent.com",
+          "client_id": "894503455701-16hiv3r63s1tqcg98r5o3d1rm2ucfpom.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {
-            "package_name": "com.example.sparkup_app",
+            "package_name": "com.example.sparkupApp",
             "certificate_hash": "8cb27d1c4c041bb48666320900c656dabd876600"
           }
         },

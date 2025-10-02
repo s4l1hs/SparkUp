@@ -43,7 +43,6 @@ except Exception as e:
 TOPICS = { "history": "History", "science": "Science", "art": "Art", "sports": "Sports", "technology": "Technology", "cinema_tv": "Cinema & TV", "music": "Music", "nature_animals": "Nature & Animals", "gastronomy": "Gastronomy & Cuisine", "geography_travel": "Geography & Travel", "mythology": "Mythology", "philosophy": "Philosophy", "literature": "Literature", "space_astronomy": "Space & Astronomy", "health_fitness": "Health & Fitness", "economics_finance": "Economics & Finance", "automotive": "Automotive", "architecture": "Architecture", "video_games": "Video Games", "general_culture": "General Knowledge", "fun_facts": "Fun Facts" }
 
 # --- 2. VERİ MODELLERİ ---
-# (Modellerde değişiklik yok, aynı kalıyor)
 class User(SQLModel, table=True): id: Optional[int] = Field(default=None, primary_key=True); firebase_uid: str = Field(unique=True, index=True); email: Optional[str] = None
 class DailyInfo(SQLModel, table=True): id: Optional[int] = Field(default=None, primary_key=True); info_text: str = Field(unique=True); category: str = Field(index=True); source: Optional[str] = None
 class QuizQuestion(SQLModel, table=True): id: Optional[int] = Field(default=None, primary_key=True); question_text: str = Field(unique=True); options: str; correct_answer_index: int; category: str = Field(index=True)
@@ -55,7 +54,8 @@ class UserCompletedChallenge(SQLModel, table=True): user_id: int = Field(foreign
 
 
 # --- 3. YAPAY ZEKA FONKSİYONLARI ---
-# (Bu fonksiyonlarda değişiklik yok, aynı kalıyor)
+# (Aynı Kalır)
+# ... generate_new_info ...
 def generate_new_info(topic_key: str) -> Optional[DailyInfo]:
     if not ai_model or topic_key not in TOPICS: return None
     topic_name = TOPICS[topic_key]
@@ -71,6 +71,7 @@ def generate_new_info(topic_key: str) -> Optional[DailyInfo]:
         print(f"Error: AI failed to generate info: {e}")
         return None
 
+# ... generate_new_quiz_questions ...
 def generate_new_quiz_questions(topic_key: str, count: int = 10) -> List[QuizQuestion]:
     if not ai_model or topic_key not in TOPICS: return []
     topic_name = TOPICS[topic_key]
@@ -86,6 +87,7 @@ def generate_new_quiz_questions(topic_key: str, count: int = 10) -> List[QuizQue
         print(f"Error: AI failed to generate quiz: {e}")
         return []
 
+# ... generate_new_challenges ...
 def generate_new_challenges(category: str = "fun", count: int = 5) -> List[Challenge]:
     if not ai_model: return []
     print(f"API CALL: Generating {count} NEW CHALLENGES for category '{category}'...")
@@ -99,32 +101,49 @@ def generate_new_challenges(category: str = "fun", count: int = 5) -> List[Chall
         print(f"Error: AI failed to generate challenge: {e}")
         return []
 
-# --- 4. GÜVENLİK ---
-# (Bu fonksiyon test sonrası tekrar aktif edilecek)
+
+# --- 4. GÜVENLİK VE KİMLİK DOĞRULAMA (ORİJİNAL VE AKTİF) ---
+
 token_auth_scheme = HTTPBearer()
+
 def get_current_user(token: HTTPAuthorizationCredentials = Depends(token_auth_scheme), session: Session = Depends(lambda: Session(engine))) -> User:
     try:
+        # Firebase ID Token'ı doğrula
         decoded_token = auth.verify_id_token(token.credentials)
         uid = decoded_token['uid']
         db_user = session.exec(select(User).where(User.firebase_uid == uid)).first()
+        
+        # Kullanıcı veritabanında yoksa oluştur
         if not db_user:
+            print(f"New user detected. Creating user with UID: {uid}")
             db_user = User(firebase_uid=uid, email=decoded_token.get('email'))
             session.add(db_user)
             session.commit()
             session.refresh(db_user)
         return db_user
     except Exception as e:
+        # Token geçersizse 401 döndür
         raise HTTPException(status_code=401, detail=f"Invalid authentication credentials: {e}")
 
 
-# --- 5. UYGULAMA BAŞLANGIÇ ---
+# --- 5. UYGULAMA BAŞLANGIÇ OLAYLARI ---
+
 def create_db_and_tables():
     SQLModel.metadata.create_all(engine)
 
 app = FastAPI(title="SparkUp Backend")
 
-# CORS AYARLARI EKLENDİ
-origins = ["*"] # Test için her şeye izin ver
+# CORS AYARLARI ORİJİNAL HALE GETİRİLDİ (Daha güvenli)
+origins = [
+    "http://localhost",
+    "http://localhost:8000",
+    "http://localhost:5000",
+    "http://localhost:6000",
+]
+
+for port in range(3000, 65536):
+    origins.append(f"http://localhost:{port}")
+    
 app.add_middleware(
     CORSMiddleware,
     allow_origins=origins,
@@ -138,7 +157,7 @@ def on_startup():
     create_db_and_tables()
 
 
-# --- 6. API ENDPOINT'LERİ (TEST MODU) ---
+# --- 6. API ENDPOINT'LERİ (ORİJİNAL VE KİMLİK DOĞRULAMALI) ---
 
 @app.get("/")
 def read_root():
@@ -148,87 +167,115 @@ def read_root():
 def get_topics():
     return TOPICS
 
-# KULLANICI GEREKTİRMEYEN VERSİYON
-@app.get("/info/random/", response_model=DailyInfo)
-def get_random_info(category: str = "general_culture"):
-    print("⚠️ UYARI: /info/random/ test modunda çalışıyor.")
+# KİMLİK DOĞRULAMALI
+@app.get("/user/topics/", response_model=List[str])
+def get_user_topics(db_user: User = Depends(get_current_user)):
     with Session(engine) as session:
-        # Kullanıcıya özel filtreleme geçici olarak devre dışı
-        statement = select(DailyInfo).where(DailyInfo.category == category)
-        all_info = session.exec(statement).all()
+        preferences = session.exec(select(UserTopicPreference.topic_key).where(UserTopicPreference.user_id == db_user.id)).all()
+        return preferences
+
+# KİMLİK DOĞRULAMALI
+@app.put("/user/topics/")
+def set_user_topics(topics: List[str], db_user: User = Depends(get_current_user)):
+    with Session(engine) as session:
+        # Eski tercihleri sil
+        to_delete = session.exec(select(UserTopicPreference).where(UserTopicPreference.user_id == db_user.id)).all()
+        for pref in to_delete:
+            session.delete(pref)
         
-        if not all_info:
-            new_info = generate_new_info(topic_key=category)
+        # Yeni tercihleri ekle
+        for topic_key in set(topics):
+            if topic_key in TOPICS:
+                preference = UserTopicPreference(user_id=db_user.id, topic_key=topic_key)
+                session.add(preference)
+        
+        session.commit()
+        return {"status": "success", "message": "User topics updated."}
+
+# KİMLİK DOĞRULAMALI
+@app.get("/info/random/", response_model=DailyInfo)
+def get_random_info(db_user: User = Depends(get_current_user)):
+    with Session(engine) as session:
+        user_topics = session.exec(select(UserTopicPreference.topic_key).where(UserTopicPreference.user_id == db_user.id)).all()
+        if not user_topics:
+            user_topics = list(TOPICS.keys())
+        
+        chosen_category = random.choice(user_topics)
+        
+        seen_info_ids = session.exec(select(UserSeenInfo.dailyinfo_id).where(UserSeenInfo.user_id == db_user.id)).all()
+        statement = select(DailyInfo).where(DailyInfo.category == chosen_category).where(DailyInfo.id.notin_(seen_info_ids))
+        unseen_info = session.exec(statement).all()
+        
+        if not unseen_info:
+            new_info = generate_new_info(topic_key=chosen_category)
             if new_info:
-                session.add(new_info)
-                session.commit()
-                session.refresh(new_info)
-                return new_info
+                session.add(new_info); session.commit(); session.refresh(new_info)
+                unseen_info = [new_info]
             else:
                 raise HTTPException(status_code=503, detail="AI service unavailable.")
         
-        # Görüldü takibi yapmadan rastgele birini döndür
-        return random.choice(all_info)
+        chosen_info = random.choice(unseen_info)
+        seen_record = UserSeenInfo(user_id=db_user.id, dailyinfo_id=chosen_info.id)
+        session.add(seen_record)
+        session.commit()
+        return chosen_info
 
-# KULLANICI GEREKTİRMEYEN VERSİYON
+# KİMLİK DOĞRULAMALI
 @app.get("/quiz/", response_model=List[QuizQuestion])
-def get_quiz_questions(limit: int = 3, category: Optional[str] = None):
-    print("⚠️ UYARI: /quiz/ test modunda çalışıyor.")
+def get_quiz_questions(limit: int = 3, db_user: User = Depends(get_current_user)):
     with Session(engine) as session:
-        # Test için, kategori belirtilmemişse rastgele bir konu seç
-        if not category:
-            category = random.choice(list(TOPICS.keys()))
+        user_topics = session.exec(select(UserTopicPreference.topic_key).where(UserTopicPreference.user_id == db_user.id)).all()
+        if not user_topics:
+            user_topics = list(TOPICS.keys())
         
-        statement = select(QuizQuestion).where(QuizQuestion.category == category)
-        questions = session.exec(statement).all()
+        chosen_category = random.choice(user_topics)
         
-        if len(questions) < limit:
-            new_questions = generate_new_quiz_questions(topic_key=category)
+        answered_question_ids = session.exec(select(UserAnsweredQuestion.quizquestion_id).where(UserAnsweredQuestion.user_id == db_user.id)).all()
+        statement = select(QuizQuestion).where(QuizQuestion.category == chosen_category).where(QuizQuestion.id.notin_(answered_question_ids))
+        unanswered_questions = session.exec(statement).all()
+        
+        if len(unanswered_questions) < limit:
+            new_questions = generate_new_quiz_questions(topic_key=chosen_category)
             if new_questions:
                 for q in new_questions:
                     existing = session.exec(select(QuizQuestion).where(QuizQuestion.question_text == q.question_text)).first()
-                    if not existing:
-                        session.add(q)
+                    if not existing: session.add(q)
                 session.commit()
-                questions = session.exec(statement).all()
+                unanswered_questions = session.exec(statement).all()
 
-        if len(questions) < limit:
-            raise HTTPException(status_code=404, detail=f"'{category}' için yeterli soru üretilemedi.")
+        if len(unanswered_questions) < limit:
+            raise HTTPException(status_code=404, detail=f"Not enough questions for category '{chosen_category}'.")
         
-        # Cevaplandı takibi yapmadan rastgele örnek döndür
-        return random.sample(questions, limit)
+        chosen_questions = random.sample(unanswered_questions, limit)
+        for q in chosen_questions:
+            answered_record = UserAnsweredQuestion(user_id=db_user.id, quizquestion_id=q.id)
+            session.add(answered_record)
+        session.commit()
+        return chosen_questions
 
-# KULLANICI GEREKTİRMEYEN VERSİYON
+# KİMLİK DOĞRULAMALI
 @app.get("/challenges/random/", response_model=Challenge)
-def get_random_challenge(category: str = "fun"):
-    print("⚠️ UYARI: /challenges/random/ test modunda çalışıyor.")
+def get_random_challenge(db_user: User = Depends(get_current_user)):
     with Session(engine) as session:
-        statement = select(Challenge).where(Challenge.category == category)
-        all_challenges = session.exec(statement).all()
+        category = "fun" # Şimdilik sadece "fun" kategorisi
+        completed_challenge_ids = session.exec(select(UserCompletedChallenge.challenge_id).where(UserCompletedChallenge.user_id == db_user.id)).all()
+        statement = select(Challenge).where(Challenge.category == category).where(Challenge.id.notin_(completed_challenge_ids))
+        uncompleted_challenges = session.exec(statement).all()
 
-        if len(all_challenges) < 2:
+        if len(uncompleted_challenges) < 2:
             new_challenges = generate_new_challenges(category=category, count=10)
             if new_challenges:
                 for c in new_challenges:
                     existing = session.exec(select(Challenge).where(Challenge.challenge_text == c.challenge_text)).first()
-                    if not existing:
-                        session.add(c)
+                    if not existing: session.add(c)
                 session.commit()
-                all_challenges = session.exec(statement).all()
+                uncompleted_challenges = session.exec(statement).all()
 
-        if not all_challenges:
-            raise HTTPException(status_code=404, detail="No challenges available.")
+        if not uncompleted_challenges:
+            raise HTTPException(status_code=404, detail="No new challenges available.")
         
-        # Tamamlandı takibi yapmadan rastgele birini döndür
-        return random.choice(all_challenges)
-
-# KULLANICIYA ÖZEL ENDPOINT'LER - TEST İÇİN GEÇİCİ OLARAK PASİF HALE GETİRİLDİ
-@app.get("/user/topics/", response_model=List[str])
-def get_user_topics():
-    print("⚠️ UYARI: /user/topics/ test modunda boş liste döndürüyor.")
-    return ["history", "science"] # Test için birkaç varsayılan konu
-
-@app.put("/user/topics/")
-def set_user_topics(topics: List[str]):
-    print(f"⚠️ UYARI: /user/topics/ test modunda. Gelen konular: {topics}")
-    return {"status": "success", "message": "User topics updated in test mode."}
+        chosen_challenge = random.choice(uncompleted_challenges)
+        completed_record = UserCompletedChallenge(user_id=db_user.id, challenge_id=chosen_challenge.id)
+        session.add(completed_record)
+        session.commit()
+        return chosen_challenge
