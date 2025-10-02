@@ -1,5 +1,3 @@
-// pages/challenge_page.dart
-
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import '../services/api_service.dart'; 
@@ -58,7 +56,7 @@ class _ChallengePageState extends State<ChallengePage> {
   @override
   Widget build(BuildContext context) {
     final localizations = AppLocalizations.of(context)!;
-    final theme = Theme.of(context); // DEĞİŞİKLİK: Temayı alıyoruz
+    final theme = Theme.of(context); 
 
     return Center(
       child: Padding(
@@ -70,7 +68,6 @@ class _ChallengePageState extends State<ChallengePage> {
             aspectRatio: 1,
             child: Container(
               decoration: BoxDecoration(
-                // DEĞİŞİKLİK: Gradient temaya uyarlandı
                 gradient: LinearGradient(
                   colors: [theme.cardTheme.color!, Colors.black87],
                   begin: Alignment.topLeft,
@@ -78,14 +75,12 @@ class _ChallengePageState extends State<ChallengePage> {
                 ),
                 borderRadius: BorderRadius.circular(20.r),
                 border: Border.all(
-                  // DEĞİŞİKLİK: Kenarlık rengi temadan alınıyor
                   color: theme.colorScheme.primary.withOpacity(0.5),
                   width: 2,
                 ),
               ),
               child: Center(
                 child: _isLoading
-                    // DEĞİŞİKLİK: Yükleme göstergesi rengi temadan alınıyor
                     ? CircularProgressIndicator(color: theme.colorScheme.primary)
                     : _error != null
                         ? Padding(
@@ -93,7 +88,6 @@ class _ChallengePageState extends State<ChallengePage> {
                             child: Text(
                               "${localizations.error}: $_error",
                               textAlign: TextAlign.center,
-                              // DEĞİŞİKLİK: Hata rengi temadan alınıyor
                               style: TextStyle(color: theme.colorScheme.error),
                             ),
                           )
@@ -102,7 +96,6 @@ class _ChallengePageState extends State<ChallengePage> {
                             child: Column(
                               mainAxisAlignment: MainAxisAlignment.center,
                               children: [
-                                // DEĞİŞİKLİK: İkon rengi temadan alınıyor
                                 Icon(Icons.fitness_center_rounded, size: 60.sp, color: theme.colorScheme.primary),
                                 SizedBox(height: 24.h),
                                 Text(

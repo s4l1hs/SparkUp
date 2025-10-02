@@ -1,5 +1,3 @@
-// pages/info_page.dart
-
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import '../l10n/app_localizations.dart';
@@ -47,45 +45,68 @@ class _InfoPageState extends State<InfoPage> {
   @override
   Widget build(BuildContext context) {
     final localizations = AppLocalizations.of(context)!;
-    final theme = Theme.of(context); // DEĞİŞİKLİK: Temayı alıyoruz
+    final theme = Theme.of(context);
 
     return Scaffold(
       body: Center(
         child: Padding(
           padding: EdgeInsets.all(24.w),
           child: _isLoadingInfo
-              // DEĞİŞİKLİK: Yükleme göstergesi rengi temadan alınıyor
               ? CircularProgressIndicator(color: theme.colorScheme.primary)
               : _error != null
-                  // DEĞİŞİKLİK: Hata rengi temadan alınıyor
-                  ? Text("${localizations.error}: $_error", style: TextStyle(color: theme.colorScheme.error))
+                  ? Text("${localizations.error}: $_error",
+                      style: TextStyle(color: theme.colorScheme.error))
                   : Column(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
                         Text(
-                          localizations.dailyFact, 
-                          // DEĞİŞİKLİK: Metin rengi temanın ana rengi yapıldı
-                          style: TextStyle(color: theme.colorScheme.primary, fontSize: 24.sp, fontWeight: FontWeight.bold),
+                          localizations.dailyFact,
+                          style: TextStyle(
+                              color: theme.colorScheme.primary,
+                              fontSize: 24.sp,
+                              fontWeight: FontWeight.bold),
                         ),
                         SizedBox(height: 24.h),
                         Container(
                           padding: EdgeInsets.all(20.w),
                           decoration: BoxDecoration(
-                            // DEĞİŞİKLİK: Arka plan rengi temadan alınıyor
                             color: theme.cardTheme.color,
                             borderRadius: BorderRadius.circular(16.r),
+                            // DEĞİŞİKLİK: Kartı üçüncül renk ile vurguluyoruz.
+                            border: Border.all(
+                              color: theme.colorScheme.tertiary.withOpacity(0.8),
+                              width: 2,
+                            ),
                           ),
-                          child: Text(
-                            _dailyInfoText ?? localizations.infoNotFound,
-                            textAlign: TextAlign.center,
-                            style: TextStyle(color: Colors.white, fontSize: 18.sp, height: 1.5),
+                          // DEĞİŞİKLİK: Kartın içine tematik bir ikon ekliyoruz.
+                          child: Column(
+                            children: [
+                              Icon(
+                                Icons.lightbulb_outline_rounded,
+                                color: theme.colorScheme.tertiary,
+                                size: 32.sp,
+                              ),
+                              SizedBox(height: 16.h),
+                              Text(
+                                _dailyInfoText ?? localizations.infoNotFound,
+                                textAlign: TextAlign.center,
+                                style: TextStyle(
+                                    color: Colors.white,
+                                    fontSize: 18.sp,
+                                    height: 1.5),
+                              ),
+                            ],
                           ),
                         ),
                         SizedBox(height: 16.h),
-                        if (_dailyInfoSource != null && _dailyInfoSource!.isNotEmpty)
+                        if (_dailyInfoSource != null &&
+                            _dailyInfoSource!.isNotEmpty)
                           Text(
                             "${localizations.source}: $_dailyInfoSource",
-                            style: TextStyle(color: Colors.grey.shade500, fontSize: 12.sp, fontStyle: FontStyle.italic),
+                            style: TextStyle(
+                                color: Colors.grey.shade500,
+                                fontSize: 12.sp,
+                                fontStyle: FontStyle.italic),
                             textAlign: TextAlign.center,
                           ),
                       ],
@@ -94,10 +115,10 @@ class _InfoPageState extends State<InfoPage> {
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: _fetchDailyInfo,
-        tooltip: localizations.refresh, 
-        // DEĞİŞİKLİK: FAB rengi temadan alınıyor
-        backgroundColor: theme.colorScheme.primary,
-        child: Icon(Icons.refresh, color: theme.colorScheme.onPrimary), // DEĞİŞİKLİK: İkon rengi de temadan
+        tooltip: localizations.refresh,
+        // DEĞİŞİKLİK: Butonun rengini üçüncül renk yapıyoruz.
+        backgroundColor: theme.colorScheme.tertiary,
+        child: Icon(Icons.refresh, color: theme.colorScheme.onTertiary),
       ),
     );
   }

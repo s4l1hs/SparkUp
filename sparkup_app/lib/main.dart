@@ -1,16 +1,18 @@
+// main.dart
+
 import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
 import 'firebase_options.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter/services.dart';
-import 'package:provider/provider.dart'; 
+import 'package:provider/provider.dart';
 import 'l10n/app_localizations.dart';
 import 'locale_provider.dart';
 import 'auth_gate.dart';
 
 // Lokal backend adresi
-final String backendBaseUrl = "http://127.0.0.1:8000"; 
+final String backendBaseUrl = "http://127.0.0.1:8000";
 
 Future<void> _firebaseMessagingBackgroundHandler(RemoteMessage message) async {
   await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
@@ -40,10 +42,12 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    // Yeni Vurgu Rengi: Canlı Mavi/Cyan
-    final Color primaryColor = Colors.cyanAccent.shade400; 
-    // İkincil Enerji Rengi: Kırmızımsı Turuncu
-    final Color secondaryColor = Colors.deepOrangeAccent.shade400; 
+    // Ana Renk Paleti
+    final Color primaryColor = Colors.cyanAccent.shade400; // Ana Vurgu Rengi
+    final Color secondaryColor = Colors.deepOrangeAccent.shade400; // İkincil Enerji Rengi
+    
+    // 1. ÜÇÜNCÜ RENK TANIMLAMASI
+    final Color tertiaryColor = Colors.purpleAccent.shade200; // Üçüncül Vurgu Rengi (Mor/Eflatun)
 
     return ScreenUtilInit(
       designSize: const Size(390, 844),
@@ -51,30 +55,31 @@ class MyApp extends StatelessWidget {
       splitScreenMode: true,
       builder: (context, child) {
         final localeProvider = Provider.of<LocaleProvider>(context);
-        
+
         return MaterialApp(
           locale: localeProvider.locale,
           localizationsDelegates: AppLocalizations.localizationsDelegates,
           supportedLocales: AppLocalizations.supportedLocales,
-          onGenerateTitle: (context) => "Spark Up", 
+          onGenerateTitle: (context) => "Spark Up",
           debugShowCheckedModeBanner: false,
-          
-          // --- SPARK UP YENİ TEMASI (Siyah & Mavi/Turuncu) ---
           theme: ThemeData(
-            // Arka plan rengi
-            scaffoldBackgroundColor: Colors.black, 
-            
-            // Ana renk paleti
+            scaffoldBackgroundColor: Colors.black,
             colorScheme: ColorScheme.dark(
-              primary: primaryColor, // Vurgu Rengi (Cyan)
+              primary: primaryColor,
               onPrimary: Colors.black,
-              secondary: secondaryColor, // İkincil Rengi (Turuncu)
-              surface: const Color(0xFF151515), // Kartlar ve konteynerler için koyu yüzey
+              secondary: secondaryColor,
+              onSecondary: Colors.black,
+              
+              // 2. ÜÇÜNCÜ RENKLERİ COLOR SCHEME'E EKLEME
+              tertiary: tertiaryColor,
+              onTertiary: Colors.black,
+
+              surface: const Color(0xFF151515),
               background: Colors.black,
               onBackground: Colors.white,
+              error: Colors.redAccent.shade400,
+              onError: Colors.white,
             ),
-            
-            // App Bar Teması
             appBarTheme: AppBarTheme(
               backgroundColor: Colors.black,
               foregroundColor: Colors.white,
@@ -86,10 +91,8 @@ class MyApp extends StatelessWidget {
                 color: Colors.white,
               ),
             ),
-            
-            // Kart Teması
-            cardTheme: CardThemeData( 
-              color: const Color(0xFF1A1A1A), // Yüzey renginden biraz daha koyu
+            cardTheme: CardThemeData(
+              color: const Color(0xFF1A1A1A),
               elevation: 4,
               shape: RoundedRectangleBorder(
                 borderRadius: BorderRadius.circular(16.r),
@@ -97,11 +100,9 @@ class MyApp extends StatelessWidget {
               shadowColor: Colors.black.withOpacity(0.4),
               margin: EdgeInsets.zero,
             ),
-            
-            // Giriş Alanları Teması
             inputDecorationTheme: InputDecorationTheme(
               filled: true,
-              fillColor: const Color(0xFF1A1A1A), // Giriş alanı arka planı
+              fillColor: const Color(0xFF1A1A1A),
               contentPadding: EdgeInsets.symmetric(vertical: 14.h, horizontal: 16.w),
               border: OutlineInputBorder(
                 borderRadius: BorderRadius.circular(12.r),
@@ -113,16 +114,14 @@ class MyApp extends StatelessWidget {
               ),
               focusedBorder: OutlineInputBorder(
                 borderRadius: BorderRadius.circular(12.r),
-                borderSide: BorderSide(color: primaryColor, width: 2.w), // Vurgu rengi
+                borderSide: BorderSide(color: primaryColor, width: 2.w),
               ),
               hintStyle: TextStyle(color: Colors.grey.shade500, fontSize: 16.sp),
               labelStyle: TextStyle(color: primaryColor, fontSize: 16.sp),
             ),
-            
-            // Buton Teması
             elevatedButtonTheme: ElevatedButtonThemeData(
               style: ElevatedButton.styleFrom(
-                backgroundColor: primaryColor, // Vurgu rengi
+                backgroundColor: primaryColor,
                 foregroundColor: Colors.black,
                 padding: EdgeInsets.symmetric(vertical: 14.h, horizontal: 24.w),
                 shape: RoundedRectangleBorder(
@@ -136,23 +135,18 @@ class MyApp extends StatelessWidget {
                 elevation: 8,
               ),
             ),
-            
-            // Text Teması
             textTheme: TextTheme(
               bodyLarge: TextStyle(color: Colors.white, fontSize: 16.sp),
               bodyMedium: TextStyle(color: Colors.white, fontSize: 14.sp),
               titleMedium: TextStyle(color: Colors.white, fontWeight: FontWeight.w500, fontSize: 16.sp),
-              titleLarge: TextStyle(color: primaryColor, fontWeight: FontWeight.bold, fontSize: 20.sp), // Vurgu rengi
+              titleLarge: TextStyle(color: primaryColor, fontWeight: FontWeight.bold, fontSize: 20.sp),
             ),
-            
-            // Bottom Nav Bar Teması
             bottomNavigationBarTheme: BottomNavigationBarThemeData(
               backgroundColor: const Color(0xFF1A1A1A),
-              selectedItemColor: primaryColor, // Vurgu rengi
+              selectedItemColor: primaryColor,
               unselectedItemColor: Colors.grey.shade600,
               elevation: 10,
-            )
-
+            ),
           ),
           home: child,
         );

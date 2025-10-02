@@ -102,16 +102,14 @@ class _SettingsPageState extends State<SettingsPage> {
   @override
   Widget build(BuildContext context) {
     final localizations = AppLocalizations.of(context)!;
-    final theme = Theme.of(context); // DEĞİŞİKLİK: Temayı alıyoruz
+    final theme = Theme.of(context);
 
-    // DEĞİŞİKLİK: Scaffold ve AppBar backgroundColor temadan geldiği için kaldırıldı.
     return Scaffold(
       appBar: AppBar(
         elevation: 0,
         title: Text(localizations.settings, style: TextStyle(color: Colors.white, fontSize: 20.sp)),
       ),
       body: _isLoading
-          // DEĞİŞİKLİK: Yükleme göstergesi rengi temadan alınıyor
           ? Center(child: CircularProgressIndicator(color: theme.colorScheme.primary))
           : ListView(
               padding: EdgeInsets.symmetric(vertical: 20.h, horizontal: 16.w),
@@ -146,7 +144,6 @@ class _SettingsPageState extends State<SettingsPage> {
   Widget _buildSettingsCard({required List<Widget> children}) {
     return Container(
       decoration: BoxDecoration(
-        // DEĞİŞİKLİK: Kart rengi temadan alınıyor
         color: Theme.of(context).cardTheme.color,
         borderRadius: BorderRadius.circular(16.r),
       ),
@@ -160,7 +157,7 @@ class _SettingsPageState extends State<SettingsPage> {
       child: Text(
         title.toUpperCase(),
         style: TextStyle(
-          color: Colors.grey.shade500,
+          color: Colors.grey.shade400,
           fontSize: 12.sp,
           fontWeight: FontWeight.bold,
           letterSpacing: 1.2,
@@ -171,7 +168,6 @@ class _SettingsPageState extends State<SettingsPage> {
 
   Widget _buildLanguageTile(AppLocalizations localizations) {
     return ListTile(
-      // DEĞİŞİKLİK: İkon rengi temadan alınıyor
       leading: Icon(Icons.language_outlined, color: Theme.of(context).colorScheme.primary),
       title: Text(localizations.applicationLanguage, style: const TextStyle(color: Colors.white)),
       subtitle: Text(
@@ -184,14 +180,12 @@ class _SettingsPageState extends State<SettingsPage> {
   }
 
   Widget _buildNotificationsTile(AppLocalizations localizations) {
-    final theme = Theme.of(context); // DEĞİŞİKLİK: Temayı alıyoruz
+    final theme = Theme.of(context); 
     return SwitchListTile.adaptive(
-      // DEĞİŞİKLİK: İkon rengi temadan alınıyor
       secondary: Icon(Icons.notifications_active_outlined, color: theme.colorScheme.primary),
       title: Text(localizations.notifications, style: const TextStyle(color: Colors.white)),
       subtitle: Text(localizations.forAllAlarms, style: TextStyle(color: Colors.grey.shade400)),
       value: _notificationsEnabled,
-      // DEĞİŞİKLİK: Switch rengi temadan alınıyor
       activeColor: theme.colorScheme.primary,
       onChanged: _isSaving ? null : (bool value) {
         setState(() => _notificationsEnabled = value);
@@ -201,9 +195,8 @@ class _SettingsPageState extends State<SettingsPage> {
   }
   
   Widget _buildSignOutTile(AppLocalizations localizations) {
-    final theme = Theme.of(context); // DEĞİŞİKLİK: Temayı alıyoruz
+    final theme = Theme.of(context); 
     return ListTile(
-      // DEĞİŞİKLİK: Çıkış yapma rengi temanın hata rengi yapıldı
       leading: Icon(Icons.logout, color: theme.colorScheme.error),
       title: Text(localizations.signOut, style: TextStyle(color: theme.colorScheme.error)),
       onTap: () async {
@@ -215,12 +208,11 @@ class _SettingsPageState extends State<SettingsPage> {
   }
 
   void _showLanguageDialog(AppLocalizations localizations) {
-    final theme = Theme.of(context); // DEĞİŞİKLİK: Temayı alıyoruz
+    final theme = Theme.of(context); 
     showDialog(
       context: context,
       builder: (context) {
         return AlertDialog(
-          // DEĞİŞİKLİK: Dialog rengi temadan alınıyor
           backgroundColor: theme.cardTheme.color,
           title: Text(localizations.applicationLanguage, style: const TextStyle(color: Colors.white)),
           content: SizedBox(
@@ -231,7 +223,6 @@ class _SettingsPageState extends State<SettingsPage> {
                 children: _supportedLanguages.entries.map((entry) {
                   final isSelected = _currentLanguageCode == entry.key;
                   return ListTile(
-                    // DEĞİŞİKLİK: Seçili dil rengi temadan alınıyor
                     title: Text(entry.value, style: TextStyle(color: isSelected ? theme.colorScheme.primary : Colors.white)),
                     trailing: isSelected ? Icon(Icons.check, color: theme.colorScheme.primary) : null,
                     onTap: () => _onLanguageSelected(entry.key),
@@ -243,8 +234,7 @@ class _SettingsPageState extends State<SettingsPage> {
           actions: [
             TextButton(
               onPressed: () => Navigator.pop(context),
-              // DEĞİŞİKLİK: Buton rengi temadan alınıyor
-              child: Text(localizations.cancel, style: TextStyle(color: theme.colorScheme.primary)),
+              child: Text(localizations.cancel, style: TextStyle(color: theme.colorScheme.tertiary)),
             )
           ],
         );

@@ -1,5 +1,3 @@
-// pages/quiz_page.dart
-
 import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -82,7 +80,7 @@ class _QuizPageState extends State<QuizPage> {
 
   void _showResultDialog() {
     final localizations = AppLocalizations.of(context)!;
-    final theme = Theme.of(context); // DEĞİŞİKLİK: Temayı alıyoruz
+    final theme = Theme.of(context);
     showDialog(
       context: context,
       barrierDismissible: false,
@@ -95,8 +93,7 @@ class _QuizPageState extends State<QuizPage> {
               Navigator.of(context).pop();
               setState(() => _isQuizActive = false);
             },
-            // DEĞİŞİKLİK: Buton rengi temadan alınıyor
-            child: Text(localizations.great, style: TextStyle(color: theme.colorScheme.primary)),
+            child: Text(localizations.great, style: TextStyle(color: theme.colorScheme.tertiary)),
           )
         ],
       ),
@@ -113,14 +110,13 @@ class _QuizPageState extends State<QuizPage> {
   }
 
   @override
-  Widget build(BuildContext context) {
+Widget build(BuildContext context) {
     final localizations = AppLocalizations.of(context)!;
-    final theme = Theme.of(context); // DEĞİŞİKLİK: Temayı alıyoruz
+    final theme = Theme.of(context);
 
     if (!_isQuizActive) {
       return Center(
         child: _isLoading
-            // DEĞİŞİKLİK: Yükleme göstergesi rengi temadan alınıyor
             ? CircularProgressIndicator(color: theme.colorScheme.primary) 
             : ElevatedButton.icon(
                 icon: Icon(Icons.play_arrow_rounded, size: 28.sp),
@@ -138,7 +134,6 @@ class _QuizPageState extends State<QuizPage> {
     }
     final options = jsonDecode(_questions[_currentIndex]['options']) as List<dynamic>;
 
-    // DEĞİŞİKLİK: Scaffold backgroundColor temadan geldiği için kaldırıldı.
     return Scaffold(
       body: _questions.isEmpty
           ? Center(child: Text(localizations.questionDataIsEmpty, style: TextStyle(color: Colors.grey.shade400)))
@@ -147,11 +142,31 @@ class _QuizPageState extends State<QuizPage> {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.stretch,
                 children: [
-                  Text("${localizations.question} ${_currentIndex + 1}/${_questions.length}", textAlign: TextAlign.center, style: TextStyle(color: Colors.grey.shade400, fontSize: 18.sp)),
+                  // YENİ EKLENDİ: Soru ilerleme çubuğu
+                  Padding(
+                    padding: EdgeInsets.symmetric(vertical: 8.h),
+                    child: LinearProgressIndicator(
+                      value: (_currentIndex + 1) / _questions.length,
+                      backgroundColor: theme.cardTheme.color,
+                      color: theme.colorScheme.tertiary, // <<< TERTİARY RENK KULLANIMI
+                      minHeight: 6.h,
+                      borderRadius: BorderRadius.circular(3.r),
+                    ),
+                  ),
+                  
+                  // DEĞİŞİKLİK: Soru sayısını üçüncül renk ile vurguluyoruz
+                  Text(
+                    "${localizations.question} ${_currentIndex + 1}/${_questions.length}", 
+                    textAlign: TextAlign.center, 
+                    style: TextStyle(
+                      color: theme.colorScheme.tertiary, // <<< TERTİARY RENK KULLANIMI
+                      fontSize: 18.sp,
+                      fontWeight: FontWeight.bold
+                    )
+                  ),
                   SizedBox(height: 16.h),
                   Container(
                     padding: EdgeInsets.all(16.w),
-                    // DEĞİŞİKLİK: Arka plan rengi temadan alınıyor
                     decoration: BoxDecoration(color: theme.cardTheme.color, borderRadius: BorderRadius.circular(12.r)),
                     child: Text(_questions[_currentIndex]['question_text'], textAlign: TextAlign.center, style: TextStyle(fontSize: 20.sp, fontWeight: FontWeight.bold, color: Colors.white)),
                   ),
@@ -167,7 +182,6 @@ class _QuizPageState extends State<QuizPage> {
                           decoration: BoxDecoration(
                             color: _getOptionColor(index), 
                             borderRadius: BorderRadius.circular(12.r), 
-                            // DEĞİŞİKLİK: Kenarlık rengi temadan alınıyor
                             border: Border.all(color: theme.colorScheme.primary.withOpacity(0.5))
                           ),
                           child: Text(options[index], style: TextStyle(fontSize: 18.sp, color: Colors.white)),
