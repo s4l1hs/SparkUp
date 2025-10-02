@@ -66,7 +66,7 @@ class LoginPage extends StatelessWidget {
 
     return Scaffold(
       body: Container(
-        decoration: BoxDecoration(
+        decoration: const BoxDecoration(
           gradient: LinearGradient(colors: [const Color(0xFF1A1A1A), Colors.black], begin: Alignment.topCenter, end: Alignment.bottomCenter),
         ),
         child: SafeArea(
@@ -106,7 +106,7 @@ class LoginPage extends StatelessWidget {
                         child: Row(
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
-                            Image.asset('assets/images/google_logo.png', height: 24.h), // Logo dosyası proje kökünde olmalı
+                            Image.asset('assets/images/google_logo.png', height: 32.h), 
                             SizedBox(width: 12.w),
                             Text(localizations.continueWithGoogle, style: TextStyle(fontSize: 18.sp, fontWeight: FontWeight.bold, color: Colors.black)),
                           ],
