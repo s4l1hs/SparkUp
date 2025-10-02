@@ -3,7 +3,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import '../l10n/app_localizations.dart';
-import '../services/api_service.dart'; // ApiService'in bir klasör yukarıda olduğunu varsayıyoruz
+import '../services/api_service.dart';
 
 class InfoPage extends StatefulWidget {
   final String idToken;
@@ -30,7 +30,6 @@ class _InfoPageState extends State<InfoPage> {
     if (!mounted) return;
     setState(() { _isLoadingInfo = true; _error = null; });
     try {
-      // ⚠️ idToken'ı API servisine iletiyoruz
       final infoData = await _apiService.getRandomInfo(widget.idToken);
       if (mounted) {
         setState(() {
@@ -48,27 +47,32 @@ class _InfoPageState extends State<InfoPage> {
   @override
   Widget build(BuildContext context) {
     final localizations = AppLocalizations.of(context)!;
+    final theme = Theme.of(context); // DEĞİŞİKLİK: Temayı alıyoruz
 
     return Scaffold(
       body: Center(
         child: Padding(
           padding: EdgeInsets.all(24.w),
           child: _isLoadingInfo
-              ? const CircularProgressIndicator(color: Colors.amber)
+              // DEĞİŞİKLİK: Yükleme göstergesi rengi temadan alınıyor
+              ? CircularProgressIndicator(color: theme.colorScheme.primary)
               : _error != null
-                  ? Text("${localizations.error}: $_error", style: const TextStyle(color: Colors.red))
+                  // DEĞİŞİKLİK: Hata rengi temadan alınıyor
+                  ? Text("${localizations.error}: $_error", style: TextStyle(color: theme.colorScheme.error))
                   : Column(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
                         Text(
                           localizations.dailyFact, 
-                          style: TextStyle(color: Colors.amber, fontSize: 24.sp, fontWeight: FontWeight.bold),
+                          // DEĞİŞİKLİK: Metin rengi temanın ana rengi yapıldı
+                          style: TextStyle(color: theme.colorScheme.primary, fontSize: 24.sp, fontWeight: FontWeight.bold),
                         ),
                         SizedBox(height: 24.h),
                         Container(
                           padding: EdgeInsets.all(20.w),
                           decoration: BoxDecoration(
-                            color: Colors.grey.shade900.withOpacity(0.5),
+                            // DEĞİŞİKLİK: Arka plan rengi temadan alınıyor
+                            color: theme.cardTheme.color,
                             borderRadius: BorderRadius.circular(16.r),
                           ),
                           child: Text(
@@ -91,8 +95,9 @@ class _InfoPageState extends State<InfoPage> {
       floatingActionButton: FloatingActionButton(
         onPressed: _fetchDailyInfo,
         tooltip: localizations.refresh, 
-        backgroundColor: Colors.amber,
-        child: const Icon(Icons.refresh, color: Colors.black),
+        // DEĞİŞİKLİK: FAB rengi temadan alınıyor
+        backgroundColor: theme.colorScheme.primary,
+        child: Icon(Icons.refresh, color: theme.colorScheme.onPrimary), // DEĞİŞİKLİK: İkon rengi de temadan
       ),
     );
   }

@@ -2,7 +2,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import '../services/api_service.dart'; // ApiService'in bir klasör yukarıda olduğunu varsayıyoruz
+import '../services/api_service.dart'; 
 import '../l10n/app_localizations.dart';
 
 class LeaderboardPage extends StatefulWidget {
@@ -29,7 +29,6 @@ class _LeaderboardPageState extends State<LeaderboardPage> {
 
   Future<void> _loadTopics() async {
     try {
-      // ⚠️ idToken'ı getUserTopics'e iletiyoruz
       final results = await Future.wait([_apiService.getTopics(), _apiService.getUserTopics(widget.idToken)]);
       if (mounted) {
         setState(() {
@@ -45,18 +44,21 @@ class _LeaderboardPageState extends State<LeaderboardPage> {
   Future<void> _saveTopics() async {
     setState(() => _isSaving = true);
     final localizations = AppLocalizations.of(context)!;
+    final theme = Theme.of(context); // DEĞİŞİKLİK: Temayı alıyoruz
+
     try {
-      // ⚠️ idToken'ı setUserTopics'e iletiyoruz
       await _apiService.setUserTopics(widget.idToken, _selectedTopics.toList());
       if(mounted) {
         ScaffoldMessenger.of(context).showSnackBar(
-          SnackBar(content: Text(localizations.preferencesSaved), backgroundColor: Colors.green),
+          // DEĞİŞİKLİK: Başarı rengi olarak temanın ikincil rengi kullanıldı
+          SnackBar(content: Text(localizations.preferencesSaved), backgroundColor: theme.colorScheme.secondary),
         );
       }
     } catch (e) {
       if(mounted) {
         ScaffoldMessenger.of(context).showSnackBar(
-          SnackBar(content: Text("${localizations.error}: ${localizations.preferencesCouldNotBeSaved}"), backgroundColor: Colors.red),
+          // DEĞİŞİKLİK: Hata rengi temadan alınıyor
+          SnackBar(content: Text("${localizations.error}: ${localizations.preferencesCouldNotBeSaved}"), backgroundColor: theme.colorScheme.error),
         );
       }
     } finally {
@@ -67,13 +69,17 @@ class _LeaderboardPageState extends State<LeaderboardPage> {
   @override
   Widget build(BuildContext context) {
     final localizations = AppLocalizations.of(context)!;
+    final theme = Theme.of(context); // DEĞİŞİKLİK: Temayı alıyoruz
+
+    // DEĞİŞİKLİK: Scaffold backgroundColor temadan geldiği için kaldırıldı.
     return Scaffold(
-      backgroundColor: Colors.black,
       body: FutureBuilder<void>(
         future: _loadingFuture,
         builder: (context, snapshot) {
-          if (snapshot.connectionState == ConnectionState.waiting) return const Center(child: CircularProgressIndicator(color: Colors.amber));
-          if (snapshot.hasError) return Center(child: Text("${localizations.error}: ${snapshot.error}", style: const TextStyle(color: Colors.red)));
+          // DEĞİŞİKLİK: Yükleme göstergesi rengi temadan alınıyor
+          if (snapshot.connectionState == ConnectionState.waiting) return Center(child: CircularProgressIndicator(color: theme.colorScheme.primary));
+          // DEĞİŞİKLİK: Hata rengi temadan alınıyor
+          if (snapshot.hasError) return Center(child: Text("${localizations.error}: ${snapshot.error}", style: TextStyle(color: theme.colorScheme.error)));
           
           return Column(
             children: [
@@ -103,10 +109,12 @@ class _LeaderboardPageState extends State<LeaderboardPage> {
                       onTap: () => setState(() => isSelected ? _selectedTopics.remove(apiKey) : _selectedTopics.add(apiKey)),
                       borderRadius: BorderRadius.circular(12.r),
                       child: Card(
-                        color: isSelected ? Colors.amber.withOpacity(0.3) : Colors.grey.shade900,
+                        // DEĞİŞİKLİK: Kart renkleri temadan alınıyor
+                        color: isSelected ? theme.colorScheme.primary.withOpacity(0.3) : theme.cardTheme.color,
                         shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(12.r), 
-                          side: BorderSide(color: isSelected ? Colors.amber : Colors.transparent, width: 2)
+                          // DEĞİŞİKLİK: Kenarlık rengi temadan alınıyor
+                          side: BorderSide(color: isSelected ? theme.colorScheme.primary : Colors.transparent, width: 2)
                         ),
                         child: Center(
                           child: Padding(
@@ -117,7 +125,8 @@ class _LeaderboardPageState extends State<LeaderboardPage> {
                               style: TextStyle(
                                 fontWeight: FontWeight.bold, 
                                 fontSize: 16.sp, 
-                                color: isSelected ? Colors.amber : Colors.white
+                                // DEĞİŞİKLİK: Metin rengi temadan alınıyor
+                                color: isSelected ? theme.colorScheme.primary : Colors.white
                               )
                             ),
                           ),
@@ -133,9 +142,14 @@ class _LeaderboardPageState extends State<LeaderboardPage> {
       ),
       floatingActionButton: FloatingActionButton.extended(
         onPressed: _isSaving ? null : _saveTopics,
-        backgroundColor: Colors.amber,
-        icon: _isSaving ? SizedBox(width: 20.w, height: 20.h, child: const CircularProgressIndicator(strokeWidth: 2, color: Colors.black)) : const Icon(Icons.save, color: Colors.black),
-        label: Text(_isSaving ? localizations.saving : localizations.save, style: const TextStyle(color: Colors.black)),
+        // DEĞİŞİKLİK: FAB rengi temadan alınıyor
+        backgroundColor: theme.colorScheme.primary,
+        icon: _isSaving 
+            ? SizedBox(width: 20.w, height: 20.h, child: CircularProgressIndicator(strokeWidth: 2, color: theme.colorScheme.onPrimary)) 
+            // DEĞİŞİKLİK: İkon rengi temadan alınıyor
+            : Icon(Icons.save, color: theme.colorScheme.onPrimary),
+        // DEĞİŞİKLİK: Metin rengi temadan alınıyor
+        label: Text(_isSaving ? localizations.saving : localizations.save, style: TextStyle(color: theme.colorScheme.onPrimary)),
       ),
     );
   }

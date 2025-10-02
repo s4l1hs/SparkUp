@@ -52,19 +52,16 @@ class _MainScreenState extends State<MainScreen> {
     }
   }
 
-
   void _onItemTapped(int index) {
     setState(() {
       _selectedIndex = index;
     });
   }
 
-
   @override
   Widget build(BuildContext context) {
     final localizations = AppLocalizations.of(context)!;
     
-
     return Scaffold(
       body: IndexedStack(
         index: _selectedIndex,
@@ -72,9 +69,8 @@ class _MainScreenState extends State<MainScreen> {
       ),
       bottomNavigationBar: BottomNavigationBar(
         type: BottomNavigationBarType.fixed, // 5 öğe için sabit tip
-        backgroundColor: Colors.grey.shade900,
-        selectedItemColor: Colors.amber,
-        unselectedItemColor: Colors.grey.shade600,
+        // DEĞİŞİKLİK: Renkler artık main.dart'taki BottomNavigationBarThemeData'dan geliyor.
+        // Bu sayede buradaki renk tanımlamaları kaldırıldı ve kod temizlendi.
         selectedLabelStyle: TextStyle(fontSize: 10.sp, fontWeight: FontWeight.bold),
         unselectedLabelStyle: TextStyle(fontSize: 9.sp),
         

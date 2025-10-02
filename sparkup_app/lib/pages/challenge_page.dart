@@ -2,7 +2,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import '../services/api_service.dart'; // ApiService'in bir klasör yukarıda olduğunu varsayıyoruz
+import '../services/api_service.dart'; 
 import '../l10n/app_localizations.dart';
 
 class ChallengePage extends StatefulWidget {
@@ -33,7 +33,6 @@ class _ChallengePageState extends State<ChallengePage> {
     });
 
     try {
-      // ⚠️ idToken'ı API servisine iletiyoruz
       final challengeData = await _apiService.getRandomChallenge(widget.idToken);
       if (mounted) {
         setState(() {
@@ -43,7 +42,6 @@ class _ChallengePageState extends State<ChallengePage> {
     } catch (e) {
       if (mounted) {
         setState(() {
-          // Hata mesajı düzeltildi
           _error = AppLocalizations.of(context)?.challengeCouldNotBeLoaded ?? "Challenge could not be loaded";
           print("Challenge error: $e");
         });
@@ -60,6 +58,7 @@ class _ChallengePageState extends State<ChallengePage> {
   @override
   Widget build(BuildContext context) {
     final localizations = AppLocalizations.of(context)!;
+    final theme = Theme.of(context); // DEĞİŞİKLİK: Temayı alıyoruz
 
     return Center(
       child: Padding(
@@ -71,27 +70,31 @@ class _ChallengePageState extends State<ChallengePage> {
             aspectRatio: 1,
             child: Container(
               decoration: BoxDecoration(
+                // DEĞİŞİKLİK: Gradient temaya uyarlandı
                 gradient: LinearGradient(
-                  colors: [Colors.grey.shade900, Colors.black87],
+                  colors: [theme.cardTheme.color!, Colors.black87],
                   begin: Alignment.topLeft,
                   end: Alignment.bottomRight,
                 ),
                 borderRadius: BorderRadius.circular(20.r),
                 border: Border.all(
-                  color: Colors.amber.withOpacity(0.5),
+                  // DEĞİŞİKLİK: Kenarlık rengi temadan alınıyor
+                  color: theme.colorScheme.primary.withOpacity(0.5),
                   width: 2,
                 ),
               ),
               child: Center(
                 child: _isLoading
-                    ? const CircularProgressIndicator(color: Colors.amber)
+                    // DEĞİŞİKLİK: Yükleme göstergesi rengi temadan alınıyor
+                    ? CircularProgressIndicator(color: theme.colorScheme.primary)
                     : _error != null
                         ? Padding(
                             padding: EdgeInsets.all(16.w),
                             child: Text(
                               "${localizations.error}: $_error",
                               textAlign: TextAlign.center,
-                              style: const TextStyle(color: Colors.red),
+                              // DEĞİŞİKLİK: Hata rengi temadan alınıyor
+                              style: TextStyle(color: theme.colorScheme.error),
                             ),
                           )
                         : Padding(
@@ -99,7 +102,8 @@ class _ChallengePageState extends State<ChallengePage> {
                             child: Column(
                               mainAxisAlignment: MainAxisAlignment.center,
                               children: [
-                                Icon(Icons.fitness_center_rounded, size: 60.sp, color: Colors.amber),
+                                // DEĞİŞİKLİK: İkon rengi temadan alınıyor
+                                Icon(Icons.fitness_center_rounded, size: 60.sp, color: theme.colorScheme.primary),
                                 SizedBox(height: 24.h),
                                 Text(
                                   _challengeText ?? localizations.noChallengeAvailable,

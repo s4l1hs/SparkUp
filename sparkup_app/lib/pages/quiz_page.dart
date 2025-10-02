@@ -3,7 +3,7 @@
 import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import '../services/api_service.dart'; // ApiService'in bir klasör yukarıda olduğunu varsayıyoruz
+import '../services/api_service.dart'; 
 import '../l10n/app_localizations.dart';
 
 class QuizPage extends StatefulWidget {
@@ -29,8 +29,8 @@ class _QuizPageState extends State<QuizPage> {
   Future<void> _startNewQuiz() async {
     setState(() => _isLoading = true);
     final localizations = AppLocalizations.of(context)!;
+    final theme = Theme.of(context); // DEĞİŞİKLİK: Temayı alıyoruz
     try {
-      // ⚠️ idToken'ı getQuizQuestions'a iletiyoruz
       final questions = await _apiService.getQuizQuestions(widget.idToken);
       if (mounted) {
         setState(() {
@@ -47,7 +47,8 @@ class _QuizPageState extends State<QuizPage> {
       if (mounted) {
         setState(() => _isLoading = false);
         ScaffoldMessenger.of(context).showSnackBar(
-          SnackBar(content: Text("${localizations.quizCouldNotStart}: $e"), backgroundColor: Colors.red),
+          // DEĞİŞİKLİK: Hata rengi temadan alınıyor
+          SnackBar(content: Text("${localizations.quizCouldNotStart}: $e"), backgroundColor: theme.colorScheme.error),
         );
       }
     }
@@ -62,7 +63,6 @@ class _QuizPageState extends State<QuizPage> {
         _score++;
       }
     });
-    // 1.5 saniye sonra sonraki soruya geç
     Future.delayed(const Duration(milliseconds: 1500), () {
       if(mounted) _nextQuestion();
     });
@@ -82,6 +82,7 @@ class _QuizPageState extends State<QuizPage> {
 
   void _showResultDialog() {
     final localizations = AppLocalizations.of(context)!;
+    final theme = Theme.of(context); // DEĞİŞİKLİK: Temayı alıyoruz
     showDialog(
       context: context,
       barrierDismissible: false,
@@ -94,7 +95,8 @@ class _QuizPageState extends State<QuizPage> {
               Navigator.of(context).pop();
               setState(() => _isQuizActive = false);
             },
-            child: Text(localizations.great, style: const TextStyle(color: Colors.amber)),
+            // DEĞİŞİKLİK: Buton rengi temadan alınıyor
+            child: Text(localizations.great, style: TextStyle(color: theme.colorScheme.primary)),
           )
         ],
       ),
@@ -102,21 +104,24 @@ class _QuizPageState extends State<QuizPage> {
   }
 
   Color _getOptionColor(int index) {
-    if (!_answered) return Colors.grey.shade900;
+    final theme = Theme.of(context); // DEĞİŞİKLİK: Temayı alıyoruz
+    if (!_answered) return theme.cardTheme.color!; // DEĞİŞİKLİK: Temanın kart rengi
     int correctIndex = _questions[_currentIndex]['correct_answer_index'];
-    if (index == correctIndex) return Colors.green.shade700;
-    if (index == _selectedAnswerIndex) return Colors.red.shade700;
-    return Colors.grey.shade900;
+    if (index == correctIndex) return Colors.green.shade700; // Yeşil belirginlik için kalabilir. Alternatif: theme.colorScheme.secondary
+    if (index == _selectedAnswerIndex) return theme.colorScheme.error; // DEĞİŞİKLİK: Temanın hata rengi
+    return theme.cardTheme.color!; // DEĞİŞİKLİK: Temanın kart rengi
   }
 
   @override
   Widget build(BuildContext context) {
     final localizations = AppLocalizations.of(context)!;
+    final theme = Theme.of(context); // DEĞİŞİKLİK: Temayı alıyoruz
 
     if (!_isQuizActive) {
       return Center(
         child: _isLoading
-            ? const CircularProgressIndicator(color: Colors.amber)
+            // DEĞİŞİKLİK: Yükleme göstergesi rengi temadan alınıyor
+            ? CircularProgressIndicator(color: theme.colorScheme.primary) 
             : ElevatedButton.icon(
                 icon: Icon(Icons.play_arrow_rounded, size: 28.sp),
                 label: Text(localizations.startNewQuiz, style: TextStyle(fontSize: 20.sp, fontWeight: FontWeight.bold)),
@@ -133,8 +138,8 @@ class _QuizPageState extends State<QuizPage> {
     }
     final options = jsonDecode(_questions[_currentIndex]['options']) as List<dynamic>;
 
+    // DEĞİŞİKLİK: Scaffold backgroundColor temadan geldiği için kaldırıldı.
     return Scaffold(
-      backgroundColor: Colors.black,
       body: _questions.isEmpty
           ? Center(child: Text(localizations.questionDataIsEmpty, style: TextStyle(color: Colors.grey.shade400)))
           : Padding(
@@ -146,7 +151,8 @@ class _QuizPageState extends State<QuizPage> {
                   SizedBox(height: 16.h),
                   Container(
                     padding: EdgeInsets.all(16.w),
-                    decoration: BoxDecoration(color: Colors.grey.shade900, borderRadius: BorderRadius.circular(12.r)),
+                    // DEĞİŞİKLİK: Arka plan rengi temadan alınıyor
+                    decoration: BoxDecoration(color: theme.cardTheme.color, borderRadius: BorderRadius.circular(12.r)),
                     child: Text(_questions[_currentIndex]['question_text'], textAlign: TextAlign.center, style: TextStyle(fontSize: 20.sp, fontWeight: FontWeight.bold, color: Colors.white)),
                   ),
                   const Spacer(),
@@ -161,7 +167,8 @@ class _QuizPageState extends State<QuizPage> {
                           decoration: BoxDecoration(
                             color: _getOptionColor(index), 
                             borderRadius: BorderRadius.circular(12.r), 
-                            border: Border.all(color: Colors.amber.withOpacity(0.5))
+                            // DEĞİŞİKLİK: Kenarlık rengi temadan alınıyor
+                            border: Border.all(color: theme.colorScheme.primary.withOpacity(0.5))
                           ),
                           child: Text(options[index], style: TextStyle(fontSize: 18.sp, color: Colors.white)),
                         ),

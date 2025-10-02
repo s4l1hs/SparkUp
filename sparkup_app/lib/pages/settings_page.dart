@@ -56,7 +56,6 @@ class _SettingsPageState extends State<SettingsPage> {
           _notificationsEnabled = settings['notifications_enabled'];
           _currentLanguageCode = settings['language_code'] ?? 'en';
         });
-        // Uygulamanın genel dilini başlangıçta ayarla
         Provider.of<LocaleProvider>(context, listen: false).setLocale(_currentLanguageCode);
       }
     } catch (e) {
@@ -103,16 +102,17 @@ class _SettingsPageState extends State<SettingsPage> {
   @override
   Widget build(BuildContext context) {
     final localizations = AppLocalizations.of(context)!;
+    final theme = Theme.of(context); // DEĞİŞİKLİK: Temayı alıyoruz
 
+    // DEĞİŞİKLİK: Scaffold ve AppBar backgroundColor temadan geldiği için kaldırıldı.
     return Scaffold(
-      backgroundColor: Colors.black,
       appBar: AppBar(
         elevation: 0,
-        backgroundColor: Colors.black,
         title: Text(localizations.settings, style: TextStyle(color: Colors.white, fontSize: 20.sp)),
       ),
       body: _isLoading
-          ? const Center(child: CircularProgressIndicator(color: Colors.amber))
+          // DEĞİŞİKLİK: Yükleme göstergesi rengi temadan alınıyor
+          ? Center(child: CircularProgressIndicator(color: theme.colorScheme.primary))
           : ListView(
               padding: EdgeInsets.symmetric(vertical: 20.h, horizontal: 16.w),
               children: [
@@ -146,7 +146,8 @@ class _SettingsPageState extends State<SettingsPage> {
   Widget _buildSettingsCard({required List<Widget> children}) {
     return Container(
       decoration: BoxDecoration(
-        color: Colors.grey.shade900.withOpacity(0.5),
+        // DEĞİŞİKLİK: Kart rengi temadan alınıyor
+        color: Theme.of(context).cardTheme.color,
         borderRadius: BorderRadius.circular(16.r),
       ),
       child: Column(children: children),
@@ -170,7 +171,8 @@ class _SettingsPageState extends State<SettingsPage> {
 
   Widget _buildLanguageTile(AppLocalizations localizations) {
     return ListTile(
-      leading: const Icon(Icons.language_outlined, color: Colors.amber),
+      // DEĞİŞİKLİK: İkon rengi temadan alınıyor
+      leading: Icon(Icons.language_outlined, color: Theme.of(context).colorScheme.primary),
       title: Text(localizations.applicationLanguage, style: const TextStyle(color: Colors.white)),
       subtitle: Text(
         _supportedLanguages[_currentLanguageCode] ?? 'English',
@@ -182,12 +184,15 @@ class _SettingsPageState extends State<SettingsPage> {
   }
 
   Widget _buildNotificationsTile(AppLocalizations localizations) {
+    final theme = Theme.of(context); // DEĞİŞİKLİK: Temayı alıyoruz
     return SwitchListTile.adaptive(
-      secondary: const Icon(Icons.notifications_active_outlined, color: Colors.amber),
+      // DEĞİŞİKLİK: İkon rengi temadan alınıyor
+      secondary: Icon(Icons.notifications_active_outlined, color: theme.colorScheme.primary),
       title: Text(localizations.notifications, style: const TextStyle(color: Colors.white)),
       subtitle: Text(localizations.forAllAlarms, style: TextStyle(color: Colors.grey.shade400)),
       value: _notificationsEnabled,
-      activeColor: Colors.amber,
+      // DEĞİŞİKLİK: Switch rengi temadan alınıyor
+      activeColor: theme.colorScheme.primary,
       onChanged: _isSaving ? null : (bool value) {
         setState(() => _notificationsEnabled = value);
         _saveSettings(notifications: value);
@@ -196,9 +201,11 @@ class _SettingsPageState extends State<SettingsPage> {
   }
   
   Widget _buildSignOutTile(AppLocalizations localizations) {
+    final theme = Theme.of(context); // DEĞİŞİKLİK: Temayı alıyoruz
     return ListTile(
-      leading: Icon(Icons.logout, color: Colors.red.shade400),
-      title: Text(localizations.signOut, style: TextStyle(color: Colors.red.shade400)),
+      // DEĞİŞİKLİK: Çıkış yapma rengi temanın hata rengi yapıldı
+      leading: Icon(Icons.logout, color: theme.colorScheme.error),
+      title: Text(localizations.signOut, style: TextStyle(color: theme.colorScheme.error)),
       onTap: () async {
         Navigator.pop(context);
         await FirebaseAuth.instance.signOut();
@@ -208,11 +215,13 @@ class _SettingsPageState extends State<SettingsPage> {
   }
 
   void _showLanguageDialog(AppLocalizations localizations) {
+    final theme = Theme.of(context); // DEĞİŞİKLİK: Temayı alıyoruz
     showDialog(
       context: context,
       builder: (context) {
         return AlertDialog(
-          backgroundColor: Colors.grey.shade900,
+          // DEĞİŞİKLİK: Dialog rengi temadan alınıyor
+          backgroundColor: theme.cardTheme.color,
           title: Text(localizations.applicationLanguage, style: const TextStyle(color: Colors.white)),
           content: SizedBox(
             width: double.maxFinite,
@@ -222,8 +231,9 @@ class _SettingsPageState extends State<SettingsPage> {
                 children: _supportedLanguages.entries.map((entry) {
                   final isSelected = _currentLanguageCode == entry.key;
                   return ListTile(
-                    title: Text(entry.value, style: TextStyle(color: isSelected ? Colors.amber : Colors.white)),
-                    trailing: isSelected ? const Icon(Icons.check, color: Colors.amber) : null,
+                    // DEĞİŞİKLİK: Seçili dil rengi temadan alınıyor
+                    title: Text(entry.value, style: TextStyle(color: isSelected ? theme.colorScheme.primary : Colors.white)),
+                    trailing: isSelected ? Icon(Icons.check, color: theme.colorScheme.primary) : null,
                     onTap: () => _onLanguageSelected(entry.key),
                   );
                 }).toList(),
@@ -233,7 +243,8 @@ class _SettingsPageState extends State<SettingsPage> {
           actions: [
             TextButton(
               onPressed: () => Navigator.pop(context),
-              child: Text(localizations.cancel, style: TextStyle(color: Colors.amber)),
+              // DEĞİŞİKLİK: Buton rengi temadan alınıyor
+              child: Text(localizations.cancel, style: TextStyle(color: theme.colorScheme.primary)),
             )
           ],
         );

@@ -43,7 +43,8 @@ class LoginPage extends StatelessWidget {
         content: Container(
           padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
           decoration: BoxDecoration(
-            gradient: LinearGradient(colors: [Colors.red.shade700, Colors.redAccent.shade400]),
+            // DEĞİŞİKLİK: Sabit kırmızı gradient yerine temanın hata rengi kullanıldı.
+            color: Theme.of(context).colorScheme.error,
             borderRadius: BorderRadius.circular(16.r),
           ),
           child: Row(
@@ -61,10 +62,12 @@ class LoginPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final localizations = AppLocalizations.of(context)!;
+    final theme = Theme.of(context); // DEĞİŞİKLİK: Temayı alıyoruz.
+
     return Scaffold(
       body: Container(
         decoration: BoxDecoration(
-          gradient: LinearGradient(colors: [Colors.grey.shade900, Colors.black], begin: Alignment.topCenter, end: Alignment.bottomCenter),
+          gradient: LinearGradient(colors: [const Color(0xFF1A1A1A), Colors.black], begin: Alignment.topCenter, end: Alignment.bottomCenter),
         ),
         child: SafeArea(
           child: Padding(
@@ -73,21 +76,23 @@ class LoginPage extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
                 const Spacer(flex: 2),
-                // ⚠️ DEĞİŞİKLİK: İkon Spark Up temasını yansıtmalı
-                Icon(Icons.lightbulb_outline, size: 80.sp, color: Colors.amber.shade400, shadows: [
-                  BoxShadow(color: Colors.amber.shade400.withOpacity(0.5), blurRadius: 18.0, spreadRadius: 2.0)
-                ]),
+                Icon(Icons.lightbulb_outline, size: 80.sp, 
+                  // DEĞİŞİKLİK: İkon rengi ve gölgesi temanın ana rengi (primary) yapıldı.
+                  color: theme.colorScheme.primary, 
+                  shadows: [
+                    BoxShadow(color: theme.colorScheme.primary.withOpacity(0.5), blurRadius: 18.0, spreadRadius: 2.0)
+                  ]
+                ),
                 SizedBox(height: 16.h),
-                // ⚠️ DEĞİŞİKLİK: Başlık appName olarak değiştirildi (Lokalizasyon dosyanızda düzenleyin)
                 Text("Spark Up", textAlign: TextAlign.center, style: TextStyle(fontSize: 40.sp, fontWeight: FontWeight.bold, color: Colors.white, letterSpacing: 1.2)),
                 SizedBox(height: 8.h),
-                // ⚠️ DEĞİŞİKLİK: Slogan değiştirildi
                 Text("Spark Your Mind", textAlign: TextAlign.center, style: TextStyle(fontSize: 16.sp, color: Colors.grey.shade400)),
                 const Spacer(flex: 3),
                 AnimatedContainer(
                   duration: const Duration(milliseconds: 300),
                   decoration: BoxDecoration(
-                    gradient: const LinearGradient(colors: [Colors.amber, Colors.orangeAccent], begin: Alignment.topLeft, end: Alignment.bottomRight),
+                    // DEĞİŞİKLİK: Buton gradient'i temanın ana ve ikincil renkleri ile oluşturuldu.
+                    gradient: LinearGradient(colors: [theme.colorScheme.primary, theme.colorScheme.secondary], begin: Alignment.topLeft, end: Alignment.bottomRight),
                     borderRadius: BorderRadius.circular(16.r),
                     boxShadow: [BoxShadow(color: Colors.black.withOpacity(0.5), blurRadius: 8, offset: const Offset(0, 4))],
                   ),
