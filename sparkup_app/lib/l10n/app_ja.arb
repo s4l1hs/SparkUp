@@ -45,5 +45,6 @@
   "selectLanguage": "言語を選択",
   "refresh": "更新",
 
-  "noDataFound": "データが見つかりませんでした"
+  "noDataFound": "データが見つかりませんでした",
+  "navLeaderboard": "リーダーボード"
 }

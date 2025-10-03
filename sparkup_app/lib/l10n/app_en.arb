@@ -46,5 +46,6 @@
   "refresh": "Refresh",
 
   
-  "noDataFound": "No data found"
+  "noDataFound": "No data found",
+  "navLeaderboard": "Leaderboard"
 }

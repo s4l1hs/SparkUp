@@ -131,4 +131,7 @@ class AppLocalizationsFr extends AppLocalizations {
 
   @override
   String get noDataFound => 'Aucune donnée trouvée';
+
+  @override
+  String get navLeaderboard => 'Classement';
 }

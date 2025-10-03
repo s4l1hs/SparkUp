@@ -45,5 +45,6 @@
   "selectLanguage": "选择语言",
   "refresh": "刷新",
 
-  "noDataFound": "未找到数据"
+  "noDataFound": "未找到数据",
+  "navLeaderboard": "排行榜"
 }

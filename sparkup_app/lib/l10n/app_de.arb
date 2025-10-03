@@ -45,5 +45,6 @@
   "selectLanguage": "Sprache auswählen",
   "refresh": "Aktualisieren",
 
-  "noDataFound": "Keine Daten gefunden"
+  "noDataFound": "Keine Daten gefunden",
+  "navLeaderboard": "Bestenliste"
 }

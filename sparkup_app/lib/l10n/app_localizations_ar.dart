@@ -128,4 +128,7 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String get noDataFound => 'لم يتم العثور على بيانات';
+
+  @override
+  String get navLeaderboard => 'لوحة المتصدرين';
 }

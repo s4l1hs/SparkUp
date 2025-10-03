@@ -45,5 +45,6 @@
   "selectLanguage": "Sélectionner la langue",
   "refresh": "Actualiser",
 
-  "noDataFound": "Aucune donnée trouvée"
+  "noDataFound": "Aucune donnée trouvée",
+  "navLeaderboard": "Classement"
 }

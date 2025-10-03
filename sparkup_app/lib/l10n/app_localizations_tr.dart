@@ -129,4 +129,7 @@ class AppLocalizationsTr extends AppLocalizations {
 
   @override
   String get noDataFound => 'Veri bulunamadı';
+
+  @override
+  String get navLeaderboard => 'Liderlik Tablosu';
 }

@@ -46,5 +46,6 @@
   "selectLanguage": "اختيار اللغة",
   "refresh": "تحديث",
 
-  "noDataFound": "لم يتم العثور على بيانات"
+  "noDataFound": "لم يتم العثور على بيانات",
+  "navLeaderboard": "لوحة المتصدرين"
 }

@@ -1,6 +1,7 @@
 import 'dart:convert';
 import 'package:http/http.dart' as http;
 import 'dart:typed_data';
+import '../models/leaderboard_entry.dart';
 
 // main.dart dosyasında tanımlanan global backendBaseUrl'ı kullanacağız.
 // NOT: Bu dosyada kullanabilmek için, ya main.dart dosyasındaki
@@ -114,6 +115,20 @@ class ApiService {
       return _decodeResponseBody(response.bodyBytes);
     } else {
       throw Exception("Failed to load challenge. Status: ${response.statusCode}, Body: ${response.body}");
+    }
+  }
+
+  Future<List<LeaderboardEntry>> getLeaderboard(String idToken) async {
+    final uri = Uri.parse('$backendBaseUrl/leaderboard/');
+    final response = await http.get(uri, headers: {
+      'Authorization': 'Bearer $idToken',
+    });
+
+    if (response.statusCode == 200) {
+      final List<dynamic> data = jsonDecode(response.body);
+      return data.map((json) => LeaderboardEntry.fromJson(json)).toList();
+    } else {
+      throw Exception('Failed to load leaderboard');
     }
   }
 }

@@ -128,4 +128,7 @@ class AppLocalizationsRu extends AppLocalizations {
 
   @override
   String get noDataFound => 'Данные не найдены';
+
+  @override
+  String get navLeaderboard => 'Таблица лидеров';
 }

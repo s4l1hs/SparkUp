@@ -45,5 +45,6 @@
   "selectLanguage": "Выберите язык",
   "refresh": "Обновить",
 
-  "noDataFound": "Данные не найдены"
+  "noDataFound": "Данные не найдены",
+  "navLeaderboard": "Таблица лидеров"
 }

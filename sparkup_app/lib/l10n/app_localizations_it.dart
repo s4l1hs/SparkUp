@@ -129,4 +129,7 @@ class AppLocalizationsIt extends AppLocalizations {
 
   @override
   String get noDataFound => 'Nessun dato trovato';
+
+  @override
+  String get navLeaderboard => 'Classifica';
 }

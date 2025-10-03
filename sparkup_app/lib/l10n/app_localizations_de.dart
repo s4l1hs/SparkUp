@@ -133,4 +133,7 @@ class AppLocalizationsDe extends AppLocalizations {
 
   @override
   String get noDataFound => 'Keine Daten gefunden';
+
+  @override
+  String get navLeaderboard => 'Bestenliste';
 }

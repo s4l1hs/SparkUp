@@ -127,4 +127,7 @@ class AppLocalizationsZh extends AppLocalizations {
 
   @override
   String get noDataFound => '未找到数据';
+
+  @override
+  String get navLeaderboard => '排行榜';
 }

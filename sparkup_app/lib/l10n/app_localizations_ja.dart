@@ -127,4 +127,7 @@ class AppLocalizationsJa extends AppLocalizations {
 
   @override
   String get noDataFound => 'データが見つかりませんでした';
+
+  @override
+  String get navLeaderboard => 'リーダーボード';
 }

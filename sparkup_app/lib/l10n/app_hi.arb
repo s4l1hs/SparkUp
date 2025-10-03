@@ -45,5 +45,6 @@
   "selectLanguage": "भाषा चुनें",
   "refresh": "ताज़ा करें",
 
-  "noDataFound": "कोई डेटा नहीं मिला"
+  "noDataFound": "कोई डेटा नहीं मिला",
+  "navLeaderboard": "लीडरबोर्ड"
 }

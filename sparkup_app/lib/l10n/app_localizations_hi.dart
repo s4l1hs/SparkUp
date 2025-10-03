@@ -128,4 +128,7 @@ class AppLocalizationsHi extends AppLocalizations {
 
   @override
   String get noDataFound => 'कोई डेटा नहीं मिला';
+
+  @override
+  String get navLeaderboard => 'लीडरबोर्ड';
 }

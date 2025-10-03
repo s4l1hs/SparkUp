@@ -45,5 +45,6 @@
   "selectLanguage": "Seleziona lingua",
   "refresh": "Aggiorna",
 
-  "noDataFound": "Nessun dato trovato"
+  "noDataFound": "Nessun dato trovato",
+  "navLeaderboard": "Classifica"
 }

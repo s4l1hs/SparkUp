@@ -45,5 +45,6 @@
   "selectLanguage": "Dil Seçin",
   "refresh": "Yenile",
 
-  "noDataFound": "Veri bulunamadı"
+  "noDataFound": "Veri bulunamadı",
+  "navLeaderboard": "Liderlik Tablosu"
 }
