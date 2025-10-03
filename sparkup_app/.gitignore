@@ -25,14 +25,19 @@ migrate_working_dir/
 
 # Flutter/Dart/Pub related
 **/doc/api/
-**/ios/Flutter/.last_build_id
+**/ios/Flutter/.last_tflite_build_id
 .dart_tool/
 .flutter-plugins-dependencies
 .pub-cache/
 .pub/
 /build/
 /coverage/
+
+# VERİTABANI DOSYALARI (YENİ EKLENDİ)
 database.db
+*.db
+*.sqlite
+*.sqlite3
 
 # Symbolication related
 app.*.symbols
