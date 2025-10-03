@@ -33,7 +33,7 @@ except Exception as e:
 
 try:
     genai.configure(api_key=GEMINI_API_KEY)
-    ai_model = genai.GenerativeModel('models/gemini-flash-latest')
+    ai_model = genai.GenerativeModel('models/gemini-pro-latest')
 except Exception as e:
     ai_model = None
 
@@ -52,6 +52,7 @@ class User(SQLModel, table=True):
     firebase_uid: str = Field(unique=True, index=True)
     email: Optional[str] = None
     language_code: str = Field(default="en")
+    notifications_enabled: bool = Field(default=True)
     score: Optional[UserScore] = Relationship(back_populates="user", sa_relationship_kwargs={"cascade": "all, delete-orphan"})
 
 class DailyInfo(SQLModel, table=True): 
@@ -76,11 +77,11 @@ class UserTopicPreference(SQLModel, table=True): user_id: int = Field(foreign_ke
 class UserSeenInfo(SQLModel, table=True): user_id: int = Field(foreign_key="user.id", primary_key=True); dailyinfo_id: int = Field(foreign_key="dailyinfo.id", primary_key=True)
 class UserAnsweredQuestion(SQLModel, table=True): user_id: int = Field(foreign_key="user.id", primary_key=True); quizquestion_id: int = Field(foreign_key="quizquestion.id", primary_key=True)
 class UserCompletedChallenge(SQLModel, table=True): user_id: int = Field(foreign_key="user.id", primary_key=True); challenge_id: int = Field(foreign_key="challenge.id", primary_key=True)
-
+class NotificationSettings(SQLModel): enabled: bool
 class DailyInfoResponse(SQLModel): id: int; info_text: str; category: str; source: Optional[str] = None
 class QuizQuestionResponse(SQLModel): id: int; question_text: str; options: List[str]; category: str
 class ChallengeResponse(SQLModel): id: int; challenge_text: str; category: str
-class UserProfile(SQLModel): firebase_uid: str; email: Optional[str]; score: int; topic_preferences: List[str]; language_code: str
+class UserProfile(SQLModel): firebase_uid: str; email: Optional[str]; score: int; topic_preferences: List[str]; language_code: str; notifications_enabled: bool
 class LeaderboardEntry(SQLModel): rank: int; email: Optional[str]; score: int
 class AnswerPayload(SQLModel): question_id: int; answer_index: int
 class AnswerResponse(SQLModel): correct: bool; correct_index: int; new_score: Optional[int] = None
@@ -153,11 +154,25 @@ def set_user_topics(topics: List[str], db_user: User = Depends(get_current_user)
     session.commit()
     return {"status": "success"}
 
+@app.put("/user/notifications/")
+def update_notification_settings(settings: NotificationSettings, db_user: User = Depends(get_current_user), session: Session = Depends(get_session)):
+    db_user.notifications_enabled = settings.enabled
+    session.add(db_user)
+    session.commit()
+    return {"status": "success", "message": f"Notification settings updated to {settings.enabled}."}
+
 @app.get("/user/profile/", response_model=UserProfile)
 def get_user_profile(db_user: User = Depends(get_current_user), session: Session = Depends(get_session)):
     user_score = session.exec(select(UserScore).where(UserScore.user_id == db_user.id)).first()
     user_topics = session.exec(select(UserTopicPreference.topic_key).where(UserTopicPreference.user_id == db_user.id)).all()
-    return UserProfile(firebase_uid=db_user.firebase_uid, email=db_user.email, score=user_score.score if user_score else 0, topic_preferences=user_topics, language_code=db_user.language_code)
+    return UserProfile(
+        firebase_uid=db_user.firebase_uid, 
+        email=db_user.email, 
+        score=user_score.score if user_score else 0, 
+        topic_preferences=user_topics, 
+        language_code=db_user.language_code,
+        notifications_enabled=db_user.notifications_enabled 
+    )
 
 @app.delete("/user/me/", status_code=status.HTTP_204_NO_CONTENT)
 def delete_user_account(db_user: User = Depends(get_current_user), session: Session = Depends(get_session)):

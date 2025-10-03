@@ -131,4 +131,17 @@ class AppLocalizationsRu extends AppLocalizations {
 
   @override
   String get navLeaderboard => 'Таблица лидеров';
+
+  @override
+  String get deleteAccount => 'Удалить аккаунт';
+
+  @override
+  String get deleteAccountConfirmation =>
+      'Вы уверены, что хотите удалить свой аккаунт? Это действие необратимо, и все ваши данные, включая ваш счет, будут безвозвратно удалены.';
+
+  @override
+  String get delete => 'Удалить';
+
+  @override
+  String get signOutConfirmation => 'Вы уверены, что хотите выйти?';
 }

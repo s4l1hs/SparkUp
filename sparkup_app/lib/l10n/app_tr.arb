@@ -46,5 +46,9 @@
   "refresh": "Yenile",
 
   "noDataFound": "Veri bulunamadı",
-  "navLeaderboard": "Liderlik Tablosu"
+  "navLeaderboard": "Liderlik Tablosu",
+  "deleteAccount": "Hesabı Sil",
+  "deleteAccountConfirmation": "Hesabınızı silmek istediğinizden emin misiniz? Bu işlem geri alınamaz ve puanınız dahil tüm verileriniz kalıcı olarak kaybolacaktır.",
+  "delete": "Sil",
+  "signOutConfirmation": "Çıkış yapmak istediğinizden emin misiniz?"
 }

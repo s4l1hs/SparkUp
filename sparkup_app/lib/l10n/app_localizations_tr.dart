@@ -132,4 +132,17 @@ class AppLocalizationsTr extends AppLocalizations {
 
   @override
   String get navLeaderboard => 'Liderlik Tablosu';
+
+  @override
+  String get deleteAccount => 'Hesabı Sil';
+
+  @override
+  String get deleteAccountConfirmation =>
+      'Hesabınızı silmek istediğinizden emin misiniz? Bu işlem geri alınamaz ve puanınız dahil tüm verileriniz kalıcı olarak kaybolacaktır.';
+
+  @override
+  String get delete => 'Sil';
+
+  @override
+  String get signOutConfirmation => 'Çıkış yapmak istediğinizden emin misiniz?';
 }

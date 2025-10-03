@@ -136,4 +136,18 @@ class AppLocalizationsDe extends AppLocalizations {
 
   @override
   String get navLeaderboard => 'Bestenliste';
+
+  @override
+  String get deleteAccount => 'Konto löschen';
+
+  @override
+  String get deleteAccountConfirmation =>
+      'Sind Sie sicher, dass Sie Ihr Konto löschen möchten? Diese Aktion ist unumkehrbar und alle Ihre Daten, einschließlich Ihrer Punktzahl, gehen dauerhaft verloren.';
+
+  @override
+  String get delete => 'Löschen';
+
+  @override
+  String get signOutConfirmation =>
+      'Sind Sie sicher, dass Sie sich abmelden möchten?';
 }

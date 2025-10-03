@@ -46,5 +46,9 @@
   "refresh": "Actualiser",
 
   "noDataFound": "Aucune donnée trouvée",
-  "navLeaderboard": "Classement"
+  "navLeaderboard": "Classement",
+  "deleteAccount": "Supprimer le compte",
+  "deleteAccountConfirmation": "Êtes-vous sûr de vouloir supprimer votre compte ? Cette action est irréversible et toutes vos données, y compris votre score, seront définitivement perdues.",
+  "delete": "Supprimer",
+  "signOutConfirmation": "Êtes-vous sûr de vouloir vous déconnecter ?"
 }

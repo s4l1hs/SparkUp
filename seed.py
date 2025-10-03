@@ -18,7 +18,7 @@ if not DATABASE_URL or not GEMINI_API_KEY:
 
 engine = create_engine(DATABASE_URL, echo=False)
 genai.configure(api_key=GEMINI_API_KEY)
-ai_model = genai.GenerativeModel('models/gemini-flash-latest')
+ai_model = genai.GenerativeModel('models/gemini-pro-latest')
 
 LANGUAGES = ["en", "tr", "fr", "de", "it", "es", "ru", "zh", "ja", "hi", "ar"]
 TOPICS = { "history": "History", "science": "Science", "art": "Art", "sports": "Sports", "technology": "Technology", "general_culture": "General Knowledge" }

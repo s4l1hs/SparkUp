@@ -130,4 +130,17 @@ class AppLocalizationsJa extends AppLocalizations {
 
   @override
   String get navLeaderboard => 'リーダーボード';
+
+  @override
+  String get deleteAccount => 'アカウントを削除';
+
+  @override
+  String get deleteAccountConfirmation =>
+      '本当にアカウントを削除しますか？この操作は元に戻せません。スコアを含むすべてのデータが完全に失われます。';
+
+  @override
+  String get delete => '削除';
+
+  @override
+  String get signOutConfirmation => '本当にサインアウトしますか？';
 }

@@ -131,4 +131,17 @@ class AppLocalizationsHi extends AppLocalizations {
 
   @override
   String get navLeaderboard => 'लीडरबोर्ड';
+
+  @override
+  String get deleteAccount => 'खाता हटाएं';
+
+  @override
+  String get deleteAccountConfirmation =>
+      'क्या आप वाकई अपना खाता हटाना चाहते हैं? यह कार्रवाई अपरिवर्तनीय है और आपका स्कोर सहित आपका सारा डेटा स्थायी रूप से नष्ट हो जाएगा।';
+
+  @override
+  String get delete => 'हटाएं';
+
+  @override
+  String get signOutConfirmation => 'क्या आप वाकई साइन आउट करना चाहते हैं?';
 }

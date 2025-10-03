@@ -134,4 +134,18 @@ class AppLocalizationsFr extends AppLocalizations {
 
   @override
   String get navLeaderboard => 'Classement';
+
+  @override
+  String get deleteAccount => 'Supprimer le compte';
+
+  @override
+  String get deleteAccountConfirmation =>
+      'Êtes-vous sûr de vouloir supprimer votre compte ? Cette action est irréversible et toutes vos données, y compris votre score, seront définitivement perdues.';
+
+  @override
+  String get delete => 'Supprimer';
+
+  @override
+  String get signOutConfirmation =>
+      'Êtes-vous sûr de vouloir vous déconnecter ?';
 }

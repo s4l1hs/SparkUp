@@ -46,5 +46,9 @@
   "refresh": "Actualizar",
 
   "noDataFound": "No se encontraron datos",
-  "navLeaderboard": "Clasificación"
+  "navLeaderboard": "Clasificación",
+  "deleteAccount": "Eliminar cuenta",
+  "deleteAccountConfirmation": "¿Estás seguro de que quieres eliminar tu cuenta? Esta acción es irreversible y todos tus datos, incluida tu puntuación, se perderán permanentemente.",
+  "delete": "Eliminar",
+  "signOutConfirmation": "¿Estás seguro de que quieres cerrar sesión?"
 }

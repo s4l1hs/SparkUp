@@ -46,5 +46,9 @@
   "refresh": "更新",
 
   "noDataFound": "データが見つかりませんでした",
-  "navLeaderboard": "リーダーボード"
+  "navLeaderboard": "リーダーボード",
+  "deleteAccount": "アカウントを削除",
+  "deleteAccountConfirmation": "本当にアカウントを削除しますか？この操作は元に戻せません。スコアを含むすべてのデータが完全に失われます。",
+  "delete": "削除",
+  "signOutConfirmation": "本当にサインアウトしますか？"
 }

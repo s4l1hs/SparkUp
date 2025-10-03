@@ -131,4 +131,17 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String get navLeaderboard => 'لوحة المتصدرين';
+
+  @override
+  String get deleteAccount => 'حذف الحساب';
+
+  @override
+  String get deleteAccountConfirmation =>
+      'هل أنت متأكد أنك تريد حذف حسابك؟ هذا الإجراء لا يمكن التراجع عنه وسيتم فقدان جميع بياناتك بشكل دائم، بما في ذلك نتيجتك.';
+
+  @override
+  String get delete => 'حذف';
+
+  @override
+  String get signOutConfirmation => 'هل أنت متأكد أنك تريد تسجيل الخروج؟';
 }

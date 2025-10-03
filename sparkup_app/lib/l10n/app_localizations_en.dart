@@ -131,4 +131,17 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get navLeaderboard => 'Leaderboard';
+
+  @override
+  String get deleteAccount => 'Delete Account';
+
+  @override
+  String get deleteAccountConfirmation =>
+      'Are you sure you want to delete your account? This action is irreversible and all your data, including your score, will be permanently lost.';
+
+  @override
+  String get delete => 'Delete';
+
+  @override
+  String get signOutConfirmation => 'Are you sure you want to sign out?';
 }

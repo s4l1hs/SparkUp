@@ -130,4 +130,17 @@ class AppLocalizationsZh extends AppLocalizations {
 
   @override
   String get navLeaderboard => '排行榜';
+
+  @override
+  String get deleteAccount => '删除账户';
+
+  @override
+  String get deleteAccountConfirmation =>
+      '您确定要删除您的账户吗？此操作不可逆，您的所有数据（包括您的分数）都将被永久删除。';
+
+  @override
+  String get delete => '删除';
+
+  @override
+  String get signOutConfirmation => '您确定要退出吗？';
 }
