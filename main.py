@@ -19,7 +19,7 @@ from firebase_admin import credentials, auth
 # --- 1. KONFİGÜRASYON ---
 load_dotenv()
 DATABASE_URL = os.getenv("DATABASE_URL")
-GEMINI_API_KEY = os.getenv("GEMINI_API_KEY")
+HUGGINGFACE_API_KEY = os.getenv("GEMINI_API_KEY")
 GOOGLE_APPLICATION_CREDENTIALS = os.getenv("GOOGLE_APPLICATION_CREDENTIALS")
 
 engine = create_engine(DATABASE_URL, echo=False)
@@ -32,13 +32,13 @@ except Exception as e:
     print(f"KRİTİK HATA: Firebase Admin SDK başlatılamadı. Hata: {e}")
 
 try:
-    genai.configure(api_key=GEMINI_API_KEY)
+    genai.configure(api_key=HUGGINGFACE_API_KEY)
     ai_model = genai.GenerativeModel('models/gemini-pro-latest')
 except Exception as e:
     ai_model = None
 
 LANGUAGES = ["en", "tr", "fr", "de", "it", "es", "ru", "zh", "ja", "hi", "ar"]
-TOPICS = { "history": "History", "science": "Science", "art": "Art", "sports": "Sports", "technology": "Technology", "cinema_tv": "Cinema & TV", "music": "Music", "nature_animals": "Nature & Animals", "gastronomy": "Gastronomy & Cuisine", "geography_travel": "Geography & Travel", "mythology": "Mythology", "philosophy": "Philosophy", "literature": "Literature", "space_astronomy": "Space & Astronomy", "health_fitness": "Health & Fitness", "economics_finance": "Economics & Finance", "automotive": "Automotive", "architecture": "Architecture", "video_games": "Video Games", "general_culture": "General Knowledge", "fun_facts": "Fun Facts" }
+TOPICS = { "history": "History", "science": "Science", "art": "Art", "sports": "Sports", "technology": "Technology", "cinema_tv": "Cinema & TV", "music": "Music", "nature_animals": "Nature & Animals", "gastronomy": "Gastronomy & Cuisine", "geography_travel": "Geography & Travel", "mythology": "Mythology", "philosophy": "Philosophy", "literature": "Literature", "space_astronomy": "Space & Astronomy", "health_fitness": "Health & Fitness", "economics_finance": "Economics & Finance", "automotive": "Automotive", "architecture": "Architecture", "video_games": "Video Games", "general_culture": "General Culture", "fun_facts": "Fun Facts" }
 
 # --- 2. VERİ MODELLERİ (ÇOK DİLLİ VE TUTARLI) ---
 class UserScore(SQLModel, table=True): 
