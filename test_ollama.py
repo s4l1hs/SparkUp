@@ -10,7 +10,7 @@ prompt = "Türkiye'nin başkenti neresidir ve nüfusu ne kadardır?"
 
 # Veri paketi
 payload = {
-    "model": "gemma:2b", # Çalıştırdığımız modelin adı
+    "model": "llama3", # Çalıştırdığımız modelin adı
     "prompt": prompt,
     "stream": False # Cevabı tek parça halinde almak için
 }
