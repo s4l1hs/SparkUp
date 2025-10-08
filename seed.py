@@ -35,11 +35,10 @@ except Exception as e:
 
 TOPICS = {
     "history": "History", "science": "Science", "art": "Art", "sports": "Sports", "technology": "Technology", 
-    "cinema_tv": "Cinema & TV", "music": "Music", "nature_animals": "Nature & Animals", "gastronomy": "Gastronomy & Cuisine", 
+    "cinema_tv": "Cinema & TV", "music": "Music", "nature_animals": "Nature & Animals", 
     "geography_travel": "Geography & Travel", "mythology": "Mythology", "philosophy": "Philosophy", "literature": "Literature", 
     "space_astronomy": "Space & Astronomy", "health_fitness": "Health & Fitness", "economics_finance": "Economics & Finance", 
-    "automotive": "Automotive", "architecture": "Architecture", "video_games": "Video Games", "general_culture": "General Knowledge", 
-    "fun_facts": "Fun Facts"
+    "architecture": "Architecture", "video_games": "Video Games", "general_culture": "General Knowledge", "fun_facts": "Fun Facts"
 }
 
 # --- 2. VERİ MODELLERİ ---
