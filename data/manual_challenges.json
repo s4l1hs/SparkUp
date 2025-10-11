@@ -1,0 +1,1954 @@
+[
+  {
+    "challenge_texts": {
+      "en": "The Eyebrow Dance: Rapidly move only your eyebrows up and down for 30 seconds straight.",
+      "tr": "Kaş Dansı: Sadece kaşlarınızı kullanarak 30 saniye boyunca hızlıca aşağı yukarı hareket ettirin.",
+      "fr": "La Danse des Sourcils: Bougez rapidement uniquement vos sourcils de haut en bas pendant 30 secondes.",
+      "de": "Der Augenbrauentanz: Bewegen Sie nur Ihre Augenbrauen 30 Sekunden lang schnell auf und ab.",
+      "it": "La Danza delle Sopracciglia: Muovi rapidamente solo le sopracciglia su e giù per 30 secondi di fila.",
+      "es": "El Baile de las Cejas: Mueve rápidamente solo tus cejas hacia arriba y hacia abajo durante 30 segundos seguidos.",
+      "ru": "Танец Бровей: Быстро двигайте только бровями вверх и вниз в течение 30 секунд.",
+      "zh-CN": "眉毛舞：连续 30 秒快速地上下移动你的眉毛。",
+      "ja": "眉毛ダンス：眉毛だけを使って30秒間、素早く上下に動かします。",
+      "hi": "भौं नृत्य: अपनी भौंहों को लगातार 30 सेकंड तक तेजी से ऊपर और नीचे करें।",
+      "ar": "رقصة الحاجب: حرك حاجبيك فقط بسرعة للأعلى والأسفل لمدة 30 ثانية متواصلة."
+    },
+    "category": "fun"
+  },
+  {
+    "challenge_texts": {
+      "en": "The Invisible Rope Jump: Pretend to jump rope for 40 seconds without making any sound with your feet.",
+      "tr": "Görünmez İp Atlama: Ayaklarınızla ses çıkarmadan 40 saniye boyunca ip atlar gibi yapın.",
+      "fr": "Le Saut à la Corde Invisible: Faites semblant de sauter à la corde pendant 40 secondes sans faire de bruit avec vos pieds.",
+      "de": "Der Unsichtbare Seilsprung: Springen Sie 40 Sekunden lang Seil, ohne dabei Geräusche mit Ihren Füßen zu machen.",
+      "it": "Il Salto della Corda Invisibile: Fai finta di saltare la corda per 40 secondi senza fare alcun rumore con i piedi.",
+      "es": "El Salto de Cuerda Invisible: Simula saltar la cuerda durante 40 segundos sin hacer ruido con los pies.",
+      "ru": "Прыжок Через Невидимую Веревку: Имитируйте прыжки через скакалку в течение 40 секунд, не издавая звука ногами.",
+      "zh-CN": "隐形跳绳：假装跳绳 40 秒，但脚下不能发出任何声音。",
+      "ja": "見えない縄跳び：足で音を立てずに、40秒間縄跳びをしているふりをします。",
+      "hi": "अदृश्य रस्सी कूद: अपने पैरों से कोई आवाज निकाले बिना 40 सेकंड तक रस्सी कूदने का नाटक करें।",
+      "ar": "قفزة الحبل الخفية: تظاهر بالقفز بالحبل لمدة 40 ثانية دون إصدار أي صوت بقدميك."
+    },
+    "category": "fun"
+  },
+  {
+    "challenge_texts": {
+      "en": "Alphabet Focus: List three animals and three cities that start with the letter 'B', in 15 seconds.",
+      "tr": "Alfabe Odağı: 'B' harfiyle başlayan üç hayvan ve üç şehir adı söyleyin, 15 saniye içinde.",
+      "fr": "Concentration Alphabétique: Citez trois animaux et trois villes qui commencent par la lettre 'B', en 15 secondes.",
+      "de": "Alphabet-Fokus: Nennen Sie innerhalb von 15 Sekunden drei Tiere und drei Städte, die mit dem Buchstaben 'B' beginnen.",
+      "it": "Focus Alfabetico: Elenca tre animali e tre città che iniziano con la lettera 'B', in 15 secondi.",
+      "es": "Enfoque Alfabético: Nombra tres animales y tres ciudades que empiecen con la letra 'B', en 15 segundos.",
+      "ru": "Фокус Алфавита: Назовите три животных и три города, начинающихся на букву 'Б', за 15 секунд.",
+      "zh-CN": "字母焦点：在 15 秒内，列出三个以字母 'B' 开头的动物和三个城市。",
+      "ja": "アルファベット集中：15秒以内に、文字「B」で始まる動物を3つ、都市を3つ挙げます。",
+      "hi": "वर्णमाला फोकस: 'B' अक्षर से शुरू होने वाले तीन जानवरों और तीन शहरों के नाम 15 सेकंड में बताएँ।",
+      "ar": "تركيز الأبجدية: اذكر ثلاثة حيوانات وثلاث مدن تبدأ بالحرف 'ب'، في 15 ثانية."
+    },
+    "category": "fun"
+  },
+  {
+    "challenge_texts": {
+      "en": "Reverse Count: Count backward from 50 to 1 as fast as you can, in under 30 seconds.",
+      "tr": "Geriye Sayım: 50'den 1'e kadar olabildiğince hızlı geri sayın, 30 saniyenin altında.",
+      "fr": "Compte à Rebours: Comptez à rebours de 50 à 1 aussi vite que possible, en moins de 30 secondes.",
+      "de": "Rückwärtszählen: Zählen Sie so schnell wie möglich von 50 auf 1 rückwärts, in weniger als 30 Sekunden.",
+      "it": "Conto alla Rovescia: Conta all'indietro da 50 a 1 il più velocemente possibile, in meno di 30 secondi.",
+      "es": "Cuenta Regresiva: Cuenta hacia atrás del 50 al 1 tan rápido como puedas, en menos de 30 segundos.",
+      "ru": "Обратный Отсчет: Считайте в обратном порядке от 50 до 1 как можно быстрее, менее чем за 30 секунд.",
+      "zh-CN": "倒数：在 30 秒内，尽快从 50 倒数到 1。",
+      "ja": "逆算：30秒以内に、50から1までできるだけ早く逆算します。",
+      "hi": "उल्टी गिनती: 30 सेकंड से कम समय में, 50 से 1 तक जितनी जल्दी हो सके उल्टी गिनती करें।",
+      "ar": "العد العكسي: عد عكسيًا من 50 إلى 1 بأسرع ما يمكن، في أقل من 30 ثانية."
+    },
+    "category": "fun"
+  },
+  {
+    "challenge_texts": {
+      "en": "The One-Minute Silent Scream: Silently scream and make a shocked face for 10 seconds.",
+      "tr": "Bir Dakikalık Sessiz Çığlık: 10 saniye boyunca şok olmuş bir ifadeyle sessizce çığlık atın.",
+      "fr": "Le Cri Silencieux d'Une Minute: Criez silencieusement et faites une grimace choquée pendant 10 secondes.",
+      "de": "Der Eine-Minute-Stille-Schrei: Schreien Sie 10 Sekunden lang still und machen Sie ein schockiertes Gesicht.",
+      "it": "L'Urlo Silenzioso di Un Minuto: Urla silenziosamente e fai una faccia scioccata per 10 secondi.",
+      "es": "El Grito Silencioso de Un Minuto: Grita en silencio y pon una cara de asombro durante 10 segundos.",
+      "ru": "Минутный Безмолвный Крик: Кричите молча и сделайте шокированное лицо в течение 10 секунд.",
+      "zh-CN": "一分钟的无声尖叫：无声地尖叫并做出一个震惊的表情，持续 10 秒。",
+      "ja": "1分間の無言の叫び：10秒間、ショックを受けた顔で静かに叫びます。",
+      "hi": "एक मिनट की खामोश चीख: 10 सेकंड तक चुपचाप चीखें और एक हैरान करने वाला चेहरा बनाएं।",
+      "ar": "الصرخة الصامتة لمدة دقيقة: اصرخ بصمت وقم بتعابير وجه مذهولة لمدة 10 ثوانٍ."
+    },
+    "category": "fun"
+  },
+  {
+    "challenge_texts": {
+      "en": "The Head-to-Shoulder Tap: Alternately tap your head and shoulder with opposite hands for 30 seconds.",
+      "tr": "Kafa-Omuz Vuruşu: Zıt ellerinizle sırayla kafanıza ve omzunuza 30 saniye boyunca vurun.",
+      "fr": "Le Tapotement Tête-Épaule: Tapotez alternativement votre tête et votre épaule avec les mains opposées pendant 30 secondes.",
+      "de": "Das Kopf-Schulter-Tippen: Tippen Sie 30 Sekunden lang abwechselnd mit den gegenüberliegenden Händen auf Kopf und Schulter.",
+      "it": "Il Tocco Testa-Spalla: Tocca alternativamente la testa e la spalla con le mani opposte per 30 secondi.",
+      "es": "El Toque Cabeza-Hombro: Toca alternativamente tu cabeza y hombro con las manos opuestas durante 30 segundos.",
+      "ru": "Постукивание Голова-Плечо: Поочередно постукивайте по голове и плечу противоположными руками в течение 30 секунд.",
+      "zh-CN": "头肩拍击：用相反的手交替拍打你的头和肩膀 30 秒。",
+      "ja": "頭と肩のタップ：反対側の手で交互に頭と肩を30秒間タップします。",
+      "hi": "सिर-कंधा थपथपाना: 30 सेकंड तक बारी-बारी से अपने सिर और कंधे को विपरीत हाथों से थपथपाएं।",
+      "ar": "نقر الرأس والكتف: اضغط بالتناوب على رأسك وكتفك بالأيدي المعاكسة لمدة 30 ثانية."
+    },
+    "category": "fun"
+  },
+  {
+    "challenge_texts": {
+      "en": "The Hand Switch: Quickly switch the item (e.g., phone) you are holding between your hands 20 times.",
+      "tr": "El Değiştirme: Tuttuğunuz nesneyi (örneğin telefon) elleriniz arasında 20 kez hızlıca değiştirin.",
+      "fr": "Le Changement de Main: Changez rapidement l'objet (par exemple, téléphone) que vous tenez entre vos mains 20 fois.",
+      "de": "Der Handwechsel: Wechseln Sie das Objekt (z. B. Telefon), das Sie halten, 20 Mal schnell zwischen Ihren Händen.",
+      "it": "Il Cambio di Mano: Scambia rapidamente l'oggetto (ad esempio, il telefono) che stai tenendo tra le mani 20 volte.",
+      "es": "El Cambio de Mano: Cambia rápidamente el objeto (por ejemplo, el teléfono) que tienes en tus manos 20 veces.",
+      "ru": "Смена Рук: Быстро переложите предмет (например, телефон), который держите, 20 раз из одной руки в другую.",
+      "zh-CN": "换手挑战：快速在你手中来回切换你拿着的物品（例如手机）20 次。",
+      "ja": "ハンドスイッチ：持っているもの（例：携帯電話）を両手の間で20回素早く切り替えます。",
+      "hi": "हाथ बदलना: आपके पास मौजूद वस्तु (जैसे फ़ोन) को अपने हाथों के बीच 20 बार तेजी से बदलें।",
+      "ar": "تبديل اليد: قم بتبديل العنصر (مثل الهاتف) الذي تحمله بين يديك بسرعة 20 مرة."
+    },
+    "category": "fun"
+  },
+  {
+    "challenge_texts": {
+      "en": "The Silent Laugh: Laugh silently and intensely for 15 seconds.",
+      "tr": "Sessiz Kahkaha: 15 saniye boyunca sessiz ve yoğun bir şekilde gülün.",
+      "fr": "Le Rire Silencieux: Riez silencieusement et intensément pendant 15 secondes.",
+      "de": "Das Stille Lachen: Lachen Sie 15 Sekunden lang still und intensiv.",
+      "it": "La Risata Silenziosa: Ridi silenziosamente e intensamente per 15 secondi.",
+      "es": "La Risa Silenciosa: Ríe silenciosa e intensamente durante 15 segundos.",
+      "ru": "Тихий Смех: Смейтесь беззвучно и интенсивно в течение 15 секунд.",
+      "zh-CN": "无声大笑：无声且强烈地大笑 15 秒。",
+      "ja": "サイレント笑い：15秒間、無言で激しく笑います。",
+      "hi": "खामोश हंसी: 15 सेकंड तक चुपचाप और तीव्र रूप से हँसें।",
+      "ar": "الضحك الصامت: اضحك بصمت وبشدة لمدة 15 ثانية."
+    },
+    "category": "fun"
+  },
+  {
+    "challenge_texts": {
+      "en": "Memory List: Name five things you ate yesterday, in 10 seconds.",
+      "tr": "Hafıza Listesi: Dün yediğiniz beş yiyeceğin adını 10 saniye içinde söyleyin.",
+      "fr": "Liste de Mémoire: Nommez cinq choses que vous avez mangées hier, en 10 secondes.",
+      "de": "Gedächtnisliste: Nennen Sie innerhalb von 10 Sekunden fünf Dinge, die Sie gestern gegessen haben.",
+      "it": "Lista della Memoria: Nomina cinque cose che hai mangiato ieri, in 10 secondi.",
+      "es": "Lista de Memoria: Nombra cinco cosas que comiste ayer, en 10 segundos.",
+      "ru": "Список Памяти: Назовите пять вещей, которые вы ели вчера, за 10 секунд.",
+      "zh-CN": "记忆清单：在 10 秒内，说出你昨天吃的五样东西。",
+      "ja": "記憶リスト：昨日食べたものを5つ、10秒以内に言います。",
+      "hi": "स्मृति सूची: 10 सेकंड में, कल आपने जो पाँच चीजें खाईं, उनके नाम बताएँ।",
+      "ar": "قائمة الذاكرة: اذكر خمسة أشياء أكلتها بالأمس، في 10 ثوانٍ."
+    },
+    "category": "fun"
+  },
+  {
+    "challenge_texts": {
+      "en": "The One-Handed Snap: Snap your fingers of one hand continuously for 30 seconds.",
+      "tr": "Tek El Şıklatma: Tek elinizin parmaklarını 30 saniye boyunca sürekli şıklatın.",
+      "fr": "Le Claquement à Une Main: Claquez les doigts d'une seule main sans interruption pendant 30 secondes.",
+      "de": "Das Einhand-Schnippen: Schnippen Sie 30 Sekunden lang ununterbrochen mit den Fingern einer Hand.",
+      "it": "Lo Schiocco con Una Mano: Schiocca le dita di una mano continuamente per 30 secondi.",
+      "es": "El Chasquido con Una Mano: Chasquea los dedos de una mano continuamente durante 30 segundos.",
+      "ru": "Щелчок Одной Рукой: Непрерывно щелкайте пальцами одной руки в течение 30 секунд.",
+      "zh-CN": "单手响指：用一只手连续不断地打响指 30 秒。",
+      "ja": "片手スナップ：片手の指を30秒間連続して鳴らします。",
+      "hi": "एक हाथ से चुटकी: अपनी एक हाथ की उंगलियों से लगातार 30 सेकंड तक चुटकी बजाएं।",
+      "ar": "فرقعة الإصبع بيد واحدة: أفرقع أصابع يد واحدة باستمرار لمدة 30 ثانية."
+    },
+    "category": "fun"
+  },
+  {
+    "challenge_texts": {
+      "en": "The Tongue Roll: Roll your tongue and hold the position for 10 seconds (if you can!).",
+      "tr": "Dil Yuvarlama: Dilinizi rulo haline getirin ve 10 saniye boyunca pozisyonu koruyun (yapabiliyorsanız!).",
+      "fr": "Le Roulé de Langue: Roulez votre langue et maintenez la position pendant 10 secondes (si vous le pouvez !).",
+      "de": "Die Zungenrolle: Rollen Sie Ihre Zunge ein und halten Sie die Position für 10 Sekunden (falls Sie es können!).",
+      "it": "L'Arrotolamento della Lingua: Arrotola la lingua e mantieni la posizione per 10 secondi (se puoi!).",
+      "es": "El Rulo de Lengua: Enrolla tu lengua y mantén la posición durante 10 segundos (¡si puedes!).",
+      "ru": "Сворачивание Языка: Сверните язык трубочкой и удерживайте эту позицию в течение 10 секунд (если сможете!).",
+      "zh-CN": "舌头卷曲：将舌头卷成筒状并保持这个姿势 10 秒（如果你能做到！）。",
+      "ja": "舌巻き：舌を巻いて、10秒間その姿勢を保ちます（できれば！）。",
+      "hi": "जीभ मोड़: अपनी जीभ को रोल करें और 10 सेकंड तक स्थिति बनाए रखें (यदि आप कर सकते हैं!)।",
+      "ar": "طي اللسان: قم بلف لسانك وحافظ على الوضعية لمدة 10 ثوانٍ (إذا استطعت!)."
+    },
+    "category": "fun"
+  },
+  {
+    "challenge_texts": {
+      "en": "Vowel Hunt: Say a random word containing each of the five vowels (A, E, I, O, U) in 15 seconds.",
+      "tr": "Sesli Harf Avı: 15 saniye içinde beş sesli harfin (A, E, I, O, U) her birini içeren rastgele bir kelime söyleyin.",
+      "fr": "Chasse aux Voyelles: Dites un mot aléatoire contenant chacune des cinq voyelles (A, E, I, O, U) en 15 secondes.",
+      "de": "Vokaljagd: Sagen Sie innerhalb von 15 Sekunden ein zufälliges Wort, das jeden der fünf Vokale (A, E, I, O, U) enthält.",
+      "it": "Caccia alle Vocali: Pronuncia una parola casuale contenente ciascuna delle cinque vocali (A, E, I, O, U) in 15 secondi.",
+      "es": "Caza de Vocales: Di una palabra aleatoria que contenga cada una de las cinco vocales (A, E, I, O, U) en 15 segundos.",
+      "ru": "Охота на Гласные: Скажите случайное слово, содержащее каждую из пяти гласных (А, Е, И, О, У), за 15 секунд.",
+      "zh-CN": "元音搜寻：在 15 秒内，说出一个包含五个元音（A, E, I, O, U）中每一个的随机单词。",
+      "ja": "母音ハント：15秒以内に、5つの母音（A、E、I、O、U）のそれぞれを含むランダムな単語を言います。",
+      "hi": "स्वर शिकार: 15 सेकंड में, पाँचों स्वरों (A, E, I, O, U) में से प्रत्येक वाला एक यादृच्छिक शब्द बोलें।",
+      "ar": "صيد حروف العلة: قل كلمة عشوائية تحتوي على كل حرف من حروف العلة الخمسة (A, E, I, O, U) في 15 ثانية."
+    },
+    "category": "fun"
+  },
+  {
+    "challenge_texts": {
+      "en": "The Blink Test: Try not to blink your eyes for 30 seconds straight.",
+      "tr": "Göz Kırpma Testi: 30 saniye boyunca gözlerinizi kırpmamaya çalışın.",
+      "fr": "Le Test de Clignement: Essayez de ne pas cligner des yeux pendant 30 secondes d'affilée.",
+      "de": "Der Blinzeltest: Versuchen Sie, 30 Sekunden lang nicht zu blinzeln.",
+      "it": "Il Test del Battito di Ciglia: Prova a non sbattere le palpebre per 30 secondi di fila.",
+      "es": "La Prueba de Parpadeo: Intenta no parpadear durante 30 segundos seguidos.",
+      "ru": "Тест на Мигание: Постарайтесь не моргать в течение 30 секунд.",
+      "zh-CN": "眨眼测试：连续 30 秒尽量不要眨眼。",
+      "ja": "まばたきテスト：30秒間、まばたきをしないようにしてください。",
+      "hi": "पलक झपकना परीक्षण: लगातार 30 सेकंड तक अपनी पलकें न झपकाने की कोशिश करें।",
+      "ar": "اختبار الرمش: حاول ألا ترمش بعينيك لمدة 30 ثانية متواصلة."
+    },
+    "category": "fun"
+  },
+  {
+    "challenge_texts": {
+      "en": "The Silent Clap: Clap your hands 10 times as quietly as possible, in under 15 seconds.",
+      "tr": "Sessiz Alkış: 15 saniye içinde ellerinizi olabildiğince sessiz bir şekilde 10 kez çırpın.",
+      "fr": "L'Applaudissement Silencieux: Frappez des mains 10 fois aussi silencieusement que possible, en moins de 15 secondes.",
+      "de": "Der Stille Applaus: Klatschen Sie 10 Mal so leise wie möglich in die Hände, in weniger als 15 Sekunden.",
+      "it": "L'Applauso Silenzioso: Batti le mani 10 volte il più silenziosamente possibile, in meno di 15 secondi.",
+      "es": "El Aplauso Silencioso: Da 10 palmadas tan silenciosamente como sea posible, en menos de 15 segundos.",
+      "ru": "Тихие Аплодисменты: Хлопните в ладоши 10 раз как можно тише, менее чем за 15 секунд.",
+      "zh-CN": "无声鼓掌：在 15 秒内，尽可能安静地拍手 10 次。",
+      "ja": "サイレント拍手：15秒以内に、できるだけ静かに手を10回叩きます。",
+      "hi": "खामोश ताली: 15 सेकंड से कम समय में, जितना हो सके चुपचाप 10 बार ताली बजाएं।",
+      "ar": "التصفيق الصامت: صفق بيديك 10 مرات بأقل قدر ممكن من الضوضاء، في أقل من 15 ثانية."
+    },
+    "category": "fun"
+  },
+  {
+    "challenge_texts": {
+      "en": "The Spin Master: Spin around three full times, stop, and hold your balance for 5 seconds.",
+      "tr": "Dönüş Ustası: Üç tam tur dönün, durun ve dengenizi 5 saniye koruyun.",
+      "fr": "Le Maître de la Pirouette: Tournez trois tours complets, arrêtez-vous et maintenez votre équilibre pendant 5 secondes.",
+      "de": "Der Drehkünstler: Drehen Sie sich dreimal komplett, stoppen Sie und halten Sie das Gleichgewicht für 5 Sekunden.",
+      "it": "Il Maestro della Gira: Fai tre giri completi, fermati e mantieni l'equilibrio per 5 secondi.",
+      "es": "El Maestro del Giro: Gira tres veces completas, detente y mantén el equilibrio durante 5 segundos.",
+      "ru": "Мастер Вращения: Сделайте три полных оборота, остановитесь и удерживайте равновесие в течение 5 секунд.",
+      "zh-CN": "旋转大师：完整地旋转三圈，停下来并保持平衡 5 秒。",
+      "ja": "スピンマスター：完全に3回転し、止まって5秒間バランスを保ちます。",
+      "hi": "स्पिन मास्टर: तीन बार पूरा घूमें, रुकें और 5 सेकंड के लिए अपना संतुलन बनाए रखें।",
+      "ar": "سيد الدوران: قم بالدوران ثلاث دورات كاملة، توقف، وحافظ على توازنك لمدة 5 ثوانٍ."
+    },
+    "category": "fun"
+  },
+  {
+    "challenge_texts": {
+      "en": "The Statue Challenge V2: Hold a dramatic, superhero pose for 30 seconds without moving a muscle.",
+      "tr": "Heykel Meydan Okuması V2: 30 saniye boyunca bir kasınızı bile oynatmadan, dramatik bir süper kahraman pozu verin.",
+      "fr": "Le Défi Statue V2: Maintenez une pose de super-héros dramatique pendant 30 secondes sans bouger un muscle.",
+      "de": "Die Statuen-Herausforderung V2: Halten Sie eine dramatische Superhelden-Pose 30 Sekunden lang ohne Bewegung.",
+      "it": "La Sfida Statua V2: Mantieni una posa drammatica da supereroe per 30 secondi senza muovere un muscolo.",
+      "es": "El Desafío Estatua V2: Mantén una pose dramática de superhéroe durante 30 segundos sin mover un músculo.",
+      "ru": "Вызов Статуя V2: Удерживайте драматичную позу супергероя в течение 30 секунд, не двигаясь.",
+      "zh-CN": "雕像挑战 V2：保持一个戏剧性的超级英雄姿势 30 秒，不要动一根肌肉。",
+      "ja": "スタチューチャレンジ V2：筋肉を動かさずに、ドラマチックなスーパーヒーローのポーズを30秒間保持します。",
+      "hi": "मूर्ति चुनौती V2: 30 सेकंड तक बिना हिले-डुले एक नाटकीय, सुपरहीरो पोज़ बनाए रखें।",
+      "ar": "تحدي التمثال الإصدار الثاني: حافظ على وضعية بطل خارق درامية لمدة 30 ثانية دون تحريك أي عضلة."
+    },
+    "category": "fun"
+  },
+  {
+    "challenge_texts": {
+      "en": "The High Knees: Run in place, lifting your knees up high, for 30 seconds.",
+      "tr": "Yüksek Dizler: Yerinizde durarak, dizlerinizi yukarı kaldırarak 30 saniye boyunca koşun.",
+      "fr": "Les Genoux Hauts: Courez sur place, en levant les genoux bien haut, pendant 30 secondes.",
+      "de": "Die Hohen Knie: Laufen Sie 30 Sekunden lang auf der Stelle und ziehen Sie dabei die Knie hoch.",
+      "it": "Le Ginocchia Alte: Corri sul posto, sollevando le ginocchia in alto, per 30 secondi.",
+      "es": "Las Rodillas Altas: Corre en el sitio, levantando las rodillas muy alto, durante 30 segundos.",
+      "ru": "Высокие Колени: Бегите на месте, высоко поднимая колени, в течение 30 секунд.",
+      "zh-CN": "高抬腿：原地跑步，将膝盖抬得很高，持续 30 秒。",
+      "ja": "ハイニー：その場で走り、膝を高く上げて30秒間続けます。",
+      "hi": "ऊँची घुटने: 30 सेकंड तक अपनी जगह पर दौड़ें, अपने घुटनों को ऊपर उठाएँ।",
+      "ar": "رفع الركبتين عالياً: اركض في مكانك، ارفع ركبتيك عالياً، لمدة 30 ثانية."
+    },
+    "category": "fun"
+  },
+  {
+    "challenge_texts": {
+      "en": "The Name Game: Name five objects in the room whose name contains the letter 'S', in 20 seconds.",
+      "tr": "İsim Oyunu: Odadaki, adında 'S' harfi geçen beş nesnenin adını 20 saniye içinde söyleyin.",
+      "fr": "Le Jeu des Noms: Nommez cinq objets dans la pièce dont le nom contient la lettre 'S', en 20 secondes.",
+      "de": "Das Namensspiel: Nennen Sie innerhalb von 20 Sekunden fünf Gegenstände im Raum, deren Name den Buchstaben 'S' enthält.",
+      "it": "Il Gioco dei Nomi: Nomina cinque oggetti nella stanza il cui nome contiene la lettera 'S', in 20 secondi.",
+      "es": "El Juego de Nombres: Nombra cinco objetos en la habitación cuyo nombre contenga la letra 'S', en 20 segundos.",
+      "ru": "Игра в Имена: Назовите пять предметов в комнате, в названии которых есть буква 'С', за 20 секунд.",
+      "zh-CN": "命名游戏：在 20 秒内，说出房间里五个名字中包含字母 'S' 的物品。",
+      "ja": "名前ゲーム：部屋にある、名前に文字「S」が含まれる5つのものの名前を20秒以内に言います。",
+      "hi": "नाम का खेल: 20 सेकंड में कमरे में मौजूद पाँच ऐसी चीजों के नाम बताएँ जिनके नाम में 'S' अक्षर आता हो।",
+      "ar": "لعبة الأسماء: اذكر خمسة أشياء في الغرفة يحتوي اسمها على الحرف 'س'، في 20 ثانية."
+    },
+    "category": "fun"
+  },
+  {
+    "challenge_texts": {
+      "en": "The Silent Countdown: Count down silently from 10 to 1, then shout 'GO!' exactly when you reach 1.",
+      "tr": "Sessiz Geri Sayım: 10'dan 1'e sessizce geri sayın, tam 1'e geldiğinizde 'BAŞLA!' diye bağırın.",
+      "fr": "Le Compte à Rebours Silencieux: Comptez silencieusement de 10 à 1, puis criez 'ALLEZ!' exactement lorsque vous atteignez 1.",
+      "de": "Der Stille Countdown: Zählen Sie leise von 10 auf 1 herunter und rufen Sie genau bei 1 'LOS!'.",
+      "it": "Il Conto alla Rovescia Silenzioso: Conta silenziosamente da 10 a 1, poi grida 'VAI!' esattamente quando raggiungi 1.",
+      "es": "La Cuenta Regresiva Silenciosa: Cuenta en silencio del 10 al 1, luego grita '¡YA!' exactamente cuando llegues al 1.",
+      "ru": "Тихий Обратный Отсчет: Считайте молча от 10 до 1, затем крикните 'ВПЕРЕД!' ровно, когда достигнете 1.",
+      "zh-CN": "无声倒数：从 10 默默地倒数到 1，当数到 1 时，大喊 '开始！'。",
+      "ja": "サイレントカウントダウン：10から1まで静かに数え、1に到達した瞬間に正確に「GO！」と叫びます。",
+      "hi": "खामोश उल्टी गिनती: 10 से 1 तक चुपचाप गिनें, फिर ठीक 1 पर पहुँचते ही 'जाओ!' चिल्लाएँ।",
+      "ar": "العد التنازلي الصامت: عد تنازليًا بصمت من 10 إلى 1، ثم اصرخ 'انطلق!' بالضبط عندما تصل إلى 1."
+    },
+    "category": "fun"
+  },
+  {
+    "challenge_texts": {
+      "en": "The Hand Clap Rhythm: Create and clap a unique 4-beat rhythm pattern 5 times perfectly.",
+      "tr": "El Çırpma Ritmi: Benzersiz 4 vuruşluk bir ritim deseni oluşturun ve 5 kez hatasız çırpın.",
+      "fr": "Le Rythme des Mains: Créez et tapez un rythme unique de 4 temps 5 fois parfaitement.",
+      "de": "Der Händeklatsch-Rhythmus: Erstellen Sie ein einzigartiges 4-Takt-Rhythmusmuster und klatschen Sie es 5 Mal perfekt.",
+      "it": "Il Ritmo del Battito di Mani: Crea e batti un ritmo unico di 4 battiti 5 volte perfettamente.",
+      "es": "El Ritmo de Palmas: Crea y aplaude un patrón de ritmo único de 4 tiempos 5 veces perfectamente.",
+      "ru": "Ритм Хлопка: Создайте и прохлопайте уникальный 4-дольный ритмический рисунок 5 раз без ошибок.",
+      "zh-CN": "拍手节奏：创造并完美地拍打一个独特的 4 拍节奏模式 5 次。",
+      "ja": "拍手のリズム：独自の4拍のリズムパターンを作成し、それを5回完璧に叩きます。",
+      "hi": "ताली की लय: एक अद्वितीय 4-बीट लय पैटर्न बनाएँ और इसे 5 बार पूरी तरह से बजाएँ।",
+      "ar": "إيقاع التصفيق باليد: قم بإنشاء وتصفيق نمط إيقاع فريد من 4 نبضات 5 مرات بشكل مثالي."
+    },
+    "category": "fun"
+  },
+  {
+    "challenge_texts": {
+      "en": "The Finger Tapper: Tap your index finger and thumb together 30 times as fast as possible.",
+      "tr": "Parmak Vurucu: İşaret parmağınızı ve baş parmağınızı 30 kez olabildiğince hızlı birbirine vurun.",
+      "fr": "Le Tapoteur de Doigts: Touchez votre index et votre pouce ensemble 30 fois aussi vite que possible.",
+      "de": "Der Finger-Tipper: Tippen Sie Ihren Zeigefinger und Daumen so schnell wie möglich 30 Mal aneinander.",
+      "it": "Il Battito di Dita: Tocca l'indice e il pollice insieme 30 volte il più velocemente possibile.",
+      "es": "El Tocador de Dedos: Toca tu dedo índice y pulgar juntos 30 veces tan rápido como sea posible.",
+      "ru": "Постукивание Пальцем: Стучите указательным и большим пальцами друг о друга 30 раз как можно быстрее.",
+      "zh-CN": "手指敲击者：以最快的速度将你的食指和拇指敲击在一起 30 次。",
+      "ja": "指タッパー：人差し指と親指をできるだけ速く30回叩き合わせます。",
+      "hi": "अंगुली थपथपाना: अपनी तर्जनी और अंगूठे को जितनी जल्दी हो सके 30 बार एक साथ थपथपाएं।",
+      "ar": "ناقر الأصابع: انقر بإصبعك السبابة وإبهامك معًا 30 مرة بأسرع ما يمكن."
+    },
+    "category": "fun"
+  },
+  {
+    "challenge_texts": {
+      "en": "The Color Finder: Point to three objects around you that are red, blue, and yellow, in under 10 seconds.",
+      "tr": "Renk Bulucu: Etrafınızdaki kırmızı, mavi ve sarı renkte olan üç nesneyi 10 saniyenin altında gösterin.",
+      "fr": "Le Chercheur de Couleurs: Pointez trois objets autour de vous qui sont rouges, bleus et jaunes, en moins de 10 secondes.",
+      "de": "Der Farbfinder: Zeigen Sie in weniger als 10 Sekunden auf drei Objekte um Sie herum, die rot, blau und gelb sind.",
+      "it": "Il Cercatore di Colori: Indica tre oggetti intorno a te che sono rossi, blu e gialli, in meno di 10 secondi.",
+      "es": "El Buscador de Colores: Señala tres objetos a tu alrededor que sean de color rojo, azul y amarillo, en menos de 10 segundos.",
+      "ru": "Искатель Цветов: Укажите на три предмета вокруг вас, которые являются красным, синим и желтым, менее чем за 10 секунд.",
+      "zh-CN": "颜色查找器：在 10 秒内，指出你周围红色、蓝色和黄色的三个物体。",
+      "ja": "色ファインダー：10秒以内に、周りの赤、青、黄色の3つのオブジェクトを指差します。",
+      "hi": "रंग खोजक: 10 सेकंड से कम समय में, अपने आस-पास की तीन वस्तुओं की ओर इशारा करें जो लाल, नीली और पीली हों।",
+      "ar": "باحث الألوان: أشر إلى ثلاثة أشياء من حولك باللون الأحمر والأزرق والأصفر، في أقل من 10 ثوانٍ."
+    },
+    "category": "fun"
+  },
+  {
+    "challenge_texts": {
+      "en": "The Chair Stand: Sit down and stand up 10 times as fast as possible, without using your hands.",
+      "tr": "Sandalye Kalkışı: Ellerinizi kullanmadan, olabildiğince hızlı bir şekilde 10 kez oturun ve kalkın.",
+      "fr": "Le Lever de Chaise: Asseyez-vous et levez-vous 10 fois le plus vite possible, sans utiliser vos mains.",
+      "de": "Der Stuhl-Stand: Setzen Sie sich hin und stehen Sie 10 Mal so schnell wie möglich auf, ohne die Hände zu benutzen.",
+      "it": "L'Alzati dalla Sedia: Siediti e alzati 10 volte il più velocemente possibile, senza usare le mani.",
+      "es": "El Levantamiento de Silla: Siéntate y levántate 10 veces lo más rápido posible, sin usar las manos.",
+      "ru": "Подъем со Стула: Сядьте и встаньте 10 раз как можно быстрее, не используя руки.",
+      "zh-CN": "椅子起身：在不使用双手的情况下，尽可能快地坐下和站起来 10 次。",
+      "ja": "椅子立ち：手を触れずに、できるだけ早く10回座って立ちます。",
+      "hi": "कुर्सी से उठना: बिना हाथों का उपयोग किए, जितनी जल्दी हो सके 10 बार बैठें और उठें।",
+      "ar": "وقفة الكرسي: اجلس وانهض 10 مرات بأسرع ما يمكن، دون استخدام يديك."
+    },
+    "category": "fun"
+  },
+  {
+    "challenge_texts": {
+      "en": "The Silent Shout: Open your mouth wide and make a silent scream for 5 seconds.",
+      "tr": "Sessiz Çığlık: Ağzınızı kocaman açın ve 5 saniye boyunca sessiz bir çığlık atın.",
+      "fr": "Le Cri Silencieux: Ouvrez grand la bouche et faites un cri silencieux pendant 5 secondes.",
+      "de": "Der Stille Schrei: Öffnen Sie Ihren Mund weit und stoßen Sie 5 Sekunden lang einen stummen Schrei aus.",
+      "it": "L'Urlo Silenzioso: Apri la bocca e fai un urlo silenzioso per 5 secondi.",
+      "es": "El Grito Silencioso: Abre la boca y haz un grito silencioso durante 5 segundos.",
+      "ru": "Беззвучный Крик: Откройте рот широко и издайте беззвучный крик в течение 5 секунд.",
+      "zh-CN": "无声呐喊：张大嘴巴，发出无声的尖叫，持续 5 秒。",
+      "ja": "サイレント叫び：口を大きく開けて、5秒間無言で叫びます。",
+      "hi": "खामोश चीख: अपना मुँह चौड़ा खोलें और 5 सेकंड तक एक खामोश चीख मारें।",
+      "ar": "الصرخة الصامتة: افتح فمك واسرخ صرخة صامتة لمدة 5 ثوانٍ."
+    },
+    "category": "fun"
+  },
+  {
+    "challenge_texts": {
+      "en": "The Ear Wiggle: Try to wiggle your ears without touching them for 15 seconds.",
+      "tr": "Kulak Sallama: Kulaklarınıza dokunmadan 15 saniye boyunca onları sallamaya çalışın.",
+      "fr": "Le Remuement d'Oreilles: Essayez de remuer vos oreilles sans les toucher pendant 15 secondes.",
+      "de": "Das Ohrenwackeln: Versuchen Sie, Ihre Ohren 15 Sekunden lang zu wackeln, ohne sie zu berühren.",
+      "it": "Lo Scuotimento dell'Orecchio: Prova a muovere le orecchie senza toccarle per 15 secondi.",
+      "es": "El Meneo de Orejas: Intenta mover tus orejas sin tocarlas durante 15 segundos.",
+      "ru": "Шевеление Ушами: Попробуйте шевелить ушами, не касаясь их, в течение 15 секунд.",
+      "zh-CN": "耳朵摆动：尝试在不接触耳朵的情况下摆动你的耳朵 15 秒。",
+      "ja": "耳のひらひら：耳に触れずに15秒間耳をひらひらさせようとします。",
+      "hi": "कान हिलाना: अपने कानों को छुए बिना 15 सेकंड तक हिलाने की कोशिश करें।",
+      "ar": "اهتزاز الأذن: حاول تحريك أذنيك دون لمسهما لمدة 15 ثانية."
+    },
+    "category": "fun"
+  },
+  {
+    "challenge_texts": {
+      "en": "The Nostril Flare: Flare your nostrils as wide as possible for 10 seconds.",
+      "tr": "Burun Deliği Genişletme: Burun deliklerinizi 10 saniye boyunca olabildiğince genişletin.",
+      "fr": "L'Évasement des Narines: Écartez vos narines le plus possible pendant 10 secondes.",
+      "de": "Das Nüsternblähen: Blähen Sie Ihre Nasenlöcher 10 Sekunden lang so weit wie möglich auf.",
+      "it": "L'Allargamento delle Narici: Allarga le narici il più possibile per 10 secondi.",
+      "es": "El Ensanchamiento de Fosas Nasales: Ensancha tus fosas nasales tanto como sea posible durante 10 segundos.",
+      "ru": "Раздувание Ноздрей: Раздуйте ноздри как можно шире в течение 10 секунд.",
+      "zh-CN": "鼻孔扩张：尽可能地张大你的鼻孔 10 秒。",
+      "ja": "鼻孔拡張：鼻の穴をできるだけ大きく広げて10秒間維持します。",
+      "hi": "नथुने फुलाना: अपनी नथुनों को 10 सेकंड तक जितना संभव हो उतना चौड़ा करें।",
+      "ar": "توسيع فتحتي الأنف: قم بتوسيع فتحتي أنفك قدر الإمكان لمدة 10 ثوانٍ."
+    },
+    "category": "fun"
+  },
+  {
+    "challenge_texts": {
+      "en": "The Opposite Clap: Clap your hands under one knee 5 times quickly.",
+      "tr": "Ters Alkış: Bir dizinizin altından ellerinizi 5 kez hızlıca çırpın.",
+      "fr": "L'Applaudissement Opposé: Frappez des mains sous un genou 5 fois rapidement.",
+      "de": "Der Gegenklatsch: Klatschen Sie schnell 5 Mal mit den Händen unter einem Knie.",
+      "it": "L'Applauso Opposto: Batti le mani sotto un ginocchio 5 volte velocemente.",
+      "es": "El Aplauso Opuesto: Da 5 palmadas rápidamente debajo de una rodilla.",
+      "ru": "Противоположный Хлопок: Быстро хлопните руками 5 раз под одним коленом.",
+      "zh-CN": "对侧拍手：快速在其中一个膝盖下方拍手 5 次。",
+      "ja": "反対側の拍手：片膝の下で手を5回素早く叩きます。",
+      "hi": "विपरीत ताली: अपने एक घुटने के नीचे 5 बार तेजी से ताली बजाएं।",
+      "ar": "التصفيق المعاكس: صفق بيديك 5 مرات بسرعة تحت ركبة واحدة."
+    },
+    "category": "fun"
+  },
+  {
+    "challenge_texts": {
+      "en": "The Squat Pause: Perform 10 bodyweight squats in a row, with 1-second pause at the bottom.",
+      "tr": "Çömelme Molası: Arka arkaya 10 vücut ağırlığı squatı yapın, en altta 1 saniye duraklayarak.",
+      "fr": "La Pause Squat: Effectuez 10 squats au poids du corps d'affilée, avec une pause d'une seconde en bas.",
+      "de": "Die Kniebeugen-Pause: Machen Sie 10 Kniebeugen hintereinander, mit einer 1-sekündigen Pause unten.",
+      "it": "La Pausa Squat: Esegui 10 squat a corpo libero di fila, con una pausa di 1 secondo in basso.",
+      "es": "La Pausa de Sentadilla: Realiza 10 sentadillas seguidas, con una pausa de 1 segundo en la parte inferior.",
+      "ru": "Пауза Приседания: Выполните 10 приседаний подряд с паузой в 1 секунду в нижней точке.",
+      "zh-CN": "深蹲暂停：连续做 10 个自重深蹲，在最低点暂停 1 秒。",
+      "ja": "スクワットポーズ：10回連続で自重スクワットを行い、底で1秒間停止します。",
+      "hi": "स्क्वाट विराम: लगातार 10 बॉडीवेट स्क्वाट करें, सबसे नीचे 1 सेकंड का विराम लें।",
+      "ar": "وقفة القرفصاء: قم بأداء 10 قرفصاء متتالية بوزن الجسم، مع وقفة لمدة ثانية واحدة في الأسفل."
+    },
+    "category": "fun"
+  },
+  {
+    "challenge_texts": {
+      "en": "The Single Stomp: Stand up, stomp your left foot 3 times, then your right foot 3 times, as fast as possible.",
+      "tr": "Tek Ayak Vuruşu: Ayağa kalkın, sol ayağınızı 3 kez, ardından sağ ayağınızı 3 kez olabildiğince hızlı yere vurun.",
+      "fr": "Le Tampon Unique: Levez-vous, frappez votre pied gauche 3 fois, puis votre pied droit 3 fois, aussi vite que possible.",
+      "de": "Das Einzelstampfen: Stehen Sie auf, stampfen Sie 3 Mal mit dem linken Fuß und dann 3 Mal mit dem rechten Fuß, so schnell wie möglich.",
+      "it": "Il Pestone Singolo: Alzati, batti il piede sinistro 3 volte, poi il destro 3 volte, il più velocemente possibile.",
+      "es": "El Pisa Único: Levántate, pisa 3 veces con el pie izquierdo, y luego 3 veces con el derecho, lo más rápido posible.",
+      "ru": "Одиночный Топот: Встаньте, топните левой ногой 3 раза, затем правой 3 раза, как можно быстрее.",
+      "zh-CN": "单次跺脚：站起来，左脚跺地 3 次，然后右脚跺地 3 次，越快越好。",
+      "ja": "シングルストンプ：立ち上がり、左足を3回、次に右足を3回、できるだけ早く踏み鳴らします。",
+      "hi": "एकल थपथपाहट: खड़े हो जाओ, अपने बाएं पैर से 3 बार, फिर अपने दाहिने पैर से 3 बार, जितनी जल्दी हो सके थपथपाओ।",
+      "ar": "الدوس الفردي: قف، اخطُ بقدمك اليسرى 3 مرات، ثم بقدمك اليمنى 3 مرات، بأسرع ما يمكن."
+    },
+    "category": "fun"
+  },
+  {
+    "challenge_texts": {
+      "en": "The Whisper Song: Whisper the chorus of your favorite song twice in a row.",
+      "tr": "Fısıltı Şarkısı: En sevdiğiniz şarkının nakaratını art arda iki kez fısıldayın.",
+      "fr": "La Chanson Murmurée: Chuchotez le refrain de votre chanson préférée deux fois de suite.",
+      "de": "Das Flüstern-Lied: Flüstern Sie den Refrain Ihres Lieblingsliedes zweimal hintereinander.",
+      "it": "La Canzone Sussurrata: Sussurra il ritornello della tua canzone preferita due volte di seguito.",
+      "es": "La Canción Susurrada: Susurra el estribillo de tu canción favorita dos veces seguidas.",
+      "ru": "Шепотная Песня: Прошепчите припев вашей любимой песни два раза подряд.",
+      "zh-CN": "耳语歌曲：连续两次耳语你最喜欢的歌曲的副歌。",
+      "ja": "ささやきソング：お気に入りの曲のコーラスを2回続けてささやきます。",
+      "hi": "फुसफुसाहट वाला गाना: अपने पसंदीदा गाने के कोरस को लगातार दो बार फुसफुसाएँ।",
+      "ar": "أغنية الهمس: اهمس بكورس أغنيتك المفضلة مرتين متتاليتين."
+    },
+    "category": "fun"
+  },
+  {
+    "challenge_texts": {
+      "en": "The Rapid Nod: Nod your head 'yes' 20 times as fast as you can, in 10 seconds.",
+      "tr": "Hızlı Onay: Başınızı 'evet' anlamında 20 kez olabildiğince hızlı sallayın, 10 saniye içinde.",
+      "fr": "Le Hochement Rapide: Hochez la tête 'oui' 20 fois aussi vite que possible, en 10 secondes.",
+      "de": "Das Schnelle Nicken: Nicken Sie 20 Mal so schnell wie möglich mit dem Kopf ('Ja'), in 10 Sekunden.",
+      "it": "L'Annui Rapid: Anuisci con la testa 'sì' 20 volte il più velocemente possibile, in 10 secondi.",
+      "es": "El Asentimiento Rápido: Asiente con la cabeza 'sí' 20 veces tan rápido como puedas, en 10 segundos.",
+      "ru": "Быстрый Кивок: Кивните головой 'да' 20 раз как можно быстрее, за 10 секунд.",
+      "zh-CN": "快速点头：在 10 秒内，以最快的速度点头 '是' 20 次。",
+      "ja": "高速うなずき：10秒以内に、頭を「はい」と20回できるだけ速くうなずきます。",
+      "hi": "तेजी से सिर हिलाना: 10 सेकंड में, अपना सिर 'हाँ' में 20 बार जितनी जल्दी हो सके हिलाएँ।",
+      "ar": "الإيماء السريع: أومئ برأسك 'نعم' 20 مرة بأسرع ما يمكن، في 10 ثوانٍ."
+    },
+    "category": "fun"
+  },
+  {
+    "challenge_texts": {
+      "en": "The Heel Raise: Do 25 calf raises (stand on your toes) in a row.",
+      "tr": "Topuk Kaldırma: Arka arkaya 25 kez baldır kaldırma (parmak uçlarınızda durma) yapın.",
+      "fr": "Le Lever de Talon: Faites 25 levées de mollets (tenez-vous sur la pointe des pieds) d'affilée.",
+      "de": "Das Fersenheben: Machen Sie 25 Wadenheber (auf den Zehenspitzen stehen) hintereinander.",
+      "it": "Il Sollevamento del Tallone: Fai 25 sollevamenti del polpaccio (stai sulle punte) di fila.",
+      "es": "El Levantamiento de Talón: Haz 25 elevaciones de pantorrilla (ponte de puntillas) seguidas.",
+      "ru": "Подъем на Пятки: Сделайте 25 подъемов на носки (стойте на цыпочках) подряд.",
+      "zh-CN": "抬高脚跟：连续做 25 次小腿抬高（踮起脚尖）。",
+      "ja": "かかと上げ：連続で25回ふくらはぎ上げ（つま先立ち）を行います。",
+      "hi": "एड़ी उठाना: लगातार 25 बार पिंडली उठाएँ (अपने पैर की उंगलियों पर खड़े हों)।",
+      "ar": "رفع الكعب: قم بـ 25 رفعًا للساق (الوقوف على أصابع قدميك) على التوالي."
+    },
+    "category": "fun"
+  },
+  {
+    "challenge_texts": {
+      "en": "The Finger Wave: Wave your index finger continuously for 30 seconds (like saying 'no').",
+      "tr": "Parmak Sallama: İşaret parmağınızı 30 saniye boyunca sürekli sallayın (tıpkı 'hayır' der gibi).",
+      "fr": "L'Onde du Doigt: Agitez votre index sans interruption pendant 30 secondes (comme pour dire 'non').",
+      "de": "Die Fingerwelle: Winken Sie 30 Sekunden lang ununterbrochen mit dem Zeigefinger (wie 'Nein' sagen).",
+      "it": "L'Onda del Dito: Agita l'indice continuamente per 30 secondi (come per dire 'no').",
+      "es": "La Onda del Dedo: Agita tu dedo índice continuamente durante 30 segundos (como diciendo 'no').",
+      "ru": "Волна Пальцем: Машите указательным пальцем непрерывно в течение 30 секунд (как будто говорите 'нет').",
+      "zh-CN": "手指波：连续不断地挥动你的食指 30 秒（就像在说 '不'）。",
+      "ja": "指の波：人差し指を30秒間連続して振ります（「いいえ」と言うように）。",
+      "hi": "अंगुली की लहर: अपनी तर्जनी को लगातार 30 सेकंड तक हिलाएँ (जैसे 'नहीं' कह रहे हों)।",
+      "ar": "موجة الإصبع: لوّح بإصبع السبابة باستمرار لمدة 30 ثانية (مثل قول 'لا')."
+    },
+    "category": "fun"
+  },
+  {
+    "challenge_texts": {
+      "en": "The Shoulder Roll: Roll your shoulders backwards 15 times, then forwards 15 times.",
+      "tr": "Omuz Yuvarlama: Omuzlarınızı geriye doğru 15 kez, sonra öne doğru 15 kez çevirin.",
+      "fr": "Le Roulement d'Épaules: Roulez vos épaules 15 fois vers l'arrière, puis 15 fois vers l'avant.",
+      "de": "Das Schulterrollen: Rollen Sie Ihre Schultern 15 Mal rückwärts und dann 15 Mal vorwärts.",
+      "it": "Il Rotolamento delle Spalle: Rotola le spalle all'indietro 15 volte, poi in avanti 15 volte.",
+      "es": "El Rodillo de Hombros: Rueda tus hombros hacia atrás 15 veces, luego hacia adelante 15 veces.",
+      "ru": "Вращение Плечами: Вращайте плечами назад 15 раз, затем вперед 15 раз.",
+      "zh-CN": "肩部滚动：向后滚动肩膀 15 次，然后向前滚动 15 次。",
+      "ja": "肩のロール：肩を後ろに15回、次に前に15回ロールします。",
+      "hi": "कंधा घुमाना: अपने कंधों को 15 बार पीछे की ओर, फिर 15 बार आगे की ओर घुमाएँ।",
+      "ar": "تدوير الكتف: قم بتدوير كتفيك للخلف 15 مرة، ثم للأمام 15 مرة."
+    },
+    "category": "fun"
+  },
+  {
+    "challenge_texts": {
+      "en": "The Winking Marathon: Wink with your left eye 10 times, then your right eye 10 times, quickly.",
+      "tr": "Göz Kırpma Maratonu: Sol gözünüzle 10 kez, ardından sağ gözünüzle 10 kez hızlıca göz kırpın.",
+      "fr": "Le Marathon du Clin d'Œil: Clignez de l'œil gauche 10 fois, puis de l'œil droit 10 fois, rapidement.",
+      "de": "Der Zwinker-Marathon: Zwinkern Sie schnell 10 Mal mit dem linken Auge, dann 10 Mal mit dem rechten Auge.",
+      "it": "La Maratona dell'Occhiolino: Fai l'occhiolino con l'occhio sinistro 10 volte, poi con l'occhio destro 10 volte, velocemente.",
+      "es": "El Maratón de Guiños: Guiña con tu ojo izquierdo 10 veces, luego con tu ojo derecho 10 veces, rápidamente.",
+      "ru": "Марафон Подмигивания: Быстро подмигните левым глазом 10 раз, затем правым глазом 10 раз.",
+      "zh-CN": "眨眼马拉松：快速地用左眼眨眼 10 次，然后用右眼眨眼 10 次。",
+      "ja": "ウィンクマラソン：左目で10回、次に右目で10回、素早くウィンクします。",
+      "hi": "पलक झपकाना मैराथन: अपनी बाएँ आँख से 10 बार, फिर अपनी दाहिनी आँख से 10 बार जल्दी से पलक झपकाएँ।",
+      "ar": "ماراثون الغمز: اغمز بعينك اليسرى 10 مرات، ثم بعينك اليمنى 10 مرات، بسرعة."
+    },
+    "category": "fun"
+  },
+  {
+    "challenge_texts": {
+      "en": "The Head Tilter: Tilt your head left, right, forward, and backward for 3 seconds each.",
+      "tr": "Baş Eğici: Başınızı sola, sağa, öne ve arkaya doğru, her yönde 3 saniye eğin.",
+      "fr": "L'Inclineur de Tête: Inclinez votre tête à gauche, à droite, en avant et en arrière pendant 3 secondes chacune.",
+      "de": "Der Kopfneiger: Neigen Sie Ihren Kopf für jeweils 3 Sekunden nach links, rechts, vorne und hinten.",
+      "it": "L'Inclinatore di Testa: Inclina la testa a sinistra, a destra, in avanti e indietro per 3 secondi ciascuno.",
+      "es": "El Inclinador de Cabeza: Inclina tu cabeza a la izquierda, derecha, adelante y atrás durante 3 segundos cada uno.",
+      "ru": "Наклонитель Головы: Наклоните голову влево, вправо, вперед и назад, по 3 секунды в каждом направлении.",
+      "zh-CN": "头部倾斜：将你的头向左、右、前、后倾斜，每个方向保持 3 秒。",
+      "ja": "頭傾け：頭を左、右、前、後に傾け、それぞれ3秒間保持します。",
+      "hi": "सिर झुकाना: अपने सिर को बाईं, दाईं, आगे और पीछे की ओर, प्रत्येक दिशा में 3 सेकंड के लिए झुकाएँ।",
+      "ar": "إمالة الرأس: أمل رأسك لليسار، لليمين، للأمام، وللخلف لمدة 3 ثوانٍ لكل اتجاه."
+    },
+    "category": "fun"
+  },
+  {
+    "challenge_texts": {
+      "en": "The Vocal Impersonator: Imitate the sound of a cat meowing loudly for 10 seconds.",
+      "tr": "Ses Taklitçisi: 10 saniye boyunca yüksek sesle miyavlayan bir kedinin sesini taklit edin.",
+      "fr": "L'Imitateur Vocal: Imitez le son d'un chat miaulant bruyamment pendant 10 secondes.",
+      "de": "Der Vokal-Imitator: Imitieren Sie 10 Sekunden lang das laute Miauen einer Katze.",
+      "it": "L'Imitatore Vocale: Imita il suono di un gatto che miagola forte per 10 secondi.",
+      "es": "El Imitador Vocal: Imita el sonido de un gato maullando fuerte durante 10 segundos.",
+      "ru": "Вокальный Имитатор: Имитируйте звук громко мяукающей кошки в течение 10 секунд.",
+      "zh-CN": "声音模仿者：模仿一只大声喵喵叫的猫的声音 10 秒。",
+      "ja": "声の物真似：大きな声で鳴く猫の鳴き声を10秒間真似します。",
+      "hi": "स्वर नकलची: 10 सेकंड तक जोर से म्याऊँ करती हुई बिल्ली की आवाज की नकल करें।",
+      "ar": "مقلد الأصوات: قلد صوت قطة تموء بصوت عالٍ لمدة 10 ثوانٍ."
+    },
+    "category": "fun"
+  },
+  {
+    "challenge_texts": {
+      "en": "The Foot Tap Rhythm: Tap your feet to a steady beat for 30 seconds, then double the speed for 10 seconds.",
+      "tr": "Ayak Vurma Ritmi: Ayaklarınızı 30 saniye boyunca sabit bir ritimle vurun, ardından hızı 10 saniye boyunca iki katına çıkarın.",
+      "fr": "Le Rythme du Pied: Tapez du pied à un rythme régulier pendant 30 secondes, puis doublez la vitesse pendant 10 secondes.",
+      "de": "Der Fußtipp-Rhythmus: Tippen Sie 30 Sekunden lang mit den Füßen zu einem gleichmäßigen Rhythmus, dann verdoppeln Sie die Geschwindigkeit für 10 Sekunden.",
+      "it": "Il Ritmo del Piede: Batti i piedi a un ritmo costante per 30 secondi, quindi raddoppia la velocità per 10 secondi.",
+      "es": "El Ritmo del Pie: Toca tus pies a un ritmo constante durante 30 segundos, luego duplica la velocidad durante 10 segundos.",
+      "ru": "Ритм Постукивания Ногой: Отбивайте ногами ровный ритм в течение 30 секунд, затем удвойте скорость на 10 секунд.",
+      "zh-CN": "脚尖节奏：用稳定的节拍敲击你的脚 30 秒，然后将速度加倍 10 秒。",
+      "ja": "足のタップリズム：足を一定のビートで30秒間タップし、その後10秒間速度を2倍にします。",
+      "hi": "पैर थपथपाने की लय: 30 सेकंड तक एक स्थिर लय पर अपने पैरों को थपथपाएं, फिर 10 सेकंड के लिए गति दोगुनी करें।",
+      "ar": "إيقاع نقر القدم: انقر بقدميك على إيقاع ثابت لمدة 30 ثانية، ثم ضاعف السرعة لمدة 10 ثوانٍ."
+    },
+    "category": "fun"
+  },
+  {
+    "challenge_texts": {
+      "en": "The Arm Circles: Do 20 forward arm circles and 20 backward arm circles, quickly.",
+      "tr": "Kol Çevirme: 20 kez ileri, ardından 20 kez geri kol çevirme hareketini hızlıca yapın.",
+      "fr": "Les Cercles de Bras: Faites 20 cercles de bras en avant et 20 cercles de bras en arrière, rapidement.",
+      "de": "Die Armkreise: Machen Sie 20 Armkreise vorwärts und 20 Armkreise rückwärts, schnell.",
+      "it": "I Cerchi con le Braccia: Fai 20 cerchi con le braccia in avanti e 20 cerchi con le braccia all'indietro, velocemente.",
+      "es": "Los Círculos de Brazos: Haz 20 círculos de brazos hacia adelante y 20 círculos de brazos hacia atrás, rápidamente.",
+      "ru": "Вращение Руками: Сделайте 20 вращений руками вперед и 20 вращений назад, быстро.",
+      "zh-CN": "手臂画圈：快速地向前画 20 个手臂圈，然后向后画 20 个手臂圈。",
+      "ja": "腕回し：腕を前に20回、次に後ろに20回、素早く回します。",
+      "hi": "हाथ घुमाना: तेजी से 20 बार आगे की ओर और 20 बार पीछे की ओर हाथ घुमाएँ।",
+      "ar": "دوائر الذراع: قم بعمل 20 دائرة ذراع للأمام و 20 دائرة ذراع للخلف، بسرعة."
+    },
+    "category": "fun"
+  },
+  {
+    "challenge_texts": {
+      "en": "The Balance Line: Walk a straight line heel-to-toe for 5 steps without losing balance.",
+      "tr": "Denge Çizgisi: Dengeni kaybetmeden topuk-burun ucu yöntemiyle 5 adım düz yürü.",
+      "fr": "La Ligne d'Équilibre: Marchez sur une ligne droite talon-pointe sur 5 pas sans perdre l'équilibre.",
+      "de": "Die Balance-Linie: Gehen Sie 5 Schritte lang Fersen-zu-Zehen auf einer geraden Linie, ohne das Gleichgewicht zu verlieren.",
+      "it": "La Linea di Equilibrio: Cammina su una linea retta tallone-punta per 5 passi senza perdere l'equilibrio.",
+      "es": "La Línea de Equilibrio: Camina en línea recta talón-punta durante 5 pasos sin perder el equilibrio.",
+      "ru": "Линия Баланса: Пройдите по прямой линии пятка-носок 5 шагов, не теряя равновесия.",
+      "zh-CN": "平衡线：沿着一条直线脚跟对脚尖走 5 步，不失去平衡。",
+      "ja": "バランスライン：バランスを崩さずに、かかとからつま先まで一直線に5歩歩きます。",
+      "hi": "संतुलन रेखा: बिना संतुलन खोए 5 कदम तक एड़ी से पैर की उंगलियों तक सीधी रेखा पर चलें।",
+      "ar": "خط التوازن: امشِ على خط مستقيم بالكعب إلى إصبع القدم لمدة 5 خطوات دون أن تفقد توازنك."
+    },
+    "category": "fun"
+  },
+  {
+    "challenge_texts": {
+      "en": "The Tongue Twister V2: Say the phrase 'Rubber baby buggy bumpers' five times fast.",
+      "tr": "Tekerleme V2: 'Hapşırmayanı hapşırtırlar' tekerlemesini beş kez hızlıca söyle.",
+      "fr": "Le Virelangue V2: Dites 'Un chasseur sachant chasser doit savoir chasser sans son chien' cinq fois rapidement.",
+      "de": "Der Zungenbrecher V2: Sagen Sie 'Brautkleid bleibt Brautkleid und Blaukraut bleibt Blaukraut' fünfmal schnell.",
+      "it": "Lo Scioglilingua V2: Dite 'Apelle, figlio di Apollo, fece una palla di pelle di pollo' cinque volte velocemente.",
+      "es": "El Trabalenguas V2: Di 'Pablito clavó un clavito, ¿qué clavito clavó Pablito?' cinco veces rápido.",
+      "ru": "Скороговорка V2: Быстро произнесите фразу 'Карл у Клары украл кораллы' пять раз.",
+      "zh-CN": "绕口令 V2：快速说出 '四是四，十是十，十四是十四，四十是四十' 五遍。",
+      "ja": "早口言葉 V2： '隣の客はよく柿食う客だ' を5回早口で言います。",
+      "hi": "जीभ मोड़ V2: 'समझ समझ के समझ को समझो, समझ समझना भी एक समझ है' वाक्य को पाँच बार जल्दी से कहें।",
+      "ar": "ملتوية اللسان V2: قل العبارة 'خيش وخشّف خُشيشات' خمس مرات بسرعة."
+    },
+    "category": "fun"
+  },
+  {
+    "challenge_texts": {
+      "en": "The Silent Shout V2: Open your mouth wide and make a silent laugh for 10 seconds.",
+      "tr": "Sessiz Çığlık V2: Ağzınızı kocaman açın ve 10 saniye boyunca sessiz bir kahkaha atın.",
+      "fr": "Le Cri Silencieux V2: Ouvrez grand la bouche et faites un rire silencieux pendant 10 secondes.",
+      "de": "Der Stille Schrei V2: Öffnen Sie Ihren Mund weit und stoßen Sie 10 Sekunden lang ein stummes Lachen aus.",
+      "it": "L'Urlo Silenzioso V2: Apri la bocca e fai una risata silenziosa per 10 secondi.",
+      "es": "El Grito Silencioso V2: Abre la boca y haz una risa silenciosa durante 10 segundos.",
+      "ru": "Беззвучный Крик V2: Откройте рот широко и издайте беззвучный смех в течение 10 секунд.",
+      "zh-CN": "无声呐喊 V2：张大嘴巴，发出无声的笑声，持续 10 秒。",
+      "ja": "サイレント叫び V2：口を大きく開けて、10秒間無言で笑います。",
+      "hi": "खामोश चीख V2: अपना मुँह चौड़ा खोलें और 10 सेकंड तक एक खामोश हँसी मारें।",
+      "ar": "الصرخة الصامتة V2: افتح فمك وقم بضحكة صامتة لمدة 10 ثوانٍ."
+    },
+    "category": "fun"
+  },
+  {
+    "challenge_texts": {
+      "en": "The Time Stop: Hold your breath for 30 seconds (or as long as safely possible).",
+      "tr": "Zaman Durdurma: Nefesinizi 30 saniye boyunca tutun (veya güvenli olduğu sürece).",
+      "fr": "L'Arrêt du Temps: Retenez votre respiration pendant 30 secondes (ou aussi longtemps que possible en toute sécurité).",
+      "de": "Der Zeitstopp: Halten Sie den Atem für 30 Sekunden an (oder so lange, wie es sicher möglich ist).",
+      "it": "Lo Stop del Tempo: Trattieni il respiro per 30 secondi (o il più a lungo possibile in sicurezza).",
+      "es": "La Parada del Tiempo: Contén la respiración durante 30 segundos (o tanto como sea seguro).",
+      "ru": "Остановка Времени: Задержите дыхание на 30 секунд (или пока это безопасно).",
+      "zh-CN": "时间停止：屏住呼吸 30 秒（或在安全范围内尽可能长）。",
+      "ja": "時間停止：30秒間息を止めます（または安全な限り長く）。",
+      "hi": "समय रोक: 30 सेकंड तक अपनी साँस रोकें (या जब तक सुरक्षित हो)।",
+      "ar": "إيقاف الزمن: احبس أنفاسك لمدة 30 ثانية (أو لأطول فترة ممكنة بأمان)."
+    },
+    "category": "fun"
+  },
+  {
+    "challenge_texts": {
+      "en": "The Thumb Wars: Win a round of Thumb Wars against yourself (using both hands) in under 10 seconds.",
+      "tr": "Başparmak Savaşları: 10 saniyenin altında, kendinize karşı bir tur Başparmak Savaşını kazanın (iki elinizi kullanarak).",
+      "fr": "La Guerre des Pouces: Gagnez une manche de la Guerre des Pouces contre vous-même (en utilisant les deux mains) en moins de 10 secondes.",
+      "de": "Der Daumenkrieg: Gewinnen Sie eine Runde Daumenkrieg gegen sich selbst (mit beiden Händen) in weniger als 10 Sekunden.",
+      "it": "Le Guerre dei Pollici: Vinci un round di Guerre dei Pollici contro te stesso (usando entrambe le mani) in meno di 10 secondi.",
+      "es": "La Guerra de Pulgares: Gana una ronda de Guerra de Pulgares contra ti mismo (usando ambas manos) en menos de 10 segundos.",
+      "ru": "Войны Больших Пальцев: Выиграйте раунд Войны Больших Пальцев против себя (используя обе руки) менее чем за 10 секунд.",
+      "zh-CN": "拇指大战：在 10 秒内，用双手赢得一轮拇指大战。",
+      "ja": "親指戦争：10秒以内に、両手を使って自分自身と親指戦争のラウンドに勝ちます。",
+      "hi": "अंगूठा युद्ध: 10 सेकंड से कम समय में, खुद के खिलाफ अंगूठा युद्ध का एक राउंड जीतें (दोनों हाथों का उपयोग करके)।",
+      "ar": "حرب الإبهام: اربح جولة من حرب الإبهام ضد نفسك (باستخدام كلتا اليدين) في أقل من 10 ثوانٍ."
+    },
+    "category": "fun"
+  },
+  {
+    "challenge_texts": {
+      "en": "The Fast Walker: Walk 10 steps as fast as you can without running.",
+      "tr": "Hızlı Yürüyücü: Koşmadan, 10 adım boyunca olabildiğince hızlı yürüyün.",
+      "fr": "Le Marcheur Rapide: Marchez 10 pas aussi vite que possible sans courir.",
+      "de": "Der Schnellgeher: Gehen Sie 10 Schritte so schnell wie möglich, ohne zu rennen.",
+      "it": "Il Camminatore Veloce: Cammina 10 passi il più velocemente possibile senza correre.",
+      "es": "El Caminante Rápido: Camina 10 pasos tan rápido como puedas sin correr.",
+      "ru": "Быстрый Ходок: Пройдите 10 шагов как можно быстрее, не переходя на бег.",
+      "zh-CN": "快速行走者：不跑步的情况下，尽可能快地走 10 步。",
+      "ja": "速歩き：走らずに、できるだけ早く10歩歩きます。",
+      "hi": "तेज चलने वाला: बिना दौड़े, जितनी जल्दी हो सके 10 कदम चलें।",
+      "ar": "المشي السريع: امشِ 10 خطوات بأسرع ما يمكن دون الجري."
+    },
+    "category": "fun"
+  },
+  {
+    "challenge_texts": {
+      "en": "The Reverse Alphabet: Say the alphabet backward from Z to A, in under 30 seconds.",
+      "tr": "Ters Alfabe: Alfabeyi Z'den A'ya doğru geriye doğru söyleyin, 30 saniyenin altında.",
+      "fr": "L'Alphabet à l'Envers: Dites l'alphabet à l'envers de Z à A, en moins de 30 secondes.",
+      "de": "Das Rückwärtsalphabet: Sagen Sie das Alphabet von Z bis A rückwärts auf, in weniger als 30 Sekunden.",
+      "it": "L'Alfabeto all'Indietro: Dici l'alfabeto al contrario da Z ad A, in meno di 30 secondi.",
+      "es": "El Alfabeto al Revés: Di el alfabeto al revés de Z a A, en menos de 30 segundos.",
+      "ru": "Обратный Алфавит: Скажите алфавит в обратном порядке от Я до А, менее чем за 30 секунд.",
+      "zh-CN": "倒序字母表：在 30 秒内，从 Z 到 A 倒着背诵字母表。",
+      "ja": "逆アルファベット：30秒以内に、アルファベットをZからAまで逆向きに言います。",
+      "hi": "उल्टा वर्णमाला: 30 सेकंड से कम समय में, वर्णमाला को Z से A तक उल्टा बोलें।",
+      "ar": "الأبجدية العكسية: قل الأبجدية بالعكس من Z إلى A، في أقل من 30 ثانية."
+    },
+    "category": "fun"
+  },
+  {
+    "challenge_texts": {
+      "en": "The Toe Touch: Touch your toes 15 times quickly without bending your knees.",
+      "tr": "Ayak Parmağı Dokunuşu: Dizlerinizi bükmeden, ayak parmaklarınıza 15 kez hızlıca dokunun.",
+      "fr": "Le Toucher d'Orteils: Touchez vos orteils 15 fois rapidement sans plier les genoux.",
+      "de": "Die Zehenberührung: Berühren Sie schnell 15 Mal Ihre Zehen, ohne die Knie zu beugen.",
+      "it": "Il Tocco delle Dita dei Piedi: Tocca le dita dei piedi 15 volte velocemente senza piegare le ginocchia.",
+      "es": "El Toque de Dedos del Pie: Toca los dedos de tus pies 15 veces rápidamente sin doblar las rodillas.",
+      "ru": "Касание Пальцев Ног: Быстро коснитесь пальцев ног 15 раз, не сгибая колен.",
+      "zh-CN": "脚趾触碰：快速触碰你的脚趾 15 次，不要弯曲膝盖。",
+      "ja": "つま先タッチ：膝を曲げずに、つま先に15回素早く触れます。",
+      "hi": "पैर की अंगुली स्पर्श: अपने घुटनों को मोड़े बिना, 15 बार तेजी से अपने पैर की उंगलियों को छूएँ।",
+      "ar": "لمس أصابع القدم: المس أصابع قدميك 15 مرة بسرعة دون ثني ركبتيك."
+    },
+    "category": "fun"
+  },
+  {
+    "challenge_texts": {
+      "en": "The Magic Word: Say the word 'Bubble' 20 times in 10 seconds without mistake.",
+      "tr": "Sihirli Kelime: 'Balon' kelimesini 10 saniye içinde hatasız bir şekilde 20 kez söyleyin.",
+      "fr": "Le Mot Magique: Dites le mot 'Bulle' 20 fois en 10 secondes sans erreur.",
+      "de": "Das Zauberwort: Sagen Sie das Wort 'Blase' 20 Mal in 10 Sekunden ohne Fehler.",
+      "it": "La Parola Magica: Dici la parola 'Bolla' 20 volte in 10 secondi senza errori.",
+      "es": "La Palabra Mágica: Di la palabra 'Burbuja' 20 veces en 10 segundos sin equivocarte.",
+      "ru": "Волшебное Слово: Скажите слово 'Пузырь' 20 раз за 10 секунд без ошибки.",
+      "zh-CN": "神奇词汇：在 10 秒内，不犯错地说出 '泡泡' 一词 20 次。",
+      "ja": "魔法の言葉：「バブル」という言葉を10秒以内に間違いなく20回言います。",
+      "hi": "जादुई शब्द: 10 सेकंड में, 'बुलबुला' शब्द को बिना गलती के 20 बार बोलें।",
+      "ar": "الكلمة السحرية: قل كلمة 'فقاعة' 20 مرة في 10 ثوانٍ دون خطأ."
+    },
+    "category": "fun"
+  },
+  {
+    "challenge_texts": {
+      "en": "The Quick Draw: Quickly draw a circle, a square, and a triangle with your finger in the air, in 5 seconds.",
+      "tr": "Hızlı Çizim: 5 saniye içinde parmağınızla havada bir daire, bir kare ve bir üçgen çizin.",
+      "fr": "Le Dessin Rapide: Dessinez rapidement un cercle, un carré et un triangle avec votre doigt dans l'air, en 5 secondes.",
+      "de": "Die Schnelle Zeichnung: Zeichnen Sie schnell einen Kreis, ein Quadrat und ein Dreieck mit Ihrem Finger in die Luft, in 5 Sekunden.",
+      "it": "Il Disegno Veloce: Disegna velocemente un cerchio, un quadrato e un triangolo con il dito in aria, in 5 secondi.",
+      "es": "El Dibujo Rápido: Dibuja rápidamente un círculo, un cuadrado y un triángulo con tu dedo en el aire, en 5 segundos.",
+      "ru": "Быстрый Рисунок: Быстро нарисуйте пальцем в воздухе круг, квадрат и треугольник, за 5 секунд.",
+      "zh-CN": "快速绘画：在 5 秒内，用你的手指在空中快速画出一个圆形、一个方形和一个三角形。",
+      "ja": "クイックドロー：5秒以内に、指で空中に円、正方形、三角形を素早く描きます。",
+      "hi": "तेज रेखांकन: 5 सेकंड में, अपनी उंगली से हवा में एक वृत्त, एक वर्ग और एक त्रिकोण तेजी से बनाएँ।",
+      "ar": "الرسم السريع: ارسم دائرة ومربعًا ومثلثًا بإصبعك في الهواء بسرعة، في 5 ثوانٍ."
+    },
+    "category": "fun"
+  },
+  {
+    "challenge_texts": {
+      "en": "The Ear Grab: Grab your left ear with your right hand and your nose with your left hand, then quickly switch.",
+      "tr": "Kulak Yakalama: Sağ elinizle sol kulağınızı ve sol elinizle burnunuzu tutun, sonra hızlıca yer değiştirin.",
+      "fr": "L'Attrape-Oreille: Attrapez votre oreille gauche avec votre main droite et votre nez avec votre main gauche, puis changez rapidement.",
+      "de": "Das Ohrengreifen: Greifen Sie Ihr linkes Ohr mit der rechten Hand und Ihre Nase mit der linken Hand, dann schnell wechseln.",
+      "it": "L'Afferra Orecchio: Afferra l'orecchio sinistro con la mano destra e il naso con la mano sinistra, quindi cambia rapidamente.",
+      "es": "El Agarre de Oreja: Agarra tu oreja izquierda con la mano derecha y tu nariz con la mano izquierda, luego cambia rápidamente.",
+      "ru": "Хватка Уха: Возьмитесь правой рукой за левое ухо, а левой рукой за нос, затем быстро поменяйте руки.",
+      "zh-CN": "抓耳朵：用你的右手抓住左耳，左手抓住鼻子，然后快速切换。",
+      "ja": "耳つかみ：右手で左耳を、左手で鼻をつかみ、素早く切り替えます。",
+      "hi": "कान पकड़ना: अपने दाहिने हाथ से बाएँ कान को और बाएँ हाथ से अपनी नाक को पकड़ें, फिर तेजी से स्विच करें।",
+      "ar": "إمساك الأذن: امسك أذنك اليسرى بيدك اليمنى وأنفك بيدك اليسرى، ثم قم بالتبديل بسرعة."
+    },
+    "category": "fun"
+  },
+  {
+    "challenge_texts": {
+      "en": "The Alphabet Jump: Jump once for the letter 'A', twice for 'B', and three times for 'C'.",
+      "tr": "Alfabe Zıplaması: 'A' harfi için bir kez, 'B' için iki kez ve 'C' için üç kez zıplayın.",
+      "fr": "Le Saut de l'Alphabet: Sautez une fois pour la lettre 'A', deux fois pour 'B', et trois fois pour 'C'.",
+      "de": "Der Alphabet-Sprung: Springen Sie einmal für den Buchstaben 'A', zweimal für 'B' und dreimal für 'C'.",
+      "it": "Il Salto dell'Alfabeto: Salta una volta per la lettera 'A', due volte per 'B' e tre volte per 'C'.",
+      "es": "El Salto del Alfabeto: Salta una vez por la letra 'A', dos veces por 'B' y tres veces por 'C'.",
+      "ru": "Прыжок Алфавита: Прыгните один раз для буквы 'А', два раза для 'Б' и три раза для 'В'.",
+      "zh-CN": "字母跳跃：为字母 'A' 跳一次，为 'B' 跳两次，为 'C' 跳三次。",
+      "ja": "アルファベットジャンプ：文字「A」で1回、文字「B」で2回、文字「C」で3回ジャンプします。",
+      "hi": "वर्णमाला कूद: 'A' अक्षर के लिए एक बार, 'B' के लिए दो बार और 'C' के लिए तीन बार कूदें।",
+      "ar": "قفزة الأبجدية: اقفز مرة واحدة للحرف 'أ'، مرتين للحرف 'ب'، وثلاث مرات للحرف 'ج'."
+    },
+    "category": "fun"
+  },
+  {
+    "challenge_texts": {
+      "en": "The Fast Clapper: Clap your hands 30 times in under 10 seconds.",
+      "tr": "Hızlı Alkışçı: 10 saniyenin altında ellerinizi 30 kez çırpın.",
+      "fr": "L'Applaudisseur Rapide: Frappez des mains 30 fois en moins de 10 secondes.",
+      "de": "Der Schnellklatscher: Klatschen Sie 30 Mal in weniger als 10 Sekunden in die Hände.",
+      "it": "Il Battitore Veloce: Batti le mani 30 volte in meno di 10 secondi.",
+      "es": "El Aplaudidor Rápido: Da 30 palmadas en menos de 10 segundos.",
+      "ru": "Быстрый Хлопальщик: Хлопните в ладоши 30 раз менее чем за 10 секунд.",
+      "zh-CN": "快速鼓掌者：在 10 秒内拍手 30 次。",
+      "ja": "高速拍手：10秒以内に手を30回叩きます。",
+      "hi": "तेज ताली बजाने वाला: 10 सेकंड से कम समय में 30 बार ताली बजाएँ।",
+      "ar": "المصفق السريع: صفق بيديك 30 مرة في أقل من 10 ثوانٍ."
+    },
+    "category": "fun"
+  },
+  {
+    "challenge_texts": {
+      "en": "The Tongue to Nose: Try to touch your nose with your tongue for 5 seconds.",
+      "tr": "Dil Burun Teması: Dilinizle burnunuza 5 saniye boyunca dokunmaya çalışın.",
+      "fr": "La Langue au Nez: Essayez de toucher votre nez avec votre langue pendant 5 secondes.",
+      "de": "Die Zunge zur Nase: Versuchen Sie, Ihre Nase 5 Sekunden lang mit der Zunge zu berühren.",
+      "it": "La Lingua al Naso: Prova a toccare il naso con la lingua per 5 secondi.",
+      "es": "La Lengua a la Nariz: Intenta tocar tu nariz con la lengua durante 5 segundos.",
+      "ru": "Язык к Носу: Попробуйте коснуться носа языком в течение 5 секунд.",
+      "zh-CN": "舌头碰鼻子：尝试用你的舌头触碰你的鼻子 5 秒。",
+      "ja": "舌で鼻に触れる：5秒間、舌で鼻に触れようとします。",
+      "hi": "जीभ से नाक छूना: 5 सेकंड तक अपनी नाक को अपनी जीभ से छूने की कोशिश करें।",
+      "ar": "اللسان إلى الأنف: حاول لمس أنفك بلسانك لمدة 5 ثوانٍ."
+    },
+    "category": "fun"
+  },
+  {
+    "challenge_texts": {
+      "en": "The Quick Blink: Blink your eyes 50 times as fast as possible, in 15 seconds.",
+      "tr": "Hızlı Göz Kırpma: 15 saniye içinde gözlerinizi 50 kez olabildiğince hızlı kırpın.",
+      "fr": "Le Clignement Rapide: Clignez des yeux 50 fois aussi vite que possible, en 15 secondes.",
+      "de": "Das Schnelle Blinzeln: Blinzeln Sie 50 Mal so schnell wie möglich, in 15 Sekunden.",
+      "it": "Il Battito di Ciglia Veloce: Sbatti le palpebre 50 volte il più velocemente possibile, in 15 secondi.",
+      "es": "El Parpadeo Rápido: Parpadea 50 veces tan rápido como puedas, en 15 segundos.",
+      "ru": "Быстрое Мигание: Быстро моргните 50 раз, за 15 секунд.",
+      "zh-CN": "快速眨眼：在 15 秒内，尽可能快地眨眼 50 次。",
+      "ja": "高速まばたき：15秒以内に、できるだけ早く50回まばたきをします。",
+      "hi": "तेज पलक झपकना: 15 सेकंड में, जितनी जल्दी हो सके 50 बार पलकें झपकाएँ।",
+      "ar": "الرمش السريع: ارمش بعينيك 50 مرة بأسرع ما يمكن، في 15 ثانية."
+    },
+    "category": "fun"
+  },
+  {
+    "challenge_texts": {
+      "en": "The Silent Shout V3: Hold a dramatic, silent yawn for 10 seconds.",
+      "tr": "Sessiz Çığlık V3: 10 saniye boyunca dramatik, sessiz bir esneme yapın.",
+      "fr": "Le Cri Silencieux V3: Faites un bâillement dramatique et silencieux pendant 10 secondes.",
+      "de": "Der Stille Schrei V3: Machen Sie 10 Sekunden lang ein dramatisches, stummes Gähnen.",
+      "it": "L'Urlo Silenzioso V3: Fai uno sbadiglio drammatico e silenzioso per 10 secondi.",
+      "es": "El Grito Silencioso V3: Haz un bostezo dramático y silencioso durante 10 segundos.",
+      "ru": "Беззвучный Крик V3: Сделайте драматичный, беззвучный зевок в течение 10 секунд.",
+      "zh-CN": "无声呐喊 V3：保持一个戏剧性的、无声的打哈欠姿势 10 秒。",
+      "ja": "サイレント叫び V3：ドラマチックで無言のあくびを10秒間保持します。",
+      "hi": "खामोश चीख V3: 10 सेकंड तक एक नाटकीय, खामोश जम्हाई लें।",
+      "ar": "الصرخة الصامتة V3: قم بتثاؤب درامي صامت لمدة 10 ثوانٍ."
+    },
+    "category": "fun"
+  },
+  {
+    "challenge_texts": {
+      "en": "The Wall Sit: Hold a wall sit (knees at 90 degrees) for 45 seconds.",
+      "tr": "Duvar Oturuşu: Duvarı kullanarak 90 derece diz açısıyla 45 saniye oturun.",
+      "fr": "La Chaise: Maintenez la position de la chaise (genoux à 90 degrés) pendant 45 secondes.",
+      "de": "Der Wandsitz: Halten Sie eine Wandsitzposition (Knie im 90-Grad-Winkel) für 45 Sekunden.",
+      "it": "La Sedia al Muro: Mantieni una sedia al muro (ginocchia a 90 gradi) per 45 secondi.",
+      "es": "La Silla de Pared: Mantén una sentadilla de pared (rodillas a 90 grados) durante 45 segundos.",
+      "ru": "Сидение у Стены: Удерживайте приседание у стены (колени под 90 градусов) в течение 45 секунд.",
+      "zh-CN": "靠墙静蹲：保持靠墙静蹲姿势（膝盖成 90 度角）45 秒。",
+      "ja": "壁座り：壁に寄りかかって座る姿勢（膝を90度）を45秒間保持します。",
+      "hi": "दीवार पर बैठना: 45 सेकंड तक दीवार से सटकर बैठें (घुटने 90 डिग्री पर)।",
+      "ar": "جلوس الحائط: حافظ على وضعية الجلوس على الحائط (الركبتان بزاوية 90 درجة) لمدة 45 ثانية."
+    },
+    "category": "fun"
+  },
+  {
+    "challenge_texts": {
+      "en": "The Single-Leg Squat Prep: Stand on one leg and lift the other knee high for 15 seconds.",
+      "tr": "Tek Bacak Squat Hazırlığı: Tek bacak üzerinde durun ve diğer dizinizi 15 saniye boyunca yukarı kaldırın.",
+      "fr": "Préparation au Squat sur Une Jambe: Tenez-vous sur une jambe et levez l'autre genou haut pendant 15 secondes.",
+      "de": "Die Einbein-Kniebeugen-Vorbereitung: Stehen Sie auf einem Bein und heben Sie das andere Knie 15 Sekunden lang hoch.",
+      "it": "Preparazione Squat Monopodalico: Stai su una gamba e solleva l'altro ginocchio in alto per 15 secondi.",
+      "es": "Preparación de Sentadilla a Una Pierna: Párate sobre una pierna y levanta la otra rodilla alto durante 15 segundos.",
+      "ru": "Подготовка к Приседанию на Одной Ноге: Стойте на одной ноге и поднимите другое колено высоко в течение 15 секунд.",
+      "zh-CN": "单腿深蹲准备：单腿站立，并将另一条膝盖抬高 15 秒。",
+      "ja": "片足スクワット準備：片足で立ち、もう一方の膝を15秒間高く上げます。",
+      "hi": "एक पैर के स्क्वाट की तैयारी: एक पैर पर खड़े हों और दूसरे घुटने को 15 सेकंड तक ऊपर उठाएँ।",
+      "ar": "تحضير القرفصاء على ساق واحدة: قف على ساق واحدة وارفع الركبة الأخرى عالياً لمدة 15 ثانية."
+    },
+    "category": "fun"
+  },
+  {
+    "challenge_texts": {
+      "en": "The Quick Count: Count backward from 100 to 70, in under 20 seconds.",
+      "tr": "Hızlı Sayım: 100'den 70'e kadar olabildiğince hızlı geri sayın, 20 saniyenin altında.",
+      "fr": "Le Compte Rapide: Comptez à rebours de 100 à 70, en moins de 20 secondes.",
+      "de": "Das Schnelle Zählen: Zählen Sie so schnell wie möglich von 100 auf 70 rückwärts, in weniger als 20 Sekunden.",
+      "it": "Il Conteggio Veloce: Conta all'indietro da 100 a 70, in meno di 20 secondi.",
+      "es": "La Cuenta Rápida: Cuenta hacia atrás del 100 al 70, en menos de 20 segundos.",
+      "ru": "Быстрый Счет: Считайте в обратном порядке от 100 до 70, менее чем за 20 секунд.",
+      "zh-CN": "快速计数：在 20 秒内，尽快从 100 倒数到 70。",
+      "ja": "高速カウント：20秒以内に、100から70までできるだけ早く逆算します。",
+      "hi": "तेज गिनती: 20 सेकंड से कम समय में, 100 से 70 तक जितनी जल्दी हो सके उल्टी गिनती करें।",
+      "ar": "العد السريع: عد عكسيًا من 100 إلى 70، في أقل من 20 ثانية."
+    },
+    "category": "fun"
+  },
+  {
+    "challenge_texts": {
+      "en": "The Body Drum: Tap your head, stomach, and feet in sequence 10 times, quickly.",
+      "tr": "Vücut Davulu: Kafanıza, karnınıza ve ayaklarınıza sırayla 10 kez hızlıca vurun.",
+      "fr": "Le Tambour Corporel: Tapez votre tête, votre ventre et vos pieds en séquence 10 fois, rapidement.",
+      "de": "Die Körper-Trommel: Tippen Sie 10 Mal schnell nacheinander auf Kopf, Bauch und Füße.",
+      "it": "Il Tamburo Corporeo: Tocca testa, stomaco e piedi in sequenza 10 volte, velocemente.",
+      "es": "El Tambor Corporal: Toca tu cabeza, estómago y pies en secuencia 10 veces, rápidamente.",
+      "ru": "Барабан Тела: Быстро постучите по голове, животу и ногам по очереди 10 раз.",
+      "zh-CN": "身体鼓：快速地按顺序敲击你的头、肚子和脚 10 次。",
+      "ja": "体のドラム：頭、お腹、足の順に10回素早く叩きます。",
+      "hi": "शरीर का ढोल: अपने सिर, पेट और पैरों को क्रम से 10 बार तेजी से थपथपाएं।",
+      "ar": "طبل الجسم: انقر على رأسك وبطنك وقدميك بالتتابع 10 مرات، بسرعة."
+    },
+    "category": "fun"
+  },
+  {
+    "challenge_texts": {
+      "en": "The Wiggle Fingers: Wiggle all your fingers as fast as you can for 30 seconds.",
+      "tr": "Parmak Sallama: Tüm parmaklarınızı 30 saniye boyunca olabildiğince hızlı sallayın.",
+      "fr": "Le Remuement des Doigts: Remuez tous vos doigts aussi vite que possible pendant 30 secondes.",
+      "de": "Das Fingerwackeln: Wackeln Sie 30 Sekunden lang mit allen Fingern, so schnell Sie können.",
+      "it": "Lo Scuotimento delle Dita: Muovi tutte le dita il più velocemente possibile per 30 secondi.",
+      "es": "El Meneo de Dedos: Mueve todos tus dedos tan rápido como puedas durante 30 segundos.",
+      "ru": "Шевеление Пальцами: Шевелите всеми пальцами как можно быстрее в течение 30 секунд.",
+      "zh-CN": "手指摆动：尽可能快地摆动你所有的手指 30 秒。",
+      "ja": "指のひらひら：30秒間、できるだけ速くすべての指をひらひらさせます。",
+      "hi": "उंगलियाँ हिलाना: अपनी सभी उंगलियों को 30 सेकंड तक जितनी जल्दी हो सके हिलाएँ।",
+      "ar": "اهتزاز الأصابع: اهتز جميع أصابعك بأسرع ما يمكن لمدة 30 ثانية."
+    },
+    "category": "fun"
+  },
+  {
+    "challenge_texts": {
+      "en": "The Opposite Twist: Touch your left elbow to your right knee 5 times quickly.",
+      "tr": "Ters Çevirme: Sol dirseğinizi sağ dizinize 5 kez hızlıca değdirin.",
+      "fr": "La Torsion Opposée: Touchez rapidement votre coude gauche à votre genou droit 5 fois.",
+      "de": "Die Gegenverdrehung: Berühren Sie schnell 5 Mal Ihren linken Ellbogen mit Ihrem rechten Knie.",
+      "it": "La Torsione Opposta: Tocca rapidamente il gomito sinistro al ginocchio destro 5 volte.",
+      "es": "El Giro Opuesto: Toca tu codo izquierdo a tu rodilla derecha 5 veces rápidamente.",
+      "ru": "Противоположный Поворот: Быстро коснитесь левым локтем правого колена 5 раз.",
+      "zh-CN": "对侧扭转：快速地用你的左肘触碰你的右膝 5 次。",
+      "ja": "反対側ツイスト：左肘を右膝に5回素早くタッチします。",
+      "hi": "विपरीत मोड़: अपनी बाईं कोहनी को अपने दाहिने घुटने से 5 बार तेजी से छूएँ।",
+      "ar": "الالتواء المعاكس: المس كوعك الأيسر بركبتك اليمنى 5 مرات بسرعة."
+    },
+    "category": "fun"
+  },
+  {
+    "challenge_texts": {
+      "en": "The Silent Yell: Yell 'Victory!' silently and open your arms wide for 5 seconds.",
+      "tr": "Sessiz Çığlık: 'Zafer!' diye sessizce bağırın ve kollarınızı 5 saniye boyunca açın.",
+      "fr": "Le Cri Silencieux: Criez 'Victoire!' silencieusement et ouvrez grand les bras pendant 5 secondes.",
+      "de": "Der Stille Ruf: Rufen Sie leise 'Sieg!' und öffnen Sie die Arme 5 Sekunden lang weit.",
+      "it": "L'Urlo Silenzioso: Grida 'Vittoria!' silenziosamente e apri le braccia per 5 secondi.",
+      "es": "El Grito Silencioso: Grita '¡Victoria!' en silencio y abre los brazos durante 5 segundos.",
+      "ru": "Беззвучный Крик: Беззвучно крикните 'Победа!' и широко разведите руки на 5 секунд.",
+      "zh-CN": "无声喊叫：无声地喊 '胜利！' 并张开双臂 5 秒。",
+      "ja": "サイレントエール：「勝利！」と静かに叫び、腕を5秒間大きく広げます。",
+      "hi": "खामोश जयकार: चुपचाप 'विजय!' चिल्लाओ और अपनी बाहों को 5 सेकंड तक खोलकर रखें।",
+      "ar": "الصرخة الصامتة: اصرخ 'النصر!' بصمت وافتح ذراعيك لمدة 5 ثوانٍ."
+    },
+    "category": "fun"
+  },
+  {
+    "challenge_texts": {
+      "en": "The Backward Step: Take 10 steps backward without looking behind you.",
+      "tr": "Geriye Adım: Arkanıza bakmadan 10 adım geriye doğru atın.",
+      "fr": "Le Pas en Arrière: Faites 10 pas en arrière sans regarder derrière vous.",
+      "de": "Der Rückwärtsschritt: Machen Sie 10 Schritte rückwärts, ohne sich umzusehen.",
+      "it": "Il Passo Indietro: Fai 10 passi all'indietro senza guardare dietro di te.",
+      "es": "El Paso Hacia Atrás: Da 10 pasos hacia atrás sin mirar detrás de ti.",
+      "ru": "Шаг Назад: Сделайте 10 шагов назад, не глядя назад.",
+      "zh-CN": "后退步：不回头看的情况下，向后走 10 步。",
+      "ja": "後退ステップ：後ろを見ずに10歩後退します。",
+      "hi": "पीछे कदम: पीछे देखे बिना 10 कदम पीछे की ओर चलें।",
+      "ar": "الخطوة الخلفية: اخطُ 10 خطوات للخلف دون النظر خلفك."
+    },
+    "category": "fun"
+  },
+  {
+    "challenge_texts": {
+      "en": "The Finger Counting: Count to 10 using only your fingers, as fast as possible.",
+      "tr": "Parmak Sayma: Sadece parmaklarınızı kullanarak 10'a kadar olabildiğince hızlı sayın.",
+      "fr": "Le Comptage par Doigts: Comptez jusqu'à 10 en utilisant uniquement vos doigts, le plus rapidement possible.",
+      "de": "Das Fingerzählen: Zählen Sie so schnell wie möglich bis 10, indem Sie nur Ihre Finger benutzen.",
+      "it": "Il Conteggio con le Dita: Conta fino a 10 usando solo le dita, il più velocemente possibile.",
+      "es": "El Conteo de Dedos: Cuenta hasta 10 usando solo tus dedos, tan rápido como sea posible.",
+      "ru": "Счет Пальцами: Сосчитайте до 10, используя только пальцы, как можно быстрее.",
+      "zh-CN": "手指计数：尽可能快地只用手指数到 10。",
+      "ja": "指で数える：指だけを使って、できるだけ早く10まで数えます。",
+      "hi": "उंगली से गिनती: केवल अपनी उंगलियों का उपयोग करके, जितनी जल्दी हो सके 10 तक गिनें।",
+      "ar": "العد بالأصابع: عد حتى 10 باستخدام أصابعك فقط، بأسرع ما يمكن."
+    },
+    "category": "fun"
+  },
+  {
+    "challenge_texts": {
+      "en": "The Funny Face: Hold the funniest face you can make for 10 seconds.",
+      "tr": "Komik Yüz: Yapabileceğiniz en komik yüzü 10 saniye boyunca tutun.",
+      "fr": "La Tête Amusante: Gardez la grimace la plus amusante que vous pouvez faire pendant 10 secondes.",
+      "de": "Das Lustige Gesicht: Halten Sie das lustigste Gesicht, das Sie machen können, 10 Sekunden lang.",
+      "it": "La Faccia Divertente: Mantieni la faccia più divertente che puoi fare per 10 secondi.",
+      "es": "La Cara Graciosa: Mantén la cara más divertida que puedas hacer durante 10 segundos.",
+      "ru": "Смешное Лицо: Держите самое смешное лицо, которое можете сделать, в течение 10 секунд.",
+      "zh-CN": "滑稽脸：保持你能做出的最滑稽的脸 10 秒。",
+      "ja": "面白い顔：できる最も面白い顔を10秒間維持します。",
+      "hi": "मजेदार चेहरा: 10 सेकंड तक अपना बनाया हुआ सबसे मजेदार चेहरा बनाए रखें।",
+      "ar": "الوجه المضحك: حافظ على أطرف وجه يمكنك صنعه لمدة 10 ثوانٍ."
+    },
+    "category": "fun"
+  },
+  {
+    "challenge_texts": {
+      "en": "The Hand Shake: Shake both of your hands vigorously for 20 seconds.",
+      "tr": "El Sallama: İki elinizi de 20 saniye boyunca kuvvetlice sallayın.",
+      "fr": "La Secousse des Mains: Secouez vigoureusement vos deux mains pendant 20 secondes.",
+      "de": "Das Händeschütteln: Schütteln Sie beide Hände 20 Sekunden lang kräftig.",
+      "it": "Lo Scuotimento delle Mani: Scuoti vigorosamente entrambe le mani per 20 secondi.",
+      "es": "El Agitar de Manos: Agita vigorosamente ambas manos durante 20 segundos.",
+      "ru": "Встряхивание Руками: Энергично трясите обеими руками в течение 20 секунд.",
+      "zh-CN": "双手摇晃：用力摇晃你的双手 20 秒。",
+      "ja": "握手：両手を20秒間力強く振ります。",
+      "hi": "हाथ मिलाना: अपने दोनों हाथों को 20 सेकंड तक जोर से हिलाएँ।",
+      "ar": "مصافحة اليد: هز كلتا يديك بقوة لمدة 20 ثانية."
+    },
+    "category": "fun"
+  },
+  {
+    "challenge_texts": {
+      "en": "The Water Sip V2: Take a sip of water and hold it in your mouth for 20 seconds without swallowing.",
+      "tr": "Su Yudumu V2: Bir yudum su alın ve yutmadan 20 saniye boyunca ağzınızda tutun.",
+      "fr": "La Gorgée d'Eau V2: Buvez une gorgée d'eau et gardez-la dans votre bouche pendant 20 secondes sans avaler.",
+      "de": "Der Wasserschluck V2: Nehmen Sie einen Schluck Wasser und halten Sie ihn 20 Sekunden lang im Mund, ohne zu schlucken.",
+      "it": "Il Sorso d'Acqua V2: Bevi un sorso d'acqua e tienilo in bocca per 20 secondi senza deglutire.",
+      "es": "El Sorbo de Agua V2: Toma un sorbo de agua y manténlo en tu boca durante 20 segundos sin tragar.",
+      "ru": "Глоток Воды V2: Сделайте глоток воды и держите его во рту 20 секунд, не проглатывая.",
+      "zh-CN": "喝水挑战 V2：喝一口水，不吞咽，在嘴里含 20 秒。",
+      "ja": "水一口 V2：水を一口飲み、飲み込まずに20秒間口に含みます。",
+      "hi": "पानी की घूंट V2: पानी की एक घूंट लें और उसे 20 सेकंड तक बिना निगले अपने मुँह में रखें।",
+      "ar": "رشفة الماء V2: تناول رشفة من الماء واحتفظ بها في فمك لمدة 20 ثانية دون بلع."
+    },
+    "category": "fun"
+  },
+  {
+    "challenge_texts": {
+      "en": "The Finger Push-Up: Press your index fingers together hard for 30 seconds.",
+      "tr": "Parmak Şınavı: İşaret parmaklarınızı 30 saniye boyunca birbirine sıkıca bastırın.",
+      "fr": "La Pompe à Doigts: Appuyez fortement vos index l'un contre l'autre pendant 30 secondes.",
+      "de": "Der Finger-Liegestütz: Drücken Sie Ihre Zeigefinger 30 Sekunden lang fest zusammen.",
+      "it": "La Flessione delle Dita: Premi forte gli indici l'uno contro l'altro per 30 secondi.",
+      "es": "La Flexión de Dedos: Presiona tus dedos índices fuertemente entre sí durante 30 segundos.",
+      "ru": "Отжимание Пальцем: Сильно прижимайте указательные пальцы друг к другу в течение 30 секунд.",
+      "zh-CN": "手指俯卧撑：将你的食指紧紧地压在一起 30 秒。",
+      "ja": "指立て伏せ：人差し指同士を30秒間強く押し付けます。",
+      "hi": "उंगली पुश-अप: अपनी तर्जनी उंगलियों को 30 सेकंड तक मजबूती से एक साथ दबाएँ।",
+      "ar": "الضغط بالأصابع: اضغط إصبعي السبابة معًا بقوة لمدة 30 ثانية."
+    },
+    "category": "fun"
+  },
+  {
+    "challenge_texts": {
+      "en": "The Arm Crossing: Cross your arms 10 times, alternating which arm is on top, quickly.",
+      "tr": "Kol Çaprazlama: Hızlıca, hangi kolun üstte olduğunu değiştirerek kollarınızı 10 kez çaprazlayın.",
+      "fr": "Le Croisement de Bras: Croisez vos bras 10 fois, en alternant quel bras est au-dessus, rapidement.",
+      "de": "Die Armkreuzung: Kreuzen Sie Ihre Arme 10 Mal schnell, indem Sie abwechselnd einen Arm oben haben.",
+      "it": "L'Incrocio delle Braccia: Incrocia le braccia 10 volte, alternando quale braccio è sopra, velocemente.",
+      "es": "El Cruce de Brazos: Cruza tus brazos 10 veces, alternando qué brazo está arriba, rápidamente.",
+      "ru": "Скрещивание Рук: Быстро скрестите руки 10 раз, чередуя, какая рука сверху.",
+      "zh-CN": "手臂交叉：快速交叉你的手臂 10 次，交替哪只手臂在上面。",
+      "ja": "腕の交差：どちらの腕が上になるかを交互にしながら、腕を10回素早く交差させます。",
+      "hi": "हाथों का क्रॉस: तेजी से 10 बार अपनी बाहों को क्रॉस करें, यह बदलते हुए कि कौन सी बांह ऊपर है।",
+      "ar": "تقاطع الذراعين: قم بتقاطع ذراعيك 10 مرات بسرعة، مع تبديل الذراع التي تكون في الأعلى."
+    },
+    "category": "fun"
+  },
+  {
+    "challenge_texts": {
+      "en": "The Fast Walker V2: Walk 15 steps backward as fast as you can without running.",
+      "tr": "Hızlı Yürüyücü V2: Koşmadan, 15 adım geriye doğru olabildiğince hızlı yürüyün.",
+      "fr": "Le Marcheur Rapide V2: Marchez 15 pas en arrière aussi vite que possible sans courir.",
+      "de": "Der Schnellgeher V2: Gehen Sie 15 Schritte rückwärts so schnell wie möglich, ohne zu rennen.",
+      "it": "Il Camminatore Veloce V2: Cammina 15 passi all'indietro il più velocemente possibile senza correre.",
+      "es": "El Caminante Rápido V2: Camina 15 pasos hacia atrás tan rápido como puedas sin correr.",
+      "ru": "Быстрый Ходок V2: Пройдите 15 шагов назад как можно быстрее, не переходя на бег.",
+      "zh-CN": "快速行走者 V2：不跑步的情况下，尽可能快地向后走 15 步。",
+      "ja": "速歩き V2：走らずに、できるだけ早く15歩後退します。",
+      "hi": "तेज चलने वाला V2: बिना दौड़े, 15 कदम पीछे की ओर जितनी जल्दी हो सके चलें।",
+      "ar": "المشي السريع V2: امشِ 15 خطوة للخلف بأسرع ما يمكن دون الجري."
+    },
+    "category": "fun"
+  },
+  {
+    "challenge_texts": {
+      "en": "The Quiet Foot Tap: Tap your feet to a beat for 30 seconds as quietly as possible.",
+      "tr": "Sessiz Ayak Vurma: 30 saniye boyunca ayaklarınızı olabildiğince sessiz bir ritimle vurun.",
+      "fr": "Le Tapotement de Pied Silencieux: Tapez des pieds à un rythme pendant 30 secondes aussi silencieusement que possible.",
+      "de": "Das Leise Fußtippen: Tippen Sie 30 Sekunden lang mit den Füßen so leise wie möglich zu einem Rhythmus.",
+      "it": "Il Battito di Piedi Silenzioso: Batti i piedi a un ritmo per 30 secondi il più silenziosamente possibile.",
+      "es": "El Golpeteo de Pie Silencioso: Toca tus pies a un ritmo durante 30 segundos tan silenciosamente como sea posible.",
+      "ru": "Тихое Постукивание Ногой: Постукивайте ногами в ритм в течение 30 секунд как можно тише.",
+      "zh-CN": "安静的脚尖敲击：尽可能安静地敲击你的脚 30 秒。",
+      "ja": "静かな足のタップ：30秒間、できるだけ静かに足を叩いてリズムをとります。",
+      "hi": "खामोश पैर थपथपाना: 30 सेकंड तक जितनी हो सके चुपचाप अपने पैरों से ताल बजाएं।",
+      "ar": "النقر الصامت بالقدم: انقر بقدميك على إيقاع لمدة 30 ثانية بأقل قدر ممكن من الضوضاء."
+    },
+    "category": "fun"
+  },
+  {
+    "challenge_texts": {
+      "en": "The Head-to-Ear Tap: Tap your head with one hand and your ear with the other, 10 times quickly.",
+      "tr": "Kafa-Kulak Vuruşu: Bir elinizle kafanıza, diğer elinizle kulağınıza 10 kez hızlıca vurun.",
+      "fr": "Le Tapotement Tête-Oreille: Tapotez votre tête avec une main et votre oreille avec l'autre, 10 fois rapidement.",
+      "de": "Das Kopf-Ohr-Tippen: Tippen Sie schnell 10 Mal mit einer Hand auf den Kopf und mit der anderen auf das Ohr.",
+      "it": "Il Tocco Testa-Orecchio: Tocca la testa con una mano e l'orecchio con l'altra, 10 volte velocemente.",
+      "es": "El Toque Cabeza-Oreja: Toca tu cabeza con una mano y tu oreja con la otra, 10 veces rápidamente.",
+      "ru": "Постукивание Голова-Ухо: Быстро постучите по голове одной рукой и по уху другой, 10 раз.",
+      "zh-CN": "头耳拍击：快速地用一只手拍打你的头，另一只手拍打你的耳朵 10 次。",
+      "ja": "頭と耳のタップ：片手で頭を、もう一方の手で耳を10回素早く叩きます。",
+      "hi": "सिर-कान थपथपाना: एक हाथ से अपने सिर को और दूसरे हाथ से अपने कान को 10 बार तेजी से थपथपाएं।",
+      "ar": "نقر الرأس والأذن: انقر على رأسك بيد واحدة وأذنك باليد الأخرى 10 مرات بسرعة."
+    },
+    "category": "fun"
+  },
+  {
+    "challenge_texts": {
+      "en": "The Thumb-to-Pinky: Touch your thumb to each of your other four fingers in sequence, 5 times.",
+      "tr": "Başparmak-Serçe: Başparmağınızı sırayla diğer dört parmağınıza 5 kez değdirin.",
+      "fr": "Le Pouce à l'Auriculaire: Touchez votre pouce à chacun de vos quatre autres doigts en séquence, 5 fois.",
+      "de": "Der Daumen-zum-Kleinen-Finger: Berühren Sie Ihren Daumen nacheinander mit jedem der anderen vier Finger, 5 Mal.",
+      "it": "Il Pollice al Mignolo: Tocca il pollice a ciascuna delle altre quattro dita in sequenza, 5 volte.",
+      "es": "El Pulgar al Meñique: Toca tu pulgar a cada uno de tus otros cuatro dedos en secuencia, 5 veces.",
+      "ru": "Большой-к-Мизинцу: Касайтесь большим пальцем каждого из остальных четырех пальцев по очереди, 5 раз.",
+      "zh-CN": "拇指到小指：按顺序用你的拇指触碰你其他四个手指，共 5 次。",
+      "ja": "親指から小指へ：親指で他の4本の指に順番に触れ、それを5回繰り返します。",
+      "hi": "अंगूठा से छोटी उंगली: अपने अंगूठे को अपनी बाकी चार उंगलियों से क्रम से 5 बार छूएँ।",
+      "ar": "الإبهام إلى الخنصر: المس إبهامك بكل من أصابعك الأربعة الأخرى بالتتابع، 5 مرات."
+    },
+    "category": "fun"
+  },
+  {
+    "challenge_texts": {
+      "en": "The Arm Cross Jump: Jump and cross your arms in front of you 10 times quickly.",
+      "tr": "Kol Çaprazlama Zıplaması: Hızlıca 10 kez zıplayın ve kollarınızı önünüzde çaprazlayın.",
+      "fr": "Le Saut Bras Croisés: Sautez et croisez vos bras devant vous 10 fois rapidement.",
+      "de": "Der Armkreuz-Sprung: Springen Sie und kreuzen Sie Ihre Arme schnell 10 Mal vor sich.",
+      "it": "Il Salto con le Braccia Incrociate: Salta e incrocia le braccia davanti a te 10 volte velocemente.",
+      "es": "El Salto de Brazos Cruzados: Salta y cruza tus brazos frente a ti 10 veces rápidamente.",
+      "ru": "Прыжок Скрещенными Руками: Быстро прыгните и скрестите руки перед собой 10 раз.",
+      "zh-CN": "手臂交叉跳：快速跳跃 10 次，并在你面前交叉你的手臂。",
+      "ja": "腕交差ジャンプ：素早く10回ジャンプし、腕を前で交差させます。",
+      "hi": "हाथ क्रॉस कूद: तेजी से 10 बार कूदें और अपनी बाहों को अपने सामने क्रॉस करें।",
+      "ar": "قفزة تقاطع الذراعين: اقفز وقم بتقاطع ذراعيك أمامك 10 مرات بسرعة."
+    },
+    "category": "fun"
+  },
+  {
+    "challenge_texts": {
+      "en": "The Foot Stomp Pattern: Stomp your left foot, then your right foot, then clap once, repeat 5 times quickly.",
+      "tr": "Ayak Vurma Deseni: Sol ayağınızı vurun, sağ ayağınızı vurun, sonra bir kez alkışlayın, 5 kez hızlıca tekrarlayın.",
+      "fr": "Le Motif de Tampon du Pied: Frappez votre pied gauche, puis votre pied droit, puis applaudissez une fois, répétez 5 fois rapidement.",
+      "de": "Das Fußstampf-Muster: Stampfen Sie mit dem linken Fuß, dann mit dem rechten Fuß, dann klatschen Sie einmal, schnell 5 Mal wiederholen.",
+      "it": "Il Modello di Pestone del Piede: Batti il piede sinistro, poi il destro, poi applaudi una volta, ripeti 5 volte velocemente.",
+      "es": "El Patrón de Pisa de Pie: Pisa con tu pie izquierdo, luego con tu pie derecho, luego aplaude una vez, repite 5 veces rápidamente.",
+      "ru": "Ритм Топота Ног: Топните левой ногой, затем правой, затем хлопните один раз, быстро повторите 5 раз.",
+      "zh-CN": "跺脚模式：跺你的左脚，然后跺你的右脚，然后拍手一次，快速重复 5 次。",
+      "ja": "足踏みパターン：左足を踏み、次に右足を踏み、その後1回拍手し、これを5回素早く繰り返します。",
+      "hi": "पैर थपथपाने का पैटर्न: अपना बायाँ पैर थपथपाएं, फिर दाहिना पैर थपथपाएं, फिर एक बार ताली बजाएं, तेजी से 5 बार दोहराएँ।",
+      "ar": "نمط الدوس بالقدم: اخطُ بقدمك اليسرى، ثم بقدمك اليمنى، ثم صفق مرة واحدة، كرر 5 مرات بسرعة."
+    },
+    "category": "fun"
+  },
+  {
+    "challenge_texts": {
+      "en": "The Silent Shout V4: Hold a dramatic, silent laugh for 15 seconds.",
+      "tr": "Sessiz Çığlık V4: 15 saniye boyunca dramatik, sessiz bir kahkaha atın.",
+      "fr": "Le Cri Silencieux V4: Faites un rire dramatique et silencieux pendant 15 secondes.",
+      "de": "Der Stille Schrei V4: Machen Sie 15 Sekunden lang ein dramatisches, stummes Lachen.",
+      "it": "L'Urlo Silenzioso V4: Fai una risata drammatica e silenziosa per 15 secondi.",
+      "es": "El Grito Silencioso V4: Haz una risa dramática y silenciosa durante 15 segundos.",
+      "ru": "Беззвучный Крик V4: Издайте драматичный, беззвучный смех в течение 15 секунд.",
+      "zh-CN": "无声呐喊 V4：保持一个戏剧性的、无声的笑声姿势 15 秒。",
+      "ja": "サイレント叫び V4：ドラマチックで無言の笑いを15秒間保持します。",
+      "hi": "खामोश चीख V4: 15 सेकंड तक एक नाटकीय, खामोश हँसी बनाए रखें।",
+      "ar": "الصرخة الصامتة V4: قم بضحكة درامية صامتة لمدة 15 ثانية."
+    },
+    "category": "fun"
+  },
+  {
+    "challenge_texts": {
+      "en": "The Opposite Pat: Pat your head with one hand and rub your stomach with the other for 10 seconds.",
+      "tr": "Ters Vuruş: Bir elinizle kafanıza vurun ve diğer elinizle karnınızı 10 saniye ovun.",
+      "fr": "La Tape Opposée: Tapez votre tête avec une main et frottez votre ventre avec l'autre pendant 10 secondes.",
+      "de": "Das Gegenklopfen: Klopfen Sie 10 Sekunden lang mit einer Hand auf den Kopf und reiben Sie mit der anderen den Bauch.",
+      "it": "La Pacca Opposta: Accarezza la testa con una mano e strofina la pancia con l'altra per 10 secondi.",
+      "es": "La Palmadita Opuesta: Palmea tu cabeza con una mano y frota tu estómago con la otra durante 10 segundos.",
+      "ru": "Противоположный Шлепок: Похлопайте себя по голове одной рукой и потрите живот другой в течение 10 секунд.",
+      "zh-CN": "对侧拍打：用一只手拍打你的头，另一只手揉搓你的肚子 10 秒。",
+      "ja": "反対側パット：片手で頭を軽く叩き、もう一方の手でお腹を10秒間こすります。",
+      "hi": "विपरीत थपथपाहट: एक हाथ से अपने सिर को थपथपाएं और दूसरे हाथ से अपने पेट को 10 सेकंड तक रगड़ें।",
+      "ar": "الطبطبة المعاكسة: ربت على رأسك بيد واحدة وافرك بطنك باليد الأخرى لمدة 10 ثوانٍ."
+    },
+    "category": "fun"
+  },
+  {
+    "challenge_texts": {
+      "en": "The Tongue to Chin: Try to touch your chin with your tongue for 5 seconds.",
+      "tr": "Dil Çene Teması: Dilinizle çenenize 5 saniye boyunca dokunmaya çalışın.",
+      "fr": "La Langue au Menton: Essayez de toucher votre menton avec votre langue pendant 5 secondes.",
+      "de": "Die Zunge zum Kinn: Versuchen Sie, Ihr Kinn 5 Sekunden lang mit der Zunge zu berühren.",
+      "it": "La Lingua al Mento: Prova a toccare il mento con la lingua per 5 secondi.",
+      "es": "La Lengua a la Barbilla: Intenta tocar tu barbilla con la lengua durante 5 segundos.",
+      "ru": "Язык к Подбородку: Попробуйте коснуться подбородка языком в течение 5 секунд.",
+      "zh-CN": "舌头碰下巴：尝试用你的舌头触碰你的下巴 5 秒。",
+      "ja": "舌で顎に触れる：5秒間、舌で顎に触れようとします。",
+      "hi": "जीभ से ठोड़ी छूना: 5 सेकंड तक अपनी ठोड़ी को अपनी जीभ से छूने की कोशिश करें।",
+      "ar": "اللسان إلى الذقن: حاول لمس ذقنك بلسانك لمدة 5 ثوانٍ."
+    },
+    "category": "fun"
+  },
+  {
+    "challenge_texts": {
+      "en": "The Nose Push: Push your nose up with your index finger for 10 seconds.",
+      "tr": "Burun İtme: İşaret parmağınızla burnunuzu 10 saniye boyunca yukarı doğru itin.",
+      "fr": "La Poussée du Nez: Poussez votre nez vers le haut avec votre index pendant 10 secondes.",
+      "de": "Der Nasenstupser: Drücken Sie Ihre Nase 10 Sekunden lang mit dem Zeigefinger nach oben.",
+      "it": "La Spinta del Naso: Spingi il naso in alto con l'indice per 10 secondi.",
+      "es": "El Empuje de Nariz: Empuja tu nariz hacia arriba con tu dedo índice durante 10 segundos.",
+      "ru": "Толчок Носа: Толкайте нос вверх указательным пальцем в течение 10 секунд.",
+      "zh-CN": "鼻子推动：用你的食指向上推你的鼻子 10 秒。",
+      "ja": "鼻押し：人差し指で鼻を10秒間上に押します。",
+      "hi": "नाक धक्का: अपनी तर्जनी उंगली से अपनी नाक को 10 सेकंड तक ऊपर की ओर धकेलें।",
+      "ar": "دفع الأنف: ادفع أنفك للأعلى بإصبع السبابة لمدة 10 ثوانٍ."
+    },
+    "category": "fun"
+  },
+  {
+    "challenge_texts": {
+      "en": "The Finger Drum: Drum a continuous beat with two fingers on a surface for 30 seconds.",
+      "tr": "Parmak Davulu: İki parmağınızla bir yüzeyde 30 saniye boyunca kesintisiz bir ritim çalın.",
+      "fr": "Le Tambour à Doigts: Battez un rythme continu avec deux doigts sur une surface pendant 30 secondes.",
+      "de": "Die Finger-Trommel: Trommeln Sie 30 Sekunden lang mit zwei Fingern einen kontinuierlichen Rhythmus auf einer Oberfläche.",
+      "it": "Il Tamburo a Dita: Batti un ritmo continuo con due dita su una superficie per 30 secondi.",
+      "es": "El Tambor de Dedos: Toca un ritmo continuo con dos dedos en una superficie durante 30 segundos.",
+      "ru": "Барабан Пальцем: Отбивайте непрерывный ритм двумя пальцами по поверхности в течение 30 секунд.",
+      "zh-CN": "手指鼓：用两个手指在表面连续敲击一个节拍 30 秒。",
+      "ja": "指ドラム：表面で2本の指で30秒間連続したビートを叩きます。",
+      "hi": "अंगुली का ढोल: 30 सेकंड तक एक सतह पर दो उंगलियों से लगातार ताल बजाएं।",
+      "ar": "طبل الأصابع: اطرق إيقاعًا مستمرًا بإصبعين على سطح لمدة 30 ثانية."
+    },
+    "category": "fun"
+  },
+  {
+    "challenge_texts": {
+      "en": "The Quick Count V2: Count backward from 20 to 1, skipping every third number (20, 19, 18, 16...), in 15 seconds.",
+      "tr": "Hızlı Sayım V2: Her üçüncü sayıyı atlayarak 20'den 1'e kadar geri sayın (20, 19, 18, 16...), 15 saniyede.",
+      "fr": "Le Compte Rapide V2: Comptez à rebours de 20 à 1, en sautant tous les troisièmes numéros (20, 19, 18, 16...), en 15 secondes.",
+      "de": "Das Schnelle Zählen V2: Zählen Sie von 20 auf 1 rückwärts, wobei Sie jede dritte Zahl überspringen (20, 19, 18, 16...), in 15 Sekunden.",
+      "it": "Il Conteggio Veloce V2: Conta all'indietro da 20 a 1, saltando ogni terzo numero (20, 19, 18, 16...), in 15 secondi.",
+      "es": "La Cuenta Rápida V2: Cuenta hacia atrás del 20 al 1, saltando cada tercer número (20, 19, 18, 16...), en 15 segundos.",
+      "ru": "Быстрый Счет V2: Считайте в обратном порядке от 20 до 1, пропуская каждое третье число (20, 19, 18, 16...), за 15 секунд.",
+      "zh-CN": "快速计数 V2：在 15 秒内，从 20 倒数到 1，跳过每第三个数字（20, 19, 18, 16...）。",
+      "ja": "高速カウント V2：15秒以内に、3番目ごとの数字をスキップしながら20から1まで逆算します（20、19、18、16...）。",
+      "hi": "तेज गिनती V2: 15 सेकंड में, हर तीसरी संख्या को छोड़ते हुए 20 से 1 तक उल्टी गिनती करें (20, 19, 18, 16...)।",
+      "ar": "العد السريع V2: عد عكسيًا من 20 إلى 1، متخطيًا كل رقم ثالث (20، 19، 18، 16...)، في 15 ثانية."
+    },
+    "category": "fun"
+  },
+  {
+    "challenge_texts": {
+      "en": "The Hand Balance: Balance your phone on the back of your hand for 20 seconds.",
+      "tr": "El Dengesi: Telefonunuzu 20 saniye boyunca elinizin üzerinde dengeleyin.",
+      "fr": "L'Équilibre de la Main: Équilibrez votre téléphone sur le dos de votre main pendant 20 secondes.",
+      "de": "Das Hand-Gleichgewicht: Balancieren Sie Ihr Telefon 20 Sekunden lang auf dem Handrücken.",
+      "it": "L'Equilibrio della Mano: Bilancia il telefono sul dorso della mano per 20 secondi.",
+      "es": "El Equilibrio de Mano: Equilibra tu teléfono en el dorso de tu mano durante 20 segundos.",
+      "ru": "Баланс Руки: Удерживайте баланс телефона на тыльной стороне ладони в течение 20 секунд.",
+      "zh-CN": "手部平衡：将你的手机在手背上平衡 20 秒。",
+      "ja": "手のバランス：手の甲で携帯電話を20秒間バランスさせます。",
+      "hi": "हाथ का संतुलन: अपने फ़ोन को 20 सेकंड तक अपने हाथ की पीठ पर संतुलित करें।",
+      "ar": "توازن اليد: وازن هاتفك على ظهر يدك لمدة 20 ثانية."
+    },
+    "category": "fun"
+  },
+  {
+    "challenge_texts": {
+      "en": "The Fast Nod V2: Nod your head 'no' (side to side) 20 times as fast as you can, in 10 seconds.",
+      "tr": "Hızlı Onay V2: Başınızı 'hayır' anlamında (yana doğru) 20 kez olabildiğince hızlı sallayın, 10 saniye içinde.",
+      "fr": "Le Hochement Rapide V2: Hochez la tête 'non' (de gauche à droite) 20 fois aussi vite que possible, en 10 secondes.",
+      "de": "Das Schnelle Nicken V2: Schütteln Sie den Kopf ('Nein', seitlich) 20 Mal so schnell wie möglich, in 10 Sekunden.",
+      "it": "L'Annui Rapid V2: Muovi la testa 'no' (lateralmente) 20 volte il più velocemente possibile, in 10 secondi.",
+      "es": "El Asentimiento Rápido V2: Mueve tu cabeza 'no' (de lado a lado) 20 veces tan rápido como puedas, en 10 segundos.",
+      "ru": "Быстрый Кивок V2: Быстро покачайте головой 'нет' (из стороны в сторону) 20 раз, за 10 секунд.",
+      "zh-CN": "快速点头 V2：在 10 秒内，以最快的速度摇头 '否' (左右摇晃) 20 次。",
+      "ja": "高速うなずき V2：10秒以内に、頭を「いいえ」（左右）と20回できるだけ速く振ります。",
+      "hi": "तेजी से सिर हिलाना V2: 10 सेकंड में, अपना सिर 'नहीं' में (किनारे से किनारे) 20 बार जितनी जल्दी हो सके हिलाएँ।",
+      "ar": "الإيماء السريع V2: حرّك رأسك 'لا' (من جانب إلى جانب) 20 مرة بأسرع ما يمكن، في 10 ثوانٍ."
+    },
+    "category": "fun"
+  },
+  {
+    "challenge_texts": {
+      "en": "The Finger Wave V2: Wave all your fingers simultaneously for 30 seconds (like a fast 'hello').",
+      "tr": "Parmak Sallama V2: Tüm parmaklarınızı aynı anda 30 saniye boyunca sallayın (hızlı bir 'merhaba' der gibi).",
+      "fr": "L'Onde du Doigt V2: Agitez tous vos doigts simultanément pendant 30 secondes (comme un 'bonjour' rapide).",
+      "de": "Die Fingerwelle V2: Winken Sie 30 Sekunden lang mit allen Fingern gleichzeitig (wie ein schnelles 'Hallo').",
+      "it": "L'Onda del Dito V2: Agita tutte le dita simultaneamente per 30 secondi (come un 'ciao' veloce).",
+      "es": "La Onda del Dedo V2: Agita todos tus dedos simultáneamente durante 30 segundos (como un 'hola' rápido).",
+      "ru": "Волна Пальцем V2: Машите всеми пальцами одновременно в течение 30 секунд (как быстрое 'привет').",
+      "zh-CN": "手指波 V2：同时挥动你所有的手指 30 秒（就像快速说 '你好'）。",
+      "ja": "指の波 V2：すべて指を同時に30秒間振ります（素早い「こんにちは」のように）。",
+      "hi": "अंगुली की लहर V2: अपनी सभी उंगलियों को एक साथ 30 सेकंड तक हिलाएँ (एक तेज 'नमस्ते' की तरह)।",
+      "ar": "موجة الإصبع V2: لوّح بجميع أصابعك في وقت واحد لمدة 30 ثانية (مثل قول 'مرحبًا' سريعًا)."
+    },
+    "category": "fun"
+  },
+  {
+    "challenge_texts": {
+      "en": "The Balance Cross: Stand on one foot, with the other foot crossed over the knee, for 15 seconds.",
+      "tr": "Denge Çaprazlama: Bir ayak üzerinde durun, diğer ayağınızı dizinizin üzerine çaprazlayın ve 15 saniye kalın.",
+      "fr": "La Croix d'Équilibre: Tenez-vous sur un pied, l'autre pied croisé sur le genou, pendant 15 secondes.",
+      "de": "Das Balance-Kreuz: Stehen Sie 15 Sekunden lang auf einem Bein, das andere Bein über das Knie gekreuzt.",
+      "it": "La Croce d'Equilibrio: Stai su un piede, con l'altro piede incrociato sul ginocchio, per 15 secondi.",
+      "es": "La Cruz de Equilibrio: Párate sobre un pie, con el otro pie cruzado sobre la rodilla, durante 15 segundos.",
+      "ru": "Крест Баланса: Стойте на одной ноге, скрестив другую ногу на колене, в течение 15 секунд.",
+      "zh-CN": "平衡交叉：单脚站立，另一只脚交叉放在膝盖上，保持 15 秒。",
+      "ja": "バランスクロス：片足で立ち、もう一方の足を膝の上で交差させて15秒間保持します。",
+      "hi": "संतुलन क्रॉस: एक पैर पर खड़े हों, दूसरे पैर को घुटने के ऊपर क्रॉस करें, और 15 सेकंड तक रहें।",
+      "ar": "توازن التقاطع: قف على ساق واحدة، مع تقاطع الساق الأخرى فوق الركبة، لمدة 15 ثانية."
+    },
+    "category": "fun"
+  },
+  {
+    "challenge_texts": {
+      "en": "The Arm Spin: Rotate your right arm forward 10 times and your left arm backward 10 times, simultaneously.",
+      "tr": "Kol Döndürme: Sağ kolunuzu 10 kez ileri, sol kolunuzu 10 kez geri doğru aynı anda döndürün.",
+      "fr": "La Rotation de Bras: Faites pivoter votre bras droit 10 fois en avant et votre bras gauche 10 fois en arrière, simultanément.",
+      "de": "Die Armdrehung: Drehen Sie Ihren rechten Arm 10 Mal vorwärts und Ihren linken Arm 10 Mal rückwärts, gleichzeitig.",
+      "it": "La Rotazione del Braccio: Ruota il braccio destro in avanti 10 volte e il braccio sinistro all'indietro 10 volte, contemporaneamente.",
+      "es": "El Giro de Brazo: Rota tu brazo derecho hacia adelante 10 veces y tu brazo izquierdo hacia atrás 10 veces, simultáneamente.",
+      "ru": "Вращение Рук: Вращайте правой рукой вперед 10 раз, а левой рукой назад 10 раз, одновременно.",
+      "zh-CN": "手臂旋转：同时将你的右臂向前旋转 10 次，左臂向后旋转 10 次。",
+      "ja": "腕の回転：右腕を前に10回、左腕を後ろに10回、同時に回転させます。",
+      "hi": "हाथ घुमाना: अपनी दाहिनी बांह को 10 बार आगे और अपनी बाईं बांह को 10 बार पीछे की ओर घुमाएँ, एक साथ।",
+      "ar": "دوران الذراع: قم بتدوير ذراعك الأيمن للأمام 10 مرات وذراعك الأيسر للخلف 10 مرات، في نفس الوقت."
+    },
+    "category": "fun"
+  },
+  {
+    "challenge_texts": {
+      "en": "The Nose Touch V2: Touch your nose with your right index finger 15 times quickly.",
+      "tr": "Burun Dokunuşu V2: Sağ işaret parmağınızla burnunuza 15 kez hızlıca dokunun.",
+      "fr": "Le Toucher de Nez V2: Touchez rapidement votre nez 15 fois avec votre index droit.",
+      "de": "Die Nasenberührung V2: Berühren Sie schnell 15 Mal Ihre Nase mit Ihrem rechten Zeigefinger.",
+      "it": "Il Tocco del Naso V2: Tocca il naso 15 volte velocemente con l'indice destro.",
+      "es": "El Toque de Nariz V2: Toca tu nariz 15 veces rápidamente con tu dedo índice derecho.",
+      "ru": "Касание Носа V2: Быстро коснитесь носа правым указательным пальцем 15 раз.",
+      "zh-CN": "鼻子触碰 V2：快速地用你的右食指触碰你的鼻子 15 次。",
+      "ja": "鼻タッチ V2：右手の人差し指で鼻に15回素早く触れます。",
+      "hi": "नाक स्पर्श V2: अपनी दाहिनी तर्जनी से अपनी नाक को 15 बार तेजी से छूएँ।",
+      "ar": "لمس الأنف V2: المس أنفك بإصبع السبابة الأيمن 15 مرة بسرعة."
+    },
+    "category": "fun"
+  },
+  {
+    "challenge_texts": {
+      "en": "The Head-to-Shoulder Tap V2: Alternately tap your head and shoulder with the SAME hand for 30 seconds.",
+      "tr": "Kafa-Omuz Vuruşu V2: Aynı elinizle sırayla kafanıza ve omzunuza 30 saniye boyunca vurun.",
+      "fr": "Le Tapotement Tête-Épaule V2: Tapotez alternativement votre tête et votre épaule avec la MÊME main pendant 30 secondes.",
+      "de": "Das Kopf-Schulter-Tippen V2: Tippen Sie 30 Sekunden lang abwechselnd mit der GLEICHEN Hand auf Kopf und Schulter.",
+      "it": "Il Tocco Testa-Spalla V2: Tocca alternativamente la testa e la spalla con la STESSA mano per 30 secondi.",
+      "es": "El Toque Cabeza-Hombro V2: Toca alternativamente tu cabeza y hombro con la MISMA mano durante 30 segundos.",
+      "ru": "Постукивание Голова-Плечо V2: Поочередно постукивайте по голове и плечу ОДНОЙ и ТОЙ ЖЕ рукой в течение 30 секунд.",
+      "zh-CN": "头肩拍击 V2：用 **同一只** 手交替拍打你的头和肩膀 30 秒。",
+      "ja": "頭と肩のタップ V2：**同じ** 手で交互に頭と肩を30秒間タップします。",
+      "hi": "सिर-कंधा थपथपाना V2: **उसी** हाथ से बारी-बारी से अपने सिर और कंधे को 30 सेकंड तक थपथपाएं।",
+      "ar": "نقر الرأس والكتف V2: اضغط بالتناوب على رأسك وكتفك بـ**نفس** اليد لمدة 30 ثانية."
+    },
+    "category": "fun"
+  },
+  {
+    "challenge_texts": {
+      "en": "The Quiet Hum: Hum a tune for 15 seconds, so quietly that only you can hear it.",
+      "tr": "Sessiz Mırıldanma: 15 saniye boyunca sadece sizin duyabileceğiniz kadar sessiz bir melodi mırıldanın.",
+      "fr": "Le Bourdonnement Silencieux: Fredonnez un air pendant 15 secondes, si doucement que vous seul pouvez l'entendre.",
+      "de": "Das Leise Summen: Summen Sie 15 Sekunden lang eine Melodie, so leise, dass nur Sie es hören können.",
+      "it": "Il Ronzio Silenzioso: Canticchia una melodia per 15 secondi, così piano che solo tu puoi sentirla.",
+      "es": "El Tarareo Silencioso: Tararea una melodía durante 15 segundos, tan bajo que solo tú puedas oírla.",
+      "ru": "Тихое Мычание: Промычите мелодию в течение 15 секунд так тихо, чтобы только вы могли ее услышать.",
+      "zh-CN": "安静的哼唱：哼唱一段旋律 15 秒，声音要小到只有你自己能听到。",
+      "ja": "静かなハミング：15秒間、自分だけが聞こえるほど静かにメロディーをハミングします。",
+      "hi": "खामोश गुनगुनाहट: 15 सेकंड तक इतनी खामोशी से एक धुन गुनगुनाएँ कि केवल आप ही उसे सुन सकें।",
+      "ar": "الهمهمة الصامتة: دندن لحنًا لمدة 15 ثانية، بهدوء شديد بحيث لا يسمعه أحد سواك."
+    },
+    "category": "fun"
+  },
+  {
+    "challenge_texts": {
+      "en": "The Rapid Tap Dance: Tap your heels and toes alternately 30 times as fast as possible.",
+      "tr": "Hızlı Tap Dansı: Topuklarınızı ve parmak uçlarınızı sırayla 30 kez olabildiğince hızlı vurun.",
+      "fr": "La Danse Rapide des Claquettes: Tapez alternativement vos talons et vos orteils 30 fois le plus vite possible.",
+      "de": "Der Schnelle Stepptanz: Tippen Sie abwechselnd mit Fersen und Zehen 30 Mal so schnell wie möglich.",
+      "it": "La Danza Tap Veloce: Batti alternativamente talloni e punte 30 volte il più velocemente possibile.",
+      "es": "El Baile Tap Rápido: Toca alternativamente tus talones y dedos del pie 30 veces tan rápido como sea posible.",
+      "ru": "Быстрый Степ-Танец: Постучите попеременно пятками и носками 30 раз как можно быстрее.",
+      "zh-CN": "快速踢踏舞：尽可能快地交替用你的脚跟和脚尖敲击地面 30 次。",
+      "ja": "高速タップダンス：かかととつま先を交互に30回できるだけ速く叩きます。",
+      "hi": "तेज टैप डांस: अपनी एड़ी और पैर की उंगलियों को बारी-बारी से 30 बार जितनी जल्दी हो सके थपथपाएं।",
+      "ar": "رقصة النقر السريعة: انقر بكعبيك وأصابع قدميك بالتناوب 30 مرة بأسرع ما يمكن."
+    },
+    "category": "fun"
+  },
+  {
+    "challenge_texts": {
+      "en": "The Arm Cross Jump V2: Jump and touch your opposite knees with your opposite elbows 10 times quickly.",
+      "tr": "Kol Çaprazlama Zıplaması V2: Hızlıca 10 kez zıplayın ve zıt dirseklerinizi zıt dizlerinize değdirin.",
+      "fr": "Le Saut Bras Croisés V2: Sautez et touchez vos genoux opposés avec vos coudes opposés 10 fois rapidement.",
+      "de": "Der Armkreuz-Sprung V2: Springen Sie und berühren Sie schnell 10 Mal Ihre gegenüberliegenden Knie mit den gegenüberliegenden Ellbogen.",
+      "it": "Il Salto con le Braccia Incrociate V2: Salta e tocca le ginocchia opposte con i gomiti opposti 10 volte velocemente.",
+      "es": "El Salto de Brazos Cruzados V2: Salta y toca tus rodillas opuestas con tus codos opuestos 10 veces rápidamente.",
+      "ru": "Прыжок Скрещенными Руками V2: Быстро прыгните и коснитесь противоположных коленей противоположными локтями 10 раз.",
+      "zh-CN": "手臂交叉跳 V2：快速跳跃 10 次，并用你的对侧肘部触碰对侧膝盖。",
+      "ja": "腕交差ジャンプ V2：素早く10回ジャンプし、反対側の肘で反対側の膝に触れます。",
+      "hi": "हाथ क्रॉस कूद V2: तेजी से 10 बार कूदें और अपनी विपरीत कोहनियों से अपने विपरीत घुटनों को छूएँ।",
+      "ar": "قفزة تقاطع الذراعين V2: اقفز والمس ركبتيك المعاكستين بكوعيك المعاكسين 10 مرات بسرعة."
+    },
+    "category": "fun"
+  },
+  {
+    "challenge_texts": {
+      "en": "The Fast Winker: Wink with your left eye 20 times, then your right eye 20 times, quickly.",
+      "tr": "Hızlı Göz Kırpıcı: Sol gözünüzle 20 kez, ardından sağ gözünüzle 20 kez hızlıca göz kırpın.",
+      "fr": "Le Cligneur Rapide: Clignez de l'œil gauche 20 fois, puis de l'œil droit 20 fois, rapidement.",
+      "de": "Der Schnellzwinker: Zwinkern Sie schnell 20 Mal mit dem linken Auge, dann 20 Mal mit dem rechten Auge.",
+      "it": "Lo Strikelatore Veloce: Fai l'occhiolino con l'occhio sinistro 20 volte, poi con l'occhio destro 20 volte, velocemente.",
+      "es": "El Guiñador Rápido: Guiña con tu ojo izquierdo 20 veces, luego con tu ojo derecho 20 veces, rápidamente.",
+      "ru": "Быстрый Подмигиватель: Быстро подмигните левым глазом 20 раз, затем правым глазом 20 раз.",
+      "zh-CN": "快速眨眼者：快速地用左眼眨眼 20 次，然后用右眼眨眼 20 次。",
+      "ja": "高速ウィンク：左目で20回、次に右目で20回、素早くウィンクします。",
+      "hi": "तेज पलक झपकने वाला: अपनी बाईं आँख से 20 बार, फिर अपनी दाहिनी आँख से 20 बार जल्दी से पलक झपकाएँ।",
+      "ar": "الغامز السريع: اغمز بعينك اليسرى 20 مرة، ثم بعينك اليمنى 20 مرة، بسرعة."
+    },
+    "category": "fun"
+  },
+  {
+    "challenge_texts": {
+      "en": "The Tongue to Cheek: Touch the inside of your right cheek with your tongue, then your left, 10 times.",
+      "tr": "Dil Yanak Teması: Dilinizle önce sağ yanağınızın içini, sonra sol yanağınızın içini 10 kez değdirin.",
+      "fr": "La Langue à la Joue: Touchez l'intérieur de votre joue droite avec votre langue, puis la gauche, 10 fois.",
+      "de": "Die Zunge zur Wange: Berühren Sie mit der Zunge 10 Mal die Innenseite Ihrer rechten Wange, dann die linke.",
+      "it": "La Lingua alla Guancia: Tocca l'interno della guancia destra con la lingua, poi la sinistra, 10 volte.",
+      "es": "La Lengua a la Mejilla: Toca el interior de tu mejilla derecha con la lengua, luego la izquierda, 10 veces.",
+      "ru": "Язык к Щеке: Касайтесь языком внутренней стороны правой щеки, затем левой, 10 раз.",
+      "zh-CN": "舌头碰脸颊：用你的舌头触碰你的右脸颊内部，然后是左脸颊，共 10 次。",
+      "ja": "舌で頬に触れる：舌で右頬の内側を触れ、次に左頬の内側を触れ、それを10回繰り返します。",
+      "hi": "जीभ से गाल छूना: अपनी जीभ से अपनी दाहिनी गाल के अंदरूनी हिस्से को छूएँ, फिर बाईं ओर, 10 बार।",
+      "ar": "اللسان إلى الخد: المس الجانب الداخلي من خدك الأيمن بلسانك، ثم الأيسر، 10 مرات."
+    },
+    "category": "fun"
+  },
+  {
+    "challenge_texts": {
+      "en": "The Cross March: March in place, touching your opposite hand to your opposite knee 10 times.",
+      "tr": "Çapraz Yürüyüş: Yerinizde yürüyün, zıt elinizi zıt dizinize 10 kez değdirin.",
+      "fr": "La Marche Croisée: Marchez sur place, touchant votre main opposée à votre genou opposé 10 fois.",
+      "de": "Der Kreuzmarsch: Marschieren Sie auf der Stelle und berühren Sie 10 Mal Ihre gegenüberliegende Hand mit Ihrem gegenüberliegenden Knie.",
+      "it": "La Marcia Incrociata: Marcia sul posto, toccando la mano opposta al ginocchio opposto 10 volte.",
+      "es": "La Marcha Cruzada: Marcha en el sitio, tocando tu mano opuesta a tu rodilla opuesta 10 veces.",
+      "ru": "Перекрестный Марш: Маршируйте на месте, касаясь противоположной рукой противоположного колена 10 раз.",
+      "zh-CN": "交叉行进：原地踏步，用你的对侧手触碰对侧膝盖 10 次。",
+      "ja": "クロスマッチ：その場でマーチングを行い、反対側の手で反対側の膝に10回触れます。",
+      "hi": "क्रॉस मार्च: अपनी जगह पर मार्च करें, अपनी विपरीत हाथ को अपने विपरीत घुटने से 10 बार छूएँ।",
+      "ar": "المسيرة المتقاطعة: سر في مكانك، المس يدك المعاكسة لركبتك المعاكسة 10 مرات."
+    },
+    "category": "fun"
+  },
+  {
+    "challenge_texts": {
+      "en": "The Quick Sketch V2: Draw an invisible star in the air with your finger, in under 5 seconds.",
+      "tr": "Hızlı Çizim V2: 5 saniyenin altında parmağınızla havada görünmez bir yıldız çizin.",
+      "fr": "L'Esquisse Rapide V2: Dessinez une étoile invisible dans l'air avec votre doigt, en moins de 5 secondes.",
+      "de": "Die Schnelle Zeichnung V2: Zeichnen Sie in weniger als 5 Sekunden einen unsichtbaren Stern mit Ihrem Finger in die Luft.",
+      "it": "Il Disegno Veloce V2: Disegna una stella invisibile in aria con il dito, in meno di 5 secondi.",
+      "es": "El Dibujo Rápido V2: Dibuja una estrella invisible en el aire con tu dedo, en menos de 5 segundos.",
+      "ru": "Быстрый Рисунок V2: Быстро нарисуйте невидимую звезду в воздухе пальцем, за 5 секунд.",
+      "zh-CN": "快速绘画 V2：在 5 秒内，用你的手指在空中画出一个隐形的星星。",
+      "ja": "クイックスケッチ V2：5秒以内に、指で空中に見えない星を描きます。",
+      "hi": "तेज रेखांकन V2: 5 सेकंड से कम समय में, अपनी उंगली से हवा में एक अदृश्य तारा बनाएँ।",
+      "ar": "الرسم السريع V2: ارسم نجمة غير مرئية في الهواء بإصبعك، في أقل من 5 ثوانٍ."
+    },
+    "category": "fun"
+  },
+  {
+    "challenge_texts": {
+      "en": "The Quiet Whisper: Whisper the word 'Shhh...' 10 times as quietly as possible, in 10 seconds.",
+      "tr": "Sessiz Fısıltı: 'Şşşt...' kelimesini 10 saniye içinde olabildiğince sessiz bir şekilde 10 kez fısıldayın.",
+      "fr": "Le Murmure Silencieux: Chuchotez le mot 'Chut...' 10 fois le plus doucement possible, en 10 secondes.",
+      "de": "Das Leise Flüstern: Flüstern Sie das Wort 'Pst...' 10 Mal so leise wie möglich, in 10 Sekunden.",
+      "it": "Il Sussurro Silenzioso: Sussurra la parola 'Shhh...' 10 volte il più silenziosamente possibile, in 10 secondi.",
+      "es": "El Susurro Silencioso: Susurra la palabra 'Shhh...' 10 veces tan silenciosamente como sea posible, en 10 segundos.",
+      "ru": "Тихий Шепот: Прошепчите слово 'Тсс...' 10 раз как можно тише, за 10 секунд.",
+      "zh-CN": "安静的耳语：在 10 秒内，尽可能安静地耳语 '嘘...' 一词 10 次。",
+      "ja": "静かなささやき：「シーッ...」という言葉を10秒以内にできるだけ静かに10回ささやきます。",
+      "hi": "खामोश फुसफुसाहट: 10 सेकंड में, 'श्श्श्...' शब्द को 10 बार जितनी हो सके चुपचाप फुसफुसाएँ।",
+      "ar": "الهمس الصامت: اهمس بكلمة 'إشش...' 10 مرات بأقل قدر ممكن من الضوضاء، في 10 ثوانٍ."
+    },
+    "category": "fun"
+  },
+  {
+    "challenge_texts": {
+      "en": "The Arm Wave: Wave both arms up and down rapidly for 30 seconds.",
+      "tr": "Kol Sallama: İki kolunuzu da 30 saniye boyunca hızlıca yukarı ve aşağı sallayın.",
+      "fr": "L'Onde des Bras: Agitez les deux bras de haut en bas rapidement pendant 30 secondes.",
+      "de": "Die Armwelle: Winken Sie 30 Sekunden lang schnell mit beiden Armen auf und ab.",
+      "it": "L'Onda delle Braccia: Agita entrambe le braccia su e giù rapidamente per 30 secondi.",
+      "es": "La Onda de Brazos: Agita ambos brazos arriba y abajo rápidamente durante 30 segundos.",
+      "ru": "Волна Руками: Быстро машите обеими руками вверх и вниз в течение 30 секунд.",
+      "zh-CN": "手臂挥舞：快速地上下挥动你的双臂 30 秒。",
+      "ja": "腕の波：両腕を30秒間、素早く上下に振ります。",
+      "hi": "हाथ की लहर: अपनी दोनों बाहों को 30 सेकंड तक तेजी से ऊपर और नीचे हिलाएँ।",
+      "ar": "موجة الذراع: لوّح بكلتا ذراعيك للأعلى والأسفل بسرعة لمدة 30 ثانية."
+    },
+    "category": "fun"
+  },
+  {
+    "challenge_texts": {
+      "en": "The Finger Tapper V2: Tap your thumb to your ring finger 30 times as fast as possible.",
+      "tr": "Parmak Vurucu V2: Başparmağınızı yüzük parmağınıza 30 kez olabildiğince hızlı vurun.",
+      "fr": "Le Tapoteur de Doigts V2: Touchez rapidement votre pouce à votre annulaire 30 fois.",
+      "de": "Der Finger-Tipper V2: Tippen Sie Ihren Daumen so schnell wie möglich 30 Mal an Ihren Ringfinger.",
+      "it": "Il Battito di Dita V2: Tocca rapidamente il pollice all'anulare 30 volte.",
+      "es": "El Tocador de Dedos V2: Toca tu pulgar a tu dedo anular 30 veces tan rápido como sea posible.",
+      "ru": "Постукивание Пальцем V2: Стучите большим пальцем по безымянному пальцу 30 раз как можно быстрее.",
+      "zh-CN": "手指敲击者 V2：以最快的速度将你的拇指敲击你的无名指 30 次。",
+      "ja": "指タッパー V2：親指を薬指に30回できるだけ速く叩きます。",
+      "hi": "अंगुली थपथपाना V2: अपनी अंगूठे को अपनी अनामिका से 30 बार जितनी जल्दी हो सके थपथपाएं।",
+      "ar": "ناقر الأصابع V2: انقر بإبهامك على إصبع البنصر 30 مرة بأسرع ما يمكن."
+    },
+    "category": "fun"
+  },
+  {
+    "challenge_texts": {
+      "en": "The Quiet Runner: Run in place for 30 seconds as quietly as possible.",
+      "tr": "Sessiz Koşucu: 30 saniye boyunca olabildiğince sessiz bir şekilde yerinizde koşun.",
+      "fr": "Le Coureur Silencieux: Courez sur place pendant 30 secondes aussi silencieusement que possible.",
+      "de": "Der Leise Läufer: Laufen Sie 30 Sekunden lang auf der Stelle so leise wie möglich.",
+      "it": "Il Corridore Silenzioso: Corri sul posto per 30 secondi il più silenziosamente possibile.",
+      "es": "El Corredor Silencioso: Corre en el sitio durante 30 segundos tan silenciosamente como sea posible.",
+      "ru": "Тихий Бегун: Бегите на месте в течение 30 секунд как можно тише.",
+      "zh-CN": "安静的跑步者：尽可能安静地原地跑步 30 秒。",
+      "ja": "サイレントランナー：30秒間、できるだけ静かにその場で走ります。",
+      "hi": "खामोश धावक: 30 सेकंड तक जितनी हो सके चुपचाप अपनी जगह पर दौड़ें।",
+      "ar": "العداء الصامت: اركض في مكانك لمدة 30 ثانية بأقل قدر ممكن من الضوضاء."
+    },
+    "category": "fun"
+  },
+  {
+    "challenge_texts": {
+      "en": "The Funny Walk: Walk 10 steps in the funniest way possible.",
+      "tr": "Komik Yürüyüş: Mümkün olan en komik şekilde 10 adım yürüyün.",
+      "fr": "La Marche Amusante: Marchez 10 pas de la manière la plus amusante possible.",
+      "de": "Der Lustige Gang: Gehen Sie 10 Schritte auf die lustigste Weise, die möglich ist.",
+      "it": "La Camminata Divertente: Cammina 10 passi nel modo più divertente possibile.",
+      "es": "La Caminata Graciosa: Camina 10 pasos de la manera más divertida posible.",
+      "ru": "Смешная Походка: Пройдите 10 шагов самым смешным способом.",
+      "zh-CN": "滑稽行走：以最滑稽的方式走 10 步。",
+      "ja": "面白い歩き方：できるだけ面白い方法で10歩歩きます。",
+      "hi": "मजेदार चाल: सबसे मजेदार तरीके से 10 कदम चलें।",
+      "ar": "المشي المضحك: امشِ 10 خطوات بأطرف طريقة ممكنة."
+    },
+    "category": "fun"
+  },
+  {
+    "challenge_texts": {
+      "en": "The Vocal Imitator V2: Imitate the sound of a dog barking loudly for 10 seconds.",
+      "tr": "Ses Taklitçisi V2: 10 saniye boyunca yüksek sesle bir köpek havlaması sesi taklit edin.",
+      "fr": "L'Imitateur Vocal V2: Imitez le son d'un chien qui aboie fort pendant 10 secondes.",
+      "de": "Der Stimmenimitator V2: Ahmen Sie 10 Sekunden lang das Geräusch eines laut bellenden Hundes nach.",
+      "it": "L'Imitatore Vocale V2: Imita il suono di un cane che abbaia forte per 10 secondi.",
+      "es": "El Imitador Vocal V2: Imita el sonido de un perro ladrando fuerte durante 10 segundos.",
+      "ru": "Вокальный Имитатор V2: Имитируйте громкий лай собаки в течение 10 секунд.",
+      "zh-CN": "声音模仿者 V2：模仿狗大声吠叫的声音 10 秒。",
+      "ja": "ボーカル模倣者 V2：犬が大声で吠える音を10秒間模倣します。",
+      "hi": "मुखर अनुकरणकर्ता V2: 10 सेकंड तक ज़ोर से भौंकने वाले कुत्ते की आवाज़ की नकल करें।",
+      "ar": "مقلد الأصوات الإصدار الثاني: قلد صوت نباح كلب عالٍ لمدة 10 ثوانٍ."
+    },
+    "category": "fun"
+  },
+  {
+    "challenge_texts": {
+      "en": "The Tongue Touch: Try to touch your nose with your tongue for 5 seconds.",
+      "tr": "Dil Dokunuşu: Dilinizle burnunuza 5 saniye boyunca dokunmaya çalışın.",
+      "fr": "Le Toucher de Langue: Essayez de toucher votre nez avec votre langue pendant 5 secondes.",
+      "de": "Die Zungenberührung: Versuchen Sie, 5 Sekunden lang Ihre Nase mit der Zunge zu berühren.",
+      "it": "Il Tocco della Lingua: Prova a toccarti il naso con la lingua per 5 secondi.",
+      "es": "El Toque de Lengua: Intenta tocarte la nariz con la lengua durante 5 segundos.",
+      "ru": "Прикосновение Языком: Попробуйте дотронуться языком до носа в течение 5 секунд.",
+      "zh-CN": "舌头触碰：尝试用你的舌头触碰鼻子 5 秒。",
+      "ja": "舌タッチ：舌で鼻に触れることを5秒間試みます。",
+      "hi": "जीभ से छूना: अपनी जीभ से अपनी नाक को 5 सेकंड तक छूने की कोशिश करें।",
+      "ar": "لمسة اللسان: حاول لمس أنفك بلسانك لمدة 5 ثوانٍ."
+    },
+    "category": "fun"
+  },
+  {
+    "challenge_texts": {
+      "en": "The Backward Alphabet: Say the alphabet backward from Z to A as fast as you can.",
+      "tr": "Ters Alfabe: Alfabeyi Z'den A'ya olabildiğince hızlı geriye doğru söyleyin.",
+      "fr": "L'Alphabet à l'Envers: Dites l'alphabet à l'envers de Z à A aussi vite que possible.",
+      "de": "Das Rückwärts-Alphabet: Sagen Sie das Alphabet so schnell wie möglich von Z nach A rückwärts auf.",
+      "it": "L'Alfabeto al Contrario: Dici l'alfabeto al contrario dalla Z alla A il più velocemente possibile.",
+      "es": "El Alfabeto al Revés: Di el alfabeto al revés de la Z a la A tan rápido como puedas.",
+      "ru": "Обратный Алфавит: Скажите алфавит в обратном порядке от Я до А как можно быстрее.",
+      "zh-CN": "倒序字母表：尽快地从 Z 到 A 倒着背诵字母表。",
+      "ja": "逆アルファベット：ZからAまで、できるだけ早くアルファベットを逆から言います。",
+      "hi": "उल्टा वर्णमाला: वर्णमाला को Z से A तक जितना तेज़ हो सके उल्टा बोलें।",
+      "ar": "الأبجدية العكسية: قل الأبجدية بالترتيب العكسي من الياء إلى الألف بأسرع ما يمكن."
+    },
+    "category": "fun"
+  },
+  {
+    "challenge_texts": {
+      "en": "The Wiggle War: Wiggle only your ears for 10 seconds (if possible).",
+      "tr": "Kıpırdatma Savaşı: Sadece kulaklarınızı 10 saniye boyunca kıpırdatın (mümkünse).",
+      "fr": "La Guerre du Remuement: Remuez uniquement vos oreilles pendant 10 secondes (si possible).",
+      "de": "Der Wackelkrieg: Wackeln Sie nur mit Ihren Ohren für 10 Sekunden (falls möglich).",
+      "it": "La Guerra dello Scuotimento: Muovi solo le orecchie per 10 secondi (se possibile).",
+      "es": "La Guerra del Meneo: Mueve solo tus orejas durante 10 segundos (si es posible).",
+      "ru": "Война Шевеления: Шевелите только ушами в течение 10 секунд (если возможно).",
+      "zh-CN": "扭动之战：仅扭动你的耳朵 10 秒（如果可能）。",
+      "ja": "動かす戦争：10秒間、耳だけを動かします（可能であれば）。",
+      "hi": "हिलाने की लड़ाई: 10 सेकंड तक केवल अपने कानों को हिलाएँ (यदि संभव हो)।",
+      "ar": "حرب التلويح: لوّح بأذنيك فقط لمدة 10 ثوانٍ (إذا كان ذلك ممكنًا)."
+    },
+    "category": "fun"
+  },
+  {
+    "challenge_texts": {
+      "en": "The Foot Tap Rhythm: Tap your foot to an imaginary 3/4 waltz beat for 20 seconds.",
+      "tr": "Ayak Vuruş Ritmi: Ayaklarınızla hayali bir 3/4 vals ritmini 20 saniye boyunca vurun.",
+      "fr": "Le Rythme du Pied: Tapotez du pied un rythme de valse imaginaire 3/4 pendant 20 secondes.",
+      "de": "Der Fußtipp-Rhythmus: Tippen Sie Ihren Fuß 20 Sekunden lang zu einem imaginären 3/4 Walzertakt.",
+      "it": "Il Ritmo del Piede: Batti il piede su un immaginario ritmo di valzer 3/4 per 20 secondi.",
+      "es": "El Ritmo del Pie: Toca tu pie al ritmo de un vals imaginario de 3/4 durante 20 segundos.",
+      "ru": "Ритм Постукивания Ногой: Постукивайте ногой в ритме воображаемого вальса 3/4 в течение 20 секунд.",
+      "zh-CN": "跺脚节奏：用你的脚敲击一个假想的 3/4 华尔兹节拍 20 秒。",
+      "ja": "足のタッピングリズム：想像上の3/4ワルツのリズムに合わせて足を20秒間タップします。",
+      "hi": "पैर थपथपाने की लय: 20 सेकंड तक अपने पैर से एक काल्पनिक 3/4 वाल्ट्ज ताल पर थपथपाएं।",
+      "ar": "إيقاع نقر القدم: انقر بقدمك على إيقاع فالس 3/4 وهمي لمدة 20 ثانية."
+    },
+    "category": "fun"
+  },
+  {
+    "challenge_texts": {
+      "en": "The Silent Shout: Open your mouth wide and silently shout for 15 seconds.",
+      "tr": "Sessiz Çığlık: Ağzınızı kocaman açın ve 15 saniye boyunca sessizce bağırın.",
+      "fr": "Le Cri Silencieux: Ouvrez grand la bouche et criez silencieusement pendant 15 secondes.",
+      "de": "Der Stille Schrei: Öffnen Sie Ihren Mund weit und schreien Sie 15 Sekunden lang lautlos.",
+      "it": "L'Urlo Silenzioso: Apri la bocca e urla silenziosamente per 15 secondi.",
+      "es": "El Grito Silencioso: Abre bien la boca y grita en silencio durante 15 segundos.",
+      "ru": "Беззвучный Крик: Широко откройте рот и кричите молча в течение 15 секунд.",
+      "zh-CN": "无声呐喊：张大嘴巴，并无声地大喊 15 秒。",
+      "ja": "サイレントシャウト：口を大きく開けて、15秒間静かに叫びます。",
+      "hi": "खामोश चिल्लाहट: अपना मुँह चौड़ा खोलें और 15 सेकंड तक चुपचाप चिल्लाएँ।",
+      "ar": "الصراخ الصامت: افتح فمك على مصراعيه واصرخ بصمت لمدة 15 ثانية."
+    },
+    "category": "fun"
+  },
+  {
+    "challenge_texts": {
+      "en": "The Opposite Clap: Clap your hands behind your back 10 times quickly.",
+      "tr": "Ters Alkış: Ellerinizi arkanızda 10 kez hızlıca çırpın.",
+      "fr": "L'Applaudissement Opposé: Frappez vos mains derrière votre dos 10 fois rapidement.",
+      "de": "Der Gegen-Applaus: Klatschen Sie schnell 10 Mal hinter Ihrem Rücken in die Hände.",
+      "it": "L'Applauso Opposto: Batti le mani dietro la schiena 10 volte velocemente.",
+      "es": "El Aplauso Opuesto: Da 10 palmadas detrás de tu espalda rápidamente.",
+      "ru": "Обратный Хлопок: Хлопните в ладоши за спиной 10 раз быстро.",
+      "zh-CN": "反向鼓掌：快速地在背后拍手 10 次。",
+      "ja": "逆拍手：背中の後ろで手を10回素早く叩きます。",
+      "hi": "विपरीत ताली: अपनी पीठ के पीछे 10 बार तेजी से ताली बजाएं।",
+      "ar": "التصفيق المعاكس: صفق بيديك خلف ظهرك 10 مرات بسرعة."
+    },
+    "category": "fun"
+  },
+  {
+    "challenge_texts": {
+      "en": "The Name Chain: Say five different first names starting with the same letter, in 10 seconds.",
+      "tr": "İsim Zinciri: Aynı harfle başlayan beş farklı ismini 10 saniye içinde söyleyin.",
+      "fr": "La Chaîne de Noms: Dites cinq prénoms différents commençant par la même lettre, en 10 secondes.",
+      "de": "Die Namenskette: Nennen Sie innerhalb von 10 Sekunden fünf verschiedene Vornamen, die mit demselben Buchstaben beginnen.",
+      "it": "La Catena di Nomi: Dici cinque nomi diversi che iniziano con la stessa lettera, in 10 secondi.",
+      "es": "La Cadena de Nombres: Di cinco nombres de pila diferentes que empiecen con la misma letra, en 10 segundos.",
+      "ru": "Цепочка Имен: Назовите пять разных имен, начинающихся с одной и той же буквы, за 10 секунд.",
+      "zh-CN": "名字链：在 10 秒内，说出五个以相同字母开头的不同名字。",
+      "ja": "名前の連鎖：10秒以内に、同じ文字で始まる5つの異なる名前を言います。",
+      "hi": "नाम श्रृंखला: 10 सेकंड में, एक ही अक्षर से शुरू होने वाले पाँच अलग-अलग नाम बताएँ।",
+      "ar": "سلسلة الأسماء: اذكر خمسة أسماء مختلفة تبدأ بنفس الحرف، في 10 ثوانٍ."
+    },
+    "category": "fun"
+  },
+  {
+    "challenge_texts": {
+      "en": "The Quietest Count: Count from 1 to 10 in the quietest whisper you can manage.",
+      "tr": "En Sessiz Sayım: 1'den 10'a kadar yapabileceğiniz en fısıltı sesle sayın.",
+      "fr": "Le Compte le Plus Silencieux: Comptez de 1 à 10 dans le murmure le plus silencieux que vous puissiez faire.",
+      "de": "Die Leiseste Zählung: Zählen Sie von 1 bis 10 im leisesten Flüsterton, den Sie bewerkstelligen können.",
+      "it": "Il Conteggio Più Silenzioso: Conta da 1 a 10 nel sussurro più silenzioso che riesci a fare.",
+      "es": "El Conteo Más Silencioso: Cuenta del 1 al 10 en el susurro más silencioso que puedas hacer.",
+      "ru": "Самый Тихий Счет: Посчитайте от 1 до 10 самым тихим шепотом, на который способны.",
+      "zh-CN": "最安静的计数：用你能发出的最安静的耳语，从 1 数到 10。",
+      "ja": "最も静かなカウント：できる限り静かなささやき声で1から10まで数えます。",
+      "hi": "सबसे धीमी गिनती: 1 से 10 तक सबसे धीमी फुसफुसाहट में गिनें जो आप कर सकते हैं।",
+      "ar": "العد الأهدأ: عد من 1 إلى 10 بأهدأ همسة يمكنك القيام بها."
+    },
+    "category": "fun"
+  },
+  {
+    "challenge_texts": {
+      "en": "The Thumb Touch: Touch your nose, ear, and chin with your thumb, in that order, 5 times quickly.",
+      "tr": "Başparmak Dokunuşu: Başparmağınızla burnunuza, kulağınıza ve çenenize, bu sırayla, 5 kez hızlıca dokunun.",
+      "fr": "Le Toucher du Pouce: Touchez votre nez, votre oreille et votre menton avec votre pouce, dans cet ordre, 5 fois rapidement.",
+      "de": "Die Daumenberührung: Berühren Sie mit Ihrem Daumen nacheinander Nase, Ohr und Kinn, 5 Mal schnell.",
+      "it": "Il Tocco del Pollice: Tocca il naso, l'orecchio e il mento con il pollice, in quell'ordine, 5 volte velocemente.",
+      "es": "El Toque del Pulgar: Toca tu nariz, oreja y barbilla con tu pulgar, en ese orden, 5 veces rápidamente.",
+      "ru": "Прикосновение Большим Пальцем: Быстро коснитесь большим пальцем носа, уха и подбородка, в таком порядке, 5 раз.",
+      "zh-CN": "拇指触碰：用你的拇指按顺序快速触碰你的鼻子、耳朵和下巴 5 次。",
+      "ja": "親指タッチ：親指で鼻、耳、あごの順に、5回素早く触れます。",
+      "hi": "अंगूठे से छूना: अपने अंगूठे से, उसी क्रम में, अपनी नाक, कान और ठुड्डी को 5 बार तेज़ी से छूएँ।",
+      "ar": "لمسة الإبهام: المس أنفك وأذنك وذقنك بإبهامك، بهذا الترتيب، 5 مرات بسرعة."
+    },
+    "category": "fun"
+  },
+  {
+    "challenge_texts": {
+      "en": "The Arm Wave: Wave both your arms above your head for 30 seconds straight.",
+      "tr": "Kol Sallama: İki kolunuzu da 30 saniye boyunca başınızın üzerinde sallayın.",
+      "fr": "L'Agitation des Bras: Agitez vos deux bras au-dessus de votre tête pendant 30 secondes d'affilée.",
+      "de": "Das Armwinken: Winken Sie 30 Sekunden lang ununterbrochen mit beiden Armen über dem Kopf.",
+      "it": "L'Ondeggiare delle Braccia: Agita entrambe le braccia sopra la testa per 30 secondi di fila.",
+      "es": "El Agitar de Brazos: Agita ambos brazos por encima de tu cabeza durante 30 segundos seguidos.",
+      "ru": "Махание Руками: Машите обеими руками над головой в течение 30 секунд без перерыва.",
+      "zh-CN": "手臂挥舞：连续 30 秒将双臂举过头顶挥舞。",
+      "ja": "腕振り：両腕を頭上で30秒間振り続けます。",
+      "hi": "हाथ हिलाना: अपने दोनों हाथों को 30 सेकंड तक सीधे अपने सिर के ऊपर हिलाएँ।",
+      "ar": "تلويح الذراعين: لوّح بكلتا ذراعيك فوق رأسك لمدة 30 ثانية متواصلة."
+    },
+    "category": "fun"
+  },
+  {
+    "challenge_texts": {
+      "en": "The Word Association: Say 5 words that immediately come to mind after hearing 'Cloud'.",
+      "tr": "Kelime İlişkilendirme: 'Bulut' kelimesini duyduktan hemen sonra aklınıza gelen 5 kelimeyi söyleyin.",
+      "fr": "L'Association de Mots: Dites 5 mots qui vous viennent immédiatement à l'esprit après avoir entendu 'Nuage'.",
+      "de": "Die Wortassoziation: Sagen Sie 5 Wörter, die Ihnen sofort nach dem Hören von 'Wolke' in den Sinn kommen.",
+      "it": "L'Associazione di Parole: Dici 5 parole che ti vengono subito in mente dopo aver sentito 'Nuvola'.",
+      "es": "La Asociación de Palabras: Di 5 palabras que te vengan inmediatamente a la mente después de escuchar 'Nube'.",
+      "ru": "Словесная Ассоциация: Скажите 5 слов, которые сразу приходят на ум после слова 'Облако'.",
+      "zh-CN": "词语联想：听到 '云' 之后，立即说出你想到的 5 个词。",
+      "ja": "単語連想： '雲' と聞いてすぐに思い浮かぶ5つの単語を言います。",
+      "hi": "शब्द संबंध: 'बादल' सुनने के तुरंत बाद आपके दिमाग में आने वाले 5 शब्द बताएँ।",
+      "ar": "ترابط الكلمات: اذكر 5 كلمات تخطر ببالك فور سماع كلمة 'سحابة'."
+    },
+    "category": "fun"
+  },
+  {
+    "challenge_texts": {
+      "en": "The Double Tap: Tap your head with one hand and rub your belly with the other for 10 seconds.",
+      "tr": "Çift Vuruş: Bir elinizle başınıza vurun ve diğer elinizle karnınızı 10 saniye boyunca ovun.",
+      "fr": "Le Double Tapotement: Tapez votre tête avec une main et frottez votre ventre avec l'autre pendant 10 secondes.",
+      "de": "Das Doppeltippen: Tippen Sie mit einer Hand auf Ihren Kopf und reiben Sie mit der anderen Ihren Bauch, 10 Sekunden lang.",
+      "it": "Il Doppio Tocco: Tocca la testa con una mano e strofina la pancia con l'altra per 10 secondi.",
+      "es": "El Doble Toque: Toca tu cabeza con una mano y frota tu vientre con la otra durante 10 segundos.",
+      "ru": "Двойное Касание: Постукивайте по голове одной рукой, а другой трите живот в течение 10 секунд.",
+      "zh-CN": "双重拍击：用一只手拍打你的头，同时用另一只手摩擦你的腹部 10 秒。",
+      "ja": "ダブルタップ：片手で頭を叩き、もう一方の手でお腹を10秒間こすります。",
+      "hi": "दोहरा थपथपाना: एक हाथ से अपने सिर को थपथपाएँ और दूसरे हाथ से अपने पेट को 10 सेकंड तक रगड़ें।",
+      "ar": "النقر المزدوج: اضغط على رأسك بيد وافرك بطنك باليد الأخرى لمدة 10 ثوانٍ."
+    },
+    "category": "fun"
+  },
+  {
+    "challenge_texts": {
+      "en": "The Silent Yawn: Yawn wide without making a sound for 5 seconds.",
+      "tr": "Sessiz Esneme: Ses çıkarmadan ağzınızı kocaman açarak 5 saniye boyunca esneyin.",
+      "fr": "Le Bâillement Silencieux: Bâillez largement sans faire de bruit pendant 5 secondes.",
+      "de": "Das Stille Gähnen: Gähnen Sie 5 Sekunden lang lautlos und weit.",
+      "it": "Lo Sbadiglio Silenzioso: Sbadiglia ampiamente senza fare rumore per 5 secondi.",
+      "es": "El Bostezo Silencioso: Bosteza ampliamente sin hacer ruido durante 5 segundos.",
+      "ru": "Беззвучный Зевок: Зевайте широко, не издавая звука, в течение 5 секунд.",
+      "zh-CN": "无声哈欠：张大嘴巴打哈欠 5 秒，但不要发出声音。",
+      "ja": "サイレントあくび：音を立てずに口を大きく開けて5秒間あくびをします。",
+      "hi": "खामोश जम्हाई: 5 सेकंड तक बिना आवाज़ किए जोर से जम्हाई लें।",
+      "ar": "التثاؤب الصامت: تثاءب على نطاق واسع دون إصدار صوت لمدة 5 ثوانٍ."
+    },
+    "category": "fun"
+  },
+  {
+    "challenge_texts": {
+      "en": "The Finger Wave: Wave only your pinky finger and thumb on one hand for 15 seconds.",
+      "tr": "Parmak Dalgası: Tek elinizde sadece serçe parmağınızı ve baş parmağınızı 15 saniye boyunca sallayın.",
+      "fr": "L'Onde des Doigts: Agitez uniquement votre petit doigt et votre pouce sur une main pendant 15 secondes.",
+      "de": "Die Fingerwelle: Winken Sie 15 Sekunden lang nur mit Ihrem kleinen Finger und Daumen an einer Hand.",
+      "it": "L'Onda del Dito: Agita solo il mignolo e il pollice su una mano per 15 secondi.",
+      "es": "La Ola del Dedo: Agita solo tu dedo meñique y pulgar en una mano durante 15 segundos.",
+      "ru": "Волна Пальцем: Машите только мизинцем и большим пальцем на одной руке в течение 15 секунд.",
+      "zh-CN": "手指波浪：用一只手只挥舞你的小指和拇指 15 秒。",
+      "ja": "指の波：片手で小指と親指だけを15秒間振ります。",
+      "hi": "अंगुली की लहर: 15 सेकंड तक केवल अपनी एक हाथ की छोटी उंगली और अंगूठे को हिलाएँ।",
+      "ar": "موجة الأصابع: لوّح بإصبع الخنصر والإبهام فقط في يد واحدة لمدة 15 ثانية."
+    },
+    "category": "fun"
+  },
+  {
+    "challenge_texts": {
+      "en": "The Quick Count: Count the number of doors you can see in your current location, in 10 seconds.",
+      "tr": "Hızlı Sayım: Bulunduğunuz yerde gördüğünüz kapı sayısını 10 saniye içinde sayın.",
+      "fr": "Le Compte Rapide: Comptez le nombre de portes que vous pouvez voir à votre emplacement actuel, en 10 secondes.",
+      "de": "Die Schnelle Zählung: Zählen Sie innerhalb von 10 Sekunden die Anzahl der Türen, die Sie an Ihrem aktuellen Standort sehen können.",
+      "it": "Il Conteggio Veloce: Conta il numero di porte che puoi vedere nella tua posizione attuale, in 10 secondi.",
+      "es": "El Conteo Rápido: Cuenta el número de puertas que puedes ver en tu ubicación actual, en 10 segundos.",
+      "ru": "Быстрый Счет: Посчитайте количество дверей, которые вы видите в текущем месте, за 10 секунд.",
+      "zh-CN": "快速计数：在 10 秒内，数出你当前位置能看到的门的数量。",
+      "ja": "クイックカウント：10秒以内に、現在の場所で見えるドアの数を数えます。",
+      "hi": "तेज़ गिनती: 10 सेकंड में, आप जहाँ हैं वहाँ जितनी दरवाजे देख सकते हैं, उनकी संख्या गिनें।",
+      "ar": "العد السريع: احسب عدد الأبواب التي يمكنك رؤيتها في موقعك الحالي، في 10 ثوانٍ."
+    },
+    "category": "fun"
+  },
+  {
+    "challenge_texts": {
+      "en": "The Robot Walk: Walk like a clumsy robot for 10 seconds.",
+      "tr": "Robot Yürüyüşü: 10 saniye boyunca beceriksiz bir robot gibi yürüyün.",
+      "fr": "La Marche du Robot: Marchez comme un robot maladroit pendant 10 secondes.",
+      "de": "Der Roboter-Gang: Gehen Sie 10 Sekunden lang wie ein ungeschickter Roboter.",
+      "it": "La Camminata del Robot: Cammina come un robot impacciato per 10 secondi.",
+      "es": "El Paseo del Robot: Camina como un robot torpe durante 10 segundos.",
+      "ru": "Походка Робота: Ходите как неуклюжий робот в течение 10 секунд.",
+      "zh-CN": "机器人行走：像一个笨拙的机器人一样走路 10 秒。",
+      "ja": "ロボットウォーク：不器用なロボットのように10秒間歩きます。",
+      "hi": "रोबोट चाल: 10 सेकंड तक एक अनाड़ी रोबोट की तरह चलें।",
+      "ar": "مشية الروبوت: امشِ مثل روبوت أخرق لمدة 10 ثوانٍ."
+    },
+    "category": "fun"
+  },
+  {
+    "challenge_texts": {
+      "en": "The Whisper Song: Whisper the chorus of your favorite song twice, in 15 seconds.",
+      "tr": "Fısıltı Şarkısı: En sevdiğiniz şarkının nakaratını 15 saniye içinde iki kez fısıldayın.",
+      "fr": "La Chanson Murmurée: Chuchotez le refrain de votre chanson préférée deux fois, en 15 secondes.",
+      "de": "Das Flüsterlied: Flüstern Sie den Refrain Ihres Lieblingsliedes zweimal, in 15 Sekunden.",
+      "it": "La Canzone Sussurrata: Sussurra il ritornello della tua canzone preferita due volte, in 15 secondi.",
+      "es": "La Canción Susurrada: Susurra el estribillo de tu canción favorita dos veces, en 15 segundos.",
+      "ru": "Шепотная Песня: Прошепчите припев вашей любимой песни дважды, за 15 секунд.",
+      "zh-CN": "耳语歌曲：在 15 秒内，将你最喜欢的歌曲的副歌耳语两次。",
+      "ja": "ささやきソング：15秒以内に、好きな曲のサビを2回ささやきます。",
+      "hi": "फुसफुसाहट गीत: 15 सेकंड में, अपने पसंदीदा गाने का कोरस दो बार फुसफुसाएँ।",
+      "ar": "أغنية الهمس: اهمس بكورس أغنيتك المفضلة مرتين، في 15 ثانية."
+    },
+    "category": "fun"
+  },
+  {
+    "challenge_texts": {
+      "en": "The Opposite Gaze: Look left while rotating your head to the right, and vice versa, 5 times.",
+      "tr": "Ters Bakış: Başınızı sağa çevirirken sola bakın ve tam tersini 5 kez yapın.",
+      "fr": "Le Regard Opposé: Regardez à gauche tout en tournant votre tête à droite, et vice-versa, 5 fois.",
+      "de": "Der Gegenblick: Schauen Sie nach links, während Sie Ihren Kopf nach rechts drehen, und umgekehrt, 5 Mal.",
+      "it": "Lo Sguardo Opposto: Guarda a sinistra mentre ruoti la testa a destra, e viceversa, 5 volte.",
+      "es": "La Mirada Opuesta: Mira a la izquierda mientras giras la cabeza a la derecha, y viceversa, 5 veces.",
+      "ru": "Противоположный Взгляд: Смотрите влево, поворачивая голову вправо, и наоборот, 5 раз.",
+      "zh-CN": "相反凝视：将头向右转时看向左边，反之亦然，重复 5 次。",
+      "ja": "反対の視線：頭を右に回しながら左を見て、その逆を5回繰り返します。",
+      "hi": "विपरीत नज़र: अपने सिर को दाईं ओर घुमाते हुए बाईं ओर देखें, और इसके विपरीत, 5 बार।",
+      "ar": "النظرة المعاكسة: انظر إلى اليسار أثناء تدوير رأسك إلى اليمين، والعكس صحيح، 5 مرات."
+    },
+    "category": "fun"
+  },
+  {
+    "challenge_texts": {
+      "en": "The Facial Stretch: Open your eyes and mouth as wide as possible for 10 seconds.",
+      "tr": "Yüz Germe: Gözlerinizi ve ağzınızı 10 saniye boyunca olabildiğince geniş açın.",
+      "fr": "L'Élasticité Faciale: Ouvrez vos yeux et votre bouche aussi largement que possible pendant 10 secondes.",
+      "de": "Die Gesichtsstretching: Öffnen Sie Augen und Mund 10 Sekunden lang so weit wie möglich.",
+      "it": "Lo Stiramento Facciale: Apri gli occhi e la bocca il più possibile per 10 secondi.",
+      "es": "El Estiramiento Facial: Abre tus ojos y boca lo más que puedas durante 10 segundos.",
+      "ru": "Растяжка Лица: Откройте глаза и рот как можно шире в течение 10 секунд.",
+      "zh-CN": "面部拉伸：尽可能大地睁开你的眼睛和嘴巴 10 秒。",
+      "ja": "顔のストレッチ：目と口をできるだけ大きく開けて10秒間続けます。",
+      "hi": "चेहरे का खिंचाव: 10 सेकंड तक अपनी आँखें और मुँह जितना हो सके उतना चौड़ा खोलें।",
+      "ar": "تمرين شد الوجه: افتح عينيك وفمك بأقصى اتساع ممكن لمدة 10 ثوانٍ."
+    },
+    "category": "fun"
+  },
+  {
+    "challenge_texts": {
+      "en": "The Air Drummer: Play an imaginary drum solo with your hands for 30 seconds.",
+      "tr": "Hava Davulcusu: Ellerinizle 30 saniye boyunca hayali bir davul solosu çalın.",
+      "fr": "Le Batteur d'Air: Jouez un solo de batterie imaginaire avec vos mains pendant 30 secondes.",
+      "de": "Der Luftschlagzeuger: Spielen Sie 30 Sekunden lang ein imaginäres Schlagzeugsolo mit Ihren Händen.",
+      "it": "Il Batterista d'Aria: Suona un assolo di batteria immaginario con le mani per 30 secondi.",
+      "es": "El Baterista de Aire: Toca un solo de batería imaginario con tus manos durante 30 segundos.",
+      "ru": "Воздушный Барабанщик: Сыграйте воображаемое барабанное соло руками в течение 30 секунд.",
+      "zh-CN": "空气鼓手：用你的双手演奏一段假想的鼓独奏 30 秒。",
+      "ja": "エアドラマー：手で30秒間、架空のドラムソロを演奏します。",
+      "hi": "हवा में ड्रमर: अपने हाथों से 30 सेकंड तक एक काल्पनिक ड्रम सोलो बजाएँ।",
+      "ar": "عازف الطبل الهوائي: اعزف مقطوعة درامز وهمية بيديك لمدة 30 ثانية."
+    },
+    "category": "fun"
+  },
+  {
+    "challenge_texts": {
+      "en": "The Chair Squat: Perform 10 quick air squats (sitting down and standing up without a chair).",
+      "tr": "Sandalye Çökmesi: 10 hızlı hava çömelmesi (sandalye olmadan oturup kalkma) yapın.",
+      "fr": "Le Squat de Chaise: Effectuez 10 squats rapides (s'asseoir et se lever sans chaise).",
+      "de": "Die Stuhlkniebeuge: Machen Sie 10 schnelle Luftkniebeugen (Hinsetzen und Aufstehen ohne Stuhl).",
+      "it": "Lo Squat della Sedia: Esegui 10 squat veloci (sedersi e alzarsi senza sedia).",
+      "es": "La Sentadilla de Silla: Realiza 10 sentadillas rápidas (sentarse y levantarse sin silla).",
+      "ru": "Приседание 'Стул': Выполните 10 быстрых приседаний 'воздухом' (садиться и вставать без стула).",
+      "zh-CN": "椅子深蹲：快速完成 10 次空中深蹲（不使用椅子坐下和站立）。",
+      "ja": "椅子スクワット：椅子を使わずに座って立つ動作を10回素早く行います。",
+      "hi": "कुर्सी स्क्वाट: 10 बार तेजी से एयर स्क्वाट (बिना कुर्सी के बैठना और खड़े होना) करें।",
+      "ar": "تحدي القرفصاء على كرسي: قم بأداء 10 قرفصاء هوائية سريعة (الجلوس والوقوف بدون كرسي)."
+    },
+    "category": "fun"
+  }
+]

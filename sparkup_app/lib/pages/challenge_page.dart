@@ -80,7 +80,6 @@ class _ChallengePageState extends State<ChallengePage> with TickerProviderStateM
     final localizations = AppLocalizations.of(context)!;
     final theme = Theme.of(context); 
 
-    // Anlık durumu temsil eden bir widget oluşturuyoruz (Yükleniyor, Hata, veya İçerik)
     Widget currentContent;
     if (_isLoading) {
       currentContent = Center(key: const ValueKey('loading'), child: CircularProgressIndicator(color: theme.colorScheme.primary));
@@ -94,23 +93,27 @@ class _ChallengePageState extends State<ChallengePage> with TickerProviderStateM
       currentContent = Padding(
         key: ValueKey<String>(_challengeText ?? 'content'),
         padding: EdgeInsets.all(24.w),
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Icon(Icons.whatshot_rounded, size: 60.sp, color: theme.colorScheme.secondary),
-            SizedBox(height: 24.h),
-            Text(
-              _challengeText ?? localizations.noChallengeAvailable,
-              textAlign: TextAlign.center,
-              style: TextStyle(fontSize: 22.sp, fontWeight: FontWeight.bold, color: Colors.white, height: 1.4),
-            ),
-            SizedBox(height: 24.h),
-            Text(
-              localizations.tapToLoadNewChallenge,
-              style: TextStyle(color: Colors.grey.shade400, fontSize: 14.sp),
-            ),
-          ],
-        ),
+        child: SingleChildScrollView( 
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            crossAxisAlignment: CrossAxisAlignment.center, 
+            children: [
+              Icon(Icons.whatshot_rounded, size: 60.sp, color: theme.colorScheme.secondary),
+              SizedBox(height: 24.h),
+              Text(
+                _challengeText ?? localizations.noChallengeAvailable,
+                textAlign: TextAlign.center,
+                style: TextStyle(fontSize: 22.sp, fontWeight: FontWeight.bold, color: Colors.white, height: 1.4),
+              ),
+              SizedBox(height: 24.h),
+              Text(
+                localizations.tapToLoadNewChallenge,
+                textAlign: TextAlign.center, 
+                style: TextStyle(color: Colors.grey.shade400, fontSize: 14.sp),
+              ),
+            ],
+          ),
+        ), 
       );
     }
 
@@ -131,7 +134,6 @@ class _ChallengePageState extends State<ChallengePage> with TickerProviderStateM
             },
           ),
 
-          // 2. Ana Challenge Kartı
           Center(
             child: Padding(
               padding: EdgeInsets.all(24.w),
@@ -143,31 +145,43 @@ class _ChallengePageState extends State<ChallengePage> with TickerProviderStateM
                 child: AnimatedScale(
                   scale: _isPressed ? 0.97 : 1.0,
                   duration: const Duration(milliseconds: 150),
-                  child: AspectRatio(
-                    aspectRatio: 1,
-                    child: ClipRRect(
-                      borderRadius: BorderRadius.circular(24.r),
-                      child: BackdropFilter(
-                        filter: ImageFilter.blur(sigmaX: 10, sigmaY: 10),
-                        child: Container(
-                          decoration: BoxDecoration(
-                            color: theme.colorScheme.surface.withOpacity(0.2),
+                  child: ConstrainedBox( 
+                    constraints: BoxConstraints(
+                      maxWidth: MediaQuery.of(context).size.width - (2 * 24.w), 
+                    ),
+                    child: LayoutBuilder(
+                      builder: (context, constraints) {
+                        // Kart yüksekliğini, genişliğin %150'si (1.5 oranı) olarak hesapla
+                        final cardHeight = constraints.maxWidth * 1.50; 
+                        
+                        return SizedBox(
+                          height: cardHeight, // <-- Yeni, daha uzun yükseklik
+                          child: ClipRRect(
                             borderRadius: BorderRadius.circular(24.r),
-                            border: Border.all(color: Colors.white.withOpacity(0.1)),
+                            child: BackdropFilter(
+                              filter: ImageFilter.blur(sigmaX: 10, sigmaY: 10),
+                              child: Container(
+                                decoration: BoxDecoration(
+                                  color: theme.colorScheme.surface.withOpacity(0.2),
+                                  borderRadius: BorderRadius.circular(24.r),
+                                  border: Border.all(color: Colors.white.withOpacity(0.1)),
+                                ),
+                                child: AnimatedSwitcher(
+                                  duration: const Duration(milliseconds: 500),
+                                  transitionBuilder: (Widget child, Animation<double> animation) {
+                                    final offsetAnimation = Tween<Offset>(begin: const Offset(0.0, 0.5), end: Offset.zero).animate(animation);
+                                    return FadeTransition(
+                                      opacity: animation,
+                                      child: SlideTransition(position: offsetAnimation, child: child),
+                                    );
+                                  },
+                                  child: currentContent,
+                                ),
+                              ),
+                            ),
                           ),
-                          child: AnimatedSwitcher(
-                            duration: const Duration(milliseconds: 500),
-                            transitionBuilder: (Widget child, Animation<double> animation) {
-                              final offsetAnimation = Tween<Offset>(begin: const Offset(0.0, 0.5), end: Offset.zero).animate(animation);
-                              return FadeTransition(
-                                opacity: animation,
-                                child: SlideTransition(position: offsetAnimation, child: child),
-                              );
-                            },
-                            child: currentContent,
-                          ),
-                        ),
-                      ),
+                        );
+                      }
                     ),
                   ),
                 ),
