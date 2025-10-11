@@ -174,4 +174,65 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String get rankIron => 'الحديد';
+
+  @override
+  String get subscriptions => 'الاشتراكات';
+
+  @override
+  String get chooseYourPlan => 'اختر خطتك';
+
+  @override
+  String get planFree => 'الخطة المجانية';
+
+  @override
+  String get planPro => 'الخطة الاحترافية';
+
+  @override
+  String get planUltra => 'خطة ألترا';
+
+  @override
+  String get free => 'مجاني';
+
+  @override
+  String get month => 'شهر';
+
+  @override
+  String get questionsPerDay => 'أسئلة/يوم';
+
+  @override
+  String get challengesPerDay => 'تحديات/يوم';
+
+  @override
+  String get notificationPerDay => 'إشعار/يوم';
+
+  @override
+  String get notificationsPerDay => 'إشعارات/يوم';
+
+  @override
+  String get unlimitedQuizzes => 'اختبارات غير محدودة';
+
+  @override
+  String get unlimitedChallenges => 'تحديات غير محدودة';
+
+  @override
+  String get purchaseSuccess => 'تم تحديث الاشتراك بنجاح.';
+
+  @override
+  String get purchaseError => 'فشل الشراء';
+
+  @override
+  String get current => 'الحالي';
+
+  @override
+  String get active => 'نشط';
+
+  @override
+  String get freeTrial => 'المستوى المجاني';
+
+  @override
+  String get upgrade => 'ترقية';
+
+  @override
+  String get subscriptionNote =>
+      'هذه محاكاة للشراء. يجب دمجها مع نظام دفع حقيقي.';
 }

@@ -445,6 +445,126 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Iron'**
   String get rankIron;
+
+  /// No description provided for @subscriptions.
+  ///
+  /// In en, this message translates to:
+  /// **'Subscriptions'**
+  String get subscriptions;
+
+  /// No description provided for @chooseYourPlan.
+  ///
+  /// In en, this message translates to:
+  /// **'Choose Your Plan'**
+  String get chooseYourPlan;
+
+  /// No description provided for @planFree.
+  ///
+  /// In en, this message translates to:
+  /// **'Free Plan'**
+  String get planFree;
+
+  /// No description provided for @planPro.
+  ///
+  /// In en, this message translates to:
+  /// **'Pro Plan'**
+  String get planPro;
+
+  /// No description provided for @planUltra.
+  ///
+  /// In en, this message translates to:
+  /// **'Ultra Plan'**
+  String get planUltra;
+
+  /// No description provided for @free.
+  ///
+  /// In en, this message translates to:
+  /// **'Free'**
+  String get free;
+
+  /// No description provided for @month.
+  ///
+  /// In en, this message translates to:
+  /// **'Month'**
+  String get month;
+
+  /// No description provided for @questionsPerDay.
+  ///
+  /// In en, this message translates to:
+  /// **'Questions/Day'**
+  String get questionsPerDay;
+
+  /// No description provided for @challengesPerDay.
+  ///
+  /// In en, this message translates to:
+  /// **'Challenges/Day'**
+  String get challengesPerDay;
+
+  /// No description provided for @notificationPerDay.
+  ///
+  /// In en, this message translates to:
+  /// **'Notification/Day'**
+  String get notificationPerDay;
+
+  /// No description provided for @notificationsPerDay.
+  ///
+  /// In en, this message translates to:
+  /// **'Notifications/Day'**
+  String get notificationsPerDay;
+
+  /// No description provided for @unlimitedQuizzes.
+  ///
+  /// In en, this message translates to:
+  /// **'Unlimited Quizzes'**
+  String get unlimitedQuizzes;
+
+  /// No description provided for @unlimitedChallenges.
+  ///
+  /// In en, this message translates to:
+  /// **'Unlimited Challenges'**
+  String get unlimitedChallenges;
+
+  /// No description provided for @purchaseSuccess.
+  ///
+  /// In en, this message translates to:
+  /// **'Subscription successfully updated.'**
+  String get purchaseSuccess;
+
+  /// No description provided for @purchaseError.
+  ///
+  /// In en, this message translates to:
+  /// **'Purchase failed'**
+  String get purchaseError;
+
+  /// No description provided for @current.
+  ///
+  /// In en, this message translates to:
+  /// **'Current'**
+  String get current;
+
+  /// No description provided for @active.
+  ///
+  /// In en, this message translates to:
+  /// **'Active'**
+  String get active;
+
+  /// No description provided for @freeTrial.
+  ///
+  /// In en, this message translates to:
+  /// **'Free Tier'**
+  String get freeTrial;
+
+  /// No description provided for @upgrade.
+  ///
+  /// In en, this message translates to:
+  /// **'Upgrade'**
+  String get upgrade;
+
+  /// No description provided for @subscriptionNote.
+  ///
+  /// In en, this message translates to:
+  /// **'This is a purchase simulation. Must be integrated with a real payment system.'**
+  String get subscriptionNote;
 }
 
 class _AppLocalizationsDelegate

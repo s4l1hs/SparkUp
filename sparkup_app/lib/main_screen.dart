@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'l10n/app_localizations.dart';
 import 'pages/challenge_page.dart';
-import 'pages/info_page.dart';
+import 'pages/subscription_page.dart';
 import 'pages/leaderboard_page.dart';
 import 'pages/quiz_page.dart';
 import 'pages/settings_page.dart';
@@ -32,7 +32,7 @@ class MainScreenState extends State<MainScreen> {
     // Sayfalara benzersiz, statik Key'ler eklenmesi de rebuild sırasında yardımcı olur.
     return <Widget>[
       LeaderboardPage(key: const ValueKey('Leaderboard'), idToken: idToken),
-      InfoPage(key: const ValueKey('Info'), idToken: idToken),
+      SubscriptionPage(key: const ValueKey('Info'), idToken: idToken),
       QuizPage(key: const ValueKey('Quiz'), idToken: idToken),
       ChallengePage(key: const ValueKey('Challenge'), idToken: idToken),
       const SettingsPage(key: ValueKey('Settings')),

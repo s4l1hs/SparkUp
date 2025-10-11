@@ -173,4 +173,64 @@ class AppLocalizationsJa extends AppLocalizations {
 
   @override
   String get rankIron => 'アイアン';
+
+  @override
+  String get subscriptions => 'サブスクリプション';
+
+  @override
+  String get chooseYourPlan => 'プランを選択してください';
+
+  @override
+  String get planFree => '無料プラン';
+
+  @override
+  String get planPro => 'プロプラン';
+
+  @override
+  String get planUltra => 'ウルトラプラン';
+
+  @override
+  String get free => '無料';
+
+  @override
+  String get month => '月';
+
+  @override
+  String get questionsPerDay => '質問/日';
+
+  @override
+  String get challengesPerDay => 'チャレンジ/日';
+
+  @override
+  String get notificationPerDay => '通知/日';
+
+  @override
+  String get notificationsPerDay => '通知/日';
+
+  @override
+  String get unlimitedQuizzes => '無制限のクイズ';
+
+  @override
+  String get unlimitedChallenges => '無制限のチャレンジ';
+
+  @override
+  String get purchaseSuccess => 'サブスクリプションが正常に更新されました。';
+
+  @override
+  String get purchaseError => '購入に失敗しました';
+
+  @override
+  String get current => '現在';
+
+  @override
+  String get active => 'アクティブ';
+
+  @override
+  String get freeTrial => '無料ティア';
+
+  @override
+  String get upgrade => 'アップグレード';
+
+  @override
+  String get subscriptionNote => 'これは購入シミュレーションです。実際の決済システムとの統合が必要です。';
 }

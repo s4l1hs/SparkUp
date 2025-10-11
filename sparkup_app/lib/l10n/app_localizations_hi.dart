@@ -174,4 +174,65 @@ class AppLocalizationsHi extends AppLocalizations {
 
   @override
   String get rankIron => 'लोहा';
+
+  @override
+  String get subscriptions => 'सदस्यताएँ';
+
+  @override
+  String get chooseYourPlan => 'अपनी योजना चुनें';
+
+  @override
+  String get planFree => 'मुफ्त योजना';
+
+  @override
+  String get planPro => 'प्रो योजना';
+
+  @override
+  String get planUltra => 'अल्ट्रा योजना';
+
+  @override
+  String get free => 'मुफ्त';
+
+  @override
+  String get month => 'माह';
+
+  @override
+  String get questionsPerDay => 'प्रश्न/दिन';
+
+  @override
+  String get challengesPerDay => 'चुनौतियाँ/दिन';
+
+  @override
+  String get notificationPerDay => 'सूचना/दिन';
+
+  @override
+  String get notificationsPerDay => 'सूचनाएँ/दिन';
+
+  @override
+  String get unlimitedQuizzes => 'असीमित प्रश्नोत्तरी';
+
+  @override
+  String get unlimitedChallenges => 'असीमित चुनौतियाँ';
+
+  @override
+  String get purchaseSuccess => 'सदस्यता सफलतापूर्वक अद्यतन की गई।';
+
+  @override
+  String get purchaseError => 'खरीद विफल';
+
+  @override
+  String get current => 'वर्तमान';
+
+  @override
+  String get active => 'सक्रिय';
+
+  @override
+  String get freeTrial => 'मुफ्त टियर';
+
+  @override
+  String get upgrade => 'अपग्रेड करें';
+
+  @override
+  String get subscriptionNote =>
+      'यह एक खरीद सिमुलेशन है। इसे वास्तविक भुगतान प्रणाली के साथ एकीकृत किया जाना चाहिए।';
 }

@@ -173,4 +173,64 @@ class AppLocalizationsZh extends AppLocalizations {
 
   @override
   String get rankIron => '铁';
+
+  @override
+  String get subscriptions => '订阅';
+
+  @override
+  String get chooseYourPlan => '选择您的计划';
+
+  @override
+  String get planFree => '免费计划';
+
+  @override
+  String get planPro => '专业计划';
+
+  @override
+  String get planUltra => '至尊计划';
+
+  @override
+  String get free => '免费';
+
+  @override
+  String get month => '月';
+
+  @override
+  String get questionsPerDay => '问题/天';
+
+  @override
+  String get challengesPerDay => '挑战/天';
+
+  @override
+  String get notificationPerDay => '通知/天';
+
+  @override
+  String get notificationsPerDay => '通知/天';
+
+  @override
+  String get unlimitedQuizzes => '无限问答';
+
+  @override
+  String get unlimitedChallenges => '无限挑战';
+
+  @override
+  String get purchaseSuccess => '订阅已成功更新。';
+
+  @override
+  String get purchaseError => '购买失败';
+
+  @override
+  String get current => '当前';
+
+  @override
+  String get active => '活跃';
+
+  @override
+  String get freeTrial => '免费层级';
+
+  @override
+  String get upgrade => '升级';
+
+  @override
+  String get subscriptionNote => '这是购买模拟。必须与真实支付系统集成。';
 }

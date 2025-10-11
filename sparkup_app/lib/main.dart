@@ -1,5 +1,3 @@
-// main.dart
-
 import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
@@ -9,10 +7,10 @@ import 'package:flutter/services.dart';
 import 'package:provider/provider.dart';
 import 'l10n/app_localizations.dart';
 import 'locale_provider.dart';
+import 'providers/user_provider.dart'; // USER PROVIDER IMPORT EDİLDİ
 import 'auth_gate.dart';
 
-// Lokal backend adresi
-final String backendBaseUrl = "http://127.0.0.1:8000";
+String backendBaseUrl = "http://127.0.0.1:8000";
 
 Future<void> _firebaseMessagingBackgroundHandler(RemoteMessage message) async {
   await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
@@ -29,9 +27,13 @@ void main() async {
   );
   FirebaseMessaging.onBackgroundMessage(_firebaseMessagingBackgroundHandler);
 
+  // KRİTİK DEĞİŞİKLİK: MultiProvider kullanılarak hem Locale hem de UserProvider eklendi
   runApp(
-    ChangeNotifierProvider(
-      create: (context) => LocaleProvider(),
+    MultiProvider(
+      providers: [
+        ChangeNotifierProvider(create: (context) => LocaleProvider()),
+        ChangeNotifierProvider(create: (context) => UserProvider()), // UserProvider EKLENDİ
+      ],
       child: const MyApp(),
     ),
   );

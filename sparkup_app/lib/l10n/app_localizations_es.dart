@@ -177,4 +177,65 @@ class AppLocalizationsEs extends AppLocalizations {
 
   @override
   String get rankIron => 'Hierro';
+
+  @override
+  String get subscriptions => 'Suscripciones';
+
+  @override
+  String get chooseYourPlan => 'Elija su plan';
+
+  @override
+  String get planFree => 'Plan Gratuito';
+
+  @override
+  String get planPro => 'Plan Pro';
+
+  @override
+  String get planUltra => 'Plan Ultra';
+
+  @override
+  String get free => 'Gratis';
+
+  @override
+  String get month => 'Mes';
+
+  @override
+  String get questionsPerDay => 'Preguntas/Día';
+
+  @override
+  String get challengesPerDay => 'Desafíos/Día';
+
+  @override
+  String get notificationPerDay => 'Notificación/Día';
+
+  @override
+  String get notificationsPerDay => 'Notificaciones/Día';
+
+  @override
+  String get unlimitedQuizzes => 'Cuestionarios Ilimitados';
+
+  @override
+  String get unlimitedChallenges => 'Desafíos Ilimitados';
+
+  @override
+  String get purchaseSuccess => 'Suscripción actualizada correctamente.';
+
+  @override
+  String get purchaseError => 'Compra fallida';
+
+  @override
+  String get current => 'Actual';
+
+  @override
+  String get active => 'Activo';
+
+  @override
+  String get freeTrial => 'Nivel Gratuito';
+
+  @override
+  String get upgrade => 'Actualizar';
+
+  @override
+  String get subscriptionNote =>
+      'Esto es una simulación de compra. Debe integrarse con un sistema de pago real.';
 }

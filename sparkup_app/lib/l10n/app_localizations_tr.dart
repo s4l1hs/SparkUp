@@ -175,4 +175,65 @@ class AppLocalizationsTr extends AppLocalizations {
 
   @override
   String get rankIron => 'Demir';
+
+  @override
+  String get subscriptions => 'Abonelikler';
+
+  @override
+  String get chooseYourPlan => 'Size Uygun Planı Seçin';
+
+  @override
+  String get planFree => 'Ücretsiz Plan';
+
+  @override
+  String get planPro => 'Pro Plan';
+
+  @override
+  String get planUltra => 'Ultra Plan';
+
+  @override
+  String get free => 'Ücretsiz';
+
+  @override
+  String get month => 'Ay';
+
+  @override
+  String get questionsPerDay => 'Soru/Gün';
+
+  @override
+  String get challengesPerDay => 'Meydan Okuma/Gün';
+
+  @override
+  String get notificationPerDay => 'Bildirim/Gün';
+
+  @override
+  String get notificationsPerDay => 'Bildirim/Gün';
+
+  @override
+  String get unlimitedQuizzes => 'Sınırsız Sorular';
+
+  @override
+  String get unlimitedChallenges => 'Sınırsız Meydan Okumalar';
+
+  @override
+  String get purchaseSuccess => 'Aboneliğiniz başarıyla güncellendi.';
+
+  @override
+  String get purchaseError => 'Satın alma başarısız oldu';
+
+  @override
+  String get current => 'Aktif';
+
+  @override
+  String get active => 'Aktif';
+
+  @override
+  String get freeTrial => 'Ücretsiz Deneme';
+
+  @override
+  String get upgrade => 'Yükselt';
+
+  @override
+  String get subscriptionNote =>
+      'Satın alma simülasyonudur. Gerçek ödeme sistemi ile entegrasyon yapılmalıdır.';
 }

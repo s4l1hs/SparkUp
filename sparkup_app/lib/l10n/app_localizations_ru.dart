@@ -174,4 +174,65 @@ class AppLocalizationsRu extends AppLocalizations {
 
   @override
   String get rankIron => 'Железо';
+
+  @override
+  String get subscriptions => 'Подписки';
+
+  @override
+  String get chooseYourPlan => 'Выберите свой план';
+
+  @override
+  String get planFree => 'Бесплатный план';
+
+  @override
+  String get planPro => 'Профессиональный план';
+
+  @override
+  String get planUltra => 'Ультра план';
+
+  @override
+  String get free => 'Бесплатно';
+
+  @override
+  String get month => 'Месяц';
+
+  @override
+  String get questionsPerDay => 'Вопросов/День';
+
+  @override
+  String get challengesPerDay => 'Испытаний/День';
+
+  @override
+  String get notificationPerDay => 'Уведомление/День';
+
+  @override
+  String get notificationsPerDay => 'Уведомлений/День';
+
+  @override
+  String get unlimitedQuizzes => 'Неограниченные Викторины';
+
+  @override
+  String get unlimitedChallenges => 'Неограниченные Испытания';
+
+  @override
+  String get purchaseSuccess => 'Подписка успешно обновлена.';
+
+  @override
+  String get purchaseError => 'Покупка не удалась';
+
+  @override
+  String get current => 'Текущий';
+
+  @override
+  String get active => 'Активно';
+
+  @override
+  String get freeTrial => 'Бесплатный Уровень';
+
+  @override
+  String get upgrade => 'Обновить';
+
+  @override
+  String get subscriptionNote =>
+      'Это симуляция покупки. Должна быть интегрирована с реальной платежной системой.';
 }

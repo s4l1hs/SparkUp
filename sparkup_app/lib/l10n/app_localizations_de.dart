@@ -181,4 +181,65 @@ class AppLocalizationsDe extends AppLocalizations {
 
   @override
   String get rankIron => 'Eisen';
+
+  @override
+  String get subscriptions => 'Abonnements';
+
+  @override
+  String get chooseYourPlan => 'Wählen Sie Ihren Plan';
+
+  @override
+  String get planFree => 'Kostenloser Plan';
+
+  @override
+  String get planPro => 'Pro Plan';
+
+  @override
+  String get planUltra => 'Ultra Plan';
+
+  @override
+  String get free => 'Kostenlos';
+
+  @override
+  String get month => 'Monat';
+
+  @override
+  String get questionsPerDay => 'Fragen/Tag';
+
+  @override
+  String get challengesPerDay => 'Herausforderungen/Tag';
+
+  @override
+  String get notificationPerDay => 'Benachrichtigung/Tag';
+
+  @override
+  String get notificationsPerDay => 'Benachrichtigungen/Tag';
+
+  @override
+  String get unlimitedQuizzes => 'Unbegrenzte Quizze';
+
+  @override
+  String get unlimitedChallenges => 'Unbegrenzte Herausforderungen';
+
+  @override
+  String get purchaseSuccess => 'Abonnement erfolgreich aktualisiert.';
+
+  @override
+  String get purchaseError => 'Kauf fehlgeschlagen';
+
+  @override
+  String get current => 'Aktuell';
+
+  @override
+  String get active => 'Aktiv';
+
+  @override
+  String get freeTrial => 'Kostenlose Stufe';
+
+  @override
+  String get upgrade => 'Upgrade';
+
+  @override
+  String get subscriptionNote =>
+      'Dies ist eine Kaufsimulation. Muss in ein echtes Zahlungssystem integriert werden.';
 }

@@ -2,13 +2,22 @@ import 'dart:convert';
 import 'package:http/http.dart' as http;
 import 'dart:typed_data';
 import '../models/leaderboard_entry.dart';
+import '../main.dart';
 
-// main.dart dosyasında tanımlanan global backendBaseUrl'ı kullanacağız.
-// NOT: Bu dosyada kullanabilmek için, ya main.dart dosyasındaki
-//      backendBaseUrl değişkenini buraya kopyalamalıyız (http://127.0.0.1:8000)
-//      ya da main.dart'tan export etmeliyiz.
-// Şimdilik buraya sabit değerini kopyalıyorum:
-const String backendBaseUrl = "http://127.0.0.1:8000";
+// --- YENİ HATA SINIFLARI ---
+class QuizLimitException implements Exception {
+  final String message;
+  QuizLimitException(this.message);
+  @override
+  String toString() => 'QuizLimitException: $message';
+}
+
+class ChallengeLimitException implements Exception {
+  final String message;
+  ChallengeLimitException(this.message);
+  @override
+  String toString() => 'ChallengeLimitException: $message';
+}
 
 
 class ApiService {
@@ -28,8 +37,17 @@ class ApiService {
   }
 
 
-  // --- Genel Endpoitler (AUTH GEREKMEZ) ---
-  
+  Future<Map<String, dynamic>> getUserProfile(String idToken) async {
+    final uri = Uri.parse("$backendBaseUrl/user/profile/");
+    final response = await http.get(uri, headers: _getAuthHeaders(idToken));
+
+    if (response.statusCode == 200) {
+      return _decodeResponseBody(response.bodyBytes);
+    } else {
+      throw Exception('Failed to load user profile: ${response.statusCode}');
+    }
+  }
+
   // Konu başlıklarını getirir (auth gerektirmez)
   Future<Map<String, String>> getTopics() async {
     final uri = Uri.parse("$backendBaseUrl/topics/");
@@ -42,8 +60,6 @@ class ApiService {
     }
   }
 
-
-  // --- Kullanıcı Tercih Endpoitleri (AUTH GEREKİR) ---
 
   // Kullanıcının kayıtlı konularını getirir
   Future<List<String>> getUserTopics(String idToken) async {
@@ -73,14 +89,12 @@ class ApiService {
   }
 
 
-  // --- İçerik Endpoitleri (AUTH GEREKİR) ---
-  
   // Rastgele bilgi kartı getirir
   Future<Map<String, dynamic>> getRandomInfo(String idToken, {String? category}) async {
     final uri = Uri.parse("$backendBaseUrl/info/random/${category != null ? '?category=$category' : ''}");
     final response = await http.get(
       uri, 
-      headers: _getAuthHeaders(idToken) // Token'lı istek
+      headers: _getAuthHeaders(idToken)
     ); 
     if (response.statusCode == 200) {
       return _decodeResponseBody(response.bodyBytes);
@@ -89,13 +103,19 @@ class ApiService {
     }
   }
 
-  // Quiz soruları getirir
+  // Quiz soruları getirir (429 Hata Kontrolü Eklendi)
   Future<List<Map<String, dynamic>>> getQuizQuestions(String idToken, {int limit = 3, String? category}) async {
     final uri = Uri.parse("$backendBaseUrl/quiz/?limit=$limit${category != null ? '&category=$category' : ''}");
     final response = await http.get(
       uri, 
-      headers: _getAuthHeaders(idToken) // Token'lı istek
+      headers: _getAuthHeaders(idToken)
     ); 
+    
+    if (response.statusCode == 429) {
+      final data = jsonDecode(response.body);
+      throw QuizLimitException(data['detail'] ?? "Daily quiz limit reached.");
+    }
+    
     if (response.statusCode == 200) {
       final List<dynamic> data = _decodeResponseBody(response.bodyBytes);
       return List<Map<String, dynamic>>.from(data);
@@ -104,21 +124,51 @@ class ApiService {
     }
   }
 
-  // Rastgele meydan okuma (challenge) getirir
+  // Rastgele meydan okuma (challenge) getirir (429 Hata Kontrolü Eklendi)
   Future<Map<String, dynamic>> getRandomChallenge(String idToken) async {
     final uri = Uri.parse("$backendBaseUrl/challenges/random/");
     final response = await http.get(
       uri, 
-      headers: _getAuthHeaders(idToken) // Token'lı istek
+      headers: _getAuthHeaders(idToken)
     );
+    
+    if (response.statusCode == 429) {
+      final data = jsonDecode(response.body);
+      throw ChallengeLimitException(data['detail'] ?? "Daily challenge limit reached.");
+    }
+
     if (response.statusCode == 200) {
       return _decodeResponseBody(response.bodyBytes);
     } else {
       throw Exception("Failed to load challenge. Status: ${response.statusCode}, Body: ${response.body}");
     }
   }
+  
+  // Quiz Cevabı Gönderme (submitQuizAnswer)
+  Future<Map<String, dynamic>> submitQuizAnswer(String idToken, int questionId, int answerIndex) async {
+    final uri = Uri.parse("$backendBaseUrl/quiz/answer/");
+    final response = await http.post(
+      uri, 
+      headers: _getAuthHeaders(idToken),
+      body: jsonEncode({
+        'question_id': questionId,
+        'answer_index': answerIndex,
+      }),
+    );
+    
+    // 429 HATA KONTROLÜ (Limit tam cevap gönderilirken dolmuşsa)
+    if (response.statusCode == 429) {
+      final data = jsonDecode(response.body);
+      throw QuizLimitException(data['detail'] ?? "Daily quiz question limit reached.");
+    }
 
-  // --- Lider Tablosu Endpoitleri (AUTH GEREKİR) ---
+    if (response.statusCode == 200) {
+      return _decodeResponseBody(response.bodyBytes);
+    } else {
+      throw Exception("Failed to submit answer. Status: ${response.statusCode}, Body: ${response.body}");
+    }
+  }
+
 
   // Tüm lider tablosu verilerini getirir
   Future<List<LeaderboardEntry>> getLeaderboard(String idToken) async {
@@ -133,19 +183,15 @@ class ApiService {
     }
   }
   
-  // YENİ ENDPOINT: Kullanıcının kendi sıralama ve puan bilgisini getirir
+  // Kullanıcının kendi sıralama ve puan bilgisini getirir
   Future<LeaderboardEntry?> getUserRank(String idToken) async {
-    // Backend'de "/leaderboard/me/" gibi bir endpoint olduğunu varsayıyoruz
     final uri = Uri.parse('$backendBaseUrl/leaderboard/me/');
     final response = await http.get(uri, headers: _getAuthHeaders(idToken));
 
     if (response.statusCode == 200) {
       final data = _decodeResponseBody(response.bodyBytes);
-      // Gelen veriye göre rütbe adını ekliyoruz
-      data['rank_name'] = _getRankName(data['score'] ?? 0);
       return LeaderboardEntry.fromJson(data);
     } 
-    // Kullanıcı listede yoksa veya 404 dönerse null döndürülebilir
     else if (response.statusCode == 404) {
       return null;
     }
@@ -153,22 +199,21 @@ class ApiService {
       throw Exception('Failed to load user rank. Status: ${response.statusCode}, Body: ${response.body}');
     }
   }
-}
-
-// --- RÜTBE HESAPLAMA YARDIMCI METODU ---
-
-String _getRankName(int score) {
-    if (score >= 10000) {
-        return 'Üstad';
-    } else if (score >= 5000) {
-        return 'Elmas';
-    } else if (score >= 2000) {
-        return 'Altın';
-    } else if (score >= 1000) {
-        return 'Gümüş';
-    } else if (score >= 500) {
-        return 'Bronz';
-    } else {
-        return 'Demir';
+  
+  // YENİ EKLENEN FONKSİYON: Abonelik Güncelleme
+  Future<void> updateSubscription(String idToken, String level, int durationDays) async {
+    final uri = Uri.parse("$backendBaseUrl/subscription/update/");
+    final response = await http.post(
+      uri,
+      headers: _getAuthHeaders(idToken),
+      body: jsonEncode({
+        'level': level,
+        'duration_days': durationDays,
+      }),
+    );
+    
+    if (response.statusCode != 200) {
+      throw Exception("Failed to update subscription. Status: ${response.statusCode}, Body: ${response.body}");
     }
+  }
 }
