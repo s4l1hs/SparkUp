@@ -235,4 +235,7 @@ class AppLocalizationsRu extends AppLocalizations {
   @override
   String get subscriptionNote =>
       'Это симуляция покупки. Должна быть интегрирована с реальной платежной системой.';
+
+  @override
+  String get limitExceeded => 'Лимит Превышен';
 }

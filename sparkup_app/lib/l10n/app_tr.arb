@@ -80,5 +80,6 @@
   "active": "Aktif",
   "freeTrial": "Ücretsiz Deneme",
   "upgrade": "Yükselt",
-  "subscriptionNote": "Satın alma simülasyonudur. Gerçek ödeme sistemi ile entegrasyon yapılmalıdır."
+  "subscriptionNote": "Satın alma simülasyonudur. Gerçek ödeme sistemi ile entegrasyon yapılmalıdır.",
+  "limitExceeded": "Limit Aşıldı"
 }

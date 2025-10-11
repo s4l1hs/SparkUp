@@ -565,6 +565,12 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'This is a purchase simulation. Must be integrated with a real payment system.'**
   String get subscriptionNote;
+
+  /// No description provided for @limitExceeded.
+  ///
+  /// In en, this message translates to:
+  /// **'Limit Exceeded'**
+  String get limitExceeded;
 }
 
 class _AppLocalizationsDelegate

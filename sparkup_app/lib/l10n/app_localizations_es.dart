@@ -238,4 +238,7 @@ class AppLocalizationsEs extends AppLocalizations {
   @override
   String get subscriptionNote =>
       'Esto es una simulación de compra. Debe integrarse con un sistema de pago real.';
+
+  @override
+  String get limitExceeded => 'Límite Excedido';
 }

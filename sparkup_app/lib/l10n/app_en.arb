@@ -81,5 +81,6 @@
   "active": "Active",
   "freeTrial": "Free Tier",
   "upgrade": "Upgrade",
-  "subscriptionNote": "This is a purchase simulation. Must be integrated with a real payment system."
+  "subscriptionNote": "This is a purchase simulation. Must be integrated with a real payment system.",
+  "limitExceeded": "Limit Exceeded"
 }

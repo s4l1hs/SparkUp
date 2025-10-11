@@ -236,4 +236,7 @@ class AppLocalizationsTr extends AppLocalizations {
   @override
   String get subscriptionNote =>
       'Satın alma simülasyonudur. Gerçek ödeme sistemi ile entegrasyon yapılmalıdır.';
+
+  @override
+  String get limitExceeded => 'Limit Aşıldı';
 }

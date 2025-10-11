@@ -233,4 +233,7 @@ class AppLocalizationsZh extends AppLocalizations {
 
   @override
   String get subscriptionNote => '这是购买模拟。必须与真实支付系统集成。';
+
+  @override
+  String get limitExceeded => '超出限制';
 }

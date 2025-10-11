@@ -80,5 +80,6 @@
   "active": "Activo",
   "freeTrial": "Nivel Gratuito",
   "upgrade": "Actualizar",
-  "subscriptionNote": "Esto es una simulación de compra. Debe integrarse con un sistema de pago real."
+  "subscriptionNote": "Esto es una simulación de compra. Debe integrarse con un sistema de pago real.",
+  "limitExceeded": "Límite Excedido"
 }

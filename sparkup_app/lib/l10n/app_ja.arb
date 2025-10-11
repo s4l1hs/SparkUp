@@ -80,5 +80,6 @@
   "active": "アクティブ",
   "freeTrial": "無料ティア",
   "upgrade": "アップグレード",
-  "subscriptionNote": "これは購入シミュレーションです。実際の決済システムとの統合が必要です。"
+  "subscriptionNote": "これは購入シミュレーションです。実際の決済システムとの統合が必要です。",
+  "limitExceeded": "制限を超過しました"
 }

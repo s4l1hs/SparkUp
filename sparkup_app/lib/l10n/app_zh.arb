@@ -80,5 +80,6 @@
   "active": "活跃",
   "freeTrial": "免费层级",
   "upgrade": "升级",
-  "subscriptionNote": "这是购买模拟。必须与真实支付系统集成。"
+  "subscriptionNote": "这是购买模拟。必须与真实支付系统集成。",
+  "limitExceeded": "超出限制"
 }

@@ -80,5 +80,6 @@
   "active": "Actif",
   "freeTrial": "Niveau Gratuit",
   "upgrade": "Mise à niveau",
-  "subscriptionNote": "Ceci est une simulation d'achat. Doit être intégré à un véritable système de paiement."
+  "subscriptionNote": "Ceci est une simulation d'achat. Doit être intégré à un véritable système de paiement.",
+  "limitExceeded": "Limite Dépassée"
 }

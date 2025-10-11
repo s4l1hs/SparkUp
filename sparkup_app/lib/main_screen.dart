@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'l10n/app_localizations.dart';
 import 'pages/challenge_page.dart';
-import 'pages/subscription_page.dart';
+import 'pages/subscription_page.dart'; // SubscriptionPage artık InfoPage yerine
 import 'pages/leaderboard_page.dart';
 import 'pages/quiz_page.dart';
 import 'pages/settings_page.dart';
@@ -32,7 +32,7 @@ class MainScreenState extends State<MainScreen> {
     // Sayfalara benzersiz, statik Key'ler eklenmesi de rebuild sırasında yardımcı olur.
     return <Widget>[
       LeaderboardPage(key: const ValueKey('Leaderboard'), idToken: idToken),
-      SubscriptionPage(key: const ValueKey('Info'), idToken: idToken),
+      SubscriptionPage(key: const ValueKey('Subscription'), idToken: idToken),
       QuizPage(key: const ValueKey('Quiz'), idToken: idToken),
       ChallengePage(key: const ValueKey('Challenge'), idToken: idToken),
       const SettingsPage(key: ValueKey('Settings')),
@@ -47,7 +47,8 @@ class MainScreenState extends State<MainScreen> {
     // Navigasyon öğeleri (etiketler) dil değiştiğinde güncellenir.
     _navItems = [
       {'icon': Icons.leaderboard_outlined, 'label': localizations.navMainMenu},
-      {'icon': Icons.lightbulb_outline, 'label': localizations.navInfo},
+      // DEĞİŞİKLİK BURADA: İkon ve etiket aboneliğe uyarlandı
+      {'icon': Icons.workspace_premium_outlined, 'label': localizations.subscriptions}, // Abonelik İkonu
       {'icon': Icons.quiz_outlined, 'label': localizations.navQuiz},
       {'icon': Icons.whatshot_outlined, 'label': localizations.navChallenge},
       {'icon': Icons.settings_outlined, 'label': localizations.navSettings},
@@ -105,6 +106,7 @@ class MainScreenState extends State<MainScreen> {
 
     Color getSelectedColor(int index) {
       switch (index) {
+        // Index 1 rengi sabit kaldı (amberAccent.shade700) -> Premium hissi veriyor.
         case 0: return theme.colorScheme.primary;
         case 1: return Colors.amberAccent.shade700;
         case 2: return theme.colorScheme.tertiary;
@@ -154,6 +156,8 @@ class MainScreenState extends State<MainScreen> {
                   final index = entry.key;
                   final item = entry.value;
                   final isSelected = _selectedIndex == index;
+                  // Navigasyon etiketi kaldırıldı, sadece ikon kaldı.
+                  // Eğer etiketi geri isterseniz item['label'] kısmını eklemelisiniz.
                   final Color itemColor = isSelected ? getSelectedColor(index) : theme.bottomNavigationBarTheme.unselectedItemColor!;
 
                   return Expanded(

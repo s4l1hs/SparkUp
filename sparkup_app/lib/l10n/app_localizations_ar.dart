@@ -235,4 +235,7 @@ class AppLocalizationsAr extends AppLocalizations {
   @override
   String get subscriptionNote =>
       'هذه محاكاة للشراء. يجب دمجها مع نظام دفع حقيقي.';
+
+  @override
+  String get limitExceeded => 'تم تجاوز الحد';
 }

@@ -235,4 +235,7 @@ class AppLocalizationsHi extends AppLocalizations {
   @override
   String get subscriptionNote =>
       'यह एक खरीद सिमुलेशन है। इसे वास्तविक भुगतान प्रणाली के साथ एकीकृत किया जाना चाहिए।';
+
+  @override
+  String get limitExceeded => 'सीमा पार हो गई';
 }

@@ -233,4 +233,7 @@ class AppLocalizationsJa extends AppLocalizations {
 
   @override
   String get subscriptionNote => 'これは購入シミュレーションです。実際の決済システムとの統合が必要です。';
+
+  @override
+  String get limitExceeded => '制限を超過しました';
 }
