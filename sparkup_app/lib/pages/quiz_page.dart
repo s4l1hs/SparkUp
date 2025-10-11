@@ -1,4 +1,3 @@
-import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import '../services/api_service.dart';
@@ -232,7 +231,7 @@ class _QuizPageState extends State<QuizPage> with TickerProviderStateMixin {
   Widget _buildQuestionCard({required Key key}) {
     final theme = Theme.of(context);
     final currentQuestion = _questions[_currentIndex];
-    final options = jsonDecode(currentQuestion['options']) as List<dynamic>;
+    final options = currentQuestion['options'] as List<dynamic>; 
 
     return Column(
       key: key,

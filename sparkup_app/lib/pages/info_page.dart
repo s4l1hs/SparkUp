@@ -46,62 +46,62 @@ class _InfoPageState extends State<InfoPage> with TickerProviderStateMixin {
     super.dispose();
   }
 
-  // DEĞİŞİKLİK: Veri çekme ve animasyon tetikleme mantığı güncellendi
   Future<void> _triggerRefresh() async {
-    if (_isLoadingInfo) return; // Zaten yükleniyorsa tekrar tetikleme
+    if (_isLoadingInfo) return;
 
     setState(() => _isLoadingInfo = true);
-    _flipController.forward(); // Kartın dönmesini başlat
+    await _flipController.forward(); // Kartın dönmesini bekle
 
     try {
       final infoData = await _apiService.getRandomInfo(widget.idToken);
       if (mounted) {
         setState(() {
+          _dailyInfoText = infoData['info_text'];
+          _dailyInfoSource = infoData['source'];
           _error = null;
-          setState(() {
-              _dailyInfoText = infoData['info_text']; 
-              _dailyInfoSource = infoData['source'];    
-            });
         });
       }
     } catch (e) {
       if (mounted) {
         setState(() {
           _error = "Info could not be loaded: $e";
-          _dailyInfoText = null;
+          _dailyInfoText = null; // Hata durumunda eski metni temizle
           _dailyInfoSource = null;
         });
       }
     } finally {
-      _flipController.reverse(); // Yeni veriyle kartı geri çevir
-      // Geri dönme animasyonu bittiğinde yükleme durumunu kapat
-      _flipController.addStatusListener((status) {
-        if (status == AnimationStatus.dismissed) {
-          if (mounted) setState(() => _isLoadingInfo = false);
-        }
-      });
+      // Yeni veriyle kartı geri çevirmeden önce küçük bir bekleme
+      await Future.delayed(const Duration(milliseconds: 200));
+      if(mounted) {
+        await _flipController.reverse(); // Kartın geri dönmesini bekle
+        setState(() => _isLoadingInfo = false);
+      }
     }
   }
 
   // Sayfa ilk açıldığında veriyi çekmek için
   Future<void> _fetchDailyInfo() async {
-    // ... (_triggerRefresh ile benzer, ancak animasyonsuz ilk yükleme için)
     if (!mounted) return;
     setState(() => _isLoadingInfo = true);
     try {
       final infoData = await _apiService.getRandomInfo(widget.idToken);
       if (mounted) {
-        setState(() async {
-          if (mounted) {
-            setState(() {
-              _dailyInfoText = infoData['info_text']; 
-              _dailyInfoSource = infoData['source'];    
-            });
-          }
+        // Veri geldikten sonra, senkron olarak setState çağır
+        setState(() {
+          _dailyInfoText = infoData['info_text'];
+          _dailyInfoSource = infoData['source'];
+          _error = null;
         });
       }
-    } catch (e) { if (mounted) setState(() => _error = "Info could not load: $e");
-    } finally { if (mounted) setState(() => _isLoadingInfo = false); }
+    } catch (e) {
+      if (mounted) {
+        setState(() => _error = "Info could not load: $e");
+      }
+    } finally {
+      if (mounted) {
+        setState(() => _isLoadingInfo = false);
+      }
+    }
   }
 
 
