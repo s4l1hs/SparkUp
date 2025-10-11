@@ -143,4 +143,13 @@ class AppLocalizationsZh extends AppLocalizations {
 
   @override
   String get signOutConfirmation => '您确定要退出吗？';
+
+  @override
+  String get noDataAvailable => '没有可用数据';
+
+  @override
+  String get errorCouldNotSaveChanges => '无法保存更改';
+
+  @override
+  String get selected => '已选择';
 }

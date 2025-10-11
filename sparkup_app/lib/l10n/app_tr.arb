@@ -50,5 +50,8 @@
   "deleteAccount": "Hesabı Sil",
   "deleteAccountConfirmation": "Hesabınızı silmek istediğinizden emin misiniz? Bu işlem geri alınamaz ve puanınız dahil tüm verileriniz kalıcı olarak kaybolacaktır.",
   "delete": "Sil",
-  "signOutConfirmation": "Çıkış yapmak istediğinizden emin misiniz?"
+  "signOutConfirmation": "Çıkış yapmak istediğinizden emin misiniz?",
+  "noDataAvailable": "Veri mevcut değil",
+  "errorCouldNotSaveChanges": "Değişiklikler kaydedilemedi",
+  "selected": "seçili"
 }

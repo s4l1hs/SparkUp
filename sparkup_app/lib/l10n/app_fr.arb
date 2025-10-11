@@ -50,5 +50,8 @@
   "deleteAccount": "Supprimer le compte",
   "deleteAccountConfirmation": "Êtes-vous sûr de vouloir supprimer votre compte ? Cette action est irréversible et toutes vos données, y compris votre score, seront définitivement perdues.",
   "delete": "Supprimer",
-  "signOutConfirmation": "Êtes-vous sûr de vouloir vous déconnecter ?"
+  "signOutConfirmation": "Êtes-vous sûr de vouloir vous déconnecter ?",
+  "noDataAvailable": "Aucune donnée disponible",
+  "errorCouldNotSaveChanges": "Impossible d'enregistrer les modifications",
+  "selected": "sélectionné"
 }

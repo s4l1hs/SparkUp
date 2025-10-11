@@ -148,4 +148,14 @@ class AppLocalizationsFr extends AppLocalizations {
   @override
   String get signOutConfirmation =>
       'Êtes-vous sûr de vouloir vous déconnecter ?';
+
+  @override
+  String get noDataAvailable => 'Aucune donnée disponible';
+
+  @override
+  String get errorCouldNotSaveChanges =>
+      'Impossible d\'enregistrer les modifications';
+
+  @override
+  String get selected => 'sélectionné';
 }

@@ -79,7 +79,7 @@ class _LeaderboardPageState extends State<LeaderboardPage> with TickerProviderSt
       print("Sayfa verileri yüklenirken hata oluştu: $e");
       if (mounted) {
         ScaffoldMessenger.of(context).showSnackBar(
-          SnackBar(content: Text("AppLocalizations.of(context)!.errorCouldNotLoadData"), backgroundColor: Colors.red),
+          SnackBar(content: Text(AppLocalizations.of(context)!.noDataAvailable), backgroundColor: Colors.red),
         );
       }
     } finally {
@@ -103,7 +103,7 @@ class _LeaderboardPageState extends State<LeaderboardPage> with TickerProviderSt
       print("Konular kaydedilirken hata oluştu: $e");
       if (mounted) {
         ScaffoldMessenger.of(context).showSnackBar(
-          SnackBar(content: Text("localizations.errorCouldNotSaveChanges"), backgroundColor: Colors.red),
+          SnackBar(content: Text(localizations.errorCouldNotSaveChanges), backgroundColor: Colors.red),
         );
       }
     } finally {
@@ -156,7 +156,7 @@ class _LeaderboardPageState extends State<LeaderboardPage> with TickerProviderSt
                         _AnimatedListItem(index: 0, controller: _listAnimationController, child: _buildPodium(context, _leaderboardData.sublist(0, 3))),
                       Expanded(
                         child: _leaderboardData.length < 4
-                            ? (_leaderboardData.isEmpty ? Center(child: Text("localizations.noDataAvailable", style: TextStyle(color: Colors.grey.shade400))) : const SizedBox.shrink())
+                            ? (_leaderboardData.isEmpty ? Center(child: Text(localizations.noDataAvailable, style: TextStyle(color: Colors.grey.shade400))) : const SizedBox.shrink())
                             : ListView.builder(
                                 padding: EdgeInsets.symmetric(horizontal: 16.w),
                                 itemCount: _leaderboardData.length - 3,
@@ -274,11 +274,11 @@ class _LeaderboardPageState extends State<LeaderboardPage> with TickerProviderSt
                 ),
                 Padding(
                   padding: EdgeInsets.only(bottom: 8.h),
-                  child: Text('${_selectedTopics.length} ${"localizations.selected"}', style: TextStyle(color: Colors.grey.shade400, fontSize: 14.sp)),
+                  child: Text('${_selectedTopics.length} ${localizations.selected}', style: TextStyle(color: Colors.grey.shade400, fontSize: 14.sp)),
                 ),
                 Expanded(
                   child: _allTopics.isEmpty
-                      ? Center(child: Text("localizations.noDataAvailable", style: TextStyle(color: Colors.grey.shade400)))
+                      ? Center(child: Text(localizations.noDataAvailable, style: TextStyle(color: Colors.grey.shade400)))
                       : GridView.builder(
                           padding: EdgeInsets.fromLTRB(16.w, 0, 16.w, 20.h),
                           gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 2, crossAxisSpacing: 16, mainAxisSpacing: 16, childAspectRatio: 2.5 / 1),

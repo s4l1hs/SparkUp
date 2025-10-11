@@ -50,5 +50,8 @@
   "deleteAccount": "Konto löschen",
   "deleteAccountConfirmation": "Sind Sie sicher, dass Sie Ihr Konto löschen möchten? Diese Aktion ist unumkehrbar und alle Ihre Daten, einschließlich Ihrer Punktzahl, gehen dauerhaft verloren.",
   "delete": "Löschen",
-  "signOutConfirmation": "Sind Sie sicher, dass Sie sich abmelden möchten?"
+  "signOutConfirmation": "Sind Sie sicher, dass Sie sich abmelden möchten?",
+  "noDataAvailable": "Keine Daten verfügbar",
+  "errorCouldNotSaveChanges": "Änderungen konnten nicht gespeichert werden",
+  "selected": "ausgewählt"
 }

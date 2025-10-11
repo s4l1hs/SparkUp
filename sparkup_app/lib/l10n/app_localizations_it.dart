@@ -145,4 +145,13 @@ class AppLocalizationsIt extends AppLocalizations {
 
   @override
   String get signOutConfirmation => 'Sei sicuro di voler uscire?';
+
+  @override
+  String get noDataAvailable => 'Nessun dato disponibile';
+
+  @override
+  String get errorCouldNotSaveChanges => 'Impossibile salvare le modifiche';
+
+  @override
+  String get selected => 'selezionato';
 }

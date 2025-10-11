@@ -50,5 +50,8 @@
   "deleteAccount": "アカウントを削除",
   "deleteAccountConfirmation": "本当にアカウントを削除しますか？この操作は元に戻せません。スコアを含むすべてのデータが完全に失われます。",
   "delete": "削除",
-  "signOutConfirmation": "本当にサインアウトしますか？"
+  "signOutConfirmation": "本当にサインアウトしますか？",
+  "noDataAvailable": "データがありません",
+  "errorCouldNotSaveChanges": "変更を保存できませんでした",
+  "selected": "選択済み"
 }

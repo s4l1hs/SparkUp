@@ -51,5 +51,8 @@
   "deleteAccount": "Delete Account",
   "deleteAccountConfirmation": "Are you sure you want to delete your account? This action is irreversible and all your data, including your score, will be permanently lost.",
   "delete": "Delete",
-  "signOutConfirmation": "Are you sure you want to sign out?"
+  "signOutConfirmation": "Are you sure you want to sign out?",
+  "noDataAvailable": "No data available",
+  "errorCouldNotSaveChanges": "Could not save changes",
+  "selected": "selected"
 }

@@ -144,4 +144,13 @@ class AppLocalizationsHi extends AppLocalizations {
 
   @override
   String get signOutConfirmation => 'क्या आप वाकई साइन आउट करना चाहते हैं?';
+
+  @override
+  String get noDataAvailable => 'कोई डेटा उपलब्ध नहीं है';
+
+  @override
+  String get errorCouldNotSaveChanges => 'बदलाव सेव नहीं किए जा सके';
+
+  @override
+  String get selected => 'चयनित';
 }

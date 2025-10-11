@@ -144,4 +144,13 @@ class AppLocalizationsRu extends AppLocalizations {
 
   @override
   String get signOutConfirmation => 'Вы уверены, что хотите выйти?';
+
+  @override
+  String get noDataAvailable => 'Нет данных';
+
+  @override
+  String get errorCouldNotSaveChanges => 'Не удалось сохранить изменения';
+
+  @override
+  String get selected => 'выбранный';
 }

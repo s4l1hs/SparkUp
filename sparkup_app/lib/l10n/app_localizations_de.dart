@@ -150,4 +150,14 @@ class AppLocalizationsDe extends AppLocalizations {
   @override
   String get signOutConfirmation =>
       'Sind Sie sicher, dass Sie sich abmelden möchten?';
+
+  @override
+  String get noDataAvailable => 'Keine Daten verfügbar';
+
+  @override
+  String get errorCouldNotSaveChanges =>
+      'Änderungen konnten nicht gespeichert werden';
+
+  @override
+  String get selected => 'ausgewählt';
 }

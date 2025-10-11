@@ -143,4 +143,13 @@ class AppLocalizationsJa extends AppLocalizations {
 
   @override
   String get signOutConfirmation => '本当にサインアウトしますか？';
+
+  @override
+  String get noDataAvailable => 'データがありません';
+
+  @override
+  String get errorCouldNotSaveChanges => '変更を保存できませんでした';
+
+  @override
+  String get selected => '選択済み';
 }

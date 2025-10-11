@@ -13,23 +13,29 @@ class MainScreen extends StatefulWidget {
   const MainScreen({super.key, required this.idToken});
 
   @override
-  State<MainScreen> createState() => _MainScreenState();
+  State<MainScreen> createState() => MainScreenState();
 }
 
-class _MainScreenState extends State<MainScreen> {
+class MainScreenState extends State<MainScreen> {
   int _selectedIndex = 0;
-  late List<Widget> _pages;
-  late final List<Map<String, dynamic>> _navItems;
+  // _pages listesi artık burada tutulmuyor.
+  late List<Map<String, dynamic>> _navItems; 
 
   @override
   void initState() {
     super.initState();
-    _pages = <Widget>[
-      LeaderboardPage(idToken: widget.idToken),
-      InfoPage(idToken: widget.idToken),
-      QuizPage(idToken: widget.idToken),
-      ChallengePage(idToken: widget.idToken),
-      const SettingsPage(),
+    // initState boş kalır.
+  }
+
+  // YENİ METOT: Sayfa listesini her build/rebuild sırasında temiz bir şekilde oluşturur.
+  List<Widget> _buildPagesList(String idToken) {
+    // Sayfalara benzersiz, statik Key'ler eklenmesi de rebuild sırasında yardımcı olur.
+    return <Widget>[
+      LeaderboardPage(key: const ValueKey('Leaderboard'), idToken: idToken),
+      InfoPage(key: const ValueKey('Info'), idToken: idToken),
+      QuizPage(key: const ValueKey('Quiz'), idToken: idToken),
+      ChallengePage(key: const ValueKey('Challenge'), idToken: idToken),
+      const SettingsPage(key: ValueKey('Settings')),
     ];
   }
 
@@ -37,6 +43,8 @@ class _MainScreenState extends State<MainScreen> {
   void didChangeDependencies() {
     super.didChangeDependencies();
     final localizations = AppLocalizations.of(context)!;
+
+    // Navigasyon öğeleri (etiketler) dil değiştiğinde güncellenir.
     _navItems = [
       {'icon': Icons.leaderboard_outlined, 'label': localizations.navMainMenu},
       {'icon': Icons.lightbulb_outline, 'label': localizations.navInfo},
@@ -49,18 +57,10 @@ class _MainScreenState extends State<MainScreen> {
   @override
   void didUpdateWidget(covariant MainScreen oldWidget) {
     super.didUpdateWidget(oldWidget);
-    if (oldWidget.idToken != widget.idToken) {
-      _pages = <Widget>[
-        LeaderboardPage(idToken: widget.idToken),
-        InfoPage(idToken: widget.idToken),
-        QuizPage(idToken: widget.idToken),
-        ChallengePage(idToken: widget.idToken),
-        const SettingsPage(),
-      ];
-    }
+    // Artık _pages'i burada güncellemeye gerek yok, çünkü build metodu içinde dinamik olarak yenileniyor.
   }
 
-  void _onItemTapped(int index) {
+  void onItemTapped(int index) {
     setState(() {
       _selectedIndex = index;
     });
@@ -68,6 +68,12 @@ class _MainScreenState extends State<MainScreen> {
 
   @override
   Widget build(BuildContext context) {
+    // 1. Sayfaları build metodu içinde dinamik olarak oluşturun.
+    final List<Widget> pages = _buildPagesList(widget.idToken); 
+    
+    // 2. Dil kodunu alın (AnimatedSwitcher key'i için)
+    final localeCode = Localizations.localeOf(context).languageCode;
+    
     return Scaffold(
       body: AnimatedSwitcher(
         duration: const Duration(milliseconds: 350),
@@ -81,8 +87,11 @@ class _MainScreenState extends State<MainScreen> {
           );
         },
         child: Container(
-          key: ValueKey<int>(_selectedIndex),
-          child: _pages[_selectedIndex],
+          // Key'e index VE dil kodunu ekleyerek AnimatedSwitcher'ın
+          // dil değişimi olayını algılamasını zorluyoruz.
+          key: ValueKey<String>('page_$_selectedIndex-$localeCode'), 
+          // Yeni oluşturulan dinamik listeyi kullanın.
+          child: pages[_selectedIndex], 
         ),
       ),
       bottomNavigationBar: _buildCustomBottomNav(),
@@ -149,7 +158,7 @@ class _MainScreenState extends State<MainScreen> {
 
                   return Expanded(
                     child: GestureDetector(
-                      onTap: () => _onItemTapped(index),
+                      onTap: () => onItemTapped(index),
                       behavior: HitTestBehavior.opaque,
                       child: Column(
                         mainAxisAlignment: MainAxisAlignment.center,

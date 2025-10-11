@@ -50,5 +50,8 @@
   "deleteAccount": "खाता हटाएं",
   "deleteAccountConfirmation": "क्या आप वाकई अपना खाता हटाना चाहते हैं? यह कार्रवाई अपरिवर्तनीय है और आपका स्कोर सहित आपका सारा डेटा स्थायी रूप से नष्ट हो जाएगा।",
   "delete": "हटाएं",
-  "signOutConfirmation": "क्या आप वाकई साइन आउट करना चाहते हैं?" 
+  "signOutConfirmation": "क्या आप वाकई साइन आउट करना चाहते हैं?" ,
+  "noDataAvailable": "कोई डेटा उपलब्ध नहीं है",
+  "errorCouldNotSaveChanges": "बदलाव सेव नहीं किए जा सके",
+  "selected": "चयनित"
 }

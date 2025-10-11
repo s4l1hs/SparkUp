@@ -50,5 +50,8 @@
   "deleteAccount": "Удалить аккаунт",
   "deleteAccountConfirmation": "Вы уверены, что хотите удалить свой аккаунт? Это действие необратимо, и все ваши данные, включая ваш счет, будут безвозвратно удалены.",
   "delete": "Удалить",
-  "signOutConfirmation": "Вы уверены, что хотите выйти?"
+  "signOutConfirmation": "Вы уверены, что хотите выйти?",
+  "noDataAvailable": "Нет данных",
+  "errorCouldNotSaveChanges": "Не удалось сохранить изменения",
+  "selected": "выбранный"
 }

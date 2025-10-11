@@ -145,4 +145,13 @@ class AppLocalizationsTr extends AppLocalizations {
 
   @override
   String get signOutConfirmation => 'Çıkış yapmak istediğinizden emin misiniz?';
+
+  @override
+  String get noDataAvailable => 'Veri mevcut değil';
+
+  @override
+  String get errorCouldNotSaveChanges => 'Değişiklikler kaydedilemedi';
+
+  @override
+  String get selected => 'seçili';
 }

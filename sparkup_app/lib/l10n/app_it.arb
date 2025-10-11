@@ -50,5 +50,8 @@
   "deleteAccount": "Elimina account",
   "deleteAccountConfirmation": "Sei sicuro di voler eliminare il tuo account? Questa azione è irreversibile e tutti i tuoi dati, compreso il tuo punteggio, andranno persi per sempre.",
   "delete": "Elimina",
-  "signOutConfirmation": "Sei sicuro di voler uscire?"
+  "signOutConfirmation": "Sei sicuro di voler uscire?",
+  "noDataAvailable": "Nessun dato disponibile",
+  "errorCouldNotSaveChanges": "Impossibile salvare le modifiche",
+  "selected": "selezionato"
 }

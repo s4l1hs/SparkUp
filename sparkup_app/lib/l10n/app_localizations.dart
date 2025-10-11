@@ -385,6 +385,24 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Are you sure you want to sign out?'**
   String get signOutConfirmation;
+
+  /// No description provided for @noDataAvailable.
+  ///
+  /// In en, this message translates to:
+  /// **'No data available'**
+  String get noDataAvailable;
+
+  /// No description provided for @errorCouldNotSaveChanges.
+  ///
+  /// In en, this message translates to:
+  /// **'Could not save changes'**
+  String get errorCouldNotSaveChanges;
+
+  /// No description provided for @selected.
+  ///
+  /// In en, this message translates to:
+  /// **'selected'**
+  String get selected;
 }
 
 class _AppLocalizationsDelegate

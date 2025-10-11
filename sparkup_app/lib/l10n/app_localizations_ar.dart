@@ -144,4 +144,13 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String get signOutConfirmation => 'هل أنت متأكد أنك تريد تسجيل الخروج؟';
+
+  @override
+  String get noDataAvailable => 'لا تتوفر بيانات';
+
+  @override
+  String get errorCouldNotSaveChanges => 'تعذر حفظ التغييرات';
+
+  @override
+  String get selected => 'محدد';
 }
