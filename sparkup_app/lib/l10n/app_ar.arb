@@ -54,5 +54,12 @@
   "signOutConfirmation": "هل أنت متأكد أنك تريد تسجيل الخروج؟",
   "noDataAvailable": "لا تتوفر بيانات",
   "errorCouldNotSaveChanges": "تعذر حفظ التغييرات",
-  "selected": "محدد"
+  "selected": "محدد",
+  "yourRank": "رتبتك",
+  "rankMaster": "الماستر",
+  "rankDiamond": "الماس",
+  "rankGold": "الذهب",
+  "rankSilver": "الفضة",
+  "rankBronze": "البرونز",
+  "rankIron": "الحديد"
 }

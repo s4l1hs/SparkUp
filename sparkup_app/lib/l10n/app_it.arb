@@ -53,5 +53,12 @@
   "signOutConfirmation": "Sei sicuro di voler uscire?",
   "noDataAvailable": "Nessun dato disponibile",
   "errorCouldNotSaveChanges": "Impossibile salvare le modifiche",
-  "selected": "selezionato"
+  "selected": "selezionato",
+  "yourRank": "Il tuo Grado",
+  "rankMaster": "Maestro",
+  "rankDiamond": "Diamante",
+  "rankGold": "Oro",
+  "rankSilver": "Argento",
+  "rankBronze": "Bronzo",
+  "rankIron": "Ferro"
 }

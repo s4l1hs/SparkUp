@@ -54,5 +54,12 @@
   "signOutConfirmation": "Are you sure you want to sign out?",
   "noDataAvailable": "No data available",
   "errorCouldNotSaveChanges": "Could not save changes",
-  "selected": "selected"
+  "selected": "selected",
+  "yourRank": "Your Rank",
+  "rankMaster": "Master",
+  "rankDiamond": "Diamond",
+  "rankGold": "Gold",
+  "rankSilver": "Silver",
+  "rankBronze": "Bronze",
+  "rankIron": "Iron"
 }

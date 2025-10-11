@@ -153,4 +153,25 @@ class AppLocalizationsRu extends AppLocalizations {
 
   @override
   String get selected => 'выбранный';
+
+  @override
+  String get yourRank => 'Ваш Ранг';
+
+  @override
+  String get rankMaster => 'Мастер';
+
+  @override
+  String get rankDiamond => 'Алмаз';
+
+  @override
+  String get rankGold => 'Золото';
+
+  @override
+  String get rankSilver => 'Серебро';
+
+  @override
+  String get rankBronze => 'Бронза';
+
+  @override
+  String get rankIron => 'Железо';
 }

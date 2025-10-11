@@ -154,4 +154,25 @@ class AppLocalizationsTr extends AppLocalizations {
 
   @override
   String get selected => 'seçili';
+
+  @override
+  String get yourRank => 'Sıralaman';
+
+  @override
+  String get rankMaster => 'Üstad';
+
+  @override
+  String get rankDiamond => 'Elmas';
+
+  @override
+  String get rankGold => 'Altın';
+
+  @override
+  String get rankSilver => 'Gümüş';
+
+  @override
+  String get rankBronze => 'Bronz';
+
+  @override
+  String get rankIron => 'Demir';
 }

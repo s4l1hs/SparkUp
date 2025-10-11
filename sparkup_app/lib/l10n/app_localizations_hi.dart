@@ -153,4 +153,25 @@ class AppLocalizationsHi extends AppLocalizations {
 
   @override
   String get selected => 'चयनित';
+
+  @override
+  String get yourRank => 'आपकी रैंक';
+
+  @override
+  String get rankMaster => 'मास्टर';
+
+  @override
+  String get rankDiamond => 'हीरा';
+
+  @override
+  String get rankGold => 'स्वर्ण';
+
+  @override
+  String get rankSilver => 'चाँदी';
+
+  @override
+  String get rankBronze => 'कांस्य';
+
+  @override
+  String get rankIron => 'लोहा';
 }

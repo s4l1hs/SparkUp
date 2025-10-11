@@ -53,5 +53,12 @@
   "signOutConfirmation": "Sind Sie sicher, dass Sie sich abmelden möchten?",
   "noDataAvailable": "Keine Daten verfügbar",
   "errorCouldNotSaveChanges": "Änderungen konnten nicht gespeichert werden",
-  "selected": "ausgewählt"
+  "selected": "ausgewählt",
+  "yourRank": "Dein Rang",
+  "rankMaster": "Meister",
+  "rankDiamond": "Diamant",
+  "rankGold": "Gold",
+  "rankSilver": "Silber",
+  "rankBronze": "Bronze",
+  "rankIron": "Eisen"
 }

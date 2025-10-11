@@ -53,5 +53,12 @@
   "signOutConfirmation": "¿Estás seguro de que quieres cerrar sesión?",
   "noDataAvailable": "No hay datos disponibles",
   "errorCouldNotSaveChanges": "No se pudieron guardar los cambios",
-  "selected": "seleccionado"
+  "selected": "seleccionado",
+  "yourRank": "Tu Rango",
+  "rankMaster": "Maestro",
+  "rankDiamond": "Diamante",
+  "rankGold": "Oro",
+  "rankSilver": "Plata",
+  "rankBronze": "Bronce",
+  "rankIron": "Hierro"
 }

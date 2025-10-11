@@ -53,5 +53,12 @@
   "signOutConfirmation": "Êtes-vous sûr de vouloir vous déconnecter ?",
   "noDataAvailable": "Aucune donnée disponible",
   "errorCouldNotSaveChanges": "Impossible d'enregistrer les modifications",
-  "selected": "sélectionné"
+  "selected": "sélectionné",
+  "yourRank": "Votre Rang",
+  "rankMaster": "Maître",
+  "rankDiamond": "Diamant",
+  "rankGold": "Or",
+  "rankSilver": "Argent",
+  "rankBronze": "Bronze",
+  "rankIron": "Fer"
 }

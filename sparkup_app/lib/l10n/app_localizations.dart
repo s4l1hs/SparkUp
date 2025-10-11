@@ -403,6 +403,48 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'selected'**
   String get selected;
+
+  /// No description provided for @yourRank.
+  ///
+  /// In en, this message translates to:
+  /// **'Your Rank'**
+  String get yourRank;
+
+  /// No description provided for @rankMaster.
+  ///
+  /// In en, this message translates to:
+  /// **'Master'**
+  String get rankMaster;
+
+  /// No description provided for @rankDiamond.
+  ///
+  /// In en, this message translates to:
+  /// **'Diamond'**
+  String get rankDiamond;
+
+  /// No description provided for @rankGold.
+  ///
+  /// In en, this message translates to:
+  /// **'Gold'**
+  String get rankGold;
+
+  /// No description provided for @rankSilver.
+  ///
+  /// In en, this message translates to:
+  /// **'Silver'**
+  String get rankSilver;
+
+  /// No description provided for @rankBronze.
+  ///
+  /// In en, this message translates to:
+  /// **'Bronze'**
+  String get rankBronze;
+
+  /// No description provided for @rankIron.
+  ///
+  /// In en, this message translates to:
+  /// **'Iron'**
+  String get rankIron;
 }
 
 class _AppLocalizationsDelegate

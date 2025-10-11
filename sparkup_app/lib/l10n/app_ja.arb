@@ -53,5 +53,12 @@
   "signOutConfirmation": "本当にサインアウトしますか？",
   "noDataAvailable": "データがありません",
   "errorCouldNotSaveChanges": "変更を保存できませんでした",
-  "selected": "選択済み"
+  "selected": "選択済み",
+  "yourRank": "あなたのランク",
+  "rankMaster": "マスター",
+  "rankDiamond": "ダイヤモンド",
+  "rankGold": "ゴールド",
+  "rankSilver": "シルバー",
+  "rankBronze": "ブロンズ",
+  "rankIron": "アイアン"
 }

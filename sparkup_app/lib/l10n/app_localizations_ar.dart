@@ -153,4 +153,25 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String get selected => 'محدد';
+
+  @override
+  String get yourRank => 'رتبتك';
+
+  @override
+  String get rankMaster => 'الماستر';
+
+  @override
+  String get rankDiamond => 'الماس';
+
+  @override
+  String get rankGold => 'الذهب';
+
+  @override
+  String get rankSilver => 'الفضة';
+
+  @override
+  String get rankBronze => 'البرونز';
+
+  @override
+  String get rankIron => 'الحديد';
 }

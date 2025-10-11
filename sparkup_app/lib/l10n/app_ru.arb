@@ -53,5 +53,12 @@
   "signOutConfirmation": "Вы уверены, что хотите выйти?",
   "noDataAvailable": "Нет данных",
   "errorCouldNotSaveChanges": "Не удалось сохранить изменения",
-  "selected": "выбранный"
+  "selected": "выбранный",
+  "yourRank": "Ваш Ранг",
+  "rankMaster": "Мастер",
+  "rankDiamond": "Алмаз",
+  "rankGold": "Золото",
+  "rankSilver": "Серебро",
+  "rankBronze": "Бронза",
+  "rankIron": "Железо"
 }

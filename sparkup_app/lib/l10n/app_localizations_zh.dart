@@ -152,4 +152,25 @@ class AppLocalizationsZh extends AppLocalizations {
 
   @override
   String get selected => '已选择';
+
+  @override
+  String get yourRank => '你的排名';
+
+  @override
+  String get rankMaster => '大师';
+
+  @override
+  String get rankDiamond => '钻石';
+
+  @override
+  String get rankGold => '黄金';
+
+  @override
+  String get rankSilver => '白银';
+
+  @override
+  String get rankBronze => '青铜';
+
+  @override
+  String get rankIron => '铁';
 }

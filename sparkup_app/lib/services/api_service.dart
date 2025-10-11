@@ -118,17 +118,57 @@ class ApiService {
     }
   }
 
+  // --- Lider Tablosu Endpoitleri (AUTH GEREKİR) ---
+
+  // Tüm lider tablosu verilerini getirir
   Future<List<LeaderboardEntry>> getLeaderboard(String idToken) async {
     final uri = Uri.parse('$backendBaseUrl/leaderboard/');
-    final response = await http.get(uri, headers: {
-      'Authorization': 'Bearer $idToken',
-    });
+    final response = await http.get(uri, headers: _getAuthHeaders(idToken));
 
     if (response.statusCode == 200) {
-      final List<dynamic> data = jsonDecode(response.body);
+      final List<dynamic> data = _decodeResponseBody(response.bodyBytes);
       return data.map((json) => LeaderboardEntry.fromJson(json)).toList();
     } else {
-      throw Exception('Failed to load leaderboard');
+      throw Exception('Failed to load leaderboard. Status: ${response.statusCode}, Body: ${response.body}');
     }
   }
+  
+  // YENİ ENDPOINT: Kullanıcının kendi sıralama ve puan bilgisini getirir
+  Future<LeaderboardEntry?> getUserRank(String idToken) async {
+    // Backend'de "/leaderboard/me/" gibi bir endpoint olduğunu varsayıyoruz
+    final uri = Uri.parse('$backendBaseUrl/leaderboard/me/');
+    final response = await http.get(uri, headers: _getAuthHeaders(idToken));
+
+    if (response.statusCode == 200) {
+      final data = _decodeResponseBody(response.bodyBytes);
+      // Gelen veriye göre rütbe adını ekliyoruz
+      data['rank_name'] = _getRankName(data['score'] ?? 0);
+      return LeaderboardEntry.fromJson(data);
+    } 
+    // Kullanıcı listede yoksa veya 404 dönerse null döndürülebilir
+    else if (response.statusCode == 404) {
+      return null;
+    }
+    else {
+      throw Exception('Failed to load user rank. Status: ${response.statusCode}, Body: ${response.body}');
+    }
+  }
+}
+
+// --- RÜTBE HESAPLAMA YARDIMCI METODU ---
+
+String _getRankName(int score) {
+    if (score >= 10000) {
+        return 'Üstad';
+    } else if (score >= 5000) {
+        return 'Elmas';
+    } else if (score >= 2000) {
+        return 'Altın';
+    } else if (score >= 1000) {
+        return 'Gümüş';
+    } else if (score >= 500) {
+        return 'Bronz';
+    } else {
+        return 'Demir';
+    }
 }

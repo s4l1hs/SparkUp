@@ -18,11 +18,13 @@ class _LeaderboardPageState extends State<LeaderboardPage> with TickerProviderSt
 
   // --- STATE'LER ---
   List<LeaderboardEntry> _leaderboardData = [];
+  LeaderboardEntry? _currentUserEntry;
   bool _isLoading = true;
   bool _isTopicPanelOpen = false;
   Map<String, String> _allTopics = {};
   Set<String> _selectedTopics = {};
   bool _isSaving = false;
+  bool _hasError = false;
 
   // --- ANİMASYON CONTROLLER'LARI ---
   late final AnimationController _listAnimationController;
@@ -59,27 +61,36 @@ class _LeaderboardPageState extends State<LeaderboardPage> with TickerProviderSt
   // --- API FONKSİYONLARI ---
   Future<void> _loadPageData() async {
     if (!mounted) return;
-    setState(() => _isLoading = true);
+    setState(() {
+      _isLoading = true;
+      _hasError = false;
+    });
     _listAnimationController.reset();
+    final localizations = AppLocalizations.of(context)!;
+    
     try {
       final results = await Future.wait([
         _apiService.getLeaderboard(widget.idToken),
         _apiService.getTopics(),
         _apiService.getUserTopics(widget.idToken),
+        _apiService.getUserRank(widget.idToken),
       ]);
+      
       if (mounted) {
         setState(() {
           _leaderboardData = results[0] as List<LeaderboardEntry>;
           _allTopics = results[1] as Map<String, String>;
           _selectedTopics = (results[2] as List<String>).toSet();
+          _currentUserEntry = results[3] as LeaderboardEntry?;
         });
         _listAnimationController.forward();
       }
     } catch (e) {
       print("Sayfa verileri yüklenirken hata oluştu: $e");
       if (mounted) {
+        setState(() => _hasError = true);
         ScaffoldMessenger.of(context).showSnackBar(
-          SnackBar(content: Text(AppLocalizations.of(context)!.noDataAvailable), backgroundColor: Colors.red),
+          SnackBar(content: Text(localizations.noDataAvailable), backgroundColor: Colors.red),
         );
       }
     } finally {
@@ -112,6 +123,24 @@ class _LeaderboardPageState extends State<LeaderboardPage> with TickerProviderSt
   }
   
   // --- YARDIMCI FONKSİYONLAR ---
+  
+  // Rütbe anahtarını puana göre hesaplar
+  String _getRankKey(int score) {
+    if (score >= 10000) {
+        return 'rankMaster';
+    } else if (score >= 5000) {
+        return 'rankDiamond';
+    } else if (score >= 2000) {
+        return 'rankGold';
+    } else if (score >= 1000) {
+        return 'rankSilver';
+    } else if (score >= 500) {
+        return 'rankBronze';
+    } else {
+        return 'rankIron'; // İlk defa kayıt olanlar veya 500 altı için
+    }
+  }
+  
   String _maskEmail(String? email) {
     if (email == null || !email.contains('@')) return 'Anonymous';
     final parts = email.split('@');
@@ -146,42 +175,66 @@ class _LeaderboardPageState extends State<LeaderboardPage> with TickerProviderSt
           SafeArea(
             child: _isLoading
                 ? Center(child: CircularProgressIndicator(color: theme.colorScheme.primary))
-                : Column(
-                    children: [
-                      Padding(
-                        padding: EdgeInsets.symmetric(vertical: 20.h, horizontal: 16.w),
-                        child: Text(localizations.navLeaderboard, style: theme.textTheme.titleLarge?.copyWith(fontSize: 24.sp)),
-                      ),
-                      if (_leaderboardData.length >= 3)
-                        _AnimatedListItem(index: 0, controller: _listAnimationController, child: _buildPodium(context, _leaderboardData.sublist(0, 3))),
-                      Expanded(
-                        child: _leaderboardData.length < 4
-                            ? (_leaderboardData.isEmpty ? Center(child: Text(localizations.noDataAvailable, style: TextStyle(color: Colors.grey.shade400))) : const SizedBox.shrink())
-                            : ListView.builder(
-                                padding: EdgeInsets.symmetric(horizontal: 16.w),
-                                itemCount: _leaderboardData.length - 3,
-                                itemBuilder: (context, index) {
-                                  final entry = _leaderboardData[index + 3];
-                                  return _AnimatedListItem(
-                                    index: index + 1,
-                                    controller: _listAnimationController,
-                                    child: Card(
-                                      color: theme.cardTheme.color,
-                                      margin: EdgeInsets.only(bottom: 12.h),
-                                      child: ListTile(
-                                        leading: Text("#${entry.rank}", style: TextStyle(fontSize: 16.sp, color: Colors.grey.shade400, fontWeight: FontWeight.bold)),
-                                        title: Text(_maskEmail(entry.email), style: const TextStyle(fontWeight: FontWeight.bold, color: Colors.white)),
-                                        trailing: Row( mainAxisSize: MainAxisSize.min, children: [ Text(entry.score.toString(), style: TextStyle(fontSize: 16.sp, fontWeight: FontWeight.bold, color: theme.colorScheme.primary)), SizedBox(width: 4.w), Icon(Icons.star_rounded, color: theme.colorScheme.secondary, size: 18.sp)])
-                                      ),
-                                    ),
-                                  );
-                                },
+                : _hasError 
+                  ? Center(child: Text("${localizations.error}: ${localizations.noDataAvailable}", style: TextStyle(color: theme.colorScheme.error)))
+                  : _leaderboardData.isEmpty && _currentUserEntry == null
+                    ? Center(child: Text(localizations.noDataAvailable, style: TextStyle(color: Colors.grey.shade400)))
+                    : CustomScrollView(
+                        slivers: [
+                          // Başlık
+                          SliverToBoxAdapter(
+                            child: Padding(
+                              padding: EdgeInsets.symmetric(vertical: 20.h, horizontal: 16.w),
+                              child: Text(localizations.navLeaderboard, style: theme.textTheme.titleLarge?.copyWith(fontSize: 24.sp)),
+                            ),
+                          ),
+                          
+                          // Podyum Kısmı
+                          if (_leaderboardData.isNotEmpty)
+                            SliverToBoxAdapter(
+                              child: _AnimatedListItem(
+                                index: 0, 
+                                controller: _listAnimationController, 
+                                child: _buildPodium(context, _leaderboardData.take(3).toList()) 
                               ),
+                            ),
+                            
+                          // Kullanıcının Kendi Sıralaması
+                          if (_currentUserEntry != null)
+                            SliverToBoxAdapter(
+                              child: _AnimatedListItem(
+                                index: 1, 
+                                controller: _listAnimationController, 
+                                child: _buildUserRankCard(theme, _currentUserEntry!, localizations)
+                              ),
+                            ),
+
+                          // Listeleme Kısmı
+                          SliverList(
+                            delegate: SliverChildBuilderDelegate(
+                              (context, index) {
+                                final entry = _leaderboardData[index + 3];
+                                return Padding(
+                                  padding: EdgeInsets.symmetric(horizontal: 16.w),
+                                  child: _AnimatedListItem(
+                                    index: index + 2, 
+                                    controller: _listAnimationController,
+                                    child: _buildLeaderboardTile(theme, entry),
+                                  ),
+                                );
+                              },
+                              childCount: _leaderboardData.length > 3 ? _leaderboardData.length - 3 : 0,
+                            ),
+                          ),
+                          
+                          // FloatingActionButton için alt boşluk
+                          const SliverToBoxAdapter(child: SizedBox(height: 80)), 
+                        ],
                       ),
-                    ],
-                  ),
           ),
+          
           _buildTopicSelectionPanel(context),
+          
           Align(
             alignment: Alignment.bottomRight,
             child: Padding(
@@ -203,45 +256,132 @@ class _LeaderboardPageState extends State<LeaderboardPage> with TickerProviderSt
   }
 
   // --- YARDIMCI BUILD METOTLARI ---
-  Widget _buildPodium(BuildContext context, List<LeaderboardEntry> topThree) {
+  
+  // Kullanıcının kendi sıralamasını gösteren özel Card
+  Widget _buildUserRankCard(ThemeData theme, LeaderboardEntry entry, AppLocalizations localizations) {
+    // Rütbe anahtarını hesapla
+    final String rankKey = _getRankKey(entry.score);
+    
+    // Yerelleştirilmiş rütbe adını al
+    // AppLocalizations'dan dinamik olarak metin almak için reflection benzeri bir yaklaşım kullanıyoruz.
+    // Bu, l10n tarafından oluşturulan 'tr' gibi bir metni 'rankTr' alan adına çevirir.
+    String getLocalizedRank(String key) {
+        switch(key) {
+            case 'rankMaster': return localizations.rankMaster;
+            case 'rankDiamond': return localizations.rankDiamond;
+            case 'rankGold': return localizations.rankGold;
+            case 'rankSilver': return localizations.rankSilver;
+            case 'rankBronze': return localizations.rankBronze;
+            case 'rankIron': return localizations.rankIron;
+            default: return '';
+        }
+    }
+    final String rankName = getLocalizedRank(rankKey);
+    
+    return Card(
+      color: theme.colorScheme.surface.withOpacity(0.7),
+      margin: EdgeInsets.symmetric(horizontal: 16.w, vertical: 12.h),
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.circular(12.r),
+        side: BorderSide(color: theme.colorScheme.secondary, width: 2.w),
+      ),
+      child: ListTile(
+        leading: Text("#${entry.rank}", style: TextStyle(fontSize: 16.sp, color: theme.colorScheme.secondary, fontWeight: FontWeight.bold)),
+        title: Text(localizations.yourRank, style: const TextStyle(fontWeight: FontWeight.bold, color: Colors.white)),
+        // Rütbe Adı Eklendi
+        subtitle: Row(
+          children: [
+            Text(_maskEmail(entry.email), style: TextStyle(color: Colors.grey.shade400)),
+            SizedBox(width: 8.w),
+            // Yerelleştirilmiş rütbe adını göster
+            Text("($rankName)", style: TextStyle(color: theme.colorScheme.primary, fontWeight: FontWeight.bold, fontSize: 13.sp)),
+          ],
+        ),
+        trailing: Row( mainAxisSize: MainAxisSize.min, children: [ Text(entry.score.toString(), style: TextStyle(fontSize: 16.sp, fontWeight: FontWeight.bold, color: theme.colorScheme.secondary)), SizedBox(width: 4.w), Icon(Icons.star_rounded, color: theme.colorScheme.secondary, size: 18.sp)])
+      ),
+    );
+  }
+  
+  // Liderlik tablosu List Tile 
+  Widget _buildLeaderboardTile(ThemeData theme, LeaderboardEntry entry) {
+      return Card(
+        color: theme.cardTheme.color,
+        margin: EdgeInsets.only(bottom: 12.h),
+        child: ListTile(
+          leading: Text("#${entry.rank}", style: TextStyle(fontSize: 16.sp, color: Colors.grey.shade400, fontWeight: FontWeight.bold)),
+          title: Text(_maskEmail(entry.email), style: const TextStyle(fontWeight: FontWeight.bold, color: Colors.white)),
+          trailing: Row( mainAxisSize: MainAxisSize.min, children: [ Text(entry.score.toString(), style: TextStyle(fontSize: 16.sp, fontWeight: FontWeight.bold, color: theme.colorScheme.primary)), SizedBox(width: 4.w), Icon(Icons.star_rounded, color: theme.colorScheme.secondary, size: 18.sp)])
+        ),
+      );
+  }
+
+  Widget _buildPodium(BuildContext context, List<LeaderboardEntry> topEntries) {
     final theme = Theme.of(context);
+    
+    // Podyumun sadece ilk 3 için çalışmasını sağlar. Eksik yerleri boşlukla doldurur.
+    final List<LeaderboardEntry?> podium = List.generate(3, (index) => index < topEntries.length ? topEntries[index] : null);
+
     return Padding(
       padding: EdgeInsets.only(left: 16.w, right: 16.w, bottom: 24.h),
       child: Row(
         crossAxisAlignment: CrossAxisAlignment.end,
         children: [
-          _buildPodiumPlace(context, topThree[1], theme, height: 120.h),
-          _buildPodiumPlace(context, topThree[0], theme, height: 150.h, isFirst: true),
-          _buildPodiumPlace(context, topThree[2], theme, height: 100.h),
+          // 2. Sıra
+          Expanded(child: podium[1] != null ? _buildPodiumPlace(context, podium[1]!, theme, height: 120.h, color: theme.colorScheme.tertiary) : _buildEmptyPodium(120.h, Colors.grey.shade700)),
+          // 1. Sıra
+          Expanded(child: podium[0] != null ? _buildPodiumPlace(context, podium[0]!, theme, height: 150.h, isFirst: true, color: theme.colorScheme.primary) : _buildEmptyPodium(150.h, Colors.grey.shade700)),
+          // 3. Sıra
+          Expanded(child: podium[2] != null ? _buildPodiumPlace(context, podium[2]!, theme, height: 100.h, color: Colors.deepOrangeAccent.shade400) : _buildEmptyPodium(100.h, Colors.grey.shade700)),
         ],
       ),
     );
   }
 
-  Widget _buildPodiumPlace(BuildContext context, LeaderboardEntry entry, ThemeData theme, {required double height, bool isFirst = false}) {
-    return Expanded(
-      child: Column(
-        children: [
-          if (isFirst) Icon(Icons.emoji_events_rounded, color: Colors.amber, size: 32.sp),
-          SizedBox(height: isFirst ? 8.h : 12.h),
-          Text("#${entry.rank}", style: TextStyle(fontSize: 18.sp, color: isFirst ? Colors.amber : Colors.white, fontWeight: FontWeight.bold)),
-          SizedBox(height: 4.h),
-          Text(_maskEmail(entry.email), style: TextStyle(fontSize: 13.sp, color: Colors.grey.shade300), overflow: TextOverflow.ellipsis),
-          SizedBox(height: 8.h),
-          Container(
-            height: height,
-            margin: EdgeInsets.symmetric(horizontal: 4.w),
-            decoration: BoxDecoration(
-              color: isFirst ? theme.colorScheme.primary.withOpacity(0.3) : theme.colorScheme.surface.withOpacity(0.5),
-              borderRadius: BorderRadius.vertical(top: Radius.circular(12.r)),
-              border: Border.all(color: isFirst ? theme.colorScheme.primary : theme.colorScheme.tertiary.withOpacity(0.5)),
-            ),
-            child: Center(child: Text(entry.score.toString(), style: TextStyle(fontSize: 22.sp, color: Colors.white, fontWeight: FontWeight.bold))),
+  Widget _buildPodiumPlace(BuildContext context, LeaderboardEntry entry, ThemeData theme, {required double height, bool isFirst = false, required Color color}) {
+    return Column(
+      children: [
+        if (isFirst) Icon(Icons.emoji_events_rounded, color: Colors.amber, size: 32.sp),
+        SizedBox(height: isFirst ? 8.h : 12.h),
+        Text("#${entry.rank}", style: TextStyle(fontSize: 18.sp, color: isFirst ? Colors.amber : Colors.white, fontWeight: FontWeight.bold)),
+        SizedBox(height: 4.h),
+        Text(_maskEmail(entry.email), style: TextStyle(fontSize: 13.sp, color: Colors.grey.shade300), overflow: TextOverflow.ellipsis),
+        SizedBox(height: 8.h),
+        Container(
+          height: height,
+          margin: EdgeInsets.symmetric(horizontal: 4.w),
+          decoration: BoxDecoration(
+            color: color.withOpacity(0.3),
+            borderRadius: BorderRadius.vertical(top: Radius.circular(12.r)),
+            border: Border.all(color: color, width: 2),
           ),
-        ],
-      ),
+          child: Center(child: Text(entry.score.toString(), style: TextStyle(fontSize: 22.sp, color: Colors.white, fontWeight: FontWeight.bold))),
+        ),
+      ],
     );
   }
+
+  Widget _buildEmptyPodium(double height, Color color) {
+    return Column(
+      children: [
+        SizedBox(height: 32.sp + 12.h + 4.h), // Icon + Text space
+        Text("-", style: TextStyle(fontSize: 18.sp, color: color, fontWeight: FontWeight.bold)),
+        SizedBox(height: 4.h),
+        Text("---", style: TextStyle(fontSize: 13.sp, color: color)),
+        SizedBox(height: 8.h),
+        Container(
+          height: height,
+          margin: EdgeInsets.symmetric(horizontal: 4.w),
+          decoration: BoxDecoration(
+            color: color.withOpacity(0.1),
+            borderRadius: BorderRadius.vertical(top: Radius.circular(12.r)),
+            border: Border.all(color: color.withOpacity(0.5), width: 1),
+          ),
+          child: Center(child: Text("0", style: TextStyle(fontSize: 22.sp, color: color, fontWeight: FontWeight.bold))),
+        ),
+      ],
+    );
+  }
+
 
   Widget _buildTopicSelectionPanel(BuildContext context) {
     final localizations = AppLocalizations.of(context)!;

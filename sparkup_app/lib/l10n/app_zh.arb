@@ -53,5 +53,12 @@
   "signOutConfirmation": "您确定要退出吗？",
   "noDataAvailable": "没有可用数据",
   "errorCouldNotSaveChanges": "无法保存更改",
-  "selected": "已选择"
+  "selected": "已选择",
+  "yourRank": "你的排名",
+  "rankMaster": "大师",
+  "rankDiamond": "钻石",
+  "rankGold": "黄金",
+  "rankSilver": "白银",
+  "rankBronze": "青铜",
+  "rankIron": "铁"
 }

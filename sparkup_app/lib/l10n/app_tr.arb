@@ -53,5 +53,12 @@
   "signOutConfirmation": "Çıkış yapmak istediğinizden emin misiniz?",
   "noDataAvailable": "Veri mevcut değil",
   "errorCouldNotSaveChanges": "Değişiklikler kaydedilemedi",
-  "selected": "seçili"
+  "selected": "seçili",
+  "yourRank": "Sıralaman",
+  "rankMaster": "Üstad",
+  "rankDiamond": "Elmas",
+  "rankGold": "Altın",
+  "rankSilver": "Gümüş",
+  "rankBronze": "Bronz",
+  "rankIron": "Demir"
 }

@@ -152,4 +152,25 @@ class AppLocalizationsJa extends AppLocalizations {
 
   @override
   String get selected => '選択済み';
+
+  @override
+  String get yourRank => 'あなたのランク';
+
+  @override
+  String get rankMaster => 'マスター';
+
+  @override
+  String get rankDiamond => 'ダイヤモンド';
+
+  @override
+  String get rankGold => 'ゴールド';
+
+  @override
+  String get rankSilver => 'シルバー';
+
+  @override
+  String get rankBronze => 'ブロンズ';
+
+  @override
+  String get rankIron => 'アイアン';
 }

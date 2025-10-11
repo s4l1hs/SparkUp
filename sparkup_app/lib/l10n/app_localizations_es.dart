@@ -156,4 +156,25 @@ class AppLocalizationsEs extends AppLocalizations {
 
   @override
   String get selected => 'seleccionado';
+
+  @override
+  String get yourRank => 'Tu Rango';
+
+  @override
+  String get rankMaster => 'Maestro';
+
+  @override
+  String get rankDiamond => 'Diamante';
+
+  @override
+  String get rankGold => 'Oro';
+
+  @override
+  String get rankSilver => 'Plata';
+
+  @override
+  String get rankBronze => 'Bronce';
+
+  @override
+  String get rankIron => 'Hierro';
 }

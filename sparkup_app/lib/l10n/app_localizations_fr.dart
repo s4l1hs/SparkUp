@@ -158,4 +158,25 @@ class AppLocalizationsFr extends AppLocalizations {
 
   @override
   String get selected => 'sélectionné';
+
+  @override
+  String get yourRank => 'Votre Rang';
+
+  @override
+  String get rankMaster => 'Maître';
+
+  @override
+  String get rankDiamond => 'Diamant';
+
+  @override
+  String get rankGold => 'Or';
+
+  @override
+  String get rankSilver => 'Argent';
+
+  @override
+  String get rankBronze => 'Bronze';
+
+  @override
+  String get rankIron => 'Fer';
 }
