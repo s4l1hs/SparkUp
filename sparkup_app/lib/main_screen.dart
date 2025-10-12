@@ -1,9 +1,11 @@
+// lib/main_screen.dart
+
 import 'dart:ui';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'l10n/app_localizations.dart';
 import 'pages/challenge_page.dart';
-import 'pages/subscription_page.dart'; // SubscriptionPage artık InfoPage yerine
+import 'pages/subscription_page.dart';
 import 'pages/leaderboard_page.dart';
 import 'pages/quiz_page.dart';
 import 'pages/settings_page.dart';
@@ -18,24 +20,20 @@ class MainScreen extends StatefulWidget {
 
 class MainScreenState extends State<MainScreen> {
   int _selectedIndex = 0;
-  // _pages listesi artık burada tutulmuyor.
-  late List<Map<String, dynamic>> _navItems; 
+  late final List<Widget> _pages; // Sayfalar artık burada tutulacak
+  late List<Map<String, dynamic>> _navItems;
 
   @override
   void initState() {
     super.initState();
-    // initState boş kalır.
-  }
-
-  // YENİ METOT: Sayfa listesini her build/rebuild sırasında temiz bir şekilde oluşturur.
-  List<Widget> _buildPagesList(String idToken) {
-    // Sayfalara benzersiz, statik Key'ler eklenmesi de rebuild sırasında yardımcı olur.
-    return <Widget>[
-      LeaderboardPage(key: const ValueKey('Leaderboard'), idToken: idToken),
-      SubscriptionPage(key: const ValueKey('Subscription'), idToken: idToken),
-      QuizPage(key: const ValueKey('Quiz'), idToken: idToken),
-      ChallengePage(key: const ValueKey('Challenge'), idToken: idToken),
-      const SettingsPage(key: ValueKey('Settings')),
+    // DÜZELTME: Sayfalar initState içinde SADECE BİR KERE oluşturulur.
+    // Bu, durumlarının (state) korunmasını sağlar.
+    _pages = <Widget>[
+      LeaderboardPage(idToken: widget.idToken),
+      SubscriptionPage(idToken: widget.idToken),
+      QuizPage(idToken: widget.idToken),
+      ChallengePage(idToken: widget.idToken),
+      const SettingsPage(),
     ];
   }
 
@@ -43,22 +41,13 @@ class MainScreenState extends State<MainScreen> {
   void didChangeDependencies() {
     super.didChangeDependencies();
     final localizations = AppLocalizations.of(context)!;
-
-    // Navigasyon öğeleri (etiketler) dil değiştiğinde güncellenir.
     _navItems = [
       {'icon': Icons.leaderboard_outlined, 'label': localizations.navMainMenu},
-      // DEĞİŞİKLİK BURADA: İkon ve etiket aboneliğe uyarlandı
-      {'icon': Icons.workspace_premium_outlined, 'label': localizations.subscriptions}, // Abonelik İkonu
+      {'icon': Icons.workspace_premium_outlined, 'label': localizations.subscriptions},
       {'icon': Icons.quiz_outlined, 'label': localizations.navQuiz},
       {'icon': Icons.whatshot_outlined, 'label': localizations.navChallenge},
       {'icon': Icons.settings_outlined, 'label': localizations.navSettings},
     ];
-  }
-
-  @override
-  void didUpdateWidget(covariant MainScreen oldWidget) {
-    super.didUpdateWidget(oldWidget);
-    // Artık _pages'i burada güncellemeye gerek yok, çünkü build metodu içinde dinamik olarak yenileniyor.
   }
 
   void onItemTapped(int index) {
@@ -69,31 +58,13 @@ class MainScreenState extends State<MainScreen> {
 
   @override
   Widget build(BuildContext context) {
-    // 1. Sayfaları build metodu içinde dinamik olarak oluşturun.
-    final List<Widget> pages = _buildPagesList(widget.idToken); 
-    
-    // 2. Dil kodunu alın (AnimatedSwitcher key'i için)
-    final localeCode = Localizations.localeOf(context).languageCode;
-    
     return Scaffold(
-      body: AnimatedSwitcher(
-        duration: const Duration(milliseconds: 350),
-        transitionBuilder: (Widget child, Animation<double> animation) {
-          return FadeTransition(
-            opacity: animation,
-            child: ScaleTransition(
-              scale: Tween<double>(begin: 0.98, end: 1.0).animate(animation),
-              child: child,
-            ),
-          );
-        },
-        child: Container(
-          // Key'e index VE dil kodunu ekleyerek AnimatedSwitcher'ın
-          // dil değişimi olayını algılamasını zorluyoruz.
-          key: ValueKey<String>('page_$_selectedIndex-$localeCode'), 
-          // Yeni oluşturulan dinamik listeyi kullanın.
-          child: pages[_selectedIndex], 
-        ),
+      body: IndexedStack(
+        // DÜZELTME: AnimatedSwitcher yerine IndexedStack kullanılıyor.
+        // Bu widget, tüm sayfaları bellekte canlı tutar ve sadece seçili olanı gösterir.
+        // Böylece sayfaların durumu (örneğin Quiz'deki mevcut soru) kaybolmaz.
+        index: _selectedIndex,
+        children: _pages,
       ),
       bottomNavigationBar: _buildCustomBottomNav(),
     );
@@ -106,7 +77,6 @@ class MainScreenState extends State<MainScreen> {
 
     Color getSelectedColor(int index) {
       switch (index) {
-        // Index 1 rengi sabit kaldı (amberAccent.shade700) -> Premium hissi veriyor.
         case 0: return theme.colorScheme.primary;
         case 1: return Colors.amberAccent.shade700;
         case 2: return theme.colorScheme.tertiary;
@@ -156,8 +126,6 @@ class MainScreenState extends State<MainScreen> {
                   final index = entry.key;
                   final item = entry.value;
                   final isSelected = _selectedIndex == index;
-                  // Navigasyon etiketi kaldırıldı, sadece ikon kaldı.
-                  // Eğer etiketi geri isterseniz item['label'] kısmını eklemelisiniz.
                   final Color itemColor = isSelected ? getSelectedColor(index) : theme.bottomNavigationBarTheme.unselectedItemColor!;
 
                   return Expanded(
