@@ -236,4 +236,31 @@ class AppLocalizationsJa extends AppLocalizations {
 
   @override
   String get limitExceeded => '制限を超過しました';
+
+  @override
+  String get streak => '連勝';
+
+  @override
+  String get streakBonus => '連勝ボーナス';
+
+  @override
+  String get maxStreak => '最大連勝';
+
+  @override
+  String get streakBroken => '連勝中断';
+
+  @override
+  String get points => 'ポイント';
+
+  @override
+  String get pointsEarned => '獲得ポイント';
+
+  @override
+  String get errorSubmittingAnswer => '回答送信エラーです。';
+
+  @override
+  String get wrongAnswerResetStreak => '不正解！連勝がリセットされました。';
+
+  @override
+  String get correct => '正解';
 }

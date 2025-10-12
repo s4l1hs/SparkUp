@@ -241,4 +241,32 @@ class AppLocalizationsEs extends AppLocalizations {
 
   @override
   String get limitExceeded => 'Límite Excedido';
+
+  @override
+  String get streak => 'Racha';
+
+  @override
+  String get streakBonus => 'Bono de Racha';
+
+  @override
+  String get maxStreak => 'Racha Máx.';
+
+  @override
+  String get streakBroken => 'Racha Rota';
+
+  @override
+  String get points => 'Puntos';
+
+  @override
+  String get pointsEarned => 'Puntos Ganados';
+
+  @override
+  String get errorSubmittingAnswer => 'Error al enviar la respuesta.';
+
+  @override
+  String get wrongAnswerResetStreak =>
+      'Respuesta incorrecta! Racha reiniciada.';
+
+  @override
+  String get correct => 'Correcto';
 }

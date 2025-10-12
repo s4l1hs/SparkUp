@@ -571,6 +571,60 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Limit Exceeded'**
   String get limitExceeded;
+
+  /// No description provided for @streak.
+  ///
+  /// In en, this message translates to:
+  /// **'Streak'**
+  String get streak;
+
+  /// No description provided for @streakBonus.
+  ///
+  /// In en, this message translates to:
+  /// **'Streak Bonus'**
+  String get streakBonus;
+
+  /// No description provided for @maxStreak.
+  ///
+  /// In en, this message translates to:
+  /// **'Max Streak'**
+  String get maxStreak;
+
+  /// No description provided for @streakBroken.
+  ///
+  /// In en, this message translates to:
+  /// **'Streak Broken'**
+  String get streakBroken;
+
+  /// No description provided for @points.
+  ///
+  /// In en, this message translates to:
+  /// **'Points'**
+  String get points;
+
+  /// No description provided for @pointsEarned.
+  ///
+  /// In en, this message translates to:
+  /// **'Points Earned'**
+  String get pointsEarned;
+
+  /// No description provided for @errorSubmittingAnswer.
+  ///
+  /// In en, this message translates to:
+  /// **'Error submitting answer.'**
+  String get errorSubmittingAnswer;
+
+  /// No description provided for @wrongAnswerResetStreak.
+  ///
+  /// In en, this message translates to:
+  /// **'Wrong answer! Streak reset.'**
+  String get wrongAnswerResetStreak;
+
+  /// No description provided for @correct.
+  ///
+  /// In en, this message translates to:
+  /// **'Correct'**
+  String get correct;
 }
 
 class _AppLocalizationsDelegate

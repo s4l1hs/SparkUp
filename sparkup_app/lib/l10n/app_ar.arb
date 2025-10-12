@@ -82,5 +82,14 @@
   "freeTrial": "المستوى المجاني",
   "upgrade": "ترقية",
   "subscriptionNote": "هذه محاكاة للشراء. يجب دمجها مع نظام دفع حقيقي.",
-  "limitExceeded": "تم تجاوز الحد"
+  "limitExceeded": "تم تجاوز الحد",
+  "streak": "سلسلة",
+  "streakBonus": "مكافأة السلسلة",
+  "maxStreak": "أقصى سلسلة",
+  "streakBroken": "تم كسر السلسلة",
+  "points": "نقاط",
+  "pointsEarned": "النقاط المكتسبة",
+  "errorSubmittingAnswer": "خطأ في إرسال الإجابة.",
+  "wrongAnswerResetStreak": "إجابة خاطئة! تمت إعادة تعيين السلسلة.",
+  "correct": "صحيح"
 }

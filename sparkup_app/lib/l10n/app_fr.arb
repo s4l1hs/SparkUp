@@ -81,5 +81,14 @@
   "freeTrial": "Niveau Gratuit",
   "upgrade": "Mise à niveau",
   "subscriptionNote": "Ceci est une simulation d'achat. Doit être intégré à un véritable système de paiement.",
-  "limitExceeded": "Limite Dépassée"
+  "limitExceeded": "Limite Dépassée",
+  "streak": "Série",
+  "streakBonus": "Bonus de Série",
+  "maxStreak": "Série Max",
+  "streakBroken": "Série Rompue",
+  "points": "Points",
+  "pointsEarnés": "Points Gagnés",
+  "errorSubmittingAnswer": "Erreur lors de l'envoi de la réponse.",
+  "wrongAnswerResetStreak": "Mauvaise réponse ! Série réinitialisée.",
+  "correct": "Correct"
 }

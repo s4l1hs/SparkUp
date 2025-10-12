@@ -238,4 +238,31 @@ class AppLocalizationsHi extends AppLocalizations {
 
   @override
   String get limitExceeded => 'सीमा पार हो गई';
+
+  @override
+  String get streak => 'स्ट्रीक';
+
+  @override
+  String get streakBonus => 'स्ट्रीक बोनस';
+
+  @override
+  String get maxStreak => 'अधिकतम स्ट्रीक';
+
+  @override
+  String get streakBroken => 'स्ट्रीक टूटी';
+
+  @override
+  String get points => 'अंक';
+
+  @override
+  String get pointsEarned => 'प्राप्त अंक';
+
+  @override
+  String get errorSubmittingAnswer => 'उत्तर सबमिट करने में त्रुटि।';
+
+  @override
+  String get wrongAnswerResetStreak => 'गलत उत्तर! स्ट्रीक रीसेट हुई।';
+
+  @override
+  String get correct => 'सही';
 }

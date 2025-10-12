@@ -238,4 +238,31 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get limitExceeded => 'Limit Exceeded';
+
+  @override
+  String get streak => 'Streak';
+
+  @override
+  String get streakBonus => 'Streak Bonus';
+
+  @override
+  String get maxStreak => 'Max Streak';
+
+  @override
+  String get streakBroken => 'Streak Broken';
+
+  @override
+  String get points => 'Points';
+
+  @override
+  String get pointsEarned => 'Points Earned';
+
+  @override
+  String get errorSubmittingAnswer => 'Error submitting answer.';
+
+  @override
+  String get wrongAnswerResetStreak => 'Wrong answer! Streak reset.';
+
+  @override
+  String get correct => 'Correct';
 }

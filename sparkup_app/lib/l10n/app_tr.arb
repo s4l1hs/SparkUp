@@ -81,5 +81,14 @@
   "freeTrial": "Ücretsiz Deneme",
   "upgrade": "Yükselt",
   "subscriptionNote": "Satın alma simülasyonudur. Gerçek ödeme sistemi ile entegrasyon yapılmalıdır.",
-  "limitExceeded": "Limit Aşıldı"
+  "limitExceeded": "Limit Aşıldı",
+  "streak": "Seri",
+  "streakBonus": "Seri Bonusu",
+  "maxStreak": "Maksimum Seri",
+  "streakBroken": "Seri Bozuldu",
+  "points": "Puan",
+  "pointsEarned": "Kazanılan Puan",
+  "errorSubmittingAnswer": "Cevap gönderilirken hata oluştu.",
+  "wrongAnswerResetStreak": "Yanlış cevap! Seri sıfırlandı.",
+  "correct": "Doğru"
 }

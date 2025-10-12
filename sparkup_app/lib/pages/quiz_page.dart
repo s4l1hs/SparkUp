@@ -1,7 +1,11 @@
+import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:provider/provider.dart';
 import '../services/api_service.dart';
 import '../l10n/app_localizations.dart';
+import '../providers/user_provider.dart';
+import '../main_screen.dart'; 
 
 class QuizPage extends StatefulWidget {
   final String idToken;
@@ -15,11 +19,12 @@ class _QuizPageState extends State<QuizPage> with TickerProviderStateMixin {
   final ApiService _apiService = ApiService();
 
   bool _isQuizActive = false;
-  bool _isLoading = false;
-
+  bool _isLoading = true; 
+  String? _limitError; 
+  
   List<Map<String, dynamic>> _questions = [];
   int _currentIndex = 0;
-  int _score = 0;
+  int _sessionScore = 0; 
   int? _selectedAnswerIndex;
   bool _answered = false;
   
@@ -40,6 +45,8 @@ class _QuizPageState extends State<QuizPage> with TickerProviderStateMixin {
       TweenSequenceItem(tween: AlignmentTween(begin: Alignment.topRight, end: Alignment.bottomLeft), weight: 1),
       TweenSequenceItem(tween: AlignmentTween(begin: Alignment.bottomLeft, end: Alignment.topRight), weight: 1),
     ]).animate(_backgroundController);
+    
+    _fetchQuizData(isInitialLoad: true); 
   }
 
   @override
@@ -47,50 +54,117 @@ class _QuizPageState extends State<QuizPage> with TickerProviderStateMixin {
     _backgroundController.dispose();
     super.dispose();
   }
-
-  // --- API ve QUIZ MANTIĞI ---
-  Future<void> _startNewQuiz() async {
-    setState(() => _isLoading = true);
-    final localizations = AppLocalizations.of(context)!;
+  
+  // --- YARDIMCI METOTLAR ---
+  
+  Future<void> _fetchQuizData({bool isInitialLoad = false}) async {
+    if (!mounted) return;
+    setState(() {
+      _isLoading = true;
+      _limitError = null;
+    });
+    
     try {
-      // Backend'den 10 soru çekiyoruz
-      final questions = await _apiService.getQuizQuestions(widget.idToken, limit: 10);
+      final questions = await _apiService.getQuizQuestions(widget.idToken); 
+      
+      if (mounted) {
+        if (questions.isNotEmpty) {
+          setState(() {
+            _questions = questions;
+            _currentIndex = 0; 
+            _isQuizActive = true;
+          });
+        } else {
+          if (isInitialLoad) {
+             setState(() => _isQuizActive = false);
+          } else {
+             _showResultDialog();
+          }
+        }
+      }
+    } on QuizLimitException catch (e) {
       if (mounted) {
         setState(() {
-          _questions = questions;
-          _currentIndex = 0;
-          _score = 0;
-          _selectedAnswerIndex = null;
-          _answered = false;
-          _isQuizActive = true;
-          _isLoading = false;
+          _limitError = e.message;
+          _isQuizActive = false;
         });
       }
     } catch (e) {
       if (mounted) {
-        setState(() => _isLoading = false);
         ScaffoldMessenger.of(context).showSnackBar(
-          SnackBar(content: Text("${localizations.quizCouldNotStart}: $e"), backgroundColor: Theme.of(context).colorScheme.error),
+          SnackBar(content: Text("${AppLocalizations.of(context)!.quizCouldNotStart}: ${e.toString()}"), backgroundColor: Theme.of(context).colorScheme.error),
         );
+        setState(() => _isQuizActive = false);
       }
+    } finally {
+      if (mounted) setState(() => _isLoading = false);
     }
   }
 
-  void _answerQuestion(int selectedIndex) {
+  void _startQuizSession() {
+     _sessionScore = 0;
+     _fetchQuizData();
+  }
+
+  // Cevaplama ve Streak/Puan Gönderme
+  Future<void> _answerQuestion(int selectedIndex) async {
     if (_answered) return;
 
-    final isCorrect = selectedIndex == _questions[_currentIndex]['correct_answer_index'];
     setState(() {
       _selectedAnswerIndex = selectedIndex;
       _answered = true;
-      if (isCorrect) {
-        _score++;
-        // TODO: _apiService.submitAnswer(questionId, isCorrect) gibi bir çağrı ile backend'e puanı kaydet
-      }
+      _isLoading = true;
     });
 
-    Future.delayed(const Duration(milliseconds: 1500), () {
-      if (mounted) _nextQuestion();
+    final localizations = AppLocalizations.of(context)!;
+    final userProvider = Provider.of<UserProvider>(context, listen: false);
+    
+    int currentStreakBeforeAnswer = userProvider.profile?.currentStreak ?? 0;
+    
+    try {
+      final response = await _apiService.submitQuizAnswer(
+        widget.idToken, 
+        _questions[_currentIndex]['id'] as int, 
+        selectedIndex
+      );
+      
+      final isCorrect = response['correct'] as bool;
+      final scoreAwarded = response['score_awarded'] as int;
+      
+      if (mounted) {
+        if (isCorrect && scoreAwarded > 0) {
+           _sessionScore += scoreAwarded; 
+           
+           // Global skoru provider üzerinden güncelle ve yeni streak'i al
+           await userProvider.loadProfile(widget.idToken); 
+           int newStreak = userProvider.profile?.currentStreak ?? 0;
+           
+           // ETKİLEYİCİ POP-UP GÖSTERİMİ
+           _showScoreAndStreakPopup(context, localizations, scoreAwarded, currentStreakBeforeAnswer, newStreak, true);
+           
+        } else if (!isCorrect) {
+           // Streak sıfırlandı, UI'da yeni streak'i (0) görmek için profil güncellemesi
+           await userProvider.loadProfile(widget.idToken);
+           _showScoreAndStreakPopup(context, localizations, 0, currentStreakBeforeAnswer, 0, false);
+           _showErrorSnackBar(localizations.wrongAnswerResetStreak); 
+        } 
+      }
+    } on QuizLimitException catch (e) {
+       if(mounted) _showErrorSnackBar(e.message);
+    } catch (e) {
+       if(mounted) _showErrorSnackBar(localizations.errorSubmittingAnswer);
+    } finally {
+       if (mounted) setState(() => _isLoading = false);
+    }
+
+    Future.delayed(const Duration(milliseconds: 1800), () {
+      if (mounted) {
+         if (_currentIndex < _questions.length - 1) {
+             _nextQuestion();
+         } else {
+             _fetchQuizData(isInitialLoad: false); 
+         }
+      }
     });
   }
 
@@ -102,7 +176,7 @@ class _QuizPageState extends State<QuizPage> with TickerProviderStateMixin {
         _answered = false;
       });
     } else {
-      _showResultDialog();
+      _showResultDialog(); 
     }
   }
   
@@ -116,12 +190,12 @@ class _QuizPageState extends State<QuizPage> with TickerProviderStateMixin {
         backgroundColor: theme.colorScheme.surface,
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16.r)),
         title: Text(localizations.quizFinished, style: TextStyle(color: theme.colorScheme.primary, fontWeight: FontWeight.bold)),
-        content: Text("${localizations.yourScore}: $_score / ${_questions.length}", style: TextStyle(fontSize: 18.sp, color: Colors.white)),
+        content: Text("${localizations.yourScore}: $_sessionScore ${localizations.pointsEarned}", style: TextStyle(fontSize: 18.sp, color: Colors.white)),
         actions: [
           TextButton(
             onPressed: () {
               Navigator.of(context).pop();
-              setState(() => _isQuizActive = false);
+              setState(() => _isQuizActive = false); 
             },
             child: Text(localizations.great, style: TextStyle(color: theme.colorScheme.tertiary, fontWeight: FontWeight.bold)),
           )
@@ -129,25 +203,121 @@ class _QuizPageState extends State<QuizPage> with TickerProviderStateMixin {
       ),
     );
   }
+  
+  // --- SNACKBAR METOTLARI (HATA İÇİN KORUNDU) ---
+  void _showErrorSnackBar(String message) {
+    if (!mounted) return;
+    ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+      content: Text(message),
+      backgroundColor: Theme.of(context).colorScheme.error,
+      duration: const Duration(seconds: 3),
+    ));
+  }
+  
+  // YENİ VE DÜZELTİLMİŞ: Etkileyici Pop-up Gösterim Metodu
+  void _showScoreAndStreakPopup(BuildContext context, AppLocalizations localizations, int score, int oldStreak, int newStreak, bool isCorrect) {
+    if (!mounted) return;
+    
+    final theme = Theme.of(context);
+    
+    // Streak Mantığı İçin Yeni Değişkenler
+    final bool isStreakBroken = isCorrect == false; // Yanlışsa bozulmuştur
+    final bool isMaxStreak = newStreak >= 5 && isCorrect; // Maksimum bonus streak'i 5'tir
+    
+    // Renk ve Mesajı Ayarlama
+    final Color color = isCorrect ? Colors.green.shade600 : theme.colorScheme.error;
+    final String mainMessage;
+
+    if (isStreakBroken) {
+        mainMessage = localizations.streakBroken;
+    } else if (score > 0) {
+        // Doğru ve puan kazanıldı
+        mainMessage = isMaxStreak 
+            ? localizations.maxStreak 
+            : "${newStreak}x ${localizations.streakBonus}";
+    } else {
+        // Doğru bilindi ancak puan 0 (zaten cevaplanmıştı)
+        mainMessage = localizations.correct;
+    }
+
+    final OverlayEntry overlayEntry = OverlayEntry(
+      builder: (context) {
+        return Center(
+          child: TweenAnimationBuilder<double>(
+            tween: Tween<double>(begin: 0.0, end: 1.0),
+            duration: const Duration(milliseconds: 500),
+            curve: Curves.elasticOut,
+            builder: (context, scale, child) {
+              return Transform.scale(
+                scale: scale,
+                child: Opacity(
+                  opacity: scale,
+                  child: Container(
+                    padding: EdgeInsets.symmetric(horizontal: 30.w, vertical: 20.h),
+                    decoration: BoxDecoration(
+                      color: color.withOpacity(0.9),
+                      borderRadius: BorderRadius.circular(20.r),
+                      boxShadow: [BoxShadow(color: Colors.black.withOpacity(0.3), blurRadius: 10)]
+                    ),
+                    child: Column(
+                      mainAxisSize: MainAxisSize.min,
+                      children: [
+                        // Puan Kazanımı (Yanlışsa gösterme)
+                        if (score > 0)
+                          Text(
+                            '+$score ${localizations.points}',
+                            style: TextStyle(
+                              fontSize: 32.sp,
+                              fontWeight: FontWeight.w900,
+                              color: Colors.white,
+                            ),
+                          ),
+                        if (score > 0) SizedBox(height: 10.h),
+                        
+                        // Streak Mesajı
+                        Text(mainMessage, style: TextStyle(color: Colors.white, fontSize: 18.sp, fontWeight: FontWeight.bold)),
+                      ],
+                    ),
+                  ),
+                ),
+              );
+            },
+          ),
+        );
+      },
+    );
+
+    Overlay.of(context).insert(overlayEntry);
+    Future.delayed(const Duration(milliseconds: 1500), () {
+      if (mounted) overlayEntry.remove();
+    });
+  }
+
 
   Color _getOptionColor(int index) {
     if (!_answered) return Theme.of(context).colorScheme.surface.withOpacity(0.5);
+    if (_questions.isEmpty) return Theme.of(context).colorScheme.surface.withOpacity(0.5);
+    
     int correctIndex = _questions[_currentIndex]['correct_answer_index'];
     if (index == correctIndex) return Colors.green.withOpacity(0.7);
     if (index == _selectedAnswerIndex) return Theme.of(context).colorScheme.error.withOpacity(0.7);
     return Theme.of(context).colorScheme.surface.withOpacity(0.3);
   }
 
+  // --- BUILD METOTLARI ---
+
   @override
   Widget build(BuildContext context) {
     final localizations = AppLocalizations.of(context)!;
     final theme = Theme.of(context);
+    final userProvider = Provider.of<UserProvider>(context);
+    final currentStreak = userProvider.profile?.currentStreak ?? 0;
 
     return Scaffold(
       backgroundColor: Colors.black,
       body: Stack(
         children: [
-          // YENİ: Canlı Arka Plan Eklendi
+          // Arka Plan
           AnimatedBuilder(
             animation: _backgroundController,
             builder: (context, child) {
@@ -163,17 +333,23 @@ class _QuizPageState extends State<QuizPage> with TickerProviderStateMixin {
           AnimatedSwitcher(
             duration: const Duration(milliseconds: 500),
             transitionBuilder: (child, animation) => FadeTransition(opacity: animation, child: ScaleTransition(scale: animation, child: child)),
-            child: !_isQuizActive
-              ? _buildStartView(context, localizations, theme)
-              : _buildQuizView(context, localizations, theme),
+            // Quiz aktifse ve sorular varsa, quiz ekranını göster.
+            child: _isQuizActive && _questions.isNotEmpty
+              ? _buildQuizView(context, localizations, theme, currentStreak)
+              : _buildStartView(context, localizations, theme),
           ),
         ],
       ),
     );
   }
 
-  // --- YARDIMCI BUILD METOTLARI ---
   Widget _buildStartView(BuildContext context, AppLocalizations localizations, ThemeData theme) {
+    // Limit aşıldıysa özel view göster
+    if (_limitError != null) {
+      return _buildLimitExceededView(context, localizations, theme);
+    }
+    
+    // Yükleniyor veya Quiz bitmiş durumda başlangıç tuşunu göster
     return Center(
       key: const ValueKey('startView'),
       child: _isLoading
@@ -182,15 +358,42 @@ class _QuizPageState extends State<QuizPage> with TickerProviderStateMixin {
               icon: Icon(Icons.play_arrow_rounded, size: 28.sp),
               label: Text(localizations.startNewQuiz, style: TextStyle(fontSize: 20.sp, fontWeight: FontWeight.bold)),
               style: ElevatedButton.styleFrom(padding: EdgeInsets.symmetric(horizontal: 32.w, vertical: 16.h)),
-              onPressed: _startNewQuiz,
+              onPressed: _startQuizSession,
             ),
     );
   }
+  
+  Widget _buildLimitExceededView(BuildContext context, AppLocalizations localizations, ThemeData theme) {
+    return Center(
+      key: const ValueKey('limitExceededView'),
+      child: Padding(
+        padding: EdgeInsets.all(32.w),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Icon(Icons.lock_outline_rounded, size: 60.sp, color: theme.colorScheme.error),
+            SizedBox(height: 20.h),
+            Text(localizations.limitExceeded, style: theme.textTheme.titleLarge?.copyWith(color: theme.colorScheme.error)),
+            SizedBox(height: 10.h),
+            Text(_limitError ?? localizations.upgrade, textAlign: TextAlign.center, style: TextStyle(color: Colors.white70, fontSize: 16.sp)),
+            SizedBox(height: 30.h),
+            ElevatedButton(
+              onPressed: () {
+                final mainScreenState = context.findAncestorStateOfType<MainScreenState>();
+                if (mainScreenState != null) {
+                    mainScreenState.onItemTapped(1); 
+                }
+              },
+              child: Text(localizations.upgrade),
+              style: ElevatedButton.styleFrom(backgroundColor: theme.colorScheme.secondary),
+            )
+          ],
+        ),
+      ),
+    );
+  }
 
-  Widget _buildQuizView(BuildContext context, AppLocalizations localizations, ThemeData theme) {
-    if (_questions.isEmpty) {
-      return Center(key: const ValueKey('emptyView'), child: Text(localizations.questionDataIsEmpty, style: TextStyle(color: Colors.grey.shade400)));
-    }
+  Widget _buildQuizView(BuildContext context, AppLocalizations localizations, ThemeData theme, int currentStreak) {
     
     return Padding(
       key: const ValueKey('quizView'),
@@ -202,7 +405,22 @@ class _QuizPageState extends State<QuizPage> with TickerProviderStateMixin {
               children: [
                 LinearProgressIndicator(value: (_currentIndex + 1) / _questions.length, backgroundColor: theme.cardTheme.color, color: theme.colorScheme.tertiary, minHeight: 8.h, borderRadius: BorderRadius.circular(4.r)),
                 SizedBox(height: 16.h),
-                Text("${localizations.question} ${_currentIndex + 1}/${_questions.length}", style: TextStyle(color: theme.colorScheme.tertiary, fontSize: 18.sp, fontWeight: FontWeight.bold)),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Text("${localizations.question} ${_currentIndex + 1}/${_questions.length}", style: TextStyle(color: theme.colorScheme.tertiary, fontSize: 18.sp, fontWeight: FontWeight.bold)),
+                    // YENİ: Streak Gösterimi
+                    Container(
+                      padding: EdgeInsets.symmetric(horizontal: 10.w, vertical: 4.h),
+                      decoration: BoxDecoration(
+                        color: theme.colorScheme.secondary.withOpacity(0.2),
+                        borderRadius: BorderRadius.circular(10.r),
+                        border: Border.all(color: theme.colorScheme.secondary)
+                      ),
+                      child: Text("${localizations.streak}: $currentStreak", style: TextStyle(color: theme.colorScheme.secondary, fontWeight: FontWeight.bold, fontSize: 14.sp)),
+                    )
+                  ],
+                ),
               ],
             ),
           ),
@@ -250,7 +468,7 @@ class _QuizPageState extends State<QuizPage> with TickerProviderStateMixin {
           return Padding(
             padding: EdgeInsets.symmetric(vertical: 8.h),
             child: InkWell(
-              onTap: () => _answerQuestion(index),
+              onTap: _answered ? null : () => _answerQuestion(index),
               borderRadius: BorderRadius.circular(16.r),
               child: AnimatedContainer(
                 duration: const Duration(milliseconds: 300),

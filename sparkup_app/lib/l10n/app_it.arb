@@ -81,5 +81,14 @@
   "freeTrial": "Livello Gratuito",
   "upgrade": "Aggiorna",
   "subscriptionNote": "Questa è una simulazione di acquisto. Deve essere integrata con un vero sistema di pagamento.",
-  "limitExceeded": "Limite Superato"
+  "limitExceeded": "Limite Superato",
+  "streak": "Striscia",
+  "streakBonus": "Bonus Striscia",
+  "maxStreak": "Max Striscia",
+  "streakBroken": "Striscia Interrotta",
+  "points": "Punti",
+  "pointsEarned": "Punti Guadagnati",
+  "errorSubmittingAnswer": "Errore nell'invio della risposta.",
+  "wrongAnswerResetStreak": "Risposta sbagliata! Striscia azzerata.",
+  "correct": "Corretto"
 }

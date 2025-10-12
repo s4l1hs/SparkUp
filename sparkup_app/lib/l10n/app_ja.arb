@@ -81,5 +81,14 @@
   "freeTrial": "無料ティア",
   "upgrade": "アップグレード",
   "subscriptionNote": "これは購入シミュレーションです。実際の決済システムとの統合が必要です。",
-  "limitExceeded": "制限を超過しました"
+  "limitExceeded": "制限を超過しました",
+  "streak": "連勝",
+  "streakBonus": "連勝ボーナス",
+  "maxStreak": "最大連勝",
+  "streakBroken": "連勝中断",
+  "points": "ポイント",
+  "pointsEarned": "獲得ポイント",
+  "errorSubmittingAnswer": "回答送信エラーです。",
+  "wrongAnswerResetStreak": "不正解！連勝がリセットされました。",
+  "correct": "正解"
 }

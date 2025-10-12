@@ -236,4 +236,31 @@ class AppLocalizationsZh extends AppLocalizations {
 
   @override
   String get limitExceeded => '超出限制';
+
+  @override
+  String get streak => '连击';
+
+  @override
+  String get streakBonus => '连击奖励';
+
+  @override
+  String get maxStreak => '最大连击';
+
+  @override
+  String get streakBroken => '连击中断';
+
+  @override
+  String get points => '积分';
+
+  @override
+  String get pointsEarned => '赢得积分';
+
+  @override
+  String get errorSubmittingAnswer => '提交答案时出错。';
+
+  @override
+  String get wrongAnswerResetStreak => '回答错误！连击已重置。';
+
+  @override
+  String get correct => '正确';
 }

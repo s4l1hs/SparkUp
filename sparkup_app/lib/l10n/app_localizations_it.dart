@@ -239,4 +239,31 @@ class AppLocalizationsIt extends AppLocalizations {
 
   @override
   String get limitExceeded => 'Limite Superato';
+
+  @override
+  String get streak => 'Striscia';
+
+  @override
+  String get streakBonus => 'Bonus Striscia';
+
+  @override
+  String get maxStreak => 'Max Striscia';
+
+  @override
+  String get streakBroken => 'Striscia Interrotta';
+
+  @override
+  String get points => 'Punti';
+
+  @override
+  String get pointsEarned => 'Punti Guadagnati';
+
+  @override
+  String get errorSubmittingAnswer => 'Errore nell\'invio della risposta.';
+
+  @override
+  String get wrongAnswerResetStreak => 'Risposta sbagliata! Striscia azzerata.';
+
+  @override
+  String get correct => 'Corretto';
 }

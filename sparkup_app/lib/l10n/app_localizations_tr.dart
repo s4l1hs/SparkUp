@@ -239,4 +239,31 @@ class AppLocalizationsTr extends AppLocalizations {
 
   @override
   String get limitExceeded => 'Limit Aşıldı';
+
+  @override
+  String get streak => 'Seri';
+
+  @override
+  String get streakBonus => 'Seri Bonusu';
+
+  @override
+  String get maxStreak => 'Maksimum Seri';
+
+  @override
+  String get streakBroken => 'Seri Bozuldu';
+
+  @override
+  String get points => 'Puan';
+
+  @override
+  String get pointsEarned => 'Kazanılan Puan';
+
+  @override
+  String get errorSubmittingAnswer => 'Cevap gönderilirken hata oluştu.';
+
+  @override
+  String get wrongAnswerResetStreak => 'Yanlış cevap! Seri sıfırlandı.';
+
+  @override
+  String get correct => 'Doğru';
 }

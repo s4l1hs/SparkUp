@@ -245,4 +245,31 @@ class AppLocalizationsDe extends AppLocalizations {
 
   @override
   String get limitExceeded => 'Limit überschritten';
+
+  @override
+  String get streak => 'Serie';
+
+  @override
+  String get streakBonus => 'Serienbonus';
+
+  @override
+  String get maxStreak => 'Max. Serie';
+
+  @override
+  String get streakBroken => 'Serie unterbrochen';
+
+  @override
+  String get points => 'Punkte';
+
+  @override
+  String get pointsEarned => 'Punkte erzielt';
+
+  @override
+  String get errorSubmittingAnswer => 'Fehler beim Senden der Antwort.';
+
+  @override
+  String get wrongAnswerResetStreak => 'Falsche Antwort! Serie zurückgesetzt.';
+
+  @override
+  String get correct => 'Richtig';
 }

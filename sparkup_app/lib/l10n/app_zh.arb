@@ -81,5 +81,14 @@
   "freeTrial": "免费层级",
   "upgrade": "升级",
   "subscriptionNote": "这是购买模拟。必须与真实支付系统集成。",
-  "limitExceeded": "超出限制"
+  "limitExceeded": "超出限制",
+  "streak": "连击",
+  "streakBonus": "连击奖励",
+  "maxStreak": "最大连击",
+  "streakBroken": "连击中断",
+  "points": "积分",
+  "pointsEarned": "赢得积分",
+  "errorSubmittingAnswer": "提交答案时出错。",
+  "wrongAnswerResetStreak": "回答错误！连击已重置。",
+  "correct": "正确"
 }

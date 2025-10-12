@@ -238,4 +238,31 @@ class AppLocalizationsRu extends AppLocalizations {
 
   @override
   String get limitExceeded => 'Лимит Превышен';
+
+  @override
+  String get streak => 'Серия';
+
+  @override
+  String get streakBonus => 'Бонус Серии';
+
+  @override
+  String get maxStreak => 'Макс. Серия';
+
+  @override
+  String get streakBroken => 'Серия Прервана';
+
+  @override
+  String get points => 'Очки';
+
+  @override
+  String get pointsEarned => 'Очков Заработано';
+
+  @override
+  String get errorSubmittingAnswer => 'Ошибка при отправке ответа.';
+
+  @override
+  String get wrongAnswerResetStreak => 'Неверный ответ! Серия сброшена.';
+
+  @override
+  String get correct => 'Верно';
 }

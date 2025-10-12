@@ -81,5 +81,14 @@
   "freeTrial": "मुफ्त टियर",
   "upgrade": "अपग्रेड करें",
   "subscriptionNote": "यह एक खरीद सिमुलेशन है। इसे वास्तविक भुगतान प्रणाली के साथ एकीकृत किया जाना चाहिए।",
-  "limitExceeded": "सीमा पार हो गई"
+  "limitExceeded": "सीमा पार हो गई",
+  "streak": "स्ट्रीक",
+  "streakBonus": "स्ट्रीक बोनस",
+  "maxStreak": "अधिकतम स्ट्रीक",
+  "streakBroken": "स्ट्रीक टूटी",
+  "points": "अंक",
+  "pointsEarned": "प्राप्त अंक",
+  "errorSubmittingAnswer": "उत्तर सबमिट करने में त्रुटि।",
+  "wrongAnswerResetStreak": "गलत उत्तर! स्ट्रीक रीसेट हुई।",
+  "correct": "सही"
 }

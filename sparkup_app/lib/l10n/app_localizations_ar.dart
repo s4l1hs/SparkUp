@@ -238,4 +238,31 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String get limitExceeded => 'تم تجاوز الحد';
+
+  @override
+  String get streak => 'سلسلة';
+
+  @override
+  String get streakBonus => 'مكافأة السلسلة';
+
+  @override
+  String get maxStreak => 'أقصى سلسلة';
+
+  @override
+  String get streakBroken => 'تم كسر السلسلة';
+
+  @override
+  String get points => 'نقاط';
+
+  @override
+  String get pointsEarned => 'النقاط المكتسبة';
+
+  @override
+  String get errorSubmittingAnswer => 'خطأ في إرسال الإجابة.';
+
+  @override
+  String get wrongAnswerResetStreak => 'إجابة خاطئة! تمت إعادة تعيين السلسلة.';
+
+  @override
+  String get correct => 'صحيح';
 }

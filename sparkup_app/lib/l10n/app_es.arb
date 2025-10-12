@@ -81,5 +81,14 @@
   "freeTrial": "Nivel Gratuito",
   "upgrade": "Actualizar",
   "subscriptionNote": "Esto es una simulación de compra. Debe integrarse con un sistema de pago real.",
-  "limitExceeded": "Límite Excedido"
+  "limitExceeded": "Límite Excedido",
+  "streak": "Racha",
+  "streakBonus": "Bono de Racha",
+  "maxStreak": "Racha Máx.",
+  "streakBroken": "Racha Rota",
+  "points": "Puntos",
+  "pointsEarned": "Puntos Ganados",
+  "errorSubmittingAnswer": "Error al enviar la respuesta.",
+  "wrongAnswerResetStreak": "Respuesta incorrecta! Racha reiniciada.",
+  "correct": "Correcto"
 }
