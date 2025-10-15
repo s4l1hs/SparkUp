@@ -1,3 +1,4 @@
+import 'dart:async';
 import 'dart:ui';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -20,12 +21,10 @@ class _LeaderboardPageState extends State<LeaderboardPage> with TickerProviderSt
   List<LeaderboardEntry> _leaderboardData = [];
   LeaderboardEntry? _currentUserEntry;
   bool _isLoading = true;
-  bool _isTopicPanelOpen = false;
-  Map<String, String> _allTopics = {};
-  Set<String> _selectedTopics = {};
-  bool _isSaving = false;
+  // kept for potential future use:
+  // Map<String, String> _allTopics = {};
   bool _hasError = false;
-
+  
   // --- ANİMASYON CONTROLLER'LARI ---
   late final AnimationController _listAnimationController;
   late final AnimationController _backgroundController;
@@ -37,18 +36,17 @@ class _LeaderboardPageState extends State<LeaderboardPage> with TickerProviderSt
     super.initState();
     _listAnimationController = AnimationController(vsync: this, duration: const Duration(milliseconds: 1000));
     _backgroundController = AnimationController(vsync: this, duration: const Duration(seconds: 30))..repeat(reverse: true);
-
     _backgroundAnimation1 = TweenSequence<Alignment>([
       TweenSequenceItem(tween: AlignmentTween(begin: Alignment.topLeft, end: Alignment.bottomRight), weight: 1),
       TweenSequenceItem(tween: AlignmentTween(begin: Alignment.bottomRight, end: Alignment.topLeft), weight: 1),
     ]).animate(_backgroundController);
-
     _backgroundAnimation2 = TweenSequence<Alignment>([
       TweenSequenceItem(tween: AlignmentTween(begin: Alignment.bottomLeft, end: Alignment.topRight), weight: 1),
       TweenSequenceItem(tween: AlignmentTween(begin: Alignment.topRight, end: Alignment.bottomLeft), weight: 1),
     ]).animate(_backgroundController);
 
-    _loadPageData();
+    // Localizations ve context tam hazır olduktan sonra yükleme yap
+    WidgetsBinding.instance.addPostFrameCallback((_) => _loadPageData());
   }
   
   @override
@@ -66,64 +64,55 @@ class _LeaderboardPageState extends State<LeaderboardPage> with TickerProviderSt
       _hasError = false;
     });
     _listAnimationController.reset();
-    final localizations = AppLocalizations.of(context)!;
-    
+
     try {
-      final results = await Future.wait([
-        _apiService.getLeaderboard(widget.idToken),
-        _apiService.getTopics(),
-        _apiService.getUserTopics(widget.idToken),
-        _apiService.getUserRank(widget.idToken),
-      ]);
-      
+      // Only fetch leaderboard and current user rank now (topics removed)
+      final leaderboardResp = await _api_apiSafe(() => _apiService.getLeaderboard(widget.idToken), const Duration(seconds: 8));
+      final userRankResp = await _api_apiSafe(() => _apiService.getUserRank(widget.idToken), const Duration(seconds: 8));
+
+      // Normalize leaderboard
+      List<LeaderboardEntry> leaderboardParsed = [];
+      if (leaderboardResp is List) {
+        leaderboardParsed = leaderboardResp.map((e) {
+          if (e is LeaderboardEntry) return e;
+          return LeaderboardEntry.fromJson(Map<String, dynamic>.from(e as Map));
+        }).toList();
+      }
+
+      LeaderboardEntry? currentUserParsed;
+      if (userRankResp is LeaderboardEntry) currentUserParsed = userRankResp;
+      else if (userRankResp is Map) currentUserParsed = LeaderboardEntry.fromJson(Map<String, dynamic>.from(userRankResp));
+
       if (mounted) {
         setState(() {
-          _leaderboardData = results[0] as List<LeaderboardEntry>;
-          _allTopics = results[1] as Map<String, String>;
-          _selectedTopics = (results[2] as List<String>).toSet();
-          _currentUserEntry = results[3] as LeaderboardEntry?;
+          _leaderboardData = leaderboardParsed;
+          _currentUserEntry = currentUserParsed;
         });
         _listAnimationController.forward();
       }
-    } catch (e) {
-      print("Sayfa verileri yüklenirken hata oluştu: $e");
+    } on TimeoutException {
       if (mounted) {
         setState(() => _hasError = true);
-        ScaffoldMessenger.of(context).showSnackBar(
-          SnackBar(content: Text(localizations.noDataAvailable), backgroundColor: Colors.red),
-        );
+        final msg = "AppLocalizations.of(context)?.errorCouldNotLoadData" ?? "Could not load data (timeout)";
+        ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text(msg), backgroundColor: Colors.red));
+      }
+    } catch (e, st) {
+      debugPrint("Sayfa verileri yüklenirken hata: $e\n$st");
+      if (mounted) {
+        setState(() => _hasError = true);
+        final msg = e.toString() ?? (AppLocalizations.of(context)?.noDataAvailable ?? "No data available");
+        ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text(msg), backgroundColor: Colors.red));
       }
     } finally {
       if (mounted) setState(() => _isLoading = false);
     }
   }
-
-  Future<void> _saveTopics() async {
-    setState(() => _isSaving = true);
-    final localizations = AppLocalizations.of(context)!;
-    try {
-      await _apiService.setUserTopics(widget.idToken, _selectedTopics.toList());
-      if (mounted) {
-        ScaffoldMessenger.of(context).showSnackBar(
-          SnackBar(content: Text(localizations.preferencesSaved), backgroundColor: Colors.green),
-        );
-        setState(() => _isTopicPanelOpen = false);
-        await _loadPageData();
-      }
-    } catch (e) {
-      print("Konular kaydedilirken hata oluştu: $e");
-      if (mounted) {
-        ScaffoldMessenger.of(context).showSnackBar(
-          SnackBar(content: Text(localizations.errorCouldNotSaveChanges), backgroundColor: Colors.red),
-        );
-      }
-    } finally {
-      if (mounted) setState(() => _isSaving = false);
-    }
+  
+  // helper used earlier — keep as is
+  Future<dynamic> _api_apiSafe(Future<dynamic> Function() fn, Duration timeout) {
+    return fn().timeout(timeout, onTimeout: () => throw TimeoutException("API timeout"));
   }
-  
-  // --- YARDIMCI FONKSİYONLAR ---
-  
+
   // Rütbe anahtarını puana göre hesaplar
   String _getRankKey(int score) {
     if (score >= 10000) {
@@ -233,7 +222,7 @@ class _LeaderboardPageState extends State<LeaderboardPage> with TickerProviderSt
                       ),
           ),
           
-          _buildTopicSelectionPanel(context),
+          // topic selection removed — no UI or backend calls for topics anymore
         ],
       ),
     );
@@ -367,88 +356,7 @@ class _LeaderboardPageState extends State<LeaderboardPage> with TickerProviderSt
   }
 
 
-  Widget _buildTopicSelectionPanel(BuildContext context) {
-    final localizations = AppLocalizations.of(context)!;
-    final theme = Theme.of(context);
-    final panelHeight = MediaQuery.of(context).size.height * 0.75;
-    final bool isSaveButtonEnabled = !_isSaving && _selectedTopics.isNotEmpty;
-
-    return AnimatedPositioned(
-      duration: const Duration(milliseconds: 300),
-      curve: Curves.easeInOut,
-      bottom: _isTopicPanelOpen ? 0 : -panelHeight,
-      left: 0,
-      right: 0,
-      height: panelHeight,
-      child: ClipRRect(
-        borderRadius: BorderRadius.vertical(top: Radius.circular(24.r)),
-        child: BackdropFilter(
-          filter: ImageFilter.blur(sigmaX: 10, sigmaY: 10),
-          child: Container(
-            decoration: BoxDecoration(
-              color: Colors.black.withOpacity(0.85),
-              borderRadius: BorderRadius.vertical(top: Radius.circular(24.r)),
-              border: Border(top: BorderSide(color: theme.colorScheme.tertiary.withOpacity(0.5))),
-            ),
-            child: Column(
-              children: [
-                Padding(
-                  padding: EdgeInsets.fromLTRB(16.w, 16.w, 16.w, 8.w),
-                  child: Text(localizations.selectYourInterests, style: theme.textTheme.titleLarge?.copyWith(color: theme.colorScheme.tertiary)),
-                ),
-                Padding(
-                  padding: EdgeInsets.only(bottom: 8.h),
-                  child: Text('${_selectedTopics.length} ${localizations.selected}', style: TextStyle(color: Colors.grey.shade400, fontSize: 14.sp)),
-                ),
-                Expanded(
-                  child: _allTopics.isEmpty
-                      ? Center(child: Text(localizations.noDataAvailable, style: TextStyle(color: Colors.grey.shade400)))
-                      : GridView.builder(
-                          padding: EdgeInsets.fromLTRB(16.w, 0, 16.w, 20.h),
-                          gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 2, crossAxisSpacing: 16, mainAxisSpacing: 16, childAspectRatio: 2.5 / 1),
-                          itemCount: _allTopics.length,
-                          itemBuilder: (context, index) {
-                            final apiKey = _allTopics.keys.elementAt(index);
-                            final displayName = _allTopics.values.elementAt(index);
-                            final isSelected = _selectedTopics.contains(apiKey);
-                            return InkWell(
-                              onTap: () => setState(() => isSelected ? _selectedTopics.remove(apiKey) : _selectedTopics.add(apiKey)),
-                              borderRadius: BorderRadius.circular(12.r),
-                              child: Card(
-                                color: isSelected ? theme.colorScheme.primary.withOpacity(0.3) : theme.cardTheme.color,
-                                shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12.r), side: BorderSide(color: isSelected ? theme.colorScheme.primary : Colors.transparent, width: 2)),
-                                child: Center(child: Text(displayName, textAlign: TextAlign.center, style: TextStyle(fontWeight: FontWeight.bold, fontSize: 16.sp, color: isSelected ? theme.colorScheme.primary : Colors.white))),
-                              ),
-                            );
-                          },
-                        ),
-                ),
-                Padding(
-                  padding: EdgeInsets.fromLTRB(16.w, 0, 16.w, 24.h),
-                  child: SizedBox(
-                    width: double.infinity,
-                    child: ElevatedButton.icon(
-                      onPressed: isSaveButtonEnabled ? _saveTopics : null,
-                      icon: _isSaving
-                          ? SizedBox(width: 20.w, height: 20.h, child: CircularProgressIndicator(strokeWidth: 2, color: theme.colorScheme.onPrimary))
-                          : Icon(Icons.save_rounded, color: theme.colorScheme.onPrimary),
-                      label: Text(_isSaving ? localizations.saving : localizations.save),
-                      style: ElevatedButton.styleFrom(
-                        backgroundColor: theme.colorScheme.primary,
-                        foregroundColor: theme.colorScheme.onPrimary,
-                        disabledBackgroundColor: theme.colorScheme.primary.withOpacity(0.4),
-                        padding: EdgeInsets.symmetric(vertical: 16.h)
-                      ),
-                    ),
-                  ),
-                ),
-              ],
-            ),
-          ),
-        ),
-      ),
-    );
-  }
+  // topic selection removed
 }
 
 // Kademeli liste animasyonu için yardımcı widget

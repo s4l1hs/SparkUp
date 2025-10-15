@@ -8,7 +8,7 @@ from dotenv import load_dotenv
 from fastapi import FastAPI, HTTPException, Depends, Query
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.security import HTTPBearer, HTTPAuthorizationCredentials
-from sqlmodel import Field, SQLModel, Session, create_engine, select, Relationship, delete
+from sqlmodel import Field, SQLModel, Session, create_engine, select, Relationship, delete, func
 from sqlalchemy.exc import IntegrityError
 
 import firebase_admin
@@ -80,6 +80,9 @@ class UserScore(SQLModel, table=True):
     id: Optional[int] = Field(default=None, primary_key=True); score: int = Field(default=0)
     user_id: int = Field(foreign_key="user.id", unique=True)
     user: "User" = Relationship(back_populates="score")
+# Added history table so leaderboard can aggregate historical points if present
+class UserScoreHistory(SQLModel, table=True):
+    id: Optional[int] = Field(default=None, primary_key=True); user_id: int = Field(foreign_key="user.id", index=True); points: int = Field(default=0); timestamp: Optional[date] = Field(default_factory=date.today)
 class User(SQLModel, table=True):
     id: Optional[int] = Field(default=None, primary_key=True); firebase_uid: str = Field(unique=True, index=True); email: Optional[str] = None; language_code: str = Field(default="en")
     score: Optional[UserScore] = Relationship(back_populates="user", sa_relationship_kwargs={"cascade": "all, delete-orphan"})
@@ -281,3 +284,50 @@ def get_random_challenge(lang: Optional[str] = Query(None), db_user: User = Depe
     # doğru dili seç, yoksa en, yoksa boş string
     challenge_text = texts.get(effective_lang) or texts.get("en") or ""
     return ChallengeResponse(id=chosen_challenge.id, challenge_text=challenge_text, category=chosen_challenge.category)
+
+@app.get("/leaderboard/")
+def get_leaderboard(limit: int = 100, session: Session = Depends(get_session)):
+    """
+    Eğer puanlar history tablosunda tutuluyorsa: her kullanıcı için toplam puanı hesapla,
+    sonra toplam puana göre azalan sırada döndür.
+    Varsayılan history modeli: UserScoreHistory(user_id, points)
+    Eğer böyle bir tablo yoksa endpoint'i mevcut UserScore.score alanına göre sıralayan
+    daha basit versiyona geri döndür.
+    """
+    # Örnek: history tablosu varsa (UserScoreHistory model'ı proje içinde tanımlı olmalı)
+    try:
+        rows = session.exec(
+            select(User.id, User.email, func.coalesce(func.sum(UserScoreHistory.points), 0).label("total"))
+            .join(UserScoreHistory, User.id == UserScoreHistory.user_id, isouter=True)
+            .group_by(User.id, User.email)
+            .order_by(func.sum(UserScoreHistory.points).desc())
+            .limit(limit)
+        ).all()
+
+        result = []
+        rank = 1
+        for r in rows:
+            # r bir tuple olabilir; r[0]=user_id, r[1]=email, r[2]=total
+            total = r[2] if len(r) > 2 else 0
+            email = r[1] if len(r) > 1 else None
+            result.append({"rank": rank, "email": email, "score": int(total)})
+            rank += 1
+        return result
+    except Exception:
+        # Fallback: eğer history tablosu yoksa, UserScore.score alanına göre sırala
+        rows = session.exec(
+            select(User, UserScore)
+            .join(UserScore, User.id == UserScore.user_id, isouter=True)
+            .order_by(UserScore.score.desc().nullslast())
+            .limit(limit)
+        ).all()
+
+        result = []
+        rank = 1
+        for pair in rows:
+            user = pair[0]
+            score_obj = pair[1] if len(pair) > 1 else None
+            score = score_obj.score if score_obj else 0
+            result.append({"rank": rank, "email": user.email, "score": score})
+            rank += 1
+        return result
