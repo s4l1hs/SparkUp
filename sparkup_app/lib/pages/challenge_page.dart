@@ -25,6 +25,9 @@ class _ChallengePageState extends State<ChallengePage> with TickerProviderStateM
   late final Animation<Alignment> _backgroundAnimation2;
   bool _isPressed = false; 
 
+  // Yeni: son locale'i takip et — settings'te değişince lokalize edilmiş limit mesajını güncellemek için kullanıyoruz
+  String? _lastLocale;
+
   @override
   void initState() {
     super.initState();
@@ -40,9 +43,16 @@ class _ChallengePageState extends State<ChallengePage> with TickerProviderStateM
   }
 
   @override
-  void dispose() {
-    _backgroundController.dispose();
-    super.dispose();
+  void didChangeDependencies() {
+    super.didChangeDependencies();
+    final localeCode = Localizations.localeOf(context).languageCode;
+    if (_lastLocale != localeCode) {
+      _lastLocale = localeCode;
+      // Eğer daha önce limit hatası aldıysak, dil değişince backend'den tekrar isteyip lokalize edilmiş mesajı alalım
+      if (_limitError != null) {
+        WidgetsBinding.instance.addPostFrameCallback((_) => _fetchChallenge());
+      }
+    }
   }
 
   Future<void> _fetchChallenge() async {
@@ -58,20 +68,21 @@ class _ChallengePageState extends State<ChallengePage> with TickerProviderStateM
       if (mounted) {
         setState(() {
           _challengeText = challengeData['challenge_text'];
+          _limitError = null;
         });
       }
     } on ChallengeLimitException catch (e) {
       if (mounted) {
         setState(() {
-          _limitError = e.message;
+          _limitError = e.message; // backend'den gelen lokalize mesaj burada olur
         });
       }
     } catch (e) {
       if (mounted) {
         setState(() {
           _generalError = AppLocalizations.of(context)?.challengeCouldNotBeLoaded ?? "Challenge could not be loaded";
-          print("Challenge yükleme hatası: $e");
         });
+        debugPrint("Challenge yükleme hatası: $e");
       }
     } finally {
       if (mounted) {
@@ -108,8 +119,8 @@ class _ChallengePageState extends State<ChallengePage> with TickerProviderStateM
       currentContent = Center( key: const ValueKey('start'), child: Column( mainAxisAlignment: MainAxisAlignment.center, children: [
             Icon(Icons.touch_app_outlined, size: 60.sp, color: theme.colorScheme.secondary),
             SizedBox(height: 24.h),
-            // DÜZELTME: Başlangıç metni daha doğru hale getirildi.
-            Text(localizations.tapToLoadNewChallenge, style: TextStyle(fontSize: 20.sp, fontWeight: FontWeight.bold, color: Colors.white)),
+            // DÜZELTME: Başlangıç metni ortalandı
+            Text(localizations.tapToLoadNewChallenge, textAlign: TextAlign.center, style: TextStyle(fontSize: 20.sp, fontWeight: FontWeight.bold, color: Colors.white)),
           ],),
       );
     }
@@ -174,7 +185,8 @@ class _ChallengePageState extends State<ChallengePage> with TickerProviderStateM
         children: [
           Icon(Icons.lock_outline_rounded, size: 60.sp, color: theme.colorScheme.error),
           SizedBox(height: 20.h),
-          Text(localizations.limitExceeded, style: theme.textTheme.titleLarge?.copyWith(color: theme.colorScheme.error)),
+          // DÜZELTME: Başlık ortalandı
+          Text(localizations.limitExceeded, textAlign: TextAlign.center, style: theme.textTheme.titleLarge?.copyWith(color: theme.colorScheme.error)),
           SizedBox(height: 10.h),
           Text(message, textAlign: TextAlign.center, style: TextStyle(color: Colors.white70, fontSize: 16.sp)),
           SizedBox(height: 30.h),

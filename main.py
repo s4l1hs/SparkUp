@@ -2,10 +2,10 @@ import os
 import json
 import random
 from typing import List, Optional, Dict
-from datetime import date, timedelta
+from datetime import date
 
 from dotenv import load_dotenv
-from fastapi import FastAPI, HTTPException, Depends
+from fastapi import FastAPI, HTTPException, Depends, Query
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.security import HTTPBearer, HTTPAuthorizationCredentials
 from sqlmodel import Field, SQLModel, Session, create_engine, select, Relationship, delete
@@ -31,6 +31,36 @@ SUBSCRIPTION_LIMITS = {
     "free": {"quiz_limit": 3, "challenge_limit": 3},
     "pro": {"quiz_limit": 5, "challenge_limit": 5},
     "ultra": {"quiz_limit": float('inf'), "challenge_limit": float('inf')},
+}
+
+# Yeni: çeviri sözlüğü — günlük quiz ve challenge limiti için birçok dil
+TRANSLATIONS = {
+    "daily_quiz_limit_reached": {
+        "en": "Daily quiz limit reached ({limit}).",
+        "tr": "Günlük quiz limiti doldu ({limit}).",
+        "de": "Tägliches Quiz‑Limit erreicht ({limit}).",
+        "fr": "Limite quotidienne de quiz atteinte ({limit}).",
+        "it": "Limite giornaliera dei quiz raggiunta ({limit}).",
+        "es": "Límite diario de cuestionarios alcanzado ({limit}).",
+        "zh": "每日测验次数已达上限（{limit}）。",
+        "ja": "1日のクイズ上限に達しました（{limit}）。",
+        "hi": "दैनिक क्विज़ सीमा पहुँच गई ({limit}).",
+        "ar": "تم الوصول إلى الحد اليومي للاختبارات ({limit}).",
+        "ru": "Достигнут суточный лимит викторин ({limit})."
+    },
+    "daily_challenge_limit_reached": {
+        "en": "Daily challenge limit reached ({limit}).",
+        "tr": "Günlük challenge limiti doldu ({limit}).",
+        "de": "Tägliches Challenge‑Limit erreicht ({limit}).",
+        "fr": "Limite quotidienne de challenge atteinte ({limit}).",
+        "it": "Limite giornaliera delle challenge raggiunta ({limit}).",
+        "es": "Límite diario de challenge alcanzado ({limit}).",
+        "zh": "每日挑战次数已达上限（{limit}）。",
+        "ja": "1日のチャレンジ上限に達しました（{limit}）。",
+        "hi": "दैनिक चैलेंज सीमा पहुँच गई ({limit}).",
+        "ar": "تم الوصول إلى الحد اليومي للتحديات ({limit}).",
+        "ru": "Достигнут суточный лимит челленджей ({limit})."
+    }
 }
 
 # --- 2. VERİ MODELLERİ ---
@@ -149,10 +179,13 @@ def get_user_profile(db_user: User = Depends(get_current_user), session: Session
     }
 
 @app.get("/quiz/", response_model=List[Dict])
-def get_quiz_questions(limit: int = 3, db_user: User = Depends(get_current_user), session: Session = Depends(get_session)):
+def get_quiz_questions(limit: int = 3, lang: Optional[str] = Query(None), db_user: User = Depends(get_current_user), session: Session = Depends(get_session)):
     access = _get_user_access_level(db_user, session)
+    # efektif dil: query param öncelikli, yoksa kullanıcı dili, değilse İngilizce
+    effective_lang = lang or (db_user.language_code if db_user.language_code else "en")
     if access["quiz_count"] >= access["quiz_limit"] and access["level"] != "ultra":
-         raise HTTPException(status_code=429, detail=f"Daily quiz limit reached ({access['quiz_limit']}).")
+         tpl = TRANSLATIONS.get("daily_quiz_limit_reached", {}).get(effective_lang) or TRANSLATIONS["daily_quiz_limit_reached"]["en"]
+         raise HTTPException(status_code=429, detail=tpl.format(limit=access["quiz_limit"]))
     answered_ids = session.exec(select(UserAnsweredQuestion.quizquestion_id).where(UserAnsweredQuestion.user_id == db_user.id)).all()
     unanswered = session.exec(select(QuizQuestion).where(QuizQuestion.id.notin_(answered_ids))).all()
     if len(unanswered) < limit:
@@ -162,8 +195,33 @@ def get_quiz_questions(limit: int = 3, db_user: User = Depends(get_current_user)
     chosen = random.sample(unanswered, limit)
     access["daily_limits_obj"].quiz_count += 1
     session.add(access["daily_limits_obj"]); session.commit()
-    lang = db_user.language_code
-    return [{"id": q.id, "question_text": json.loads(q.question_texts).get(lang, "en"), "options": json.loads(q.options_texts).get(lang, "en"), "correct_answer_index": q.correct_answer_index} for q in chosen]
+
+    def _get_text(obj_field, q):
+        try:
+            data = json.loads(getattr(q, obj_field) or "{}")
+            return data.get(effective_lang) or data.get("en") or ""
+        except Exception:
+            return ""
+
+    result = []
+    for q in chosen:
+        question_text = _get_text("question_texts", q)
+        options = _get_text("options_texts", q)
+        # options expected to be list; if stored as JSON list/string handle accordingly
+        if isinstance(options, str):
+            try:
+                options_parsed = json.loads(options)
+            except Exception:
+                options_parsed = [options]
+        else:
+            options_parsed = options or []
+        result.append({
+            "id": q.id,
+            "question_text": question_text,
+            "options": options_parsed,
+            "correct_answer_index": q.correct_answer_index
+        })
+    return result
 
 @app.post("/quiz/answer/", response_model=AnswerResponse)
 def submit_quiz_answer(payload: AnswerPayload, db_user: User = Depends(get_current_user), session: Session = Depends(get_session)):
@@ -186,11 +244,25 @@ def submit_quiz_answer(payload: AnswerPayload, db_user: User = Depends(get_curre
         session.commit()
     return AnswerResponse(correct=is_correct, correct_index=question.correct_answer_index, score_awarded=score_awarded, new_score=user_score.score)
 
+@app.put("/user/language/")
+def set_user_language(language_code: str = Query(...), db_user: User = Depends(get_current_user), session: Session = Depends(get_session)):
+    try:
+        db_user.language_code = language_code
+        session.add(db_user)
+        session.commit()
+        session.refresh(db_user)
+        return {"language_code": db_user.language_code}
+    except Exception as e:
+        session.rollback()
+        raise HTTPException(status_code=500, detail=f"Failed to update language: {e}")
+    
 @app.get("/challenges/random/", response_model=ChallengeResponse)
-def get_random_challenge(db_user: User = Depends(get_current_user), session: Session = Depends(get_session)):
+def get_random_challenge(lang: Optional[str] = Query(None), db_user: User = Depends(get_current_user), session: Session = Depends(get_session)):
     access = _get_user_access_level(db_user, session)
+    effective_lang = lang or (db_user.language_code if db_user.language_code else "en")
     if access["challenge_count"] >= access["challenge_limit"] and access["level"] != "ultra":
-         raise HTTPException(status_code=429, detail=f"Daily challenge limit reached ({access['challenge_limit']}).")
+         tpl = TRANSLATIONS.get("daily_challenge_limit_reached", {}).get(effective_lang) or TRANSLATIONS["daily_challenge_limit_reached"]["en"]
+         raise HTTPException(status_code=429, detail=tpl.format(limit=access["challenge_limit"]))
     completed_ids = session.exec(select(UserCompletedChallenge.challenge_id).where(UserCompletedChallenge.user_id == db_user.id)).all()
     unanswered = session.exec(select(Challenge).where(Challenge.id.notin_(completed_ids))).all()
     if not unanswered:
@@ -201,6 +273,11 @@ def get_random_challenge(db_user: User = Depends(get_current_user), session: Ses
     session.add(UserCompletedChallenge(user_id=db_user.id, challenge_id=chosen_challenge.id))
     access["daily_limits_obj"].challenge_count += 1
     session.add(access["daily_limits_obj"]); session.commit()
-    texts = json.loads(chosen_challenge.challenge_texts)
-    lang = db_user.language_code
-    return ChallengeResponse(id=chosen_challenge.id, challenge_text=texts.get(lang, "en"), category=chosen_challenge.category)
+    texts = {}
+    try:
+        texts = json.loads(chosen_challenge.challenge_texts or "{}")
+    except Exception:
+        texts = {}
+    # doğru dili seç, yoksa en, yoksa boş string
+    challenge_text = texts.get(effective_lang) or texts.get("en") or ""
+    return ChallengeResponse(id=chosen_challenge.id, challenge_text=challenge_text, category=chosen_challenge.category)

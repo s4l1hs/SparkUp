@@ -29,6 +29,9 @@ class _QuizPageState extends State<QuizPage> with TickerProviderStateMixin {
   late final AnimationController _backgroundController;
   late final Animation<Alignment> _backgroundAnimation1, _backgroundAnimation2;
   AnswerState _answerState = AnswerState.unanswered;
+
+  // Yeni: son kullanılan locale'i takip et
+  String? _lastLocale;
   
   @override
   void initState() {
@@ -46,23 +49,41 @@ class _QuizPageState extends State<QuizPage> with TickerProviderStateMixin {
   }
 
   @override
+  void didChangeDependencies() {
+    super.didChangeDependencies();
+    final localeCode = Localizations.localeOf(context).languageCode;
+    if (_lastLocale != localeCode) {
+      _lastLocale = localeCode;
+      // Eğer daha önce limit hatası aldıysak, locale değişince backend'den yeniden isteyip lokalize edilmiş mesajı alalım
+      if (_limitError != null) {
+        WidgetsBinding.instance.addPostFrameCallback((_) => _fetchQuizData());
+      }
+    }
+  }
+
+  @override
   void dispose() { _backgroundController.dispose(); super.dispose(); }
 
   Future<void> _fetchQuizData({bool isInitialLoad = false}) async {
     if (!mounted) return;
     setState(() { _isLoading = true; _limitError = null; });
     try {
-      final questions = await _apiService.getQuizQuestions(widget.idToken); 
+      // ApiService currently doesn't support a 'language' named parameter; call without it.
+      final questions = await _apiService.getQuizQuestions(widget.idToken);
       if (mounted && questions.isNotEmpty) {
         setState(() { 
           _questions = questions; _currentIndex = 0; _isQuizActive = true; 
           _answered = false; _selectedAnswerIndex = null; _answerState = AnswerState.unanswered;
+          _limitError = null;
         });
       } else if (mounted) {
         setState(() => _isQuizActive = false);
       }
     } on QuizLimitException catch (e) {
-      if (mounted) { setState(() { _limitError = e.message; _isQuizActive = false; }); }
+      if (mounted) { 
+        // Backend'den dönen mesajı saklıyoruz; didChangeDependencies locale değişince bunu tekrar güncellemek için _fetchQuizData tetiklenecek
+        setState(() { _limitError = e.message; _isQuizActive = false; }); 
+      }
     } catch (e) {
       if (mounted) {
         ScaffoldMessenger.of(context).showSnackBar( SnackBar(content: Text("${AppLocalizations.of(context)!.quizCouldNotStart}: ${e.toString()}"), backgroundColor: Theme.of(context).colorScheme.error));
