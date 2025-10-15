@@ -234,22 +234,6 @@ class _LeaderboardPageState extends State<LeaderboardPage> with TickerProviderSt
           ),
           
           _buildTopicSelectionPanel(context),
-          
-          Align(
-            alignment: Alignment.bottomRight,
-            child: Padding(
-              padding: EdgeInsets.all(16.w),
-              child: FloatingActionButton(
-                onPressed: () => setState(() => _isTopicPanelOpen = !_isTopicPanelOpen),
-                backgroundColor: theme.colorScheme.tertiary,
-                child: AnimatedSwitcher(
-                  duration: const Duration(milliseconds: 300),
-                  transitionBuilder: (child, animation) => ScaleTransition(scale: animation, child: RotationTransition(turns: animation, child: child)),
-                  child: Icon(_isTopicPanelOpen ? Icons.close_rounded : Icons.category_rounded, key: ValueKey<bool>(_isTopicPanelOpen), color: theme.colorScheme.onTertiary),
-                ),
-              ),
-            ),
-          ),
         ],
       ),
     );

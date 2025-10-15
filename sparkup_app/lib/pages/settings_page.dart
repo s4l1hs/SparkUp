@@ -24,7 +24,7 @@ class _SettingsPageState extends State<SettingsPage> with SingleTickerProviderSt
   
   bool _notificationsEnabled = true;
   String _currentLanguageCode = 'en';
-  String? _userEmail;
+  String? _username; // changed: store username instead of email
   int _userScore = 0;
   
   late final AnimationController _animationController;
@@ -67,9 +67,13 @@ class _SettingsPageState extends State<SettingsPage> with SingleTickerProviderSt
 
       if (response.statusCode == 200 && mounted) {
         final profile = jsonDecode(response.body);
+        // changed: prefer Firebase displayName, then backend username, then email
+        final firebaseName = FirebaseAuth.instance.currentUser?.displayName;
+        final backendUsername = (profile['username'] as String?) ?? '';
+        final fallbackEmail = (profile['email'] as String?) ?? 'Anonymous';
         setState(() {
           _currentLanguageCode = profile['language_code'] ?? 'en';
-          _userEmail = profile['email'];
+          _username = (firebaseName != null && firebaseName.isNotEmpty) ? firebaseName : (backendUsername.isNotEmpty ? backendUsername : fallbackEmail);
           _userScore = profile['score'] ?? 0;
           _notificationsEnabled = profile['notifications_enabled'] ?? true;
         });
@@ -137,26 +141,6 @@ class _SettingsPageState extends State<SettingsPage> with SingleTickerProviderSt
     }
   }
 
-  Future<void> _deleteAccount() async {
-    try {
-      final token = await _getIdToken();
-      if (token == null) throw Exception("User not logged in");
-
-      final uri = Uri.parse("$backendBaseUrl/user/me/");
-      final response = await http.delete(uri, headers: {'Authorization': 'Bearer $token'});
-
-      if (response.statusCode == 204 && mounted) {
-        await FirebaseAuth.instance.signOut();
-        await GoogleSignIn().signOut();
-      } else {
-        throw Exception('Failed to delete account');
-      }
-    } catch (e) {
-      print("Failed to delete account: $e");
-      if(mounted) _showErrorSnackBar("Failed to delete account");
-    }
-  }
-
   void _showErrorSnackBar(String message) {
     ScaffoldMessenger.of(context).showSnackBar(SnackBar(
       content: Text(message),
@@ -169,11 +153,6 @@ class _SettingsPageState extends State<SettingsPage> with SingleTickerProviderSt
     showDialog(context: context, builder: (ctx) => AlertDialog(title: Text(localizations.signOut), content: Text(localizations.signOutConfirmation), actions: [ TextButton(onPressed: () => Navigator.of(ctx).pop(), child: Text(localizations.cancel)), TextButton(onPressed: () async { Navigator.of(ctx).pop(); await FirebaseAuth.instance.signOut(); await GoogleSignIn().signOut(); }, child: Text(localizations.signOut, style: TextStyle(color: Theme.of(context).colorScheme.error)))]));
   }
   
-  void _showDeleteAccountConfirmation() {
-    final localizations = AppLocalizations.of(context)!;
-    showDialog(context: context, builder: (ctx) => AlertDialog(title: Text(localizations.deleteAccount), content: Text(localizations.deleteAccountConfirmation), actions: [ TextButton(onPressed: () => Navigator.of(ctx).pop(), child: Text(localizations.cancel)), TextButton(onPressed: () { Navigator.of(ctx).pop(); _deleteAccount(); }, child: Text(localizations.delete, style: TextStyle(color: Theme.of(context).colorScheme.error)))]));
-  }
-
   @override
   Widget build(BuildContext context) {
     final localizations = AppLocalizations.of(context)!;
@@ -190,7 +169,7 @@ class _SettingsPageState extends State<SettingsPage> with SingleTickerProviderSt
           _AnimatedSettingsItem(index: 2, controller: _animationController, child: _buildSettingsCard(children: [ _buildLanguageTile(localizations, theme), const Divider(color: Colors.white12, height: 1, indent: 72), _buildNotificationsTile(localizations, theme) ])),
           SizedBox(height: 30.h),
           _AnimatedSettingsItem(index: 3, controller: _animationController, child: _buildSectionHeader(localizations.account, theme)),
-          _AnimatedSettingsItem(index: 4, controller: _animationController, child: _buildSettingsCard(children: [ _buildSignOutTile(localizations, theme), const Divider(color: Colors.white12, height: 1, indent: 72), _buildDeleteAccountTile(localizations, theme) ])),
+          _AnimatedSettingsItem(index: 4, controller: _animationController, child: _buildSettingsCard(children: [ _buildSignOutTile(localizations, theme) ])),
           SizedBox(height: 40.h),
           FadeTransition(opacity: _animationController, child: Center(child: Text('Spark Up v1.0.0', style: TextStyle(color: Colors.grey.shade700, fontSize: 12.sp)))),
         ],
@@ -209,9 +188,22 @@ class _SettingsPageState extends State<SettingsPage> with SingleTickerProviderSt
           ? Center(heightFactor: 1.5, child: CircularProgressIndicator(strokeWidth: 2, color: theme.colorScheme.primary))
           : Row(
               children: [
-                CircleAvatar(radius: 28.r, backgroundColor: theme.colorScheme.tertiary, child: Icon(Icons.person_outline, size: 28.sp, color: theme.colorScheme.onTertiary)),
+                // changed: profile picture is first letter of username
+                CircleAvatar(
+                  radius: 28.r,
+                  backgroundColor: theme.colorScheme.tertiary,
+                  child: Text(
+                    (_username != null && _username!.isNotEmpty) ? _username![0].toUpperCase() : 'A',
+                    style: TextStyle(fontSize: 24.sp, color: theme.colorScheme.onTertiary, fontWeight: FontWeight.bold),
+                  ),
+                ),
                 SizedBox(width: 16.w),
-                Expanded(child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [ Text(_userEmail ?? "Anonymous", style: TextStyle(color: Colors.white, fontSize: 16.sp, fontWeight: FontWeight.bold), overflow: TextOverflow.ellipsis), SizedBox(height: 4.h), Row(children: [ Icon(Icons.star_rounded, color: theme.colorScheme.secondary, size: 16.sp), SizedBox(width: 4.w), Text("$_userScore Points", style: TextStyle(color: theme.colorScheme.secondary, fontSize: 14.sp, fontWeight: FontWeight.w600))])])),
+                Expanded(child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
+                  // changed: show username instead of email
+                  Text(_username ?? "Anonymous", style: TextStyle(color: Colors.white, fontSize: 16.sp, fontWeight: FontWeight.bold), overflow: TextOverflow.ellipsis),
+                  SizedBox(height: 4.h),
+                  Row(children: [ Icon(Icons.star_rounded, color: theme.colorScheme.secondary, size: 16.sp), SizedBox(width: 4.w), Text("$_userScore Points", style: TextStyle(color: theme.colorScheme.secondary, fontSize: 14.sp, fontWeight: FontWeight.w600))])
+                ])),
               ],
             ),
       ),
@@ -223,7 +215,6 @@ class _SettingsPageState extends State<SettingsPage> with SingleTickerProviderSt
   Widget _buildLanguageTile(AppLocalizations localizations, ThemeData theme) { return ListTile(leading: Padding(padding: const EdgeInsets.all(8.0), child: Icon(Icons.language_outlined, color: theme.colorScheme.primary)), title: Text(localizations.applicationLanguage), subtitle: Text(_supportedLanguages[_currentLanguageCode] ?? 'English'), trailing: const Icon(Icons.arrow_forward_ios, color: Colors.grey, size: 16), onTap: () => _showLanguageBottomSheet(localizations, theme)); }
   Widget _buildNotificationsTile(AppLocalizations localizations, ThemeData theme) { return SwitchListTile(secondary: Padding(padding: const EdgeInsets.all(8.0), child: Icon(Icons.notifications_active_outlined, color: theme.colorScheme.primary)), title: Text(localizations.notifications), subtitle: Text(localizations.forAllAlarms), value: _notificationsEnabled, activeColor: theme.colorScheme.secondary, onChanged: _isSavingNotifications ? null : (value) => _saveNotificationSetting(value)); }
   Widget _buildSignOutTile(AppLocalizations localizations, ThemeData theme) { return ListTile(leading: Padding(padding: const EdgeInsets.all(8.0), child: Icon(Icons.logout, color: theme.colorScheme.secondary)), title: Text(localizations.signOut, style: TextStyle(color: theme.colorScheme.secondary, fontWeight: FontWeight.w600)), onTap: () => _showSignOutConfirmation()); }
-  Widget _buildDeleteAccountTile(AppLocalizations localizations, ThemeData theme) { return ListTile(leading: Padding(padding: const EdgeInsets.all(8.0), child: Icon(Icons.delete_forever_rounded, color: theme.colorScheme.error)), title: Text(localizations.deleteAccount, style: TextStyle(color: theme.colorScheme.error, fontWeight: FontWeight.w600)), onTap: () => _showDeleteAccountConfirmation()); }
 
   void _showLanguageBottomSheet(AppLocalizations localizations, ThemeData theme) {
     showModalBottomSheet(context: context, backgroundColor: Colors.transparent, builder: (context) { return StatefulBuilder(builder: (BuildContext context, StateSetter setModalState) { return Container(padding: EdgeInsets.symmetric(horizontal: 16.w), decoration: BoxDecoration(color: theme.colorScheme.surface, borderRadius: BorderRadius.vertical(top: Radius.circular(24.r))), child: Column(mainAxisSize: MainAxisSize.min, children: [ Container(width: 40.w, height: 4.h, margin: EdgeInsets.symmetric(vertical: 12.h), decoration: BoxDecoration(color: Colors.grey.shade700, borderRadius: BorderRadius.circular(2.r))), Text(localizations.applicationLanguage, style: theme.textTheme.titleLarge), SizedBox(height: 10.h), const Divider(color: Colors.white24), LimitedBox(maxHeight: 300.h, child: ListView(shrinkWrap: true, children: _supportedLanguages.entries.map((entry) { return RadioListTile<String>(title: Text(entry.value, style: TextStyle(color: _currentLanguageCode == entry.key ? theme.colorScheme.primary : Colors.white)), value: entry.key, groupValue: _currentLanguageCode, activeColor: theme.colorScheme.primary, onChanged: (value) { if(value != null) { Navigator.pop(context); _saveLanguage(value); }}); }).toList())), SizedBox(height: 20.h)]));});});

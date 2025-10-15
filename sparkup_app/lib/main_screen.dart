@@ -78,7 +78,7 @@ class MainScreenState extends State<MainScreen> {
     Color getSelectedColor(int index) {
       switch (index) {
         case 0: return theme.colorScheme.primary;
-        case 1: return Colors.amberAccent.shade700;
+        case 1: return Colors.teal.shade600; 
         case 2: return theme.colorScheme.tertiary;
         case 3: return theme.colorScheme.secondary;
         case 4: return Colors.grey.shade400;

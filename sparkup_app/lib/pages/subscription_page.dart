@@ -100,7 +100,7 @@ class _SubscriptionPageState extends State<SubscriptionPage> {
         child: ListView(
           children: [
             SizedBox(height: 10.h),
-            Text(localizations.chooseYourPlan, style: theme.textTheme.titleLarge?.copyWith(fontSize: 24.sp, color: Colors.white), textAlign: TextAlign.center),
+            // 'Choose Your Plan' header removed as requested
             SizedBox(height: 20.h),
             
             // Planları Yatay Kaydırılabilir Liste Olarak Gösterme
