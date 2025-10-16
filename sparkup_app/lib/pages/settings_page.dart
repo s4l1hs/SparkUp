@@ -202,7 +202,7 @@ class _SettingsPageState extends State<SettingsPage> with SingleTickerProviderSt
                   // changed: show username instead of email
                   Text(_username ?? "Anonymous", style: TextStyle(color: Colors.white, fontSize: 16.sp, fontWeight: FontWeight.bold), overflow: TextOverflow.ellipsis),
                   SizedBox(height: 4.h),
-                  Row(children: [ Icon(Icons.star_rounded, color: theme.colorScheme.secondary, size: 16.sp), SizedBox(width: 4.w), Text("$_userScore Points", style: TextStyle(color: theme.colorScheme.secondary, fontSize: 14.sp, fontWeight: FontWeight.w600))])
+                  Row(children: [ Icon(Icons.star_rounded, color: theme.colorScheme.secondary, size: 16.sp), SizedBox(width: 4.w), Text("$_userScore ${AppLocalizations.of(context)!.points}", style: TextStyle(color: theme.colorScheme.secondary, fontSize: 14.sp, fontWeight: FontWeight.w600))])
                 ])),
               ],
             ),

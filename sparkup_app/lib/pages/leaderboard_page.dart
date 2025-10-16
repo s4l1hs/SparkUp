@@ -91,7 +91,26 @@ class _LeaderboardPageState extends State<LeaderboardPage> with TickerProviderSt
         });
         _listAnimationController.forward();
       }
-      } on TimeoutException {
+
+      // If backend didn't return current user entry, try to find it in leaderboard using Firebase user
+      if (_currentUserEntry == null) {
+        final fbUser = FirebaseAuth.instance.currentUser;
+        if (fbUser != null) {
+          final fbEmail = fbUser.email;
+          final fbName = fbUser.displayName;
+          LeaderboardEntry? found;
+          for (var e in leaderboardParsed) {
+            if ((fbEmail != null && e.email == fbEmail) || (fbName != null && e.username == fbName)) {
+              found = e;
+              break;
+            }
+          }
+          if (found != null && mounted) {
+            setState(() => _currentUserEntry = found);
+          }
+        }
+      }
+    } on TimeoutException {
       if (mounted) {
         setState(() => _hasError = true);
         final msg = AppLocalizations.of(context)?.errorCouldNotLoadData ?? "Could not load data (timeout)";
@@ -161,6 +180,9 @@ class _LeaderboardPageState extends State<LeaderboardPage> with TickerProviderSt
     final localizations = AppLocalizations.of(context)!;
     final theme = Theme.of(context);
 
+    // Show only users after rank 10 (i.e. index >= 10). Ranks 4..10 are handled in the Top Players dashboard.
+    final listDisplay = _leaderboardData.length > 10 ? _leaderboardData.sublist(10) : <LeaderboardEntry>[]; 
+
     return Scaffold(
       backgroundColor: Colors.black,
       body: Stack(
@@ -186,7 +208,8 @@ class _LeaderboardPageState extends State<LeaderboardPage> with TickerProviderSt
                     ? Center(child: Text(localizations.noDataAvailable, style: TextStyle(color: Colors.grey.shade400)))
                     : CustomScrollView(
                         slivers: [
-                          // Başlık removed: left-top "Leaderboard" text removed per request
+                          // Reserve space under the top-right badge so main content starts lower
+                          SliverToBoxAdapter(child: SizedBox(height: 84.h)),
                           
                           // Podyum Kısmı
                           if (_leaderboardData.isNotEmpty)
@@ -194,7 +217,7 @@ class _LeaderboardPageState extends State<LeaderboardPage> with TickerProviderSt
                               child: _AnimatedListItem(
                                 index: 0, 
                                 controller: _listAnimationController, 
-                                child: _buildPodium(context, _leaderboardData.take(3).toList()) 
+                                child: _buildPodium(context, _leaderboardData.take(3).toList(), _leaderboardData.skip(3).toList()) 
                               ),
                             ),
                             
@@ -202,17 +225,16 @@ class _LeaderboardPageState extends State<LeaderboardPage> with TickerProviderSt
                           if (_currentUserEntry != null)
                             SliverToBoxAdapter(
                               child: _AnimatedListItem(
-                                index: 1, 
-                                controller: _listAnimationController, 
-                                child: _buildUserRankCard(theme, _currentUserEntry!, localizations)
+                                index: 1,
+                                controller: _listAnimationController,
+                                child: _buildUserRankCard(theme, _currentUserEntry!, localizations),
                               ),
                             ),
 
-                          // Listeleme Kısmı
                           SliverList(
                             delegate: SliverChildBuilderDelegate(
                               (context, index) {
-                                final entry = _leaderboardData[index + 3];
+                                final entry = listDisplay[index];
                                 return Padding(
                                   padding: EdgeInsets.symmetric(horizontal: 16.w),
                                   child: _AnimatedListItem(
@@ -222,7 +244,7 @@ class _LeaderboardPageState extends State<LeaderboardPage> with TickerProviderSt
                                   ),
                                 );
                               },
-                              childCount: _leaderboardData.length > 3 ? _leaderboardData.length - 3 : 0,
+                              childCount: listDisplay.length,
                             ),
                           ),
                           
@@ -231,6 +253,53 @@ class _LeaderboardPageState extends State<LeaderboardPage> with TickerProviderSt
                         ],
                       ),
           ),
+          // Kullanıcının puanını sağ üstte gösteren profile-style badge (settings ile aynı görünüm)
+          if (_currentUserEntry != null)
+            Positioned(
+              top: 12.h,
+              right: 16.w,
+              child: Card(
+                color: theme.colorScheme.surface.withOpacity(0.95),
+                shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12.r)),
+                child: Padding(
+                  padding: EdgeInsets.all(8.w),
+                  child: Row(
+                    mainAxisSize: MainAxisSize.min,
+                    children: [
+                      CircleAvatar(
+                        radius: 18.r,
+                        backgroundColor: theme.colorScheme.tertiary,
+                        child: Text(
+                          (_displayName(_currentUserEntry!).isNotEmpty) ? _displayName(_currentUserEntry!)[0].toUpperCase() : 'A',
+                          style: TextStyle(fontSize: 16.sp, color: theme.colorScheme.onTertiary, fontWeight: FontWeight.bold),
+                        ),
+                      ),
+                      SizedBox(width: 10.w),
+                      Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        mainAxisSize: MainAxisSize.min,
+                        children: [
+                          ConstrainedBox(
+                            constraints: BoxConstraints(maxWidth: 140.w),
+                            child: Text(
+                              _displayName(_currentUserEntry!),
+                              style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold, fontSize: 13.sp),
+                              overflow: TextOverflow.ellipsis,
+                            ),
+                          ),
+                          SizedBox(height: 4.h),
+                          Row(children: [
+                            Icon(Icons.star_rounded, color: theme.colorScheme.secondary, size: 14.sp),
+                            SizedBox(width: 6.w),
+                            Text("${_currentUserEntry!.score} ${localizations.points}", style: TextStyle(color: theme.colorScheme.secondary, fontSize: 13.sp, fontWeight: FontWeight.w600)),
+                          ]),
+                        ],
+                      ),
+                    ],
+                  ),
+                ),
+              ),
+            ),
           
           // topic selection removed — no UI or backend calls for topics anymore
         ],
@@ -298,103 +367,96 @@ class _LeaderboardPageState extends State<LeaderboardPage> with TickerProviderSt
       );
   }
 
-  Widget _buildPodium(BuildContext context, List<LeaderboardEntry> topEntries) {
+  Widget _buildPodium(BuildContext context, List<LeaderboardEntry> topEntries, List<LeaderboardEntry> bestPlayers) {
     final theme = Theme.of(context);
     final localizations = AppLocalizations.of(context)!;
 
     // Ensure exactly 3 slots for podium display
     final List<LeaderboardEntry?> podium = List.generate(3, (index) => index < topEntries.length ? topEntries[index] : null);
 
-    return Padding(
-      padding: EdgeInsets.only(left: 16.w, right: 16.w, bottom: 24.h),
-      child: Row(
-        crossAxisAlignment: CrossAxisAlignment.end,
-        children: [
-          // Left: Decorative podium (first/second/third)
-          Expanded(
-            flex: 2,
-            child: Row(
-              crossAxisAlignment: CrossAxisAlignment.end,
-              children: [
-                // 2nd place (silver)
-                Expanded(child: podium[1] != null ? _buildPodiumPlace(context, podium[1]!, theme, height: 120.h, color: const Color(0xFFC0C0C0)) : _buildEmptyPodium(120.h, Colors.grey.shade700)),
-                // 1st place (gold) with trophy icon
-                Expanded(child: podium[0] != null ? Column(children: [
-                    Icon(Icons.emoji_events_rounded, color: const Color(0xFFFFD700), size: 40.sp),
-                    SizedBox(height: 6.h),
-                    _buildPodiumPlace(context, podium[0]!, theme, height: 150.h, isFirst: true, color: const Color(0xFFFFD700))
-                  ],) : _buildEmptyPodium(150.h, Colors.grey.shade700)),
-                // 3rd place (copper)
-                Expanded(child: podium[2] != null ? _buildPodiumPlace(context, podium[2]!, theme, height: 100.h, color: const Color(0xFFB87333)) : _buildEmptyPodium(100.h, Colors.grey.shade700)),
-              ],
+    // Podium row (three columns)
+    final podiumRow = Row(
+      crossAxisAlignment: CrossAxisAlignment.end,
+      children: [
+        // 2nd place (silver)
+        Expanded(
+          child: podium[1] != null
+              ? _buildPodiumPlace(context, podium[1]!, theme, height: 120.h, color: const Color(0xFFC0C0C0))
+              : _buildEmptyPodium(120.h, Colors.grey.shade700),
+        ),
+        // 1st place (gold) - trophy icon removed
+        Expanded(
+          child: podium[0] != null
+              ? _buildPodiumPlace(context, podium[0]!, theme, height: 150.h, isFirst: true, color: const Color(0xFFFFD700))
+              : _buildEmptyPodium(150.h, Colors.grey.shade700),
+        ),
+        // 3rd place (copper)
+        Expanded(
+          child: podium[2] != null
+              ? _buildPodiumPlace(context, podium[2]!, theme, height: 100.h, color: const Color(0xFFB87333))
+              : _buildEmptyPodium(100.h, Colors.grey.shade700),
+        ),
+      ],
+    );
+
+    // Best players table (fixed 4..10) full-width under podium — increased padding/size
+    final dashboardCard = Card(
+      color: theme.colorScheme.surface.withOpacity(0.95),
+      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10.r)),
+      child: Padding(
+        padding: EdgeInsets.symmetric(vertical: 13.h, horizontal: 13.w), // slightly larger padding
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.stretch,
+          children: [
+            Text(
+              localizations.topPlayers,
+              textAlign: TextAlign.center,
+              style: theme.textTheme.titleSmall?.copyWith(fontSize: 16.sp, color: Colors.white, fontWeight: FontWeight.bold),
             ),
-          ),
-
-          SizedBox(width: 12.w),
-
-          // Right: Compact, styled table showing top-3 summary
-          Expanded(
-            flex: 1,
-            child: Card(
-              color: theme.colorScheme.surface.withOpacity(0.8),
-              shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12.r)),
-              child: Padding(
-                padding: EdgeInsets.symmetric(vertical: 12.h, horizontal: 8.w),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.stretch,
-                  children: [
-                    Text(
-                      localizations.topPlayers, // add this key to l10n if missing; fallback will show key
-                      textAlign: TextAlign.center,
-                      style: theme.textTheme.titleSmall?.copyWith(fontWeight: FontWeight.bold, color: Colors.white),
-                    ),
-                    SizedBox(height: 8.h),
-                    Divider(color: Colors.white10, height: 1),
-                    SizedBox(height: 8.h),
-                    // Rows for top 3
-                    for (var i = 0; i < 3; i++)
-                      Padding(
-                        padding: EdgeInsets.only(bottom: 8.h),
-                        child: Row(
-                          children: [
-                            // Rank badge
-                            Container(
-                              width: 34.w,
-                              height: 34.w,
-                              decoration: BoxDecoration(
-                                color: i == 0 ? const Color(0xFFFFD700) : (i == 1 ? const Color(0xFFC0C0C0) : const Color(0xFFB87333)),
-                                shape: BoxShape.circle,
-                                boxShadow: [BoxShadow(color: Colors.black26, blurRadius: 4.r, offset: Offset(0,2))],
-                              ),
-                              child: Center(child: Text("${i+1}", style: TextStyle(fontWeight: FontWeight.bold, color: Colors.black))),
-                            ),
-                            SizedBox(width: 10.w),
-                            // Name + score
-                            Expanded(
-                              child: Column(
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                children: [
-                                  Text(
-                                    podium[i] != null ? _displayName(podium[i]!) : "-",
-                                    style: TextStyle(color: Colors.white, fontWeight: FontWeight.w600, fontSize: 13.sp),
-                                    overflow: TextOverflow.ellipsis,
-                                  ),
-                                  SizedBox(height: 2.h),
-                                  Text(
-                                    podium[i] != null ? "${podium[i]!.score} pts" : "",
-                                    style: TextStyle(color: Colors.grey.shade400, fontSize: 11.sp),
-                                  ),
-                                ],
-                              ),
-                            )
-                          ],
-                        ),
+            SizedBox(height: 8.h),
+            Divider(color: Colors.white12, thickness: 1),
+            SizedBox(height: 12.h),
+            // fixed rows for ranks 4..10 (7 rows) with increased font sizes
+            for (var i = 0; i < 7; i++)
+              Padding(
+                padding: EdgeInsets.symmetric(vertical: 8.h),
+                child: Builder(builder: (context) {
+                  final entry = i < bestPlayers.length ? bestPlayers[i] : null;
+                  final rank = 4 + i;
+                  final name = entry != null ? _displayName(entry) : "-";
+                  final scoreText = entry != null ? "${entry.score}" : "-";
+                  return Row(
+                    children: [
+                      Container(
+                        width: 36.w,
+                        alignment: Alignment.center,
+                        child: Text("#$rank", style: TextStyle(color: Colors.grey.shade300, fontWeight: FontWeight.bold, fontSize: 14.sp)),
                       ),
-                  ],
-                ),
+                      SizedBox(width: 12.w),
+                      Expanded(
+                        child: Text(name, style: TextStyle(color: Colors.white, fontWeight: FontWeight.w600, fontSize: 15.sp), overflow: TextOverflow.ellipsis),
+                      ),
+                      SizedBox(width: 12.w),
+                      Text(scoreText, style: TextStyle(color: theme.colorScheme.primary, fontWeight: FontWeight.bold, fontSize: 15.sp)),
+                      SizedBox(width: 8.w),
+                      Icon(Icons.star_rounded, color: theme.colorScheme.secondary, size: 14.sp),
+                    ],
+                  );
+                }),
               ),
-            ),
-          ),
+          ],
+        ),
+      ),
+    );
+
+    return Padding(
+      padding: EdgeInsets.only(left: 16.w, right: 16.w, bottom: 28.h, top: 6.h), // small top space inside block
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.stretch,
+        children: [
+          podiumRow,
+          SizedBox(height: 18.h), // push dashboard a bit further down from podium
+          dashboardCard,
         ],
       ),
     );
