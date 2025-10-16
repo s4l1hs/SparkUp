@@ -182,22 +182,40 @@ def get_user_profile(db_user: User = Depends(get_current_user), session: Session
     }
 
 @app.get("/quiz/", response_model=List[Dict])
-def get_quiz_questions(limit: int = 3, lang: Optional[str] = Query(None), db_user: User = Depends(get_current_user), session: Session = Depends(get_session)):
+def get_quiz_questions(limit: int = 3, lang: Optional[str] = Query(None), preview: bool = Query(False), db_user: User = Depends(get_current_user), session: Session = Depends(get_session)):
     access = _get_user_access_level(db_user, session)
-    # efektif dil: query param öncelikli, yoksa kullanıcı dili, değilse İngilizce
     effective_lang = lang or (db_user.language_code if db_user.language_code else "en")
-    if access["quiz_count"] >= access["quiz_limit"] and access["level"] != "ultra":
-         tpl = TRANSLATIONS.get("daily_quiz_limit_reached", {}).get(effective_lang) or TRANSLATIONS["daily_quiz_limit_reached"]["en"]
-         raise HTTPException(status_code=429, detail=tpl.format(limit=access["quiz_limit"]))
+
+    if not preview:
+        if access["quiz_count"] >= access["quiz_limit"] and access["level"] != "ultra":
+             tpl = TRANSLATIONS.get("daily_quiz_limit_reached", {}).get(effective_lang) or TRANSLATIONS["daily_quiz_limit_reached"]["en"]
+             raise HTTPException(status_code=429, detail=tpl.format(limit=access["quiz_limit"]))
+
     answered_ids = session.exec(select(UserAnsweredQuestion.quizquestion_id).where(UserAnsweredQuestion.user_id == db_user.id)).all()
     unanswered = session.exec(select(QuizQuestion).where(QuizQuestion.id.notin_(answered_ids))).all()
-    if len(unanswered) < limit:
-        session.exec(delete(UserAnsweredQuestion).where(UserAnsweredQuestion.user_id == db_user.id)); session.commit()
-        unanswered = session.exec(select(QuizQuestion)).all()
-        if len(unanswered) < limit: raise HTTPException(status_code=404, detail="Not enough new questions.")
-    chosen = random.sample(unanswered, limit)
-    access["daily_limits_obj"].quiz_count += 1
-    session.add(access["daily_limits_obj"]); session.commit()
+
+    chosen = []
+    if len(unanswered) >= limit:
+        chosen = random.sample(unanswered, limit)
+    else:
+        # if not enough unanswered:
+        if not preview:
+            # original behavior: reset answered and take from all
+            session.exec(delete(UserAnsweredQuestion).where(UserAnsweredQuestion.user_id == db_user.id))
+            session.commit()
+            all_qs = session.exec(select(QuizQuestion)).all()
+            if len(all_qs) < limit:
+                raise HTTPException(status_code=404, detail="Not enough new questions.")
+            chosen = random.sample(all_qs, limit)
+            # consume one quiz count
+            access["daily_limits_obj"].quiz_count += 1
+            session.add(access["daily_limits_obj"]); session.commit()
+        else:
+            # preview: do NOT mutate DB; sample from all questions if possible
+            all_qs = session.exec(select(QuizQuestion)).all()
+            if len(all_qs) < limit:
+                raise HTTPException(status_code=404, detail="Not enough questions for preview.")
+            chosen = random.sample(all_qs, limit)
 
     def _get_text(obj_field, q):
         try:
@@ -210,7 +228,6 @@ def get_quiz_questions(limit: int = 3, lang: Optional[str] = Query(None), db_use
     for q in chosen:
         question_text = _get_text("question_texts", q)
         options = _get_text("options_texts", q)
-        # options expected to be list; if stored as JSON list/string handle accordingly
         if isinstance(options, str):
             try:
                 options_parsed = json.loads(options)
@@ -224,6 +241,13 @@ def get_quiz_questions(limit: int = 3, lang: Optional[str] = Query(None), db_use
             "options": options_parsed,
             "correct_answer_index": q.correct_answer_index
         })
+
+    # If we reached here and we chose from unanswered sample AND NOT preview, ensure we increment quiz_count
+    # Note: we already incremented when resetting answered; handle normal branch too:
+    if not preview and (len(unanswered) >= limit):
+        access["daily_limits_obj"].quiz_count += 1
+        session.add(access["daily_limits_obj"]); session.commit()
+
     return result
 
 @app.post("/quiz/answer/", response_model=AnswerResponse)
@@ -260,28 +284,47 @@ def set_user_language(language_code: str = Query(...), db_user: User = Depends(g
         raise HTTPException(status_code=500, detail=f"Failed to update language: {e}")
     
 @app.get("/challenges/random/", response_model=ChallengeResponse)
-def get_random_challenge(lang: Optional[str] = Query(None), db_user: User = Depends(get_current_user), session: Session = Depends(get_session)):
+def get_random_challenge(lang: Optional[str] = Query(None), preview: bool = Query(False), db_user: User = Depends(get_current_user), session: Session = Depends(get_session)):
     access = _get_user_access_level(db_user, session)
     effective_lang = lang or (db_user.language_code if db_user.language_code else "en")
-    if access["challenge_count"] >= access["challenge_limit"] and access["level"] != "ultra":
-         tpl = TRANSLATIONS.get("daily_challenge_limit_reached", {}).get(effective_lang) or TRANSLATIONS["daily_challenge_limit_reached"]["en"]
-         raise HTTPException(status_code=429, detail=tpl.format(limit=access["challenge_limit"]))
+
+    if not preview:
+        if access["challenge_count"] >= access["challenge_limit"] and access["level"] != "ultra":
+             tpl = TRANSLATIONS.get("daily_challenge_limit_reached", {}).get(effective_lang) or TRANSLATIONS["daily_challenge_limit_reached"]["en"]
+             raise HTTPException(status_code=429, detail=tpl.format(limit=access["challenge_limit"]))
+
     completed_ids = session.exec(select(UserCompletedChallenge.challenge_id).where(UserCompletedChallenge.user_id == db_user.id)).all()
     unanswered = session.exec(select(Challenge).where(Challenge.id.notin_(completed_ids))).all()
+
     if not unanswered:
-        session.exec(delete(UserCompletedChallenge).where(UserCompletedChallenge.user_id == db_user.id)); session.commit()
-        unanswered = session.exec(select(Challenge)).all()
-        if not unanswered: raise HTTPException(status_code=404, detail="No challenges available.")
+        if not preview:
+            session.exec(delete(UserCompletedChallenge).where(UserCompletedChallenge.user_id == db_user.id)); session.commit()
+            unanswered = session.exec(select(Challenge)).all()
+            if not unanswered: raise HTTPException(status_code=404, detail="No challenges available.")
+        else:
+            all_ch = session.exec(select(Challenge)).all()
+            if not all_ch: raise HTTPException(status_code=404, detail="No challenges available.")
+            chosen_challenge = random.choice(all_ch)
+            texts = {}
+            try:
+                texts = json.loads(chosen_challenge.challenge_texts or "{}")
+            except Exception:
+                texts = {}
+            challenge_text = texts.get(effective_lang) or texts.get("en") or ""
+            return ChallengeResponse(id=chosen_challenge.id, challenge_text=challenge_text, category=chosen_challenge.category)
+
     chosen_challenge = random.choice(unanswered)
-    session.add(UserCompletedChallenge(user_id=db_user.id, challenge_id=chosen_challenge.id))
-    access["daily_limits_obj"].challenge_count += 1
-    session.add(access["daily_limits_obj"]); session.commit()
+
+    if not preview:
+        session.add(UserCompletedChallenge(user_id=db_user.id, challenge_id=chosen_challenge.id))
+        access["daily_limits_obj"].challenge_count += 1
+        session.add(access["daily_limits_obj"]); session.commit()
+
     texts = {}
     try:
         texts = json.loads(chosen_challenge.challenge_texts or "{}")
     except Exception:
         texts = {}
-    # doğru dili seç, yoksa en, yoksa boş string
     challenge_text = texts.get(effective_lang) or texts.get("en") or ""
     return ChallengeResponse(id=chosen_challenge.id, challenge_text=challenge_text, category=chosen_challenge.category)
 
@@ -332,3 +375,70 @@ def get_user_rank(db_user: User = Depends(get_current_user), session: Session = 
     if not username and getattr(db_user, "email", None):
         username = db_user.email.split("@", 1)[0]
     return {"rank": rank, "email": db_user.email, "username": username, "score": user_score}
+
+@app.get("/quiz/localize/")
+def localize_quiz(ids: str = Query(..., description="Comma separated quiz ids"), lang: Optional[str] = Query(None), session: Session = Depends(get_session)):
+    """
+    Return the same quiz questions by id but with localized texts.
+    Does NOT consume user limits or mutate DB.
+    """
+    effective_lang = lang or "en"
+    # Safely parse comma separated ids
+    try:
+        id_list = []
+        for s in ids.split(","):
+            s2 = s.strip()
+            if not s2:
+                continue
+            id_list.append(int(s2))
+        if not id_list:
+            raise ValueError("no ids")
+    except Exception:
+        raise HTTPException(status_code=400, detail="Invalid ids parameter")
+
+    qs = session.exec(select(QuizQuestion).where(QuizQuestion.id.in_(id_list))).all()
+
+    def _get_text(obj_field, q):
+        try:
+            data = json.loads(getattr(q, obj_field) or "{}")
+            return data.get(effective_lang) or data.get("en") or ""
+        except Exception:
+            return ""
+
+    result = []
+    for q in qs:
+        question_text = _get_text("question_texts", q)
+        options_raw = _get_text("options_texts", q)
+        options_parsed = []
+        if isinstance(options_raw, str):
+            try:
+                options_parsed = json.loads(options_raw)
+            except Exception:
+                options_parsed = [options_raw]
+        else:
+            options_parsed = options_raw or []
+        result.append({
+            "id": q.id,
+            "question_text": question_text,
+            "options": options_parsed,
+            "correct_answer_index": q.correct_answer_index
+        })
+    return result
+
+@app.get("/challenges/{challenge_id}/localize/", response_model=ChallengeResponse)
+def localize_challenge(challenge_id: int, lang: Optional[str] = Query(None), session: Session = Depends(get_session)):
+    """
+    Return the same challenge by id but with localized text.
+    Does NOT consume user limits or mutate DB.
+    """
+    effective_lang = lang or "en"
+    ch = session.get(Challenge, challenge_id)
+    if not ch:
+        raise HTTPException(status_code=404, detail="Challenge not found.")
+    texts = {}
+    try:
+        texts = json.loads(ch.challenge_texts or "{}")
+    except Exception:
+        texts = {}
+    challenge_text = texts.get(effective_lang) or texts.get("en") or ""
+    return ChallengeResponse(id=ch.id, challenge_text=challenge_text, category=ch.category)

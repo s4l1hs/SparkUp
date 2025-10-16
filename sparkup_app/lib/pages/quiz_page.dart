@@ -21,6 +21,7 @@ class QuizPage extends StatefulWidget {
 
 class _QuizPageState extends State<QuizPage> with TickerProviderStateMixin {
   final ApiService _apiService = ApiService();
+  bool _localizeInProgress = false;
   bool _isQuizActive = false, _isLoading = true, _answered = false;
   String? _limitError;
   List<Map<String, dynamic>> _questions = [];
@@ -32,6 +33,12 @@ class _QuizPageState extends State<QuizPage> with TickerProviderStateMixin {
 
   // Yeni: son kullanılan locale'i takip et
   String? _lastLocale;
+
+  // score award animation
+  late final AnimationController _scoreAnimController;
+  late final Animation<Offset> _scoreOffset;
+  int _lastAwarded = 0;
+  bool _showAward = false;
   
   @override
   void initState() {
@@ -45,6 +52,15 @@ class _QuizPageState extends State<QuizPage> with TickerProviderStateMixin {
       TweenSequenceItem(tween: AlignmentTween(begin: Alignment.topRight, end: Alignment.bottomLeft), weight: 1),
       TweenSequenceItem(tween: AlignmentTween(begin: Alignment.bottomLeft, end: Alignment.topRight), weight: 1),
     ]).animate(_backgroundController);
+    // init score award animation
+    _scoreAnimController = AnimationController(vsync: this, duration: const Duration(milliseconds: 700));
+    _scoreOffset = Tween<Offset>(begin: const Offset(0, 0.6), end: const Offset(0, -0.6)).animate(CurvedAnimation(parent: _scoreAnimController, curve: Curves.easeOut));
+    _scoreAnimController.addStatusListener((st) {
+      if (st == AnimationStatus.completed) {
+        // hide after animation completes
+        Future.delayed(const Duration(milliseconds: 300), () { if (mounted) setState(() => _showAward = false); });
+      }
+    });
     _fetchQuizData(isInitialLoad: true);
   }
 
@@ -54,25 +70,71 @@ class _QuizPageState extends State<QuizPage> with TickerProviderStateMixin {
     final localeCode = Localizations.localeOf(context).languageCode;
     if (_lastLocale != localeCode) {
       _lastLocale = localeCode;
-      // Eğer daha önce limit hatası aldıysak, locale değişince backend'den yeniden isteyip lokalize edilmiş mesajı alalım
-      if (_limitError != null) {
-        WidgetsBinding.instance.addPostFrameCallback((_) => _fetchQuizData());
+      // If there is an active quiz session, only replace texts for the same question IDs
+      if (!_isLoading && _isQuizActive && _questions.isNotEmpty && !_localizeInProgress) {
+        final ids = _questions.map((q) => q['id'] as int).toList();
+        _localizeInProgress = true;
+        WidgetsBinding.instance.addPostFrameCallback((_) async {
+          try {
+            final localized = await _apiService.getLocalizedQuizQuestions(widget.idToken, ids, lang: localeCode);
+            if (!mounted) return;
+            if (localized.isNotEmpty) {
+              // map localized texts back into existing _questions preserving correct_index & ids
+              setState(() {
+                final Map<int, Map<String, dynamic>> byId = { for (var q in localized) q['id'] as int : q };
+                _questions = _questions.map((q) {
+                  final id = q['id'] as int;
+                  final loc = byId[id];
+                  if (loc != null) {
+                    return {
+                      'id': id,
+                      'question_text': loc['question_text'],
+                      'options': loc['options'],
+                      'correct_answer_index': loc['correct_answer_index'],
+                    };
+                  }
+                  return q;
+                }).toList();
+              });
+            } else {
+              // localized empty => backend returned 400 or empty; do nothing
+              debugPrint("Localized quiz returned empty for ids=$ids (no change)");
+            }
+          } catch (e) {
+            // fallback: do not replace questions; do not consume limits
+            debugPrint("Failed to localize active quiz: $e");
+          } finally {
+            _localizeInProgress = false;
+          }
+        });
+      } else {
+        // when no active quiz, fetch as preview (no limit consumption)
+        if (!_isLoading && !_isQuizActive) {
+          WidgetsBinding.instance.addPostFrameCallback((_) => _fetchQuizData(isInitialLoad: false, isPreview: true));
+        }
+        if (_limitError != null && !_isLoading) {
+          WidgetsBinding.instance.addPostFrameCallback((_) => _fetchQuizData(isInitialLoad: false, isPreview: true));
+        }
       }
     }
   }
 
   @override
-  void dispose() { _backgroundController.dispose(); super.dispose(); }
-
-  Future<void> _fetchQuizData({bool isInitialLoad = false}) async {
+  void dispose() {
+    _backgroundController.dispose();
+    _scoreAnimController.dispose();
+    super.dispose();
+  }
+  
+  Future<void> _fetchQuizData({bool isInitialLoad = false, bool isPreview = false}) async {
     if (!mounted) return;
     setState(() { _isLoading = true; _limitError = null; });
     try {
-      // ApiService currently doesn't support a 'language' named parameter; call without it.
-      final questions = await _apiService.getQuizQuestions(widget.idToken);
+      final lang = Localizations.localeOf(context).languageCode;
+      final questions = await _apiService.getQuizQuestions(widget.idToken, limit: 3, lang: lang, preview: isPreview);
       if (mounted && questions.isNotEmpty) {
-        setState(() { 
-          _questions = questions; _currentIndex = 0; _isQuizActive = true; 
+        setState(() {
+          _questions = questions; _currentIndex = 0; _isQuizActive = true;
           _answered = false; _selectedAnswerIndex = null; _answerState = AnswerState.unanswered;
           _limitError = null;
         });
@@ -80,13 +142,12 @@ class _QuizPageState extends State<QuizPage> with TickerProviderStateMixin {
         setState(() => _isQuizActive = false);
       }
     } on QuizLimitException catch (e) {
-      if (mounted) { 
-        // Backend'den dönen mesajı saklıyoruz; didChangeDependencies locale değişince bunu tekrar güncellemek için _fetchQuizData tetiklenecek
-        setState(() { _limitError = e.message; _isQuizActive = false; }); 
+      if (mounted) {
+        setState(() { _limitError = e.message; _isQuizActive = false; });
       }
     } catch (e) {
       if (mounted) {
-        ScaffoldMessenger.of(context).showSnackBar( SnackBar(content: Text("${AppLocalizations.of(context)!.quizCouldNotStart}: ${e.toString()}"), backgroundColor: Theme.of(context).colorScheme.error));
+        ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text("${AppLocalizations.of(context)!.quizCouldNotStart}: ${e.toString()}"), backgroundColor: Theme.of(context).colorScheme.error));
         setState(() => _isQuizActive = false);
       }
     } finally {
@@ -94,7 +155,7 @@ class _QuizPageState extends State<QuizPage> with TickerProviderStateMixin {
     }
   }
 
-  void _startQuizSession() { _sessionScore = 0; _fetchQuizData(); }
+  void _startQuizSession() { _sessionScore = 0; _fetchQuizData(isInitialLoad: false, isPreview: false); }
 
   Future<void> _answerQuestion(int selectedIndex) async {
     if (_answered) return;
@@ -106,8 +167,19 @@ class _QuizPageState extends State<QuizPage> with TickerProviderStateMixin {
     try {
       final response = await _apiService.submitQuizAnswer(widget.idToken, _questions[_currentIndex]['id'] as int, selectedIndex);
       final newScore = response['new_score'] as int? ?? 0;
-      
-      setState(() { _answerState = AnswerState.revealed; });
+      final awarded = (response['score_awarded'] as int?) ?? 0;
+
+      // update UI: reveal answer and add to session score (streak handled server-side)
+      setState(() {
+        _answerState = AnswerState.revealed;
+        if (awarded > 0) {
+          _sessionScore += awarded;
+          _lastAwarded = awarded;
+          _showAward = true;
+          _scoreAnimController.forward(from: 0);
+        }
+      });
+      // update global user provider with new total score from server
       Provider.of<UserProvider>(context, listen: false).updateScore(newScore);
 
       await Future.delayed(const Duration(milliseconds: 1800));
@@ -187,91 +259,133 @@ class _QuizPageState extends State<QuizPage> with TickerProviderStateMixin {
     final currentStreak = userProvider.profile?.currentStreak ?? 0;
     return Scaffold( backgroundColor: Colors.black, body: Stack(children: [
           AnimatedBuilder( animation: _backgroundController, builder: (context, child) { return Stack( children: [ Positioned.fill(child: Align(alignment: _backgroundAnimation1.value, child: Container(width: 400.w, height: 400.h, decoration: BoxDecoration(shape: BoxShape.circle, color: theme.colorScheme.tertiary.withOpacity(0.15), boxShadow: [BoxShadow(color: theme.colorScheme.tertiary.withOpacity(0.1), blurRadius: 100.r, spreadRadius: 80.r)])))), Positioned.fill(child: Align(alignment: _backgroundAnimation2.value, child: Container(width: 300.w, height: 300.h, decoration: BoxDecoration(shape: BoxShape.circle, color: theme.colorScheme.primary.withOpacity(0.15), boxShadow: [BoxShadow(color: theme.colorScheme.primary.withOpacity(0.1), blurRadius: 100.r, spreadRadius: 60.r)])))),],);},),
-          AnimatedSwitcher( duration: const Duration(milliseconds: 500), transitionBuilder: (child, animation) => FadeTransition(opacity: animation, child: ScaleTransition(scale: animation, child: child)),
-            child: _isQuizActive && _questions.isNotEmpty ? _buildQuizView(context, localizations, theme, currentStreak) : _buildStartView(context, localizations, theme),
-          ),
-        ],
-      ),
-    );
-  }
-
-  Widget _buildStartView(BuildContext context, AppLocalizations localizations, ThemeData theme) {
-    if (_limitError != null) { return _buildLimitExceededView(context, localizations, theme); }
-    return Center( key: const ValueKey('startView'),
-      child: _isLoading ? CircularProgressIndicator(color: theme.colorScheme.primary) : ElevatedButton.icon( icon: Icon(Icons.play_arrow_rounded, size: 28.sp), label: Text(localizations.startNewQuiz, style: TextStyle(fontSize: 20.sp, fontWeight: FontWeight.bold)), style: ElevatedButton.styleFrom(padding: EdgeInsets.symmetric(horizontal: 32.w, vertical: 16.h)), onPressed: _startQuizSession,),
-    );
-  }
-
-  Widget _buildLimitExceededView(BuildContext context, AppLocalizations localizations, ThemeData theme) {
-    return Center( key: const ValueKey('limitExceededView'), child: Padding( padding: EdgeInsets.all(32.w), child: Column( mainAxisAlignment: MainAxisAlignment.center, children: [
-            Icon(Icons.lock_outline_rounded, size: 60.sp, color: theme.colorScheme.error), SizedBox(height: 20.h),
-            Text(localizations.limitExceeded, style: theme.textTheme.titleLarge?.copyWith(color: theme.colorScheme.error)), SizedBox(height: 10.h),
-            Text(_limitError ?? localizations.upgrade, textAlign: TextAlign.center, style: TextStyle(color: Colors.white70, fontSize: 16.sp)), SizedBox(height: 30.h),
-            ElevatedButton( onPressed: () { final mainScreenState = context.findAncestorStateOfType<MainScreenState>(); if (mainScreenState != null) { mainScreenState.onItemTapped(1); } }, child: Text(localizations.upgrade), style: ElevatedButton.styleFrom(backgroundColor: theme.colorScheme.secondary),)
-          ],),),
-    );
-  }
-
-  Widget _buildQuizView(BuildContext context, AppLocalizations localizations, ThemeData theme, int currentStreak) {
-    return Padding( key: ValueKey<int>(_currentIndex), padding: EdgeInsets.all(16.w), child: Column( children: [
-          SafeArea( child: Column( children: [ LinearProgressIndicator(value: (_currentIndex + 1) / _questions.length, backgroundColor: theme.cardTheme.color, color: theme.colorScheme.tertiary, minHeight: 8.h, borderRadius: BorderRadius.circular(4.r)), SizedBox(height: 16.h),
-                Row( mainAxisAlignment: MainAxisAlignment.spaceBetween, children: [ Text("${localizations.question} ${_currentIndex + 1}/${_questions.length}", style: TextStyle(color: theme.colorScheme.tertiary, fontSize: 18.sp, fontWeight: FontWeight.bold)),
-                    Container( padding: EdgeInsets.symmetric(horizontal: 10.w, vertical: 4.h), decoration: BoxDecoration( color: theme.colorScheme.secondary.withOpacity(0.2), borderRadius: BorderRadius.circular(10.r), border: Border.all(color: theme.colorScheme.secondary)), child: Text("${localizations.streak}: $currentStreak", style: TextStyle(color: theme.colorScheme.secondary, fontWeight: FontWeight.bold, fontSize: 14.sp)),)
-                  ],),
-              ],),),
-          Expanded( child: _buildQuestionCard(key: ValueKey<int>(_currentIndex))),
-        ],
-      ),
-    );
-  }
-
-  Widget _buildQuestionCard({required Key key}) {
-    final theme = Theme.of(context);
-    // Güvenlik kontrolü: Sorular henüz yüklenmediyse boş bir widget döndür
-    if (_questions.isEmpty || _currentIndex >= _questions.length) {
-      return const Center(child: CircularProgressIndicator());
-    }
-    final currentQuestion = _questions[_currentIndex];
-    final options = currentQuestion['options'] as List<dynamic>; 
-    return Column( key: key, mainAxisAlignment: MainAxisAlignment.center, children: [
-        Container( padding: EdgeInsets.all(24.w), decoration: BoxDecoration(color: theme.colorScheme.surface.withOpacity(0.5), borderRadius: BorderRadius.circular(20.r)), child: Text(currentQuestion['question_text'], textAlign: TextAlign.center, style: TextStyle(fontSize: 22.sp, fontWeight: FontWeight.bold, color: Colors.white)),),
-        SizedBox(height: 30.h),
-        ...List.generate(options.length, (index) {
-          // --- BU DEĞİŞKENLER BURADA KULLANILIYOR ---
-          final isCorrect = index == currentQuestion['correct_answer_index'];
-          final isSelected = index == _selectedAnswerIndex;
-          
-          return Padding(
-            padding: EdgeInsets.symmetric(vertical: 8.h),
-            child: InkWell(
-              onTap: _answered ? null : () => _answerQuestion(index),
-              borderRadius: BorderRadius.circular(16.r),
-              child: AnimatedContainer(
-                duration: const Duration(milliseconds: 400),
-                padding: EdgeInsets.symmetric(horizontal: 20.w, vertical: 16.h),
-                decoration: BoxDecoration( color: _getOptionColor(index), borderRadius: BorderRadius.circular(16.r), border: _getOptionBorder(index), ),
-                child: Row(
-                  children: [
-                    Expanded(child: Text(options[index], style: TextStyle(fontSize: 18.sp, color: Colors.white))),
-                    
-                    // --- KULLANIM YERİ BURASI ---
-                    AnimatedOpacity(
-                      // Sadece sonuçlar açıklandığında ikonları göster
-                      opacity: _answerState == AnswerState.revealed ? 1.0 : 0.0,
-                      duration: const Duration(milliseconds: 400),
-                      // `isCorrect` doğru cevabın yanına ✅ koymak için,
-                      // `isSelected` ise seçilen yanlış cevabın yanına ❌ koymak için kullanılır.
-                      child: isCorrect
-                          ? Icon(Icons.check_circle_outline_rounded, color: Colors.white)
-                          : (isSelected ? Icon(Icons.highlight_off_rounded, color: Colors.white) : const SizedBox.shrink()),
-                    )
-                  ],
+          // award floating indicator
+          if (_showAward)
+            Positioned(
+              top: 120.h,
+              right: 40.w,
+              child: SlideTransition(
+                position: _scoreOffset,
+                child: FadeTransition(
+                  opacity: _scoreAnimController,
+                  child: Container(
+                    padding: EdgeInsets.symmetric(vertical: 8.h, horizontal: 12.w),
+                    decoration: BoxDecoration(color: theme.colorScheme.primary.withOpacity(0.95), borderRadius: BorderRadius.circular(8.r), boxShadow: [BoxShadow(color: Colors.black45, blurRadius: 6.r)]),
+                    child: Row(children: [
+                      Icon(Icons.add, color: Colors.white, size: 16.sp),
+                      SizedBox(width: 6.w),
+                      Text("+$_lastAwarded ${localizations.points}", style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold, fontSize: 14.sp)),
+                    ]),
+                  ),
                 ),
               ),
             ),
-          );
-        }),
-      ],
-    );
-  }
-}
+           AnimatedSwitcher( duration: const Duration(milliseconds: 500), transitionBuilder: (child, animation) => FadeTransition(opacity: animation, child: ScaleTransition(scale: animation, child: child)),
+             child: _isQuizActive && _questions.isNotEmpty ? _buildQuizView(context, localizations, theme, currentStreak) : _buildStartView(context, localizations, theme),
+           ),
+         ],
+       ),
+     );
+   }
+ 
+   Widget _buildStartView(BuildContext context, AppLocalizations localizations, ThemeData theme) {
+     if (_limitError != null) { return _buildLimitExceededView(context, localizations, theme); }
+     return Center( key: const ValueKey('startView'),
+       child: _isLoading ? CircularProgressIndicator(color: theme.colorScheme.primary) : ElevatedButton.icon( icon: Icon(Icons.play_arrow_rounded, size: 28.sp), label: Text(localizations.startNewQuiz, style: TextStyle(fontSize: 20.sp, fontWeight: FontWeight.bold)), style: ElevatedButton.styleFrom(padding: EdgeInsets.symmetric(horizontal: 32.w, vertical: 16.h)), onPressed: _startQuizSession,),
+     );
+   }
+ 
+   Widget _buildLimitExceededView(BuildContext context, AppLocalizations localizations, ThemeData theme) {
+     return Center( key: const ValueKey('limitExceededView'), child: Padding( padding: EdgeInsets.all(32.w), child: Column( mainAxisAlignment: MainAxisAlignment.center, children: [
+             Icon(Icons.lock_outline_rounded, size: 60.sp, color: theme.colorScheme.error), SizedBox(height: 20.h),
+             Text(localizations.limitExceeded, style: theme.textTheme.titleLarge?.copyWith(color: theme.colorScheme.error)), SizedBox(height: 10.h),
+             Text(_limitError ?? localizations.upgrade, textAlign: TextAlign.center, style: TextStyle(color: Colors.white70, fontSize: 16.sp)), SizedBox(height: 30.h),
+             ElevatedButton( onPressed: () { final mainScreenState = context.findAncestorStateOfType<MainScreenState>(); if (mainScreenState != null) { mainScreenState.onItemTapped(1); } }, child: Text(localizations.upgrade), style: ElevatedButton.styleFrom(backgroundColor: theme.colorScheme.secondary),)
+           ],),),
+     );
+   }
+ 
+   Widget _buildQuizView(BuildContext context, AppLocalizations localizations, ThemeData theme, int currentStreak) {
+     return Padding( key: ValueKey<int>(_currentIndex), padding: EdgeInsets.all(16.w), child: Column( children: [
+           SafeArea( child: Column( children: [ LinearProgressIndicator(value: (_currentIndex + 1) / _questions.length, backgroundColor: theme.cardTheme.color, color: theme.colorScheme.tertiary, minHeight: 8.h, borderRadius: BorderRadius.circular(4.r)), SizedBox(height: 16.h),
+                Row( mainAxisAlignment: MainAxisAlignment.spaceBetween, children: [ Text("${localizations.question} ${_currentIndex + 1}/${_questions.length}", style: TextStyle(color: theme.colorScheme.tertiary, fontSize: 18.sp, fontWeight: FontWeight.bold)),
+                    Row(children: [
+                      // session score badge
+                      Container(
+                        padding: EdgeInsets.symmetric(horizontal: 10.w, vertical: 6.h),
+                        decoration: BoxDecoration(color: theme.colorScheme.primary.withOpacity(0.95), borderRadius: BorderRadius.circular(10.r)),
+                        child: Row(children: [
+                          Icon(Icons.star_rounded, color: Colors.yellow.shade700, size: 14.sp),
+                          SizedBox(width: 6.w),
+                          Text("$_sessionScore ${localizations.points}", style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold, fontSize: 13.sp)),
+                        ]),
+                      ),
+                      SizedBox(width: 10.w),
+                      Container(
+                        padding: EdgeInsets.symmetric(horizontal: 10.w, vertical: 4.h),
+                        decoration: BoxDecoration(
+                          color: theme.colorScheme.secondary.withOpacity(0.2),
+                          borderRadius: BorderRadius.circular(10.r),
+                          border: Border.all(color: theme.colorScheme.secondary),
+                        ),
+                        child: Text("${localizations.streak}: $currentStreak", style: TextStyle(color: theme.colorScheme.secondary, fontWeight: FontWeight.bold, fontSize: 14.sp)),
+                      ),
+                    ]),
+                  ],),
+               ],),),Expanded( child: _buildQuestionCard(key: ValueKey<int>(_currentIndex))),
+         ],
+       ),
+     );
+   }
+   // Duplicate/malformed _buildQuestionCard removed; the real implementation appears further below.
+ 
+   Widget _buildQuestionCard({required Key key}) {
+     final theme = Theme.of(context);
+     // Güvenlik kontrolü: Sorular henüz yüklenmediyse boş bir widget döndür
+     if (_questions.isEmpty || _currentIndex >= _questions.length) {
+       return const Center(child: CircularProgressIndicator());
+     }
+     final currentQuestion = _questions[_currentIndex];
+     final options = currentQuestion['options'] as List<dynamic>; 
+     return Column( key: key, mainAxisAlignment: MainAxisAlignment.center, children: [
+         Container( padding: EdgeInsets.all(24.w), decoration: BoxDecoration(color: theme.colorScheme.surface.withOpacity(0.5), borderRadius: BorderRadius.circular(20.r)), child: Text(currentQuestion['question_text'], textAlign: TextAlign.center, style: TextStyle(fontSize: 22.sp, fontWeight: FontWeight.bold, color: Colors.white)),),
+         SizedBox(height: 30.h),
+         ...List.generate(options.length, (index) {
+           // --- BU DEĞİŞKENLER BURADA KULLANILIYOR ---
+           final isCorrect = index == currentQuestion['correct_answer_index'];
+           final isSelected = index == _selectedAnswerIndex;
+           
+           return Padding(
+             padding: EdgeInsets.symmetric(vertical: 8.h),
+             child: InkWell(
+               onTap: _answered ? null : () => _answerQuestion(index),
+               borderRadius: BorderRadius.circular(16.r),
+               child: AnimatedContainer(
+                 duration: const Duration(milliseconds: 400),
+                 padding: EdgeInsets.symmetric(horizontal: 20.w, vertical: 16.h),
+                 decoration: BoxDecoration( color: _getOptionColor(index), borderRadius: BorderRadius.circular(16.r), border: _getOptionBorder(index), ),
+                 child: Row(
+                   children: [
+                     Expanded(child: Text(options[index], style: TextStyle(fontSize: 18.sp, color: Colors.white))),
+                     
+                     // --- KULLANIM YERİ BURASI ---
+                     AnimatedOpacity(
+                       // Sadece sonuçlar açıklandığında ikonları göster
+                       opacity: _answerState == AnswerState.revealed ? 1.0 : 0.0,
+                       duration: const Duration(milliseconds: 400),
+                       // `isCorrect` doğru cevabın yanına ✅ koymak için,
+                       // `isSelected` ise seçilen yanlış cevabın yanına ❌ koymak için kullanılır.
+                       child: isCorrect
+                           ? Icon(Icons.check_circle_outline_rounded, color: Colors.white)
+                           : (isSelected ? Icon(Icons.highlight_off_rounded, color: Colors.white) : const SizedBox.shrink()),
+                     )
+                   ],
+                 ),
+               ),
+             ),
+           );
+         }),
+       ],
+     );
+   }
+ }

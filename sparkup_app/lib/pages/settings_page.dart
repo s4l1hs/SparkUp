@@ -9,6 +9,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import '../l10n/app_localizations.dart';
 import '../locale_provider.dart';
 import '../main.dart';
+import '../providers/user_provider.dart';
 
 class SettingsPage extends StatefulWidget {
   const SettingsPage({super.key});
@@ -178,6 +179,11 @@ class _SettingsPageState extends State<SettingsPage> with SingleTickerProviderSt
   }
 
   Widget _buildProfileCard(ThemeData theme) {
+    final userProvider = Provider.of<UserProvider?>(context);
+    final providerProfile = userProvider?.profile;
+    final displayName = (providerProfile as dynamic)?.username ?? _username;
+    final displayScore = (providerProfile as dynamic)?.score ?? _userScore;
+
     return Card(
       elevation: 0,
       color: theme.colorScheme.surface.withOpacity(0.5),
@@ -193,16 +199,16 @@ class _SettingsPageState extends State<SettingsPage> with SingleTickerProviderSt
                   radius: 28.r,
                   backgroundColor: theme.colorScheme.tertiary,
                   child: Text(
-                    (_username != null && _username!.isNotEmpty) ? _username![0].toUpperCase() : 'A',
+                    (displayName != null && displayName.isNotEmpty) ? displayName[0].toUpperCase() : 'A',
                     style: TextStyle(fontSize: 24.sp, color: theme.colorScheme.onTertiary, fontWeight: FontWeight.bold),
                   ),
                 ),
                 SizedBox(width: 16.w),
                 Expanded(child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
                   // changed: show username instead of email
-                  Text(_username ?? "Anonymous", style: TextStyle(color: Colors.white, fontSize: 16.sp, fontWeight: FontWeight.bold), overflow: TextOverflow.ellipsis),
+                  Text(displayName ?? "Anonymous", style: TextStyle(color: Colors.white, fontSize: 16.sp, fontWeight: FontWeight.bold), overflow: TextOverflow.ellipsis),
                   SizedBox(height: 4.h),
-                  Row(children: [ Icon(Icons.star_rounded, color: theme.colorScheme.secondary, size: 16.sp), SizedBox(width: 4.w), Text("$_userScore ${AppLocalizations.of(context)!.points}", style: TextStyle(color: theme.colorScheme.secondary, fontSize: 14.sp, fontWeight: FontWeight.w600))])
+                  Row(children: [ Icon(Icons.star_rounded, color: theme.colorScheme.secondary, size: 16.sp), SizedBox(width: 4.w), Text("$displayScore ${AppLocalizations.of(context)!.points}", style: TextStyle(color: theme.colorScheme.secondary, fontSize: 14.sp, fontWeight: FontWeight.w600))])
                 ])),
               ],
             ),

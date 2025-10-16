@@ -16,6 +16,7 @@ class ChallengePage extends StatefulWidget {
 class _ChallengePageState extends State<ChallengePage> with TickerProviderStateMixin {
   final ApiService _apiService = ApiService();
   String? _challengeText;
+  int? _currentChallengeId;
   bool _isLoading = false;
   String? _limitError;
   String? _generalError;
@@ -48,14 +49,27 @@ class _ChallengePageState extends State<ChallengePage> with TickerProviderStateM
     final localeCode = Localizations.localeOf(context).languageCode;
     if (_lastLocale != localeCode) {
       _lastLocale = localeCode;
-      // Eğer daha önce limit hatası aldıysak, dil değişince backend'den tekrar isteyip lokalize edilmiş mesajı alalım
-      if (_limitError != null) {
-        WidgetsBinding.instance.addPostFrameCallback((_) => _fetchChallenge());
+      // If a challenge is already loaded and not completed, only translate it (no limit consumption)
+      if (!_isLoading && _challengeText != null && _currentChallengeId != null) {
+        WidgetsBinding.instance.addPostFrameCallback((_) async {
+          try {
+            final localized = await _apiService.getLocalizedChallenge(widget.idToken, _currentChallengeId!, lang: localeCode);
+            if (!mounted) return;
+            setState(() { _challengeText = localized['challenge_text'] as String?; });
+          } catch (e) {
+            debugPrint("Failed to localize active challenge: $e");
+          }
+        });
+      } else {
+        // when no active challenge, preview fetch (no limit consumption)
+        if (!_isLoading) {
+          WidgetsBinding.instance.addPostFrameCallback((_) => _fetchChallenge(preview: true));
+        }
       }
     }
   }
 
-  Future<void> _fetchChallenge() async {
+  Future<void> _fetchChallenge({bool preview = false}) async {
     if (!mounted) return;
     setState(() {
       _isLoading = true;
@@ -64,17 +78,19 @@ class _ChallengePageState extends State<ChallengePage> with TickerProviderStateM
     });
 
     try {
-      final challengeData = await _apiService.getRandomChallenge(widget.idToken);
+      final lang = Localizations.localeOf(context).languageCode;
+      final challengeData = await _apiService.getRandomChallenge(widget.idToken, lang: lang, preview: preview);
       if (mounted) {
         setState(() {
           _challengeText = challengeData['challenge_text'];
+          _currentChallengeId = challengeData['id'] as int?;
           _limitError = null;
         });
       }
     } on ChallengeLimitException catch (e) {
       if (mounted) {
         setState(() {
-          _limitError = e.message; // backend'den gelen lokalize mesaj burada olur
+          _limitError = e.message;
         });
       }
     } catch (e) {
@@ -85,11 +101,7 @@ class _ChallengePageState extends State<ChallengePage> with TickerProviderStateM
         debugPrint("Challenge yükleme hatası: $e");
       }
     } finally {
-      if (mounted) {
-        setState(() {
-          _isLoading = false;
-        });
-      }
+      if (mounted) setState(() { _isLoading = false; });
     }
   }
 

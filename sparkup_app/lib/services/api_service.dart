@@ -21,8 +21,6 @@ class ChallengeLimitException implements Exception {
 
 
 class ApiService {
-
-  // --- Helper Fonksiyonu: Yetkilendirilmiş Başlık (Headers) Oluşturma ---
   Map<String, String> _getAuthHeaders(String idToken) {
     return {
       'Content-Type': 'application/json',
@@ -104,68 +102,45 @@ class ApiService {
   }
 
   // Quiz soruları getirir (429 Hata Kontrolü Eklendi)
-  Future<List<Map<String, dynamic>>> getQuizQuestions(String idToken, {int limit = 3, String? category}) async {
-    final uri = Uri.parse("$backendBaseUrl/quiz/?limit=$limit${category != null ? '&category=$category' : ''}");
-    final response = await http.get(
-      uri, 
-      headers: _getAuthHeaders(idToken)
-    ); 
-    
-    if (response.statusCode == 429) {
-      final data = jsonDecode(response.body);
-      throw QuizLimitException(data['detail'] ?? "Daily quiz limit reached.");
-    }
-    
-    if (response.statusCode == 200) {
-      final List<dynamic> data = _decodeResponseBody(response.bodyBytes);
-      return List<Map<String, dynamic>>.from(data);
+  Future<List<Map<String, dynamic>>> getQuizQuestions(String idToken, {int limit = 3, String? lang, bool preview = false}) async {
+    final uri = Uri.parse("$backendBaseUrl/quiz/?limit=$limit${lang != null ? '&lang=$lang' : ''}${preview ? '&preview=true' : ''}");
+    final resp = await http.get(uri, headers: {'Authorization': 'Bearer $idToken'});
+    if (resp.statusCode == 200) {
+      final data = jsonDecode(resp.body) as List<dynamic>;
+      return data.map((e) => Map<String, dynamic>.from(e as Map)).toList();
+    } else if (resp.statusCode == 429) {
+      final detail = resp.body;
+      throw QuizLimitException(detail);
     } else {
-      throw Exception("Failed to load quiz questions. Status: ${response.statusCode}, Body: ${response.body}");
+      throw Exception('Failed to load quiz questions (${resp.statusCode})');
     }
   }
 
   // Rastgele meydan okuma (challenge) getirir (429 Hata Kontrolü Eklendi)
-  Future<Map<String, dynamic>> getRandomChallenge(String idToken) async {
-    final uri = Uri.parse("$backendBaseUrl/challenges/random/");
-    final response = await http.get(
-      uri, 
-      headers: _getAuthHeaders(idToken)
-    );
-    
-    if (response.statusCode == 429) {
-      final data = jsonDecode(response.body);
-      throw ChallengeLimitException(data['detail'] ?? "Daily challenge limit reached.");
-    }
-
-    if (response.statusCode == 200) {
-      return _decodeResponseBody(response.bodyBytes);
+  Future<Map<String, dynamic>> getRandomChallenge(String idToken, {String? lang, bool preview = false}) async {
+    final uri = Uri.parse("$backendBaseUrl/challenges/random/${lang != null ? '?lang=$lang' : ''}${preview ? (lang != null ? '&preview=true' : '?preview=true') : ''}");
+    final resp = await http.get(uri, headers: {'Authorization': 'Bearer $idToken'});
+    if (resp.statusCode == 200) {
+      return Map<String, dynamic>.from(jsonDecode(resp.body) as Map);
+    } else if (resp.statusCode == 429) {
+      final detail = resp.body;
+      throw ChallengeLimitException(detail);
     } else {
-      throw Exception("Failed to load challenge. Status: ${response.statusCode}, Body: ${response.body}");
+      throw Exception('Failed to load challenge (${resp.statusCode})');
     }
   }
   
   // Quiz Cevabı Gönderme (submitQuizAnswer)
   Future<Map<String, dynamic>> submitQuizAnswer(String idToken, int questionId, int answerIndex) async {
     final uri = Uri.parse("$backendBaseUrl/quiz/answer/");
-    final response = await http.post(
-      uri, 
-      headers: _getAuthHeaders(idToken),
-      body: jsonEncode({
-        'question_id': questionId,
-        'answer_index': answerIndex,
-      }),
+    final resp = await http.post(uri,
+      headers: {'Authorization': 'Bearer $idToken', 'Content-Type': 'application/json'},
+      body: jsonEncode({'question_id': questionId, 'answer_index': answerIndex}),
     );
-    
-    // 429 HATA KONTROLÜ (Limit tam cevap gönderilirken dolmuşsa)
-    if (response.statusCode == 429) {
-      final data = jsonDecode(response.body);
-      throw QuizLimitException(data['detail'] ?? "Daily quiz question limit reached.");
-    }
-
-    if (response.statusCode == 200) {
-      return _decodeResponseBody(response.bodyBytes);
+    if (resp.statusCode == 200) {
+      return Map<String, dynamic>.from(jsonDecode(resp.body) as Map);
     } else {
-      throw Exception("Failed to submit answer. Status: ${response.statusCode}, Body: ${response.body}");
+      throw Exception('Failed to submit answer (${resp.statusCode})');
     }
   }
 
@@ -214,6 +189,42 @@ class ApiService {
     
     if (response.statusCode != 200) {
       throw Exception("Failed to update subscription. Status: ${response.statusCode}, Body: ${response.body}");
+    }
+  }
+
+  // new: get localized texts for specific quiz question ids (no limits consumed)
+  Future<List<Map<String, dynamic>>> getLocalizedQuizQuestions(String idToken, List<int> ids, {String? lang}) async {
+    final idsParam = ids.join(",");
+    final baseUri = Uri.parse("$backendBaseUrl/quiz/localize/");
+    final uri = baseUri.replace(queryParameters: {
+      'ids': idsParam,
+      if (lang != null) 'lang': lang,
+    });
+
+    final resp = await http.get(uri, headers: _getAuthHeaders(idToken));
+    if (resp.statusCode == 200) {
+      final data = jsonDecode(resp.body) as List<dynamic>;
+      return data.map((e) => Map<String, dynamic>.from(e as Map)).toList();
+    } else if (resp.statusCode == 400) {
+      // Backend considered the request invalid — don't spam logs, return empty to keep UI stable.
+      print("getLocalizedQuizQuestions: bad request (400) for ids=$idsParam lang=$lang");
+      return <Map<String, dynamic>>[];
+    } else {
+      throw Exception('Failed to load localized quiz questions (${resp.statusCode})');
+    }
+  }
+
+  // new: get localized text for a specific challenge id (no limits consumed)
+  Future<Map<String, dynamic>> getLocalizedChallenge(String idToken, int challengeId, {String? lang}) async {
+    final baseUri = Uri.parse("$backendBaseUrl/challenges/$challengeId/localize/");
+    final uri = baseUri.replace(queryParameters: {
+      if (lang != null) 'lang': lang,
+    });
+    final resp = await http.get(uri, headers: _getAuthHeaders(idToken));
+    if (resp.statusCode == 200) {
+      return Map<String, dynamic>.from(jsonDecode(resp.body) as Map);
+    } else {
+      throw Exception('Failed to load localized challenge (${resp.statusCode})');
     }
   }
 }

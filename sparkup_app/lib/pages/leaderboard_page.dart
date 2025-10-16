@@ -2,9 +2,11 @@ import 'dart:async';
 import 'dart:ui';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:provider/provider.dart';
 import '../services/api_service.dart';
 import '../l10n/app_localizations.dart';
 import '../models/leaderboard_entry.dart';
+import '../providers/user_provider.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 
 class LeaderboardPage extends StatefulWidget {
@@ -179,6 +181,75 @@ class _LeaderboardPageState extends State<LeaderboardPage> with TickerProviderSt
   Widget build(BuildContext context) {
     final localizations = AppLocalizations.of(context)!;
     final theme = Theme.of(context);
+
+    // Listen to UserProvider and keep _currentUserEntry in sync when user's total score changes.
+    final userProvider = Provider.of<UserProvider?>(context);
+    final providerScore = userProvider?.profile?.score;
+    if (providerScore != null) {
+      // If we don't yet have currentUserEntry, try to find it in leaderboard (match by email or username)
+      if (_currentUserEntry == null && _leaderboardData.isNotEmpty) {
+        final fbUser = FirebaseAuth.instance.currentUser;
+        LeaderboardEntry? found;
+        for (var e in _leaderboardData) {
+          if ((fbUser?.email != null && e.email == fbUser!.email) ||
+              (fbUser?.displayName != null && e.username == fbUser!.displayName)) {
+            found = e;
+            break;
+          }
+        }
+        if (found != null && mounted) {
+          WidgetsBinding.instance.addPostFrameCallback((_) {
+            if (!mounted) return;
+            setState(() => _currentUserEntry = found);
+          });
+        }
+      }
+
+      // If we have currentUserEntry but provider score differs, update both entry and leaderboard list
+      else if (_currentUserEntry != null && providerScore != _currentUserEntry!.score) {
+        // Update UI in next frame to avoid setState during build
+        WidgetsBinding.instance.addPostFrameCallback((_) {
+          if (!mounted) return;
+          setState(() {
+            // 1) update current user entry score
+            _currentUserEntry = LeaderboardEntry(
+              rank: _currentUserEntry!.rank,
+              email: _currentUserEntry!.email,
+              username: _currentUserEntry!.username,
+              score: providerScore,
+            );
+
+            // 2) update (or insert) the user's entry in the leaderboard array
+            int foundIndex = -1;
+            for (var i = 0; i < _leaderboardData.length; i++) {
+              final e = _leaderboardData[i];
+              if ((e.email != null && e.email == _currentUserEntry!.email) ||
+                  (e.username != null && e.username == _currentUserEntry!.username)) {
+                foundIndex = i;
+                break;
+              }
+            }
+            if (foundIndex >= 0) {
+              _leaderboardData[foundIndex] = LeaderboardEntry(rank: _leaderboardData[foundIndex].rank, email: _leaderboardData[foundIndex].email, username: _leaderboardData[foundIndex].username, score: providerScore);
+            } else {
+              // if not present, append — will be re-sorted below
+              _leaderboardData.add(LeaderboardEntry(rank: _currentUserEntry!.rank, email: _currentUserEntry!.email, username: _currentUserEntry!.username, score: providerScore));
+            }
+
+            // 3) re-sort leaderboard by score desc and recompute ranks
+            _leaderboardData.sort((a, b) => b.score.compareTo(a.score));
+            for (var i = 0; i < _leaderboardData.length; i++) {
+              final e = _leaderboardData[i];
+              _leaderboardData[i] = LeaderboardEntry(rank: i + 1, email: e.email, username: e.username, score: e.score);
+              // also update currentUserEntry.rank if it matches
+              if ((_currentUserEntry!.email != null && _currentUserEntry!.email == e.email) || (_currentUserEntry!.username != null && _currentUserEntry!.username == e.username)) {
+                _currentUserEntry = LeaderboardEntry(rank: i + 1, email: _currentUserEntry!.email, username: _currentUserEntry!.username, score: providerScore);
+              }
+            }
+          });
+        });
+      }
+    }
 
     // Show only users after rank 10 (i.e. index >= 10). Ranks 4..10 are handled in the Top Players dashboard.
     final listDisplay = _leaderboardData.length > 10 ? _leaderboardData.sublist(10) : <LeaderboardEntry>[]; 

@@ -5,11 +5,10 @@ import '../models/user_models.dart';
 import '../services/api_service.dart';
 
 class UserProvider extends ChangeNotifier {
-  UserProfile? _profile;
+  UserProfile? profile;
   bool _isLoading = false;
   final ApiService _apiService = ApiService();
 
-  UserProfile? get profile => _profile;
   bool get isLoading => _isLoading;
 
   Future<void> loadProfile(String? idToken) async {
@@ -18,25 +17,33 @@ class UserProvider extends ChangeNotifier {
     notifyListeners();
     try {
       final json = await _apiService.getUserProfile(idToken);
-      _profile = UserProfile.fromJson(json);
+      profile = UserProfile.fromJson(json);
     } catch (e) {
       debugPrint("Kullanıcı profili yüklenirken hata oluştu: $e");
-      _profile = null;
+      profile = null;
     } finally {
       _isLoading = false;
       notifyListeners();
     }
   }
   
+  // ensure score updates notify listeners
   void updateScore(int newScore) {
-    if (_profile != null) {
-      _profile = _profile!.copyWith(score: newScore);
+    if (profile == null) return;
+    if (profile!.score != newScore) {
+      profile = profile!.copyWith(score: newScore);
       notifyListeners();
     }
   }
 
+  // optionally helper to replace whole profile
+  void setProfile(UserProfile p) {
+    profile = p;
+    notifyListeners();
+  }
+
   void clearProfile() {
-    _profile = null;
+    profile = null;
     notifyListeners();
   }
 }

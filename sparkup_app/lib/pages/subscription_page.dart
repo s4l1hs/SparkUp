@@ -75,7 +75,7 @@ class _SubscriptionPageState extends State<SubscriptionPage> {
         'price': '\$4.99 / ${localizations.month}',
         'features': [
           {'icon': Icons.quiz_outlined, 'text': '5 ${localizations.questionsPerDay}', 'is_pro': true},
-          {'icon': Icons.whatshot_outlined, 'text': '7 ${localizations.challengesPerDay}', 'is_pro': true},
+          {'icon': Icons.whatshot_outlined, 'text': '5 ${localizations.challengesPerDay}', 'is_pro': true},
           {'icon': Icons.notifications_active_outlined, 'text': '2 ${localizations.notificationsPerDay}', 'is_pro': true},
         ],
       },
