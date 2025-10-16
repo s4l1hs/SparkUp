@@ -53,7 +53,7 @@ class _SubscriptionPageState extends State<SubscriptionPage> {
     
     // UserProvider'dan abonelik seviyesini dinle
     final userProvider = Provider.of<UserProvider>(context);
-    final currentLevel = userProvider.profile?.subscriptionLevel ?? 'free';
+    final currentLevel = ((userProvider.profile as dynamic)?.subscriptionLevel) ?? 'free';
 
     // Plan verileri (backend limitleri ile senkronize olmalı)
     final List<Map<String, dynamic>> plans = [
@@ -163,12 +163,10 @@ class _SubscriptionPageState extends State<SubscriptionPage> {
                 ],
               ),
               SizedBox(height: 10.h),
-              
-              // Fiyat
-              Text(plan['price'] as String, style: TextStyle(color: Colors.white, fontSize: 22.sp, fontWeight: FontWeight.bold)),
+
+              Text(isFree ? '' : plan['price'] as String, style: TextStyle(color: Colors.white, fontSize: 22.sp, fontWeight: FontWeight.bold)),
               SizedBox(height: 20.h),
 
-              // Özellikler
               ...((plan['features'] as List<Map<String, dynamic>>).map((feature) => _buildFeatureRow(theme, feature, planLevel))).toList(),
               
               const Spacer(),

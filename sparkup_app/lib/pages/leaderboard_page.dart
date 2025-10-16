@@ -3,10 +3,10 @@ import 'dart:ui';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:provider/provider.dart';
+import '../providers/user_provider.dart';
 import '../services/api_service.dart';
 import '../l10n/app_localizations.dart';
 import '../models/leaderboard_entry.dart';
-import '../providers/user_provider.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 
 class LeaderboardPage extends StatefulWidget {
@@ -19,6 +19,7 @@ class LeaderboardPage extends StatefulWidget {
 
 class _LeaderboardPageState extends State<LeaderboardPage> with TickerProviderStateMixin {
   final ApiService _apiService = ApiService();
+  UserProvider? _observedUserProvider;
 
   // --- STATE'LER ---
   List<LeaderboardEntry> _leaderboardData = [];
@@ -49,14 +50,61 @@ class _LeaderboardPageState extends State<LeaderboardPage> with TickerProviderSt
     ]).animate(_backgroundController);
 
     // Localizations ve context tam hazır olduktan sonra yükleme yap
-    WidgetsBinding.instance.addPostFrameCallback((_) => _loadPageData());
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      _loadPageData();
+      // register provider listener once after first frame
+      _observedUserProvider = Provider.of<UserProvider?>(context, listen: false);
+      _observedUserProvider?.addListener(_onUserProviderChanged);
+    });
   }
   
   @override
   void dispose() {
+    _observedUserProvider?.removeListener(_onUserProviderChanged);
     _listAnimationController.dispose();
     _backgroundController.dispose();
     super.dispose();
+  }
+
+  // Called when UserProvider notifies listeners (score/profile change)
+  void _onUserProviderChanged() {
+    final prov = _observedUserProvider;
+    if (prov == null || prov.profile == null) return;
+    final providerScore = prov.profile!.score;
+
+    // If we have a current user entry, update its score and resort ranks
+    if (_currentUserEntry != null && providerScore != _currentUserEntry!.score) {
+      setState(() {
+        // update or insert
+        final email = _currentUserEntry!.email;
+        final username = _currentUserEntry!.username;
+        int foundIndex = -1;
+        for (var i = 0; i < _leaderboardData.length; i++) {
+          final e = _leaderboardData[i];
+          if ((email != null && e.email == email) || (username != null && e.username == username)) {
+            foundIndex = i;
+            break;
+          }
+        }
+        if (foundIndex >= 0) {
+          _leaderboardData[foundIndex] = LeaderboardEntry(rank: _leaderboardData[foundIndex].rank, email: _leaderboardData[foundIndex].email, username: _leaderboardData[foundIndex].username, score: providerScore);
+        } else {
+          // if not present, append entry using currentUserEntry meta
+          _leaderboardData.add(LeaderboardEntry(rank: _currentUserEntry!.rank, email: _currentUserEntry!.email, username: _currentUserEntry!.username, score: providerScore));
+        }
+
+        // resort and recompute ranks
+        _leaderboardData.sort((a, b) => b.score.compareTo(a.score));
+        for (var i = 0; i < _leaderboardData.length; i++) {
+          final e = _leaderboardData[i];
+          _leaderboardData[i] = LeaderboardEntry(rank: i + 1, email: e.email, username: e.username, score: e.score);
+          // update _currentUserEntry when matching
+          if ((_currentUserEntry!.email != null && _currentUserEntry!.email == e.email) || (_currentUserEntry!.username != null && _currentUserEntry!.username == e.username)) {
+            _currentUserEntry = LeaderboardEntry(rank: i + 1, email: _currentUserEntry!.email, username: _currentUserEntry!.username, score: providerScore);
+          }
+        }
+      });
+    }
   }
 
   // --- API FONKSİYONLARI ---
