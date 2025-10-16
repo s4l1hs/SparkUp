@@ -91,5 +91,7 @@
   "pointsEarned": "النقاط المكتسبة",
   "errorSubmittingAnswer": "خطأ في إرسال الإجابة.",
   "wrongAnswerResetStreak": "إجابة خاطئة! تمت إعادة تعيين السلسلة.",
-  "correct": "صحيح"
+  "correct": "صحيح",
+  "errorCouldNotLoadData": "تعذر تحميل البيانات.",
+  "topPlayers": "أفضل اللاعبين"
 }

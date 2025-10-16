@@ -90,5 +90,7 @@
   "pointsEarned": "Kazanılan Puan",
   "errorSubmittingAnswer": "Cevap gönderilirken hata oluştu.",
   "wrongAnswerResetStreak": "Yanlış cevap! Seri sıfırlandı.",
-  "correct": "Doğru"
+  "correct": "Doğru",
+  "errorCouldNotLoadData": "Veriler yüklenemedi.",
+  "topPlayers": "En İyi Oyuncular"
 }

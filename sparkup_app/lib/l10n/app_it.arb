@@ -90,5 +90,7 @@
   "pointsEarned": "Punti Guadagnati",
   "errorSubmittingAnswer": "Errore nell'invio della risposta.",
   "wrongAnswerResetStreak": "Risposta sbagliata! Striscia azzerata.",
-  "correct": "Corretto"
+  "correct": "Corretto",
+  "errorCouldNotLoadData": "Impossibile caricare i dati.",
+  "topPlayers": "Migliori giocatori"
 }

@@ -266,4 +266,10 @@ class AppLocalizationsTr extends AppLocalizations {
 
   @override
   String get correct => 'Doğru';
+
+  @override
+  String get errorCouldNotLoadData => 'Veriler yüklenemedi.';
+
+  @override
+  String get topPlayers => 'En İyi Oyuncular';
 }

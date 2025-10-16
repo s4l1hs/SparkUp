@@ -265,4 +265,10 @@ class AppLocalizationsRu extends AppLocalizations {
 
   @override
   String get correct => 'Верно';
+
+  @override
+  String get errorCouldNotLoadData => 'Не удалось загрузить данные.';
+
+  @override
+  String get topPlayers => 'Лучшие игроки';
 }

@@ -265,4 +265,10 @@ class AppLocalizationsHi extends AppLocalizations {
 
   @override
   String get correct => 'सही';
+
+  @override
+  String get errorCouldNotLoadData => 'डेटा लोड नहीं हो सका।';
+
+  @override
+  String get topPlayers => 'शीर्ष खिलाड़ी';
 }

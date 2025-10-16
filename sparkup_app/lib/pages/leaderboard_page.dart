@@ -5,6 +5,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import '../services/api_service.dart';
 import '../l10n/app_localizations.dart';
 import '../models/leaderboard_entry.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 
 class LeaderboardPage extends StatefulWidget {
   final String idToken;
@@ -90,18 +91,18 @@ class _LeaderboardPageState extends State<LeaderboardPage> with TickerProviderSt
         });
         _listAnimationController.forward();
       }
-    } on TimeoutException {
+      } on TimeoutException {
       if (mounted) {
         setState(() => _hasError = true);
-        final msg = "AppLocalizations.of(context)?.errorCouldNotLoadData" ?? "Could not load data (timeout)";
+        final msg = AppLocalizations.of(context)?.errorCouldNotLoadData ?? "Could not load data (timeout)";
         ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text(msg), backgroundColor: Colors.red));
       }
     } catch (e, st) {
       debugPrint("Sayfa verileri yüklenirken hata: $e\n$st");
       if (mounted) {
         setState(() => _hasError = true);
-        final msg = e.toString() ?? (AppLocalizations.of(context)?.noDataAvailable ?? "No data available");
-        ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text(msg), backgroundColor: Colors.red));
+        final msg = AppLocalizations.of(context)?.noDataAvailable;
+        ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text(msg!), backgroundColor: Colors.red));
       }
     } finally {
       if (mounted) setState(() => _isLoading = false);
@@ -139,6 +140,21 @@ class _LeaderboardPageState extends State<LeaderboardPage> with TickerProviderSt
     return '${name.substring(0, 2)}***@${domain.substring(0,1)}...';
   }
 
+  // new helper: display name prefers logged-in user's Firebase displayName,
+  // then backend username, falls back to masked email
+  String _displayName(LeaderboardEntry entry) {
+    final fbUser = FirebaseAuth.instance.currentUser;
+    final fbName = fbUser?.displayName;
+    final fbEmail = fbUser?.email;
+    // If this leaderboard entry corresponds to the logged-in user (by email),
+    // prefer the Firebase displayName (full name) as in settings_page.dart
+    if (fbName != null && fbName.trim().isNotEmpty && fbEmail != null && entry.email != null && entry.email == fbEmail) {
+      return fbName;
+    }
+    if (entry.username != null && entry.username!.trim().isNotEmpty) return entry.username!;
+    return _maskEmail(entry.email);
+  }
+  
   // --- ANA BUILD METODU ---
   @override
   Widget build(BuildContext context) {
@@ -170,13 +186,7 @@ class _LeaderboardPageState extends State<LeaderboardPage> with TickerProviderSt
                     ? Center(child: Text(localizations.noDataAvailable, style: TextStyle(color: Colors.grey.shade400)))
                     : CustomScrollView(
                         slivers: [
-                          // Başlık
-                          SliverToBoxAdapter(
-                            child: Padding(
-                              padding: EdgeInsets.symmetric(vertical: 20.h, horizontal: 16.w),
-                              child: Text(localizations.navLeaderboard, style: theme.textTheme.titleLarge?.copyWith(fontSize: 24.sp)),
-                            ),
-                          ),
+                          // Başlık removed: left-top "Leaderboard" text removed per request
                           
                           // Podyum Kısmı
                           if (_leaderboardData.isNotEmpty)
@@ -264,7 +274,7 @@ class _LeaderboardPageState extends State<LeaderboardPage> with TickerProviderSt
         // Rütbe Adı Eklendi
         subtitle: Row(
           children: [
-            Text(_maskEmail(entry.email), style: TextStyle(color: Colors.grey.shade400)),
+            Text(_displayName(entry), style: TextStyle(color: Colors.grey.shade400)),
             SizedBox(width: 8.w),
             // Yerelleştirilmiş rütbe adını göster
             Text("($rankName)", style: TextStyle(color: theme.colorScheme.primary, fontWeight: FontWeight.bold, fontSize: 13.sp)),
@@ -282,7 +292,7 @@ class _LeaderboardPageState extends State<LeaderboardPage> with TickerProviderSt
         margin: EdgeInsets.only(bottom: 12.h),
         child: ListTile(
           leading: Text("#${entry.rank}", style: TextStyle(fontSize: 16.sp, color: Colors.grey.shade400, fontWeight: FontWeight.bold)),
-          title: Text(_maskEmail(entry.email), style: const TextStyle(fontWeight: FontWeight.bold, color: Colors.white)),
+          title: Text(_displayName(entry), style: const TextStyle(fontWeight: FontWeight.bold, color: Colors.white)),
           trailing: Row( mainAxisSize: MainAxisSize.min, children: [ Text(entry.score.toString(), style: TextStyle(fontSize: 16.sp, fontWeight: FontWeight.bold, color: theme.colorScheme.primary)), SizedBox(width: 4.w), Icon(Icons.star_rounded, color: theme.colorScheme.secondary, size: 18.sp)])
         ),
       );
@@ -290,8 +300,9 @@ class _LeaderboardPageState extends State<LeaderboardPage> with TickerProviderSt
 
   Widget _buildPodium(BuildContext context, List<LeaderboardEntry> topEntries) {
     final theme = Theme.of(context);
-    
-    // Podyumun sadece ilk 3 için çalışmasını sağlar. Eksik yerleri boşlukla doldurur.
+    final localizations = AppLocalizations.of(context)!;
+
+    // Ensure exactly 3 slots for podium display
     final List<LeaderboardEntry?> podium = List.generate(3, (index) => index < topEntries.length ? topEntries[index] : null);
 
     return Padding(
@@ -299,12 +310,91 @@ class _LeaderboardPageState extends State<LeaderboardPage> with TickerProviderSt
       child: Row(
         crossAxisAlignment: CrossAxisAlignment.end,
         children: [
-          // 2. Sıra
-          Expanded(child: podium[1] != null ? _buildPodiumPlace(context, podium[1]!, theme, height: 120.h, color: theme.colorScheme.tertiary) : _buildEmptyPodium(120.h, Colors.grey.shade700)),
-          // 1. Sıra
-          Expanded(child: podium[0] != null ? _buildPodiumPlace(context, podium[0]!, theme, height: 150.h, isFirst: true, color: theme.colorScheme.primary) : _buildEmptyPodium(150.h, Colors.grey.shade700)),
-          // 3. Sıra
-          Expanded(child: podium[2] != null ? _buildPodiumPlace(context, podium[2]!, theme, height: 100.h, color: Colors.deepOrangeAccent.shade400) : _buildEmptyPodium(100.h, Colors.grey.shade700)),
+          // Left: Decorative podium (first/second/third)
+          Expanded(
+            flex: 2,
+            child: Row(
+              crossAxisAlignment: CrossAxisAlignment.end,
+              children: [
+                // 2nd place (silver)
+                Expanded(child: podium[1] != null ? _buildPodiumPlace(context, podium[1]!, theme, height: 120.h, color: const Color(0xFFC0C0C0)) : _buildEmptyPodium(120.h, Colors.grey.shade700)),
+                // 1st place (gold) with trophy icon
+                Expanded(child: podium[0] != null ? Column(children: [
+                    Icon(Icons.emoji_events_rounded, color: const Color(0xFFFFD700), size: 40.sp),
+                    SizedBox(height: 6.h),
+                    _buildPodiumPlace(context, podium[0]!, theme, height: 150.h, isFirst: true, color: const Color(0xFFFFD700))
+                  ],) : _buildEmptyPodium(150.h, Colors.grey.shade700)),
+                // 3rd place (copper)
+                Expanded(child: podium[2] != null ? _buildPodiumPlace(context, podium[2]!, theme, height: 100.h, color: const Color(0xFFB87333)) : _buildEmptyPodium(100.h, Colors.grey.shade700)),
+              ],
+            ),
+          ),
+
+          SizedBox(width: 12.w),
+
+          // Right: Compact, styled table showing top-3 summary
+          Expanded(
+            flex: 1,
+            child: Card(
+              color: theme.colorScheme.surface.withOpacity(0.8),
+              shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12.r)),
+              child: Padding(
+                padding: EdgeInsets.symmetric(vertical: 12.h, horizontal: 8.w),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.stretch,
+                  children: [
+                    Text(
+                      localizations.topPlayers, // add this key to l10n if missing; fallback will show key
+                      textAlign: TextAlign.center,
+                      style: theme.textTheme.titleSmall?.copyWith(fontWeight: FontWeight.bold, color: Colors.white),
+                    ),
+                    SizedBox(height: 8.h),
+                    Divider(color: Colors.white10, height: 1),
+                    SizedBox(height: 8.h),
+                    // Rows for top 3
+                    for (var i = 0; i < 3; i++)
+                      Padding(
+                        padding: EdgeInsets.only(bottom: 8.h),
+                        child: Row(
+                          children: [
+                            // Rank badge
+                            Container(
+                              width: 34.w,
+                              height: 34.w,
+                              decoration: BoxDecoration(
+                                color: i == 0 ? const Color(0xFFFFD700) : (i == 1 ? const Color(0xFFC0C0C0) : const Color(0xFFB87333)),
+                                shape: BoxShape.circle,
+                                boxShadow: [BoxShadow(color: Colors.black26, blurRadius: 4.r, offset: Offset(0,2))],
+                              ),
+                              child: Center(child: Text("${i+1}", style: TextStyle(fontWeight: FontWeight.bold, color: Colors.black))),
+                            ),
+                            SizedBox(width: 10.w),
+                            // Name + score
+                            Expanded(
+                              child: Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  Text(
+                                    podium[i] != null ? _displayName(podium[i]!) : "-",
+                                    style: TextStyle(color: Colors.white, fontWeight: FontWeight.w600, fontSize: 13.sp),
+                                    overflow: TextOverflow.ellipsis,
+                                  ),
+                                  SizedBox(height: 2.h),
+                                  Text(
+                                    podium[i] != null ? "${podium[i]!.score} pts" : "",
+                                    style: TextStyle(color: Colors.grey.shade400, fontSize: 11.sp),
+                                  ),
+                                ],
+                              ),
+                            )
+                          ],
+                        ),
+                      ),
+                  ],
+                ),
+              ),
+            ),
+          ),
         ],
       ),
     );
@@ -317,7 +407,7 @@ class _LeaderboardPageState extends State<LeaderboardPage> with TickerProviderSt
         SizedBox(height: isFirst ? 8.h : 12.h),
         Text("#${entry.rank}", style: TextStyle(fontSize: 18.sp, color: isFirst ? Colors.amber : Colors.white, fontWeight: FontWeight.bold)),
         SizedBox(height: 4.h),
-        Text(_maskEmail(entry.email), style: TextStyle(fontSize: 13.sp, color: Colors.grey.shade300), overflow: TextOverflow.ellipsis),
+        Text(_displayName(entry), style: TextStyle(fontSize: 13.sp, color: Colors.grey.shade300), overflow: TextOverflow.ellipsis),
         SizedBox(height: 8.h),
         Container(
           height: height,

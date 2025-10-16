@@ -263,4 +263,10 @@ class AppLocalizationsZh extends AppLocalizations {
 
   @override
   String get correct => '正确';
+
+  @override
+  String get errorCouldNotLoadData => '无法加载数据。';
+
+  @override
+  String get topPlayers => '排行榜前列';
 }

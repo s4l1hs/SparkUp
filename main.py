@@ -288,46 +288,47 @@ def get_random_challenge(lang: Optional[str] = Query(None), db_user: User = Depe
 @app.get("/leaderboard/")
 def get_leaderboard(limit: int = 100, session: Session = Depends(get_session)):
     """
-    Eğer puanlar history tablosunda tutuluyorsa: her kullanıcı için toplam puanı hesapla,
-    sonra toplam puana göre azalan sırada döndür.
-    Varsayılan history modeli: UserScoreHistory(user_id, points)
-    Eğer böyle bir tablo yoksa endpoint'i mevcut UserScore.score alanına göre sıralayan
-    daha basit versiyona geri döndür.
+    Return top users sorted by score. Each item: {rank, email, username, score}
     """
-    # Örnek: history tablosu varsa (UserScoreHistory model'ı proje içinde tanımlı olmalı)
+    rows = session.exec(
+        select(User, UserScore)
+        .join(UserScore, User.id == UserScore.user_id, isouter=True)
+        .order_by(UserScore.score.desc().nullslast())
+        .limit(limit)
+    ).all()
+
+    result = []
+    rank = 1
+    for pair in rows:
+        user = pair[0]
+        score_obj = pair[1] if len(pair) > 1 else None
+        score = score_obj.score if score_obj else 0
+        # try username fields, fallback to display_name or email local-part
+        username = getattr(user, "username", None) or getattr(user, "display_name", None)
+        if not username and getattr(user, "email", None):
+            username = user.email.split("@", 1)[0]
+        result.append({"rank": rank, "email": user.email, "username": username, "score": score})
+        rank += 1
+    return result
+
+@app.get("/user/rank/")
+def get_user_rank(db_user: User = Depends(get_current_user), session: Session = Depends(get_session)):
+    """
+    Return current user's rank entry {rank, email, username, score}.
+    """
+    user_score_obj = session.exec(select(UserScore).where(UserScore.user_id == db_user.id)).first()
+    user_score = user_score_obj.score if user_score_obj else 0
+
+    higher_count = session.exec(
+        select(func.count()).select_from(UserScore).where(UserScore.score > user_score)
+    ).one()
     try:
-        rows = session.exec(
-            select(User.id, User.email, func.coalesce(func.sum(UserScoreHistory.points), 0).label("total"))
-            .join(UserScoreHistory, User.id == UserScoreHistory.user_id, isouter=True)
-            .group_by(User.id, User.email)
-            .order_by(func.sum(UserScoreHistory.points).desc())
-            .limit(limit)
-        ).all()
-
-        result = []
-        rank = 1
-        for r in rows:
-            # r bir tuple olabilir; r[0]=user_id, r[1]=email, r[2]=total
-            total = r[2] if len(r) > 2 else 0
-            email = r[1] if len(r) > 1 else None
-            result.append({"rank": rank, "email": email, "score": int(total)})
-            rank += 1
-        return result
+        higher_count_val = int(higher_count)
     except Exception:
-        # Fallback: eğer history tablosu yoksa, UserScore.score alanına göre sırala
-        rows = session.exec(
-            select(User, UserScore)
-            .join(UserScore, User.id == UserScore.user_id, isouter=True)
-            .order_by(UserScore.score.desc().nullslast())
-            .limit(limit)
-        ).all()
+        higher_count_val = int(higher_count[0]) if isinstance(higher_count, (list, tuple)) else 0
 
-        result = []
-        rank = 1
-        for pair in rows:
-            user = pair[0]
-            score_obj = pair[1] if len(pair) > 1 else None
-            score = score_obj.score if score_obj else 0
-            result.append({"rank": rank, "email": user.email, "score": score})
-            rank += 1
-        return result
+    rank = higher_count_val + 1
+    username = getattr(db_user, "username", None) or getattr(db_user, "display_name", None)
+    if not username and getattr(db_user, "email", None):
+        username = db_user.email.split("@", 1)[0]
+    return {"rank": rank, "email": db_user.email, "username": username, "score": user_score}

@@ -271,4 +271,10 @@ class AppLocalizationsFr extends AppLocalizations {
 
   @override
   String get correct => 'Correct';
+
+  @override
+  String get errorCouldNotLoadData => 'Impossible de charger les données.';
+
+  @override
+  String get topPlayers => 'Meilleurs joueurs';
 }

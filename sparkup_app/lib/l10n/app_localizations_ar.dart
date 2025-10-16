@@ -265,4 +265,10 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String get correct => 'صحيح';
+
+  @override
+  String get errorCouldNotLoadData => 'تعذر تحميل البيانات.';
+
+  @override
+  String get topPlayers => 'أفضل اللاعبين';
 }

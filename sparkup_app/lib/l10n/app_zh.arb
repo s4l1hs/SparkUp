@@ -90,5 +90,7 @@
   "pointsEarned": "赢得积分",
   "errorSubmittingAnswer": "提交答案时出错。",
   "wrongAnswerResetStreak": "回答错误！连击已重置。",
-  "correct": "正确"
+  "correct": "正确",
+  "errorCouldNotLoadData": "无法加载数据。",
+  "topPlayers": "排行榜前列"
 }

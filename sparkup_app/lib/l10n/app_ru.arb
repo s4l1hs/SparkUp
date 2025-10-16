@@ -90,5 +90,7 @@
   "pointsEarned": "Очков Заработано",
   "errorSubmittingAnswer": "Ошибка при отправке ответа.",
   "wrongAnswerResetStreak": "Неверный ответ! Серия сброшена.",
-  "correct": "Верно"
+  "correct": "Верно",
+  "errorCouldNotLoadData": "Не удалось загрузить данные.",
+  "topPlayers": "Лучшие игроки"
 }

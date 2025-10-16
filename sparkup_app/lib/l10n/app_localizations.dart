@@ -625,6 +625,18 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Correct'**
   String get correct;
+
+  /// No description provided for @errorCouldNotLoadData.
+  ///
+  /// In en, this message translates to:
+  /// **'Could not load data.'**
+  String get errorCouldNotLoadData;
+
+  /// No description provided for @topPlayers.
+  ///
+  /// In en, this message translates to:
+  /// **'Top Players'**
+  String get topPlayers;
 }
 
 class _AppLocalizationsDelegate

@@ -265,4 +265,10 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get correct => 'Correct';
+
+  @override
+  String get errorCouldNotLoadData => 'Could not load data.';
+
+  @override
+  String get topPlayers => 'Top Players';
 }

@@ -263,4 +263,10 @@ class AppLocalizationsJa extends AppLocalizations {
 
   @override
   String get correct => '正解';
+
+  @override
+  String get errorCouldNotLoadData => 'データを読み込めませんでした。';
+
+  @override
+  String get topPlayers => 'トッププレイヤー';
 }

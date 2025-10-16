@@ -90,5 +90,7 @@
   "pointsEarned": "Punkte erzielt",
   "errorSubmittingAnswer": "Fehler beim Senden der Antwort.",
   "wrongAnswerResetStreak": "Falsche Antwort! Serie zurückgesetzt.",
-  "correct": "Richtig"
+  "correct": "Richtig",
+  "errorCouldNotLoadData": "Daten konnten nicht geladen werden.",
+  "topPlayers": "Top‑Spieler"
 }
