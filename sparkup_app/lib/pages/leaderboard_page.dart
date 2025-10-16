@@ -327,8 +327,63 @@ class _LeaderboardPageState extends State<LeaderboardPage> with TickerProviderSt
                     ? Center(child: Text(localizations.noDataAvailable, style: TextStyle(color: Colors.grey.shade400)))
                     : CustomScrollView(
                         slivers: [
-                          // Reserve space under the top-right badge so main content starts lower
-                          SliverToBoxAdapter(child: SizedBox(height: 84.h)),
+                          if (_currentUserEntry != null)
+                            SliverToBoxAdapter(
+                              child: Padding(
+                                padding: EdgeInsets.only(top: 8.h, right: 16.w, left: 16.w),
+                                child: Align(
+                                  alignment: Alignment.topRight,
+                                  child: Material(
+                                    color: Colors.transparent,
+                                    elevation: 2,
+                                    borderRadius: BorderRadius.circular(12.r),
+                                    child: Container(
+                                      decoration: BoxDecoration(
+                                        color: theme.colorScheme.surface.withOpacity(0.95),
+                                        borderRadius: BorderRadius.circular(12.r),
+                                      ),
+                                      padding: EdgeInsets.symmetric(horizontal: 10.w, vertical: 8.h),
+                                      child: Row(
+                                        mainAxisSize: MainAxisSize.min,
+                                        children: [
+                                          CircleAvatar(
+                                            radius: 18.r,
+                                            backgroundColor: theme.colorScheme.tertiary,
+                                            child: Text(
+                                              (_displayName(_currentUserEntry!).isNotEmpty) ? _displayName(_currentUserEntry!)[0].toUpperCase() : 'A',
+                                              style: TextStyle(fontSize: 16.sp, color: theme.colorScheme.onTertiary, fontWeight: FontWeight.bold),
+                                            ),
+                                          ),
+                                          SizedBox(width: 10.w),
+                                          Column(
+                                            crossAxisAlignment: CrossAxisAlignment.start,
+                                            mainAxisSize: MainAxisSize.min,
+                                            children: [
+                                              ConstrainedBox(
+                                                constraints: BoxConstraints(maxWidth: 140.w),
+                                                child: Text(
+                                                  _displayName(_currentUserEntry!),
+                                                  style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold, fontSize: 13.sp),
+                                                  overflow: TextOverflow.ellipsis,
+                                                ),
+                                              ),
+                                              SizedBox(height: 4.h),
+                                              Row(children: [
+                                                Icon(Icons.star_rounded, color: theme.colorScheme.secondary, size: 14.sp),
+                                                SizedBox(width: 6.w),
+                                                Text("${_currentUserEntry!.score} ${localizations.points}", style: TextStyle(color: theme.colorScheme.secondary, fontSize: 13.sp, fontWeight: FontWeight.w600)),
+                                              ]),
+                                            ],
+                                          ),
+                                        ],
+                                      ),
+                                    ),
+                                  ),
+                                ),
+                              ),
+                            )
+                          else
+                            SliverToBoxAdapter(child: SizedBox(height: 8.h)),
                           
                           // Podyum Kısmı
                           if (_leaderboardData.isNotEmpty)
@@ -372,55 +427,6 @@ class _LeaderboardPageState extends State<LeaderboardPage> with TickerProviderSt
                         ],
                       ),
           ),
-          // Kullanıcının puanını sağ üstte gösteren profile-style badge (settings ile aynı görünüm)
-          if (_currentUserEntry != null)
-            Positioned(
-              top: 12.h,
-              right: 16.w,
-              child: Card(
-                color: theme.colorScheme.surface.withOpacity(0.95),
-                shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12.r)),
-                child: Padding(
-                  padding: EdgeInsets.all(8.w),
-                  child: Row(
-                    mainAxisSize: MainAxisSize.min,
-                    children: [
-                      CircleAvatar(
-                        radius: 18.r,
-                        backgroundColor: theme.colorScheme.tertiary,
-                        child: Text(
-                          (_displayName(_currentUserEntry!).isNotEmpty) ? _displayName(_currentUserEntry!)[0].toUpperCase() : 'A',
-                          style: TextStyle(fontSize: 16.sp, color: theme.colorScheme.onTertiary, fontWeight: FontWeight.bold),
-                        ),
-                      ),
-                      SizedBox(width: 10.w),
-                      Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        mainAxisSize: MainAxisSize.min,
-                        children: [
-                          ConstrainedBox(
-                            constraints: BoxConstraints(maxWidth: 140.w),
-                            child: Text(
-                              _displayName(_currentUserEntry!),
-                              style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold, fontSize: 13.sp),
-                              overflow: TextOverflow.ellipsis,
-                            ),
-                          ),
-                          SizedBox(height: 4.h),
-                          Row(children: [
-                            Icon(Icons.star_rounded, color: theme.colorScheme.secondary, size: 14.sp),
-                            SizedBox(width: 6.w),
-                            Text("${_currentUserEntry!.score} ${localizations.points}", style: TextStyle(color: theme.colorScheme.secondary, fontSize: 13.sp, fontWeight: FontWeight.w600)),
-                          ]),
-                        ],
-                      ),
-                    ],
-                  ),
-                ),
-              ),
-            ),
-          
-          // topic selection removed — no UI or backend calls for topics anymore
         ],
       ),
     );

@@ -53,7 +53,7 @@ class _SubscriptionPageState extends State<SubscriptionPage> {
     
     // UserProvider'dan abonelik seviyesini dinle
     final userProvider = Provider.of<UserProvider>(context);
-    final currentLevel = ((userProvider.profile as dynamic)?.subscriptionLevel) ?? 'free';
+    final currentLevel = userProvider.profile?.subscriptionLevel ?? 'free';
 
     // Plan verileri (backend limitleri ile senkronize olmalı)
     final List<Map<String, dynamic>> plans = [
