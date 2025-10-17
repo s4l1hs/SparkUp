@@ -27,6 +27,8 @@ class _QuizPageState extends State<QuizPage> with TickerProviderStateMixin {
   List<Map<String, dynamic>> _questions = [];
   int _currentIndex = 0, _sessionScore = 0;
   int? _selectedAnswerIndex;
+  // display hesaplaması için oturum başında hesaplanan "bugün öncesinden cevaplanan" değeri
+  int _displayBaseAnsweredBeforeSession = 0;
   late final AnimationController _backgroundController;
   late final Animation<Alignment> _backgroundAnimation1, _backgroundAnimation2;
   AnswerState _answerState = AnswerState.unanswered;
@@ -318,7 +320,7 @@ class _QuizPageState extends State<QuizPage> with TickerProviderStateMixin {
     final dailyPoints = profile?.dailyPoints ?? 0;
 
     return Padding( key: ValueKey<int>(_currentIndex), padding: EdgeInsets.all(16.w), child: Column( children: [
-          SafeArea( child: Column( children: [ LinearProgressIndicator(value: (_currentIndex + 1) / _questions.length, backgroundColor: theme.cardTheme.color, color: theme.colorScheme.tertiary, minHeight: 8.h, borderRadius: BorderRadius.circular(4.r)), SizedBox(height: 16.h),
+          SafeArea( child: Column( children: [ LinearProgressIndicator(value: ((profile?.dailyQuizUsed ?? 0) + 1) / (profile?.dailyQuizLimit ?? 1), backgroundColor: theme.cardTheme.color, color: theme.colorScheme.tertiary, minHeight: 8.h, borderRadius: BorderRadius.circular(4.r)), SizedBox(height: 16.h),
                Row( mainAxisAlignment: MainAxisAlignment.spaceBetween, children: [ 
                     // keep classic Question X/Y header based on current session/page
                     Text("${localizations.question} ${(profile?.dailyQuizUsed ?? 0) + 1}/${profile?.dailyQuizLimit}", style: TextStyle(color: theme.colorScheme.tertiary, fontSize: 18.sp, fontWeight: FontWeight.bold)),
