@@ -132,9 +132,16 @@ class _QuizPageState extends State<QuizPage> with TickerProviderStateMixin {
     try {
       final lang = Localizations.localeOf(context).languageCode;
       final questions = await _apiService.getQuizQuestions(widget.idToken, limit: 3, lang: lang, preview: isPreview);
+      // refresh profile to get latest daily counters before showing
+      await Provider.of<UserProvider>(context, listen: false).loadProfile(widget.idToken);
       if (mounted && questions.isNotEmpty) {
         setState(() {
-          _questions = questions; _currentIndex = 0; _isQuizActive = true;
+          _questions = questions;
+          // keep current index synced with server profile if available
+          final profile = Provider.of<UserProvider>(context, listen: false).profile;
+          _currentIndex = 0;
+          _sessionScore = profile?.dailyPoints ?? 0;
+          _isQuizActive = true;
           _answered = false; _selectedAnswerIndex = null; _answerState = AnswerState.unanswered;
           _limitError = null;
         });
@@ -169,7 +176,6 @@ class _QuizPageState extends State<QuizPage> with TickerProviderStateMixin {
       final newScore = response['new_score'] as int? ?? 0;
       final awarded = (response['score_awarded'] as int?) ?? 0;
 
-      // update UI: reveal answer and add to session score (streak handled server-side)
       setState(() {
         _answerState = AnswerState.revealed;
         if (awarded > 0) {
@@ -179,8 +185,9 @@ class _QuizPageState extends State<QuizPage> with TickerProviderStateMixin {
           _scoreAnimController.forward(from: 0);
         }
       });
-      // update global user provider with new total score from server
+      // update global score and THEN refresh full profile to get today's counters/streak
       Provider.of<UserProvider>(context, listen: false).updateScore(newScore);
+      await Provider.of<UserProvider>(context, listen: false).loadProfile(widget.idToken);
 
       await Future.delayed(const Duration(milliseconds: 1800));
       if (!mounted) return;
@@ -305,22 +312,28 @@ class _QuizPageState extends State<QuizPage> with TickerProviderStateMixin {
      );
    }
  
-   Widget _buildQuizView(BuildContext context, AppLocalizations localizations, ThemeData theme, int currentStreak) {
-     return Padding( key: ValueKey<int>(_currentIndex), padding: EdgeInsets.all(16.w), child: Column( children: [
-           SafeArea( child: Column( children: [ LinearProgressIndicator(value: (_currentIndex + 1) / _questions.length, backgroundColor: theme.cardTheme.color, color: theme.colorScheme.tertiary, minHeight: 8.h, borderRadius: BorderRadius.circular(4.r)), SizedBox(height: 16.h),
-                Row( mainAxisAlignment: MainAxisAlignment.spaceBetween, children: [ Text("${localizations.question} ${_currentIndex + 1}/${_questions.length}", style: TextStyle(color: theme.colorScheme.tertiary, fontSize: 18.sp, fontWeight: FontWeight.bold)),
-                    Row(children: [
-                      // session score badge
-                      Container(
-                        padding: EdgeInsets.symmetric(horizontal: 10.w, vertical: 6.h),
-                        decoration: BoxDecoration(color: theme.colorScheme.primary.withOpacity(0.95), borderRadius: BorderRadius.circular(10.r)),
-                        child: Row(children: [
-                          Icon(Icons.star_rounded, color: Colors.yellow.shade700, size: 14.sp),
-                          SizedBox(width: 6.w),
-                          Text("$_sessionScore ${localizations.points}", style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold, fontSize: 13.sp)),
-                        ]),
-                      ),
-                      SizedBox(width: 10.w),
+  Widget _buildQuizView(BuildContext context, AppLocalizations localizations, ThemeData theme, int currentStreak) {
+    final userProvider = Provider.of<UserProvider>(context);
+    final profile = userProvider.profile;
+    final dailyPoints = profile?.dailyPoints ?? 0;
+
+    return Padding( key: ValueKey<int>(_currentIndex), padding: EdgeInsets.all(16.w), child: Column( children: [
+          SafeArea( child: Column( children: [ LinearProgressIndicator(value: (_currentIndex + 1) / _questions.length, backgroundColor: theme.cardTheme.color, color: theme.colorScheme.tertiary, minHeight: 8.h, borderRadius: BorderRadius.circular(4.r)), SizedBox(height: 16.h),
+               Row( mainAxisAlignment: MainAxisAlignment.spaceBetween, children: [ 
+                    // keep classic Question X/Y header based on current session/page
+                    Text("${localizations.question} ${_currentIndex + 1}/${_questions.length}", style: TextStyle(color: theme.colorScheme.tertiary, fontSize: 18.sp, fontWeight: FontWeight.bold)),
+                   Row(children: [
+                     // today's points
+                     Container(
+                       padding: EdgeInsets.symmetric(horizontal: 10.w, vertical: 6.h),
+                       decoration: BoxDecoration(color: theme.colorScheme.primary.withOpacity(0.95), borderRadius: BorderRadius.circular(10.r)),
+                       child: Row(children: [
+                         Icon(Icons.star_rounded, color: Colors.yellow.shade700, size: 14.sp),
+                         SizedBox(width: 6.w),
+                         Text("$dailyPoints ${localizations.points}", style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold, fontSize: 13.sp)),
+                       ]),
+                     ),
+                     SizedBox(width: 10.w),
                       Container(
                         padding: EdgeInsets.symmetric(horizontal: 10.w, vertical: 4.h),
                         decoration: BoxDecoration(
@@ -328,19 +341,18 @@ class _QuizPageState extends State<QuizPage> with TickerProviderStateMixin {
                           borderRadius: BorderRadius.circular(10.r),
                           border: Border.all(color: theme.colorScheme.secondary),
                         ),
-                        child: Text("${localizations.streak}: $currentStreak", style: TextStyle(color: theme.colorScheme.secondary, fontWeight: FontWeight.bold, fontSize: 14.sp)),
+                        child: Text("${localizations.streak}: ${profile?.currentStreak ?? 0}", style: TextStyle(color: theme.colorScheme.secondary, fontWeight: FontWeight.bold, fontSize: 14.sp)),
                       ),
                     ]),
-                  ],),
-               ],),),Expanded( child: _buildQuestionCard(key: ValueKey<int>(_currentIndex))),
-         ],
-       ),
-     );
-   }
+                 ],),
+              ],),),Expanded( child: _buildQuestionCard(key: ValueKey<int>(_currentIndex))),
+        ],
+      ),
+    );
+  }
    // Duplicate/malformed _buildQuestionCard removed; the real implementation appears further below.
  
    Widget _buildQuestionCard({required Key key}) {
-     final theme = Theme.of(context);
      // Güvenlik kontrolü: Sorular henüz yüklenmediyse boş bir widget döndür
      if (_questions.isEmpty || _currentIndex >= _questions.length) {
        return const Center(child: CircularProgressIndicator());
@@ -348,7 +360,15 @@ class _QuizPageState extends State<QuizPage> with TickerProviderStateMixin {
      final currentQuestion = _questions[_currentIndex];
      final options = currentQuestion['options'] as List<dynamic>; 
      return Column( key: key, mainAxisAlignment: MainAxisAlignment.center, children: [
-         Container( padding: EdgeInsets.all(24.w), decoration: BoxDecoration(color: theme.colorScheme.surface.withOpacity(0.5), borderRadius: BorderRadius.circular(20.r)), child: Text(currentQuestion['question_text'], textAlign: TextAlign.center, style: TextStyle(fontSize: 22.sp, fontWeight: FontWeight.bold, color: Colors.white)),),
+         // grey box removed: plain padding around question text
+         Container(
+           padding: EdgeInsets.all(24.w),
+           child: Text(
+             currentQuestion['question_text'],
+             textAlign: TextAlign.center,
+             style: TextStyle(fontSize: 22.sp, fontWeight: FontWeight.bold, color: Colors.white),
+           ),
+         ),
          SizedBox(height: 30.h),
          ...List.generate(options.length, (index) {
            // --- BU DEĞİŞKENLER BURADA KULLANILIYOR ---

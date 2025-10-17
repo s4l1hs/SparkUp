@@ -69,7 +69,11 @@ class UserSubscription(SQLModel, table=True):
     user_id: int = Field(foreign_key="user.id", unique=True)
     user: "User" = Relationship(back_populates="subscription")
 class DailyLimits(SQLModel, table=True):
-    id: Optional[int] = Field(default=None, primary_key=True); quiz_count: int = Field(default=0); challenge_count: int = Field(default=0); last_reset: date = Field(default_factory=date.today)
+    id: Optional[int] = Field(default=None, primary_key=True)
+    quiz_count: int = Field(default=0)
+    challenge_count: int = Field(default=0)
+    questions_answered: int = Field(default=0)   # added: today's answered count
+    last_reset: date = Field(default_factory=date.today)
     user_id: int = Field(foreign_key="user.id", unique=True)
     user: "User" = Relationship(back_populates="daily_limits")
 class UserStreak(SQLModel, table=True):
@@ -134,20 +138,34 @@ def get_current_user(token: HTTPAuthorizationCredentials = Depends(token_auth_sc
 
 def _get_user_access_level(db_user: User, session: Session) -> Dict:
     today = date.today()
-    # ### DÜZELTME: Limit sıfırlanma sorununu çözen kısım ###
-    # Limit verisini, her zaman doğrudan veritabanından SORGULAYARAK alıyoruz.
     limits = session.exec(select(DailyLimits).where(DailyLimits.user_id == db_user.id)).first()
     if not limits:
-        limits = DailyLimits(user_id=db_user.id); session.add(limits); session.commit(); session.refresh(limits)
+        limits = DailyLimits(user_id=db_user.id)
+        session.add(limits); session.commit(); session.refresh(limits)
     sub = session.exec(select(UserSubscription).where(UserSubscription.user_id == db_user.id)).first()
     if not sub:
-        sub = UserSubscription(user_id=db_user.id); session.add(sub); session.commit(); session.refresh(sub)
+        sub = UserSubscription(user_id=db_user.id)
+        session.add(sub); session.commit(); session.refresh(sub)
     if sub.expires_at and sub.expires_at < today:
-        sub.level, sub.expires_at = "free", None; session.add(sub); session.commit()
+        sub.level, sub.expires_at = "free", None
+        session.add(sub); session.commit()
+    # reset daily counters at day boundary
     if limits.last_reset < today:
-        limits.quiz_count, limits.challenge_count, limits.last_reset = 0, 0, today; session.add(limits); session.commit()
+        limits.quiz_count = 0
+        limits.challenge_count = 0
+        limits.questions_answered = 0
+        limits.last_reset = today
+        session.add(limits); session.commit()
     level = sub.level
-    return {"level": level, "quiz_count": limits.quiz_count, "challenge_count": limits.challenge_count, "quiz_limit": SUBSCRIPTION_LIMITS[level]["quiz_limit"], "challenge_limit": SUBSCRIPTION_LIMITS[level]["challenge_limit"], "daily_limits_obj": limits}
+    return {
+        "level": level,
+        "quiz_count": limits.quiz_count,
+        "challenge_count": limits.challenge_count,
+        "questions_answered": limits.questions_answered,
+        "quiz_limit": SUBSCRIPTION_LIMITS[level]["quiz_limit"],
+        "challenge_limit": SUBSCRIPTION_LIMITS[level]["challenge_limit"],
+        "daily_limits_obj": limits
+    }
 
 def _get_rank_name(score: int) -> str:
     if score >= 10000: return 'Üstad'
@@ -171,14 +189,40 @@ def get_user_profile(db_user: User = Depends(get_current_user), session: Session
     streak_obj = session.exec(select(UserStreak).where(UserStreak.user_id == db_user.id)).first()
     sub_obj = session.exec(select(UserSubscription).where(UserSubscription.user_id == db_user.id)).first()
     score = score_obj.score if score_obj else 0
+
+    access = _get_user_access_level(db_user, session)
+    quiz_limit = access["quiz_limit"]
+    used = access["questions_answered"]
+
+    # today's points total
+    today = date.today()
+    sum_points = session.exec(select(func.sum(UserScoreHistory.points)).where(UserScoreHistory.user_id == db_user.id, UserScoreHistory.timestamp == today)).one()
+    try:
+        daily_points = int(sum_points) if sum_points else 0
+    except Exception:
+        # SQLAlchemy may return tuple
+        daily_points = int(sum_points[0]) if isinstance(sum_points, (list, tuple)) and sum_points[0] else 0
+
+    remaining = None
+    if quiz_limit != float('inf'):
+        remaining = max(0, int(quiz_limit) - int(used))
+
     return {
-        "firebase_uid": db_user.firebase_uid, "email": db_user.email,
-        "score": score, "rank_name": _get_rank_name(score),
+        "firebase_uid": db_user.firebase_uid,
+        "email": db_user.email,
+        "score": score,
+        "rank_name": _get_rank_name(score),
         "current_streak": streak_obj.streak_count if streak_obj else 0,
         "subscription_level": sub_obj.level if sub_obj else "free",
         "subscription_expires": sub_obj.expires_at.isoformat() if sub_obj and sub_obj.expires_at else None,
         "language_code": db_user.language_code,
-        "notifications_enabled": True, "topic_preferences": []
+        "notifications_enabled": True,
+        "topic_preferences": [],
+        # daily info
+        "daily_quiz_limit": None if quiz_limit == float('inf') else int(quiz_limit),
+        "daily_quiz_used": int(used),
+        "remaining_quizzes": remaining,
+        "daily_points": int(daily_points),
     }
 
 @app.get("/quiz/", response_model=List[Dict])
@@ -186,36 +230,45 @@ def get_quiz_questions(limit: int = 3, lang: Optional[str] = Query(None), previe
     access = _get_user_access_level(db_user, session)
     effective_lang = lang or (db_user.language_code if db_user.language_code else "en")
 
-    if not preview:
-        if access["quiz_count"] >= access["quiz_limit"] and access["level"] != "ultra":
-             tpl = TRANSLATIONS.get("daily_quiz_limit_reached", {}).get(effective_lang) or TRANSLATIONS["daily_quiz_limit_reached"]["en"]
-             raise HTTPException(status_code=429, detail=tpl.format(limit=access["quiz_limit"]))
+    # compute remaining allowed answers by questions_answered (not quiz_count)
+    if access["quiz_limit"] != float('inf'):
+        remaining = int(access["quiz_limit"]) - int(access["questions_answered"])
+    else:
+        remaining = None
+
+    # Block non-preview requests when no remaining questions
+    if not preview and remaining is not None and remaining <= 0 and access["level"] != "ultra":
+        tpl = TRANSLATIONS.get("daily_quiz_limit_reached", {}).get(effective_lang) or TRANSLATIONS["daily_quiz_limit_reached"]["en"]
+        raise HTTPException(status_code=429, detail=tpl.format(limit=access["quiz_limit"]))
 
     answered_ids = session.exec(select(UserAnsweredQuestion.quizquestion_id).where(UserAnsweredQuestion.user_id == db_user.id)).all()
     unanswered = session.exec(select(QuizQuestion).where(QuizQuestion.id.notin_(answered_ids))).all()
 
+    # cap questions returned to remaining if applicable
+    actual_limit = limit
+    if remaining is not None and remaining < limit:
+        actual_limit = max(0, remaining)
+
     chosen = []
-    if len(unanswered) >= limit:
-        chosen = random.sample(unanswered, limit)
+    if actual_limit == 0:
+        chosen = []
+    elif len(unanswered) >= actual_limit:
+        chosen = random.sample(unanswered, actual_limit)
     else:
-        # if not enough unanswered:
+        # not enough unanswered
         if not preview:
-            # original behavior: reset answered and take from all
+            # reset answered list then pick from all; do NOT increment quiz_count here
             session.exec(delete(UserAnsweredQuestion).where(UserAnsweredQuestion.user_id == db_user.id))
             session.commit()
             all_qs = session.exec(select(QuizQuestion)).all()
-            if len(all_qs) < limit:
+            if len(all_qs) < actual_limit:
                 raise HTTPException(status_code=404, detail="Not enough new questions.")
-            chosen = random.sample(all_qs, limit)
-            # consume one quiz count
-            access["daily_limits_obj"].quiz_count += 1
-            session.add(access["daily_limits_obj"]); session.commit()
+            chosen = random.sample(all_qs, actual_limit)
         else:
-            # preview: do NOT mutate DB; sample from all questions if possible
             all_qs = session.exec(select(QuizQuestion)).all()
-            if len(all_qs) < limit:
+            if len(all_qs) < actual_limit:
                 raise HTTPException(status_code=404, detail="Not enough questions for preview.")
-            chosen = random.sample(all_qs, limit)
+            chosen = random.sample(all_qs, actual_limit)
 
     def _get_text(obj_field, q):
         try:
@@ -227,14 +280,14 @@ def get_quiz_questions(limit: int = 3, lang: Optional[str] = Query(None), previe
     result = []
     for q in chosen:
         question_text = _get_text("question_texts", q)
-        options = _get_text("options_texts", q)
-        if isinstance(options, str):
+        options_raw = _get_text("options_texts", q)
+        if isinstance(options_raw, str):
             try:
-                options_parsed = json.loads(options)
+                options_parsed = json.loads(options_raw)
             except Exception:
-                options_parsed = [options]
+                options_parsed = [options_raw]
         else:
-            options_parsed = options or []
+            options_parsed = options_raw or []
         result.append({
             "id": q.id,
             "question_text": question_text,
@@ -242,33 +295,51 @@ def get_quiz_questions(limit: int = 3, lang: Optional[str] = Query(None), previe
             "correct_answer_index": q.correct_answer_index
         })
 
-    # If we reached here and we chose from unanswered sample AND NOT preview, ensure we increment quiz_count
-    # Note: we already incremented when resetting answered; handle normal branch too:
-    if not preview and (len(unanswered) >= limit):
-        access["daily_limits_obj"].quiz_count += 1
-        session.add(access["daily_limits_obj"]); session.commit()
-
     return result
 
 @app.post("/quiz/answer/", response_model=AnswerResponse)
 def submit_quiz_answer(payload: AnswerPayload, db_user: User = Depends(get_current_user), session: Session = Depends(get_session)):
     question = session.get(QuizQuestion, payload.question_id)
-    if not question: raise HTTPException(status_code=404, detail="Question not found.")
+    if not question:
+        raise HTTPException(status_code=404, detail="Question not found.")
     user_score = session.exec(select(UserScore).where(UserScore.user_id==db_user.id)).first()
     user_streak = session.exec(select(UserStreak).where(UserStreak.user_id==db_user.id)).first()
-    if not user_score or not user_streak: raise HTTPException(status_code=500, detail="User data missing.")
+    limits = session.exec(select(DailyLimits).where(DailyLimits.user_id == db_user.id)).first()
+    if not user_score or not user_streak or not limits:
+        raise HTTPException(status_code=500, detail="User data missing.")
+
+    access = _get_user_access_level(db_user, session)
+    # enforce daily cap
+    if access["quiz_limit"] != float('inf') and access["questions_answered"] >= access["quiz_limit"] and access["level"] != "ultra":
+        tpl = TRANSLATIONS.get("daily_quiz_limit_reached", {}).get(db_user.language_code or "en") or TRANSLATIONS["daily_quiz_limit_reached"]["en"]
+        raise HTTPException(status_code=429, detail=tpl.format(limit=access["quiz_limit"]))
+
     already_answered = session.exec(select(UserAnsweredQuestion).where(UserAnsweredQuestion.user_id == db_user.id, UserAnsweredQuestion.quizquestion_id == payload.question_id)).first()
     is_correct = (question.correct_answer_index == payload.answer_index)
     score_awarded = 0
     if not already_answered:
         if is_correct:
-            base_score = 10; streak_bonus = min(user_streak.streak_count, 5) * 2
+            base_score = 10
+            streak_bonus = min(user_streak.streak_count, 5) * 2
             score_awarded = base_score + streak_bonus
             user_score.score += score_awarded
             user_streak.streak_count += 1
-        else: user_streak.streak_count = 0
+            # save history for daily points
+            try:
+                session.add(UserScoreHistory(user_id=db_user.id, points=score_awarded))
+            except Exception:
+                pass
+        else:
+            user_streak.streak_count = 0
+
         session.add(UserAnsweredQuestion(user_id=db_user.id, quizquestion_id=payload.question_id))
+        # increment today's answered count
+        limits.questions_answered = (limits.questions_answered or 0) + 1
+
+        session.add(user_score); session.add(user_streak); session.add(limits)
         session.commit()
+        session.refresh(user_score); session.refresh(user_streak); session.refresh(limits)
+
     return AnswerResponse(correct=is_correct, correct_index=question.correct_answer_index, score_awarded=score_awarded, new_score=user_score.score)
 
 @app.put("/user/language/")

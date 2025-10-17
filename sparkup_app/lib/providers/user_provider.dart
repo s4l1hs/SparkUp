@@ -6,7 +6,7 @@ import '../services/api_service.dart';
 class UserProvider extends ChangeNotifier {
   UserProfile? profile;
   bool _isLoading = false;
-  final ApiService _apiService = ApiService();
+  final ApiService _api_service = ApiService();
 
   bool get isLoading => _isLoading;
 
@@ -15,22 +15,20 @@ class UserProvider extends ChangeNotifier {
     _isLoading = true;
     notifyListeners();
     try {
-      final json = await _apiService.getUserProfile(idToken);
+      final json = await _api_service.getUserProfile(idToken);
       profile = UserProfile.fromJson(json);
     } catch (e) {
       debugPrint("Kullanıcı profili yüklenirken hata oluştu: $e");
-      profile = null;
+      // keep previous profile if available
     } finally {
       _isLoading = false;
       notifyListeners();
     }
   }
-  
-  // ensure score updates notify listeners
+
   void updateScore(int newScore) {
     if (profile == null) {
-      // create lightweight profile if needed
-      profile = UserProfile(username: null, score: newScore, currentStreak: 0, subscriptionLevel: 'free');
+      profile = UserProfile(username: null, score: newScore, currentStreak: 0, subscriptionLevel: 'free', dailyQuizLimit: null, dailyQuizUsed: 0, remainingQuizzes: null, dailyPoints: 0);
       notifyListeners();
       return;
     }
@@ -40,41 +38,54 @@ class UserProvider extends ChangeNotifier {
     }
   }
 
-  // optionally helper to replace whole profile
-  void setProfile(UserProfile p) {
-    profile = p;
-    notifyListeners();
-  }
-
-  void clearProfile() {
-    profile = null;
-    notifyListeners();
-  }
+  void setProfile(UserProfile p) { profile = p; notifyListeners(); }
+  void clearProfile() { profile = null; notifyListeners(); }
 }
 
 class UserProfile {
   final String? username;
   final int score;
   final int currentStreak;
-  final String subscriptionLevel; // added
+  final String subscriptionLevel;
+  final int? dailyQuizLimit;
+  final int? dailyQuizUsed;
+  final int? remainingQuizzes;
+  final int dailyPoints;
 
-  UserProfile({this.username, required this.score, required this.currentStreak, this.subscriptionLevel = 'free'});
+  UserProfile({
+    this.username,
+    required this.score,
+    required this.currentStreak,
+    this.subscriptionLevel = 'free',
+    this.dailyQuizLimit,
+    this.dailyQuizUsed,
+    this.remainingQuizzes,
+    this.dailyPoints = 0,
+  });
 
-  UserProfile copyWith({String? username, int? score, int? currentStreak, String? subscriptionLevel}) {
+  UserProfile copyWith({String? username, int? score, int? currentStreak, String? subscriptionLevel, int? dailyQuizLimit, int? dailyQuizUsed, int? remainingQuizzes, int? dailyPoints}) {
     return UserProfile(
       username: username ?? this.username,
       score: score ?? this.score,
       currentStreak: currentStreak ?? this.currentStreak,
       subscriptionLevel: subscriptionLevel ?? this.subscriptionLevel,
+      dailyQuizLimit: dailyQuizLimit ?? this.dailyQuizLimit,
+      dailyQuizUsed: dailyQuizUsed ?? this.dailyQuizUsed,
+      remainingQuizzes: remainingQuizzes ?? this.remainingQuizzes,
+      dailyPoints: dailyPoints ?? this.dailyPoints,
     );
   }
 
   factory UserProfile.fromJson(Map<String, dynamic> json) {
     return UserProfile(
-      username: json['username'] as String?,
+      username: json['username'] as String? ?? json['email'] as String?,
       score: (json['score'] as num?)?.toInt() ?? 0,
       currentStreak: (json['current_streak'] as num?)?.toInt() ?? 0,
-      subscriptionLevel: (json['subscription_level'] as String?) ?? (json['subscriptionLevel'] as String?) ?? 'free',
+      subscriptionLevel: (json['subscription_level'] as String?) ?? 'free',
+      dailyQuizLimit: json['daily_quiz_limit'] != null ? (json['daily_quiz_limit'] as num).toInt() : null,
+      dailyQuizUsed: json['daily_quiz_used'] != null ? (json['daily_quiz_used'] as num).toInt() : 0,
+      remainingQuizzes: json['remaining_quizzes'] != null ? (json['remaining_quizzes'] as num).toInt() : null,
+      dailyPoints: (json['daily_points'] as num?)?.toInt() ?? 0,
     );
   }
 }
