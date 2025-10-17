@@ -321,7 +321,7 @@ class _QuizPageState extends State<QuizPage> with TickerProviderStateMixin {
           SafeArea( child: Column( children: [ LinearProgressIndicator(value: (_currentIndex + 1) / _questions.length, backgroundColor: theme.cardTheme.color, color: theme.colorScheme.tertiary, minHeight: 8.h, borderRadius: BorderRadius.circular(4.r)), SizedBox(height: 16.h),
                Row( mainAxisAlignment: MainAxisAlignment.spaceBetween, children: [ 
                     // keep classic Question X/Y header based on current session/page
-                    Text("${localizations.question} ${_currentIndex + 1}/${_questions.length}", style: TextStyle(color: theme.colorScheme.tertiary, fontSize: 18.sp, fontWeight: FontWeight.bold)),
+                    Text("${localizations.question} ${(profile?.dailyQuizUsed ?? 0) + 1}/${profile?.dailyQuizLimit}", style: TextStyle(color: theme.colorScheme.tertiary, fontSize: 18.sp, fontWeight: FontWeight.bold)),
                    Row(children: [
                      // today's points
                      Container(
