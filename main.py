@@ -369,26 +369,72 @@ def set_user_language(language_code: str = Query(...), db_user: User = Depends(g
         raise HTTPException(status_code=500, detail=f"Failed to update language: {e}")
     
 @app.get("/challenges/random/", response_model=ChallengeResponse)
-def get_random_challenge(lang: Optional[str] = Query(None), preview: bool = Query(False), db_user: User = Depends(get_current_user), session: Session = Depends(get_session)):
-    access = _get_user_access_level(db_user, session)
+def get_random_challenge(
+    lang: Optional[str] = Query(None),
+    preview: bool = Query(False),
+    consume: bool = Query(True),   # <-- yeni parametre
+    db_user: User = Depends(get_current_user),
+    session: Session = Depends(get_session)
+):
     effective_lang = lang or (db_user.language_code if db_user.language_code else "en")
+    access = _get_user_access_level(db_user, session)
 
+    # Fast pre-check: if user already exhausted -> return limit message (no DB mutation)
     if not preview:
-        if access["challenge_count"] >= access["challenge_limit"] and access["level"] != "ultra":
-             tpl = TRANSLATIONS.get("daily_challenge_limit_reached", {}).get(effective_lang) or TRANSLATIONS["daily_challenge_limit_reached"]["en"]
-             return PlainTextResponse(tpl.format(limit=access["challenge_limit"]), status_code=429)
+        fresh_limits = session.exec(select(DailyLimits).where(DailyLimits.user_id == db_user.id)).first()
+        cur_count = fresh_limits.challenge_count if fresh_limits else 0
+        if access["challenge_limit"] != float('inf') and cur_count >= access["challenge_limit"] and access["level"] != "ultra":
+            tpl = TRANSLATIONS.get("daily_challenge_limit_reached", {}).get(effective_lang) or TRANSLATIONS["daily_challenge_limit_reached"]["en"]
+            return PlainTextResponse(tpl.format(limit=access["challenge_limit"]), status_code=429)
 
-    completed_ids = session.exec(select(UserCompletedChallenge.challenge_id).where(UserCompletedChallenge.user_id == db_user.id)).all()
+    # preview mode: do not touch DB at all
+    if preview:
+        all_ch = session.exec(select(Challenge)).all()
+        if not all_ch:
+            raise HTTPException(status_code=404, detail="No challenges available.")
+        chosen_challenge = random.choice(all_ch)
+        texts = {}
+        try:
+            texts = json.loads(chosen_challenge.challenge_texts or "{}")
+        except Exception:
+            texts = {}
+        challenge_text = texts.get(effective_lang) or texts.get("en") or ""
+        return ChallengeResponse(id=chosen_challenge.id, challenge_text=challenge_text, category=chosen_challenge.category)
+
+    # From here: non-preview. If consume==False -> check limits and return candidate WITHOUT mutating DB.
+    # Build answered/unanswered lists
+    completed_ids_raw = session.exec(select(UserCompletedChallenge.challenge_id).where(UserCompletedChallenge.user_id == db_user.id)).all()
+    completed_ids = []
+    for item in completed_ids_raw:
+        if isinstance(item, (list, tuple)):
+            if item:
+                completed_ids.append(item[0])
+        else:
+            completed_ids.append(item)
+
     unanswered = session.exec(select(Challenge).where(Challenge.id.notin_(completed_ids))).all()
 
+    # If no unanswered: either reset (only if consuming) or pick random (non-consuming)
     if not unanswered:
-        if not preview:
-            session.exec(delete(UserCompletedChallenge).where(UserCompletedChallenge.user_id == db_user.id)); session.commit()
+        # re-check limits before any reset/consume
+        fresh_limits = session.exec(select(DailyLimits).where(DailyLimits.user_id == db_user.id)).first()
+        cur_count = fresh_limits.challenge_count if fresh_limits else 0
+        if access["challenge_limit"] != float('inf') and cur_count >= access["challenge_limit"] and access["level"] != "ultra":
+            tpl = TRANSLATIONS.get("daily_challenge_limit_reached", {}).get(effective_lang) or TRANSLATIONS["daily_challenge_limit_reached"]["en"]
+            return PlainTextResponse(tpl.format(limit=access["challenge_limit"]), status_code=429)
+
+        if consume:
+            # safe reset and then pick
+            session.exec(delete(UserCompletedChallenge).where(UserCompletedChallenge.user_id == db_user.id))
+            session.commit()
             unanswered = session.exec(select(Challenge)).all()
-            if not unanswered: raise HTTPException(status_code=404, detail="No challenges available.")
+            if not unanswered:
+                raise HTTPException(status_code=404, detail="No challenges available.")
         else:
+            # not consuming: just return any random challenge (do not mutate DB)
             all_ch = session.exec(select(Challenge)).all()
-            if not all_ch: raise HTTPException(status_code=404, detail="No challenges available.")
+            if not all_ch:
+                raise HTTPException(status_code=404, detail="No challenges available.")
             chosen_challenge = random.choice(all_ch)
             texts = {}
             try:
@@ -398,12 +444,26 @@ def get_random_challenge(lang: Optional[str] = Query(None), preview: bool = Quer
             challenge_text = texts.get(effective_lang) or texts.get("en") or ""
             return ChallengeResponse(id=chosen_challenge.id, challenge_text=challenge_text, category=chosen_challenge.category)
 
+    # choose a challenge
     chosen_challenge = random.choice(unanswered)
 
-    if not preview:
+    # If consuming, persist completion and increment counter
+    if consume:
+        # re-read fresh limits and guard (to reduce race window)
+        fresh_limits = session.exec(select(DailyLimits).where(DailyLimits.user_id == db_user.id)).first()
+        cur_count = fresh_limits.challenge_count if fresh_limits else 0
+        if access["challenge_limit"] != float('inf') and cur_count >= access["challenge_limit"] and access["level"] != "ultra":
+            tpl = TRANSLATIONS.get("daily_challenge_limit_reached", {}).get(effective_lang) or TRANSLATIONS["daily_challenge_limit_reached"]["en"]
+            return PlainTextResponse(tpl.format(limit=access["challenge_limit"]), status_code=429)
+
         session.add(UserCompletedChallenge(user_id=db_user.id, challenge_id=chosen_challenge.id))
-        access["daily_limits_obj"].challenge_count += 1
-        session.add(access["daily_limits_obj"]); session.commit()
+        if fresh_limits:
+            fresh_limits.challenge_count = (fresh_limits.challenge_count or 0) + 1
+            session.add(fresh_limits)
+        else:
+            new_limits = DailyLimits(user_id=db_user.id, challenge_count=1)
+            session.add(new_limits)
+        session.commit()
 
     texts = {}
     try:

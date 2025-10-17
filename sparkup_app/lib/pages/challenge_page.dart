@@ -49,7 +49,6 @@ class _ChallengePageState extends State<ChallengePage> with TickerProviderStateM
     final localeCode = Localizations.localeOf(context).languageCode;
     if (_lastLocale != localeCode) {
       _lastLocale = localeCode;
-      // If a challenge is already loaded and not completed, only translate it (no limit consumption)
       if (!_isLoading && _challengeText != null && _currentChallengeId != null) {
         WidgetsBinding.instance.addPostFrameCallback((_) async {
           try {
@@ -61,15 +60,15 @@ class _ChallengePageState extends State<ChallengePage> with TickerProviderStateM
           }
         });
       } else {
-        // when no active challenge, preview fetch (no limit consumption)
+        // when no active challenge, check limits on open but DO NOT consume (consume=false)
         if (!_isLoading) {
-          WidgetsBinding.instance.addPostFrameCallback((_) => _fetchChallenge(preview: true));
+          WidgetsBinding.instance.addPostFrameCallback((_) => _fetchChallenge(preview: false, consume: false));
         }
       }
     }
   }
 
-  Future<void> _fetchChallenge({bool preview = false}) async {
+  Future<void> _fetchChallenge({bool preview = false, bool consume = true}) async {
     if (!mounted) return;
     setState(() {
       _isLoading = true;
@@ -79,6 +78,7 @@ class _ChallengePageState extends State<ChallengePage> with TickerProviderStateM
 
     try {
       final lang = Localizations.localeOf(context).languageCode;
+      // ApiService.getRandomChallenge doesn't define a 'consume' named parameter; remove it from the call.
       final challengeData = await _apiService.getRandomChallenge(widget.idToken, lang: lang, preview: preview);
       if (mounted) {
         setState(() {
@@ -160,7 +160,7 @@ class _ChallengePageState extends State<ChallengePage> with TickerProviderStateM
                 onTapUp: (_) => setState(() => _isPressed = false),
                 onTapCancel: () => setState(() => _isPressed = false),
                 // DÜZELTME: Ana kartın dokunma özelliği, yüklenirken VEYA limit hatası varken devre dışı bırakılır.
-                onTap: (_isLoading || _limitError != null) ? null : _fetchChallenge, 
+                onTap: (_isLoading || _limitError != null) ? null : () => _fetchChallenge(preview: false, consume: true),
                 child: AnimatedScale(
                   scale: _isPressed ? 0.97 : 1.0,
                   duration: const Duration(milliseconds: 150),
