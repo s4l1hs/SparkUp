@@ -27,8 +27,6 @@ class _QuizPageState extends State<QuizPage> with TickerProviderStateMixin {
   List<Map<String, dynamic>> _questions = [];
   int _currentIndex = 0, _sessionScore = 0;
   int? _selectedAnswerIndex;
-  // display hesaplaması için oturum başında hesaplanan "bugün öncesinden cevaplanan" değeri
-  int _displayBaseAnsweredBeforeSession = 0;
   late final AnimationController _backgroundController;
   late final Animation<Alignment> _backgroundAnimation1, _backgroundAnimation2;
   AnswerState _answerState = AnswerState.unanswered;
@@ -315,17 +313,31 @@ class _QuizPageState extends State<QuizPage> with TickerProviderStateMixin {
    }
  
   Widget _buildQuizView(BuildContext context, AppLocalizations localizations, ThemeData theme, int currentStreak) {
-    final userProvider = Provider.of<UserProvider>(context);
-    final profile = userProvider.profile;
-    final dailyPoints = profile?.dailyPoints ?? 0;
+     final userProvider = Provider.of<UserProvider>(context);
+     final profile = userProvider.profile;
+     final dailyPoints = profile?.dailyPoints ?? 0;
 
-    return Padding( key: ValueKey<int>(_currentIndex), padding: EdgeInsets.all(16.w), child: Column( children: [
-          SafeArea( child: Column( children: [ LinearProgressIndicator(value: ((profile?.dailyQuizUsed ?? 0) + 1) / (profile?.dailyQuizLimit ?? 1), backgroundColor: theme.cardTheme.color, color: theme.colorScheme.tertiary, minHeight: 8.h, borderRadius: BorderRadius.circular(4.r)), SizedBox(height: 16.h),
-               Row( mainAxisAlignment: MainAxisAlignment.spaceBetween, children: [ 
-                    // keep classic Question X/Y header based on current session/page
-                    Text("${localizations.question} ${(profile?.dailyQuizUsed ?? 0) + 1}/${profile?.dailyQuizLimit}", style: TextStyle(color: theme.colorScheme.tertiary, fontSize: 18.sp, fontWeight: FontWeight.bold)),
-                   Row(children: [
-                     // today's points
+     // calculate display index and limit; avoid showing X/Y when it would exceed limit
+     final int dailyUsed = profile?.dailyQuizUsed ?? 0;
+     final int displayIndex = dailyUsed + 1;
+     final int? dailyLimit = profile?.dailyQuizLimit;
+     final bool overLimit = dailyLimit != null && displayIndex > dailyLimit;
+     final double progressValue = (() {
+       final denom = (dailyLimit != null && dailyLimit > 0) ? dailyLimit.toDouble() : 1.0;
+       final v = (displayIndex.toDouble() / denom).clamp(0.0, 1.0);
+       return v;
+     })();
+ 
+     return Padding( key: ValueKey<int>(_currentIndex), padding: EdgeInsets.all(16.w), child: Column( children: [
+           SafeArea( child: Column( children: [ LinearProgressIndicator(value: progressValue, backgroundColor: theme.cardTheme.color, color: theme.colorScheme.tertiary, minHeight: 8.h, borderRadius: BorderRadius.circular(4.r)), SizedBox(height: 16.h),
+                Row( mainAxisAlignment: MainAxisAlignment.spaceBetween, children: [ 
+                     // show Question X/Y based on computed displayIndex; hide if over limit
+                     if (!overLimit)
+                       Text("${localizations.question} $displayIndex/${dailyLimit ?? _questions.length}", style: TextStyle(color: theme.colorScheme.tertiary, fontSize: 18.sp, fontWeight: FontWeight.bold))
+                     else
+                       const SizedBox.shrink(),
+                    Row(children: [
+                      // today's points
                      Container(
                        padding: EdgeInsets.symmetric(horizontal: 10.w, vertical: 6.h),
                        decoration: BoxDecoration(color: theme.colorScheme.primary.withOpacity(0.95), borderRadius: BorderRadius.circular(10.r)),
