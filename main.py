@@ -8,6 +8,7 @@ from dotenv import load_dotenv
 from fastapi import FastAPI, HTTPException, Depends, Query
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.security import HTTPBearer, HTTPAuthorizationCredentials
+from fastapi.responses import PlainTextResponse  # <--- added
 from sqlmodel import Field, SQLModel, Session, create_engine, select, Relationship, delete, func
 from sqlalchemy.exc import IntegrityError
 
@@ -239,10 +240,23 @@ def get_quiz_questions(limit: int = 3, lang: Optional[str] = Query(None), previe
     # Block non-preview requests when no remaining questions
     if not preview and remaining is not None and remaining <= 0 and access["level"] != "ultra":
         tpl = TRANSLATIONS.get("daily_quiz_limit_reached", {}).get(effective_lang) or TRANSLATIONS["daily_quiz_limit_reached"]["en"]
-        raise HTTPException(status_code=429, detail=tpl.format(limit=access["quiz_limit"]))
+        return PlainTextResponse(tpl.format(limit=access["quiz_limit"]), status_code=429)
 
-    answered_ids = session.exec(select(UserAnsweredQuestion.quizquestion_id).where(UserAnsweredQuestion.user_id == db_user.id)).all()
-    unanswered = session.exec(select(QuizQuestion).where(QuizQuestion.id.notin_(answered_ids))).all()
+    # build unanswered question list for the user
+    answered_ids_raw = session.exec(select(UserAnsweredQuestion.quizquestion_id).where(UserAnsweredQuestion.user_id == db_user.id)).all()
+    # normalize results: could be list of scalars or list of one-item tuples
+    answered_ids = []
+    for item in answered_ids_raw:
+        if isinstance(item, (list, tuple)):
+            if item:
+                answered_ids.append(item[0])
+        else:
+            answered_ids.append(item)
+
+    if not answered_ids:
+        unanswered = session.exec(select(QuizQuestion)).all()
+    else:
+        unanswered = session.exec(select(QuizQuestion).where(QuizQuestion.id.notin_(answered_ids))).all()
 
     # cap questions returned to remaining if applicable
     actual_limit = limit
@@ -312,7 +326,7 @@ def submit_quiz_answer(payload: AnswerPayload, db_user: User = Depends(get_curre
     # enforce daily cap
     if access["quiz_limit"] != float('inf') and access["questions_answered"] >= access["quiz_limit"] and access["level"] != "ultra":
         tpl = TRANSLATIONS.get("daily_quiz_limit_reached", {}).get(db_user.language_code or "en") or TRANSLATIONS["daily_quiz_limit_reached"]["en"]
-        raise HTTPException(status_code=429, detail=tpl.format(limit=access["quiz_limit"]))
+        return PlainTextResponse(tpl.format(limit=access["quiz_limit"]), status_code=429)
 
     already_answered = session.exec(select(UserAnsweredQuestion).where(UserAnsweredQuestion.user_id == db_user.id, UserAnsweredQuestion.quizquestion_id == payload.question_id)).first()
     is_correct = (question.correct_answer_index == payload.answer_index)
@@ -362,7 +376,7 @@ def get_random_challenge(lang: Optional[str] = Query(None), preview: bool = Quer
     if not preview:
         if access["challenge_count"] >= access["challenge_limit"] and access["level"] != "ultra":
              tpl = TRANSLATIONS.get("daily_challenge_limit_reached", {}).get(effective_lang) or TRANSLATIONS["daily_challenge_limit_reached"]["en"]
-             raise HTTPException(status_code=429, detail=tpl.format(limit=access["challenge_limit"]))
+             return PlainTextResponse(tpl.format(limit=access["challenge_limit"]), status_code=429)
 
     completed_ids = session.exec(select(UserCompletedChallenge.challenge_id).where(UserCompletedChallenge.user_id == db_user.id)).all()
     unanswered = session.exec(select(Challenge).where(Challenge.id.notin_(completed_ids))).all()
