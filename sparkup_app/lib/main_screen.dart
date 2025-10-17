@@ -43,7 +43,7 @@ class MainScreenState extends State<MainScreen> {
     final localizations = AppLocalizations.of(context)!;
     _navItems = [
       {'icon': Icons.leaderboard_outlined, 'label': localizations.navMainMenu},
-      {'icon': Icons.workspace_premium_outlined, 'label': localizations.subscriptions},
+      {'icon': Icons.subscriptions, 'label': localizations.subscriptions}, // daha uygun simge
       {'icon': Icons.quiz_outlined, 'label': localizations.navQuiz},
       {'icon': Icons.whatshot_outlined, 'label': localizations.navChallenge},
       {'icon': Icons.settings_outlined, 'label': localizations.navSettings},

@@ -348,10 +348,10 @@ class _LeaderboardPageState extends State<LeaderboardPage> with TickerProviderSt
                                         children: [
                                           CircleAvatar(
                                             radius: 18.r,
-                                            backgroundColor: theme.colorScheme.tertiary,
+                                            backgroundColor: theme.colorScheme.surfaceVariant,
                                             child: Text(
                                               (_displayName(_currentUserEntry!).isNotEmpty) ? _displayName(_currentUserEntry!)[0].toUpperCase() : 'A',
-                                              style: TextStyle(fontSize: 16.sp, color: theme.colorScheme.onTertiary, fontWeight: FontWeight.bold),
+                                              style: TextStyle(fontSize: 16.sp, color: theme.colorScheme.onSurfaceVariant, fontWeight: FontWeight.bold),
                                             ),
                                           ),
                                           SizedBox(width: 10.w),

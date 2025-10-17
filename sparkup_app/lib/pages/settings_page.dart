@@ -71,10 +71,10 @@ class _SettingsPageState extends State<SettingsPage> with SingleTickerProviderSt
         // changed: prefer Firebase displayName, then backend username, then email
         final firebaseName = FirebaseAuth.instance.currentUser?.displayName;
         final backendUsername = (profile['username'] as String?) ?? '';
-        final fallbackEmail = (profile['email'] as String?) ?? 'Anonymous';
+        // do not use email as fallback — show username (or Firebase displayName) only
         setState(() {
           _currentLanguageCode = profile['language_code'] ?? 'en';
-          _username = (firebaseName != null && firebaseName.isNotEmpty) ? firebaseName : (backendUsername.isNotEmpty ? backendUsername : fallbackEmail);
+          _username = (firebaseName != null && firebaseName.isNotEmpty) ? firebaseName : (backendUsername.isNotEmpty ? backendUsername : null);
           _userScore = profile['score'] ?? 0;
           _notificationsEnabled = profile['notifications_enabled'] ?? true;
         });
@@ -197,10 +197,10 @@ class _SettingsPageState extends State<SettingsPage> with SingleTickerProviderSt
                 // changed: profile picture is first letter of username
                 CircleAvatar(
                   radius: 28.r,
-                  backgroundColor: theme.colorScheme.tertiary,
+                  backgroundColor: theme.colorScheme.surfaceVariant,
                   child: Text(
                     (displayName != null && displayName.isNotEmpty) ? displayName[0].toUpperCase() : 'A',
-                    style: TextStyle(fontSize: 24.sp, color: theme.colorScheme.onTertiary, fontWeight: FontWeight.bold),
+                    style: TextStyle(fontSize: 24.sp, color: theme.colorScheme.onSurfaceVariant, fontWeight: FontWeight.bold),
                   ),
                 ),
                 SizedBox(width: 16.w),

@@ -78,7 +78,8 @@ class UserProfile {
 
   factory UserProfile.fromJson(Map<String, dynamic> json) {
     return UserProfile(
-      username: json['username'] as String? ?? json['email'] as String?,
+      // do not fall back to email — keep username null if backend didn't provide it
+      username: json['username'] as String?,
       score: (json['score'] as num?)?.toInt() ?? 0,
       currentStreak: (json['current_streak'] as num?)?.toInt() ?? 0,
       subscriptionLevel: (json['subscription_level'] as String?) ?? 'free',
