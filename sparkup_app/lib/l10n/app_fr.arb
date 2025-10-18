@@ -92,5 +92,27 @@
   "wrongAnswerResetStreak": "Mauvaise réponse ! Série réinitialisée.",
   "correct": "Correct",
   "errorCouldNotLoadData": "Impossible de charger les données.",
-  "topPlayers": "Meilleurs joueurs"
+  "topPlayers": "Meilleurs joueurs",
+
+  "yourName": "Votre nom",
+  "changeLanguage": "Changer la langue",
+  "memberSince": "Membre depuis",
+  "anonymous": "Anonyme",
+  "help": "Aide",
+  "failedToSaveName": "Impossible d'enregistrer le nom",
+  "saved": "Enregistré",
+  "enterValidName": "Entrez un nom valide",
+  "failedToSaveNotification": "Impossible d'enregistrer la notification",
+  "failedToSaveLanguage": "Impossible d'enregistrer la langue",
+  "failedToLoadProfile": "Échec du chargement du profil",
+  "copiedToClipboard": "Copié dans le presse-papiers",
+  "loading": "Chargement",
+  "missingKeyExample": "Traduction française",
+  "pleaseWait": "Veuillez patienter",
+  "challenge": "Défi",
+  "hintTapToReload": "Appuyez pour recharger",
+  "loadNewChallenge": "Charger un nouveau défi",
+  "challengeIntro": "Recevez de courtes missions engageantes pour stimuler vos compétences.",
+  "leaderboard": "Classement",
+  "limited": "Limité"
 }

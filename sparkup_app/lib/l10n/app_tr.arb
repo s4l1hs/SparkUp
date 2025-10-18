@@ -1,6 +1,5 @@
 {
   "@@locale": "tr",
-  
   "appName": "Spark Up",
   "appSlogan": "Günlük bilgi, meydan okuma ve sınav dozunuz.",
   "dailyFact": "Günün Bilgisi",
@@ -8,7 +7,6 @@
   "tapToLoadNewChallenge": "Yeni bir meydan okuma yüklemek için dokunun",
   "noChallengeAvailable": "Yeni meydan okuma mevcut değil.",
   "challengeCouldNotBeLoaded": "Meydan okuma yüklenemedi.",
-  
   "startNewQuiz": "Yeni Sınav Başlat",
   "quizFinished": "Sınav Bitti!",
   "yourScore": "Puanınız",
@@ -16,13 +14,11 @@
   "question": "Soru",
   "quizCouldNotStart": "Sınav başlatılamadı",
   "questionDataIsEmpty": "Sınav verisi boş.",
-
   "navMainMenu": "Konular",
   "navInfo": "Bilgi",
   "navQuiz": "Sınav",
   "navChallenge": "Meydan Okuma",
   "navSettings": "Ayarlar",
-
   "loginFailedMessage": "Giriş başarısız oldu. Lütfen ağ bağlantınızı kontrol edin ve tekrar deneyin.",
   "continueWithGoogle": "Google ile Devam Et",
   "infoNotFound": "Tercih ettiğiniz konular için bilgi bulunamadı.",
@@ -31,7 +27,6 @@
   "preferencesCouldNotBeSaved": "Tercihler kaydedilemedi.",
   "error": "Hata",
   "saving": "Kaydediliyor",
-  
   "settings": "Ayarlar",
   "general": "Genel",
   "applicationLanguage": "Uygulama Dili",
@@ -44,7 +39,6 @@
   "language": "Türkçe",
   "selectLanguage": "Dil Seçin",
   "refresh": "Yenile",
-
   "noDataFound": "Veri bulunamadı",
   "navLeaderboard": "Liderlik Tablosu",
   "deleteAccount": "Hesabı Sil",
@@ -92,5 +86,25 @@
   "wrongAnswerResetStreak": "Yanlış cevap! Seri sıfırlandı.",
   "correct": "Doğru",
   "errorCouldNotLoadData": "Veriler yüklenemedi.",
-  "topPlayers": "En İyi Oyuncular"
+  "topPlayers": "En İyi Oyuncular",
+  "yourName": "Adınız",
+  "changeLanguage": "Dili Değiştir",
+  "memberSince": "Üyelik tarihi",
+  "anonymous": "Anonim",
+  "help": "Yardım",
+  "failedToSaveName": "İsim kaydedilemedi",
+  "saved": "Kaydedildi",
+  "enterValidName": "Geçerli bir isim girin",
+  "failedToSaveNotification": "Bildirim ayarı kaydedilemedi",
+  "failedToSaveLanguage": "Dil kaydedilemedi",
+  "failedToLoadProfile": "Profil yüklenemedi",
+  "copiedToClipboard": "Panoya kopyalandı",
+  "loading": "Yükleniyor",
+  "pleaseWait": "Lütfen bekleyin",
+  "challenge": "Meydan Okuma",
+  "hintTapToReload": "Yenilemek için dokunun",
+  "loadNewChallenge": "Yeni meydan okuma yükle",
+  "challengeIntro": "Becerilerinizi geliştirecek kısa ve ilgi çekici meydan okumalar alın.",
+  "leaderboard": "Liderlik Tablosu",
+  "limited": "Sınırlı"
 }

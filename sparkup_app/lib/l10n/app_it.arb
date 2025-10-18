@@ -1,6 +1,5 @@
 {
   "@@locale": "it",
-  
   "appName": "Spark Up",
   "appSlogan": "La tua dose quotidiana di conoscenza, sfida e quiz.",
   "dailyFact": "Fatto quotidiano",
@@ -8,7 +7,6 @@
   "tapToLoadNewChallenge": "Tocca per caricare una nuova sfida",
   "noChallengeAvailable": "Nessuna nuova sfida disponibile.",
   "challengeCouldNotBeLoaded": "Impossibile caricare la sfida.",
-  
   "startNewQuiz": "Inizia nuovo Quiz",
   "quizFinished": "Quiz terminato!",
   "yourScore": "Il tuo punteggio",
@@ -16,13 +14,11 @@
   "question": "Domanda",
   "quizCouldNotStart": "Impossibile avviare il quiz",
   "questionDataIsEmpty": "I dati del quiz sono vuoti.",
-
   "navMainMenu": "Argomenti",
   "navInfo": "Fatto",
   "navQuiz": "Quiz",
   "navChallenge": "Sfida",
   "navSettings": "Impostazioni",
-
   "loginFailedMessage": "Accesso fallito. Controlla la tua rete e riprova.",
   "continueWithGoogle": "Continua con Google",
   "infoNotFound": "Nessuna conoscenza trovata per i tuoi argomenti preferiti.",
@@ -31,7 +27,6 @@
   "preferencesCouldNotBeSaved": "Impossibile salvare le preferenze.",
   "error": "Errore",
   "saving": "Salvataggio",
-  
   "settings": "Impostazioni",
   "general": "Generale",
   "applicationLanguage": "Lingua dell'applicazione",
@@ -44,7 +39,6 @@
   "language": "Italiano",
   "selectLanguage": "Seleziona lingua",
   "refresh": "Aggiorna",
-
   "noDataFound": "Nessun dato trovato",
   "navLeaderboard": "Classifica",
   "deleteAccount": "Elimina account",
@@ -92,5 +86,25 @@
   "wrongAnswerResetStreak": "Risposta sbagliata! Striscia azzerata.",
   "correct": "Corretto",
   "errorCouldNotLoadData": "Impossibile caricare i dati.",
-  "topPlayers": "Migliori giocatori"
+  "topPlayers": "Migliori giocatori",
+  "yourName": "Il tuo nome",
+  "changeLanguage": "Cambia lingua",
+  "memberSince": "Membro dal",
+  "anonymous": "Anonimo",
+  "help": "Aiuto",
+  "failedToSaveName": "Impossibile salvare il nome",
+  "saved": "Salvato",
+  "enterValidName": "Inserisci un nome valido",
+  "failedToSaveNotification": "Impossibile salvare la notifica",
+  "failedToSaveLanguage": "Impossibile salvare la lingua",
+  "failedToLoadProfile": "Impossibile caricare il profilo",
+  "copiedToClipboard": "Copiato negli appunti",
+  "loading": "Caricamento",
+  "pleaseWait": "Attendere prego",
+  "challenge": "Sfida",
+  "hintTapToReload": "Tocca per ricaricare",
+  "loadNewChallenge": "Carica nuova sfida",
+  "challengeIntro": "Ricevi brevi sfide coinvolgenti per migliorare le tue abilità.",
+  "leaderboard": "Classifica",
+  "limited": "Limitato"
 }

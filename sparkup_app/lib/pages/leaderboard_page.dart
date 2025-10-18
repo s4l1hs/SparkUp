@@ -1,5 +1,6 @@
 import 'dart:async';
 import 'dart:ui';
+import 'dart:math';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:provider/provider.dart';
@@ -21,15 +22,11 @@ class _LeaderboardPageState extends State<LeaderboardPage> with TickerProviderSt
   final ApiService _apiService = ApiService();
   UserProvider? _observedUserProvider;
 
-  // --- STATE'LER ---
   List<LeaderboardEntry> _leaderboardData = [];
   LeaderboardEntry? _currentUserEntry;
   bool _isLoading = true;
-  // kept for potential future use:
-  // Map<String, String> _allTopics = {};
   bool _hasError = false;
-  
-  // --- ANİMASYON CONTROLLER'LARI ---
+
   late final AnimationController _listAnimationController;
   late final AnimationController _backgroundController;
   late final Animation<Alignment> _backgroundAnimation1;
@@ -57,7 +54,7 @@ class _LeaderboardPageState extends State<LeaderboardPage> with TickerProviderSt
       _observedUserProvider?.addListener(_onUserProviderChanged);
     });
   }
-  
+
   @override
   void dispose() {
     _observedUserProvider?.removeListener(_onUserProviderChanged);
@@ -186,20 +183,20 @@ class _LeaderboardPageState extends State<LeaderboardPage> with TickerProviderSt
   // Rütbe anahtarını puana göre hesaplar
   String _getRankKey(int score) {
     if (score >= 10000) {
-        return 'rankMaster';
+      return 'rankMaster';
     } else if (score >= 5000) {
-        return 'rankDiamond';
+      return 'rankDiamond';
     } else if (score >= 2000) {
-        return 'rankGold';
+      return 'rankGold';
     } else if (score >= 1000) {
-        return 'rankSilver';
+      return 'rankSilver';
     } else if (score >= 500) {
-        return 'rankBronze';
+      return 'rankBronze';
     } else {
-        return 'rankIron'; // İlk defa kayıt olanlar veya 500 altı için
+      return 'rankIron';
     }
   }
-  
+
   String _maskEmail(String? email) {
     if (email == null || !email.contains('@')) return 'Anonymous';
     final parts = email.split('@');
@@ -209,8 +206,6 @@ class _LeaderboardPageState extends State<LeaderboardPage> with TickerProviderSt
     return '${name.substring(0, 2)}***@${domain.substring(0,1)}...';
   }
 
-  // new helper: display name prefers logged-in user's Firebase displayName,
-  // then backend username, falls back to masked email
   String _displayName(LeaderboardEntry entry) {
     final fbUser = FirebaseAuth.instance.currentUser;
     final fbName = fbUser?.displayName;
@@ -223,7 +218,7 @@ class _LeaderboardPageState extends State<LeaderboardPage> with TickerProviderSt
     if (entry.username != null && entry.username!.trim().isNotEmpty) return entry.username!;
     return _maskEmail(entry.email);
   }
-  
+
   // --- ANA BUILD METODU ---
   @override
   Widget build(BuildContext context) {
@@ -303,340 +298,353 @@ class _LeaderboardPageState extends State<LeaderboardPage> with TickerProviderSt
     final listDisplay = _leaderboardData.length > 10 ? _leaderboardData.sublist(10) : <LeaderboardEntry>[]; 
 
     return Scaffold(
-      backgroundColor: Colors.black,
+      backgroundColor: theme.colorScheme.background,
       body: Stack(
         children: [
-          // CANLI ARKA PLAN
+          // animated ambient background blobs for depth
           AnimatedBuilder(
             animation: _backgroundController,
             builder: (context, child) {
               return Stack(
                 children: [
-                  Positioned.fill(child: Align(alignment: _backgroundAnimation1.value, child: Container(width: 400.w, height: 400.h, decoration: BoxDecoration(shape: BoxShape.circle, color: theme.colorScheme.primary.withOpacity(0.15), boxShadow: [BoxShadow(color: theme.colorScheme.primary.withOpacity(0.1), blurRadius: 100.r, spreadRadius: 80.r)])))),
-                  Positioned.fill(child: Align(alignment: _backgroundAnimation2.value, child: Container(width: 300.w, height: 300.h, decoration: BoxDecoration(shape: BoxShape.circle, color: theme.colorScheme.tertiary.withOpacity(0.15), boxShadow: [BoxShadow(color: theme.colorScheme.tertiary.withOpacity(0.1), blurRadius: 100.r, spreadRadius: 60.r)])))),
+                  Positioned.fill(
+                    child: Align(
+                      alignment: _backgroundAnimation1.value,
+                      child: Container(
+                        width: 420.w,
+                        height: 420.h,
+                        decoration: BoxDecoration(
+                          shape: BoxShape.circle,
+                          gradient: RadialGradient(colors: [theme.colorScheme.primary.withOpacity(0.14), Colors.transparent]),
+                          boxShadow: [BoxShadow(color: theme.colorScheme.primary.withOpacity(0.06), blurRadius: 100.r, spreadRadius: 60.r)],
+                        ),
+                      ),
+                    ),
+                  ),
+                  Positioned.fill(
+                    child: Align(
+                      alignment: _backgroundAnimation2.value,
+                      child: Container(
+                        width: 320.w,
+                        height: 320.h,
+                        decoration: BoxDecoration(
+                          shape: BoxShape.circle,
+                          gradient: RadialGradient(colors: [theme.colorScheme.secondary.withOpacity(0.12), Colors.transparent]),
+                          boxShadow: [BoxShadow(color: theme.colorScheme.secondary.withOpacity(0.05), blurRadius: 100.r, spreadRadius: 40.r)],
+                        ),
+                      ),
+                    ),
+                  ),
                 ],
               );
             },
           ),
+
           SafeArea(
             child: _isLoading
                 ? Center(child: CircularProgressIndicator(color: theme.colorScheme.primary))
-                : _hasError 
-                  ? Center(child: Text("${localizations.error}: ${localizations.noDataAvailable}", style: TextStyle(color: theme.colorScheme.error)))
-                  : _leaderboardData.isEmpty && _currentUserEntry == null
-                    ? Center(child: Text(localizations.noDataAvailable, style: TextStyle(color: Colors.grey.shade400)))
-                    : CustomScrollView(
-                        slivers: [
-                          if (_currentUserEntry != null)
-                            SliverToBoxAdapter(
-                              child: Padding(
-                                padding: EdgeInsets.only(top: 8.h, right: 16.w, left: 16.w),
-                                child: Align(
-                                  alignment: Alignment.topRight,
-                                  child: Material(
-                                    color: Colors.transparent,
-                                    elevation: 2,
-                                    borderRadius: BorderRadius.circular(12.r),
-                                    child: Container(
-                                      decoration: BoxDecoration(
-                                        color: theme.colorScheme.surface.withOpacity(0.95),
-                                        borderRadius: BorderRadius.circular(12.r),
-                                      ),
-                                      padding: EdgeInsets.symmetric(horizontal: 10.w, vertical: 8.h),
-                                      child: Row(
-                                        mainAxisSize: MainAxisSize.min,
-                                        children: [
-                                          CircleAvatar(
-                                            radius: 18.r,
-                                            backgroundColor: theme.colorScheme.surfaceVariant,
-                                            child: Text(
-                                              (_displayName(_currentUserEntry!).isNotEmpty) ? _displayName(_currentUserEntry!)[0].toUpperCase() : 'A',
-                                              style: TextStyle(fontSize: 16.sp, color: theme.colorScheme.onSurfaceVariant, fontWeight: FontWeight.bold),
-                                            ),
-                                          ),
-                                          SizedBox(width: 10.w),
-                                          Column(
-                                            crossAxisAlignment: CrossAxisAlignment.start,
-                                            mainAxisSize: MainAxisSize.min,
-                                            children: [
-                                              ConstrainedBox(
-                                                constraints: BoxConstraints(maxWidth: 140.w),
-                                                child: Text(
-                                                  _displayName(_currentUserEntry!),
-                                                  style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold, fontSize: 13.sp),
-                                                  overflow: TextOverflow.ellipsis,
-                                                ),
-                                              ),
-                                              SizedBox(height: 4.h),
-                                              Row(children: [
-                                                Icon(Icons.star_rounded, color: theme.colorScheme.secondary, size: 14.sp),
-                                                SizedBox(width: 6.w),
-                                                Text("${_currentUserEntry!.score} ${localizations.points}", style: TextStyle(color: theme.colorScheme.secondary, fontSize: 13.sp, fontWeight: FontWeight.w600)),
-                                              ]),
-                                            ],
-                                          ),
-                                        ],
-                                      ),
-                                    ),
+                : _hasError
+                    ? Center(child: Text("${localizations.error}: ${localizations.noDataAvailable}", style: TextStyle(color: theme.colorScheme.error)))
+                    : _leaderboardData.isEmpty && _currentUserEntry == null
+                        ? Center(child: Text(localizations.noDataAvailable, style: TextStyle(color: Colors.grey.shade400)))
+                        : CustomScrollView(
+                            slivers: [
+                              SliverPadding(
+                                padding: EdgeInsets.symmetric(horizontal: 16.w, vertical: 12.h),
+                                sliver: SliverToBoxAdapter(
+                                  child: _HeaderRow(localizations: localizations, theme: theme, currentUser: _currentUserEntry, displayNameFn: _displayName),
+                                ),
+                              ),
+
+                              if (_leaderboardData.isNotEmpty)
+                                SliverToBoxAdapter(
+                                  child: _AnimatedListItem(
+                                    index: 0,
+                                    controller: _listAnimationController,
+                                    child: _buildPodium(context, _leaderboardData.take(3).toList(), _leaderboardData.skip(3).toList()),
+                                  ),
+                                ),
+
+                              if (_currentUserEntry != null)
+                                SliverToBoxAdapter(
+                                  child: _AnimatedListItem(index: 1, controller: _listAnimationController, child: _buildUserRankCard(theme, _currentUserEntry!, localizations)),
+                                ),
+
+                              SliverPadding(
+                                padding: EdgeInsets.symmetric(horizontal: 16.w, vertical: 8.h),
+                                sliver: SliverList(
+                                  delegate: SliverChildBuilderDelegate(
+                                    (context, index) {
+                                      final entry = listDisplay[index];
+                                      return Padding(
+                                        padding: EdgeInsets.only(bottom: 12.h),
+                                        child: _AnimatedListItem(
+                                          index: index + 2,
+                                          controller: _listAnimationController,
+                                          child: _buildLeaderboardTile(theme, entry),
+                                        ),
+                                      );
+                                    },
+                                    childCount: listDisplay.length,
                                   ),
                                 ),
                               ),
-                            )
-                          else
-                            SliverToBoxAdapter(child: SizedBox(height: 8.h)),
-                          
-                          // Podyum Kısmı
-                          if (_leaderboardData.isNotEmpty)
-                            SliverToBoxAdapter(
-                              child: _AnimatedListItem(
-                                index: 0, 
-                                controller: _listAnimationController, 
-                                child: _buildPodium(context, _leaderboardData.take(3).toList(), _leaderboardData.skip(3).toList()) 
-                              ),
-                            ),
-                            
-                          // Kullanıcının Kendi Sıralaması
-                          if (_currentUserEntry != null)
-                            SliverToBoxAdapter(
-                              child: _AnimatedListItem(
-                                index: 1,
-                                controller: _listAnimationController,
-                                child: _buildUserRankCard(theme, _currentUserEntry!, localizations),
-                              ),
-                            ),
 
-                          SliverList(
-                            delegate: SliverChildBuilderDelegate(
-                              (context, index) {
-                                final entry = listDisplay[index];
-                                return Padding(
-                                  padding: EdgeInsets.symmetric(horizontal: 16.w),
-                                  child: _AnimatedListItem(
-                                    index: index + 2, 
-                                    controller: _listAnimationController,
-                                    child: _buildLeaderboardTile(theme, entry),
-                                  ),
-                                );
-                              },
-                              childCount: listDisplay.length,
-                            ),
+                              const SliverToBoxAdapter(child: SizedBox(height: 80)),
+                            ],
                           ),
-                          
-                          // FloatingActionButton için alt boşluk
-                          const SliverToBoxAdapter(child: SizedBox(height: 80)), 
-                        ],
-                      ),
           ),
         ],
       ),
     );
   }
 
-  // --- YARDIMCI BUILD METOTLARI ---
-  
-  // Kullanıcının kendi sıralamasını gösteren özel Card
   Widget _buildUserRankCard(ThemeData theme, LeaderboardEntry entry, AppLocalizations localizations) {
-    // Rütbe anahtarını hesapla
     final String rankKey = _getRankKey(entry.score);
-    
-    // Yerelleştirilmiş rütbe adını al
-    // AppLocalizations'dan dinamik olarak metin almak için reflection benzeri bir yaklaşım kullanıyoruz.
-    // Bu, l10n tarafından oluşturulan 'tr' gibi bir metni 'rankTr' alan adına çevirir.
     String getLocalizedRank(String key) {
-        switch(key) {
-            case 'rankMaster': return localizations.rankMaster;
-            case 'rankDiamond': return localizations.rankDiamond;
-            case 'rankGold': return localizations.rankGold;
-            case 'rankSilver': return localizations.rankSilver;
-            case 'rankBronze': return localizations.rankBronze;
-            case 'rankIron': return localizations.rankIron;
-            default: return '';
-        }
+      switch (key) {
+        case 'rankMaster':
+          return localizations.rankMaster;
+        case 'rankDiamond':
+          return localizations.rankDiamond;
+        case 'rankGold':
+          return localizations.rankGold;
+        case 'rankSilver':
+          return localizations.rankSilver;
+        case 'rankBronze':
+          return localizations.rankBronze;
+        case 'rankIron':
+          return localizations.rankIron;
+        default:
+          return '';
+      }
     }
+
     final String rankName = getLocalizedRank(rankKey);
-    
-    return Card(
-      color: theme.colorScheme.surface.withOpacity(0.7),
+
+    return Container(
       margin: EdgeInsets.symmetric(horizontal: 16.w, vertical: 12.h),
-      shape: RoundedRectangleBorder(
-        borderRadius: BorderRadius.circular(12.r),
-        side: BorderSide(color: theme.colorScheme.secondary, width: 2.w),
+      padding: EdgeInsets.all(14.w),
+      decoration: BoxDecoration(
+        color: theme.colorScheme.surface.withOpacity(0.12),
+        borderRadius: BorderRadius.circular(14.r),
+        border: Border.all(color: theme.colorScheme.secondary.withOpacity(0.14)),
+        boxShadow: [BoxShadow(color: Colors.black26, blurRadius: 12.r, offset: Offset(0, 8.h))],
       ),
-      child: ListTile(
-        leading: Text("#${entry.rank}", style: TextStyle(fontSize: 16.sp, color: theme.colorScheme.secondary, fontWeight: FontWeight.bold)),
-        title: Text(localizations.yourRank, style: const TextStyle(fontWeight: FontWeight.bold, color: Colors.white)),
-        // Rütbe Adı Eklendi
-        subtitle: Row(
-          children: [
-            Text(_displayName(entry), style: TextStyle(color: Colors.grey.shade400)),
-            SizedBox(width: 8.w),
-            // Yerelleştirilmiş rütbe adını göster
-            Text("($rankName)", style: TextStyle(color: theme.colorScheme.primary, fontWeight: FontWeight.bold, fontSize: 13.sp)),
-          ],
-        ),
-        trailing: Row( mainAxisSize: MainAxisSize.min, children: [ Text(entry.score.toString(), style: TextStyle(fontSize: 16.sp, fontWeight: FontWeight.bold, color: theme.colorScheme.secondary)), SizedBox(width: 4.w), Icon(Icons.star_rounded, color: theme.colorScheme.secondary, size: 18.sp)])
+      child: Row(
+        children: [
+          _GradientAvatar(name: _displayName(entry), radius: 28.r, colors: [theme.colorScheme.secondary, theme.colorScheme.primary]),
+          SizedBox(width: 12.w),
+          Expanded(
+            child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
+              Text(localizations.yourRank, style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold)),
+              SizedBox(height: 6.h),
+              Row(children: [
+                Text(_displayName(entry), style: TextStyle(color: Colors.grey.shade200)),
+                SizedBox(width: 8.w),
+                Text("($rankName)", style: TextStyle(color: theme.colorScheme.primary, fontWeight: FontWeight.bold)),
+              ]),
+            ]),
+          ),
+          Column(
+            crossAxisAlignment: CrossAxisAlignment.end,
+            children: [
+              Row(children: [Text(entry.score.toString(), style: TextStyle(color: theme.colorScheme.secondary, fontWeight: FontWeight.bold, fontSize: 16.sp)), SizedBox(width: 6.w), Icon(Icons.star_rounded, color: theme.colorScheme.secondary, size: 18.sp)]),
+              SizedBox(height: 6.h),
+              ElevatedButton(
+                onPressed: () => _loadPageData(),
+                style: ElevatedButton.styleFrom(backgroundColor: theme.colorScheme.primary, padding: EdgeInsets.symmetric(horizontal: 12.w, vertical: 8.h)),
+                child: Text(AppLocalizations.of(context)!.refresh, style: TextStyle(fontSize: 12.sp)),
+              )
+            ],
+          )
+        ],
       ),
     );
   }
-  
-  // Liderlik tablosu List Tile 
+
   Widget _buildLeaderboardTile(ThemeData theme, LeaderboardEntry entry) {
-      return Card(
-        color: theme.cardTheme.color,
-        margin: EdgeInsets.only(bottom: 12.h),
-        child: ListTile(
-          leading: Text("#${entry.rank}", style: TextStyle(fontSize: 16.sp, color: Colors.grey.shade400, fontWeight: FontWeight.bold)),
-          title: Text(_displayName(entry), style: const TextStyle(fontWeight: FontWeight.bold, color: Colors.white)),
-          trailing: Row( mainAxisSize: MainAxisSize.min, children: [ Text(entry.score.toString(), style: TextStyle(fontSize: 16.sp, fontWeight: FontWeight.bold, color: theme.colorScheme.primary)), SizedBox(width: 4.w), Icon(Icons.star_rounded, color: theme.colorScheme.secondary, size: 18.sp)])
-        ),
-      );
+    return Container(
+      padding: EdgeInsets.symmetric(horizontal: 12.w, vertical: 10.h),
+      decoration: BoxDecoration(
+        color: theme.colorScheme.surface.withOpacity(0.06),
+        borderRadius: BorderRadius.circular(12.r),
+        border: Border.all(color: Colors.white12),
+      ),
+      child: Row(
+        children: [
+          SizedBox(width: 44.w, child: Text("#${entry.rank}", style: TextStyle(fontSize: 14.sp, color: Colors.grey.shade300, fontWeight: FontWeight.bold))),
+          _GradientAvatar(name: _displayName(entry), radius: 20.r, colors: [theme.colorScheme.primary, theme.colorScheme.secondary]),
+          SizedBox(width: 12.w),
+          Expanded(child: Text(_displayName(entry), style: TextStyle(fontWeight: FontWeight.w700, color: Colors.white), overflow: TextOverflow.ellipsis)),
+          SizedBox(width: 8.w),
+          Row(children: [Text(entry.score.toString(), style: TextStyle(fontSize: 14.sp, color: theme.colorScheme.primary, fontWeight: FontWeight.bold)), SizedBox(width: 6.w), Icon(Icons.star_rounded, color: theme.colorScheme.secondary, size: 16.sp)]),
+        ],
+      ),
+    );
   }
 
   Widget _buildPodium(BuildContext context, List<LeaderboardEntry> topEntries, List<LeaderboardEntry> bestPlayers) {
     final theme = Theme.of(context);
     final localizations = AppLocalizations.of(context)!;
 
-    // Ensure exactly 3 slots for podium display
     final List<LeaderboardEntry?> podium = List.generate(3, (index) => index < topEntries.length ? topEntries[index] : null);
 
-    // Podium row (three columns)
-    final podiumRow = Row(
-      crossAxisAlignment: CrossAxisAlignment.end,
-      children: [
-        // 2nd place (silver)
-        Expanded(
-          child: podium[1] != null
-              ? _buildPodiumPlace(context, podium[1]!, theme, height: 120.h, color: const Color(0xFFC0C0C0))
-              : _buildEmptyPodium(120.h, Colors.grey.shade700),
-        ),
-        // 1st place (gold) - trophy icon removed
-        Expanded(
-          child: podium[0] != null
-              ? _buildPodiumPlace(context, podium[0]!, theme, height: 150.h, isFirst: true, color: const Color(0xFFFFD700))
-              : _buildEmptyPodium(150.h, Colors.grey.shade700),
-        ),
-        // 3rd place (copper)
-        Expanded(
-          child: podium[2] != null
-              ? _buildPodiumPlace(context, podium[2]!, theme, height: 100.h, color: const Color(0xFFB87333))
-              : _buildEmptyPodium(100.h, Colors.grey.shade700),
-        ),
-      ],
-    );
-
-    // Best players table (fixed 4..10) full-width under podium — increased padding/size
-    final dashboardCard = Card(
-      color: theme.colorScheme.surface.withOpacity(0.95),
-      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10.r)),
-      child: Padding(
-        padding: EdgeInsets.symmetric(vertical: 13.h, horizontal: 13.w), // slightly larger padding
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.stretch,
-          children: [
-            Text(
-              localizations.topPlayers,
-              textAlign: TextAlign.center,
-              style: theme.textTheme.titleSmall?.copyWith(fontSize: 16.sp, color: Colors.white, fontWeight: FontWeight.bold),
-            ),
-            SizedBox(height: 8.h),
-            Divider(color: Colors.white12, thickness: 1),
-            SizedBox(height: 12.h),
-            // fixed rows for ranks 4..10 (7 rows) with increased font sizes
-            for (var i = 0; i < 7; i++)
-              Padding(
-                padding: EdgeInsets.symmetric(vertical: 8.h),
-                child: Builder(builder: (context) {
-                  final entry = i < bestPlayers.length ? bestPlayers[i] : null;
-                  final rank = 4 + i;
-                  final name = entry != null ? _displayName(entry) : "-";
-                  final scoreText = entry != null ? "${entry.score}" : "-";
-                  return Row(
-                    children: [
-                      Container(
-                        width: 36.w,
-                        alignment: Alignment.center,
-                        child: Text("#$rank", style: TextStyle(color: Colors.grey.shade300, fontWeight: FontWeight.bold, fontSize: 14.sp)),
-                      ),
-                      SizedBox(width: 12.w),
-                      Expanded(
-                        child: Text(name, style: TextStyle(color: Colors.white, fontWeight: FontWeight.w600, fontSize: 15.sp), overflow: TextOverflow.ellipsis),
-                      ),
-                      SizedBox(width: 12.w),
-                      Text(scoreText, style: TextStyle(color: theme.colorScheme.primary, fontWeight: FontWeight.bold, fontSize: 15.sp)),
-                      SizedBox(width: 8.w),
-                      Icon(Icons.star_rounded, color: theme.colorScheme.secondary, size: 14.sp),
-                    ],
-                  );
-                }),
-              ),
-          ],
-        ),
-      ),
-    );
-
     return Padding(
-      padding: EdgeInsets.only(left: 16.w, right: 16.w, bottom: 28.h, top: 6.h), // small top space inside block
+      padding: EdgeInsets.only(left: 12.w, right: 12.w, bottom: 20.h),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [
-          podiumRow,
-          SizedBox(height: 18.h), // push dashboard a bit further down from podium
-          dashboardCard,
+          // Stylized podium with 3D feeling
+          Container(
+            padding: EdgeInsets.symmetric(vertical: 14.h, horizontal: 12.w),
+            decoration: BoxDecoration(
+              gradient: LinearGradient(colors: [theme.colorScheme.surface.withOpacity(0.08), Colors.black.withOpacity(0.06)]),
+              borderRadius: BorderRadius.circular(16.r),
+              boxShadow: [BoxShadow(color: Colors.black45, blurRadius: 22.r, offset: Offset(0, 10.h))],
+              border: Border.all(color: Colors.white12),
+            ),
+            child: Row(
+              crossAxisAlignment: CrossAxisAlignment.end,
+              children: [
+                Expanded(child: _PodiumBlock(entry: podium[1], height: 120.h, color: const Color(0xFFC0C0C0), place: 2, displayNameFn: _displayName)),
+                Expanded(child: _PodiumBlock(entry: podium[0], height: 160.h, color: const Color(0xFFFFD700), place: 1, isChampion: true, displayNameFn: _displayName)),
+                Expanded(child: _PodiumBlock(entry: podium[2], height: 100.h, color: const Color(0xFFB87333), place: 3, displayNameFn: _displayName)),
+              ],
+            ),
+          ),
+          SizedBox(height: 18.h),
+
+          // Top players dashboard (4..10)
+          Card(
+            color: theme.colorScheme.surface.withOpacity(0.95),
+            shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12.r)),
+            child: Padding(
+              padding: EdgeInsets.symmetric(vertical: 12.h, horizontal: 12.w),
+              child: Column(
+                children: [
+                  Text(localizations.topPlayers, style: TextStyle(fontSize: 16.sp, color: Colors.white, fontWeight: FontWeight.bold)),
+                  SizedBox(height: 10.h),
+                  Divider(color: Colors.white12),
+                  SizedBox(height: 10.h),
+                  for (var i = 0; i < 7; i++)
+                    Padding(
+                      padding: EdgeInsets.symmetric(vertical: 8.h),
+                      child: Builder(builder: (context) {
+                        final entry = i < bestPlayers.length ? bestPlayers[i] : null;
+                        final rank = 4 + i;
+                        final name = entry != null ? _displayName(entry) : "-";
+                        final scoreText = entry != null ? "${entry.score}" : "-";
+                        return Row(
+                          children: [
+                            SizedBox(width: 36.w, child: Text("#$rank", style: TextStyle(color: Colors.grey.shade300, fontWeight: FontWeight.bold))),
+                            SizedBox(width: 8.w),
+                            Expanded(child: Text(name, style: TextStyle(color: Colors.white, fontWeight: FontWeight.w700), overflow: TextOverflow.ellipsis)),
+                            SizedBox(width: 8.w),
+                            Text(scoreText, style: TextStyle(color: theme.colorScheme.primary, fontWeight: FontWeight.bold)),
+                            SizedBox(width: 8.w),
+                            Icon(Icons.star_rounded, color: theme.colorScheme.secondary, size: 14.sp),
+                          ],
+                        );
+                      }),
+                    ),
+                ],
+              ),
+            ),
+          ),
         ],
       ),
     );
   }
-
-  Widget _buildPodiumPlace(BuildContext context, LeaderboardEntry entry, ThemeData theme, {required double height, bool isFirst = false, required Color color}) {
-    return Column(
-      children: [
-        if (isFirst) Icon(Icons.emoji_events_rounded, color: Colors.amber, size: 32.sp),
-        SizedBox(height: isFirst ? 8.h : 12.h),
-        Text("#${entry.rank}", style: TextStyle(fontSize: 18.sp, color: isFirst ? Colors.amber : Colors.white, fontWeight: FontWeight.bold)),
-        SizedBox(height: 4.h),
-        Text(_displayName(entry), style: TextStyle(fontSize: 13.sp, color: Colors.grey.shade300), overflow: TextOverflow.ellipsis),
-        SizedBox(height: 8.h),
-        Container(
-          height: height,
-          margin: EdgeInsets.symmetric(horizontal: 4.w),
-          decoration: BoxDecoration(
-            color: color.withOpacity(0.3),
-            borderRadius: BorderRadius.vertical(top: Radius.circular(12.r)),
-            border: Border.all(color: color, width: 2),
-          ),
-          child: Center(child: Text(entry.score.toString(), style: TextStyle(fontSize: 22.sp, color: Colors.white, fontWeight: FontWeight.bold))),
-        ),
-      ],
-    );
-  }
-
-  Widget _buildEmptyPodium(double height, Color color) {
-    return Column(
-      children: [
-        SizedBox(height: 32.sp + 12.h + 4.h), // Icon + Text space
-        Text("-", style: TextStyle(fontSize: 18.sp, color: color, fontWeight: FontWeight.bold)),
-        SizedBox(height: 4.h),
-        Text("---", style: TextStyle(fontSize: 13.sp, color: color)),
-        SizedBox(height: 8.h),
-        Container(
-          height: height,
-          margin: EdgeInsets.symmetric(horizontal: 4.w),
-          decoration: BoxDecoration(
-            color: color.withOpacity(0.1),
-            borderRadius: BorderRadius.vertical(top: Radius.circular(12.r)),
-            border: Border.all(color: color.withOpacity(0.5), width: 1),
-          ),
-          child: Center(child: Text("0", style: TextStyle(fontSize: 22.sp, color: color, fontWeight: FontWeight.bold))),
-        ),
-      ],
-    );
-  }
-
-
-  // topic selection removed
 }
 
-// Kademeli liste animasyonu için yardımcı widget
+// small reusable gradient avatar used inside this file
+class _GradientAvatar extends StatelessWidget {
+  final String name;
+  final double radius;
+  final List<Color> colors;
+  const _GradientAvatar({required this.name, required this.radius, required this.colors});
+
+  @override
+  Widget build(BuildContext context) {
+    final initials = (name.isNotEmpty) ? name.trim()[0].toUpperCase() : 'A';
+    return Container(
+      width: radius * 2,
+      height: radius * 2,
+      decoration: BoxDecoration(
+        shape: BoxShape.circle,
+        gradient: LinearGradient(colors: colors),
+        boxShadow: [BoxShadow(color: Colors.black26, blurRadius: 8.r, offset: Offset(0, 4.h))],
+      ),
+      alignment: Alignment.center,
+      child: Text(initials, style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold, fontSize: radius * 0.8.sp)),
+    );
+  }
+}
+
+// Podium block widget for clearer structure
+class _PodiumBlock extends StatelessWidget {
+  final LeaderboardEntry? entry;
+  final double height;
+  final Color color;
+  final int place;
+  final bool isChampion;
+  final String Function(LeaderboardEntry) displayNameFn;
+
+  const _PodiumBlock({this.entry, required this.height, required this.color, required this.place, this.isChampion = false, required this.displayNameFn});
+
+  @override
+  Widget build(BuildContext context) {
+    final display = entry != null ? displayNameFn(entry!) : "-";
+    final score = entry != null ? entry!.score.toString() : "0";
+
+    return Padding(
+      padding: EdgeInsets.symmetric(horizontal: 6.w),
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.end,
+        children: [
+          if (isChampion)
+            Transform.translate(offset: Offset(0, -12.h), child: Icon(Icons.emoji_events_rounded, color: Colors.amber, size: 28.sp)),
+          Container(
+            padding: EdgeInsets.symmetric(vertical: 8.h, horizontal: 8.w),
+            decoration: BoxDecoration(
+              color: color.withOpacity(0.06),
+              borderRadius: BorderRadius.vertical(top: Radius.circular(12.r)),
+              border: Border.all(color: color.withOpacity(0.9), width: 1.5),
+              boxShadow: [BoxShadow(color: Colors.black38, blurRadius: 10.r, offset: Offset(0, 8.h))],
+            ),
+            child: Column(
+              children: [
+                _GradientAvatar(name: display, radius: isChampion ? 32.r : 26.r, colors: [color, color.withOpacity(0.6)]),
+                SizedBox(height: 8.h),
+                ConstrainedBox(
+                  constraints: BoxConstraints(maxWidth: 120.w),
+                  child: Text(display, style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold), overflow: TextOverflow.ellipsis, textAlign: TextAlign.center),
+                ),
+                SizedBox(height: 8.h),
+                Container(
+                  height: height,
+                  width: double.infinity,
+                  alignment: Alignment.center,
+                  decoration: BoxDecoration(
+                    gradient: LinearGradient(colors: [color.withOpacity(0.9), color.withOpacity(0.35)]),
+                    borderRadius: BorderRadius.vertical(top: Radius.circular(12.r)),
+                    boxShadow: [BoxShadow(color: Colors.black54, blurRadius: 8.r, offset: Offset(0, 6.h))],
+                  ),
+                  child: Text(score, style: TextStyle(fontSize: 20.sp, color: Colors.white, fontWeight: FontWeight.bold)),
+                ),
+                SizedBox(height: 6.h),
+                Text("#$place", style: TextStyle(color: Colors.white70, fontWeight: FontWeight.w700)),
+              ],
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+}
+
+// Animated list item helper (unchanged except timings)
 class _AnimatedListItem extends StatelessWidget {
   final int index;
   final AnimationController controller;
@@ -646,17 +654,47 @@ class _AnimatedListItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final intervalStart = (index * 0.1).clamp(0.0, 1.0);
+    final intervalStart = (index * 0.08).clamp(0.0, 1.0);
     final intervalEnd = (intervalStart + 0.5).clamp(0.0, 1.0);
-    
+
     final animation = CurvedAnimation(parent: controller, curve: Interval(intervalStart, intervalEnd, curve: Curves.easeOut));
-    
+
     return FadeTransition(
       opacity: animation,
       child: SlideTransition(
-        position: Tween<Offset>(begin: const Offset(0, 0.5), end: Offset.zero).animate(animation),
+        position: Tween<Offset>(begin: const Offset(0, 0.4), end: Offset.zero).animate(animation),
         child: child,
       ),
+    );
+  }
+}
+
+// Small header row with title and optional current user summary
+class _HeaderRow extends StatelessWidget {
+  final AppLocalizations localizations;
+  final ThemeData theme;
+  final LeaderboardEntry? currentUser;
+  final String Function(LeaderboardEntry) displayNameFn;
+
+  const _HeaderRow({required this.localizations, required this.theme, this.currentUser, required this.displayNameFn});
+
+  @override
+  Widget build(BuildContext context) {
+    return Row(
+      children: [
+        Expanded(child: Text(localizations.leaderboard, style: TextStyle(fontSize: 22.sp, fontWeight: FontWeight.bold, color: Colors.white))),
+        if (currentUser != null)
+          Row(
+            children: [
+              _GradientAvatar(name: displayNameFn(currentUser!), radius: 18.r, colors: [theme.colorScheme.secondary, theme.colorScheme.primary]),
+              SizedBox(width: 8.w),
+              Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
+                Text(displayNameFn(currentUser!), style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold)),
+                Text("${currentUser!.score} ${localizations.points}", style: TextStyle(color: theme.colorScheme.secondary, fontSize: 12.sp)),
+              ])
+            ],
+          )
+      ],
     );
   }
 }

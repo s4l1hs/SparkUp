@@ -1,6 +1,8 @@
 // lib/main_screen.dart
 
+import 'dart:math' as math;
 import 'dart:ui';
+import 'dart:math';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'l10n/app_localizations.dart';
@@ -18,16 +20,15 @@ class MainScreen extends StatefulWidget {
   State<MainScreen> createState() => MainScreenState();
 }
 
-class MainScreenState extends State<MainScreen> {
+class MainScreenState extends State<MainScreen> with TickerProviderStateMixin {
   int _selectedIndex = 0;
-  late final List<Widget> _pages; // Sayfalar artık burada tutulacak
+  late final List<Widget> _pages; // pages are retained in memory
   late List<Map<String, dynamic>> _navItems;
+  late AnimationController _bounceController;
 
   @override
   void initState() {
     super.initState();
-    // DÜZELTME: Sayfalar initState içinde SADECE BİR KERE oluşturulur.
-    // Bu, durumlarının (state) korunmasını sağlar.
     _pages = <Widget>[
       LeaderboardPage(idToken: widget.idToken),
       SubscriptionPage(idToken: widget.idToken),
@@ -35,6 +36,13 @@ class MainScreenState extends State<MainScreen> {
       ChallengePage(idToken: widget.idToken),
       const SettingsPage(),
     ];
+    _bounceController = AnimationController(vsync: this, duration: const Duration(milliseconds: 420));
+  }
+
+  @override
+  void dispose() {
+    _bounceController.dispose();
+    super.dispose();
   }
 
   @override
@@ -42,29 +50,48 @@ class MainScreenState extends State<MainScreen> {
     super.didChangeDependencies();
     final localizations = AppLocalizations.of(context)!;
     _navItems = [
-      {'icon': Icons.leaderboard_outlined, 'label': localizations.navMainMenu},
-      {'icon': Icons.subscriptions, 'label': localizations.subscriptions}, // daha uygun simge
-      {'icon': Icons.quiz_outlined, 'label': localizations.navQuiz},
-      {'icon': Icons.whatshot_outlined, 'label': localizations.navChallenge},
-      {'icon': Icons.settings_outlined, 'label': localizations.navSettings},
+      {'icon': Icons.leaderboard_outlined, 'label': localizations.navMainMenu, 'color': Colors.indigo},
+      {'icon': Icons.subscriptions, 'label': localizations.subscriptions, 'color': Colors.teal},
+      {'icon': Icons.quiz_outlined, 'label': localizations.navQuiz, 'color': Colors.deepOrange},
+      {'icon': Icons.whatshot_outlined, 'label': localizations.navChallenge, 'color': Colors.amber},
+      {'icon': Icons.settings_outlined, 'label': localizations.navSettings, 'color': Colors.grey},
     ];
   }
 
   void onItemTapped(int index) {
     setState(() {
       _selectedIndex = index;
+      _bounceController.forward(from: 0);
     });
   }
 
   @override
   Widget build(BuildContext context) {
+    final screenW = MediaQuery.of(context).size.width;
     return Scaffold(
-      body: IndexedStack(
-        // DÜZELTME: AnimatedSwitcher yerine IndexedStack kullanılıyor.
-        // Bu widget, tüm sayfaları bellekte canlı tutar ve sadece seçili olanı gösterir.
-        // Böylece sayfaların durumu (örneğin Quiz'deki mevcut soru) kaybolmaz.
-        index: _selectedIndex,
-        children: _pages,
+      // immersive background gradient that blends with nav styling
+      extendBody: true,
+      body: Stack(
+        children: [
+          IndexedStack(index: _selectedIndex, children: _pages),
+          // small subtle top-right decorative gradient blob
+          Positioned(
+            // limit negative offset and blob size so it never paints far outside on small screens
+            right: -min(60.w, screenW * 0.08),
+            top: -min(60.h, MediaQuery.of(context).size.height * 0.08),
+            child: Transform.rotate(
+              angle: -0.5,
+              child: Container(
+                width: min(200.w, screenW * 0.45),
+                height: min(200.w, screenW * 0.45),
+                decoration: BoxDecoration(
+                  gradient: RadialGradient(colors: [Theme.of(context).colorScheme.primary.withOpacity(0.12), Colors.transparent]),
+                  shape: BoxShape.circle,
+                ),
+              ),
+            ),
+          ),
+        ],
       ),
       bottomNavigationBar: _buildCustomBottomNav(),
     );
@@ -73,83 +100,143 @@ class MainScreenState extends State<MainScreen> {
   Widget _buildCustomBottomNav() {
     final theme = Theme.of(context);
     final viewPadding = MediaQuery.of(context).viewPadding;
-    final double bottomPadding = viewPadding.bottom > 0 ? viewPadding.bottom : 16.h;
+    final double bottomPadding = viewPadding.bottom > 0 ? viewPadding.bottom : 12.h;
 
     Color getSelectedColor(int index) {
-      switch (index) {
-        case 0: return theme.colorScheme.primary;
-        case 1: return Colors.teal.shade600; 
-        case 2: return theme.colorScheme.tertiary;
-        case 3: return theme.colorScheme.secondary;
-        case 4: return Colors.grey.shade400;
-        default: return theme.colorScheme.primary;
-      }
+      final c = _navItems[index]['color'];
+      if (c is Color) return c;
+      return theme.colorScheme.primary;
     }
 
-    final Color currentSelectedColor = getSelectedColor(_selectedIndex);
+    final currentColor = getSelectedColor(_selectedIndex);
 
-    return ClipRRect(
-      child: BackdropFilter(
-        filter: ImageFilter.blur(sigmaX: 10.0, sigmaY: 10.0),
-        child: Container(
-          height: 65.h + bottomPadding,
-          padding: EdgeInsets.only(bottom: bottomPadding, left: 16.w, right: 16.w),
-          decoration: BoxDecoration(
-            color: theme.bottomNavigationBarTheme.backgroundColor!.withOpacity(0.85),
-            border: Border(top: BorderSide(color: Colors.white.withOpacity(0.1))),
-          ),
-          child: Stack(
-            alignment: Alignment.center, 
-            children: [
-              AnimatedPositioned(
-                duration: const Duration(milliseconds: 300),
-                curve: Curves.easeOut,
-                top: ((65.h - 60.h) / 2) + 4.h,
-                left: (MediaQuery.of(context).size.width - 32.w) / _navItems.length * _selectedIndex,
-                width: (MediaQuery.of(context).size.width - 32.w) / _navItems.length,
-                child: Center(
-                  child: AnimatedContainer(
-                    duration: const Duration(milliseconds: 200),
-                    width: 60.w, 
-                    height: 60.h,
-                    decoration: BoxDecoration(
-                      color: currentSelectedColor.withOpacity(0.2), 
-                      borderRadius: BorderRadius.circular(12.r), 
-                    ),
+    // Use LayoutBuilder to compute exact available width to avoid overflow
+    return SafeArea(
+      bottom: true,
+      child: Padding(
+        padding: EdgeInsets.only(left: 12.w, right: 12.w, bottom: 6.h),
+        child: LayoutBuilder(builder: (context, constraints) {
+          final totalWidth = constraints.maxWidth;
+          final itemCount = _navItems.length;
+          final itemWidth = (totalWidth) / itemCount;
+          final leftPaddingForHighlight = 4.w; // inside container offset used for AnimatedPositioned
+
+          // ensure highlight left does not overflow
+          double highlightLeft = leftPaddingForHighlight + (_selectedIndex * itemWidth);
+          highlightLeft = highlightLeft.clamp(0.0, (totalWidth - itemWidth).clamp(0.0, totalWidth));
+
+          // reduce highlight width a bit to avoid edge overflows on very small screens
+          final double highlightWidth = (itemWidth * 0.82).clamp(56.0, (itemWidth - 8.0).clamp(56.0, totalWidth));
+
+          return ClipRRect(
+            borderRadius: BorderRadius.circular(24.r),
+            clipBehavior: Clip.hardEdge,
+            child: BackdropFilter(
+              filter: ImageFilter.blur(sigmaX: 12.0, sigmaY: 12.0),
+              child: Container(
+                // further reduce height by a few px to avoid tiny bottom overflow
+                height: 100.h + bottomPadding,
+                padding: EdgeInsets.only(bottom: bottomPadding, top: 6.h),
+                decoration: BoxDecoration(
+                  gradient: LinearGradient(
+                    colors: [theme.colorScheme.surface.withOpacity(0.10), theme.colorScheme.surface.withOpacity(0.02)],
+                    begin: Alignment.topCenter,
+                    end: Alignment.bottomCenter,
                   ),
+                  borderRadius: BorderRadius.circular(24.r),
+                  // reduce shadow offset so it doesn't contribute to visual overflow
+                  boxShadow: [BoxShadow(color: Colors.black38, blurRadius: 16.r, offset: Offset(0, 6.h))],
+                  border: Border.all(color: Colors.white.withOpacity(0.04)),
                 ),
-              ),
-              
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceAround,
-                children: _navItems.asMap().entries.map((entry) {
-                  final index = entry.key;
-                  final item = entry.value;
-                  final isSelected = _selectedIndex == index;
-                  final Color itemColor = isSelected ? getSelectedColor(index) : theme.bottomNavigationBarTheme.unselectedItemColor!;
-
-                  return Expanded(
-                    child: GestureDetector(
-                      onTap: () => onItemTapped(index),
-                      behavior: HitTestBehavior.opaque,
-                      child: Column(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          AnimatedScale(
-                            duration: const Duration(milliseconds: 300),
-                            curve: Curves.easeOut,
-                            scale: isSelected ? 1.3 : 1.0, 
-                            child: Icon(item['icon'] as IconData, size: 32.sp, color: itemColor),
+                child: Stack(
+                  alignment: Alignment.center,
+                  children: [
+                    // floating highlighted pill behind selected icon
+                    AnimatedPositioned(
+                      duration: const Duration(milliseconds: 380),
+                      curve: Curves.easeOutCubic,
+                      // center highlight under the selected item and use highlightWidth
+                      left: math.max(0.0, (highlightLeft + (itemWidth - highlightWidth) / 2).clamp(0.0, totalWidth - highlightWidth)),
+                      top: 2.h,
+                      width: highlightWidth,
+                      height: 62.h,
+                      child: Center(
+                        child: AnimatedContainer(
+                          duration: const Duration(milliseconds: 380),
+                          curve: Curves.easeOutCubic,
+                          width: highlightWidth,
+                          height: 56.h,
+                          decoration: BoxDecoration(
+                            gradient: LinearGradient(
+                              colors: [currentColor.withOpacity(0.18), currentColor.withOpacity(0.06)],
+                              begin: Alignment.topLeft,
+                              end: Alignment.bottomRight,
+                            ),
+                            borderRadius: BorderRadius.circular(14.r),
+                            boxShadow: [BoxShadow(color: currentColor.withOpacity(0.12), blurRadius: 18.r, offset: Offset(0, 10.h))],
+                            border: Border.all(color: currentColor.withOpacity(0.08)),
                           ),
-                        ],
+                        ),
                       ),
                     ),
-                  );
-                }).toList(),
+
+                    // nav items row - use Expanded + FittedBox to avoid overflow
+                    Row(
+                      children: _navItems.asMap().entries.map((entry) {
+                        final index = entry.key;
+                        final item = entry.value;
+                        final isSelected = _selectedIndex == index;
+                        final Color itemColor = isSelected ? getSelectedColor(index) : theme.iconTheme.color!.withOpacity(0.7);
+
+                        return Expanded(
+                          child: GestureDetector(
+                            onTap: () => onItemTapped(index),
+                            behavior: HitTestBehavior.opaque,
+                            child: Column(
+                              mainAxisSize: MainAxisSize.min,
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: [
+                                ScaleTransition(
+                                  scale: Tween<double>(begin: 1.0, end: 1.12).animate(CurvedAnimation(parent: _bounceController, curve: Curves.elasticOut)),
+                                  child: AnimatedContainer(
+                                    duration: const Duration(milliseconds: 260),
+                                    curve: Curves.easeOut,
+                                    padding: EdgeInsets.all(isSelected ? 6.w : 8.w),
+                                    decoration: BoxDecoration(
+                                      shape: BoxShape.circle,
+                                      color: isSelected ? itemColor.withOpacity(0.06) : Colors.transparent,
+                                    ),
+                                    child: Icon(item['icon'] as IconData, size: isSelected ? 30.sp : 26.sp, color: itemColor),
+                                  ),
+                                ),
+                                SizedBox(height: 6.h),
+                                AnimatedDefaultTextStyle(
+                                  duration: const Duration(milliseconds: 260),
+                                  style: TextStyle(
+                                    fontSize: isSelected ? 12.sp : 10.sp,
+                                    color: isSelected ? itemColor : Colors.white70,
+                                    fontWeight: isSelected ? FontWeight.w700 : FontWeight.w500,
+                                  ),
+                                  child: FittedBox(
+                                    fit: BoxFit.scaleDown,
+                                    child: SizedBox(
+                                      width: itemWidth - 6.w,
+                                      child: Text(item['label'] as String, maxLines: 1, overflow: TextOverflow.ellipsis, textAlign: TextAlign.center),
+                                    ),
+                                  ),
+                                ),
+                              ],
+                            ),
+                          ),
+                        );
+                      }).toList(),
+                    ),
+                  ],
+                ),
               ),
-            ],
-          ),
-        ),
+            ),
+          );
+        }),
       ),
     );
   }

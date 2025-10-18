@@ -271,4 +271,65 @@ class AppLocalizationsHi extends AppLocalizations {
 
   @override
   String get topPlayers => 'शीर्ष खिलाड़ी';
+
+  @override
+  String get yourName => 'आपका नाम';
+
+  @override
+  String get changeLanguage => 'भाषा बदलें';
+
+  @override
+  String get memberSince => 'सदस्यता से';
+
+  @override
+  String get anonymous => 'गुमनाम';
+
+  @override
+  String get help => 'मदद';
+
+  @override
+  String get failedToSaveName => 'नाम सहेजा नहीं जा सका';
+
+  @override
+  String get saved => 'सहेजा गया';
+
+  @override
+  String get enterValidName => 'मान्य नाम दर्ज करें';
+
+  @override
+  String get failedToSaveNotification => 'सूचना सेटिंग सहेजी नहीं जा सकी';
+
+  @override
+  String get failedToSaveLanguage => 'भाषा सहेजी नहीं जा सकी';
+
+  @override
+  String get failedToLoadProfile => 'प्रोफ़ाइल लोड नहीं हो सकी';
+
+  @override
+  String get copiedToClipboard => 'क्लिपबोर्ड पर कॉपी किया गया';
+
+  @override
+  String get loading => 'लोड हो रहा है';
+
+  @override
+  String get pleaseWait => 'कृपया प्रतीक्षा करें';
+
+  @override
+  String get challenge => 'चुनौती';
+
+  @override
+  String get hintTapToReload => 'रिलोड करने के लिए टैप करें';
+
+  @override
+  String get loadNewChallenge => 'नई चुनौती लोड करें';
+
+  @override
+  String get challengeIntro =>
+      'अपनी क्षमताओं बढ़ाने के लिए छोटे रुचिकर चुनौतियाँ प्राप्त करें।';
+
+  @override
+  String get leaderboard => 'लीडरबोर्ड';
+
+  @override
+  String get limited => 'सीमित';
 }

@@ -93,5 +93,26 @@
   "wrongAnswerResetStreak": "Wrong answer! Streak reset.",
   "correct": "Correct",
   "errorCouldNotLoadData": "Could not load data.",
-  "topPlayers": "Top Players"
+  "topPlayers": "Top Players",
+
+  "yourName": "Your name",
+  "changeLanguage": "Change Language",
+  "memberSince": "Member since",
+  "anonymous": "Anonymous",
+  "help": "Help",
+  "failedToSaveName": "Failed to save name",
+  "saved": "Saved",
+  "enterValidName": "Enter a valid name",
+  "failedToSaveNotification": "Failed to save notification setting",
+  "failedToSaveLanguage": "Failed to save language",
+  "failedToLoadProfile": "Failed to load profile",
+  "copiedToClipboard": "Copied to clipboard",
+  "loading": "Loading",
+  "pleaseWait": "Please wait",
+  "challenge": "Challenge",
+  "hintTapToReload": "Tap to reload",
+  "loadNewChallenge": "Load new challenge",
+  "challengeIntro": "Get short, engaging creative challenges to boost your skills.",
+  "leaderboard": "Leaderboard",
+  "limited": "Limited"
 }

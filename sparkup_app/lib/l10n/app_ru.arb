@@ -1,6 +1,5 @@
 {
   "@@locale": "ru",
-  
   "appName": "Spark Up",
   "appSlogan": "Ваша ежедневная доза знаний, вызовов и викторин.",
   "dailyFact": "Ежедневный факт",
@@ -8,7 +7,6 @@
   "tapToLoadNewChallenge": "Нажмите, чтобы загрузить новый вызов",
   "noChallengeAvailable": "Новый вызов недоступен.",
   "challengeCouldNotBeLoaded": "Не удалось загрузить вызов.",
-  
   "startNewQuiz": "Начать новую викторину",
   "quizFinished": "Викторина завершена!",
   "yourScore": "Ваш счет",
@@ -16,13 +14,11 @@
   "question": "Вопрос",
   "quizCouldNotStart": "Не удалось запустить викторину",
   "questionDataIsEmpty": "Данные викторины пусты.",
-
   "navMainMenu": "Темы",
   "navInfo": "Факт",
   "navQuiz": "Викторина",
   "navChallenge": "Вызов",
   "navSettings": "Настройки",
-
   "loginFailedMessage": "Сбой входа. Пожалуйста, проверьте свою сеть и повторите попытку.",
   "continueWithGoogle": "Продолжить с Google",
   "infoNotFound": "Знания по выбранным темам не найдены.",
@@ -31,7 +27,6 @@
   "preferencesCouldNotBeSaved": "Не удалось сохранить настройки.",
   "error": "Ошибка",
   "saving": "Сохранение",
-  
   "settings": "Настройки",
   "general": "Общие",
   "applicationLanguage": "Язык приложения",
@@ -44,7 +39,6 @@
   "language": "Русский",
   "selectLanguage": "Выберите язык",
   "refresh": "Обновить",
-
   "noDataFound": "Данные не найдены",
   "navLeaderboard": "Таблица лидеров",
   "deleteAccount": "Удалить аккаунт",
@@ -92,5 +86,25 @@
   "wrongAnswerResetStreak": "Неверный ответ! Серия сброшена.",
   "correct": "Верно",
   "errorCouldNotLoadData": "Не удалось загрузить данные.",
-  "topPlayers": "Лучшие игроки"
+  "topPlayers": "Лучшие игроки",
+  "yourName": "Ваше имя",
+  "changeLanguage": "Сменить язык",
+  "memberSince": "Участник с",
+  "anonymous": "Аноним",
+  "help": "Помощь",
+  "failedToSaveName": "Не удалось сохранить имя",
+  "saved": "Сохранено",
+  "enterValidName": "Введите действительное имя",
+  "failedToSaveNotification": "Не удалось сохранить уведомление",
+  "failedToSaveLanguage": "Не удалось сохранить язык",
+  "failedToLoadProfile": "Не удалось загрузить профиль",
+  "copiedToClipboard": "Скопировано в буфер",
+  "loading": "Загрузка",
+  "pleaseWait": "Пожалуйста, подождите",
+  "challenge": "Вызов",
+  "hintTapToReload": "Нажмите, чтобы перезагрузить",
+  "loadNewChallenge": "Загрузить новый вызов",
+  "challengeIntro": "Получайте короткие, увлекательные вызовы для прокачки навыков.",
+  "leaderboard": "Таблица лидеров",
+  "limited": "Ограничено"
 }

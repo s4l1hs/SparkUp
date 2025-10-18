@@ -271,4 +271,65 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get topPlayers => 'Top Players';
+
+  @override
+  String get yourName => 'Your name';
+
+  @override
+  String get changeLanguage => 'Change Language';
+
+  @override
+  String get memberSince => 'Member since';
+
+  @override
+  String get anonymous => 'Anonymous';
+
+  @override
+  String get help => 'Help';
+
+  @override
+  String get failedToSaveName => 'Failed to save name';
+
+  @override
+  String get saved => 'Saved';
+
+  @override
+  String get enterValidName => 'Enter a valid name';
+
+  @override
+  String get failedToSaveNotification => 'Failed to save notification setting';
+
+  @override
+  String get failedToSaveLanguage => 'Failed to save language';
+
+  @override
+  String get failedToLoadProfile => 'Failed to load profile';
+
+  @override
+  String get copiedToClipboard => 'Copied to clipboard';
+
+  @override
+  String get loading => 'Loading';
+
+  @override
+  String get pleaseWait => 'Please wait';
+
+  @override
+  String get challenge => 'Challenge';
+
+  @override
+  String get hintTapToReload => 'Tap to reload';
+
+  @override
+  String get loadNewChallenge => 'Load new challenge';
+
+  @override
+  String get challengeIntro =>
+      'Get short, engaging creative challenges to boost your skills.';
+
+  @override
+  String get leaderboard => 'Leaderboard';
+
+  @override
+  String get limited => 'Limited';
 }

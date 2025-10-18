@@ -1,10 +1,10 @@
-import 'dart:ui';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import '../l10n/app_localizations.dart';
 import '../services/api_service.dart';
-import '../providers/user_provider.dart'; 
+import '../providers/user_provider.dart';
+
 // UserProfile ve SubscriptionUpdate için (importların artık mevcut olduğunu varsayıyoruz)
 // import '../models/user_models.dart'; 
 
@@ -20,19 +20,17 @@ class SubscriptionPage extends StatefulWidget {
 }
 
 class _SubscriptionPageState extends State<SubscriptionPage> {
-  
+  bool _isProcessing = false;
+
   Future<void> _simulatePurchase(String level) async {
     final localizations = AppLocalizations.of(context)!;
     final apiService = ApiService();
 
+    setState(() => _isProcessing = true);
     try {
-      // Örnek: 30 günlük abonelik süresi
       await apiService.updateSubscription(widget.idToken, level, 30);
-      
-      // Kullanıcı verilerini güncelle
       if (mounted) {
-        // UserProvider'ı güncelleyerek anında UI güncellemesi tetiklenir
-        Provider.of<UserProvider>(context, listen: false).loadProfile(widget.idToken); 
+        Provider.of<UserProvider>(context, listen: false).loadProfile(widget.idToken);
         ScaffoldMessenger.of(context).showSnackBar(
           SnackBar(content: Text(localizations.purchaseSuccess), backgroundColor: Colors.green),
         );
@@ -43,6 +41,8 @@ class _SubscriptionPageState extends State<SubscriptionPage> {
           SnackBar(content: Text("${localizations.purchaseError}: ${e.toString()}"), backgroundColor: Theme.of(context).colorScheme.error),
         );
       }
+    } finally {
+      if (mounted) setState(() => _isProcessing = false);
     }
   }
 
@@ -50,17 +50,15 @@ class _SubscriptionPageState extends State<SubscriptionPage> {
   Widget build(BuildContext context) {
     final localizations = AppLocalizations.of(context)!;
     final theme = Theme.of(context);
-    
-    // UserProvider'dan abonelik seviyesini dinle
+
     final userProvider = Provider.of<UserProvider>(context);
     final currentLevel = userProvider.profile?.subscriptionLevel ?? 'free';
 
-    // Plan verileri (backend limitleri ile senkronize olmalı)
     final List<Map<String, dynamic>> plans = [
       {
         'level': 'free',
         'title': localizations.planFree,
-        'color': Colors.grey.shade600,
+        'color': Colors.grey.shade700,
         'price': localizations.free,
         'features': [
           {'icon': Icons.quiz_outlined, 'text': '3 ${localizations.questionsPerDay}', 'is_pro': false},
@@ -71,7 +69,7 @@ class _SubscriptionPageState extends State<SubscriptionPage> {
       {
         'level': 'pro',
         'title': localizations.planPro,
-        'color': theme.colorScheme.primary, // Cyan (Mavi/Yeşilimsi)
+        'color': theme.colorScheme.primary,
         'price': '\$4.99 / ${localizations.month}',
         'features': [
           {'icon': Icons.quiz_outlined, 'text': '5 ${localizations.questionsPerDay}', 'is_pro': true},
@@ -82,8 +80,7 @@ class _SubscriptionPageState extends State<SubscriptionPage> {
       {
         'level': 'ultra',
         'title': localizations.planUltra,
-        // DEĞİŞİKLİK BURADA: Tertiary yerine secondary kullanıldı
-        'color': theme.colorScheme.secondary, // Secondary (Turuncu/Kırmızı)
+        'color': theme.colorScheme.secondary,
         'price': '\$9.99 / ${localizations.month}',
         'features': [
           {'icon': Icons.quiz_outlined, 'text': localizations.unlimitedQuizzes, 'is_pro': true},
@@ -94,21 +91,64 @@ class _SubscriptionPageState extends State<SubscriptionPage> {
     ];
 
     return Scaffold(
-      appBar: AppBar(title: Text(localizations.subscriptions)),
+      appBar: AppBar(
+        // remove visible title as requested
+        title: const SizedBox.shrink(),
+        centerTitle: true,
+        elevation: 0,
+        backgroundColor: Colors.transparent,
+      ),
       body: Padding(
         padding: EdgeInsets.all(16.w),
-        child: ListView(
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            SizedBox(height: 10.h),
-            // 'Choose Your Plan' header removed as requested
+            // Hero header
+            SizedBox(height: 8.h),
+            Row(
+              children: [
+                Expanded(
+                  child: Container(
+                    padding: EdgeInsets.symmetric(horizontal: 16.w, vertical: 14.h),
+                    decoration: BoxDecoration(
+                      gradient: LinearGradient(
+                        colors: [theme.colorScheme.primary.withOpacity(0.18), theme.colorScheme.secondary.withOpacity(0.06)],
+                      ),
+                      borderRadius: BorderRadius.circular(16.r),
+                      boxShadow: [BoxShadow(color: Colors.black26, blurRadius: 10.r, offset: Offset(0,6.h))],
+                    ),
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text(localizations.chooseYourPlan, style: TextStyle(fontSize: 18.sp, fontWeight: FontWeight.w800, color: Colors.white)),
+                        SizedBox(height: 6.h),
+                        Text(localizations.subscriptionNote, style: TextStyle(fontSize: 13.sp, color: Colors.white70)),
+                      ],
+                    ),
+                  ),
+                ),
+                SizedBox(width: 12.w),
+                Container(
+                  width: 64.w,
+                  height: 64.w,
+                  decoration: BoxDecoration(
+                    shape: BoxShape.circle,
+                    gradient: RadialGradient(colors: [theme.colorScheme.primary, theme.colorScheme.secondary]),
+                    boxShadow: [BoxShadow(color: Colors.black45, blurRadius: 12.r, offset: Offset(0,6.h))],
+                  ),
+                  child: Icon(Icons.workspace_premium_rounded, color: Colors.white, size: 32.sp),
+                )
+              ],
+            ),
             SizedBox(height: 20.h),
-            
-            // Planları Yatay Kaydırılabilir Liste Olarak Gösterme
+
+            // Horizontal plans
             SizedBox(
-              height: 550.h,
+              height: 420.h,
               child: ListView.builder(
                 scrollDirection: Axis.horizontal,
                 itemCount: plans.length,
+                physics: BouncingScrollPhysics(),
                 itemBuilder: (context, index) {
                   final plan = plans[index];
                   return Padding(
@@ -118,114 +158,157 @@ class _SubscriptionPageState extends State<SubscriptionPage> {
                 },
               ),
             ),
-            SizedBox(height: 20.h),
+            SizedBox(height: 18.h),
             Center(
-              child: Text(localizations.subscriptionNote, style: TextStyle(color: Colors.grey.shade600, fontSize: 12.sp), textAlign: TextAlign.center),
+              child: Text(localizations.subscriptionNote, style: TextStyle(color: Colors.grey.shade400, fontSize: 12.sp), textAlign: TextAlign.center),
             ),
+            SizedBox(height: 8.h),
+            if (_isProcessing) Center(child: Padding(padding: EdgeInsets.only(top: 8.h), child: CircularProgressIndicator()))
           ],
         ),
       ),
     );
   }
 
-  // Abonelik Kartı Widget'ı
   Widget _buildSubscriptionCard(ThemeData theme, AppLocalizations localizations, Map<String, dynamic> plan, String currentLevel) {
     final bool isCurrent = plan['level'] == currentLevel;
     final Color cardColor = plan['color'] as Color;
     final String planLevel = plan['level'] as String;
     final bool isFree = planLevel == 'free';
 
-    return SizedBox(
-      width: 300.w,
-      child: Card(
-        color: theme.colorScheme.surface.withOpacity(0.9),
-        shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(24.r),
-          side: isCurrent ? BorderSide(color: cardColor, width: 3.w) : BorderSide.none,
-        ),
-        elevation: 8,
-        child: Padding(
-          padding: EdgeInsets.all(24.w),
+    return TweenAnimationBuilder<double>(
+      duration: const Duration(milliseconds: 420),
+      tween: Tween(begin: 0.98, end: isCurrent ? 1.03 : 1.0),
+      builder: (context, scale, child) {
+        return Transform.scale(
+          scale: scale,
+          child: child,
+        );
+      },
+      child: GestureDetector(
+        onTap: () {
+          if (!isCurrent) _simulatePurchase(planLevel);
+        },
+        child: Container(
+          width: 320.w,
+          padding: EdgeInsets.all(18.w),
+          decoration: BoxDecoration(
+            gradient: isCurrent
+                ? LinearGradient(colors: [cardColor.withOpacity(0.22), cardColor.withOpacity(0.06)])
+                : LinearGradient(colors: [Colors.white10, Colors.white12]),
+            borderRadius: BorderRadius.circular(20.r),
+            border: isCurrent ? Border.all(color: cardColor.withOpacity(0.9), width: 2.w) : Border.all(color: Colors.white12),
+            boxShadow: [BoxShadow(color: Colors.black45, blurRadius: 18.r, offset: Offset(0,10.h))],
+          ),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              // Başlık ve Rozet
+              // ribbon + title
               Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  Text(plan['title'] as String, style: theme.textTheme.titleLarge?.copyWith(color: cardColor, fontSize: 26.sp, fontWeight: FontWeight.w900)),
+                  Expanded(
+                    child: Row(
+                      children: [
+                        Container(
+                          padding: EdgeInsets.symmetric(horizontal: 10.w, vertical: 6.h),
+                          decoration: BoxDecoration(color: cardColor, borderRadius: BorderRadius.circular(8.r)),
+                          child: Text(plan['title'] as String, style: TextStyle(color: Colors.black87, fontSize: 18.sp, fontWeight: FontWeight.w900)),
+                        ),
+                        SizedBox(width: 8.w),
+                        if (!isFree)
+                          Text(plan['price'] as String, style: TextStyle(color: Colors.white70, fontWeight: FontWeight.w800)),
+                      ],
+                    ),
+                  ),
                   if (isCurrent)
                     Container(
-                      padding: EdgeInsets.symmetric(horizontal: 10.w, vertical: 4.h),
-                      decoration: BoxDecoration(color: cardColor.withOpacity(0.2), borderRadius: BorderRadius.circular(10.r)),
-                      child: Text(localizations.current, style: TextStyle(color: cardColor, fontWeight: FontWeight.bold, fontSize: 12.sp)),
+                      padding: EdgeInsets.symmetric(horizontal: 10.w, vertical: 6.h),
+                      decoration: BoxDecoration(
+                        color: Colors.black.withOpacity(0.18),
+                        borderRadius: BorderRadius.circular(8.r),
+                      ),
+                      child: Text(localizations.current, style: TextStyle(color: cardColor, fontWeight: FontWeight.bold)),
                     ),
                 ],
               ),
-              SizedBox(height: 10.h),
+              SizedBox(height: 12.h),
 
-              Text(isFree ? '' : plan['price'] as String, style: TextStyle(color: Colors.white, fontSize: 22.sp, fontWeight: FontWeight.bold)),
-              SizedBox(height: 20.h),
+              // accent separator
+              Container(height: 2.h, width: 60.w, decoration: BoxDecoration(gradient: LinearGradient(colors: [cardColor, cardColor.withOpacity(0.6)]), borderRadius: BorderRadius.circular(12.r))),
+              SizedBox(height: 14.h),
 
-              ...((plan['features'] as List<Map<String, dynamic>>).map((feature) => _buildFeatureRow(theme, feature, planLevel))).toList(),
-              
+              // features
+              ...((plan['features'] as List<Map<String, dynamic>>).map((feature) {
+                final bool featureActive = !(planLevel == 'free' && !(feature['is_pro'] as bool));
+                final Color iconColor = featureActive ? (planLevel == 'ultra' ? theme.colorScheme.secondary : (planLevel == 'pro' ? theme.colorScheme.primary : Colors.grey)) : Colors.grey.shade600;
+                final Color textColor = featureActive ? Colors.white : Colors.grey.shade500;
+                return Padding(
+                  padding: EdgeInsets.symmetric(vertical: 8.h),
+                  child: Row(
+                    children: [
+                      Container(
+                        width: 36.w,
+                        height: 36.w,
+                        decoration: BoxDecoration(
+                          shape: BoxShape.circle,
+                          color: featureActive ? iconColor.withOpacity(0.18) : Colors.white10,
+                        ),
+                        child: Icon(feature['icon'] as IconData, size: 18.sp, color: iconColor),
+                      ),
+                      SizedBox(width: 12.w),
+                      Expanded(child: Text(feature['text'] as String, style: TextStyle(color: textColor, fontSize: 15.sp))),
+                      if (!featureActive) Padding(padding: EdgeInsets.only(left: 8.w), child: Text(localizations.limited, style: TextStyle(color: Colors.grey.shade500, fontSize: 12.sp))),
+                    ],
+                  ),
+                );
+              })).toList(),
+
               const Spacer(),
 
-              // Satın Alma Butonu
+              // CTA
               SizedBox(
                 width: double.infinity,
-                child: ElevatedButton(
-                  onPressed: isCurrent || isFree ? null : () => _simulatePurchase(planLevel),
-                  style: ElevatedButton.styleFrom(
-                    backgroundColor: isCurrent || isFree ? Colors.grey.shade800 : cardColor,
-                    disabledBackgroundColor: Colors.grey.shade800,
-                  ),
-                  child: Text(isCurrent ? localizations.active : isFree ? localizations.freeTrial : localizations.upgrade, style: TextStyle(fontSize: 18.sp)),
+                child: Stack(
+                  children: [
+                    Positioned.fill(
+                      child: AnimatedOpacity(
+                        duration: const Duration(milliseconds: 320),
+                        opacity: isCurrent ? 0.0 : 1.0,
+                        child: Container(
+                          decoration: BoxDecoration(
+                            gradient: LinearGradient(colors: [cardColor.withOpacity(0.95), cardColor.withOpacity(0.7)]),
+                            borderRadius: BorderRadius.circular(12.r),
+                            boxShadow: [BoxShadow(color: cardColor.withOpacity(0.24), blurRadius: 12.r, offset: Offset(0,6.h))],
+                          ),
+                        ),
+                      ),
+                    ),
+                    ElevatedButton(
+                      onPressed: isCurrent || _isProcessing ? null : () => _simulatePurchase(planLevel),
+                      style: ElevatedButton.styleFrom(
+                        backgroundColor: isCurrent ? Colors.grey.shade800 : Colors.transparent,
+                        shadowColor: Colors.transparent,
+                        padding: EdgeInsets.symmetric(vertical: 14.h),
+                        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12.r)),
+                      ),
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          if (!isCurrent) Icon(Icons.workspace_premium_rounded, color: Colors.white),
+                          SizedBox(width: 8.w),
+                          Text(
+                            isCurrent ? localizations.active : (isFree ? localizations.freeTrial : localizations.upgrade),
+                            style: TextStyle(fontSize: 16.sp, fontWeight: FontWeight.w800),
+                          ),
+                        ],
+                      ),
+                    ),
+                  ],
                 ),
               ),
             ],
           ),
         ),
-      ),
-    );
-  }
-
-  // Özellik Satırı Widget'ı
-  Widget _buildFeatureRow(ThemeData theme, Map<String, dynamic> feature, String planLevel) {
-    
-    final bool isFree = planLevel == 'free';
-    
-    // Simge Rengi: Ultra ise secondary, Pro ise primary, Free ise pasif gri
-    Color iconColor;
-    if (planLevel == 'ultra') {
-      iconColor = theme.colorScheme.secondary; // Ultra: Secondary (Turuncu/Kırmızı)
-    } else if (planLevel == 'pro') {
-      iconColor = theme.colorScheme.primary;  // Pro: Primary (Cyan)
-    } else {
-      iconColor = Colors.grey.shade700;       // Free: Kısıtlı gri
-    }
-
-    // Metin Rengi: Free plandaki kısıtlı özellikler (is_pro: false olanlar) gri olur.
-    final Color textColor = isFree && !(feature['is_pro'] as bool) 
-        ? Colors.grey.shade500 
-        : Colors.white;
-
-    return Padding(
-      padding: EdgeInsets.symmetric(vertical: 8.h),
-      child: Row(
-        children: [
-          Icon(feature['icon'] as IconData, color: iconColor, size: 20.sp),
-          SizedBox(width: 12.w),
-          Expanded(
-            child: Text(
-              feature['text'] as String,
-              style: TextStyle(
-                color: textColor,
-                fontSize: 16.sp,
-              ),
-            ),
-          ),
-        ],
       ),
     );
   }

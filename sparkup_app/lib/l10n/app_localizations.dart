@@ -637,6 +637,126 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Top Players'**
   String get topPlayers;
+
+  /// No description provided for @yourName.
+  ///
+  /// In en, this message translates to:
+  /// **'Your name'**
+  String get yourName;
+
+  /// No description provided for @changeLanguage.
+  ///
+  /// In en, this message translates to:
+  /// **'Change Language'**
+  String get changeLanguage;
+
+  /// No description provided for @memberSince.
+  ///
+  /// In en, this message translates to:
+  /// **'Member since'**
+  String get memberSince;
+
+  /// No description provided for @anonymous.
+  ///
+  /// In en, this message translates to:
+  /// **'Anonymous'**
+  String get anonymous;
+
+  /// No description provided for @help.
+  ///
+  /// In en, this message translates to:
+  /// **'Help'**
+  String get help;
+
+  /// No description provided for @failedToSaveName.
+  ///
+  /// In en, this message translates to:
+  /// **'Failed to save name'**
+  String get failedToSaveName;
+
+  /// No description provided for @saved.
+  ///
+  /// In en, this message translates to:
+  /// **'Saved'**
+  String get saved;
+
+  /// No description provided for @enterValidName.
+  ///
+  /// In en, this message translates to:
+  /// **'Enter a valid name'**
+  String get enterValidName;
+
+  /// No description provided for @failedToSaveNotification.
+  ///
+  /// In en, this message translates to:
+  /// **'Failed to save notification setting'**
+  String get failedToSaveNotification;
+
+  /// No description provided for @failedToSaveLanguage.
+  ///
+  /// In en, this message translates to:
+  /// **'Failed to save language'**
+  String get failedToSaveLanguage;
+
+  /// No description provided for @failedToLoadProfile.
+  ///
+  /// In en, this message translates to:
+  /// **'Failed to load profile'**
+  String get failedToLoadProfile;
+
+  /// No description provided for @copiedToClipboard.
+  ///
+  /// In en, this message translates to:
+  /// **'Copied to clipboard'**
+  String get copiedToClipboard;
+
+  /// No description provided for @loading.
+  ///
+  /// In en, this message translates to:
+  /// **'Loading'**
+  String get loading;
+
+  /// No description provided for @pleaseWait.
+  ///
+  /// In en, this message translates to:
+  /// **'Please wait'**
+  String get pleaseWait;
+
+  /// No description provided for @challenge.
+  ///
+  /// In en, this message translates to:
+  /// **'Challenge'**
+  String get challenge;
+
+  /// No description provided for @hintTapToReload.
+  ///
+  /// In en, this message translates to:
+  /// **'Tap to reload'**
+  String get hintTapToReload;
+
+  /// No description provided for @loadNewChallenge.
+  ///
+  /// In en, this message translates to:
+  /// **'Load new challenge'**
+  String get loadNewChallenge;
+
+  /// No description provided for @challengeIntro.
+  ///
+  /// In en, this message translates to:
+  /// **'Get short, engaging creative challenges to boost your skills.'**
+  String get challengeIntro;
+
+  /// No description provided for @leaderboard.
+  ///
+  /// In en, this message translates to:
+  /// **'Leaderboard'**
+  String get leaderboard;
+
+  /// No description provided for @limited.
+  ///
+  /// In en, this message translates to:
+  /// **'Limited'**
+  String get limited;
 }
 
 class _AppLocalizationsDelegate

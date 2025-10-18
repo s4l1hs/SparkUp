@@ -1,6 +1,5 @@
 {
   "@@locale": "hi",
-  
   "appName": "Spark Up",
   "appSlogan": "ज्ञान, चुनौती और प्रश्नोत्तरी की आपकी दैनिक खुराक।",
   "dailyFact": "दैनिक तथ्य",
@@ -8,7 +7,6 @@
   "tapToLoadNewChallenge": "नई चुनौती लोड करने के लिए टैप करें",
   "noChallengeAvailable": "कोई नई चुनौती उपलब्ध नहीं है।",
   "challengeCouldNotBeLoaded": "चुनौती लोड नहीं की जा सकी।",
-  
   "startNewQuiz": "नई प्रश्नोत्तरी शुरू करें",
   "quizFinished": "प्रश्नोत्तरी समाप्त!",
   "yourScore": "आपका स्कोर",
@@ -16,13 +14,11 @@
   "question": "प्रश्न",
   "quizCouldNotStart": "प्रश्नोत्तरी शुरू नहीं हो सकी",
   "questionDataIsEmpty": "प्रश्नोत्तरी डेटा खाली है।",
-
   "navMainMenu": "विषय",
   "navInfo": "तथ्य",
   "navQuiz": "प्रश्नोत्तरी",
   "navChallenge": "चुनौती",
   "navSettings": "सेटिंग्स",
-
   "loginFailedMessage": "साइन-इन विफल रहा। कृपया अपना नेटवर्क जांचें और पुनः प्रयास करें।",
   "continueWithGoogle": "Google के साथ जारी रखें",
   "infoNotFound": "आपके पसंदीदा विषयों के लिए ज्ञान नहीं मिला।",
@@ -31,7 +27,6 @@
   "preferencesCouldNotBeSaved": "प्राथमिकताएँ सहेजी नहीं जा सकीं।",
   "error": "त्रुटि",
   "saving": "सहेजा जा रहा है",
-  
   "settings": "सेटिंग्स",
   "general": "सामान्य",
   "applicationLanguage": "एप्लिकेशन भाषा",
@@ -44,13 +39,12 @@
   "language": "हिन्दी",
   "selectLanguage": "भाषा चुनें",
   "refresh": "ताज़ा करें",
-
   "noDataFound": "कोई डेटा नहीं मिला",
   "navLeaderboard": "लीडरबोर्ड",
   "deleteAccount": "खाता हटाएं",
   "deleteAccountConfirmation": "क्या आप वाकई अपना खाता हटाना चाहते हैं? यह कार्रवाई अपरिवर्तनीय है और आपका स्कोर सहित आपका सारा डेटा स्थायी रूप से नष्ट हो जाएगा।",
   "delete": "हटाएं",
-  "signOutConfirmation": "क्या आप वाकई साइन आउट करना चाहते हैं?" ,
+  "signOutConfirmation": "क्या आप वाकई साइन आउट करना चाहते हैं?",
   "noDataAvailable": "कोई डेटा उपलब्ध नहीं है",
   "errorCouldNotSaveChanges": "बदलाव सेव नहीं किए जा सके",
   "selected": "चयनित",
@@ -92,5 +86,25 @@
   "wrongAnswerResetStreak": "गलत उत्तर! स्ट्रीक रीसेट हुई।",
   "correct": "सही",
   "errorCouldNotLoadData": "डेटा लोड नहीं हो सका।",
-  "topPlayers": "शीर्ष खिलाड़ी"
+  "topPlayers": "शीर्ष खिलाड़ी",
+  "yourName": "आपका नाम",
+  "changeLanguage": "भाषा बदलें",
+  "memberSince": "सदस्यता से",
+  "anonymous": "गुमनाम",
+  "help": "मदद",
+  "failedToSaveName": "नाम सहेजा नहीं जा सका",
+  "saved": "सहेजा गया",
+  "enterValidName": "मान्य नाम दर्ज करें",
+  "failedToSaveNotification": "सूचना सेटिंग सहेजी नहीं जा सकी",
+  "failedToSaveLanguage": "भाषा सहेजी नहीं जा सकी",
+  "failedToLoadProfile": "प्रोफ़ाइल लोड नहीं हो सकी",
+  "copiedToClipboard": "क्लिपबोर्ड पर कॉपी किया गया",
+  "loading": "लोड हो रहा है",
+  "pleaseWait": "कृपया प्रतीक्षा करें",
+  "challenge": "चुनौती",
+  "hintTapToReload": "रिलोड करने के लिए टैप करें",
+  "loadNewChallenge": "नई चुनौती लोड करें",
+  "challengeIntro": "अपनी क्षमताओं बढ़ाने के लिए छोटे रुचिकर चुनौतियाँ प्राप्त करें।",
+  "leaderboard": "लीडरबोर्ड",
+  "limited": "सीमित"
 }

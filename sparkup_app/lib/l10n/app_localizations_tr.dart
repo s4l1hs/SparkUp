@@ -272,4 +272,65 @@ class AppLocalizationsTr extends AppLocalizations {
 
   @override
   String get topPlayers => 'En İyi Oyuncular';
+
+  @override
+  String get yourName => 'Adınız';
+
+  @override
+  String get changeLanguage => 'Dili Değiştir';
+
+  @override
+  String get memberSince => 'Üyelik tarihi';
+
+  @override
+  String get anonymous => 'Anonim';
+
+  @override
+  String get help => 'Yardım';
+
+  @override
+  String get failedToSaveName => 'İsim kaydedilemedi';
+
+  @override
+  String get saved => 'Kaydedildi';
+
+  @override
+  String get enterValidName => 'Geçerli bir isim girin';
+
+  @override
+  String get failedToSaveNotification => 'Bildirim ayarı kaydedilemedi';
+
+  @override
+  String get failedToSaveLanguage => 'Dil kaydedilemedi';
+
+  @override
+  String get failedToLoadProfile => 'Profil yüklenemedi';
+
+  @override
+  String get copiedToClipboard => 'Panoya kopyalandı';
+
+  @override
+  String get loading => 'Yükleniyor';
+
+  @override
+  String get pleaseWait => 'Lütfen bekleyin';
+
+  @override
+  String get challenge => 'Meydan Okuma';
+
+  @override
+  String get hintTapToReload => 'Yenilemek için dokunun';
+
+  @override
+  String get loadNewChallenge => 'Yeni meydan okuma yükle';
+
+  @override
+  String get challengeIntro =>
+      'Becerilerinizi geliştirecek kısa ve ilgi çekici meydan okumalar alın.';
+
+  @override
+  String get leaderboard => 'Liderlik Tablosu';
+
+  @override
+  String get limited => 'Sınırlı';
 }

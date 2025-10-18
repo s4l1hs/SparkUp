@@ -272,4 +272,65 @@ class AppLocalizationsIt extends AppLocalizations {
 
   @override
   String get topPlayers => 'Migliori giocatori';
+
+  @override
+  String get yourName => 'Il tuo nome';
+
+  @override
+  String get changeLanguage => 'Cambia lingua';
+
+  @override
+  String get memberSince => 'Membro dal';
+
+  @override
+  String get anonymous => 'Anonimo';
+
+  @override
+  String get help => 'Aiuto';
+
+  @override
+  String get failedToSaveName => 'Impossibile salvare il nome';
+
+  @override
+  String get saved => 'Salvato';
+
+  @override
+  String get enterValidName => 'Inserisci un nome valido';
+
+  @override
+  String get failedToSaveNotification => 'Impossibile salvare la notifica';
+
+  @override
+  String get failedToSaveLanguage => 'Impossibile salvare la lingua';
+
+  @override
+  String get failedToLoadProfile => 'Impossibile caricare il profilo';
+
+  @override
+  String get copiedToClipboard => 'Copiato negli appunti';
+
+  @override
+  String get loading => 'Caricamento';
+
+  @override
+  String get pleaseWait => 'Attendere prego';
+
+  @override
+  String get challenge => 'Sfida';
+
+  @override
+  String get hintTapToReload => 'Tocca per ricaricare';
+
+  @override
+  String get loadNewChallenge => 'Carica nuova sfida';
+
+  @override
+  String get challengeIntro =>
+      'Ricevi brevi sfide coinvolgenti per migliorare le tue abilità.';
+
+  @override
+  String get leaderboard => 'Classifica';
+
+  @override
+  String get limited => 'Limitato';
 }

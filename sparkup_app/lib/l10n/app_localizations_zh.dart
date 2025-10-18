@@ -269,4 +269,64 @@ class AppLocalizationsZh extends AppLocalizations {
 
   @override
   String get topPlayers => '排行榜前列';
+
+  @override
+  String get yourName => '您的姓名';
+
+  @override
+  String get changeLanguage => '更改语言';
+
+  @override
+  String get memberSince => '会员自';
+
+  @override
+  String get anonymous => '匿名';
+
+  @override
+  String get help => '帮助';
+
+  @override
+  String get failedToSaveName => '无法保存名称';
+
+  @override
+  String get saved => '已保存';
+
+  @override
+  String get enterValidName => '请输入有效名称';
+
+  @override
+  String get failedToSaveNotification => '无法保存通知设置';
+
+  @override
+  String get failedToSaveLanguage => '无法保存语言';
+
+  @override
+  String get failedToLoadProfile => '无法加载个人资料';
+
+  @override
+  String get copiedToClipboard => '已复制到剪贴板';
+
+  @override
+  String get loading => '加载中';
+
+  @override
+  String get pleaseWait => '请稍候';
+
+  @override
+  String get challenge => '挑战';
+
+  @override
+  String get hintTapToReload => '点击以重新加载';
+
+  @override
+  String get loadNewChallenge => '加载新挑战';
+
+  @override
+  String get challengeIntro => '获取简短、有吸引力的创意挑战以提升您的技能。';
+
+  @override
+  String get leaderboard => '排行榜';
+
+  @override
+  String get limited => '受限';
 }

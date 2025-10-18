@@ -269,4 +269,64 @@ class AppLocalizationsJa extends AppLocalizations {
 
   @override
   String get topPlayers => 'トッププレイヤー';
+
+  @override
+  String get yourName => 'あなたの名前';
+
+  @override
+  String get changeLanguage => '言語を変更';
+
+  @override
+  String get memberSince => '会員登録日';
+
+  @override
+  String get anonymous => '匿名';
+
+  @override
+  String get help => 'ヘルプ';
+
+  @override
+  String get failedToSaveName => '名前の保存に失敗しました';
+
+  @override
+  String get saved => '保存しました';
+
+  @override
+  String get enterValidName => '有効な名前を入力してください';
+
+  @override
+  String get failedToSaveNotification => '通知設定の保存に失敗しました';
+
+  @override
+  String get failedToSaveLanguage => '言語の保存に失敗しました';
+
+  @override
+  String get failedToLoadProfile => 'プロフィールを読み込めませんでした';
+
+  @override
+  String get copiedToClipboard => 'クリップボードにコピーしました';
+
+  @override
+  String get loading => '読み込み中';
+
+  @override
+  String get pleaseWait => 'しばらくお待ちください';
+
+  @override
+  String get challenge => 'チャレンジ';
+
+  @override
+  String get hintTapToReload => '再読み込みするにはタップ';
+
+  @override
+  String get loadNewChallenge => '新しいチャレンジを読み込む';
+
+  @override
+  String get challengeIntro => 'スキルを向上させる短く魅力的なチャレンジを取得しましょう。';
+
+  @override
+  String get leaderboard => 'ランキング';
+
+  @override
+  String get limited => '制限あり';
 }

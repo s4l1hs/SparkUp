@@ -1,7 +1,6 @@
 {
   "@@locale": "ar",
   "@@textDirection": "rtl",
-  
   "appName": "Spark Up",
   "appSlogan": "جرعتك اليومية من المعرفة والتحدي والاختبار.",
   "dailyFact": "حقيقة اليوم",
@@ -9,7 +8,6 @@
   "tapToLoadNewChallenge": "انقر لتحميل تحدي جديد",
   "noChallengeAvailable": "لا يوجد تحدي جديد متاح.",
   "challengeCouldNotBeLoaded": "تعذر تحميل التحدي.",
-  
   "startNewQuiz": "ابدأ اختباراً جديداً",
   "quizFinished": "انتهى الاختبار!",
   "yourScore": "درجتك",
@@ -17,13 +15,11 @@
   "question": "سؤال",
   "quizCouldNotStart": "تعذر بدء الاختبار",
   "questionDataIsEmpty": "بيانات الاختبار فارغة.",
-
   "navMainMenu": "المواضيع",
   "navInfo": "حقيقة",
   "navQuiz": "اختبار",
   "navChallenge": "تحدي",
   "navSettings": "الإعدادات",
-
   "loginFailedMessage": "فشل تسجيل الدخول. يرجى التحقق من شبكتك والمحاولة مرة أخرى.",
   "continueWithGoogle": "المتابعة باستخدام جوجل",
   "infoNotFound": "لم يتم العثور على معلومات لمواضيعك المفضلة.",
@@ -32,7 +28,6 @@
   "preferencesCouldNotBeSaved": "تعذر حفظ التفضيلات.",
   "error": "خطأ",
   "saving": "جارٍ الحفظ",
-  
   "settings": "الإعدادات",
   "general": "عام",
   "applicationLanguage": "لغة التطبيق",
@@ -45,7 +40,6 @@
   "language": "العربية",
   "selectLanguage": "اختيار اللغة",
   "refresh": "تحديث",
-
   "noDataFound": "لم يتم العثور على بيانات",
   "navLeaderboard": "لوحة المتصدرين",
   "deleteAccount": "حذف الحساب",
@@ -93,5 +87,25 @@
   "wrongAnswerResetStreak": "إجابة خاطئة! تمت إعادة تعيين السلسلة.",
   "correct": "صحيح",
   "errorCouldNotLoadData": "تعذر تحميل البيانات.",
-  "topPlayers": "أفضل اللاعبين"
+  "topPlayers": "أفضل اللاعبين",
+  "yourName": "اسمك",
+  "changeLanguage": "تغيير اللغة",
+  "memberSince": "عضو منذ",
+  "anonymous": "مجهول",
+  "help": "مساعدة",
+  "failedToSaveName": "فشل في حفظ الاسم",
+  "saved": "تم الحفظ",
+  "enterValidName": "أدخل اسمًا صالحًا",
+  "failedToSaveNotification": "فشل في حفظ إعدادات الإشعارات",
+  "failedToSaveLanguage": "فشل في حفظ اللغة",
+  "failedToLoadProfile": "فشل في تحميل الملف الشخصي",
+  "copiedToClipboard": "تم النسخ إلى الحافظة",
+  "loading": "جارٍ التحميل",
+  "pleaseWait": "يرجى الانتظار",
+  "challenge": "تحدي",
+  "hintTapToReload": "انقر لإعادة التحميل",
+  "loadNewChallenge": "تحميل تحدٍ جديد",
+  "challengeIntro": "احصل على تحديات قصيرة وجذابة لتعزيز مهاراتك.",
+  "leaderboard": "لوحة المتصدرين",
+  "limited": "محدود"
 }

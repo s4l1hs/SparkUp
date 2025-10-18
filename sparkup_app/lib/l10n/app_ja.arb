@@ -1,6 +1,5 @@
 {
   "@@locale": "ja",
-  
   "appName": "Spark Up",
   "appSlogan": "知識、チャレンジ、クイズの毎日の摂取量。",
   "dailyFact": "今日の事実",
@@ -8,7 +7,6 @@
   "tapToLoadNewChallenge": "タップして新しいチャレンジをロード",
   "noChallengeAvailable": "新しいチャレンジはありません。",
   "challengeCouldNotBeLoaded": "チャレンジをロードできませんでした。",
-  
   "startNewQuiz": "新しいクイズを開始",
   "quizFinished": "クイズ終了！",
   "yourScore": "あなたのスコア",
@@ -16,13 +14,11 @@
   "question": "質問",
   "quizCouldNotStart": "クイズを開始できませんでした",
   "questionDataIsEmpty": "クイズデータが空です。",
-
   "navMainMenu": "トピック",
   "navInfo": "事実",
   "navQuiz": "クイズ",
   "navChallenge": "チャレンジ",
   "navSettings": "設定",
-
   "loginFailedMessage": "サインインに失敗しました。ネットワークを確認して再試行してください。",
   "continueWithGoogle": "Google で続行",
   "infoNotFound": "お気に入りのトピックに関する知識は見つかりませんでした。",
@@ -31,7 +27,6 @@
   "preferencesCouldNotBeSaved": "設定を保存できませんでした。",
   "error": "エラー",
   "saving": "保存中",
-  
   "settings": "設定",
   "general": "一般",
   "applicationLanguage": "アプリケーションの言語",
@@ -44,7 +39,6 @@
   "language": "日本語",
   "selectLanguage": "言語を選択",
   "refresh": "更新",
-
   "noDataFound": "データが見つかりませんでした",
   "navLeaderboard": "リーダーボード",
   "deleteAccount": "アカウントを削除",
@@ -92,5 +86,26 @@
   "wrongAnswerResetStreak": "不正解！連勝がリセットされました。",
   "correct": "正解",
   "errorCouldNotLoadData": "データを読み込めませんでした。",
-  "topPlayers": "トッププレイヤー"
+  "topPlayers": "トッププレイヤー",
+
+  "yourName": "あなたの名前",
+  "changeLanguage": "言語を変更",
+  "memberSince": "会員登録日",
+  "anonymous": "匿名",
+  "help": "ヘルプ",
+  "failedToSaveName": "名前の保存に失敗しました",
+  "saved": "保存しました",
+  "enterValidName": "有効な名前を入力してください",
+  "failedToSaveNotification": "通知設定の保存に失敗しました",
+  "failedToSaveLanguage": "言語の保存に失敗しました",
+  "failedToLoadProfile": "プロフィールを読み込めませんでした",
+  "copiedToClipboard": "クリップボードにコピーしました",
+  "loading": "読み込み中",
+  "pleaseWait": "しばらくお待ちください",
+  "challenge": "チャレンジ",
+  "hintTapToReload": "再読み込みするにはタップ",
+  "loadNewChallenge": "新しいチャレンジを読み込む",
+  "challengeIntro": "スキルを向上させる短く魅力的なチャレンジを取得しましょう。",
+  "leaderboard": "ランキング",
+  "limited": "制限あり"
 }

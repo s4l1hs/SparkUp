@@ -278,4 +278,66 @@ class AppLocalizationsDe extends AppLocalizations {
 
   @override
   String get topPlayers => 'Top‑Spieler';
+
+  @override
+  String get yourName => 'Ihr Name';
+
+  @override
+  String get changeLanguage => 'Sprache ändern';
+
+  @override
+  String get memberSince => 'Mitglied seit';
+
+  @override
+  String get anonymous => 'Anonym';
+
+  @override
+  String get help => 'Hilfe';
+
+  @override
+  String get failedToSaveName => 'Name konnte nicht gespeichert werden';
+
+  @override
+  String get saved => 'Gespeichert';
+
+  @override
+  String get enterValidName => 'Geben Sie einen gültigen Namen ein';
+
+  @override
+  String get failedToSaveNotification =>
+      'Benachrichtigungseinstellung konnte nicht gespeichert werden';
+
+  @override
+  String get failedToSaveLanguage => 'Sprache konnte nicht gespeichert werden';
+
+  @override
+  String get failedToLoadProfile => 'Profil konnte nicht geladen werden';
+
+  @override
+  String get copiedToClipboard => 'In Zwischenablage kopiert';
+
+  @override
+  String get loading => 'Laden';
+
+  @override
+  String get pleaseWait => 'Bitte warten';
+
+  @override
+  String get challenge => 'Herausforderung';
+
+  @override
+  String get hintTapToReload => 'Tippen zum Nachladen';
+
+  @override
+  String get loadNewChallenge => 'Neue Herausforderung laden';
+
+  @override
+  String get challengeIntro =>
+      'Erhalten Sie kurze, ansprechende Herausforderungen zur Verbesserung Ihrer Fähigkeiten.';
+
+  @override
+  String get leaderboard => 'Bestenliste';
+
+  @override
+  String get limited => 'Begrenzt';
 }

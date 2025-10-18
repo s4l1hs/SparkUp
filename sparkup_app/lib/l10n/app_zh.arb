@@ -92,5 +92,26 @@
   "wrongAnswerResetStreak": "回答错误！连击已重置。",
   "correct": "正确",
   "errorCouldNotLoadData": "无法加载数据。",
-  "topPlayers": "排行榜前列"
+  "topPlayers": "排行榜前列",
+
+  "yourName": "您的姓名",
+  "changeLanguage": "更改语言",
+  "memberSince": "会员自",
+  "anonymous": "匿名",
+  "help": "帮助",
+  "failedToSaveName": "无法保存名称",
+  "saved": "已保存",
+  "enterValidName": "请输入有效名称",
+  "failedToSaveNotification": "无法保存通知设置",
+  "failedToSaveLanguage": "无法保存语言",
+  "failedToLoadProfile": "无法加载个人资料",
+  "copiedToClipboard": "已复制到剪贴板",
+  "loading": "加载中",
+  "pleaseWait": "请稍候",
+  "challenge": "挑战",
+  "hintTapToReload": "点击以重新加载",
+  "loadNewChallenge": "加载新挑战",
+  "challengeIntro": "获取简短、有吸引力的创意挑战以提升您的技能。",
+  "leaderboard": "排行榜",
+  "limited": "受限"
 }

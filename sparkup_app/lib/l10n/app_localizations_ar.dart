@@ -271,4 +271,64 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String get topPlayers => 'أفضل اللاعبين';
+
+  @override
+  String get yourName => 'اسمك';
+
+  @override
+  String get changeLanguage => 'تغيير اللغة';
+
+  @override
+  String get memberSince => 'عضو منذ';
+
+  @override
+  String get anonymous => 'مجهول';
+
+  @override
+  String get help => 'مساعدة';
+
+  @override
+  String get failedToSaveName => 'فشل في حفظ الاسم';
+
+  @override
+  String get saved => 'تم الحفظ';
+
+  @override
+  String get enterValidName => 'أدخل اسمًا صالحًا';
+
+  @override
+  String get failedToSaveNotification => 'فشل في حفظ إعدادات الإشعارات';
+
+  @override
+  String get failedToSaveLanguage => 'فشل في حفظ اللغة';
+
+  @override
+  String get failedToLoadProfile => 'فشل في تحميل الملف الشخصي';
+
+  @override
+  String get copiedToClipboard => 'تم النسخ إلى الحافظة';
+
+  @override
+  String get loading => 'جارٍ التحميل';
+
+  @override
+  String get pleaseWait => 'يرجى الانتظار';
+
+  @override
+  String get challenge => 'تحدي';
+
+  @override
+  String get hintTapToReload => 'انقر لإعادة التحميل';
+
+  @override
+  String get loadNewChallenge => 'تحميل تحدٍ جديد';
+
+  @override
+  String get challengeIntro => 'احصل على تحديات قصيرة وجذابة لتعزيز مهاراتك.';
+
+  @override
+  String get leaderboard => 'لوحة المتصدرين';
+
+  @override
+  String get limited => 'محدود';
 }

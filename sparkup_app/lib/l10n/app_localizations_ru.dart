@@ -271,4 +271,65 @@ class AppLocalizationsRu extends AppLocalizations {
 
   @override
   String get topPlayers => 'Лучшие игроки';
+
+  @override
+  String get yourName => 'Ваше имя';
+
+  @override
+  String get changeLanguage => 'Сменить язык';
+
+  @override
+  String get memberSince => 'Участник с';
+
+  @override
+  String get anonymous => 'Аноним';
+
+  @override
+  String get help => 'Помощь';
+
+  @override
+  String get failedToSaveName => 'Не удалось сохранить имя';
+
+  @override
+  String get saved => 'Сохранено';
+
+  @override
+  String get enterValidName => 'Введите действительное имя';
+
+  @override
+  String get failedToSaveNotification => 'Не удалось сохранить уведомление';
+
+  @override
+  String get failedToSaveLanguage => 'Не удалось сохранить язык';
+
+  @override
+  String get failedToLoadProfile => 'Не удалось загрузить профиль';
+
+  @override
+  String get copiedToClipboard => 'Скопировано в буфер';
+
+  @override
+  String get loading => 'Загрузка';
+
+  @override
+  String get pleaseWait => 'Пожалуйста, подождите';
+
+  @override
+  String get challenge => 'Вызов';
+
+  @override
+  String get hintTapToReload => 'Нажмите, чтобы перезагрузить';
+
+  @override
+  String get loadNewChallenge => 'Загрузить новый вызов';
+
+  @override
+  String get challengeIntro =>
+      'Получайте короткие, увлекательные вызовы для прокачки навыков.';
+
+  @override
+  String get leaderboard => 'Таблица лидеров';
+
+  @override
+  String get limited => 'Ограничено';
 }

@@ -92,5 +92,26 @@
   "wrongAnswerResetStreak": "Respuesta incorrecta! Racha reiniciada.",
   "correct": "Correcto",
   "errorCouldNotLoadData": "No se pudieron cargar los datos.",
-  "topPlayers": "Mejores jugadores"
+  "topPlayers": "Mejores jugadores",
+
+  "yourName": "Tu nombre",
+  "changeLanguage": "Cambiar idioma",
+  "memberSince": "Miembro desde",
+  "anonymous": "Anónimo",
+  "help": "Ayuda",
+  "failedToSaveName": "No se pudo guardar el nombre",
+  "saved": "Guardado",
+  "enterValidName": "Introduce un nombre válido",
+  "failedToSaveNotification": "No se pudo guardar la notificación",
+  "failedToSaveLanguage": "No se pudo guardar el idioma",
+  "failedToLoadProfile": "Error al cargar el perfil",
+  "copiedToClipboard": "Copiado al portapapeles",
+  "loading": "Cargando",
+  "pleaseWait": "Espere por favor",
+  "challenge": "Desafío",
+  "hintTapToReload": "Toca para recargar",
+  "loadNewChallenge": "Cargar nuevo desafío",
+  "challengeIntro": "Recibe desafíos cortos y atractivos para mejorar tus habilidades.",
+  "leaderboard": "Clasificación",
+  "limited": "Limitado"
 }
