@@ -121,6 +121,16 @@ class _QuizPageState extends State<QuizPage> with TickerProviderStateMixin {
     super.dispose();
   }
 
+  String _cleanLimitMessage(String raw) {
+    var s = raw.trim();
+    // Eğer "SomePrefix : actual message" şeklinde geliyorsa prefix'i at
+    final idx = s.indexOf(':');
+    if (idx != -1 && idx < 40) {
+      s = s.substring(idx + 1).trim();
+    }
+    return s;
+  }
+
   Future<void> _fetchQuizData({bool isInitialLoad = false, bool isPreview = false}) async {
     if (!mounted) return;
     setState(() {
@@ -154,7 +164,7 @@ class _QuizPageState extends State<QuizPage> with TickerProviderStateMixin {
       final err = e.toString().toLowerCase();
       if (err.contains('limit') || err.contains('quota')) {
         if (mounted) setState(() {
-          _limitError = e.toString();
+          _limitError = _cleanLimitMessage(e.toString());
           _isQuizActive = false;
         });
       } else {

@@ -8,7 +8,7 @@ from dotenv import load_dotenv
 from fastapi import FastAPI, HTTPException, Depends, Query
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.security import HTTPBearer, HTTPAuthorizationCredentials
-from fastapi.responses import PlainTextResponse  # <--- added
+from fastapi.responses import PlainTextResponse 
 from sqlmodel import Field, SQLModel, Session, create_engine, select, Relationship, delete, func
 from sqlalchemy.exc import IntegrityError
 
@@ -89,7 +89,11 @@ class UserScore(SQLModel, table=True):
 class UserScoreHistory(SQLModel, table=True):
     id: Optional[int] = Field(default=None, primary_key=True); user_id: int = Field(foreign_key="user.id", index=True); points: int = Field(default=0); timestamp: Optional[date] = Field(default_factory=date.today)
 class User(SQLModel, table=True):
-    id: Optional[int] = Field(default=None, primary_key=True); firebase_uid: str = Field(unique=True, index=True); email: Optional[str] = None; language_code: str = Field(default="en")
+    id: Optional[int] = Field(default=None, primary_key=True)
+    firebase_uid: str = Field(unique=True, index=True)
+    email: Optional[str] = None
+    language_code: str = Field(default="en")
+    username: Optional[str] = Field(default=None, index=True)
     score: Optional[UserScore] = Relationship(back_populates="user", sa_relationship_kwargs={"cascade": "all, delete-orphan"})
     streak: Optional[UserStreak] = Relationship(back_populates="user", sa_relationship_kwargs={"cascade": "all, delete-orphan"})
     subscription: Optional[UserSubscription] = Relationship(back_populates="user", sa_relationship_kwargs={"cascade": "all, delete-orphan"})

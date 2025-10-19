@@ -20,7 +20,6 @@ class SettingsPage extends StatefulWidget {
 class _SettingsPageState extends State<SettingsPage> with SingleTickerProviderStateMixin {
   bool _isSavingLanguage = false;
   bool _isSavingNotifications = false;
-  bool _isSavingName = false;
   // ignore: unused_field
   bool _isLoadingProfile = false;
 
@@ -30,7 +29,6 @@ class _SettingsPageState extends State<SettingsPage> with SingleTickerProviderSt
   int _userScore = 0;
 
   late final AnimationController _animationController;
-  late final TextEditingController _nameController;
 
   final Map<String, String> _supportedLanguages = {
     'en': 'English', 'tr': 'Türkçe', 'de': 'Deutsch', 'fr': 'Français', 'es': 'Español',
@@ -41,7 +39,6 @@ class _SettingsPageState extends State<SettingsPage> with SingleTickerProviderSt
   void initState() {
     super.initState();
     _animationController = AnimationController(vsync: this, duration: const Duration(milliseconds: 600));
-    _nameController = TextEditingController();
     WidgetsBinding.instance.addPostFrameCallback((_) {
       _loadUserProfile();
       _animationController.forward();
@@ -51,7 +48,6 @@ class _SettingsPageState extends State<SettingsPage> with SingleTickerProviderSt
   @override
   void dispose() {
     _animationController.dispose();
-    _nameController.dispose();
     super.dispose();
   }
 
@@ -82,7 +78,6 @@ class _SettingsPageState extends State<SettingsPage> with SingleTickerProviderSt
           _username = (firebaseName != null && firebaseName.isNotEmpty) ? firebaseName : (backendUsername.isNotEmpty ? backendUsername : null);
           _userScore = score;
           _notificationsEnabled = notifications;
-          _nameController.text = _username ?? '';
         });
 
         Provider.of<LocaleProvider>(context, listen: false).setLocale(_currentLanguageCode);
@@ -147,47 +142,11 @@ class _SettingsPageState extends State<SettingsPage> with SingleTickerProviderSt
     }
   }
 
-  Future<void> _saveDisplayName() async {
-    if (_isSavingName) return;
-    final newName = _nameController.text.trim();
-    if (newName.isEmpty) {
-      _showErrorSnackBar(AppLocalizations.of(context)?.enterValidName ?? "Enter a valid name");
-      return;
-    }
-    setState(() => _isSavingName = true);
-    try {
-      final token = await _getIdToken();
-      if (token == null) throw Exception("User not logged in");
-
-      final uri = Uri.parse("$backendBaseUrl/user/profile/");
-      final response = await http.put(
-        uri,
-        headers: {'Authorization': 'Bearer $token', 'Content-Type': 'application/json'},
-        body: jsonEncode({'username': newName}),
-      );
-      if (response.statusCode == 200) {
-        await FirebaseAuth.instance.currentUser?.updateDisplayName(newName);
-        setState(() => _username = newName);
-        _showSimpleSnackBar(AppLocalizations.of(context)?.saved ?? "Saved");
-      } else {
-        throw Exception('Failed to save display name');
-      }
-    } catch (e) {
-      if (mounted) _showErrorSnackBar(AppLocalizations.of(context)?.failedToSaveName ?? "Failed to save name");
-    } finally {
-      if (mounted) setState(() => _isSavingName = false);
-    }
-  }
-
   void _showErrorSnackBar(String message) {
     ScaffoldMessenger.of(context).showSnackBar(SnackBar(
       content: Text(message),
       backgroundColor: Theme.of(context).colorScheme.error,
     ));
-  }
-
-  void _showSimpleSnackBar(String message) {
-    ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text(message), backgroundColor: Theme.of(context).colorScheme.primary));
   }
 
   void _showSignOutConfirmation() {
@@ -255,7 +214,6 @@ class _SettingsPageState extends State<SettingsPage> with SingleTickerProviderSt
                 ])),
                 SizedBox(height: 18.h),
                 _buildCardSection(title: localizations.account, child: Column(children: [
-                  _buildNameEditor(localizations, theme),
                   Divider(color: Colors.white12, height: 1),
                   _buildSignOutTile(localizations, theme),
                 ])),
@@ -287,6 +245,23 @@ class _SettingsPageState extends State<SettingsPage> with SingleTickerProviderSt
     final displayName = (profile as dynamic)?.username ?? _username ?? localizations.anonymous ?? 'Anonymous';
     final score = (profile as dynamic)?.score ?? _userScore;
 
+    // determine "member since" year: prefer Firebase creation time, fallback to backend field(s) or just show label
+    String memberSinceText = localizations.memberSince;
+    try {
+      final firebaseCreation = FirebaseAuth.instance.currentUser?.metadata.creationTime;
+      if (firebaseCreation != null) {
+        memberSinceText = '${localizations.memberSince} ${firebaseCreation.year}';
+      } else {
+        final joinedRaw = (profile as dynamic)?['created_at'] ?? (profile as dynamic)?['joined_at'] ?? (profile as dynamic)?['member_since'];
+        if (joinedRaw != null) {
+          final parsed = DateTime.tryParse(joinedRaw.toString());
+          if (parsed != null) memberSinceText = '${localizations.memberSince} ${parsed.year}';
+        }
+      }
+    } catch (_) {
+      // ignore and keep default label
+    }
+
     return Card(
       elevation: 8,
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16.r)),
@@ -315,8 +290,8 @@ class _SettingsPageState extends State<SettingsPage> with SingleTickerProviderSt
                       Container(padding: EdgeInsets.symmetric(horizontal: 10.w, vertical: 6.h), decoration: BoxDecoration(color: theme.colorScheme.primary, borderRadius: BorderRadius.circular(12.r)), child: Row(children: [Icon(Icons.star, size: 16.sp, color: Colors.yellow.shade700), SizedBox(width: 6.w), Text('$score', style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold))])),
                     ]),
                     SizedBox(height: 4.h),
-                    // make this flexible and compact to avoid overflow
-                    Text(localizations.memberSince, style: TextStyle(color: Colors.white70, fontSize: 12.sp), overflow: TextOverflow.ellipsis),
+                    // show "Member since YYYY" when possible
+                    Text(memberSinceText, style: TextStyle(color: Colors.white70, fontSize: 12.sp), overflow: TextOverflow.ellipsis),
                   ]),
                 )
               ],
@@ -359,27 +334,6 @@ class _SettingsPageState extends State<SettingsPage> with SingleTickerProviderSt
       value: _notificationsEnabled,
       activeColor: theme.colorScheme.secondary,
       onChanged: _isSavingNotifications ? null : (value) => _saveNotificationSetting(value),
-    );
-  }
-
-  Widget _buildNameEditor(AppLocalizations localizations, ThemeData theme) {
-    return Padding(
-      padding: EdgeInsets.symmetric(horizontal: 8.w, vertical: 8.h),
-      child: Row(children: [
-        Icon(Icons.person_outline, color: theme.colorScheme.primary),
-        SizedBox(width: 12.w),
-        Expanded(
-          child: TextField(
-            controller: _nameController,
-            decoration: InputDecoration(hintText: localizations.yourName, border: InputBorder.none),
-            style: TextStyle(color: Colors.white),
-          ),
-        ),
-        SizedBox(width: 8.w),
-        _isSavingName
-            ? SizedBox(width: 36.w, height: 36.w, child: CircularProgressIndicator(strokeWidth: 2))
-            : ElevatedButton(onPressed: _saveDisplayName, child: Text(localizations.save)),
-      ]),
     );
   }
 

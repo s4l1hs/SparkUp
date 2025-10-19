@@ -5,6 +5,7 @@ import 'package:google_sign_in/google_sign_in.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'l10n/app_localizations.dart';
 import 'dart:ui';
+import 'dart:math' as math;
 
 class LoginPage extends StatefulWidget {
   const LoginPage({super.key});
@@ -220,9 +221,26 @@ class _LoginPageState extends State<LoginPage> with TickerProviderStateMixin {
                               position: _textSlideAnimation,
                               child: Column(
                                 children: [
-                                  Text(localizations.appName, textAlign: TextAlign.center, style: TextStyle(fontSize: 34.sp, fontWeight: FontWeight.bold, color: Colors.white)),
-                                  SizedBox(height: 8.h),
-                                  Text(localizations.appSlogan, textAlign: TextAlign.center, style: TextStyle(fontSize: 14.sp, color: Colors.white70)),
+                                  // gradient title for a more premium look
+                                  ShaderMask(
+                                    shaderCallback: (bounds) => LinearGradient(
+                                      begin: Alignment.topLeft,
+                                      end: Alignment.bottomRight,
+                                      colors: [theme.colorScheme.secondary, theme.colorScheme.primary],
+                                    ).createShader(Rect.fromLTWH(0, 0, bounds.width, bounds.height)),
+                                    blendMode: BlendMode.srcIn,
+                                    child: Text(
+                                      localizations.appName,
+                                      textAlign: TextAlign.center,
+                                      style: TextStyle(fontSize: 34.sp, fontWeight: FontWeight.bold, color: Colors.white),
+                                    ),
+                                  ),
+                                  SizedBox(height: 6.h),
+                                  Text(
+                                    localizations.appSlogan,
+                                    textAlign: TextAlign.center,
+                                    style: TextStyle(fontSize: 13.sp, color: Colors.white70, fontStyle: FontStyle.italic),
+                                  ),
                                 ],
                               ),
                             ),
@@ -262,20 +280,20 @@ class _LoginPageState extends State<LoginPage> with TickerProviderStateMixin {
                                       child: AnimatedBuilder(
                                         animation: Listenable.merge([_gradientController, _pulseController]),
                                         builder: (context, child) {
-                                          final grad = LinearGradient(
-                                            colors: [
-                                              theme.colorScheme.primary.withOpacity(0.98),
-                                              (theme.colorScheme.tertiary).withOpacity(0.95),
-                                              theme.colorScheme.secondary.withOpacity(0.95)
-                                            ],
-                                            begin: Alignment(-1 + _gradientController.value * 2, -0.5),
-                                            end: Alignment(1 - _gradientController.value * 2, 0.5),
-                                          );
                                           return Container(
                                             height: 56.h,
                                             width: double.infinity,
                                             decoration: BoxDecoration(
-                                              gradient: grad,
+                                              // smoother continuous oscillation using sine -> no sudden flip at loop boundary
+                                              gradient: LinearGradient(
+                                                colors: [
+                                                  theme.colorScheme.primary.withOpacity(0.98),
+                                                  (theme.colorScheme.tertiary).withOpacity(0.95),
+                                                  theme.colorScheme.secondary.withOpacity(0.95)
+                                                ],
+                                                begin: Alignment(-math.sin(_gradientController.value * 2 * math.pi), -0.35),
+                                                end: Alignment(math.sin(_gradientController.value * 2 * math.pi), 0.35),
+                                              ),
                                               borderRadius: BorderRadius.circular(12.r),
                                               boxShadow: [BoxShadow(color: Colors.black.withOpacity(0.35), blurRadius: 10.r, offset: Offset(0, 6.h))],
                                               border: Border.all(color: Colors.white.withOpacity(0.06)),
@@ -323,15 +341,15 @@ class _LoginPageState extends State<LoginPage> with TickerProviderStateMixin {
                                     ),
                                   ),
                                   SizedBox(height: 12.h),
-                                  Text(localizations.help, textAlign: TextAlign.center, style: TextStyle(color: Colors.white54, fontSize: 12.sp)),
-                                  SizedBox(height: 6.h),
-                                  Text(
-                                    localizations.signOutConfirmation,
-                                    textAlign: TextAlign.center,
-                                    style: TextStyle(color: Colors.white30, fontSize: 11.sp),
-                                    maxLines: 2,
-                                    overflow: TextOverflow.ellipsis,
+                                  // help & "Are you sure you want to sign out?" removed per request
+                                  SizedBox(height: 8.h),
+                                  // subtle decorative divider to balance layout
+                                  Container(
+                                    height: 1.h,
+                                    width: 64.w,
+                                    decoration: BoxDecoration(color: Colors.white12, borderRadius: BorderRadius.circular(4.r)),
                                   ),
+                                  SizedBox(height: 6.h),
                                 ],
                               ),
                             ),
