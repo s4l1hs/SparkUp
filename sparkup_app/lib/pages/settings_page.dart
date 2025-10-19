@@ -103,11 +103,8 @@ class _SettingsPageState extends State<SettingsPage> with SingleTickerProviderSt
       final token = await _getIdToken();
       if (token == null) throw Exception("User not logged in");
 
-      final uri = Uri.parse("$backendBaseUrl/user/language/");
-      final response = await http.put(uri,
-        headers: {'Authorization': 'Bearer $token', 'Content-Type': 'application/json'},
-        body: jsonEncode({'language_code': langCode}),
-      );
+      final uri = Uri.parse("$backendBaseUrl/user/language/").replace(queryParameters: {'language_code': langCode});
+      final response = await http.put(uri, headers: {'Authorization': 'Bearer $token', 'Content-Type': 'application/json'});
 
       if (response.statusCode == 200) {
         Provider.of<LocaleProvider>(context, listen: false).setLocale(langCode);
@@ -132,13 +129,14 @@ class _SettingsPageState extends State<SettingsPage> with SingleTickerProviderSt
       final token = await _getIdToken();
       if (token == null) throw Exception("User not logged in");
 
-      final uri = Uri.parse("$backendBaseUrl/user/notifications/");
-      final response = await http.put(
-        uri,
-        headers: {'Authorization': 'Bearer $token', 'Content-Type': 'application/json'},
-        body: jsonEncode({'enabled': isEnabled}),
-      );
-      if (response.statusCode != 200) throw Exception('Failed to save setting');
+      // Send as query parameter (backend may expect ?enabled=true/false)
+      final uri = Uri.parse("$backendBaseUrl/user/notifications/").replace(queryParameters: {'enabled': isEnabled.toString()});
+      final response = await http.put(uri, headers: {'Authorization': 'Bearer $token'});
+      if (response.statusCode != 200) {
+        // log server response for debugging
+        debugPrint('Failed to save notifications: ${response.statusCode} ${response.body}');
+        throw Exception('Failed to save setting');
+      }
     } catch (e) {
       if (mounted) {
         _showErrorSnackBar(AppLocalizations.of(context)?.failedToSaveNotification ?? "Failed to save notification setting");
@@ -222,12 +220,7 @@ class _SettingsPageState extends State<SettingsPage> with SingleTickerProviderSt
         title: const SizedBox.shrink(),
         backgroundColor: Colors.transparent,
         elevation: 0,
-        actions: [
-          IconButton(
-            icon: const Icon(Icons.help_outline),
-            onPressed: () => showAboutDialog(context: context, applicationName: 'Spark Up', applicationVersion: '1.0.0', children: [Text(localizations.help)]),
-          )
-        ],
+        actions: const [], // help icon removed
       ),
       body: Stack(
         children: [
@@ -243,16 +236,18 @@ class _SettingsPageState extends State<SettingsPage> with SingleTickerProviderSt
           ),
 
           // subtle floating shapes
-          Positioned(top: -60.h, left: -40.w, child: _decorBlob(theme.colorScheme.primary.withOpacity(0.08), 220.w)),
+          Positioned(top: -40.h, left: -24.w, child: _decorBlob(theme.colorScheme.primary.withOpacity(0.08), 180.w)),
           Positioned(bottom: -80.h, right: -60.w, child: _decorBlob(theme.colorScheme.secondary.withOpacity(0.07), 260.w)),
 
           // content
           SafeArea(
             child: ListView(
-              padding: EdgeInsets.symmetric(vertical: 18.h, horizontal: 18.w),
+              // reduce top vertical padding so content sits higher
+              padding: EdgeInsets.symmetric(vertical: 8.h, horizontal: 18.w),
               children: [
                 FadeTransition(opacity: _animationController, child: _buildProfileHeader(theme, localizations)),
-                SizedBox(height: 18.h),
+                SizedBox(height: 8.h),
+
                 _buildCardSection(title: localizations.general, child: Column(children: [
                   _buildLanguageTile(localizations, theme),
                   Divider(color: Colors.white12, height: 1, indent: 68),
@@ -319,28 +314,16 @@ class _SettingsPageState extends State<SettingsPage> with SingleTickerProviderSt
                       Expanded(child: Text(displayName, style: TextStyle(color: Colors.white, fontSize: 18.sp, fontWeight: FontWeight.bold), overflow: TextOverflow.ellipsis)),
                       Container(padding: EdgeInsets.symmetric(horizontal: 10.w, vertical: 6.h), decoration: BoxDecoration(color: theme.colorScheme.primary, borderRadius: BorderRadius.circular(12.r)), child: Row(children: [Icon(Icons.star, size: 16.sp, color: Colors.yellow.shade700), SizedBox(width: 6.w), Text('$score', style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold))])),
                     ]),
-                    SizedBox(height: 6.h),
+                    SizedBox(height: 4.h),
                     // make this flexible and compact to avoid overflow
                     Text(localizations.memberSince, style: TextStyle(color: Colors.white70, fontSize: 12.sp), overflow: TextOverflow.ellipsis),
                   ]),
                 )
               ],
             ),
-            SizedBox(height: 12.h),
-            // actions row wrapped so it can flow to multiple lines on narrow screens
-            Wrap(
-              spacing: 8.w,
-              runSpacing: 6.h,
-              children: [
-                ElevatedButton.icon(
-                  onPressed: () => _showLanguageBottomSheet(localizations, Theme.of(context)),
-                  icon: Icon(Icons.translate_outlined),
-                  label: Text(localizations.changeLanguage),
-                  style: ElevatedButton.styleFrom(backgroundColor: Colors.white10, elevation: 0),
-                ),
-                TextButton.icon(onPressed: _loadUserProfile, icon: Icon(Icons.refresh, color: theme.colorScheme.primary), label: Text(localizations.refresh)),
-              ],
-            ),
+            SizedBox(height: 8.h),
+            // top action buttons removed per request
+            const SizedBox.shrink(),
           ],
         ),
       ),

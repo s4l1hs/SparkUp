@@ -260,7 +260,7 @@ class AppLocalizationsFr extends AppLocalizations {
   String get points => 'Points';
 
   @override
-  String get pointsEarned => 'Points Earned';
+  String get pointsEarned => 'Points Gagnés';
 
   @override
   String get errorSubmittingAnswer => 'Erreur lors de l\'envoi de la réponse.';

@@ -87,7 +87,7 @@
   "maxStreak": "Série Max",
   "streakBroken": "Série Rompue",
   "points": "Points",
-  "pointsEarnés": "Points Gagnés",
+  "pointsEarned": "Points Gagnés",
   "errorSubmittingAnswer": "Erreur lors de l'envoi de la réponse.",
   "wrongAnswerResetStreak": "Mauvaise réponse ! Série réinitialisée.",
   "correct": "Correct",

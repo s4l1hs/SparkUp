@@ -518,13 +518,16 @@ class _QuizPageState extends State<QuizPage> with TickerProviderStateMixin {
 
     return Column(
       key: key,
-      mainAxisAlignment: MainAxisAlignment.center,
+      // place items from top so question container height increase pushes content downward naturally
+      mainAxisAlignment: MainAxisAlignment.start,
       children: [
         // question container
         Container(
           width: double.infinity,
           margin: EdgeInsets.symmetric(horizontal: 8.w),
-          padding: EdgeInsets.symmetric(horizontal: 14.w, vertical: 12.h), // daha kompakt iç dolgu
+          // increase visual height of the question "dashboard"
+          constraints: BoxConstraints(minHeight: 120.h),
+          padding: EdgeInsets.symmetric(horizontal: 14.w, vertical: 16.h),
           decoration: BoxDecoration(
             gradient: LinearGradient(colors: [Colors.white10, Colors.white12]),
             borderRadius: BorderRadius.circular(16.r),
@@ -533,12 +536,12 @@ class _QuizPageState extends State<QuizPage> with TickerProviderStateMixin {
           ),
           child: Text(questionText, textAlign: TextAlign.center, style: TextStyle(fontSize: 22.sp, fontWeight: FontWeight.w800, color: Colors.white, height: 1.25)),
         ),
-        SizedBox(height: 12.h), // soru ile seçenekler arası azaltıldı
+        SizedBox(height: 16.h), // biraz artırıldı: soru ile seçenekler arası mesafe
         ...List.generate(options.length, (index) {
           final isCorrect = index == (currentQuestion['correct_answer_index'] as int);
           final isSelected = index == _selectedAnswerIndex;
           return Padding(
-            padding: EdgeInsets.symmetric(vertical: 6.h), // seçenekler arası biraz daha sıkı
+            padding: EdgeInsets.symmetric(vertical: 8.h), // hafif arttırıldı
             child: InkWell(
               onTap: _answered ? null : () => _answerQuestion(index),
               borderRadius: BorderRadius.circular(16.r),
