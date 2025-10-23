@@ -60,6 +60,7 @@ class _SubscriptionPageState extends State<SubscriptionPage> {
         'title': localizations.planFree,
         'color': Colors.grey.shade700,
         'price': localizations.free,
+        'multiplier': 1.0,
         'features': [
           {'icon': Icons.quiz_outlined, 'text': '3 ${localizations.questionsPerDay}', 'is_pro': false},
           {'icon': Icons.whatshot_outlined, 'text': '3 ${localizations.challengesPerDay}', 'is_pro': false},
@@ -71,10 +72,13 @@ class _SubscriptionPageState extends State<SubscriptionPage> {
         'title': localizations.planPro,
         'color': theme.colorScheme.primary,
         'price': '\$4.99 / ${localizations.month}',
+        'multiplier': 1.5,
         'features': [
           {'icon': Icons.quiz_outlined, 'text': '5 ${localizations.questionsPerDay}', 'is_pro': true},
           {'icon': Icons.whatshot_outlined, 'text': '5 ${localizations.challengesPerDay}', 'is_pro': true},
           {'icon': Icons.notifications_active_outlined, 'text': '2 ${localizations.notificationsPerDay}', 'is_pro': true},
+          // multiplier badge as a feature line (icon + localized text)
+          {'icon': Icons.bolt_outlined, 'text': '1.5X ${localizations.pointsPerQuestion}', 'is_pro': true},
         ],
       },
       {
@@ -82,10 +86,13 @@ class _SubscriptionPageState extends State<SubscriptionPage> {
         'title': localizations.planUltra,
         'color': theme.colorScheme.secondary,
         'price': '\$9.99 / ${localizations.month}',
+        'multiplier': 2.0,
         'features': [
           {'icon': Icons.quiz_outlined, 'text': localizations.unlimitedQuizzes, 'is_pro': true},
           {'icon': Icons.whatshot_outlined, 'text': localizations.unlimitedChallenges, 'is_pro': true},
           {'icon': Icons.notifications_active_outlined, 'text': '3 ${localizations.notificationsPerDay}', 'is_pro': true},
+          // multiplier badge as a feature line (icon + localized text)
+          {'icon': Icons.bolt_outlined, 'text': '2X ${localizations.pointsPerQuestion}', 'is_pro': true},
         ],
       },
     ];
@@ -141,8 +148,8 @@ class _SubscriptionPageState extends State<SubscriptionPage> {
               ],
             ),
             SizedBox(height: 20.h),
+            SizedBox(height: 12.h),
 
-            // Horizontal plans
             SizedBox(
               height: 420.h,
               child: ListView.builder(
@@ -203,7 +210,6 @@ class _SubscriptionPageState extends State<SubscriptionPage> {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              // ribbon + title
               Row(
                 children: [
                   Expanded(
@@ -214,9 +220,6 @@ class _SubscriptionPageState extends State<SubscriptionPage> {
                           decoration: BoxDecoration(color: cardColor, borderRadius: BorderRadius.circular(8.r)),
                           child: Text(plan['title'] as String, style: TextStyle(color: Colors.black87, fontSize: 18.sp, fontWeight: FontWeight.w900)),
                         ),
-                        SizedBox(width: 8.w),
-                        if (!isFree)
-                          Text(plan['price'] as String, style: TextStyle(color: Colors.white70, fontWeight: FontWeight.w800)),
                       ],
                     ),
                   ),

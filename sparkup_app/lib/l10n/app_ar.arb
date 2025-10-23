@@ -83,6 +83,7 @@
   "streakBroken": "تم كسر السلسلة",
   "points": "نقاط",
   "pointsEarned": "النقاط المكتسبة",
+  "pointsPerQuestion": "النقاط لكل سؤال",
   "errorSubmittingAnswer": "خطأ في إرسال الإجابة.",
   "wrongAnswerResetStreak": "إجابة خاطئة! تمت إعادة تعيين السلسلة.",
   "correct": "صحيح",

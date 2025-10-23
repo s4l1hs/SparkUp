@@ -608,6 +608,12 @@ abstract class AppLocalizations {
   /// **'Points Earned'**
   String get pointsEarned;
 
+  /// No description provided for @pointsPerQuestion.
+  ///
+  /// In en, this message translates to:
+  /// **'points per question'**
+  String get pointsPerQuestion;
+
   /// No description provided for @errorSubmittingAnswer.
   ///
   /// In en, this message translates to:

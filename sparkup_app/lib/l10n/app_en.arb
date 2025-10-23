@@ -89,6 +89,7 @@
   "streakBroken": "Streak Broken",
   "points": "Points",
   "pointsEarned": "Points Earned",
+  "pointsPerQuestion": "points per question",
   "errorSubmittingAnswer": "Error submitting answer.",
   "wrongAnswerResetStreak": "Wrong answer! Streak reset.",
   "correct": "Correct",

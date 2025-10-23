@@ -258,6 +258,9 @@ class AppLocalizationsHi extends AppLocalizations {
   String get pointsEarned => 'प्राप्त अंक';
 
   @override
+  String get pointsPerQuestion => 'प्रत्येक प्रश्न के अंक';
+
+  @override
   String get errorSubmittingAnswer => 'उत्तर सबमिट करने में त्रुटि।';
 
   @override

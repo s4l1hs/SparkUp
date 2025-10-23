@@ -82,6 +82,7 @@
   "streakBroken": "連勝中断",
   "points": "ポイント",
   "pointsEarned": "獲得ポイント",
+  "pointsPerQuestion": "1問あたりのポイント",
   "errorSubmittingAnswer": "回答送信エラーです。",
   "wrongAnswerResetStreak": "不正解！連勝がリセットされました。",
   "correct": "正解",

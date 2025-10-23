@@ -259,6 +259,9 @@ class AppLocalizationsTr extends AppLocalizations {
   String get pointsEarned => 'Kazanılan Puan';
 
   @override
+  String get pointsPerQuestion => 'soru başına puan';
+
+  @override
   String get errorSubmittingAnswer => 'Cevap gönderilirken hata oluştu.';
 
   @override

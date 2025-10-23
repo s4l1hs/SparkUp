@@ -258,6 +258,9 @@ class AppLocalizationsAr extends AppLocalizations {
   String get pointsEarned => 'النقاط المكتسبة';
 
   @override
+  String get pointsPerQuestion => 'النقاط لكل سؤال';
+
+  @override
   String get errorSubmittingAnswer => 'خطأ في إرسال الإجابة.';
 
   @override

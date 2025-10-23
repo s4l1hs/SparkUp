@@ -88,6 +88,7 @@
   "streakBroken": "连击中断",
   "points": "积分",
   "pointsEarned": "赢得积分",
+  "pointsPerQuestion": "每题得分",
   "errorSubmittingAnswer": "提交答案时出错。",
   "wrongAnswerResetStreak": "回答错误！连击已重置。",
   "correct": "正确",

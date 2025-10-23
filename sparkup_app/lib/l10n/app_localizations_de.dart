@@ -265,6 +265,9 @@ class AppLocalizationsDe extends AppLocalizations {
   String get pointsEarned => 'Punkte erzielt';
 
   @override
+  String get pointsPerQuestion => 'Punkte pro Frage';
+
+  @override
   String get errorSubmittingAnswer => 'Fehler beim Senden der Antwort.';
 
   @override

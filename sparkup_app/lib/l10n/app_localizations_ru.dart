@@ -255,7 +255,10 @@ class AppLocalizationsRu extends AppLocalizations {
   String get points => 'Очки';
 
   @override
-  String get pointsEarned => 'Очков Заработано';
+  String get pointsEarned => 'Очки получены';
+
+  @override
+  String get pointsPerQuestion => 'баллов за вопрос';
 
   @override
   String get errorSubmittingAnswer => 'Ошибка при отправке ответа.';

@@ -256,6 +256,9 @@ class AppLocalizationsZh extends AppLocalizations {
   String get pointsEarned => '赢得积分';
 
   @override
+  String get pointsPerQuestion => '每题得分';
+
+  @override
   String get errorSubmittingAnswer => '提交答案时出错。';
 
   @override

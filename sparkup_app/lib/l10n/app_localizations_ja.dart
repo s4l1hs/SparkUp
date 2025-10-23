@@ -256,6 +256,9 @@ class AppLocalizationsJa extends AppLocalizations {
   String get pointsEarned => '獲得ポイント';
 
   @override
+  String get pointsPerQuestion => '1問あたりのポイント';
+
+  @override
   String get errorSubmittingAnswer => '回答送信エラーです。';
 
   @override

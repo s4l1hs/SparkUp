@@ -82,6 +82,7 @@
   "streakBroken": "स्ट्रीक टूटी",
   "points": "अंक",
   "pointsEarned": "प्राप्त अंक",
+  "pointsPerQuestion": "प्रत्येक प्रश्न के अंक",
   "errorSubmittingAnswer": "उत्तर सबमिट करने में त्रुटि।",
   "wrongAnswerResetStreak": "गलत उत्तर! स्ट्रीक रीसेट हुई।",
   "correct": "सही",

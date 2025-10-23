@@ -88,6 +88,7 @@
   "streakBroken": "Racha Rota",
   "points": "Puntos",
   "pointsEarned": "Puntos Ganados",
+  "pointsPerQuestion": "puntos por pregunta",
   "errorSubmittingAnswer": "Error al enviar la respuesta.",
   "wrongAnswerResetStreak": "Respuesta incorrecta! Racha reiniciada.",
   "correct": "Correcto",

@@ -82,6 +82,7 @@
   "streakBroken": "Striscia Interrotta",
   "points": "Punti",
   "pointsEarned": "Punti Guadagnati",
+  "pointsPerQuestion": "punti per domanda",
   "errorSubmittingAnswer": "Errore nell'invio della risposta.",
   "wrongAnswerResetStreak": "Risposta sbagliata! Striscia azzerata.",
   "correct": "Corretto",

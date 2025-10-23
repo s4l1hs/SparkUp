@@ -82,6 +82,7 @@
   "streakBroken": "Seri Bozuldu",
   "points": "Puan",
   "pointsEarned": "Kazanılan Puan",
+  "pointsPerQuestion": "soru başına puan",
   "errorSubmittingAnswer": "Cevap gönderilirken hata oluştu.",
   "wrongAnswerResetStreak": "Yanlış cevap! Seri sıfırlandı.",
   "correct": "Doğru",

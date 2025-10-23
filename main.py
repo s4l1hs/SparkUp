@@ -337,7 +337,14 @@ def submit_quiz_answer(payload: AnswerPayload, db_user: User = Depends(get_curre
     score_awarded = 0
     if not already_answered:
         if is_correct:
-            base_score = 10
+            # base score depends on subscription level
+            lvl = access.get("level") if isinstance(access, dict) else None
+            if lvl == "pro":
+                base_score = 15
+            elif lvl == "ultra":
+                base_score = 20
+            else:
+                base_score = 10
             streak_bonus = min(user_streak.streak_count, 5) * 2
             score_awarded = base_score + streak_bonus
             user_score.score += score_awarded
