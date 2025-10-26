@@ -3,6 +3,9 @@ import 'package:http/http.dart' as http;
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:firebase_messaging/firebase_messaging.dart';
+import 'package:flutter/foundation.dart';
+import 'dart:async';
 import 'package:google_sign_in/google_sign_in.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import '../l10n/app_localizations.dart';
@@ -29,6 +32,7 @@ class _SettingsPageState extends State<SettingsPage> with SingleTickerProviderSt
   int _userScore = 0;
 
   late final AnimationController _animationController;
+  StreamSubscription<String>? _tokenRefreshSub;
 
   final Map<String, String> _supportedLanguages = {
     'en': 'English', 'tr': 'Türkçe', 'de': 'Deutsch', 'fr': 'Français', 'es': 'Español',
@@ -48,6 +52,9 @@ class _SettingsPageState extends State<SettingsPage> with SingleTickerProviderSt
   @override
   void dispose() {
     _animationController.dispose();
+    try {
+      _tokenRefreshSub?.cancel();
+    } catch (_) {}
     super.dispose();
   }
 
@@ -81,6 +88,10 @@ class _SettingsPageState extends State<SettingsPage> with SingleTickerProviderSt
         });
 
         Provider.of<LocaleProvider>(context, listen: false).setLocale(_currentLanguageCode);
+        // ensure device token registration if notifications are enabled
+        if (_notificationsEnabled) {
+          _ensureTokenRegisteredIfEnabled();
+        }
       } else {
         throw Exception('Failed to load profile: ${response.statusCode}');
       }
@@ -132,6 +143,12 @@ class _SettingsPageState extends State<SettingsPage> with SingleTickerProviderSt
         debugPrint('Failed to save notifications: ${response.statusCode} ${response.body}');
         throw Exception('Failed to save setting');
       }
+      // If enabling succeeded, register token with backend; if disabling, unregister
+      if (isEnabled) {
+        await _ensureTokenRegisteredIfEnabled();
+      } else {
+        await _unregisterDeviceTokenFromBackend();
+      }
     } catch (e) {
       if (mounted) {
         _showErrorSnackBar(AppLocalizations.of(context)?.failedToSaveNotification ?? "Failed to save notification setting");
@@ -139,6 +156,59 @@ class _SettingsPageState extends State<SettingsPage> with SingleTickerProviderSt
       }
     } finally {
       if (mounted) setState(() => _isSavingNotifications = false);
+    }
+  }
+
+  Future<void> _ensureTokenRegisteredIfEnabled() async {
+    try {
+      if (!_notificationsEnabled) return;
+      // Request permissions (especially important on iOS)
+      await FirebaseMessaging.instance.requestPermission();
+      final fcmToken = await FirebaseMessaging.instance.getToken();
+      if (fcmToken != null) {
+        await _registerDeviceTokenWithBackend(fcmToken);
+      }
+
+      // listen for token refreshes and re-register
+      _tokenRefreshSub = FirebaseMessaging.instance.onTokenRefresh.listen((newToken) async {
+        if (_notificationsEnabled) {
+          await _registerDeviceTokenWithBackend(newToken);
+        }
+      });
+    } catch (e) {
+      debugPrint('FCM registration failed: $e');
+    }
+  }
+
+  Future<void> _registerDeviceTokenWithBackend(String token) async {
+    try {
+      final idToken = await _getIdToken();
+      if (idToken == null) return;
+      final uri = Uri.parse("$backendBaseUrl/user/device-token/");
+      final resp = await http.post(uri, headers: {'Authorization': 'Bearer $idToken', 'Content-Type': 'application/json'}, body: jsonEncode({'token': token, 'platform': kIsWeb ? 'web' : 'native'}));
+      if (resp.statusCode != 200 && resp.statusCode != 201) {
+        debugPrint('Failed to register device token: ${resp.statusCode} ${resp.body}');
+      }
+    } catch (e) {
+      debugPrint('registerDeviceToken error: $e');
+    }
+  }
+
+  Future<void> _unregisterDeviceTokenFromBackend() async {
+    try {
+      final idToken = await _getIdToken();
+      if (idToken == null) return;
+      final token = await FirebaseMessaging.instance.getToken();
+      if (token == null) return;
+      final uri = Uri.parse("$backendBaseUrl/user/device-token/").replace(queryParameters: {'token': token});
+      final resp = await http.delete(uri, headers: {'Authorization': 'Bearer $idToken'});
+      if (resp.statusCode != 200 && resp.statusCode != 204) {
+        debugPrint('Failed to unregister device token: ${resp.statusCode} ${resp.body}');
+      }
+      // delete local token as well
+      try { await FirebaseMessaging.instance.deleteToken(); } catch (_) {}
+    } catch (e) {
+      debugPrint('unregisterDeviceToken error: $e');
     }
   }
 

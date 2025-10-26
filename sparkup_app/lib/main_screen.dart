@@ -209,22 +209,8 @@ class MainScreenState extends State<MainScreen> with TickerProviderStateMixin {
                                     child: Icon(item['icon'] as IconData, size: isSelected ? 30.sp : 26.sp, color: itemColor),
                                   ),
                                 ),
-                                SizedBox(height: 6.h),
-                                AnimatedDefaultTextStyle(
-                                  duration: const Duration(milliseconds: 260),
-                                  style: TextStyle(
-                                    fontSize: isSelected ? 12.sp : 10.sp,
-                                    color: isSelected ? itemColor : Colors.white70,
-                                    fontWeight: isSelected ? FontWeight.w700 : FontWeight.w500,
-                                  ),
-                                  child: FittedBox(
-                                    fit: BoxFit.scaleDown,
-                                    child: SizedBox(
-                                      width: itemWidth - 6.w,
-                                      child: Text(item['label'] as String, maxLines: 1, overflow: TextOverflow.ellipsis, textAlign: TextAlign.center),
-                                    ),
-                                  ),
-                                ),
+                                // Removed text labels under nav icons per UX request - keep compact spacing
+                                SizedBox(height: 4.h),
                               ],
                             ),
                           ),

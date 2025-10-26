@@ -6,3 +6,4 @@ python-dotenv
 firebase-admin
 google-generativeai
 httpx
+pytest
