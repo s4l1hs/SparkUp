@@ -15,7 +15,7 @@
       "ja": "第二次世界大戦は何年に終結しましたか？",
       "ar": "في أي عام انتهت الحرب العالمية الثانية؟"
     },
-    "options_texts": {
+  "options_texts": {
       "en": ["1943", "1945", "1950", "1939"],
       "tr": ["1943", "1945", "1950", "1939"],
       "fr": ["1943", "1945", "1950", "1939"],
@@ -10887,6 +10887,667 @@
       "zh": ["河马", "犀牛", "大象", "鲸鱼"],
       "ja": ["カバ", "サイ", "ゾウ", "クジラ"],
       "ar": ["فرس النهر", "وحيد القرن", "الفيل", "الحوت"]
+    }
+  },
+  {
+    "category": "general_culture",
+    "correct_answer_index": 2,
+    "question_texts": {
+      "en": "What is the smallest prime number?",
+      "tr": "En küçük asal sayı nedir?",
+      "fr": "Quel est le plus petit nombre premier ?",
+      "es": "¿Cuál es el número primo más pequeño?",
+      "de": "Was ist die kleinste Primzahl?",
+      "it": "Qual è il più piccolo numero primo?",
+      "pt": "Qual é o menor número primo?",
+      "ru": "Какое наименьшее простое число?",
+      "zh": "最小的质数是哪一个？",
+      "ja": "最小の素数は何ですか？",
+      "ar": "ما هو أصغر عدد أولي؟"
+    },
+    "options_texts": {
+      "en": ["0", "1", "2", "3"],
+      "tr": ["0", "1", "2", "3"],
+      "fr": ["0", "1", "2", "3"],
+      "es": ["0", "1", "2", "3"],
+      "de": ["0", "1", "2", "3"],
+      "it": ["0", "1", "2", "3"],
+      "pt": ["0", "1", "2", "3"],
+      "ru": ["0", "1", "2", "3"],
+      "zh": ["0", "1", "2", "3"],
+      "ja": ["0", "1", "2", "3"],
+      "ar": ["0", "1", "2", "3"]
+    }
+  },
+  {
+    "category": "science",
+    "correct_answer_index": 0,
+    "question_texts": {
+      "en": "Which particle has a negative electric charge?",
+      "tr": "Hangi parçacık negatif elektrik yüküne sahiptir?",
+      "fr": "Quelle particule a une charge électrique négative ?",
+      "es": "¿Qué partícula tiene carga eléctrica negativa?",
+      "de": "Welches Teilchen hat eine negative elektrische Ladung?",
+      "it": "Quale particella ha una carica elettrica negativa?",
+      "pt": "Qual partícula tem carga elétrica negativa?",
+      "ru": "Какая частица имеет отрицательный электрический заряд?",
+      "zh": "哪种粒子带负电荷？",
+      "ja": "どの粒子が負の電荷を持っていますか？",
+      "ar": "أي جسيم يحمل شحنة كهربائية سالبة؟"
+    },
+    "options_texts": {
+      "en": ["Electron", "Proton", "Neutron", "Photon"],
+      "tr": ["Elektron", "Proton", "Nötron", "Foton"],
+      "fr": ["Électron", "Proton", "Neutron", "Photon"],
+      "es": ["Electrón", "Protón", "Neutrón", "Fotón"],
+      "de": ["Elektron", "Proton", "Neutron", "Photon"],
+      "it": ["Elettrone", "Protone", "Neutrone", "Fotone"],
+      "pt": ["Elétron", "Próton", "Nêutron", "Fóton"],
+      "ru": ["Электрон", "Протон", "Нейтрон", "Фотон"],
+      "zh": ["电子", "质子", "中子", "光子"],
+      "ja": ["電子", "陽子", "中性子", "光子"],
+      "ar": ["إلكترون", "بروتون", "نيوترون", "فوتون"]
+    }
+  },
+  {
+    "category": "geography_travel",
+    "correct_answer_index": 0,
+    "question_texts": {
+      "en": "Which country has the longest coastline in the world?",
+      "tr": "Dünyanın en uzun kıyı şeridine sahip ülke hangisidir?",
+      "fr": "Quel pays a le littoral le plus long au monde ?",
+      "es": "¿Qué país tiene la costa más larga del mundo?",
+      "de": "Welches Land hat die längste Küstenlinie der Welt?",
+      "it": "Quale paese ha la costa più lunga del mondo?",
+      "pt": "Qual país tem a costa mais longa do mundo?",
+      "ru": "Какая страна имеет самую длинную береговую линию в мире?",
+      "zh": "哪个国家拥有世界上最长的海岸线？",
+      "ja": "世界で最も長い海岸線を持つ国はどこですか？",
+      "ar": "أي دولة تمتلك أطول خط ساحلي في العالم؟"
+    },
+    "options_texts": {
+      "en": ["Canada", "Australia", "Russia", "United States"],
+      "tr": ["Kanada", "Avustralya", "Rusya", "Amerika Birleşik Devletleri"],
+      "fr": ["Canada", "Australie", "Russie", "États-Unis"],
+      "es": ["Canadá", "Australia", "Rusia", "Estados Unidos"],
+      "de": ["Kanada", "Australien", "Russland", "Vereinigte Staaten"],
+      "it": ["Canada", "Australia", "Russia", "Stati Uniti"],
+      "pt": ["Canadá", "Austrália", "Rússia", "Estados Unidos"],
+      "ru": ["Канада", "Австралия", "Россия", "Соединённые Штаты"],
+      "zh": ["加拿大", "澳大利亚", "俄罗斯", "美国"],
+      "ja": ["カナダ", "オーストラリア", "ロシア", "アメリカ合衆国"],
+      "ar": ["كندا", "أستراليا", "روسيا", "الولايات المتحدة"]
+    }
+  },
+  {
+    "category": "history",
+    "correct_answer_index": 0,
+    "question_texts": {
+      "en": "Which ancient wonder was located in Babylon?",
+      "tr": "Hangi antik harika Babil'de bulunuyordu?",
+      "fr": "Quelle merveille antique se trouvait à Babylone ?",
+      "es": "¿Qué maravilla antigua se encontraba en Babilonia?",
+      "de": "Welches antike Weltwunder befand sich in Babylon?",
+      "it": "Quale meraviglia antica si trovava a Babilonia?",
+      "pt": "Qual maravilha antiga estava localizada na Babilônia?",
+      "ru": "Каё чудо античного мира находилось в Вавилоне?",
+      "zh": "哪一座古代奇迹位于巴比伦？",
+      "ja": "バビロンにあった古代の七不思議はどれですか？",
+      "ar": "أي من العجائب القديمة كان يقع في بابل؟"
+    },
+    "options_texts": {
+      "en": ["Hanging Gardens", "Great Pyramid of Giza", "Lighthouse of Alexandria", "Colossus of Rhodes"],
+      "tr": ["Asma Bahçeler", "Giza Büyük Piramidi", "İskenderiye Feneri", "Rodos Heykeli"],
+      "fr": ["Jardins suspendus", "Grande pyramide de Gizeh", "Phare d'Alexandrie", "Colosse de Rhodes"],
+      "es": ["Jardines Colgantes", "Gran Pirámide de Guiza", "Faro de Alejandría", "Coloso de Rodas"],
+      "de": ["Hängende Gärten", "Große Pyramide von Gizeh", "Leuchtturm von Alexandria", "Koloss von Rhodos"],
+      "it": ["Giardini pensili", "Grande Piramide di Giza", "Faro di Alessandria", "Colosso di Rodi"],
+      "pt": ["Jardins Suspensos", "Grande Pirâmide de Gizé", "Farol de Alexandria", "Colosso de Rodes"],
+      "ru": ["Висячие сады", "Великая пирамида в Гизе", "Александрийский маяк", "Колосс Родосский"],
+      "zh": ["空中花园", "吉萨大金字塔", "亚历山大灯塔", "罗德岛巨像"],
+      "ja": ["空中庭園", "ギザの大ピラミッド", "アレクサンドリアの灯台", "ロードスの巨像"],
+      "ar": ["الحدائق المعلقة", "هرم خوفو", "منارة الإسكندرية", "تمثال رودس"]
+    }
+  },
+  {
+    "category": "technology",
+    "correct_answer_index": 0,
+    "question_texts": {
+      "en": "What does 'HTTP' stand for?",
+      "tr": "'HTTP' neyin kısaltmasıdır?",
+      "fr": "Que signifie 'HTTP' ?",
+      "es": "¿Qué significa 'HTTP'?",
+      "de": "Wofür steht 'HTTP'?",
+      "it": "Cosa significa 'HTTP'?",
+      "pt": "O que significa 'HTTP'?",
+      "ru": "Что означает 'HTTP'?",
+      "zh": "HTTP是什么意思？",
+      "ja": "HTTPは何の略ですか？",
+      "ar": "بماذا يرمز 'HTTP'؟"
+    },
+    "options_texts": {
+      "en": ["HyperText Transfer Protocol", "Hyperlink Transfer Protocol", "HyperText Transmission Procedure", "High Transfer Text Protocol"],
+      "tr": ["HyperText Transfer Protocol", "Hyperlink Transfer Protocol", "HyperText Transmission Procedure", "High Transfer Text Protocol"],
+      "fr": ["HyperText Transfer Protocol", "Hyperlink Transfer Protocol", "HyperText Transmission Procedure", "High Transfer Text Protocol"],
+      "es": ["HyperText Transfer Protocol", "Hyperlink Transfer Protocol", "HyperText Transmission Procedure", "High Transfer Text Protocol"],
+      "de": ["HyperText Transfer Protocol", "Hyperlink Transfer Protocol", "HyperText Transmission Procedure", "High Transfer Text Protocol"],
+      "it": ["HyperText Transfer Protocol", "Hyperlink Transfer Protocol", "HyperText Transmission Procedure", "High Transfer Text Protocol"],
+      "pt": ["HyperText Transfer Protocol", "Hyperlink Transfer Protocol", "HyperText Transmission Procedure", "High Transfer Text Protocol"],
+      "ru": ["HyperText Transfer Protocol", "Hyperlink Transfer Protocol", "HyperText Transmission Procedure", "High Transfer Text Protocol"],
+      "zh": ["超文本传输协议", "超链接传输协议", "超文本传输过程", "高传输文本协议"],
+      "ja": ["HyperText Transfer Protocol", "Hyperlink Transfer Protocol", "HyperText Transmission Procedure", "High Transfer Text Protocol"],
+      "ar": ["بروتوكول نقل النص الفائق", "بروتوكول نقل الارتباط", "إجراء نقل النص الفائق", "بروتوكول النص عالي النقل"]
+    }
+  },
+  {
+    "category": "fun_facts",
+    "correct_answer_index": 0,
+    "question_texts": {
+      "en": "Which food is famously known for not spoiling over long periods?",
+      "tr": "Hangi yiyecek uzun süre bozulmamasıyla ünlüdür?",
+      "fr": "Quel aliment est célèbre pour ne pas se gâter pendant de longues périodes ?",
+      "es": "¿Qué alimento es famoso por no estropearse durante largos períodos?",
+      "de": "Welches Lebensmittel ist dafür bekannt, über lange Zeit nicht schlecht zu werden?",
+      "it": "Quale cibo è famoso per non deteriorarsi per lunghi periodi?",
+      "pt": "Qual alimento é conhecido por não estragar por longos períodos?",
+      "ru": "Какой продукт известен тем, что не портится длительное время?",
+      "zh": "哪种食物以长期不腐败而闻名？",
+      "ja": "どの食品が長期間腐らないことで有名ですか？",
+      "ar": "أي طعام مشهور بعدم فسدانه لفترات طويلة؟"
+    },
+    "options_texts": {
+      "en": ["Honey", "Bread", "Cheese", "Rice"],
+      "tr": ["Bal", "Ekmek", "Peynir", "Pirinç"],
+      "fr": ["Miel", "Pain", "Fromage", "Riz"],
+      "es": ["Miel", "Pan", "Queso", "Arroz"],
+      "de": ["Honig", "Brot", "Käse", "Reis"],
+      "it": ["Miele", "Pane", "Formaggio", "Riso"],
+      "pt": ["Mel", "Pão", "Queijo", "Arroz"],
+      "ru": ["Мёд", "Хлеб", "Сыр", "Рис"],
+      "zh": ["蜂蜜", "面包", "奶酪", "大米"],
+      "ja": ["蜂蜜", "パン", "チーズ", "米"],
+      "ar": ["العسل", "الخبز", "الجبن", "الأرز"]
+    }
+  },
+  {
+    "category": "art",
+    "correct_answer_index": 2,
+    "question_texts": {
+      "en": "Who composed the piano piece 'Für Elise'?",
+      "tr": "'Für Elise' adlı piyano parçasını kim bestelemiştir?",
+      "fr": "Qui a composé la pièce pour piano 'Für Elise' ?",
+      "es": "¿Quién compuso la pieza para piano 'Für Elise'?",
+      "de": "Wer komponierte das Klavierstück 'Für Elise'?",
+      "it": "Chi ha composto il pezzo per pianoforte 'Für Elise'?",
+      "pt": "Quem compôs a peça para piano 'Für Elise'?",
+      "ru": "Кто сочинил фортепианную пьесу 'Für Elise'?",
+      "zh": "《致爱丽丝》的作曲者是谁？",
+      "ja": "『エリーゼのために』を作曲したのは誰ですか？",
+      "ar": "من لحن قطعة البيانو 'Für Elise'؟"
+    },
+    "options_texts": {
+      "en": ["Mozart", "Bach", "Beethoven", "Chopin"],
+      "tr": ["Mozart", "Bach", "Beethoven", "Chopin"],
+      "fr": ["Mozart", "Bach", "Beethoven", "Chopin"],
+      "es": ["Mozart", "Bach", "Beethoven", "Chopin"],
+      "de": ["Mozart", "Bach", "Beethoven", "Chopin"],
+      "it": ["Mozart", "Bach", "Beethoven", "Chopin"],
+      "pt": ["Mozart", "Bach", "Beethoven", "Chopin"],
+      "ru": ["Моцарт", "Бах", "Бетховен", "Шопен"],
+      "zh": ["莫扎特", "巴赫", "贝多芬", "肖邦"],
+      "ja": ["モーツァルト", "バッハ", "ベートーヴェン", "ショパン"],
+      "ar": ["موتسارت", "باخ", "بيتهوفن", "شوبان"]
+    }
+  },
+  {
+    "category": "general_culture",
+    "correct_answer_index": 2,
+    "question_texts": {
+      "en": "Which planet is known as the Red Planet?",
+      "tr": "Hangi gezegen Kızıl Gezegen olarak bilinir?",
+      "fr": "Which planet is known as the Red Planet?",
+      "es": "Which planet is known as the Red Planet?",
+      "de": "Which planet is known as the Red Planet?",
+      "it": "Which planet is known as the Red Planet?",
+      "pt": "Which planet is known as the Red Planet?",
+      "ru": "Which planet is known as the Red Planet?",
+      "zh": "Which planet is known as the Red Planet?",
+      "ja": "Which planet is known as the Red Planet?",
+      "ar": "Which planet is known as the Red Planet?"
+    },
+    "options_texts": {
+      "en": ["Venus", "Jupiter", "Mars", "Mercury"],
+      "tr": ["Venüs", "Jüpiter", "Mars", "Merkür"],
+      "fr": ["Venus", "Jupiter", "Mars", "Mercury"],
+      "es": ["Venus", "Júpiter", "Marte", "Mercurio"],
+      "de": ["Venus", "Jupiter", "Mars", "Merkur"],
+      "it": ["Venere", "Giove", "Marte", "Mercurio"],
+      "pt": ["Vênus", "Júpiter", "Marte", "Mercúrio"],
+      "ru": ["Венера", "Юпитер", "Марс", "Меркурий"],
+      "zh": ["金星", "木星", "火星", "水星"],
+      "ja": ["金星", "木星", "火星", "水星"],
+      "ar": ["الزهرة", "المشتري", "المريخ", "عطارد"]
+    }
+  },
+  {
+    "category": "technology",
+    "correct_answer_index": 0,
+    "question_texts": {
+      "en": "What is the common name for a small, portable computer you can carry on your lap?",
+      "tr": "Kucağınızda taşıyabileceğiniz küçük, taşınabilir bilgisayarın yaygın adı nedir?",
+      "fr": "What is the common name for a small, portable computer you can carry on your lap?",
+      "es": "What is the common name for a small, portable computer you can carry on your lap?",
+      "de": "What is the common name for a small, portable computer you can carry on your lap?",
+      "it": "What is the common name for a small, portable computer you can carry on your lap?",
+      "pt": "What is the common name for a small, portable computer you can carry on your lap?",
+      "ru": "What is the common name for a small, portable computer you can carry on your lap?",
+      "zh": "What is the common name for a small, portable computer you can carry on your lap?",
+      "ja": "What is the common name for a small, portable computer you can carry on your lap?",
+      "ar": "What is the common name for a small, portable computer you can carry on your lap?"
+    },
+    "options_texts": {
+      "en": ["Laptop", "Desktop", "Mainframe", "Server"],
+      "tr": ["Dizüstü Bilgisayar", "Masaüstü", "Ana Bilgisayar", "Sunucu"],
+      "fr": ["Laptop", "Desktop", "Mainframe", "Server"],
+      "es": ["Portátil", "Sobremesa", "Mainframe", "Servidor"],
+      "de": ["Laptop", "Desktop", "Mainframe", "Server"],
+      "it": ["Portatile", "Desktop", "Mainframe", "Server"],
+      "pt": ["Portátil", "Desktop", "Mainframe", "Servidor"],
+      "ru": ["Ноутбук", "Настольный", "Мейнфрейм", "Сервер"],
+      "zh": ["笔记本电脑", "台式机", "大型机", "服务器"],
+      "ja": ["ラップトップ", "デスクトップ", "メインフレーム", "サーバー"],
+      "ar": ["كمبيوتر محمول", "كمبيوتر مكتبي", "حاسوب كبير", "خادم"]
+    }
+  },
+  {
+    "category": "math",
+    "correct_answer_index": 2,
+    "question_texts": {
+      "en": "What is 8 × 7?",
+      "tr": "8 × 7 nedir?",
+      "fr": "What is 8 × 7?",
+      "es": "What is 8 × 7?",
+      "de": "What is 8 × 7?",
+      "it": "What is 8 × 7?",
+      "pt": "What is 8 × 7?",
+      "ru": "What is 8 × 7?",
+      "zh": "What is 8 × 7?",
+      "ja": "What is 8 × 7?",
+      "ar": "What is 8 × 7?"
+    },
+    "options_texts": {
+      "en": ["48", "54", "56", "64"],
+      "tr": ["48", "54", "56", "64"],
+      "fr": ["48", "54", "56", "64"],
+      "es": ["48", "54", "56", "64"],
+      "de": ["48", "54", "56", "64"],
+      "it": ["48", "54", "56", "64"],
+      "pt": ["48", "54", "56", "64"],
+      "ru": ["48", "54", "56", "64"],
+      "zh": ["48", "54", "56", "64"],
+      "ja": ["48", "54", "56", "64"],
+      "ar": ["48", "54", "56", "64"]
+    }
+  },
+  {
+    "category": "geography_travel",
+    "correct_answer_index": 1,
+    "question_texts": {
+      "en": "Which river runs through the city of Paris?",
+      "tr": "Hangi nehir Paris şehrinden geçer?",
+      "fr": "Which river runs through the city of Paris?",
+      "es": "Which river runs through the city of Paris?",
+      "de": "Which river runs through the city of Paris?",
+      "it": "Which river runs through the city of Paris?",
+      "pt": "Which river runs through the city of Paris?",
+      "ru": "Which river runs through the city of Paris?",
+      "zh": "Which river runs through the city of Paris?",
+      "ja": "Which river runs through the city of Paris?",
+      "ar": "Which river runs through the city of Paris?"
+    },
+    "options_texts": {
+      "en": ["Thames", "Seine", "Danube", "Rhine"],
+      "tr": ["Thames", "Seine", "Dinyeper", "Ren"],
+      "fr": ["Tamise", "Seine", "Danube", "Rhin"],
+      "es": ["Tamesis", "Sena", "Danubio", "Rin"],
+      "de": ["Themse", "Seine", "Donau", "Rhein"],
+      "it": ["Tamigi", "Senna", "Danubio", "Reno"],
+      "pt": ["Tamisa", "Sena", "Danúbio", "Reno"],
+      "ru": ["Темза", "Сена", "Дунай", "Рейн"],
+      "zh": ["泰晤士河", "塞纳河", "多瑙河", "莱茵河"],
+      "ja": ["テムズ川", "セーヌ川", "ドナウ川", "ライン川"],
+      "ar": ["نهر التايمز", "نهر السين", "نهر الدانوب", "نهر الراين"]
+    }
+  },
+  {
+    "category": "fun_facts",
+    "correct_answer_index": 0,
+    "question_texts": {
+      "en": "Which animal is known as the largest land mammal?",
+      "tr": "Hangi hayvan en büyük kara memeli olarak bilinir?",
+      "fr": "Which animal is known as the largest land mammal?",
+      "es": "Which animal is known as the largest land mammal?",
+      "de": "Which animal is known as the largest land mammal?",
+      "it": "Which animal is known as the largest land mammal?",
+      "pt": "Which animal is known as the largest land mammal?",
+      "ru": "Which animal is known as the largest land mammal?",
+      "zh": "Which animal is known as the largest land mammal?",
+      "ja": "Which animal is known as the largest land mammal?",
+      "ar": "Which animal is known as the largest land mammal?"
+    },
+    "options_texts": {
+      "en": ["Hippopotamus", "Giraffe", "Elephant", "Rhinoceros"],
+      "tr": ["Hipopotam", "Zürafa", "Fil", "Gergedan"],
+      "fr": ["Hippopotame", "Girafe", "Éléphant", "Rhinocéros"],
+      "es": ["Hipopótamo", "Jirafa", "Elefante", "Rinoceronte"],
+      "de": ["Nilpferd", "Giraffe", "Elefant", "Nashorn"],
+      "it": ["Ippopotamo", "Giraffa", "Elefante", "Rinoceronte"],
+      "pt": ["Hipopótamo", "Girafa", "Elefante", "Rinoceronte"],
+      "ru": ["Бегемот", "Жираф", "Слон", "Носорог"],
+      "zh": ["河马", "长颈鹿", "大象", "犀牛"],
+      "ja": ["カバ", "キリン", "象", "サイ"],
+      "ar": ["فرس النهر", "زرافة", "فيل", "وحيد القرن"]
+    }
+  }
+,
+  {
+    "category": "general_knowledge",
+    "correct_answer_index": 2,
+    "question_texts": {
+      "en": "What is the capital of Australia?",
+      "tr": "Avustralya'nın başkenti neresidir?",
+      "fr": "Quelle est la capitale de l'Australie ?",
+      "es": "¿Cuál es la capital de Australia?",
+      "de": "Was ist die Hauptstadt Australiens?",
+      "it": "Qual è la capitale dell'Australia?",
+      "pt": "Qual é a capital da Austrália?",
+      "ru": "Какова столица Австралии?",
+      "zh": "澳大利亚的首都是什么？",
+      "ja": "オーストラリアの首都はどこですか？",
+      "ar": "ما هي عاصمة أستراليا؟"
+    },
+    "options_texts": {
+      "en": ["Sydney", "Melbourne", "Canberra", "Brisbane"],
+      "tr": ["Sydney", "Melbourne", "Canberra", "Brisbane"],
+      "fr": ["Sydney", "Melbourne", "Canberra", "Brisbane"],
+      "es": ["Sídney", "Melbourne", "Canberra", "Brisbane"],
+      "de": ["Sydney", "Melbourne", "Canberra", "Brisbane"],
+      "it": ["Sydney", "Melbourne", "Canberra", "Brisbane"],
+      "pt": ["Sydney", "Melbourne", "Canberra", "Brisbane"],
+      "ru": ["Сидней", "Мельбурн", "Канберра", "Брисбен"],
+      "zh": ["悉尼", "墨尔本", "堪培拉", "布里斯班"],
+      "ja": ["シドニー", "メルボルン", "キャンベラ", "ブリスベン"],
+      "ar": ["سيدني", "ملبورن", "كانبيرا", "بريسبان"]
+    }
+  },
+  {
+    "category": "science",
+    "correct_answer_index": 0,
+    "question_texts": {
+      "en": "Water freezes at what temperature on the Celsius scale?",
+      "tr": "Celsius ölçeğinde su hangi sıcaklıkta donar?",
+      "fr": "L'eau gèle à quelle température sur l'échelle Celsius ?",
+      "es": "¿A qué temperatura se congela el agua en la escala Celsius?",
+      "de": "Bei welcher Temperatur gefriert Wasser auf der Celsius-Skala?",
+      "it": "L'acqua congela a quale temperatura sulla scala Celsius?",
+      "pt": "A água congela a que temperatura na escala Celsius?",
+      "ru": "При какой температуре по шкале Цельсия вода замерзает?",
+      "zh": "水在摄氏温标下在哪个温度结冰？",
+      "ja": "水は摂氏何度で凍りますか？",
+      "ar": "عند أي درجة حرارة على مقياس سلسيوس يتجمد الماء؟"
+    },
+    "options_texts": {
+      "en": ["0°C", "32°C", "-0°C", "100°C"],
+      "tr": ["0°C", "32°C", "-0°C", "100°C"],
+      "fr": ["0°C", "32°C", "-0°C", "100°C"],
+      "es": ["0°C", "32°C", "-0°C", "100°C"],
+      "de": ["0°C", "32°C", "-0°C", "100°C"],
+      "it": ["0°C", "32°C", "-0°C", "100°C"],
+      "pt": ["0°C", "32°C", "-0°C", "100°C"],
+      "ru": ["0°C", "32°C", "-0°C", "100°C"],
+      "zh": ["0°C", "32°C", "-0°C", "100°C"],
+      "ja": ["0°C", "32°C", "-0°C", "100°C"],
+      "ar": ["0°C", "32°C", "-0°C", "100°C"]
+    }
+  },
+  {
+    "category": "geography",
+    "correct_answer_index": 1,
+    "question_texts": {
+      "en": "Mount Everest sits on the border of which two countries?",
+      "tr": "Everest Dağı hangi iki ülkenin sınırında yer alır?",
+      "fr": "Le mont Everest est situé à la frontière de quels deux pays ?",
+      "es": "¿En la frontera de qué dos países se encuentra el Monte Everest?",
+      "de": "An der Grenze welcher zwei Länder liegt der Mount Everest?",
+      "it": "Il Monte Everest si trova al confine di quali due paesi?",
+      "pt": "O Monte Everest fica na fronteira de quais dois países?",
+      "ru": "На границе каких двух стран находится гора Эверест?",
+      "zh": "珠穆朗玛峰位于哪两个国家的边界上？",
+      "ja": "エベレスト山はどの2つの国の国境にありますか？",
+      "ar": "على حدود أي بلدين يقع جبل إيفرست؟"
+    },
+    "options_texts": {
+      "en": ["China and Nepal", "Nepal and China", "India and Nepal", "Pakistan and China"],
+      "tr": ["Çin ve Nepal", "Nepal ve Çin", "Hindistan ve Nepal", "Pakistan ve Çin"],
+      "fr": ["Chine et Népal", "Népal et Chine", "Inde et Népal", "Pakistan et Chine"],
+      "es": ["China y Nepal", "Nepal y China", "India y Nepal", "Pakistán y China"],
+      "de": ["China und Nepal", "Nepal und China", "Indien und Nepal", "Pakistan und China"],
+      "it": ["Cina e Nepal", "Nepal e Cina", "India e Nepal", "Pakistan e Cina"],
+      "pt": ["China e Nepal", "Nepal e China", "Índia e Nepal", "Paquistão e China"],
+      "ru": ["Китай и Непал", "Непал и Китай", "Индия и Непал", "Пакистан и Китай"],
+      "zh": ["中国和尼泊尔", "尼泊尔和中国", "印度和尼泊尔", "巴基斯坦和中国"],
+      "ja": ["中国とネパール", "ネパールと中国", "インドとネパール", "パキスタンと中国"],
+      "ar": ["الصين ونيبال", "نيبال والصين", "الهند ونيبال", "باكستان والصين"]
+    }
+  },
+  {
+    "category": "history",
+    "correct_answer_index": 0,
+    "question_texts": {
+      "en": "Who was the first person to walk on the Moon?",
+      "tr": "Aya ilk ayak basan kişi kimdi?",
+      "fr": "Qui a été la première personne à marcher sur la Lune ?",
+      "es": "¿Quién fue la primera persona en caminar sobre la Luna?",
+      "de": "Wer war die erste Person, die auf dem Mond ging?",
+      "it": "Chi è stata la prima persona a camminare sulla Luna?",
+      "pt": "Quem foi a primeira pessoa a caminhar na Lua?",
+      "ru": "Кто был первым человеком, ступившим на Луну?",
+      "zh": "第一个登上月球的人是谁？",
+      "ja": "月に初めて降り立った人物は誰ですか？",
+      "ar": "من كان أول شخص يمشي على سطح القمر؟"
+    },
+    "options_texts": {
+      "en": ["Neil Armstrong", "Buzz Aldrin", "Yuri Gagarin", "Michael Collins"],
+      "tr": ["Neil Armstrong", "Buzz Aldrin", "Yuri Gagarin", "Michael Collins"],
+      "fr": ["Neil Armstrong", "Buzz Aldrin", "Youri Gagarine", "Michael Collins"],
+      "es": ["Neil Armstrong", "Buzz Aldrin", "Yuri Gagarin", "Michael Collins"],
+      "de": ["Neil Armstrong", "Buzz Aldrin", "Juri Gagarin", "Michael Collins"],
+      "it": ["Neil Armstrong", "Buzz Aldrin", "Yuri Gagarin", "Michael Collins"],
+      "pt": ["Neil Armstrong", "Buzz Aldrin", "Yuri Gagarin", "Michael Collins"],
+      "ru": ["Нил Армстронг", "Базз Олдрин", "Юрий Гагарин", "Майкл Коллинз"],
+      "zh": ["尼尔·阿姆斯特朗", "巴兹·奥尔德林", "尤里·加加林", "迈克尔·柯林斯"],
+      "ja": ["ニール・アームストロング", "バズ・オルドリン", "ユーリ・ガガーリン", "マイケル・コリンズ"],
+      "ar": ["نيل آرمسترونج", "باز ألدرين", "يوري جاجارين", "مايكل كولينز"]
+    }
+  },
+  {
+    "category": "literature",
+    "correct_answer_index": 3,
+    "question_texts": {
+      "en": "Who wrote 'Romeo and Juliet'?",
+      "tr": "'Romeo ve Juliet' kitabını kim yazdı?",
+      "fr": "Qui a écrit 'Roméo et Juliette' ?",
+      "es": "¿Quién escribió 'Romeo y Julieta'?",
+      "de": "Wer hat 'Romeo und Julia' geschrieben?",
+      "it": "Chi ha scritto 'Romeo e Giulietta'?",
+      "pt": "Quem escreveu 'Romeu e Julieta'?",
+      "ru": "Кто написал 'Ромео и Джульетта'?",
+      "zh": "谁写了《罗密欧与朱丽叶》？",
+      "ja": "『ロミオとジュリエット』を誰が書きましたか？",
+      "ar": "من كتب 'روميو وجولييت'؟"
+    },
+    "options_texts": {
+      "en": ["Charles Dickens", "Jane Austen", "Mark Twain", "William Shakespeare"],
+      "tr": ["Charles Dickens", "Jane Austen", "Mark Twain", "William Shakespeare"],
+      "fr": ["Charles Dickens", "Jane Austen", "Mark Twain", "William Shakespeare"],
+      "es": ["Charles Dickens", "Jane Austen", "Mark Twain", "William Shakespeare"],
+      "de": ["Charles Dickens", "Jane Austen", "Mark Twain", "William Shakespeare"],
+      "it": ["Charles Dickens", "Jane Austen", "Mark Twain", "William Shakespeare"],
+      "pt": ["Charles Dickens", "Jane Austen", "Mark Twain", "William Shakespeare"],
+      "ru": ["Чарльз Диккенс", "Джейн Остин", "Марк Твен", "Уильям Шекспир"],
+      "zh": ["查尔斯·狄更斯", "简·奥斯汀", "马克·吐温", "威廉·莎士比亚"],
+      "ja": ["チャールズ・ディケンズ", "ジェーン・オースティン", "マーク・トウェイン", "ウィリアム・シェイクスピア"],
+      "ar": ["تشارلز ديكنز", "جين أوستن", "مارك توين", "ويليام شكسپير"]
+    }
+  },
+  {
+    "category": "food",
+    "correct_answer_index": 1,
+    "question_texts": {
+      "en": "Which fruit is known for having a high vitamin C content?",
+      "tr": "Hangi meyve yüksek C vitamini içeriğiyle bilinir?",
+      "fr": "Quel fruit est connu pour sa teneur élevée en vitamine C ?",
+      "es": "¿Qué fruta es conocida por su alto contenido de vitamina C?",
+      "de": "Welche Frucht ist bekannt für ihren hohen Vitamin-C-Gehalt?",
+      "it": "Quale frutto è noto per il suo alto contenuto di vitamina C?",
+      "pt": "Qual fruta é conhecida por seu alto teor de vitamina C?",
+      "ru": "Какой фрукт известен высоким содержанием витамина C?",
+      "zh": "哪种水果以富含维生素C而闻名？",
+      "ja": "どの果物がビタミンCを豊富に含むことで知られていますか？",
+      "ar": "أي فاكهة معروفة باحتوائها العالي على فيتامين C؟"
+    },
+    "options_texts": {
+      "en": ["Banana", "Orange", "Apple", "Grapes"],
+      "tr": ["Muz", "Portakal", "Elma", "Üzüm"],
+      "fr": ["Banane", "Orange", "Pomme", "Raisin"],
+      "es": ["Plátano", "Naranja", "Manzana", "Uvas"],
+      "de": ["Banane", "Orange", "Apfel", "Trauben"],
+      "it": ["Banana", "Arancia", "Mela", "Uva"],
+      "pt": ["Banana", "Laranja", "Maçã", "Uvas"],
+      "ru": ["Банан", "Апельсин", "Яблоко", "Виноград"],
+      "zh": ["香蕉", "橙子", "苹果", "葡萄"],
+      "ja": ["バナナ", "オレンジ", "りんご", "ブドウ"],
+      "ar": ["موز", "برتقال", "تفاح", "عنب"]
+    }
+  },
+  {
+    "category": "sports",
+    "correct_answer_index": 2,
+    "question_texts": {
+      "en": "How many players are there on a standard soccer team on the field?",
+      "tr": "Standart bir futbol takımında sahada kaç oyuncu vardır?",
+      "fr": "Combien de joueurs y a-t-il sur le terrain dans une équipe de football standard ?",
+      "es": "¿Cuántos jugadores hay en el campo en un equipo de fútbol estándar?",
+      "de": "Wie viele Spieler befinden sich bei einer Standard-Fußballmannschaft auf dem Feld?",
+      "it": "Quanti giocatori ci sono in campo in una squadra di calcio standard?",
+      "pt": "Quantos jogadores há em campo em um time de futebol padrão?",
+      "ru": "Сколько игроков находится на поле в стандартной футбольной команде?",
+      "zh": "标准足球队场上有多少名球员？",
+      "ja": "標準的なサッカーチームにはフィールド上に何人の選手がいますか？",
+      "ar": "كم عدد اللاعبين في فريق كرة قدم قياسي على أرض الملعب؟"
+    },
+    "options_texts": {
+      "en": ["9", "10", "11", "12"],
+      "tr": ["9", "10", "11", "12"],
+      "fr": ["9", "10", "11", "12"],
+      "es": ["9", "10", "11", "12"],
+      "de": ["9", "10", "11", "12"],
+      "it": ["9", "10", "11", "12"],
+      "pt": ["9", "10", "11", "12"],
+      "ru": ["9", "10", "11", "12"],
+      "zh": ["9", "10", "11", "12"],
+      "ja": ["9", "10", "11", "12"],
+      "ar": ["9", "10", "11", "12"]
+    }
+  },
+  {
+    "category": "movies",
+    "correct_answer_index": 1,
+    "question_texts": {
+      "en": "Which movie series features the character 'Luke Skywalker'?",
+      "tr": "Hangi film serisinde 'Luke Skywalker' karakteri yer alır?",
+      "fr": "Quelle série de films met en scène le personnage 'Luke Skywalker' ?",
+      "es": "¿Qué saga de películas presenta al personaje 'Luke Skywalker'?",
+      "de": "Welche Filmreihe zeigt die Figur 'Luke Skywalker'?",
+      "it": "Quale serie di film presenta il personaggio 'Luke Skywalker'?",
+      "pt": "Qual série de filmes apresenta o personagem 'Luke Skywalker'?",
+      "ru": "В какой серии фильмов появляется персонаж 'Люк Скайуокер'?",
+      "zh": "哪个电影系列出现角色 '卢克·天行者'？",
+      "ja": "どの映画シリーズに『ルーク・スカイウォーカー』というキャラクターが登場しますか？",
+      "ar": "أي سلسلة أفلام تضم شخصية 'لوك سكاي ووكر'؟"
+    },
+    "options_texts": {
+      "en": ["The Lord of the Rings", "Star Wars", "Harry Potter", "The Matrix"],
+      "tr": ["Yüzüklerin Efendisi", "Star Wars", "Harry Potter", "Matrix"],
+      "fr": ["Le Seigneur des Anneaux", "Star Wars", "Harry Potter", "Matrix"],
+      "es": ["El Señor de los Anillos", "Star Wars", "Harry Potter", "Matrix"],
+      "de": ["Der Herr der Ringe", "Star Wars", "Harry Potter", "Matrix"],
+      "it": ["Il Signore degli Anelli", "Star Wars", "Harry Potter", "Matrix"],
+      "pt": ["O Senhor dos Anéis", "Star Wars", "Harry Potter", "Matrix"],
+      "ru": ["Властелин колец", "Звёздные войны", "Гарри Поттер", "Матрица"],
+      "zh": ["指环王", "星球大战", "哈利·波特", "黑客帝国"],
+      "ja": ["ロード・オブ・ザ・リング", "スター・ウォーズ", "ハリー・ポッター", "マトリックス"],
+      "ar": ["سيد الخواتم", "حرب النجوم", "هاري بوتر", "ذا ماتريكس"]
+    }
+  },
+  {
+    "category": "nature",
+    "correct_answer_index": 0,
+    "question_texts": {
+      "en": "Which of these is a type of evergreen tree?",
+      "tr": "Bunlardan hangisi bir her dem yeşil ağaç türüdür?",
+      "fr": "Lequel de ces arbres est un arbre à feuilles persistantes ?",
+      "es": "¿Cuál de estos es un tipo de árbol perenne?",
+      "de": "Welches dieser Bäume ist eine immergrüne Baumart?",
+      "it": "Quale di questi è un tipo di albero sempreverde?",
+      "pt": "Qual destes é um tipo de árvore perene?",
+      "ru": "Какое из этих деревьев является вечнозеленым?",
+      "zh": "以下哪种是常绿树？",
+      "ja": "次のうち常緑樹はどれですか？",
+      "ar": "أي من هذه الأنواع نوع من الأشجار دائمة الخضرة؟"
+    },
+    "options_texts": {
+      "en": ["Pine", "Birch", "Maple", "Willow"],
+      "tr": ["Çam", "Huş", "Akçaağaç", "Söğüt"],
+      "fr": ["Pin", "Bouleau", "Érable", "Saule"],
+      "es": ["Pino", "Abedul", "Arce", "Sauce"],
+      "de": ["Kiefer", "Birke", "Ahorn", "Weide"],
+      "it": ["Pino", "Betulla", "Acero", "Salice"],
+      "pt": ["Pinheiro", "Bétula", "Bordo", "Salgueiro"],
+      "ru": ["Сосна", "Береза", "Клен", "Ива"],
+      "zh": ["松树", "桦树", "枫树", "柳树"],
+      "ja": ["松", "白樺", "カエデ", "ヤナギ"],
+      "ar": ["صنوبر", "بتولا", "قيقب", "صفصاف"]
+    }
+  },
+  {
+    "category": "general_knowledge",
+    "correct_answer_index": 0,
+    "question_texts": {
+      "en": "Which color do you get by mixing red and blue?",
+      "tr": "Kırmızı ve maviyi karıştırınca hangi renk elde edilir?",
+      "fr": "Quelle couleur obtient-on en mélangeant du rouge et du bleu ?",
+      "es": "¿Qué color obtienes al mezclar rojo y azul?",
+      "de": "Welche Farbe erhält man, wenn man Rot und Blau mischt?",
+      "it": "Quale colore ottieni mescolando rosso e blu?",
+      "pt": "Que cor você obtém misturando vermelho e azul?",
+      "ru": "Какой цвет получается при смешении красного и синего?",
+      "zh": "将红色和蓝色混合会得到什么颜色？",
+      "ja": "赤と青を混ぜるとどの色になりますか？",
+      "ar": "ما اللون الذي ينتج عن خلط الأحمر والأزرق؟"
+    },
+    "options_texts": {
+      "en": ["Purple", "Green", "Orange", "Brown"],
+      "tr": ["Mor", "Yeşil", "Turuncu", "Kahverengi"],
+      "fr": ["Violet", "Vert", "Orange", "Marron"],
+      "es": ["Púrpura", "Verde", "Naranja", "Marrón"],
+      "de": ["Lila", "Grün", "Orange", "Braun"],
+      "it": ["Viola", "Verde", "Arancione", "Marrone"],
+      "pt": ["Roxo", "Verde", "Laranja", "Marrom"],
+      "ru": ["Пурпурный", "Зеленый", "Оранжевый", "Коричневый"],
+      "zh": ["紫色", "绿色", "橙色", "棕色"],
+      "ja": ["紫", "緑", "オレンジ", "茶色"],
+      "ar": ["البنفسجي", "الأخضر", "البرتقالي", "البني"]
     }
   }
 ]

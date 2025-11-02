@@ -1950,5 +1950,358 @@
       "ar": "تحدي القرفصاء على كرسي: قم بأداء 10 قرفصاء هوائية سريعة (الجلوس والوقوف بدون كرسي)."
     },
     "category": "fun"
+  },
+  {
+    "challenge_texts": {
+      "en": "Balance Reach: Stand on one foot and reach forward to touch the floor, then return, 10 times.",
+      "tr": "Denge Uzanışı: Tek ayakta durun ve öne doğru eğilip zemeye dokunun, sonra geri dönün, 10 kez.",
+      "fr": "Portée d'Équilibre: Tenez-vous sur un pied et atteignez le sol en avant, puis revenez, 10 fois.",
+      "de": "Balance-Reichweite: Stehen Sie auf einem Bein und beugen Sie sich vor, um den Boden zu berühren, dann zurück, 10 Mal.",
+      "it": "Allungo di Equilibrio: Stai su una gamba e allunga in avanti per toccare il pavimento, poi torna indietro, 10 volte.",
+      "es": "Alcance de Equilibrio: Mantente en un pie y alcanza el suelo hacia adelante, luego regresa, 10 veces.",
+      "ru": "Баланс-Дотягивание: Встаньте на одну ногу, наклонитесь вперед, чтобы коснуться пола, затем вернитесь, 10 раз.",
+      "zh-CN": "平衡伸展：单脚站立，向前伸手触碰地面，然后返回，重复 10 次。",
+      "ja": "バランスリーチ：片足で立ち、前方に伸びて床に触れて戻るを10回繰り返します。",
+      "hi": "संतुलन पहुँच: एक पैर पर खड़े हों और आगे झुककर जमीन को छुएँ, फिर वापस आएँ, 10 बार।",
+      "ar": "امتداد التوازن: قف على قدم واحدة وانحنى للأمام لملامسة الأرض ثم عد، 10 مرات."
+    },
+    "category": "fun"
+  },
+  {
+    "challenge_texts": {
+      "en": "Speed Count: Count aloud from 1 to 20 as fast as you can without stumbling.",
+      "tr": "Hızlı Sayım: Takılmadan 1'den 20'ye kadar olabildiğince hızlı yüksek sesle sayın.",
+      "fr": "Compte Rapide: Comptez à haute voix de 1 à 20 aussi vite que possible sans hésiter.",
+      "de": "Schnelles Zählen: Zählen Sie laut von 1 bis 20 so schnell wie möglich, ohne ins Stocken zu geraten.",
+      "it": "Conteggio Veloce: Conta a voce alta da 1 a 20 il più velocemente possibile senza esitazioni.",
+      "es": "Cuenta Rápida: Cuenta en voz alta del 1 al 20 lo más rápido que puedas sin tropezar.",
+      "ru": "Быстрый Счет: Посчитайте вслух от 1 до 20 как можно быстрее без запинок.",
+      "zh-CN": "快速计数：尽可能快且不犹豫地大声从 1 数到 20。",
+      "ja": "スピードカウント：ためらわずに1から20までできるだけ速く声に出して数えます。",
+      "hi": "तेज़ गिनती: बिना अटकें 1 से 20 तक जितनी जल्दी हो सके ज़ोर से गिनें।",
+      "ar": "العد السريع: عد بصوت عالٍ من 1 إلى 20 بأسرع ما يمكنك دون تعثر."
+    },
+    "category": "fun"
+  },
+  {
+    "challenge_texts": {
+      "en": "Hand Flip: Flip a small object from one hand to the other 15 times quickly.",
+      "tr": "El Değiştirme: Küçük bir nesneyi elleriniz arasında 15 kez hızlıca çevirin.",
+      "fr": "Tour de Main: Faites basculer un petit objet d'une main à l'autre 15 fois rapidement.",
+      "de": "Handflip: Drehen Sie einen kleinen Gegenstand 15 Mal schnell von einer Hand in die andere.",
+      "it": "Capovolgimento della Mano: Fai girare un piccolo oggetto da una mano all'altra 15 volte velocemente.",
+      "es": "Vuelta de Mano: Haz voltear un objeto pequeño de una mano a otra 15 veces rápidamente.",
+      "ru": "Переворот Руки: Быстро переложите маленький предмет из одной руки в другую 15 раз.",
+      "zh-CN": "手部翻转：快速将一个小物体在手间传递 15 次。",
+      "ja": "ハンドフリップ：小さな物を左右の手で素早く15回受け渡します。",
+      "hi": "हाथ पलटना: एक छोटा सा वस्तु 15 बार जल्दी से एक हाथ से दूसरे हाथ में पलटें।",
+      "ar": "قلب اليد: اقلب جسمًا صغيرًا من يد إلى أخرى 15 مرة بسرعة."
+    },
+    "category": "fun"
+  },
+  {
+    "challenge_texts": {
+      "en": "Silent Stomp: Stomp your feet 10 times as quietly as possible without making noise.",
+      "tr": "Sessiz Vuruş: Ayaklarınızı olabildiğince sessiz 10 kez yere vurun.",
+      "fr": "Tampement Silencieux: Tapez des pieds 10 fois le plus silencieusement possible sans bruit.",
+      "de": "Stiller Stampfer: Stampfen Sie 10 Mal so leise wie möglich ohne Geräusche zu machen.",
+      "it": "Doppio Silenzioso: Batti i piedi 10 volte il più silenziosamente possibile senza fare rumore.",
+      "es": "Pisada Silenciosa: Pisa con los pies 10 veces lo más silenciosamente posible sin hacer ruido.",
+      "ru": "Тихое Топтанье: Топните ногами 10 раз как можно тише, не издавая шума.",
+      "zh-CN": "无声跺脚：尽可能安静地跺脚 10 次，不发出声音。",
+      "ja": "サイレントスタンプ：音を立てずにできるだけ静かに足を10回踏み鳴らします。",
+      "hi": "निस्तब्ध ठप्पा: बिना आवाज़ किए अपनी दोनों टाँगों को 10 बार जमीन पर हल्का थपथपाएँ।",
+      "ar": "دوسة صامتة: اطرق قدميك 10 مرات بهدوء قدر الإمكان دون إحداث ضوضاء."
+    },
+    "category": "fun"
+  },
+  {
+    "challenge_texts": {
+      "en": "Quick Stretch: Reach both arms overhead and bend side to side 10 times quickly.",
+      "tr": "Hızlı Esneme: Kollarınızı başınızın üzerine kaldırın ve hızlıca sağa sola eğilin, 10 kez.",
+      "fr": "Étirement Rapide: Levez les bras au-dessus de la tête et penchez-vous de côté 10 fois rapidement.",
+      "de": "Schnelles Dehnen: Heben Sie beide Arme über den Kopf und beugen Sie sich 10 Mal schnell seitlich.",
+      "it": "Allungamento Veloce: Solleva le braccia sopra la testa e piegati da un lato all'altro 10 volte velocemente.",
+      "es": "Estiramiento Rápido: Levanta ambos brazos por encima de la cabeza y dóblate de lado a lado 10 veces rápidamente.",
+      "ru": "Быстрая Растяжка: Поднимите руки над головой и наклоняйтесь в стороны 10 раз быстро.",
+      "zh-CN": "快速拉伸：双臂举过头顶，左右弯腰 10 次，快速完成。",
+      "ja": "クイックストレッチ：両腕を頭上に上げて左右に10回素早く曲げ伸ばしします。",
+      "hi": "तेज़ खिंचाव: दोनों भुजाओं को सिर के ऊपर उठाएँ और तेज़ी से दाईं-बाईं ओर झुकाएँ, 10 बार।",
+      "ar": "تمدد سريع: ارفع ذراعيك فوق رأسك وانحنِ جانبًا 10 مرات بسرعة."
+    },
+    "category": "fun"
+  },
+  {
+    "challenge_texts": {
+      "en": "Mirror Move: Copy the last movement someone next to you did, immediately and exactly, 3 times.",
+      "tr": "Ayna Hareketi: Yanınızdaki kişinin son hareketini hemen ve tam olarak 3 kez kopyalayın.",
+      "fr": "Mouvement Miroir: Copiez immédiatement et précisément le dernier mouvement de la personne à côté de vous, 3 fois.",
+      "de": "Spiegelbewegung: Kopieren Sie die letzte Bewegung der neben Ihnen stehenden Person sofort und genau 3 Mal.",
+      "it": "Movimento Specchio: Copia immediatamente e esattamente l'ultimo movimento di chi ti sta accanto, 3 volte.",
+      "es": "Movimiento Espejo: Copia inmediatamente y exactamente el último movimiento de la persona junto a ti, 3 veces.",
+      "ru": "Зеркальное Движение: Сразу и точно скопируйте последнее движение человека рядом с вами 3 раза.",
+      "zh-CN": "镜像动作：立即并准确地模仿你旁边的人刚做的最后一个动作，重复 3 次。",
+      "ja": "ミラームーブ：隣の人の最後の動きをただちに正確に3回コピーします。",
+      "hi": "दर्पण चाल: अपने पास वाले व्यक्ति की आखिरी हरकत को तुरंत और बिल्कुल ठीक 3 बार नकल करें।",
+      "ar": "حركة المرآة: انسخ آخر حركة قام بها من بجانبك فورًا وبالضبط 3 مرات."
+    },
+    "category": "fun"
+  },
+  {
+    "challenge_texts": {
+      "en": "Lucky Seven: Quickly name seven colors you can see around you in 10 seconds.",
+      "tr": "Şanslı Yedi: Etrafınızda gördüğünüz yedi rengi 10 saniye içinde hızlıca söyleyin.",
+      "fr": "Sept Chanceux: Nommez rapidement sept couleurs que vous pouvez voir autour de vous en 10 secondes.",
+      "de": "Glückliche Sieben: Nennen Sie in 10 Sekunden schnell sieben Farben, die Sie um sich sehen.",
+      "it": "Sette Fortunati: Nomina rapidamente sette colori che vedi intorno a te in 10 secondi.",
+      "es": "Siete Afortunados: Nombra rápidamente siete colores que puedas ver a tu alrededor en 10 segundos.",
+      "ru": "Счастливые Семь: Быстро назовите семь цветов, которые вы видите вокруг себя, за 10 секунд.",
+      "zh-CN": "幸运七：在 10 秒内快速说出你周围能看到的七种颜色。",
+      "ja": "ラッキーセブン：周りで見える7つの色を10秒以内に素早く言います。",
+      "hi": "लकी सेवन: 10 सेकंड में अपने आसपास दिखाई देने वाले सात रंग जल्दी से नाम बताइए।",
+      "ar": "السبعة المحظوظة: اذكر بسرعة سبعة ألوان تراها حولك في 10 ثوانٍ."
+    },
+    "category": "fun"
+  },
+  {
+    "challenge_texts": {
+      "en": "Alphabet Sprint: Say the first five letters of the alphabet, then jump, repeat three times.",
+      "tr": "Alfabe Sprinti: Alfabenin ilk beş harfini söyleyin, sonra zıplayın, üç kez tekrarlayın.",
+      "fr": "Sprint Alphabétique: Dites les cinq premières lettres de l'alphabet, puis sautez, répétez trois fois.",
+      "de": "Alphabet-Sprint: Sagen Sie die ersten fünf Buchstaben des Alphabets, dann springen Sie, dreimal wiederholen.",
+      "it": "Sprint Alfabetico: Dì le prime cinque lettere dell'alfabeto, poi salta, ripeti tre volte.",
+      "es": "Sprint Alfabético: Di las primeras cinco letras del alfabeto, luego salta, repite tres veces.",
+      "ru": "Алфавитный Спринт: Скажите первые пять букв алфавита, затем прыгните, повторите три раза.",
+      "zh-CN": "字母冲刺：说出字母表的前五个字母，然后跳跃，重复三次。",
+      "ja": "アルファベットスプリント：アルファベットの最初の5文字を言ってからジャンプ、これを3回繰り返します。",
+      "hi": "वर्णमाला स्प्रिंट: वर्णमाला के पहले पाँच अक्षर बोलें, फिर कूदें, तीन बार दोहराएँ।",
+      "ar": "سباقات الأبجدية: قل أول خمسة أحرف من الأبجدية، ثم اقفز، وكرر ثلاث مرات."
+    },
+    "category": "fun"
+  },
+  {
+    "challenge_texts": {
+      "en": "Quick Draw V2: Draw an imaginary heart in the air with your finger in under 5 seconds.",
+      "tr": "Hızlı Çizim V2: 5 saniyenin altında parmağınızla havada hayali bir kalp çizin.",
+      "fr": "Dessin Rapide V2: Dessinez un cœur imaginaire dans l'air avec votre doigt en moins de 5 secondes.",
+      "de": "Schnellzeichnung V2: Zeichnen Sie in weniger als 5 Sekunden mit dem Finger ein imaginäres Herz in die Luft.",
+      "it": "Disegno Veloce V2: Disegna un cuore immaginario nell'aria con il dito in meno di 5 secondi.",
+      "es": "Dibujo Rápido V2: Dibuja un corazón imaginario en el aire con el dedo en menos de 5 segundos.",
+      "ru": "Быстрый Рисунок V2: Нарисуйте воображаемое сердце в воздухе пальцем менее чем за 5 секунд.",
+      "zh-CN": "快速绘画 V2：在 5 秒内用手指在空中画一个想象中的心形。",
+      "ja": "クイックドロー V2：5秒以内に指で空中に想像上のハートを描きます。",
+      "hi": "तेज़ रेखांकन V2: अपनी उंगली से हवा में 5 सेकंड से कम समय में एक कल्पनिक दिल बनाएं।",
+      "ar": "الرسم السريع V2: ارسم قلبًا وهميًا في الهواء بإصبعك في أقل من 5 ثوانٍ."
+    },
+    "category": "fun"
+  }
+,
+  {
+    "challenge_texts": {
+      "en": "The Sock Pull: While seated, try to put on a sock with one hand in 10 seconds.",
+      "tr": "Çorap Giyme: Otururken, bir elinizle 10 saniye içinde bir çorap giymeye çalışın.",
+      "fr": "Le Chaussette: Assis, essayez de mettre une chaussette avec une main en 10 secondes.",
+      "de": "Die Socke: Versuchen Sie im Sitzen, in 10 Sekunden mit einer Hand eine Socke anzuziehen.",
+      "it": "Il Calzino: Da seduti, prova a mettere un calzino con una mano in 10 secondi.",
+      "es": "La Media: Sentado, intenta ponerte un calcetín con una mano en 10 segundos.",
+      "ru": "Носок: Сидя, попробуйте надеть носок одной рукой за 10 секунд.",
+      "zh-CN": "袜子挑战：坐着时尝试用一只手在10秒内穿上袜子。",
+      "ja": "靴下チャレンジ：座ったまま片手で10秒以内に靴下を履いてみてください。",
+      "hi": "मोज़ा पहनना: बैठकर, एक हाथ से 10 सेकंड में एक मोज़ा पहनने की कोशिश करें।",
+      "ar": "تحدي الجورب: أثناء الجلوس، حاول ارتداء جورب بيد واحدة في 10 ثوانٍ."
+    },
+    "category": "fun"
+  },
+  {
+    "challenge_texts": {
+      "en": "Balance Book: Place a book on your head and walk 5 steps without dropping it.",
+      "tr": "Kitap Dengesi: Kitabı başınızın üzerine koyun ve düşürmeden 5 adım yürüyün.",
+      "fr": "Équilibre du Livre: Placez un livre sur votre tête et marchez 5 pas sans le faire tomber.",
+      "de": "Buchbalance: Legen Sie ein Buch auf Ihren Kopf und gehen Sie 5 Schritte, ohne es fallen zu lassen.",
+      "it": "Equilibrio del Libro: Metti un libro sulla testa e cammina 5 passi senza farlo cadere.",
+      "es": "Equilibrio con Libro: Coloca un libro en la cabeza y camina 5 pasos sin dejarlo caer.",
+      "ru": "Баланс Книги: Положите книгу на голову и пройдите 5 шагов, не уронив ее.",
+      "zh-CN": "书本平衡：把一本书放在头上，走5步而不掉落。",
+      "ja": "本バランス：本を頭の上に置いて、落とさずに5歩歩いてください。",
+      "hi": "किताब संतुलन: अपनी सिर पर एक किताब रखें और इसे गिराए बिना 5 कदम चलें।",
+      "ar": "توازن الكتاب: ضع كتابًا على رأسك وامشِ 5 خطوات دون إسقاطه."
+    },
+    "category": "fun"
+  },
+  {
+    "challenge_texts": {
+      "en": "Silent Dance: Move to an imagined beat for 30 seconds without making any sound.",
+      "tr": "Sessiz Dans: 30 saniye boyunca hayali bir ritme göre hareket edin ve hiç ses çıkarmayın.",
+      "fr": "Danse Silencieuse: Bougez sur un rythme imaginé pendant 30 secondes sans faire de bruit.",
+      "de": "Stiller Tanz: Bewegen Sie sich 30 Sekunden lang zu einem imaginären Beat, ohne Geräusche zu machen.",
+      "it": "Danza Silenziosa: Muoviti su un ritmo immaginario per 30 secondi senza fare rumore.",
+      "es": "Baile Silencioso: Muévete a un ritmo imaginario durante 30 segundos sin hacer ruido.",
+      "ru": "Тихий Танец: Двигайтесь под воображаемый ритм 30 секунд, не издавая звука.",
+      "zh-CN": "无声舞蹈：在想象的节拍下移动30秒，不发出任何声音。",
+      "ja": "サイレントダンス：想像上のビートに合わせて30秒間音を立てずに動いてください。",
+      "hi": "निष्क्रिय नृत्य: किसी कल्पित ताल पर 30 सेकंड तक बिना ध्वनि किए हिलें।",
+      "ar": "الرقص الصامت: تحرك على إيقاع متخيل لمدة 30 ثانية دون إصدار أي صوت."
+    },
+    "category": "fun"
+  },
+  {
+    "challenge_texts": {
+      "en": "One-Leg Balance: Stand on one leg and hold for 20 seconds.",
+      "tr": "Tek Ayak Dengesi: Tek ayakta durun ve 20 saniye tutun.",
+      "fr": "Équilibre sur Une Jambe: Tenez-vous sur une jambe pendant 20 secondes.",
+      "de": "Einbeinstand: Stehen Sie 20 Sekunden lang auf einem Bein.",
+      "it": "Equilibrio su Una Gamba: Stai in equilibrio su una gamba per 20 secondi.",
+      "es": "Equilibrio en Una Pierna: Mantente en una pierna durante 20 segundos.",
+      "ru": "Баланс на Одной Ноге: Постойте на одной ноге 20 секунд.",
+      "zh-CN": "单脚平衡：单脚站立并坚持20秒。",
+      "ja": "片足バランス：片足で20秒間立ってください。",
+      "hi": "एक पैर पर संतुलन: एक पैर पर खड़े रहें और 20 सेकंड तक बनाए रखें।",
+      "ar": "توازن على ساق واحدة: قف على ساق واحدة وحافظ على الوضع لمدة 20 ثانية."
+    },
+    "category": "fun"
+  },
+  {
+    "challenge_texts": {
+      "en": "Fast Fingers: Tap each finger to your thumb 10 times quickly.",
+      "tr": "Hızlı Parmaklar: Her parmağınızı hızlıca başparmağınıza 10 kez dokundurun.",
+      "fr": "Doigts Rapides: Touchez chaque doigt avec votre pouce 10 fois rapidement.",
+      "de": "Schnelle Finger: Tippen Sie jeden Finger 10 Mal schnell an den Daumen.",
+      "it": "Dita Veloci: Tocca ogni dito con il pollice 10 volte velocemente.",
+      "es": "Dedos Rápidos: Toca cada dedo con tu pulgar 10 veces rápidamente.",
+      "ru": "Быстрые Пальцы: Касайтесь каждого пальца большим пальцем 10 раз быстро.",
+      "zh-CN": "快速手指：快速将每个手指与拇指敲击10次。",
+      "ja": "高速フィンガー：各指を親指に素早く10回タップします。",
+      "hi": "तेज़ उंगलियाँ: प्रत्येक उंगली को अपने अंगूठे से 10 बार तेजी से टैप करें।",
+      "ar": "الأصابع السريعة: اضغط على كل إصبع بإبهامك 10 مرات بسرعة."
+    },
+    "category": "fun"
+  },
+  {
+    "challenge_texts": {
+      "en": "The Quiet Clap: Clap as quietly as possible 8 times in 10 seconds.",
+      "tr": "Sessiz Alkış: 10 saniye içinde mümkün olduğunca sessizce 8 kez alkışlayın.",
+      "fr": "L'Applaudissement Silencieux: Applaudissez aussi silencieusement que possible 8 fois en 10 secondes.",
+      "de": "Der Leise Applaus: Klatschen Sie so leise wie möglich 8 Mal in 10 Sekunden.",
+      "it": "L'Applauso Silenzioso: Batti le mani il più silenziosamente possibile 8 volte in 10 secondi.",
+      "es": "El Aplauso Silencioso: Aplaude lo más silenciosamente posible 8 veces en 10 segundos.",
+      "ru": "Тихие Аплодисменты: Похлопайте как можно тише 8 раз за 10 секунд.",
+      "zh-CN": "安静的鼓掌：在10秒内尽可能轻声拍手8次。",
+      "ja": "静かな拍手：10秒以内にできるだけ静かに8回手をたたきます。",
+      "hi": "खामोश ताली: 10 सेकंड में जितनी हो सके चुपचाप 8 बार ताली बजाएँ।",
+      "ar": "التصفيق الهادئ: صفق بهدوء قدر الإمكان 8 مرات في 10 ثوانٍ."
+    },
+    "category": "fun"
+  },
+  {
+    "challenge_texts": {
+      "en": "Mirror Face: Make a silly face and hold it for 8 seconds.",
+      "tr": "Ayna Yüz: Komik bir yüz yapın ve 8 saniye tutun.",
+      "fr": "Visage Miroir: Faites une grimace et maintenez-la pendant 8 secondes.",
+      "de": "Spiegelgesicht: Machen Sie ein albernes Gesicht und halten Sie es 8 Sekunden lang.",
+      "it": "Faccia Specchio: Fai una faccia buffa e mantienila per 8 secondi.",
+      "es": "Cara Espejo: Haz una cara tonta y mantenla durante 8 segundos.",
+      "ru": "Зеркальное Лицо: Сделайте глупое лицо и держите его 8 секунд.",
+      "zh-CN": "镜像脸：做一个滑稽的表情并保持8秒。",
+      "ja": "ミラーフェイス：おかしな顔を作って8秒間キープします。",
+      "hi": "दर्पण चेहरा: एक मज़ेदार चेहरा बनाएं और 8 सेकंड तक रखें।",
+      "ar": "وجه المرآة: اصنع وجهًا مضحكًا وحافظ عليه لمدة 8 ثوانٍ."
+    },
+    "category": "fun"
+  },
+  {
+    "challenge_texts": {
+      "en": "Toe Tap: Tap your toes on the ground 20 times as fast as possible.",
+      "tr": "Parmak Ucu Vuruşu: Ayak parmaklarınızı yere 20 kez mümkün olduğunca hızlı vurun.",
+      "fr": "Tapotement d'Orteil: Tapez les orteils sur le sol 20 fois aussi vite que possible.",
+      "de": "Zehentipp: Tippen Sie so schnell wie möglich 20 Mal mit den Zehen auf den Boden.",
+      "it": "Tocco delle Dita dei Piedi: Tocca le dita dei piedi a terra 20 volte il più velocemente possibile.",
+      "es": "Toque de Dedos: Toca tus dedos de los pies en el suelo 20 veces lo más rápido posible.",
+      "ru": "Надавливание Пальцев: Надавите пальцами ног на пол 20 раз как можно быстрее.",
+      "zh-CN": "脚趾敲击：尽可能快地在地面上敲击你的脚趾20次。",
+      "ja": "つま先タップ：できるだけ速くつま先を地面に20回タップします。",
+      "hi": "पैर की उंगली टैप: अपनी उंगलियों को जमीन पर जितनी जल्दी हो सके 20 बार टैप करें।",
+      "ar": "نقرة أصابع القدم: انقر بأصابع قدميك على الأرض 20 مرة بأسرع ما يمكن."
+    },
+    "category": "fun"
+  },
+  {
+    "challenge_texts": {
+      "en": "Silent March: March in place for 20 seconds as quietly as you can.",
+      "tr": "Sessiz Yürüyüş: Mümkün olduğunca sessizce 20 saniye boyunca yerinizde yürüyün.",
+      "fr": "Marche Silencieuse: Marchez sur place pendant 20 secondes aussi silencieusement que possible.",
+      "de": "Stiller Marsch: Marschieren Sie 20 Sekunden lang so leise wie möglich auf der Stelle.",
+      "it": "Marcia Silenziosa: Marcia sul posto per 20 secondi il più silenziosamente possibile.",
+      "es": "Marcha Silenciosa: Marcha en el sitio durante 20 segundos tan silenciosamente como puedas.",
+      "ru": "Тихий Марш: Маршируйте 20 секунд на месте как можно тише.",
+      "zh-CN": "安静行进：尽可能安静地原地踏步20秒。",
+      "ja": "静かな行進：できるだけ静かにその場で20秒間行進します。",
+      "hi": "निस्तब्ध मार्च: जितना संभव हो उतना शांतिपूर्वक अपनी जगह पर 20 सेकंड तक मार्च करें।",
+      "ar": "المسيرة الصامتة: اركض في مكانك لمدة 20 ثانية بأقل قدر ممكن من الضوضاء."
+    },
+    "category": "fun"
+  },
+  {
+    "challenge_texts": {
+      "en": "Hand Flip: Flip a pen from one hand to the other 15 times quickly.",
+      "tr": "El Çevirme: Bir kalemi hızlıca elleriniz arasında 15 kez çevirin.",
+      "fr": "Flip de Main: Retournez un stylo d'une main à l'autre 15 fois rapidement.",
+      "de": "Handflip: Drehen Sie einen Stift schnell 15 Mal von einer Hand zur anderen.",
+      "it": "Capovolgimento della Mano: Capovolgi una penna da una mano all'altra 15 volte velocemente.",
+      "es": "Vuelta de Mano: Voltea un bolígrafo de una mano a otra 15 veces rápidamente.",
+      "ru": "Переворот Руки: Быстро переворачивайте ручку из одной руки в другую 15 раз.",
+      "zh-CN": "手翻：快速将钢笔在一只手和另一只手之间翻转15次。",
+      "ja": "ハンドフリップ：ペンを片手からもう片手へ素早く15回ひっくり返してください。",
+      "hi": "हाथ पलटना: एक कलम को तीव्रता से एक हाथ से दूसरे हाथ में 15 बार पलटें।",
+      "ar": "قلب اليد: اقلب قلمًا من يد إلى أخرى 15 مرة بسرعة."
+    },
+    "category": "fun"
+  },
+  {
+    "challenge_texts": {
+      "en": "Fast Count: Count backwards from 30 to 21 in under 15 seconds.",
+      "tr": "Hızlı Sayım: 30'dan 21'e kadar 15 saniyenin altında geriye sayın.",
+      "fr": "Compte Rapide: Comptez à rebours de 30 à 21 en moins de 15 secondes.",
+      "de": "Schnelles Zählen: Zählen Sie von 30 bis 21 rückwärts in weniger als 15 Sekunden.",
+      "it": "Conteggio Veloce: Conta all'indietro da 30 a 21 in meno di 15 secondi.",
+      "es": "Cuenta Rápida: Cuenta hacia atrás del 30 al 21 en menos de 15 segundos.",
+      "ru": "Быстрый Счет: Считайте в обратном порядке от 30 до 21 менее чем за 15 секунд.",
+      "zh-CN": "快速计数：在15秒内从30倒数到21。",
+      "ja": "高速カウント：30から21まで15秒以内に逆算します。",
+      "hi": "तेज़ गिनती: 30 से 21 तक 15 सेकंड से कम समय में उल्टी गिनती करें।",
+      "ar": "العد السريع: عد تنازليًا من 30 إلى 21 في أقل من 15 ثانية."
+    },
+    "category": "fun"
+  },
+  {
+    "challenge_texts": {
+      "en": "Balance Pass: Pass a small object from hand to hand behind your back 10 times.",
+      "tr": "Denge Geçişi: Küçük bir nesneyi sırtınızın arkasında elden ele 10 kez geçirin.",
+      "fr": "Passe d'Équilibre: Passez un petit objet de main en main derrière votre dos 10 fois.",
+      "de": "Balanceübergabe: Geben Sie einen kleinen Gegenstand 10 Mal hinter Ihrem Rücken von Hand zu Hand weiter.",
+      "it": "Passaggio di Equilibrio: Passa un piccolo oggetto di mano in mano dietro la schiena 10 volte.",
+      "es": "Pase de Equilibrio: Pasa un objeto pequeño de mano en mano detrás de tu espalda 10 veces.",
+      "ru": "Передача Баланса: Передайте маленький предмет из руки в руку за спиной 10 раз.",
+      "zh-CN": "平衡传递：在背后将小物件从一只手传到另一只手10次。",
+      "ja": "バランスパス：背中の後ろで小さな物を手から手に10回渡してください。",
+      "hi": "संतुलन पास: अपनी पीठ के पीछे एक छोटे ऑब्जेक्ट को हाथ से हाथ में 10 बार पास करें।",
+      "ar": "تمرير التوازن: مرر غرضًا صغيرًا من يد إلى يد خلف ظهرك 10 مرات."
+    },
+    "category": "fun"
+  },
+  {
+    "challenge_texts": {
+      "en": "Silent Bowling: Roll a small ball on the floor aiming at an imaginary pin, 3 times quietly.",
+      "tr": "Sessiz Bowling: Küçük bir topu zeminde hayali bir pine doğru sessizce yuvarlayın, 3 kez.",
+      "fr": "Bowling Silencieux: Faites rouler une petite balle sur le sol en visant une quille imaginaire, 3 fois silencieusement.",
+      "de": "Stilles Bowling: Rollen Sie eine kleine Kugel leise dreimal auf den Boden und zielen Sie auf eine imaginäre Kegel.",
+      "it": "Bowling Silenzioso: Fai rotolare una piccola palla sul pavimento puntando a un birillo immaginario, 3 volte silenziosamente.",
+      "es": "Bowling Silencioso: Haz rodar una pelota pequeña por el suelo apuntando a un bolo imaginario, 3 veces en silencio.",
+      "ru": "Тихий Боулинг: Аккуратно прокатите маленький мяч по полу, целясь в воображаемый кегль, 3 раза тихо.",
+      "zh-CN": "无声保龄球：在地板上安静地滚动一个小球，瞄准一个想象的球瓶，重复3次。",
+      "ja": "サイレントボウリング：床の上で小さなボールを静かに3回転がし、想像上のピンを狙ってください。",
+      "hi": "निष्क्रिय बॉलिंग: एक छोटी गेंद को जमीन पर चुपचाप रोल करें और काल्पनिक पिन पर निशाना लगाएँ, 3 बार।",
+      "ar": "البولينج الصامت: قم بدحرجة كرة صغيرة على الأرض مستهدفًا دبوسًا وهميًا، 3 مرات بهدوء."
+    },
+    "category": "fun"
   }
 ]

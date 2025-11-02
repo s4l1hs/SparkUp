@@ -6390,5 +6390,363 @@
       "ar": "دم الأخطبوط أزرق."
     },
     "source": "General Knowledge"
+  },
+  {
+    "category": "general_knowledge",
+    "info_texts": {
+      "en": "Honey never spoils. Archaeologists have found pots of honey in ancient Egyptian tombs that are over 3000 years old and still edible.",
+      "tr": "Bal asla bozulmaz. Arkeologlar, 3000 yıldan daha eski ve hala yenilebilir durumda olan eski Mısır mezarlarında bal kavanozları buldular.",
+      "fr": "Le miel ne se gâte jamais. Des archéologues ont trouvé des pots de miel dans des tombes égyptiennes anciennes âgés de plus de 3000 ans et encore comestibles.",
+      "es": "La miel nunca se estropea. Los arqueólogos han encontrado frascos de miel en tumbas egipcias antiguas de más de 3000 años y todavía comestibles.",
+      "de": "Honig verdirbt nie. Archäologen haben Honigtöpfe in altägyptischen Gräbern gefunden, die über 3000 Jahre alt und noch essbar sind.",
+      "it": "Il miele non si rovina mai. Gli archeologi hanno trovato barattoli di miele in tombe egizie antiche di oltre 3000 anni ancora commestibili.",
+      "pt": "Mel nunca estraga. Arqueólogos encontraram potes de mel em tumbas egípcias antigas com mais de 3000 anos e ainda comestíveis.",
+      "ru": "Мёд никогда не портится. Археологи находили горшки с мёдом в древнеегипетских гробницах возрастом более 3000 лет, и они все ещё съедобны.",
+      "zh": "蜂蜜永远不会坏。考古学家在古埃及墓葬中发现了超过3000年的蜂蜜罐，仍然可以食用。",
+      "ja": "蜂蜜は決して腐りません。考古学者は古代エジプトの墓で3000年以上前の蜂蜜の壺を発見しており、まだ食べられます。",
+      "ar": "العسل لا يفسد أبدًا. عثر علماء الآثار على أواني من العسل في مقابر مصرية قديمة يزيد عمرها عن 3000 عام وما زالت صالحة للأكل."
+    },
+    "source": "Archaeological Reports"
+  },
+  {
+    "category": "science",
+    "info_texts": {
+      "en": "A day on Venus is longer than a year on Venus: it takes Venus longer to rotate once on its axis than to complete one orbit around the Sun.",
+      "tr": "Venüs'te bir gün, Venüs'te bir yıldan daha uzundur: Venüs'ün kendi ekseni etrafında bir dönüş yapması, Güneş'in etrafında bir yörünge tamamlamasından daha uzun sürer.",
+      "fr": "Une journée sur Vénus est plus longue qu'une année sur Vénus : il faut plus de temps à Vénus pour effectuer une rotation sur elle-même que pour effectuer une orbite autour du Soleil.",
+      "es": "Un día en Venus es más largo que un año en Venus: a Venus le lleva más tiempo rotar una vez sobre su eje que completar una órbita alrededor del Sol.",
+      "de": "Ein Tag auf der Venus ist länger als ein Jahr auf der Venus: Die Venus benötigt länger, um sich einmal um ihre Achse zu drehen, als um eine Umlaufbahn um die Sonne zu vollenden.",
+      "it": "Un giorno su Venere è più lungo di un anno su Venere: a Venere ci vuole più tempo per ruotare una volta sul proprio asse che per completare un'orbita intorno al Sole.",
+      "pt": "Um dia em Vênus é mais longo do que um ano em Vênus: Vênus demora mais para girar uma vez em seu eixo do que para completar uma órbita ao redor do Sol.",
+      "ru": "День на Венере длиннее года на Венере: Венера дольше вращается вокруг своей оси, чем совершает один оборот вокруг Солнца.",
+      "zh": "金星上的一天比金星上的一年还长：金星绕自转一周比绕太阳公转一周所需时间更长。",
+      "ja": "金星の一日は金星の一年よりも長い：金星が自転するのにかかる時間は、太陽の周りを一周するのにかかる時間よりも長いです。",
+      "ar": "اليوم على كوكب الزهرة أطول من السنة على الكوكب نفسه: يستغرق دوران الزهرة حول محورها وقتًا أطول من استكمال دورة حول الشمس."
+    },
+    "source": "Astronomy Facts"
+  },
+  {
+    "category": "history",
+    "info_texts": {
+      "en": "The first known recipe for chocolate dates back to the ancient Maya, who prepared a bitter beverage from cacao beans long before Europeans introduced sugar.",
+      "tr": "Çikolataya ait bilinen ilk tarif antik Maya'lara kadar uzanır; onlar, Avrupalıların şekeri tanıtmadan çok önce kakaodan acı bir içecek hazırlıyorlardı.",
+      "fr": "La première recette connue de chocolat remonte aux anciens Mayas, qui préparaient une boisson amère à base de fèves de cacao bien avant que les Européens n'introduisent le sucre.",
+      "es": "La primera receta conocida de chocolate se remonta a los antiguos mayas, que preparaban una bebida amarga a partir de granos de cacao mucho antes de que los europeos introdujeran el azúcar.",
+      "de": "Das erste bekannte Rezept für Schokolade geht auf die alten Maya zurück, die ein bitteres Getränk aus Kakaobohnen zubereiteten, lange bevor die Europäer Zucker einführten.",
+      "it": "La prima ricetta conosciuta per il cioccolato risale agli antichi Maya, che preparavano una bevanda amara dai semi di cacao molto prima che gli europei introducessero lo zucchero.",
+      "pt": "A primeira receita conhecida de chocolate remonta aos antigos maias, que preparavam uma bebida amarga a partir de grãos de cacau muito antes dos europeus introduzirem o açúcar.",
+      "ru": "Первый известный рецепт шоколада восходит к древним майя, которые готовили горький напиток из бобов какао задолго до того, как европейцы ввели сахар.",
+      "zh": "已知的第一份巧克力食谱可追溯到古玛雅时代，他们用可可豆制作苦味饮料，远在欧洲人引入糖之前。",
+      "ja": "チョコレートの最初の既知のレシピは古代マヤにさかのぼり、彼らはヨーロッパ人が砂糖を導入するずっと前にカカオ豆から苦い飲み物を作っていました。",
+      "ar": "أقدم وصفة معروفة للشوكولاتة تعود إلى حضارة المايا القديمة، الذين كانوا يحضرون مشروبًا مرًا من حبوب الكاكاو قبل أن يقدم الأوروبيون السكر بفترة طويلة."
+    },
+    "source": "Anthropological Studies"
+  },
+  {
+    "category": "geography",
+    "info_texts": {
+      "en": "Canada has more lakes than the rest of the world's countries combined, containing an estimated 31% of the world's lake surface area.",
+      "tr": "Kanada, dünyanın geri kalan ülkelerinden daha fazla göle sahiptir ve tahmini olarak dünyanın göl yüzey alanının %31'ini içerir.",
+      "fr": "Le Canada a plus de lacs que le reste des pays du monde réunis, contenant environ 31 % de la superficie lacustre mondiale.",
+      "es": "Canadá tiene más lagos que el resto de los países del mundo juntos, y contiene aproximadamente el 31% de la superficie de lagos del mundo.",
+      "de": "Kanada hat mehr Seen als der Rest der Länder der Welt zusammen und enthält schätzungsweise 31 % der weltweiten Seefläche.",
+      "it": "Il Canada ha più laghi rispetto al resto dei paesi del mondo messi insieme, contenendo circa il 31% della superficie lacustre mondiale.",
+      "pt": "O Canadá tem mais lagos do que o resto dos países do mundo juntos, contendo cerca de 31% da área de superfície de lagos do mundo.",
+      "ru": "В Канаде больше озёр, чем в остальных странах мира вместе взятых: она содержит примерно 31% площади озёр мира.",
+      "zh": "加拿大的湖泊数量超过世界其它国家的总和，估计占世界湖泊表面积的31%。",
+      "ja": "カナダには、世界の他の国々を合わせたよりも多くの湖があり、世界の湖面積の約31％を占めています。",
+      "ar": "تمتلك كندا بحيرات أكثر من باقي دول العالم مجتمعة، وتحتوي على نحو 31٪ من مساحة البحيرات في العالم." 
+    },
+    "source": "Geographical Survey"
+  },
+  {
+    "category": "general_knowledge",
+    "info_texts": {
+      "en": "Strawberries are the only fruit with seeds on the outside; an average strawberry has about 200 seeds on its surface.",
+      "tr": "Çilekler, dış yüzeyinde tohumları olan tek meyvedir; ortalama bir çilekte yüzeyinde yaklaşık 200 tohum bulunur.",
+      "fr": "Les fraises sont les seuls fruits à avoir des graines à l'extérieur ; une fraise moyenne compte environ 200 graines à sa surface.",
+      "es": "Las fresas son la única fruta con semillas en el exterior; una fresa promedio tiene alrededor de 200 semillas en su superficie.",
+      "de": "Erdbeeren sind die einzigen Früchte mit Samen an der Außenseite; eine durchschnittliche Erdbeere hat etwa 200 Samen auf ihrer Oberfläche.",
+      "it": "Le fragole sono l'unico frutto con semi all'esterno; una fragola media ha circa 200 semi sulla sua superficie.",
+      "pt": "Os morangos são a única fruta com sementes do lado de fora; um morango médio tem cerca de 200 sementes em sua superfície.",
+      "ru": "Клубника — единственный фрукт с семенами снаружи; у средней клубники около 200 семян на поверхности.",
+      "zh": "草莓是唯一表面有种子的水果；一颗普通草莓表面大约有200颗种子。",
+      "ja": "イチゴは外側に種がある唯一の果物で、平均的なイチゴには表面に約200個の種があります。",
+      "ar": "الفراولة هي الفاكهة الوحيدة التي تحتوي على بذور على السطح؛ تحتوي الفراولة المتوسطة على حوالي 200 بذرة على سطحها."
+    },
+    "source": "Botanical Research"
+  }
+,
+  {
+    "category": "fun_facts",
+    "info_texts": {
+      "en": "A group of flamingos is called a flamboyance.",
+      "tr": "Bir flamingo sürüsüne 'flamboyance' denir.",
+      "fr": "Un groupe de flamants roses s'appelle une flamboyance.",
+      "es": "Un grupo de flamencos se llama flamboyance.",
+      "de": "Eine Gruppe von Flamingos wird Flamboyance genannt.",
+      "it": "Un gruppo di fenicotteri si chiama flamboyance.",
+      "pt": "Um grupo de flamingos é chamado de flamboyance.",
+      "ru": "Стаю фламинго называют flamboyance.",
+      "zh": "一群火烈鸟被称为“flamboyance”。",
+      "ja": "フラミンゴの群れはフランボヤンスと呼ばれます。",
+      "ar": "تُسمى مجموعة من طيور النحام بـ 'flamboyance'."
+    },
+    "source": "Ornithology Facts"
+  },
+  {
+    "category": "science",
+    "info_texts": {
+      "en": "The human body contains enough fat to make seven bars of soap.",
+      "tr": "İnsan vücudu yedi sabun çubuğu yapmak için yeterli yağ içerir.",
+      "fr": "Le corps humain contient suffisamment de graisse pour fabriquer sept barres de savon.",
+      "es": "El cuerpo humano contiene suficiente grasa para fabricar siete barras de jabón.",
+      "de": "Der menschliche Körper enthält genug Fett, um sieben Seifenstücke herzustellen.",
+      "it": "Il corpo umano contiene abbastanza grasso per fare sette sbarre di sapone.",
+      "pt": "O corpo humano contém gordura suficiente para fazer sete barras de sabão.",
+      "ru": "В человеческом теле содержится достаточно жира, чтобы сделать семь кусков мыла.",
+      "zh": "人体含有足够的脂肪，可以制作七块肥皂。",
+      "ja": "人間の体には石鹸7個分の脂肪があります。",
+      "ar": "يحتوي جسم الإنسان على دهون كافية لصنع سبع قطع صابون."
+    },
+    "source": "Science Trivia"
+  },
+  {
+    "category": "geography",
+    "info_texts": {
+      "en": "There are 24 time zones in the world.",
+      "tr": "Dünya üzerinde 24 saat dilimi vardır.",
+      "fr": "Il y a 24 fuseaux horaires dans le monde.",
+      "es": "Hay 24 husos horarios en el mundo.",
+      "de": "Es gibt 24 Zeitzonen auf der Welt.",
+      "it": "Ci sono 24 fusi orari nel mondo.",
+      "pt": "Existem 24 fusos horários no mundo.",
+      "ru": "В мире 24 часовых пояса.",
+      "zh": "世界上有24个时区。",
+      "ja": "世界には24のタイムゾーンがあります。",
+      "ar": "يوجد 24 منطقة زمنية في العالم."
+    },
+    "source": "Geography Notes"
+  },
+  {
+    "category": "history",
+    "info_texts": {
+      "en": "The Great Wall of China is over 13,000 miles long when all sections are combined.",
+      "tr": "Çin Seddi, tüm bölümler birleştirildiğinde 13.000 milden fazla uzunluktadır.",
+      "fr": "La Grande Muraille de Chine fait plus de 13 000 miles une fois toutes les sections combinées.",
+      "es": "La Gran Muralla China tiene más de 13,000 millas de longitud cuando se combinan todas las secciones.",
+      "de": "Die Große Mauer von China ist über 13.000 Meilen lang, wenn alle Abschnitte kombiniert werden.",
+      "it": "La Grande Muraglia cinese è lunga oltre 13.000 miglia quando tutte le sezioni sono combinate.",
+      "pt": "A Grande Muralha da China tem mais de 13.000 milhas quando todas as seções são combinadas.",
+      "ru": "Великая стена Китая имеет длину более 13 000 миль при сложении всех участков.",
+      "zh": "长城合并所有部分后长度超过13000英里。",
+      "ja": "万里の長城はすべての区間を合わせると13,000マイル以上です。",
+      "ar": "يبلغ طول سور الصين العظيم أكثر من 13000 ميل عند جمع كل أجزائه."
+    },
+    "source": "Historical Records"
+  },
+  {
+    "category": "science",
+    "info_texts": {
+      "en": "Bananas are berries, but strawberries are not.",
+      "tr": "Muzlar böyledir, ancak çilekler değildir.",
+      "fr": "Les bananes sont des baies, mais les fraises ne le sont pas.",
+      "es": "Los plátanos son bayas, pero las fresas no.",
+      "de": "Bananen sind Beeren, Erdbeeren jedoch nicht.",
+      "it": "Le banane sono bacche, ma le fragole no.",
+      "pt": "As bananas são bagas, mas os morangos não.",
+      "ru": "Бананы являются ягодами, а клубника — нет.",
+      "zh": "香蕉是浆果，但草莓不是。",
+      "ja": "バナナはベリーですが、イチゴは違います。",
+      "ar": "الموز هو فاكهة من التوت، لكن الفراولة ليست كذلك."
+    },
+    "source": "Botanical Facts"
+  },
+  {
+    "category": "fun_facts",
+    "info_texts": {
+      "en": "Honey never spoils; edible pots of honey were found in ancient tombs.",
+      "tr": "Bal asla bozulmaz; antik mezarlarda yenilebilir bal kavanozları bulundu.",
+      "fr": "Le miel ne se gâte jamais ; des pots comestibles de miel ont été trouvés dans des tombes anciennes.",
+      "es": "La miel nunca se estropea; se han encontrado frascos comestibles de miel en tumbas antiguas.",
+      "de": "Honig verdirbt nie; essbare Honigtöpfe wurden in alten Gräbern gefunden.",
+      "it": "Il miele non va mai a male; sono stati trovati barattoli di miele commestibili in tombe antiche.",
+      "pt": "O mel nunca estraga; potes de mel comestíveis foram encontrados em tumbas antigas.",
+      "ru": "Мёд никогда не портится; съедобные горшки с мёдом были найдены в древних гробницах.",
+      "zh": "蜂蜜永不变质；在古代坟墓中发现了仍可食用的蜂蜜罐。",
+      "ja": "蜂蜜は腐りません。古代の墓で食べられる蜂蜜の壺が見つかっています。",
+      "ar": "العسل لا يفسد أبدًا؛ تم العثور على أواني عسل قابلة للأكل في مقابر قديمة."
+    },
+    "source": "Archaeological Reports"
+  },
+  {
+    "category": "health",
+    "info_texts": {
+      "en": "Laughing for 10-15 minutes can burn around 40 calories.",
+      "tr": "10-15 dakika gülmek yaklaşık 40 kalori yakabilir.",
+      "fr": "Rire pendant 10-15 minutes peut brûler environ 40 calories.",
+      "es": "Reír durante 10-15 minutos puede quemar alrededor de 40 calorías.",
+      "de": "10-15 Minuten Lachen können etwa 40 Kalorien verbrennen.",
+      "it": "Ridendo per 10-15 minuti si possono bruciare circa 40 calorie.",
+      "pt": "Rir por 10-15 minutos pode queimar cerca de 40 calorias.",
+      "ru": "Смех в течение 10-15 минут может сжечь около 40 калорий.",
+      "zh": "笑10-15分钟大约可以燃烧40卡路里。",
+      "ja": "10～15分笑うと約40カロリーを消費します。",
+      "ar": "الضحك لمدة 10-15 دقيقة يمكن أن يحرق حوالي 40 سعرة حرارية."
+    },
+    "source": "Health Journal"
+  },
+  {
+    "category": "technology",
+    "info_texts": {
+      "en": "The first email was sent in 1971.",
+      "tr": "İlk e-posta 1971'de gönderildi.",
+      "fr": "Le premier e-mail a été envoyé en 1971.",
+      "es": "El primer correo electrónico se envió en 1971.",
+      "de": "Die erste E-Mail wurde 1971 gesendet.",
+      "it": "La prima e-mail è stata inviata nel 1971.",
+      "pt": "O primeiro e-mail foi enviado em 1971.",
+      "ru": "Первое электронное письмо было отправлено в 1971 году.",
+      "zh": "第一封电子邮件发送于1971年。",
+      "ja": "最初のメールは1971年に送信されました。",
+      "ar": "أُرسلت أول رسالة بريد إلكتروني في عام 1971."
+    },
+    "source": "Tech History"
+  },
+  {
+    "category": "animals",
+    "info_texts": {
+      "en": "Dolphins have been known to give names to each other via unique whistles.",
+      "tr": "Yunuslar, benzersiz ıslıklarla birbirlerine isim verdikleri bilinir.",
+      "fr": "Les dauphins sont connus pour se donner des noms via des sifflets uniques.",
+      "es": "Se sabe que los delfines se dan nombres entre sí mediante silbidos únicos.",
+      "de": "Delfine sind dafür bekannt, sich gegenseitig über einzigartige Pfeiftöne Namen zu geben.",
+      "it": "I delfini sono noti per darsi nomi a vicenda tramite fischi unici.",
+      "pt": "Sabe-se que os golfinhos dão nomes uns aos outros por meio de assobios únicos.",
+      "ru": "Известно, что дельфины называют друг друга с помощью уникальных свистов.",
+      "zh": "海豚已知通过独特的口哨声相互命名。",
+      "ja": "イルカは独自の口笛でお互いに名前を付けることが知られています。",
+      "ar": "من المعروف أن الدلافين تطلق أسماء على بعضها البعض من خلال صفارات فريدة."
+    },
+    "source": "Marine Biology"
+  },
+  {
+    "category": "language",
+    "info_texts": {
+      "en": "There are over 7,000 languages spoken worldwide.",
+      "tr": "Dünya çapında 7.000'den fazla dil konuşulmaktadır.",
+      "fr": "Il existe plus de 7 000 langues parlées dans le monde.",
+      "es": "Se hablan más de 7.000 idiomas en todo el mundo.",
+      "de": "Weltweit werden über 7000 Sprachen gesprochen.",
+      "it": "Nel mondo si parlano oltre 7.000 lingue.",
+      "pt": "Existem mais de 7.000 línguas faladas em todo o mundo.",
+      "ru": "Во всем мире говорят более 7000 языков.",
+      "zh": "全球有超过7000种语言。",
+      "ja": "世界には7000以上の言語が話されています。",
+      "ar": "يُتحدث بأكثر من 7000 لغة في جميع أنحاء العالم."
+    },
+    "source": "Linguistic Studies"
+  },
+  {
+    "category": "culture",
+    "info_texts": {
+      "en": "The color white is associated with mourning in some cultures and weddings in others.",
+      "tr": "Beyaz renk bazı kültürlerde yasla, bazılarında ise düğünlerle ilişkilidir.",
+      "fr": "La couleur blanche est associée au deuil dans certaines cultures et aux mariages dans d'autres.",
+      "es": "El color blanco se asocia con el luto en algunas culturas y con las bodas en otras.",
+      "de": "Die Farbe Weiß wird in einigen Kulturen mit Trauer und in anderen mit Hochzeiten assoziiert.",
+      "it": "Il colore bianco è associato al lutto in alcune culture e ai matrimoni in altre.",
+      "pt": "A cor branca é associada ao luto em algumas culturas e aos casamentos em outras.",
+      "ru": "Белый цвет ассоциируется с трауром в одних культурах и со свадьбами в других.",
+      "zh": "白色在一些文化中与哀悼有关，在另一些文化中与婚礼有关。",
+      "ja": "白は文化によって喪と結婚の両方に関連付けられます。",
+      "ar": "يرتبط اللون الأبيض بالحزن في بعض الثقافات وبحفلات الزفاف في أخرى."
+    },
+    "source": "Cultural Notes"
+  },
+  {
+    "category": "space",
+    "info_texts": {
+      "en": "One million Earths could fit inside the Sun.",
+      "tr": "Güneş'in içine bir milyon Dünya sığabilir.",
+      "fr": "Un million de Terres pourraient tenir à l'intérieur du Soleil.",
+      "es": "Un millón de Tierras podrían caber dentro del Sol.",
+      "de": "Eine Million Erden könnten in die Sonne passen.",
+      "it": "Un milione di Terre potrebbero entrare nel Sole.",
+      "pt": "Um milhão de Terras poderia caber dentro do Sol.",
+      "ru": "Один миллион Земель поместится внутри Солнца.",
+      "zh": "大约有一百万个地球可以装进太阳。",
+      "ja": "太陽の中には100万個の地球が入ります。",
+      "ar": "يمكن أن يستوعب الشمس مليون كوكب أرضي تقريبًا."
+    },
+    "source": "Astronomy Facts"
+  },
+  {
+    "category": "food",
+    "info_texts": {
+      "en": "Peanut is not a true nut; it's a legume.",
+      "tr": "Yer fıstığı gerçek bir ceviz değildir; baklagildir.",
+      "fr": "L'arachide n'est pas une vraie noix ; c'est une légumineuse.",
+      "es": "El cacahuete no es una nuez verdadera; es una legumbre.",
+      "de": "Erdnuss ist keine echte Nuss; sie ist eine Hülsenfrucht.",
+      "it": "L'arachide non è una vera noce; è una leguminosa.",
+      "pt": "O amendoim não é um verdadeiro fruto seco; é uma leguminosa.",
+      "ru": "Арахис не является настоящим орехом; это бобовая культура.",
+      "zh": "花生不是真正的坚果；它是一种豆科植物。",
+      "ja": "ピーナッツは本当のナッツではなく、豆類です。",
+      "ar": "الفول السوداني ليس جوزًا حقيقيًا؛ إنه من البقوليات."
+    },
+    "source": "Food Facts"
+  },
+  {
+    "category": "nature",
+    "info_texts": {
+      "en": "Oak trees can live for several hundred years.",
+      "tr": "Meşe ağaçları birkaç yüz yıl yaşayabilir.",
+      "fr": "Les chênes peuvent vivre plusieurs centaines d'années.",
+      "es": "Los robles pueden vivir varios cientos de años.",
+      "de": "Eichen können mehrere hundert Jahre leben.",
+      "it": "Gli alberi di quercia possono vivere per diverse centinaia di anni.",
+      "pt": "Os carvalhos podem viver várias centenas de anos.",
+      "ru": "Дубы могут жить несколько сотен лет.",
+      "zh": "橡树可以活几百年。",
+      "ja": "オークの木は数百年生きることがあります。",
+      "ar": "يمكن لأشجار البلوط أن تعيش لمئات السنين."
+    },
+    "source": "Botany Review"
+  },
+  {
+    "category": "transport",
+    "info_texts": {
+      "en": "The first practical automobile was built in the late 19th century.",
+      "tr": "İlk pratik otomobil 19. yüzyılın sonlarında inşa edildi.",
+      "fr": "La première automobile pratique a été construite à la fin du XIXe siècle.",
+      "es": "El primer automóvil práctico se construyó a finales del siglo XIX.",
+      "de": "Das erste praktische Automobil wurde im späten 19. Jahrhundert gebaut.",
+      "it": "La prima automobile pratica fu costruita alla fine del XIX secolo.",
+      "pt": "O primeiro automóvel prático foi construído no final do século XIX.",
+      "ru": "Первый практический автомобиль был построен в конце XIX века.",
+      "zh": "第一辆实用汽车建于19世纪末。",
+      "ja": "最初の実用的な自動車は19世紀後半に作られました。",
+      "ar": "تم بناء أول سيارة عملية في أواخر القرن التاسع عشر."
+    },
+    "source": "Transport History"
+  },
+  {
+    "category": "fun_facts",
+    "info_texts": {
+      "en": "Wombat poop is cube-shaped.",
+      "tr": "Tüylü keseli hayvanın dışkısı küp şeklindedir.",
+      "fr": "Les excréments des wombats sont en forme de cube.",
+      "es": "La caca de los wombats tiene forma de cubo.",
+      "de": "Das Kothaufen des Wombats ist würfelförmig.",
+      "it": "Le feci dei wombat hanno forma cubica.",
+      "pt": "As fezes do wombat são em forma de cubo.",
+      "ru": "Фекалии вомбата имеют форму куба.",
+      "zh": "袋熊的粪便呈立方体形状。",
+      "ja": "ウォンバットの糞は立方体の形をしています。",
+      "ar": "خروجيات الومبات على شكل مكعب."
+    },
+    "source": "Wildlife Notes"
   }
 ]
