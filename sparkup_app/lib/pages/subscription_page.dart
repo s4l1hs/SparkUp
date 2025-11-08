@@ -121,68 +121,78 @@ class _SubscriptionPageState extends State<SubscriptionPage> {
               ),
             ),
           ),
-          Padding(
-            padding: EdgeInsets.all(16.w),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                // Hero header
-                SizedBox(height: 8.h),
-            Row(
-              children: [
-                Expanded(
-                  child: GlassCard(
-                      padding: EdgeInsets.symmetric(horizontal: 16.w, vertical: 14.h),
-                      borderRadius: BorderRadius.circular(16.r),
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Text(localizations.chooseYourPlan, style: TextStyle(fontSize: 18.sp, fontWeight: FontWeight.w800, color: Colors.white)),
-                          SizedBox(height: 6.h),
-                          Text(localizations.subscriptionNote, style: TextStyle(fontSize: 13.sp, color: Colors.white70)),
-                        ],
+          // Make the content scrollable to avoid RenderFlex overflow on small screens.
+          // Also add bottom padding that accounts for viewInsets (keyboard) and safe area.
+          SafeArea(
+            child: LayoutBuilder(builder: (context, constraints) {
+              final bottomInset = MediaQuery.of(context).viewInsets.bottom;
+              return SingleChildScrollView(
+                padding: EdgeInsets.fromLTRB(16.w, 16.w, 16.w, 16.w + bottomInset),
+                physics: const BouncingScrollPhysics(),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    SizedBox(height: 8.h),
+                    Row(
+                      children: [
+                        Expanded(
+                          child: GlassCard(
+                            padding: EdgeInsets.symmetric(horizontal: 16.w, vertical: 14.h),
+                            borderRadius: BorderRadius.circular(16.r),
+                            child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Text(localizations.chooseYourPlan, style: TextStyle(fontSize: 18.sp, fontWeight: FontWeight.w800, color: Colors.white)),
+                                SizedBox(height: 6.h),
+                                Text(localizations.subscriptionNote, style: TextStyle(fontSize: 13.sp, color: Colors.white70)),
+                              ],
+                            ),
+                          ),
+                        ),
+                        SizedBox(width: 12.w),
+                        Container(
+                          width: 64.w,
+                          height: 64.w,
+                          decoration: BoxDecoration(
+                            shape: BoxShape.circle,
+                            gradient: RadialGradient(colors: [theme.colorScheme.primary, theme.colorScheme.secondary]),
+                            boxShadow: [BoxShadow(color: Colors.black45, blurRadius: 12.r, offset: Offset(0,6.h))],
+                          ),
+                          child: Icon(Icons.workspace_premium_rounded, color: Colors.white, size: 32.sp),
+                        )
+                      ],
+                    ),
+                    SizedBox(height: 20.h),
+                    SizedBox(height: 12.h),
+
+                    // Horizontal list: keep fixed height but make it non-scrollable
+                    // so it works inside the SingleChildScrollView (shrinkWrap behavior).
+                    SizedBox(
+                      height: 420.h,
+                      child: ListView.builder(
+                        scrollDirection: Axis.horizontal,
+                        itemCount: plans.length,
+                        physics: const NeverScrollableScrollPhysics(),
+                        shrinkWrap: true,
+                        itemBuilder: (context, index) {
+                          final plan = plans[index];
+                          return Padding(
+                            padding: EdgeInsets.only(right: 16.w),
+                            child: _buildSubscriptionCard(theme, localizations, plan, currentLevel),
+                          );
+                        },
                       ),
                     ),
+                    SizedBox(height: 18.h),
+                    Center(
+                      child: Text(localizations.subscriptionNote, style: TextStyle(color: Colors.grey.shade400, fontSize: 12.sp), textAlign: TextAlign.center),
+                    ),
+                    SizedBox(height: 8.h),
+                    if (_isProcessing) Center(child: Padding(padding: EdgeInsets.only(top: 8.h), child: const CircularProgressIndicator()))
+                  ],
                 ),
-                SizedBox(width: 12.w),
-                Container(
-                  width: 64.w,
-                  height: 64.w,
-                  decoration: BoxDecoration(
-                    shape: BoxShape.circle,
-                    gradient: RadialGradient(colors: [theme.colorScheme.primary, theme.colorScheme.secondary]),
-                    boxShadow: [BoxShadow(color: Colors.black45, blurRadius: 12.r, offset: Offset(0,6.h))],
-                  ),
-                  child: Icon(Icons.workspace_premium_rounded, color: Colors.white, size: 32.sp),
-                )
-              ],
-            ),
-            SizedBox(height: 20.h),
-            SizedBox(height: 12.h),
-
-            SizedBox(
-              height: 420.h,
-              child: ListView.builder(
-                scrollDirection: Axis.horizontal,
-                itemCount: plans.length,
-                physics: const BouncingScrollPhysics(),
-                itemBuilder: (context, index) {
-                  final plan = plans[index];
-                  return Padding(
-                    padding: EdgeInsets.only(right: 16.w),
-                    child: _buildSubscriptionCard(theme, localizations, plan, currentLevel),
-                  );
-                },
-              ),
-            ),
-            SizedBox(height: 18.h),
-            Center(
-              child: Text(localizations.subscriptionNote, style: TextStyle(color: Colors.grey.shade400, fontSize: 12.sp), textAlign: TextAlign.center),
-            ),
-                SizedBox(height: 8.h),
-                if (_isProcessing) Center(child: Padding(padding: EdgeInsets.only(top: 8.h), child: const CircularProgressIndicator()))
-              ],
-            ),
+              );
+            }),
           ),
         ],
       ),

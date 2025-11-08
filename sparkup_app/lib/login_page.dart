@@ -29,8 +29,6 @@ class _LoginPageState extends State<LoginPage> with TickerProviderStateMixin {
   late final Animation<Offset> _textSlideAnimation;
   late final Animation<double> _textFadeAnimation;
   late final Animation<Offset> _buttonSlideAnimation;
-  late final Animation<Alignment> _backgroundAnimation1;
-  late final Animation<Alignment> _backgroundAnimation2;
   late final Animation<double> _breathingAnimation;
   // ignore: unused_field
   late final Animation<double> _pulseAnimation;
@@ -56,15 +54,7 @@ class _LoginPageState extends State<LoginPage> with TickerProviderStateMixin {
     _buttonSlideAnimation = Tween<Offset>(begin: const Offset(0, 1.2), end: Offset.zero).animate(CurvedAnimation(parent: _entryController, curve: const Interval(0.6, 1.0, curve: Curves.easeOut)));
 
     // Arka plan ışıltılarının gezinme animasyonları (farklı yönlerde)
-    _backgroundAnimation1 = TweenSequence<Alignment>([
-      TweenSequenceItem(tween: AlignmentTween(begin: Alignment.topLeft, end: Alignment.bottomRight), weight: 1),
-      TweenSequenceItem(tween: AlignmentTween(begin: Alignment.bottomRight, end: Alignment.topLeft), weight: 1),
-    ]).animate(_backgroundController);
 
-    _backgroundAnimation2 = TweenSequence<Alignment>([
-      TweenSequenceItem(tween: AlignmentTween(begin: Alignment.topRight, end: Alignment.bottomLeft), weight: 1),
-      TweenSequenceItem(tween: AlignmentTween(begin: Alignment.bottomLeft, end: Alignment.topRight), weight: 1),
-    ]).animate(_backgroundController);
 
     // İkonun nefes alma animasyonu
     _breathingAnimation = Tween<double>(begin: 0.96, end: 1.04).animate(CurvedAnimation(parent: _breathingController, curve: Curves.easeInOut));
@@ -135,64 +125,23 @@ class _LoginPageState extends State<LoginPage> with TickerProviderStateMixin {
 
   @override
   Widget build(BuildContext context) {
-    final localizations = AppLocalizations.of(context)!;
     final theme = Theme.of(context);
+    final localizations = AppLocalizations.of(context)!;
 
     return Scaffold(
-      body: Stack(
-        children: [
-          // soft gradient background
-          Container(decoration: BoxDecoration(gradient: LinearGradient(colors: [theme.colorScheme.surface, Colors.black], begin: Alignment.topCenter, end: Alignment.bottomCenter))),
-
-          // animated ambient blobs
-          AnimatedBuilder(
-            animation: _backgroundController,
-            builder: (context, child) {
-              return Stack(
-                children: [
-                  Positioned.fill(
-                    child: Align(
-                      alignment: _backgroundAnimation1.value,
-                      child: Container(
-                        width: 420.w,
-                        height: 420.w,
-                        decoration: BoxDecoration(
-                          shape: BoxShape.circle,
-                          gradient: RadialGradient(colors: [colorWithOpacity(theme.colorScheme.primary, 0.14), Colors.transparent]),
-                          boxShadow: [BoxShadow(color: colorWithOpacity(theme.colorScheme.primary, 0.08), blurRadius: 80.r, spreadRadius: 60.r)],
-                        ),
-                      ),
-                    ),
-                  ),
-                  Positioned.fill(
-                    child: Align(
-                      alignment: _backgroundAnimation2.value,
-                      child: Container(
-                        width: 320.w,
-                        height: 320.w,
-                        decoration: BoxDecoration(
-                          shape: BoxShape.circle,
-                          gradient: RadialGradient(colors: [colorWithOpacity(theme.colorScheme.secondary, 0.12), Colors.transparent]),
-                          boxShadow: [BoxShadow(color: colorWithOpacity(theme.colorScheme.secondary, 0.06), blurRadius: 80.r, spreadRadius: 40.r)],
-                        ),
-                      ),
-                    ),
-                  ),
-                ],
-              );
-            },
-          ),
-
-          // content
-          SafeArea(
-            child: LayoutBuilder(builder: (context, constraints) {
-              // Use a fixed-height container so we have bounded vertical constraints
-              return SizedBox(
-                height: constraints.maxHeight,
-                child: Padding(
-                  padding: EdgeInsets.symmetric(horizontal: 28.w, vertical: 32.h),
+      backgroundColor: theme.colorScheme.surface,
+      body: SafeArea(
+        child: LayoutBuilder(
+          builder: (context, constraints) {
+            return SingleChildScrollView(
+              padding: EdgeInsets.only(bottom: MediaQuery.of(context).viewInsets.bottom),
+              physics: const BouncingScrollPhysics(),
+              child: ConstrainedBox(
+                constraints: BoxConstraints(minHeight: constraints.maxHeight),
+                child: IntrinsicHeight(
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    crossAxisAlignment: CrossAxisAlignment.center,
                     children: [
                       // header icon + title
                       Column(
@@ -361,11 +310,11 @@ class _LoginPageState extends State<LoginPage> with TickerProviderStateMixin {
                     ],
                   ),
                 ),
-              );
-            }),
+              ),
+            );
+            },
           ),
-        ],
-      ),
-    );
+        ),
+      );
   }
 }
