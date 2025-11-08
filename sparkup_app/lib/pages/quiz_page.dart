@@ -67,7 +67,13 @@ class _QuizPageState extends State<QuizPage> with TickerProviderStateMixin {
       }
     });
 
-    _fetchQuizData(isInitialLoad: true);
+    // Defer the initial fetch until after the first frame so inherited
+    // widgets (Theme, Localizations, ScaffoldMessenger, Providers) are
+    // available. Calling them from initState can cause the "dependOnInheritedWidgetOfExactType"
+    // error in debug/dev builds.
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      _fetchQuizData(isInitialLoad: true);
+    });
   }
 
   @override
