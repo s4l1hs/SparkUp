@@ -142,12 +142,13 @@ class MyApp extends StatelessWidget {
                 elevation: 8,
               ),
             ),
-            // Use a modern, legible variable font across the app
-            textTheme: GoogleFonts.interTextTheme(TextTheme(
-              bodyLarge: TextStyle(color: Colors.white, fontSize: 16.sp, height: 1.3),
-              bodyMedium: TextStyle(color: Colors.white70, fontSize: 14.sp),
-              titleMedium: TextStyle(color: Colors.white, fontWeight: FontWeight.w600, fontSize: 16.sp),
-              titleLarge: TextStyle(color: primaryColor, fontWeight: FontWeight.w900, fontSize: 20.sp),
+            // Use a more expressive, friendly display font across the app
+            // Poppins is clean and works well for UI headings and CTAs.
+            textTheme: GoogleFonts.poppinsTextTheme(TextTheme(
+              bodyLarge: TextStyle(color: Colors.white, fontSize: 16.sp, height: 1.35, fontWeight: FontWeight.w400),
+              bodyMedium: TextStyle(color: Colors.white70, fontSize: 14.sp, fontWeight: FontWeight.w400),
+              titleMedium: TextStyle(color: Colors.white, fontWeight: FontWeight.w600, fontSize: 15.sp),
+              titleLarge: TextStyle(color: primaryColor, fontWeight: FontWeight.w800, fontSize: 22.sp),
             )),
             bottomNavigationBarTheme: BottomNavigationBarThemeData(
               backgroundColor: const Color(0xFF1A1A1A),
