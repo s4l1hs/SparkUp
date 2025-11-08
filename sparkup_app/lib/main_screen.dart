@@ -1,6 +1,5 @@
 // lib/main_screen.dart
 
-import 'dart:math' as math;
 import 'dart:ui';
 import 'dart:math';
 import 'package:flutter/material.dart';
@@ -140,25 +139,12 @@ class MainScreenState extends State<MainScreen> with TickerProviderStateMixin {
       return theme.colorScheme.primary;
     }
 
-    final currentColor = getSelectedColor(_selectedIndex);
-
     // Use LayoutBuilder to compute exact available width to avoid overflow
     return SafeArea(
       bottom: true,
       child: Padding(
         padding: EdgeInsets.only(left: 12.w, right: 12.w, bottom: 6.h),
         child: LayoutBuilder(builder: (context, constraints) {
-          final totalWidth = constraints.maxWidth;
-          final itemCount = _navItems.length;
-          final itemWidth = (totalWidth) / itemCount;
-          final leftPaddingForHighlight = 4.w; // inside container offset used for AnimatedPositioned
-
-          // ensure highlight left does not overflow
-          double highlightLeft = leftPaddingForHighlight + (_selectedIndex * itemWidth);
-          highlightLeft = highlightLeft.clamp(0.0, (totalWidth - itemWidth).clamp(0.0, totalWidth));
-
-          // reduce highlight width a bit to avoid edge overflows on very small screens
-          final double highlightWidth = (itemWidth * 0.82).clamp(56.0, (itemWidth - 8.0).clamp(56.0, totalWidth));
 
           return ClipRRect(
             borderRadius: BorderRadius.circular(24.r),
@@ -180,76 +166,42 @@ class MainScreenState extends State<MainScreen> with TickerProviderStateMixin {
                   boxShadow: [BoxShadow(color: Colors.black38, blurRadius: 16.r, offset: Offset(0, 6.h))],
                   border: Border.all(color: colorWithOpacity(Colors.white, 0.04)),
                 ),
-                child: Stack(
-                  alignment: Alignment.center,
-                  children: [
-                    // floating highlighted pill behind selected icon
-                    AnimatedPositioned(
-                      duration: const Duration(milliseconds: 380),
-                      curve: Curves.easeOutCubic,
-                      // center highlight under the selected item and use highlightWidth
-                      left: math.max(0.0, (highlightLeft + (itemWidth - highlightWidth) / 2).clamp(0.0, totalWidth - highlightWidth)),
-                      top: 2.h,
-                      width: highlightWidth,
-                      height: 62.h,
-                      child: Center(
-                        child: AnimatedContainer(
-                          duration: const Duration(milliseconds: 380),
-                          curve: Curves.easeOutCubic,
-                          width: highlightWidth,
-                          height: 56.h,
-                          decoration: BoxDecoration(
-                            gradient: LinearGradient(
-                              colors: [colorWithOpacity(currentColor, 0.18), colorWithOpacity(currentColor, 0.06)],
-                              begin: Alignment.topLeft,
-                              end: Alignment.bottomRight,
+                // Row only - removed the rectangular pill highlight; keep circular selected effect
+                child: Row(
+                  children: _navItems.asMap().entries.map((entry) {
+                    final index = entry.key;
+                    final item = entry.value;
+                    final isSelected = _selectedIndex == index;
+                    final Color itemColor = isSelected ? getSelectedColor(index) : colorWithOpacity(theme.iconTheme.color!, 0.7);
+
+                    return Expanded(
+                      child: GestureDetector(
+                        onTap: () => onItemTapped(index),
+                        behavior: HitTestBehavior.opaque,
+                        child: Column(
+                          mainAxisSize: MainAxisSize.min,
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            ScaleTransition(
+                              scale: Tween<double>(begin: 1.0, end: 1.12).animate(CurvedAnimation(parent: _bounceController, curve: Curves.elasticOut)),
+                              child: AnimatedContainer(
+                                duration: const Duration(milliseconds: 260),
+                                curve: Curves.easeOut,
+                                padding: EdgeInsets.all(isSelected ? 6.w : 8.w),
+                                decoration: BoxDecoration(
+                                  shape: BoxShape.circle,
+                                  color: isSelected ? colorWithOpacity(itemColor, 0.06) : Colors.transparent,
+                                ),
+                                child: Icon(item['icon'] as IconData, size: isSelected ? 30.sp : 26.sp, color: itemColor),
+                              ),
                             ),
-                            borderRadius: BorderRadius.circular(14.r),
-                            boxShadow: [BoxShadow(color: colorWithOpacity(currentColor, 0.12), blurRadius: 18.r, offset: Offset(0, 10.h))],
-                            border: Border.all(color: colorWithOpacity(currentColor, 0.08)),
-                          ),
+                            // keep compact spacing, no labels
+                            SizedBox(height: 4.h),
+                          ],
                         ),
                       ),
-                    ),
-
-                    // nav items row - use Expanded + FittedBox to avoid overflow
-                    Row(
-                      children: _navItems.asMap().entries.map((entry) {
-                        final index = entry.key;
-                        final item = entry.value;
-                        final isSelected = _selectedIndex == index;
-                        final Color itemColor = isSelected ? getSelectedColor(index) : colorWithOpacity(theme.iconTheme.color!, 0.7);
-
-                        return Expanded(
-                          child: GestureDetector(
-                            onTap: () => onItemTapped(index),
-                            behavior: HitTestBehavior.opaque,
-                            child: Column(
-                              mainAxisSize: MainAxisSize.min,
-                              mainAxisAlignment: MainAxisAlignment.center,
-                              children: [
-                                ScaleTransition(
-                                  scale: Tween<double>(begin: 1.0, end: 1.12).animate(CurvedAnimation(parent: _bounceController, curve: Curves.elasticOut)),
-                                  child: AnimatedContainer(
-                                    duration: const Duration(milliseconds: 260),
-                                    curve: Curves.easeOut,
-                                    padding: EdgeInsets.all(isSelected ? 6.w : 8.w),
-                                    decoration: BoxDecoration(
-                                      shape: BoxShape.circle,
-                                      color: isSelected ? colorWithOpacity(itemColor, 0.06) : Colors.transparent,
-                                    ),
-                                    child: Icon(item['icon'] as IconData, size: isSelected ? 30.sp : 26.sp, color: itemColor),
-                                  ),
-                                ),
-                                // Removed text labels under nav icons per UX request - keep compact spacing
-                                SizedBox(height: 4.h),
-                              ],
-                            ),
-                          ),
-                        );
-                      }).toList(),
-                    ),
-                  ],
+                    );
+                  }).toList(),
                 ),
               ),
             ),
