@@ -2,8 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import '../l10n/app_localizations.dart';
+import '../widgets/glass_card.dart';
+import '../widgets/gradient_button.dart';
 import '../services/api_service.dart';
 import '../providers/user_provider.dart';
+import 'package:sparkup_app/utils/color_utils.dart';
 
 // UserProfile ve SubscriptionUpdate için (importların artık mevcut olduğunu varsayıyoruz)
 // import '../models/user_models.dart'; 
@@ -42,7 +45,7 @@ class _SubscriptionPageState extends State<SubscriptionPage> {
         );
       }
     } finally {
-      if (mounted) setState(() => _isProcessing = false);
+      if (mounted) { setState(() => _isProcessing = false); }
     }
   }
 
@@ -115,24 +118,18 @@ class _SubscriptionPageState extends State<SubscriptionPage> {
             Row(
               children: [
                 Expanded(
-                  child: Container(
-                    padding: EdgeInsets.symmetric(horizontal: 16.w, vertical: 14.h),
-                    decoration: BoxDecoration(
-                      gradient: LinearGradient(
-                        colors: [theme.colorScheme.primary.withOpacity(0.18), theme.colorScheme.secondary.withOpacity(0.06)],
-                      ),
+                  child: GlassCard(
+                      padding: EdgeInsets.symmetric(horizontal: 16.w, vertical: 14.h),
                       borderRadius: BorderRadius.circular(16.r),
-                      boxShadow: [BoxShadow(color: Colors.black26, blurRadius: 10.r, offset: Offset(0,6.h))],
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text(localizations.chooseYourPlan, style: TextStyle(fontSize: 18.sp, fontWeight: FontWeight.w800, color: Colors.white)),
+                          SizedBox(height: 6.h),
+                          Text(localizations.subscriptionNote, style: TextStyle(fontSize: 13.sp, color: Colors.white70)),
+                        ],
+                      ),
                     ),
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Text(localizations.chooseYourPlan, style: TextStyle(fontSize: 18.sp, fontWeight: FontWeight.w800, color: Colors.white)),
-                        SizedBox(height: 6.h),
-                        Text(localizations.subscriptionNote, style: TextStyle(fontSize: 13.sp, color: Colors.white70)),
-                      ],
-                    ),
-                  ),
                 ),
                 SizedBox(width: 12.w),
                 Container(
@@ -155,7 +152,7 @@ class _SubscriptionPageState extends State<SubscriptionPage> {
               child: ListView.builder(
                 scrollDirection: Axis.horizontal,
                 itemCount: plans.length,
-                physics: BouncingScrollPhysics(),
+                physics: const BouncingScrollPhysics(),
                 itemBuilder: (context, index) {
                   final plan = plans[index];
                   return Padding(
@@ -170,7 +167,7 @@ class _SubscriptionPageState extends State<SubscriptionPage> {
               child: Text(localizations.subscriptionNote, style: TextStyle(color: Colors.grey.shade400, fontSize: 12.sp), textAlign: TextAlign.center),
             ),
             SizedBox(height: 8.h),
-            if (_isProcessing) Center(child: Padding(padding: EdgeInsets.only(top: 8.h), child: CircularProgressIndicator()))
+            if (_isProcessing) Center(child: Padding(padding: EdgeInsets.only(top: 8.h), child: const CircularProgressIndicator()))
           ],
         ),
       ),
@@ -199,12 +196,12 @@ class _SubscriptionPageState extends State<SubscriptionPage> {
         child: Container(
           width: 320.w,
           padding: EdgeInsets.all(18.w),
-          decoration: BoxDecoration(
+            decoration: BoxDecoration(
             gradient: isCurrent
-                ? LinearGradient(colors: [cardColor.withOpacity(0.22), cardColor.withOpacity(0.06)])
-                : LinearGradient(colors: [Colors.white10, Colors.white12]),
+                ? LinearGradient(colors: [colorWithOpacity(cardColor, 0.22), colorWithOpacity(cardColor, 0.06)])
+                : const LinearGradient(colors: [Colors.white10, Colors.white12]),
             borderRadius: BorderRadius.circular(20.r),
-            border: isCurrent ? Border.all(color: cardColor.withOpacity(0.9), width: 2.w) : Border.all(color: Colors.white12),
+            border: isCurrent ? Border.all(color: colorWithOpacity(cardColor, 0.9), width: 2.w) : Border.all(color: Colors.white12),
             boxShadow: [BoxShadow(color: Colors.black45, blurRadius: 18.r, offset: Offset(0,10.h))],
           ),
           child: Column(
@@ -227,7 +224,7 @@ class _SubscriptionPageState extends State<SubscriptionPage> {
                     Container(
                       padding: EdgeInsets.symmetric(horizontal: 10.w, vertical: 6.h),
                       decoration: BoxDecoration(
-                        color: Colors.black.withOpacity(0.18),
+                        color: colorWithOpacity(Colors.black, 0.18),
                         borderRadius: BorderRadius.circular(8.r),
                       ),
                       child: Text(localizations.current, style: TextStyle(color: cardColor, fontWeight: FontWeight.bold)),
@@ -237,7 +234,7 @@ class _SubscriptionPageState extends State<SubscriptionPage> {
               SizedBox(height: 12.h),
 
               // accent separator
-              Container(height: 2.h, width: 60.w, decoration: BoxDecoration(gradient: LinearGradient(colors: [cardColor, cardColor.withOpacity(0.6)]), borderRadius: BorderRadius.circular(12.r))),
+              Container(height: 2.h, width: 60.w, decoration: BoxDecoration(gradient: LinearGradient(colors: [cardColor, colorWithOpacity(cardColor, 0.6)]), borderRadius: BorderRadius.circular(12.r))),
               SizedBox(height: 14.h),
 
               // features
@@ -254,7 +251,7 @@ class _SubscriptionPageState extends State<SubscriptionPage> {
                         height: 36.w,
                         decoration: BoxDecoration(
                           shape: BoxShape.circle,
-                          color: featureActive ? iconColor.withOpacity(0.18) : Colors.white10,
+                          color: featureActive ? colorWithOpacity(iconColor, 0.18) : Colors.white10,
                         ),
                         child: Icon(feature['icon'] as IconData, size: 18.sp, color: iconColor),
                       ),
@@ -264,7 +261,7 @@ class _SubscriptionPageState extends State<SubscriptionPage> {
                     ],
                   ),
                 );
-              })).toList(),
+              })),
 
               const Spacer(),
 
@@ -278,34 +275,30 @@ class _SubscriptionPageState extends State<SubscriptionPage> {
                         duration: const Duration(milliseconds: 320),
                         opacity: isCurrent ? 0.0 : 1.0,
                         child: Container(
-                          decoration: BoxDecoration(
-                            gradient: LinearGradient(colors: [cardColor.withOpacity(0.95), cardColor.withOpacity(0.7)]),
-                            borderRadius: BorderRadius.circular(12.r),
-                            boxShadow: [BoxShadow(color: cardColor.withOpacity(0.24), blurRadius: 12.r, offset: Offset(0,6.h))],
-                          ),
+                                    decoration: BoxDecoration(
+                                      gradient: LinearGradient(colors: [colorWithOpacity(cardColor, 0.95), colorWithOpacity(cardColor, 0.7)]),
+                                      borderRadius: BorderRadius.circular(12.r),
+                                      boxShadow: [BoxShadow(color: colorWithOpacity(cardColor, 0.24), blurRadius: 12.r, offset: Offset(0,6.h))],
+                                    ),
                         ),
                       ),
                     ),
-                    ElevatedButton(
-                      onPressed: isCurrent || _isProcessing ? null : () => _simulatePurchase(planLevel),
-                      style: ElevatedButton.styleFrom(
-                        backgroundColor: isCurrent ? Colors.grey.shade800 : Colors.transparent,
-                        shadowColor: Colors.transparent,
-                        padding: EdgeInsets.symmetric(vertical: 14.h),
-                        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12.r)),
-                      ),
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          if (!isCurrent) Icon(Icons.workspace_premium_rounded, color: Colors.white),
-                          SizedBox(width: 8.w),
-                          Text(
-                            isCurrent ? localizations.active : (isFree ? localizations.freeTrial : localizations.upgrade),
-                            style: TextStyle(fontSize: 16.sp, fontWeight: FontWeight.w800),
+                    isCurrent
+                        ? GradientButton(
+                            onPressed: null,
+                            padding: EdgeInsets.symmetric(vertical: 14.h),
+                            borderRadius: BorderRadius.circular(12.r),
+                            colors: [Colors.grey.shade800, Colors.grey.shade700],
+                            child: Text(localizations.active, style: TextStyle(fontSize: 16.sp)),
+                          )
+                        : GradientButton.icon(
+                            icon: Icon(Icons.workspace_premium_rounded, color: Colors.white, size: 16.sp),
+                            label: Text(isFree ? localizations.freeTrial : localizations.upgrade, style: TextStyle(fontSize: 16.sp)),
+                            onPressed: _isProcessing ? null : () => _simulatePurchase(planLevel),
+                            padding: EdgeInsets.symmetric(vertical: 14.h),
+                            borderRadius: BorderRadius.circular(12.r),
+                            colors: [colorWithOpacity(cardColor, 0.95), colorWithOpacity(cardColor, 0.7)],
                           ),
-                        ],
-                      ),
-                    ),
                   ],
                 ),
               ),

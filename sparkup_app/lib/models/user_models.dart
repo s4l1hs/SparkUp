@@ -45,13 +45,13 @@ class UserProfile {
     String? subscriptionLevel, String? subscriptionExpires,
   }) {
     return UserProfile(
-      firebaseUid: this.firebaseUid, email: this.email,
+      firebaseUid: firebaseUid, email: email,
       score: score ?? this.score, rankName: rankName ?? this.rankName,
       currentStreak: currentStreak ?? this.currentStreak,
       subscriptionLevel: subscriptionLevel ?? this.subscriptionLevel,
       subscriptionExpires: subscriptionExpires ?? this.subscriptionExpires,
-      topicPreferences: this.topicPreferences, languageCode: this.languageCode,
-      notificationsEnabled: this.notificationsEnabled,
+      topicPreferences: topicPreferences, languageCode: languageCode,
+      notificationsEnabled: notificationsEnabled,
     );
   }
 }

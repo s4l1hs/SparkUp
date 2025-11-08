@@ -5,9 +5,12 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:provider/provider.dart';
 import '../services/api_service.dart';
+import '../widgets/gradient_button.dart';
+import '../widgets/glass_card.dart';
 import '../l10n/app_localizations.dart';
 import '../providers/user_provider.dart';
 import '../main_screen.dart';
+import 'package:sparkup_app/utils/color_utils.dart';
 
 enum AnswerState { unanswered, pending, revealed }
 
@@ -27,6 +30,7 @@ class _QuizPageState extends State<QuizPage> with TickerProviderStateMixin {
   List<Map<String, dynamic>> _questions = [];
   int _currentIndex = 0, _sessionScore = 0;
   int? _selectedAnswerIndex;
+  int? _pressedOptionIndex;
   late final AnimationController _backgroundController;
   late final Animation<Alignment> _backgroundAnimation1, _backgroundAnimation2;
   AnswerState _answerState = AnswerState.unanswered;
@@ -58,7 +62,7 @@ class _QuizPageState extends State<QuizPage> with TickerProviderStateMixin {
     _scoreAnimController.addStatusListener((st) {
       if (st == AnimationStatus.completed) {
         Future.delayed(const Duration(milliseconds: 300), () {
-          if (mounted) setState(() => _showAward = false);
+          if (mounted) { setState(() => _showAward = false); }
         });
       }
     });
@@ -133,6 +137,10 @@ class _QuizPageState extends State<QuizPage> with TickerProviderStateMixin {
 
   Future<void> _fetchQuizData({bool isInitialLoad = false, bool isPreview = false}) async {
     if (!mounted) return;
+  final localizations = AppLocalizations.of(context);
+  final theme = Theme.of(context);
+  final messenger = ScaffoldMessenger.of(context);
+  final userProvider = Provider.of<UserProvider>(context, listen: false);
     setState(() {
       _isLoading = true;
       _limitError = null;
@@ -140,13 +148,13 @@ class _QuizPageState extends State<QuizPage> with TickerProviderStateMixin {
     try {
       final lang = Localizations.localeOf(context).languageCode;
       final questions = await _apiService.getQuizQuestions(widget.idToken, limit: 3, lang: lang, preview: isPreview);
-      await Provider.of<UserProvider>(context, listen: false).loadProfile(widget.idToken);
-      if (!mounted) return;
+  await userProvider.loadProfile(widget.idToken);
+  if (!mounted) return;
 
       if (questions.isNotEmpty) {
-        setState(() {
+          setState(() {
           _questions = questions.map((q) => Map<String, dynamic>.from(q as Map)).toList();
-          final profile = Provider.of<UserProvider>(context, listen: false).profile;
+          final profile = userProvider.profile;
           _currentIndex = 0;
           _sessionScore = profile?.dailyPoints ?? 0;
           _isQuizActive = true;
@@ -163,19 +171,21 @@ class _QuizPageState extends State<QuizPage> with TickerProviderStateMixin {
     } catch (e) {
       final err = e.toString().toLowerCase();
       if (err.contains('limit') || err.contains('quota')) {
-        if (mounted) setState(() {
+        if (mounted) {
+          setState(() {
           _limitError = _cleanLimitMessage(e.toString());
           _isQuizActive = false;
         });
+        }
       } else {
-        final msg = AppLocalizations.of(context)?.quizCouldNotStart ?? 'Quiz could not be started';
+        final msg = localizations?.quizCouldNotStart ?? 'Quiz could not be started';
         if (mounted) {
-          ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text("$msg: ${e.toString()}"), backgroundColor: Theme.of(context).colorScheme.error));
+          messenger.showSnackBar(SnackBar(content: Text("$msg: ${e.toString()}"), backgroundColor: theme.colorScheme.error));
           setState(() => _isQuizActive = false);
         }
       }
     } finally {
-      if (mounted) setState(() => _isLoading = false);
+      if (mounted) { setState(() => _isLoading = false); }
     }
   }
 
@@ -195,9 +205,11 @@ class _QuizPageState extends State<QuizPage> with TickerProviderStateMixin {
     await Future.delayed(const Duration(milliseconds: 700));
     if (!mounted) return;
 
-    try {
+  final localizations = AppLocalizations.of(context);
+  final userProvider = Provider.of<UserProvider>(context, listen: false);
+  try {
       final questionId = _questions[_currentIndex]['id'] as int;
-      final response = await _api_serviceSafe(() => _apiService.submitQuizAnswer(widget.idToken, questionId, selectedIndex), const Duration(seconds: 8));
+  final response = await _apiServiceSafe(() => _apiService.submitQuizAnswer(widget.idToken, questionId, selectedIndex), const Duration(seconds: 8));
       if (response is Map) {
         final newScore = response['new_score'] as int? ?? 0;
         final awarded = response['score_awarded'] as int? ?? 0;
@@ -212,8 +224,8 @@ class _QuizPageState extends State<QuizPage> with TickerProviderStateMixin {
           }
         });
 
-        Provider.of<UserProvider>(context, listen: false).updateScore(newScore);
-        await Provider.of<UserProvider>(context, listen: false).loadProfile(widget.idToken);
+  userProvider.updateScore(newScore);
+  await userProvider.loadProfile(widget.idToken);
 
         await Future.delayed(const Duration(milliseconds: 900));
         if (!mounted) return;
@@ -227,16 +239,18 @@ class _QuizPageState extends State<QuizPage> with TickerProviderStateMixin {
         throw Exception('Unexpected response');
       }
     } catch (e) {
-      _showErrorSnackBar(AppLocalizations.of(context)?.error ?? 'An error occurred');
-      if (mounted) setState(() {
+      _showErrorSnackBar(localizations?.error ?? 'An error occurred');
+      if (mounted) {
+        setState(() {
         _answered = false;
         _answerState = AnswerState.unanswered;
         _selectedAnswerIndex = null;
       });
+      }
     }
   }
 
-  Future<dynamic> _api_serviceSafe(Future<dynamic> Function() fn, Duration timeout) {
+  Future<dynamic> _apiServiceSafe(Future<dynamic> Function() fn, Duration timeout) {
     return fn().timeout(timeout, onTimeout: () => throw TimeoutException("API timeout"));
   }
 
@@ -285,7 +299,7 @@ class _QuizPageState extends State<QuizPage> with TickerProviderStateMixin {
 
   Color _getOptionColor(int index) {
     final theme = Theme.of(context);
-    if (_questions.isEmpty || _currentIndex >= _questions.length) return theme.colorScheme.surface.withOpacity(0.5);
+    if (_questions.isEmpty || _currentIndex >= _questions.length) { return colorWithOpacity(theme.colorScheme.surface, 0.5); }
     final correctIndex = _questions[_currentIndex]['correct_answer_index'] as int;
     switch (_answerState) {
       case AnswerState.unanswered:
@@ -293,19 +307,19 @@ class _QuizPageState extends State<QuizPage> with TickerProviderStateMixin {
       case AnswerState.pending:
         return index == _selectedAnswerIndex ? Colors.yellow.shade700 : Colors.white10;
       case AnswerState.revealed:
-        if (index == correctIndex) return Colors.green.shade600;
-        else if (index == _selectedAnswerIndex) return Colors.red.shade600;
-        else
-          return Colors.white12;
+        if (index == correctIndex) {
+          return Colors.green.shade600;
+        } else if (index == _selectedAnswerIndex) { return Colors.red.shade600; }
+        else { return Colors.white12; }
     }
   }
 
   Border _getOptionBorder(int index) {
     final theme = Theme.of(context);
-    if (_questions.isEmpty || _currentIndex >= _questions.length) return Border.all(color: theme.colorScheme.primary.withOpacity(0.5));
+    if (_questions.isEmpty || _currentIndex >= _questions.length) { return Border.all(color: colorWithOpacity(theme.colorScheme.primary, 0.5)); }
     final correctIndex = _questions[_currentIndex]['correct_answer_index'] as int;
-    if (_answerState == AnswerState.revealed && index == correctIndex) return Border.all(color: Colors.green.shade300, width: 2.5);
-    return Border.all(color: theme.colorScheme.primary.withOpacity(0.18));
+    if (_answerState == AnswerState.revealed && index == correctIndex) { return Border.all(color: Colors.green.shade300, width: 2.5); }
+    return Border.all(color: colorWithOpacity(theme.colorScheme.primary, 0.18));
   }
 
   @override
@@ -316,7 +330,7 @@ class _QuizPageState extends State<QuizPage> with TickerProviderStateMixin {
     final currentStreak = userProvider.profile?.currentStreak ?? 0;
 
     return Scaffold(
-      backgroundColor: theme.colorScheme.background,
+      backgroundColor: theme.colorScheme.surface,
       body: Stack(
         children: [
           // ambient animated blobs
@@ -333,8 +347,8 @@ class _QuizPageState extends State<QuizPage> with TickerProviderStateMixin {
                         height: 400.h,
                         decoration: BoxDecoration(
                           shape: BoxShape.circle,
-                          gradient: RadialGradient(colors: [theme.colorScheme.secondary.withOpacity(0.14), Colors.transparent]),
-                          boxShadow: [BoxShadow(color: theme.colorScheme.secondary.withOpacity(0.06), blurRadius: 100.r, spreadRadius: 80.r)],
+                          gradient: RadialGradient(colors: [colorWithOpacity(theme.colorScheme.secondary, 0.14), Colors.transparent]),
+                          boxShadow: [BoxShadow(color: colorWithOpacity(theme.colorScheme.secondary, 0.06), blurRadius: 100.r, spreadRadius: 80.r)],
                         ),
                       ),
                     ),
@@ -347,8 +361,8 @@ class _QuizPageState extends State<QuizPage> with TickerProviderStateMixin {
                         height: 300.h,
                         decoration: BoxDecoration(
                           shape: BoxShape.circle,
-                          gradient: RadialGradient(colors: [theme.colorScheme.primary.withOpacity(0.12), Colors.transparent]),
-                          boxShadow: [BoxShadow(color: theme.colorScheme.primary.withOpacity(0.05), blurRadius: 100.r, spreadRadius: 60.r)],
+                          gradient: RadialGradient(colors: [colorWithOpacity(theme.colorScheme.primary, 0.12), Colors.transparent]),
+                          boxShadow: [BoxShadow(color: colorWithOpacity(theme.colorScheme.primary, 0.05), blurRadius: 100.r, spreadRadius: 60.r)],
                         ),
                       ),
                     ),
@@ -373,7 +387,7 @@ class _QuizPageState extends State<QuizPage> with TickerProviderStateMixin {
                     child: Row(children: [
                       Icon(Icons.add, color: Colors.white, size: 16.sp),
                       SizedBox(width: 8.w),
-                      Text("+$_lastAwarded ${localizations?.points ?? 'pts'}", style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold)),
+                      Text("+$_lastAwarded ${localizations?.points ?? 'pts'}", style: const TextStyle(color: Colors.white, fontWeight: FontWeight.bold)),
                     ]),
                   ),
                 ),
@@ -398,11 +412,11 @@ class _QuizPageState extends State<QuizPage> with TickerProviderStateMixin {
       key: const ValueKey('startView'),
       child: _isLoading
           ? CircularProgressIndicator(color: theme.colorScheme.primary)
-          : ElevatedButton.icon(
-              icon: Icon(Icons.play_arrow_rounded, size: 28.sp),
-              label: Text(localizations?.startNewQuiz ?? 'Start Quiz', style: TextStyle(fontSize: 20.sp, fontWeight: FontWeight.bold)),
-              style: ElevatedButton.styleFrom(padding: EdgeInsets.symmetric(horizontal: 32.w, vertical: 16.h), backgroundColor: theme.colorScheme.primary),
+          : GradientButton.icon(
+              icon: Icon(Icons.play_arrow_rounded, size: 22.sp, color: Colors.white),
+              label: Text(localizations?.startNewQuiz ?? 'Start Quiz', style: TextStyle(fontSize: 18.sp)),
               onPressed: _startQuizSession,
+              padding: EdgeInsets.symmetric(horizontal: 28.w, vertical: 14.h),
             ),
     );
   }
@@ -419,15 +433,16 @@ class _QuizPageState extends State<QuizPage> with TickerProviderStateMixin {
             SizedBox(height: 20.h),
             Text(localizations?.limitExceeded ?? 'Limit exceeded', style: theme.textTheme.titleLarge?.copyWith(color: theme.colorScheme.error)),
             SizedBox(height: 10.h),
-            Text(_limitError ?? (localizations?.upgrade ?? 'Upgrade'), textAlign: TextAlign.center, style: TextStyle(color: theme.colorScheme.onBackground.withOpacity(0.7), fontSize: 16.sp)),
+            Text(_limitError ?? (localizations?.upgrade ?? 'Upgrade'), textAlign: TextAlign.center, style: TextStyle(color: colorWithOpacity(theme.colorScheme.onSurface, 0.7), fontSize: 16.sp)),
             SizedBox(height: 30.h),
-            ElevatedButton(
+            GradientButton(
               onPressed: () {
                 final mainScreenState = context.findAncestorStateOfType<MainScreenState>();
                 if (mainScreenState != null) mainScreenState.onItemTapped(1);
               },
-              child: Text(localizations?.upgrade ?? 'Upgrade'),
-              style: ElevatedButton.styleFrom(backgroundColor: theme.colorScheme.secondary, padding: EdgeInsets.symmetric(horizontal: 22.w, vertical: 12.h)),
+              padding: EdgeInsets.symmetric(horizontal: 22.w, vertical: 12.h),
+              colors: [theme.colorScheme.secondary, theme.colorScheme.primary],
+              child: Text(localizations?.upgrade ?? 'Upgrade', style: TextStyle(fontSize: 14.sp)),
             )
           ],
         ),
@@ -464,7 +479,7 @@ class _QuizPageState extends State<QuizPage> with TickerProviderStateMixin {
                   child: LinearProgressIndicator(
                     value: progressValue,
                     minHeight: 8.h,
-                    backgroundColor: theme.colorScheme.surface.withOpacity(0.08),
+                    backgroundColor: colorWithOpacity(theme.colorScheme.surface, 0.08),
                     valueColor: AlwaysStoppedAnimation(theme.colorScheme.primary),
                   ),
                 ),
@@ -480,7 +495,7 @@ class _QuizPageState extends State<QuizPage> with TickerProviderStateMixin {
                       children: [
                         Container(
                           padding: EdgeInsets.symmetric(horizontal: 10.w, vertical: 6.h),
-                          decoration: BoxDecoration(color: theme.colorScheme.primary.withOpacity(0.95), borderRadius: BorderRadius.circular(10.r)),
+                          decoration: BoxDecoration(color: colorWithOpacity(theme.colorScheme.primary, 0.95), borderRadius: BorderRadius.circular(10.r)),
                           child: Row(children: [
                             Icon(Icons.star_rounded, color: Colors.yellow.shade700, size: 14.sp),
                             SizedBox(width: 6.w),
@@ -491,9 +506,9 @@ class _QuizPageState extends State<QuizPage> with TickerProviderStateMixin {
                         Container(
                           padding: EdgeInsets.symmetric(horizontal: 10.w, vertical: 4.h),
                           decoration: BoxDecoration(
-                            color: theme.colorScheme.secondary.withOpacity(0.18),
+                            color: colorWithOpacity(theme.colorScheme.secondary, 0.18),
                             borderRadius: BorderRadius.circular(10.r),
-                            border: Border.all(color: theme.colorScheme.secondary.withOpacity(0.22)),
+                            border: Border.all(color: colorWithOpacity(theme.colorScheme.secondary, 0.22)),
                           ),
                           child: Text("${localizations?.streak ?? 'Streak'}: ${profile?.currentStreak ?? 0}", style: TextStyle(color: theme.colorScheme.secondary, fontWeight: FontWeight.bold, fontSize: 14.sp)),
                         ),
@@ -520,31 +535,27 @@ class _QuizPageState extends State<QuizPage> with TickerProviderStateMixin {
 
   Widget _buildQuestionCard({required Key key}) {
     if (_questions.isEmpty || _currentIndex >= _questions.length) {
-      return Center(child: CircularProgressIndicator());
+      return const Center(child: CircularProgressIndicator());
     }
     final currentQuestion = _questions[_currentIndex];
     final options = List<String>.from(currentQuestion['options'] as List<dynamic>);
     final questionText = currentQuestion['question_text'] as String? ?? '';
 
-    return Column(
+  final theme = Theme.of(context);
+
+  return Column(
       key: key,
       // place items from top so question container height increase pushes content downward naturally
       mainAxisAlignment: MainAxisAlignment.start,
       children: [
-        // question container
-        Container(
-          width: double.infinity,
-          margin: EdgeInsets.symmetric(horizontal: 8.w),
-          // increase visual height of the question "dashboard"
-          constraints: BoxConstraints(minHeight: 120.h),
+        // question container (glass)
+        GlassCard(
           padding: EdgeInsets.symmetric(horizontal: 14.w, vertical: 16.h),
-          decoration: BoxDecoration(
-            gradient: LinearGradient(colors: [Colors.white10, Colors.white12]),
-            borderRadius: BorderRadius.circular(16.r),
-            boxShadow: [BoxShadow(color: Colors.black26, blurRadius: 18.r, offset: Offset(0, 8.h))],
-            border: Border.all(color: Theme.of(context).colorScheme.primary.withOpacity(0.06)),
+          borderRadius: BorderRadius.circular(16.r),
+          child: ConstrainedBox(
+            constraints: BoxConstraints(minHeight: 120.h),
+            child: Center(child: Text(questionText, textAlign: TextAlign.center, style: theme.textTheme.titleLarge?.copyWith(fontWeight: FontWeight.w900, height: 1.25))),
           ),
-          child: Text(questionText, textAlign: TextAlign.center, style: TextStyle(fontSize: 22.sp, fontWeight: FontWeight.w800, color: Colors.white, height: 1.25)),
         ),
         SizedBox(height: 16.h), // biraz artırıldı: soru ile seçenekler arası mesafe
         ...List.generate(options.length, (index) {
@@ -552,40 +563,46 @@ class _QuizPageState extends State<QuizPage> with TickerProviderStateMixin {
           final isSelected = index == _selectedAnswerIndex;
           return Padding(
             padding: EdgeInsets.symmetric(vertical: 8.h), // hafif arttırıldı
-            child: InkWell(
+            child: GestureDetector(
+              onTapDown: (_) => setState(() => _pressedOptionIndex = index),
+              onTapUp: (_) => setState(() => _pressedOptionIndex = null),
+              onTapCancel: () => setState(() => _pressedOptionIndex = null),
               onTap: _answered ? null : () => _answerQuestion(index),
-              borderRadius: BorderRadius.circular(16.r),
-              child: AnimatedContainer(
-                duration: const Duration(milliseconds: 360),
-                padding: EdgeInsets.symmetric(horizontal: 16.w, vertical: 12.h), // iç padding azaltıldı
-                decoration: BoxDecoration(
-                  color: _getOptionColor(index),
-                  borderRadius: BorderRadius.circular(16.r),
-                  border: _getOptionBorder(index),
-                  boxShadow: isSelected ? [BoxShadow(color: Colors.black45, blurRadius: 10.r, offset: Offset(0, 6.h))] : null,
-                ),
-                child: Row(
-                  children: [
-                    Container(
-                      width: 36.w,
-                      height: 36.w,
-                      decoration: BoxDecoration(
-                        shape: BoxShape.circle,
-                        color: isSelected ? Colors.white24 : Colors.white10,
-                        border: Border.all(color: Theme.of(context).colorScheme.primary.withOpacity(0.12)),
+              child: AnimatedScale(
+                duration: const Duration(milliseconds: 120),
+                scale: _pressedOptionIndex == index ? 0.985 : 1.0,
+                child: AnimatedContainer(
+                  duration: const Duration(milliseconds: 360),
+                  padding: EdgeInsets.symmetric(horizontal: 16.w, vertical: 12.h), // iç padding azaltıldı
+                  decoration: BoxDecoration(
+                    color: _getOptionColor(index),
+                    borderRadius: BorderRadius.circular(16.r),
+                    border: _getOptionBorder(index),
+                    boxShadow: isSelected ? [BoxShadow(color: Colors.black45, blurRadius: 10.r, offset: Offset(0, 6.h))] : null,
+                  ),
+                  child: Row(
+                    children: [
+                      Container(
+                        width: 36.w,
+                        height: 36.w,
+                        decoration: BoxDecoration(
+                          shape: BoxShape.circle,
+                          color: isSelected ? Colors.white24 : Colors.white10,
+                          border: Border.all(color: colorWithOpacity(Theme.of(context).colorScheme.primary, 0.12)),
+                        ),
+                        child: Center(child: Text(String.fromCharCode(65 + index), style: const TextStyle(color: Colors.white, fontWeight: FontWeight.bold))),
                       ),
-                      child: Center(child: Text(String.fromCharCode(65 + index), style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold))),
-                    ),
-                    SizedBox(width: 12.w),
-                    Expanded(child: Text(options[index], style: TextStyle(fontSize: 18.sp, color: Colors.white))),
-                    AnimatedOpacity(
-                      opacity: _answerState == AnswerState.revealed ? 1.0 : 0.0,
-                      duration: const Duration(milliseconds: 320),
-                      child: isCorrect
-                          ? Icon(Icons.check_circle_outline_rounded, color: Colors.white)
-                          : (isSelected ? Icon(Icons.highlight_off_rounded, color: Colors.white) : const SizedBox.shrink()),
-                    )
-                  ],
+                      SizedBox(width: 12.w),
+                      Expanded(child: Text(options[index], style: TextStyle(fontSize: 18.sp, color: Colors.white, fontWeight: FontWeight.w700))),
+                      AnimatedOpacity(
+                        opacity: _answerState == AnswerState.revealed ? 1.0 : 0.0,
+                        duration: const Duration(milliseconds: 320),
+                        child: isCorrect
+                            ? const Icon(Icons.check_circle_outline_rounded, color: Colors.white)
+                            : (isSelected ? const Icon(Icons.highlight_off_rounded, color: Colors.white) : const SizedBox.shrink()),
+                      )
+                    ],
+                  ),
                 ),
               ),
             ),

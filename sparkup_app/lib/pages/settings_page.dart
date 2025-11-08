@@ -12,6 +12,8 @@ import '../l10n/app_localizations.dart';
 import '../locale_provider.dart';
 import '../main.dart';
 import '../providers/user_provider.dart';
+import '../widgets/glass_card.dart';
+import 'package:sparkup_app/utils/color_utils.dart';
 
 class SettingsPage extends StatefulWidget {
   const SettingsPage({super.key});
@@ -64,15 +66,18 @@ class _SettingsPageState extends State<SettingsPage> with SingleTickerProviderSt
 
   Future<void> _loadUserProfile() async {
     if (!mounted) return;
+    final localizations = AppLocalizations.of(context);
+    final localeProvider = Provider.of<LocaleProvider>(context, listen: false);
     setState(() => _isLoadingProfile = true);
     try {
       final token = await _getIdToken();
       if (token == null) throw Exception("User not logged in");
 
       final uri = Uri.parse("$backendBaseUrl/user/profile/");
-      final response = await http.get(uri, headers: {'Authorization': 'Bearer $token'});
+  final response = await http.get(uri, headers: {'Authorization': 'Bearer $token'});
 
-      if (response.statusCode == 200 && mounted) {
+  if (!mounted) return;
+  if (response.statusCode == 200) {
         final profile = jsonDecode(response.body) as Map<String, dynamic>;
         final firebaseName = FirebaseAuth.instance.currentUser?.displayName;
         final backendUsername = (profile['username'] as String?) ?? '';
@@ -87,7 +92,7 @@ class _SettingsPageState extends State<SettingsPage> with SingleTickerProviderSt
           _notificationsEnabled = notifications;
         });
 
-        Provider.of<LocaleProvider>(context, listen: false).setLocale(_currentLanguageCode);
+  localeProvider.setLocale(_currentLanguageCode);
         // ensure device token registration if notifications are enabled
         if (_notificationsEnabled) {
           _ensureTokenRegisteredIfEnabled();
@@ -96,15 +101,17 @@ class _SettingsPageState extends State<SettingsPage> with SingleTickerProviderSt
         throw Exception('Failed to load profile: ${response.statusCode}');
       }
     } catch (e) {
-      if (mounted) _showErrorSnackBar(AppLocalizations.of(context)?.failedToLoadProfile ?? "Failed to load profile");
+      if (mounted) { _showErrorSnackBar(localizations?.failedToLoadProfile ?? "Failed to load profile"); }
     } finally {
-      if (mounted) setState(() => _isLoadingProfile = false);
+      if (mounted) { setState(() => _isLoadingProfile = false); }
     }
   }
 
   Future<void> _saveLanguage(String langCode) async {
     if (_isSavingLanguage) return;
     setState(() => _isSavingLanguage = true);
+  final localizations = AppLocalizations.of(context);
+  final localeProvider = Provider.of<LocaleProvider>(context, listen: false);
     try {
       final token = await _getIdToken();
       if (token == null) throw Exception("User not logged in");
@@ -113,15 +120,15 @@ class _SettingsPageState extends State<SettingsPage> with SingleTickerProviderSt
       final response = await http.put(uri, headers: {'Authorization': 'Bearer $token', 'Content-Type': 'application/json'});
 
       if (response.statusCode == 200) {
-        Provider.of<LocaleProvider>(context, listen: false).setLocale(langCode);
+  localeProvider.setLocale(langCode);
         setState(() => _currentLanguageCode = langCode);
       } else {
         throw Exception('Failed to save language');
       }
     } catch (e) {
-      if (mounted) _showErrorSnackBar(AppLocalizations.of(context)?.failedToSaveLanguage ?? "Failed to save language");
+      if (mounted) { _showErrorSnackBar(localizations?.failedToSaveLanguage ?? "Failed to save language"); }
     } finally {
-      if (mounted) setState(() => _isSavingLanguage = false);
+      if (mounted) { setState(() => _isSavingLanguage = false); }
     }
   }
 
@@ -131,7 +138,8 @@ class _SettingsPageState extends State<SettingsPage> with SingleTickerProviderSt
       _notificationsEnabled = isEnabled;
       _isSavingNotifications = true;
     });
-    try {
+  final localizations = AppLocalizations.of(context);
+  try {
       final token = await _getIdToken();
       if (token == null) throw Exception("User not logged in");
 
@@ -151,11 +159,11 @@ class _SettingsPageState extends State<SettingsPage> with SingleTickerProviderSt
       }
     } catch (e) {
       if (mounted) {
-        _showErrorSnackBar(AppLocalizations.of(context)?.failedToSaveNotification ?? "Failed to save notification setting");
+        _showErrorSnackBar(localizations?.failedToSaveNotification ?? "Failed to save notification setting");
         setState(() => _notificationsEnabled = !isEnabled);
       }
     } finally {
-      if (mounted) setState(() => _isSavingNotifications = false);
+      if (mounted) { setState(() => _isSavingNotifications = false); }
     }
   }
 
@@ -257,7 +265,7 @@ class _SettingsPageState extends State<SettingsPage> with SingleTickerProviderSt
           Container(
             decoration: BoxDecoration(
               gradient: LinearGradient(
-                colors: [theme.colorScheme.primary.withOpacity(0.12), theme.colorScheme.secondary.withOpacity(0.06)],
+                colors: [colorWithOpacity(theme.colorScheme.primary, 0.12), colorWithOpacity(theme.colorScheme.secondary, 0.06)],
                 begin: Alignment.topLeft,
                 end: Alignment.bottomRight,
               ),
@@ -265,8 +273,8 @@ class _SettingsPageState extends State<SettingsPage> with SingleTickerProviderSt
           ),
 
           // subtle floating shapes
-          Positioned(top: -40.h, left: -24.w, child: _decorBlob(theme.colorScheme.primary.withOpacity(0.08), 180.w)),
-          Positioned(bottom: -80.h, right: -60.w, child: _decorBlob(theme.colorScheme.secondary.withOpacity(0.07), 260.w)),
+          Positioned(top: -40.h, left: -24.w, child: _decorBlob(colorWithOpacity(theme.colorScheme.primary, 0.08), 180.w)),
+          Positioned(bottom: -80.h, right: -60.w, child: _decorBlob(colorWithOpacity(theme.colorScheme.secondary, 0.07), 260.w)),
 
           // content
           SafeArea(
@@ -279,12 +287,12 @@ class _SettingsPageState extends State<SettingsPage> with SingleTickerProviderSt
 
                 _buildCardSection(title: localizations.general, child: Column(children: [
                   _buildLanguageTile(localizations, theme),
-                  Divider(color: Colors.white12, height: 1, indent: 68),
+                  const Divider(color: Colors.white12, height: 1, indent: 68),
                   _buildNotificationsTile(localizations, theme),
                 ])),
                 SizedBox(height: 18.h),
                 _buildCardSection(title: localizations.account, child: Column(children: [
-                  Divider(color: Colors.white12, height: 1),
+                  const Divider(color: Colors.white12, height: 1),
                   _buildSignOutTile(localizations, theme),
                 ])),
                 SizedBox(height: 28.h),
@@ -332,45 +340,41 @@ class _SettingsPageState extends State<SettingsPage> with SingleTickerProviderSt
       // ignore and keep default label
     }
 
-    return Card(
-      elevation: 8,
-      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16.r)),
-      color: theme.colorScheme.surface.withOpacity(0.08),
-      child: Padding(
-        padding: EdgeInsets.symmetric(vertical: 16.h, horizontal: 16.w),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Row(
-              children: [
-                Container(
-                  width: 72.w, height: 72.w,
-                  decoration: BoxDecoration(
-                    shape: BoxShape.circle,
-                    gradient: LinearGradient(colors: [theme.colorScheme.secondary, theme.colorScheme.primary]),
-                    boxShadow: [BoxShadow(color: Colors.black26, blurRadius: 12.r, offset: Offset(0,8.h))],
-                  ),
-                  child: Center(child: Text((displayName.isNotEmpty)? displayName[0].toUpperCase() : 'A', style: TextStyle(color: Colors.white, fontSize: 28.sp, fontWeight: FontWeight.bold))),
+    return GlassCard(
+      borderRadius: BorderRadius.circular(16.r),
+      padding: EdgeInsets.symmetric(vertical: 16.h, horizontal: 16.w),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Row(
+            children: [
+              Container(
+                width: 72.w, height: 72.w,
+                decoration: BoxDecoration(
+                  shape: BoxShape.circle,
+                  gradient: LinearGradient(colors: [theme.colorScheme.secondary, theme.colorScheme.primary]),
+                  boxShadow: [BoxShadow(color: Colors.black26, blurRadius: 12.r, offset: Offset(0,8.h))],
                 ),
-                SizedBox(width: 14.w),
-                Expanded(
-                  child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
-                    Row(children: [
-                      Expanded(child: Text(displayName, style: TextStyle(color: Colors.white, fontSize: 18.sp, fontWeight: FontWeight.bold), overflow: TextOverflow.ellipsis)),
-                      Container(padding: EdgeInsets.symmetric(horizontal: 10.w, vertical: 6.h), decoration: BoxDecoration(color: theme.colorScheme.primary, borderRadius: BorderRadius.circular(12.r)), child: Row(children: [Icon(Icons.star, size: 16.sp, color: Colors.yellow.shade700), SizedBox(width: 6.w), Text('$score', style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold))])),
-                    ]),
-                    SizedBox(height: 4.h),
-                    // show "Member since YYYY" when possible
-                    Text(memberSinceText, style: TextStyle(color: Colors.white70, fontSize: 12.sp), overflow: TextOverflow.ellipsis),
+                child: Center(child: Text((displayName.isNotEmpty)? displayName[0].toUpperCase() : 'A', style: TextStyle(color: Colors.white, fontSize: 28.sp, fontWeight: FontWeight.bold))),
+              ),
+              SizedBox(width: 14.w),
+              Expanded(
+                child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
+                  Row(children: [
+                    Expanded(child: Text(displayName, style: TextStyle(color: Colors.white, fontSize: 18.sp, fontWeight: FontWeight.bold), overflow: TextOverflow.ellipsis)),
+                    Container(padding: EdgeInsets.symmetric(horizontal: 10.w, vertical: 6.h), decoration: BoxDecoration(color: theme.colorScheme.primary, borderRadius: BorderRadius.circular(12.r)), child: Row(children: [Icon(Icons.star, size: 16.sp, color: Colors.yellow.shade700), SizedBox(width: 6.w), Text('$score', style: const TextStyle(color: Colors.white, fontWeight: FontWeight.bold))])),
                   ]),
-                )
-              ],
-            ),
-            SizedBox(height: 8.h),
-            // top action buttons removed per request
-            const SizedBox.shrink(),
-          ],
-        ),
+                  SizedBox(height: 4.h),
+                  // show "Member since YYYY" when possible
+                  Text(memberSinceText, style: TextStyle(color: Colors.white70, fontSize: 12.sp), overflow: TextOverflow.ellipsis),
+                ]),
+              )
+            ],
+          ),
+          SizedBox(height: 8.h),
+          // top action buttons removed per request
+          const SizedBox.shrink(),
+        ],
       ),
     );
   }
@@ -378,20 +382,16 @@ class _SettingsPageState extends State<SettingsPage> with SingleTickerProviderSt
   Widget _buildCardSection({required String title, required Widget child}) {
     return Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
       Padding(padding: EdgeInsets.only(left: 6.w, bottom: 8.h), child: Text(title.toUpperCase(), style: TextStyle(color: Colors.grey.shade400, fontWeight: FontWeight.bold, letterSpacing: 1.2))),
-      Card(
-        color: Theme.of(context).colorScheme.surface.withOpacity(0.06),
-        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(14.r)),
-        child: Padding(padding: EdgeInsets.symmetric(horizontal: 8.w, vertical: 6.h), child: child),
-      )
+      GlassCard(borderRadius: BorderRadius.circular(14.r), padding: EdgeInsets.symmetric(horizontal: 8.w, vertical: 6.h), child: child)
     ]);
   }
 
   Widget _buildLanguageTile(AppLocalizations localizations, ThemeData theme) {
     return ListTile(
-      leading: CircleAvatar(backgroundColor: theme.colorScheme.primary.withOpacity(0.12), child: Icon(Icons.language, color: theme.colorScheme.primary)),
+      leading: CircleAvatar(backgroundColor: colorWithOpacity(theme.colorScheme.primary, 0.12), child: Icon(Icons.language, color: theme.colorScheme.primary)),
       title: Text(localizations.applicationLanguage),
       subtitle: Text(_supportedLanguages[_currentLanguageCode] ?? 'English'),
-      trailing: _isSavingLanguage ? SizedBox(width: 24.w, height: 24.w, child: CircularProgressIndicator(strokeWidth: 2)) : Icon(Icons.keyboard_arrow_right, color: Colors.white70),
+      trailing: _isSavingLanguage ? SizedBox(width: 24.w, height: 24.w, child: const CircularProgressIndicator(strokeWidth: 2)) : const Icon(Icons.keyboard_arrow_right, color: Colors.white70),
       onTap: () => _showLanguageBottomSheet(localizations, theme),
     );
   }
@@ -402,7 +402,7 @@ class _SettingsPageState extends State<SettingsPage> with SingleTickerProviderSt
       title: Text(localizations.notifications),
       subtitle: Text(localizations.forAllAlarms),
       value: _notificationsEnabled,
-      activeColor: theme.colorScheme.secondary,
+  activeThumbColor: theme.colorScheme.secondary,
       onChanged: _isSavingNotifications ? null : (value) => _saveNotificationSetting(value),
     );
   }

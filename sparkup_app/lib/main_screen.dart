@@ -5,12 +5,14 @@ import 'dart:ui';
 import 'dart:math';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:sparkup_app/utils/color_utils.dart';
 import 'l10n/app_localizations.dart';
 import 'pages/challenge_page.dart';
 import 'pages/subscription_page.dart';
 import 'pages/leaderboard_page.dart';
 import 'pages/quiz_page.dart';
 import 'pages/settings_page.dart';
+import 'widgets/gradient_button.dart';
 
 class MainScreen extends StatefulWidget {
   final String idToken;
@@ -73,6 +75,24 @@ class MainScreenState extends State<MainScreen> with TickerProviderStateMixin {
       extendBody: true,
       body: Stack(
         children: [
+          // Full-screen vibrant gradient background (keeps subtle motion-friendly colors)
+          Positioned.fill(
+            child: Container(
+              decoration: BoxDecoration(
+                gradient: LinearGradient(
+                  begin: Alignment.topLeft,
+                  end: Alignment.bottomRight,
+                  colors: [
+                    colorWithOpacity(Theme.of(context).colorScheme.primary, 0.08),
+                    colorWithOpacity(Theme.of(context).colorScheme.secondary, 0.06),
+                    colorWithOpacity(Theme.of(context).colorScheme.surface, 0.02),
+                  ],
+                  stops: const [0.0, 0.55, 1.0],
+                ),
+              ),
+            ),
+          ),
+          // main content
           IndexedStack(index: _selectedIndex, children: _pages),
           // small subtle top-right decorative gradient blob
           Positioned(
@@ -84,11 +104,23 @@ class MainScreenState extends State<MainScreen> with TickerProviderStateMixin {
               child: Container(
                 width: min(200.w, screenW * 0.45),
                 height: min(200.w, screenW * 0.45),
-                decoration: BoxDecoration(
-                  gradient: RadialGradient(colors: [Theme.of(context).colorScheme.primary.withOpacity(0.12), Colors.transparent]),
+                  decoration: BoxDecoration(
+                  gradient: RadialGradient(colors: [colorWithOpacity(Theme.of(context).colorScheme.primary, 0.12), Colors.transparent]),
                   shape: BoxShape.circle,
                 ),
               ),
+            ),
+          ),
+          // glassy floating action button — opens quiz when tapped
+          Positioned(
+            right: 22.w,
+            bottom: 120.h,
+            child: GradientButton(
+              onPressed: () => onItemTapped(2),
+              borderRadius: BorderRadius.circular(999.r),
+              padding: EdgeInsets.all(12.w),
+              colors: [Theme.of(context).colorScheme.secondary, Theme.of(context).colorScheme.primary],
+              child: Icon(Icons.flash_on_rounded, color: Colors.white, size: 24.sp),
             ),
           ),
         ],
@@ -139,14 +171,14 @@ class MainScreenState extends State<MainScreen> with TickerProviderStateMixin {
                 padding: EdgeInsets.only(bottom: bottomPadding, top: 6.h),
                 decoration: BoxDecoration(
                   gradient: LinearGradient(
-                    colors: [theme.colorScheme.surface.withOpacity(0.10), theme.colorScheme.surface.withOpacity(0.02)],
+                    colors: [colorWithOpacity(theme.colorScheme.surface, 0.10), colorWithOpacity(theme.colorScheme.surface, 0.02)],
                     begin: Alignment.topCenter,
                     end: Alignment.bottomCenter,
                   ),
                   borderRadius: BorderRadius.circular(24.r),
                   // reduce shadow offset so it doesn't contribute to visual overflow
                   boxShadow: [BoxShadow(color: Colors.black38, blurRadius: 16.r, offset: Offset(0, 6.h))],
-                  border: Border.all(color: Colors.white.withOpacity(0.04)),
+                  border: Border.all(color: colorWithOpacity(Colors.white, 0.04)),
                 ),
                 child: Stack(
                   alignment: Alignment.center,
@@ -168,13 +200,13 @@ class MainScreenState extends State<MainScreen> with TickerProviderStateMixin {
                           height: 56.h,
                           decoration: BoxDecoration(
                             gradient: LinearGradient(
-                              colors: [currentColor.withOpacity(0.18), currentColor.withOpacity(0.06)],
+                              colors: [colorWithOpacity(currentColor, 0.18), colorWithOpacity(currentColor, 0.06)],
                               begin: Alignment.topLeft,
                               end: Alignment.bottomRight,
                             ),
                             borderRadius: BorderRadius.circular(14.r),
-                            boxShadow: [BoxShadow(color: currentColor.withOpacity(0.12), blurRadius: 18.r, offset: Offset(0, 10.h))],
-                            border: Border.all(color: currentColor.withOpacity(0.08)),
+                            boxShadow: [BoxShadow(color: colorWithOpacity(currentColor, 0.12), blurRadius: 18.r, offset: Offset(0, 10.h))],
+                            border: Border.all(color: colorWithOpacity(currentColor, 0.08)),
                           ),
                         ),
                       ),
@@ -186,7 +218,7 @@ class MainScreenState extends State<MainScreen> with TickerProviderStateMixin {
                         final index = entry.key;
                         final item = entry.value;
                         final isSelected = _selectedIndex == index;
-                        final Color itemColor = isSelected ? getSelectedColor(index) : theme.iconTheme.color!.withOpacity(0.7);
+                        final Color itemColor = isSelected ? getSelectedColor(index) : colorWithOpacity(theme.iconTheme.color!, 0.7);
 
                         return Expanded(
                           child: GestureDetector(
@@ -204,7 +236,7 @@ class MainScreenState extends State<MainScreen> with TickerProviderStateMixin {
                                     padding: EdgeInsets.all(isSelected ? 6.w : 8.w),
                                     decoration: BoxDecoration(
                                       shape: BoxShape.circle,
-                                      color: isSelected ? itemColor.withOpacity(0.06) : Colors.transparent,
+                                      color: isSelected ? colorWithOpacity(itemColor, 0.06) : Colors.transparent,
                                     ),
                                     child: Icon(item['icon'] as IconData, size: isSelected ? 30.sp : 26.sp, color: itemColor),
                                   ),

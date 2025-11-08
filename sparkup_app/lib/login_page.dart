@@ -6,6 +6,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'l10n/app_localizations.dart';
 import 'dart:ui';
 import 'dart:math' as math;
+import 'utils/color_utils.dart';
 
 class LoginPage extends StatefulWidget {
   const LoginPage({super.key});
@@ -104,10 +105,11 @@ class _LoginPageState extends State<LoginPage> with TickerProviderStateMixin {
       }
     } catch (e) {
       debugPrint('Google Sign-In hatası: $e');
-      final msg = AppLocalizations.of(context)?.loginFailedMessage ?? 'Login failed';
-      if (context.mounted) _showErrorSnackBar(context, msg);
+  if (!mounted) return;
+  final msg = AppLocalizations.of(this.context)?.loginFailedMessage ?? 'Login failed';
+  _showErrorSnackBar(this.context, msg);
     } finally {
-      if (mounted) setState(() => _isSigningIn = false);
+      if (mounted) { setState(() => _isSigningIn = false); }
     }
   }
 
@@ -140,7 +142,7 @@ class _LoginPageState extends State<LoginPage> with TickerProviderStateMixin {
       body: Stack(
         children: [
           // soft gradient background
-          Container(decoration: BoxDecoration(gradient: LinearGradient(colors: [theme.colorScheme.background, Colors.black], begin: Alignment.topCenter, end: Alignment.bottomCenter))),
+          Container(decoration: BoxDecoration(gradient: LinearGradient(colors: [theme.colorScheme.surface, Colors.black], begin: Alignment.topCenter, end: Alignment.bottomCenter))),
 
           // animated ambient blobs
           AnimatedBuilder(
@@ -156,8 +158,8 @@ class _LoginPageState extends State<LoginPage> with TickerProviderStateMixin {
                         height: 420.w,
                         decoration: BoxDecoration(
                           shape: BoxShape.circle,
-                          gradient: RadialGradient(colors: [theme.colorScheme.primary.withOpacity(0.14), Colors.transparent]),
-                          boxShadow: [BoxShadow(color: theme.colorScheme.primary.withOpacity(0.08), blurRadius: 80.r, spreadRadius: 60.r)],
+                          gradient: RadialGradient(colors: [colorWithOpacity(theme.colorScheme.primary, 0.14), Colors.transparent]),
+                          boxShadow: [BoxShadow(color: colorWithOpacity(theme.colorScheme.primary, 0.08), blurRadius: 80.r, spreadRadius: 60.r)],
                         ),
                       ),
                     ),
@@ -170,8 +172,8 @@ class _LoginPageState extends State<LoginPage> with TickerProviderStateMixin {
                         height: 320.w,
                         decoration: BoxDecoration(
                           shape: BoxShape.circle,
-                          gradient: RadialGradient(colors: [theme.colorScheme.secondary.withOpacity(0.12), Colors.transparent]),
-                          boxShadow: [BoxShadow(color: theme.colorScheme.secondary.withOpacity(0.06), blurRadius: 80.r, spreadRadius: 40.r)],
+                          gradient: RadialGradient(colors: [colorWithOpacity(theme.colorScheme.secondary, 0.12), Colors.transparent]),
+                          boxShadow: [BoxShadow(color: colorWithOpacity(theme.colorScheme.secondary, 0.06), blurRadius: 80.r, spreadRadius: 40.r)],
                         ),
                       ),
                     ),
@@ -258,10 +260,10 @@ class _LoginPageState extends State<LoginPage> with TickerProviderStateMixin {
                             child: Container(
                               width: double.infinity,
                               padding: EdgeInsets.symmetric(horizontal: 20.w, vertical: 18.h),
-                              decoration: BoxDecoration(
-                                color: Colors.white.withOpacity(0.03),
+                                decoration: BoxDecoration(
+                                color: colorWithOpacity(Colors.white, 0.03),
                                 borderRadius: BorderRadius.circular(18.r),
-                                border: Border.all(color: Colors.white.withOpacity(0.04)),
+                                border: Border.all(color: colorWithOpacity(Colors.white, 0.04)),
                               ),
                               child: Column(
                                 crossAxisAlignment: CrossAxisAlignment.center,
@@ -287,16 +289,16 @@ class _LoginPageState extends State<LoginPage> with TickerProviderStateMixin {
                                               // smoother continuous oscillation using sine -> no sudden flip at loop boundary
                                               gradient: LinearGradient(
                                                 colors: [
-                                                  theme.colorScheme.primary.withOpacity(0.98),
-                                                  (theme.colorScheme.tertiary).withOpacity(0.95),
-                                                  theme.colorScheme.secondary.withOpacity(0.95)
+                                                    colorWithOpacity(theme.colorScheme.primary, 0.98),
+                                                    colorWithOpacity(theme.colorScheme.tertiary, 0.95),
+                                                    colorWithOpacity(theme.colorScheme.secondary, 0.95)
                                                 ],
                                                 begin: Alignment(-math.sin(_gradientController.value * 2 * math.pi), -0.35),
                                                 end: Alignment(math.sin(_gradientController.value * 2 * math.pi), 0.35),
                                               ),
                                               borderRadius: BorderRadius.circular(12.r),
-                                              boxShadow: [BoxShadow(color: Colors.black.withOpacity(0.35), blurRadius: 10.r, offset: Offset(0, 6.h))],
-                                              border: Border.all(color: Colors.white.withOpacity(0.06)),
+                                              boxShadow: [BoxShadow(color: colorWithOpacity(Colors.black, 0.35), blurRadius: 10.r, offset: Offset(0, 6.h))],
+                                              border: Border.all(color: colorWithOpacity(Colors.white, 0.06)),
                                             ),
                                             child: Row(
                                               mainAxisAlignment: MainAxisAlignment.center,
@@ -305,7 +307,7 @@ class _LoginPageState extends State<LoginPage> with TickerProviderStateMixin {
                                                   margin: EdgeInsets.only(right: 12.w),
                                                   width: 36.w,
                                                   height: 36.w,
-                                                  decoration: BoxDecoration(color: Colors.white, shape: BoxShape.circle),
+                                                  decoration: const BoxDecoration(color: Colors.white, shape: BoxShape.circle),
                                                   child: Padding(
                                                     padding: EdgeInsets.all(6.w),
                                                     child: Image.asset('assets/images/google_logo.png', fit: BoxFit.contain, errorBuilder: (c, e, s) {

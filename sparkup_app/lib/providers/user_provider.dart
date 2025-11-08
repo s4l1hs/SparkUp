@@ -6,7 +6,7 @@ import '../services/api_service.dart';
 class UserProvider extends ChangeNotifier {
   UserProfile? profile;
   bool _isLoading = false;
-  final ApiService _api_service = ApiService();
+  final ApiService _apiService = ApiService();
 
   bool get isLoading => _isLoading;
 
@@ -15,7 +15,7 @@ class UserProvider extends ChangeNotifier {
     _isLoading = true;
     notifyListeners();
     try {
-      final json = await _api_service.getUserProfile(idToken);
+  final json = await _apiService.getUserProfile(idToken);
       profile = UserProfile.fromJson(json);
     } catch (e) {
       debugPrint("Kullanıcı profili yüklenirken hata oluştu: $e");

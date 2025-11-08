@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/foundation.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
 import 'firebase_options.dart';
@@ -6,15 +7,19 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter/services.dart';
 import 'package:provider/provider.dart';
 import 'l10n/app_localizations.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'locale_provider.dart';
 import 'providers/user_provider.dart'; // USER PROVIDER IMPORT EDİLDİ
 import 'auth_gate.dart';
+import 'package:sparkup_app/utils/color_utils.dart';
 
 String backendBaseUrl = "http://127.0.0.1:8000";
 
 Future<void> _firebaseMessagingBackgroundHandler(RemoteMessage message) async {
   await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
-  print('Background message received: ${message.messageId}');
+  if (kDebugMode) {
+    print('Background message received: ${message.messageId}');
+  }
 }
 
 void main() async {
@@ -44,12 +49,11 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    // Ana Renk Paleti
-    final Color primaryColor = Colors.cyanAccent.shade400; // Ana Vurgu Rengi
-    final Color secondaryColor = Colors.deepOrangeAccent.shade400; // İkincil Enerji Rengi
-    
-    // 1. ÜÇÜNCÜ RENK TANIMLAMASI
-    final Color tertiaryColor = Colors.purpleAccent.shade200; // Üçüncül Vurgu Rengi (Mor/Eflatun)
+  // Revamped color palette for a more vibrant, eye-catching UI
+  const Color primaryColor = Color(0xFF00E5FF); // bright cyan
+  const Color secondaryColor = Color(0xFF7C4DFF); // vibrant purple
+  // tertiary kept for subtle surfaces
+  const Color tertiaryColor = Color(0xFFB388FF);
 
     return ScreenUtilInit(
       designSize: const Size(390, 844),
@@ -65,41 +69,42 @@ class MyApp extends StatelessWidget {
           onGenerateTitle: (context) => "Spark Up",
           debugShowCheckedModeBanner: false,
           theme: ThemeData(
-            scaffoldBackgroundColor: Colors.black,
+            // make scaffold transparent so pages can show an app-level gradient background
+            scaffoldBackgroundColor: Colors.transparent,
             colorScheme: ColorScheme.dark(
               primary: primaryColor,
               onPrimary: Colors.black,
               secondary: secondaryColor,
-              onSecondary: Colors.black,
-              
-              // 2. ÜÇÜNCÜ RENKLERİ COLOR SCHEME'E EKLEME
+              onSecondary: Colors.white,
               tertiary: tertiaryColor,
-              onTertiary: Colors.black,
+              onTertiary: Colors.white,
 
-              surface: const Color(0xFF151515),
-              background: Colors.black,
-              onBackground: Colors.white,
+              surface: const Color(0xFF0F0F14),
+              // 'background' and 'onBackground' are deprecated in newer
+              // Flutter versions; prefer surface/onSurface.
+              onSurface: Colors.white,
               error: Colors.redAccent.shade400,
               onError: Colors.white,
             ),
             appBarTheme: AppBarTheme(
-              backgroundColor: Colors.black,
+              backgroundColor: Colors.transparent,
               foregroundColor: Colors.white,
               elevation: 0,
               centerTitle: true,
               titleTextStyle: TextStyle(
                 fontSize: 22.sp,
-                fontWeight: FontWeight.bold,
+                fontWeight: FontWeight.w700,
                 color: Colors.white,
+                letterSpacing: 0.2,
               ),
             ),
             cardTheme: CardThemeData(
-              color: const Color(0xFF1A1A1A),
-              elevation: 4,
+              color: const Color(0xFF12121A),
+              elevation: 6,
               shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(16.r),
+                borderRadius: BorderRadius.circular(18.r),
               ),
-              shadowColor: Colors.black.withOpacity(0.4),
+              shadowColor: colorWithOpacity(Colors.black, 0.6),
               margin: EdgeInsets.zero,
             ),
             inputDecorationTheme: InputDecorationTheme(
@@ -131,18 +136,19 @@ class MyApp extends StatelessWidget {
                 ),
                 textStyle: TextStyle(
                   fontSize: 16.sp,
-                  fontWeight: FontWeight.bold,
+                  fontWeight: FontWeight.w800,
                 ),
-                shadowColor: Colors.black.withOpacity(0.8),
+                shadowColor: colorWithOpacity(Colors.black, 0.8),
                 elevation: 8,
               ),
             ),
-            textTheme: TextTheme(
-              bodyLarge: TextStyle(color: Colors.white, fontSize: 16.sp),
-              bodyMedium: TextStyle(color: Colors.white, fontSize: 14.sp),
-              titleMedium: TextStyle(color: Colors.white, fontWeight: FontWeight.w500, fontSize: 16.sp),
-              titleLarge: TextStyle(color: primaryColor, fontWeight: FontWeight.bold, fontSize: 20.sp),
-            ),
+            // Use a modern, legible variable font across the app
+            textTheme: GoogleFonts.interTextTheme(TextTheme(
+              bodyLarge: TextStyle(color: Colors.white, fontSize: 16.sp, height: 1.3),
+              bodyMedium: TextStyle(color: Colors.white70, fontSize: 14.sp),
+              titleMedium: TextStyle(color: Colors.white, fontWeight: FontWeight.w600, fontSize: 16.sp),
+              titleLarge: TextStyle(color: primaryColor, fontWeight: FontWeight.w900, fontSize: 20.sp),
+            )),
             bottomNavigationBarTheme: BottomNavigationBarThemeData(
               backgroundColor: const Color(0xFF1A1A1A),
               selectedItemColor: primaryColor,

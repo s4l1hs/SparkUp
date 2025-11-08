@@ -1,5 +1,4 @@
 import 'dart:async';
-import 'dart:ui';
 import 'dart:math';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -7,8 +6,11 @@ import 'package:provider/provider.dart';
 import '../providers/user_provider.dart';
 import '../services/api_service.dart';
 import '../l10n/app_localizations.dart';
+import '../widgets/glass_card.dart';
+import '../widgets/gradient_button.dart';
 import '../models/leaderboard_entry.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:sparkup_app/utils/color_utils.dart';
 
 class LeaderboardPage extends StatefulWidget {
   final String idToken;
@@ -115,8 +117,8 @@ class _LeaderboardPageState extends State<LeaderboardPage> with TickerProviderSt
 
     try {
       // Only fetch leaderboard and current user rank now (topics removed)
-      final leaderboardResp = await _api_apiSafe(() => _apiService.getLeaderboard(widget.idToken), const Duration(seconds: 8));
-      final userRankResp = await _api_apiSafe(() => _apiService.getUserRank(widget.idToken), const Duration(seconds: 8));
+  final leaderboardResp = await _apiServiceSafe(() => _apiService.getLeaderboard(widget.idToken), const Duration(seconds: 8));
+  final userRankResp = await _apiServiceSafe(() => _apiService.getUserRank(widget.idToken), const Duration(seconds: 8));
 
       // Normalize leaderboard
       List<LeaderboardEntry> leaderboardParsed = [];
@@ -128,8 +130,11 @@ class _LeaderboardPageState extends State<LeaderboardPage> with TickerProviderSt
       }
 
       LeaderboardEntry? currentUserParsed;
-      if (userRankResp is LeaderboardEntry) currentUserParsed = userRankResp;
-      else if (userRankResp is Map) currentUserParsed = LeaderboardEntry.fromJson(Map<String, dynamic>.from(userRankResp));
+      if (userRankResp is LeaderboardEntry) {
+        currentUserParsed = userRankResp;
+      } else if (userRankResp is Map) {
+        currentUserParsed = LeaderboardEntry.fromJson(Map<String, dynamic>.from(userRankResp));
+      }
 
       if (mounted) {
         setState(() {
@@ -171,12 +176,12 @@ class _LeaderboardPageState extends State<LeaderboardPage> with TickerProviderSt
         ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text(msg!), backgroundColor: Colors.red));
       }
     } finally {
-      if (mounted) setState(() => _isLoading = false);
+      if (mounted) { setState(() => _isLoading = false); }
     }
   }
   
   // helper used earlier — keep as is
-  Future<dynamic> _api_apiSafe(Future<dynamic> Function() fn, Duration timeout) {
+  Future<dynamic> _apiServiceSafe(Future<dynamic> Function() fn, Duration timeout) {
     return fn().timeout(timeout, onTimeout: () => throw TimeoutException("API timeout"));
   }
 
@@ -298,7 +303,7 @@ class _LeaderboardPageState extends State<LeaderboardPage> with TickerProviderSt
     final listDisplay = _leaderboardData.length > 10 ? _leaderboardData.sublist(10) : <LeaderboardEntry>[]; 
 
     return Scaffold(
-      backgroundColor: theme.colorScheme.background,
+      backgroundColor: theme.colorScheme.surface,
       body: Stack(
         children: [
           // animated ambient background blobs for depth
@@ -315,8 +320,8 @@ class _LeaderboardPageState extends State<LeaderboardPage> with TickerProviderSt
                         height: 420.h,
                         decoration: BoxDecoration(
                           shape: BoxShape.circle,
-                          gradient: RadialGradient(colors: [theme.colorScheme.primary.withOpacity(0.14), Colors.transparent]),
-                          boxShadow: [BoxShadow(color: theme.colorScheme.primary.withOpacity(0.06), blurRadius: 100.r, spreadRadius: 60.r)],
+                          gradient: RadialGradient(colors: [colorWithOpacity(theme.colorScheme.primary, 0.14), Colors.transparent]),
+                          boxShadow: [BoxShadow(color: colorWithOpacity(theme.colorScheme.primary, 0.06), blurRadius: 100.r, spreadRadius: 60.r)],
                         ),
                       ),
                     ),
@@ -329,8 +334,8 @@ class _LeaderboardPageState extends State<LeaderboardPage> with TickerProviderSt
                         height: 320.h,
                         decoration: BoxDecoration(
                           shape: BoxShape.circle,
-                          gradient: RadialGradient(colors: [theme.colorScheme.secondary.withOpacity(0.12), Colors.transparent]),
-                          boxShadow: [BoxShadow(color: theme.colorScheme.secondary.withOpacity(0.05), blurRadius: 100.r, spreadRadius: 40.r)],
+                          gradient: RadialGradient(colors: [colorWithOpacity(theme.colorScheme.secondary, 0.12), Colors.transparent]),
+                          boxShadow: [BoxShadow(color: colorWithOpacity(theme.colorScheme.secondary, 0.05), blurRadius: 100.r, spreadRadius: 40.r)],
                         ),
                       ),
                     ),
@@ -422,61 +427,56 @@ class _LeaderboardPageState extends State<LeaderboardPage> with TickerProviderSt
 
     final String rankName = getLocalizedRank(rankKey);
 
-    return Container(
-      margin: EdgeInsets.symmetric(horizontal: 16.w, vertical: 12.h),
-      padding: EdgeInsets.all(14.w),
-      decoration: BoxDecoration(
-        color: theme.colorScheme.surface.withOpacity(0.12),
+    return Padding(
+      padding: EdgeInsets.symmetric(horizontal: 16.w, vertical: 12.h),
+      child: GlassCard(
+        padding: EdgeInsets.all(14.w),
         borderRadius: BorderRadius.circular(14.r),
-        border: Border.all(color: theme.colorScheme.secondary.withOpacity(0.14)),
-        boxShadow: [BoxShadow(color: Colors.black26, blurRadius: 12.r, offset: Offset(0, 8.h))],
-      ),
-      child: Row(
-        children: [
-          _GradientAvatar(name: _displayName(entry), radius: 28.r, colors: [theme.colorScheme.secondary, theme.colorScheme.primary]),
-          SizedBox(width: 12.w),
-          Expanded(
-            child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
-              Text(localizations.yourRank, style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold)),
-              SizedBox(height: 6.h),
-              Row(children: [
-                Text(_displayName(entry), style: TextStyle(color: Colors.grey.shade200)),
-                SizedBox(width: 8.w),
-                Text("($rankName)", style: TextStyle(color: theme.colorScheme.primary, fontWeight: FontWeight.bold)),
+        child: Row(
+          children: [
+            _GradientAvatar(name: _displayName(entry), radius: 28.r, colors: [theme.colorScheme.secondary, theme.colorScheme.primary]),
+            SizedBox(width: 12.w),
+            Expanded(
+              child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
+                Text(localizations.yourRank, style: const TextStyle(color: Colors.white, fontWeight: FontWeight.bold)),
+                SizedBox(height: 6.h),
+                Row(children: [
+                  Text(_displayName(entry), style: TextStyle(color: Colors.grey.shade200)),
+                  SizedBox(width: 8.w),
+                  Text("($rankName)", style: TextStyle(color: theme.colorScheme.primary, fontWeight: FontWeight.bold)),
+                ]),
               ]),
-            ]),
-          ),
-          Column(
-            crossAxisAlignment: CrossAxisAlignment.end,
-            children: [
-              Row(children: [Text(entry.score.toString(), style: TextStyle(color: theme.colorScheme.secondary, fontWeight: FontWeight.bold, fontSize: 16.sp)), SizedBox(width: 6.w), Icon(Icons.star_rounded, color: theme.colorScheme.secondary, size: 18.sp)]),
-              SizedBox(height: 6.h),
-              ElevatedButton(
-                onPressed: () => _loadPageData(),
-                style: ElevatedButton.styleFrom(backgroundColor: theme.colorScheme.primary, padding: EdgeInsets.symmetric(horizontal: 12.w, vertical: 8.h)),
-                child: Text(AppLocalizations.of(context)!.refresh, style: TextStyle(fontSize: 12.sp)),
-              )
-            ],
-          )
-        ],
+            ),
+            Column(
+              crossAxisAlignment: CrossAxisAlignment.end,
+              children: [
+                Row(children: [Text(entry.score.toString(), style: TextStyle(color: theme.colorScheme.secondary, fontWeight: FontWeight.bold, fontSize: 16.sp)), SizedBox(width: 6.w), Icon(Icons.star_rounded, color: theme.colorScheme.secondary, size: 18.sp)]),
+                SizedBox(height: 6.h),
+                GradientButton(
+                  onPressed: () => _loadPageData(),
+                  padding: EdgeInsets.symmetric(horizontal: 12.w, vertical: 8.h),
+                  colors: [theme.colorScheme.primary, theme.colorScheme.secondary],
+                  borderRadius: BorderRadius.circular(10.r),
+                  child: Text(AppLocalizations.of(context)!.refresh, style: TextStyle(fontSize: 12.sp)),
+                )
+              ],
+            )
+          ],
+        ),
       ),
     );
   }
 
   Widget _buildLeaderboardTile(ThemeData theme, LeaderboardEntry entry) {
-    return Container(
+    return GlassCard(
       padding: EdgeInsets.symmetric(horizontal: 12.w, vertical: 10.h),
-      decoration: BoxDecoration(
-        color: theme.colorScheme.surface.withOpacity(0.06),
-        borderRadius: BorderRadius.circular(12.r),
-        border: Border.all(color: Colors.white12),
-      ),
+      borderRadius: BorderRadius.circular(12.r),
       child: Row(
         children: [
           SizedBox(width: 44.w, child: Text("#${entry.rank}", style: TextStyle(fontSize: 14.sp, color: Colors.grey.shade300, fontWeight: FontWeight.bold))),
           _GradientAvatar(name: _displayName(entry), radius: 20.r, colors: [theme.colorScheme.primary, theme.colorScheme.secondary]),
           SizedBox(width: 12.w),
-          Expanded(child: Text(_displayName(entry), style: TextStyle(fontWeight: FontWeight.w700, color: Colors.white), overflow: TextOverflow.ellipsis)),
+          Expanded(child: Text(_displayName(entry), style: const TextStyle(fontWeight: FontWeight.w800, color: Colors.white), overflow: TextOverflow.ellipsis)),
           SizedBox(width: 8.w),
           Row(children: [Text(entry.score.toString(), style: TextStyle(fontSize: 14.sp, color: theme.colorScheme.primary, fontWeight: FontWeight.bold)), SizedBox(width: 6.w), Icon(Icons.star_rounded, color: theme.colorScheme.secondary, size: 16.sp)]),
         ],
@@ -498,8 +498,8 @@ class _LeaderboardPageState extends State<LeaderboardPage> with TickerProviderSt
           // Stylized podium with 3D feeling
           Container(
             padding: EdgeInsets.symmetric(vertical: 14.h, horizontal: 12.w),
-            decoration: BoxDecoration(
-              gradient: LinearGradient(colors: [theme.colorScheme.surface.withOpacity(0.08), Colors.black.withOpacity(0.06)]),
+              decoration: BoxDecoration(
+              gradient: LinearGradient(colors: [colorWithOpacity(theme.colorScheme.surface, 0.08), colorWithOpacity(Colors.black, 0.06)]),
               borderRadius: BorderRadius.circular(16.r),
               boxShadow: [BoxShadow(color: Colors.black45, blurRadius: 22.r, offset: Offset(0, 10.h))],
               border: Border.all(color: Colors.white12),
@@ -516,16 +516,16 @@ class _LeaderboardPageState extends State<LeaderboardPage> with TickerProviderSt
           SizedBox(height: 18.h),
 
           // Top players dashboard (4..10)
-          Card(
-            color: theme.colorScheme.surface.withOpacity(0.95),
-            shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12.r)),
-            child: Padding(
+          Padding(
+            padding: EdgeInsets.symmetric(horizontal: 12.w, vertical: 8.h),
+            child: GlassCard(
               padding: EdgeInsets.symmetric(vertical: 12.h, horizontal: 12.w),
+              borderRadius: BorderRadius.circular(12.r),
               child: Column(
                 children: [
                   Text(localizations.topPlayers, style: TextStyle(fontSize: 16.sp, color: Colors.white, fontWeight: FontWeight.bold)),
                   SizedBox(height: 10.h),
-                  Divider(color: Colors.white12),
+                  const Divider(color: Colors.white12),
                   SizedBox(height: 10.h),
                   for (var i = 0; i < 7; i++)
                     Padding(
@@ -539,7 +539,7 @@ class _LeaderboardPageState extends State<LeaderboardPage> with TickerProviderSt
                           children: [
                             SizedBox(width: 36.w, child: Text("#$rank", style: TextStyle(color: Colors.grey.shade300, fontWeight: FontWeight.bold))),
                             SizedBox(width: 8.w),
-                            Expanded(child: Text(name, style: TextStyle(color: Colors.white, fontWeight: FontWeight.w700), overflow: TextOverflow.ellipsis)),
+                            Expanded(child: Text(name, style: const TextStyle(color: Colors.white, fontWeight: FontWeight.w700), overflow: TextOverflow.ellipsis)),
                             SizedBox(width: 8.w),
                             Text(scoreText, style: TextStyle(color: theme.colorScheme.primary, fontWeight: FontWeight.bold)),
                             SizedBox(width: 8.w),
@@ -608,18 +608,18 @@ class _PodiumBlock extends StatelessWidget {
           Container(
             padding: EdgeInsets.symmetric(vertical: 8.h, horizontal: 8.w),
             decoration: BoxDecoration(
-              color: color.withOpacity(0.06),
+              color: colorWithOpacity(color, 0.06),
               borderRadius: BorderRadius.vertical(top: Radius.circular(12.r)),
-              border: Border.all(color: color.withOpacity(0.9), width: 1.5),
+              border: Border.all(color: colorWithOpacity(color, 0.9), width: 1.5),
               boxShadow: [BoxShadow(color: Colors.black38, blurRadius: 10.r, offset: Offset(0, 8.h))],
             ),
             child: Column(
               children: [
-                _GradientAvatar(name: display, radius: isChampion ? 32.r : 26.r, colors: [color, color.withOpacity(0.6)]),
+                _GradientAvatar(name: display, radius: isChampion ? 32.r : 26.r, colors: [color, colorWithOpacity(color, 0.6)]),
                 SizedBox(height: 8.h),
                 ConstrainedBox(
                   constraints: BoxConstraints(maxWidth: 120.w),
-                  child: Text(display, style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold), overflow: TextOverflow.ellipsis, textAlign: TextAlign.center),
+                  child: Text(display, style: const TextStyle(color: Colors.white, fontWeight: FontWeight.bold), overflow: TextOverflow.ellipsis, textAlign: TextAlign.center),
                 ),
                 SizedBox(height: 8.h),
                 Container(
@@ -627,14 +627,14 @@ class _PodiumBlock extends StatelessWidget {
                   width: double.infinity,
                   alignment: Alignment.center,
                   decoration: BoxDecoration(
-                    gradient: LinearGradient(colors: [color.withOpacity(0.9), color.withOpacity(0.35)]),
+                    gradient: LinearGradient(colors: [colorWithOpacity(color, 0.9), colorWithOpacity(color, 0.35)]),
                     borderRadius: BorderRadius.vertical(top: Radius.circular(12.r)),
                     boxShadow: [BoxShadow(color: Colors.black54, blurRadius: 8.r, offset: Offset(0, 6.h))],
                   ),
                   child: Text(score, style: TextStyle(fontSize: 20.sp, color: Colors.white, fontWeight: FontWeight.bold)),
                 ),
                 SizedBox(height: 6.h),
-                Text("#$place", style: TextStyle(color: Colors.white70, fontWeight: FontWeight.w700)),
+                Text("#$place", style: const TextStyle(color: Colors.white70, fontWeight: FontWeight.w700)),
               ],
             ),
           ),
@@ -689,7 +689,7 @@ class _HeaderRow extends StatelessWidget {
               _GradientAvatar(name: displayNameFn(currentUser!), radius: 18.r, colors: [theme.colorScheme.secondary, theme.colorScheme.primary]),
               SizedBox(width: 8.w),
               Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
-                Text(displayNameFn(currentUser!), style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold)),
+                Text(displayNameFn(currentUser!), style: const TextStyle(color: Colors.white, fontWeight: FontWeight.bold)),
                 Text("${currentUser!.score} ${localizations.points}", style: TextStyle(color: theme.colorScheme.secondary, fontSize: 12.sp)),
               ])
             ],

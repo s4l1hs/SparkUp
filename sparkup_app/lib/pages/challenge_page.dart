@@ -1,11 +1,13 @@
 import 'dart:async';
-import 'dart:ui';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter/services.dart';
 import '../services/api_service.dart';
 import '../l10n/app_localizations.dart';
 import '../main_screen.dart';
+import '../widgets/glass_card.dart';
+import '../widgets/gradient_button.dart';
+import 'package:sparkup_app/utils/color_utils.dart';
 
 class ChallengePage extends StatefulWidget {
   final String idToken;
@@ -65,7 +67,7 @@ class _ChallengePageState extends State<ChallengePage> with TickerProviderStateM
       if (!_isLoading && _challengeText != null && _currentChallengeId != null) {
         WidgetsBinding.instance.addPostFrameCallback((_) async {
           try {
-            final localized = await _api_apiSafe(() => _apiService.getLocalizedChallenge(widget.idToken, _currentChallengeId!, lang: localeCode), const Duration(seconds: 8));
+            final localized = await _apiServiceSafe(() => _apiService.getLocalizedChallenge(widget.idToken, _currentChallengeId!, lang: localeCode), const Duration(seconds: 8));
             if (!mounted) return;
             if (localized is Map && localized['challenge_text'] is String) {
               setState(() {
@@ -98,7 +100,7 @@ class _ChallengePageState extends State<ChallengePage> with TickerProviderStateM
 
     try {
       final lang = Localizations.localeOf(context).languageCode;
-      final challengeData = await _api_apiSafe(() => _apiService.getRandomChallenge(widget.idToken, lang: lang, preview: preview), const Duration(seconds: 12));
+  final challengeData = await _apiServiceSafe(() => _apiService.getRandomChallenge(widget.idToken, lang: lang, preview: preview), const Duration(seconds: 12));
       if (!mounted) return;
 
       if (challengeData is Map) {
@@ -140,13 +142,15 @@ class _ChallengePageState extends State<ChallengePage> with TickerProviderStateM
         debugPrint("Challenge yükleme hatası: $e");
       }
     } finally {
-      if (mounted) setState(() {
+      if (mounted) {
+        setState(() {
         _isLoading = false;
       });
+      }
     }
   }
 
-  Future<dynamic> _api_apiSafe(Future<dynamic> Function() fn, Duration timeout) {
+  Future<dynamic> _apiServiceSafe(Future<dynamic> Function() fn, Duration timeout) {
     return fn().timeout(timeout, onTimeout: () => throw TimeoutException("API timeout"));
   }
 
@@ -183,7 +187,7 @@ class _ChallengePageState extends State<ChallengePage> with TickerProviderStateM
     }
 
     return Scaffold(
-      backgroundColor: theme.colorScheme.background,
+      backgroundColor: theme.colorScheme.surface,
       body: Stack(
         children: [
           // animated ambient blobs
@@ -200,8 +204,8 @@ class _ChallengePageState extends State<ChallengePage> with TickerProviderStateM
                         height: 420.w,
                         decoration: BoxDecoration(
                           shape: BoxShape.circle,
-                          gradient: RadialGradient(colors: [theme.colorScheme.primary.withOpacity(0.16), Colors.transparent]),
-                          boxShadow: [BoxShadow(color: theme.colorScheme.primary.withOpacity(0.08), blurRadius: 80.r, spreadRadius: 60.r)],
+                          gradient: RadialGradient(colors: [colorWithOpacity(theme.colorScheme.primary, 0.16), Colors.transparent]),
+                          boxShadow: [BoxShadow(color: colorWithOpacity(theme.colorScheme.primary, 0.08), blurRadius: 80.r, spreadRadius: 60.r)],
                         ),
                       ),
                     ),
@@ -214,8 +218,8 @@ class _ChallengePageState extends State<ChallengePage> with TickerProviderStateM
                         height: 320.w,
                         decoration: BoxDecoration(
                           shape: BoxShape.circle,
-                          gradient: RadialGradient(colors: [theme.colorScheme.secondary.withOpacity(0.12), Colors.transparent]),
-                          boxShadow: [BoxShadow(color: theme.colorScheme.secondary.withOpacity(0.06), blurRadius: 80.r, spreadRadius: 40.r)],
+                          gradient: RadialGradient(colors: [colorWithOpacity(theme.colorScheme.secondary, 0.12), Colors.transparent]),
+                          boxShadow: [BoxShadow(color: colorWithOpacity(theme.colorScheme.secondary, 0.06), blurRadius: 80.r, spreadRadius: 40.r)],
                         ),
                       ),
                     ),
@@ -244,27 +248,16 @@ class _ChallengePageState extends State<ChallengePage> with TickerProviderStateM
                         final cardHeight = constraints.maxWidth * 0.95;
                         return SizedBox(
                           height: cardHeight,
-                          child: ClipRRect(
+                          child: GlassCard(
                             borderRadius: BorderRadius.circular(26.r),
-                            child: BackdropFilter(
-                              filter: ImageFilter.blur(sigmaX: 8, sigmaY: 8),
-                              child: Container(
-                                padding: EdgeInsets.all(18.w),
-                                decoration: BoxDecoration(
-                                  gradient: LinearGradient(colors: [theme.colorScheme.surface.withOpacity(0.18), theme.colorScheme.surface.withOpacity(0.06)]),
-                                  borderRadius: BorderRadius.circular(26.r),
-                                  border: Border.all(color: Colors.white.withOpacity(0.04)),
-                                  boxShadow: [BoxShadow(color: Colors.black26, blurRadius: 24.r, offset: Offset(0, 12.h))],
-                                ),
-                                child: AnimatedSwitcher(
-                                  duration: const Duration(milliseconds: 420),
-                                  transitionBuilder: (Widget child, Animation<double> animation) {
-                                    final offsetAnimation = Tween<Offset>(begin: const Offset(0.0, 0.1), end: Offset.zero).animate(animation);
-                                    return FadeTransition(opacity: animation, child: SlideTransition(position: offsetAnimation, child: child));
-                                  },
-                                  child: currentContent,
-                                ),
-                              ),
+                            padding: EdgeInsets.all(18.w),
+                            child: AnimatedSwitcher(
+                              duration: const Duration(milliseconds: 420),
+                              transitionBuilder: (Widget child, Animation<double> animation) {
+                                final offsetAnimation = Tween<Offset>(begin: const Offset(0.0, 0.1), end: Offset.zero).animate(animation);
+                                return FadeTransition(opacity: animation, child: SlideTransition(position: offsetAnimation, child: child));
+                              },
+                              child: currentContent,
                             ),
                           ),
                         );
@@ -290,15 +283,15 @@ class _ChallengePageState extends State<ChallengePage> with TickerProviderStateM
         children: [
           ScaleTransition(
             scale: Tween(begin: 0.96, end: 1.06).animate(CurvedAnimation(parent: _pulseController, curve: Curves.easeInOut)),
-            child: Container(
-              width: 110.w,
-              height: 110.w,
-              decoration: BoxDecoration(
+                child: Container(
+                width: 110.w,
+                height: 110.w,
+                decoration: BoxDecoration(
                 shape: BoxShape.circle,
                 gradient: RadialGradient(colors: [theme.colorScheme.primary, theme.colorScheme.secondary]),
-                boxShadow: [BoxShadow(color: theme.colorScheme.primary.withOpacity(0.18), blurRadius: 18.r, offset: Offset(0,8.h))],
+                boxShadow: [BoxShadow(color: colorWithOpacity(theme.colorScheme.primary, 0.18), blurRadius: 18.r, offset: Offset(0,8.h))],
               ),
-              child: Center(child: CircularProgressIndicator(color: Colors.white, strokeWidth: 2.5)),
+              child: const Center(child: CircularProgressIndicator(color: Colors.white, strokeWidth: 2.5)),
             ),
           ),
           SizedBox(height: 18.h),
@@ -321,7 +314,7 @@ class _ChallengePageState extends State<ChallengePage> with TickerProviderStateM
           Container(
             padding: EdgeInsets.symmetric(horizontal: 12.w, vertical: 8.h),
             decoration: BoxDecoration(
-              gradient: LinearGradient(colors: [theme.colorScheme.secondary.withOpacity(0.95), theme.colorScheme.primary.withOpacity(0.95)]),
+              gradient: LinearGradient(colors: [colorWithOpacity(theme.colorScheme.secondary, 0.95), colorWithOpacity(theme.colorScheme.primary, 0.95)]),
               borderRadius: BorderRadius.circular(12.r),
               boxShadow: [BoxShadow(color: Colors.black26, blurRadius: 12.r, offset: Offset(0,6.h))],
             ),
@@ -340,7 +333,7 @@ class _ChallengePageState extends State<ChallengePage> with TickerProviderStateM
           // challenge text
           Expanded(
             child: SingleChildScrollView(
-              physics: BouncingScrollPhysics(),
+              physics: const BouncingScrollPhysics(),
               child: Column(
                 children: [
                   Text(
@@ -358,29 +351,23 @@ class _ChallengePageState extends State<ChallengePage> with TickerProviderStateM
           SizedBox(height: 12.h),
 
           // actions row
-          Row(
+              Row(
             children: [
               Expanded(
-                child: ElevatedButton.icon(
+                child: GradientButton.icon(
+                  icon: Icon(Icons.refresh_rounded, color: Colors.white, size: 18.sp),
+                  label: Text(localizations.loadNewChallenge, style: const TextStyle(color: Colors.white)),
                   onPressed: _isLoading || _limitError != null ? null : () => _fetchChallenge(preview: false, consume: true),
-                  icon: Icon(Icons.refresh_rounded, color: Colors.white),
-                  label: Text(localizations.loadNewChallenge),
-                  style: ElevatedButton.styleFrom(
-                    padding: EdgeInsets.symmetric(vertical: 14.h),
-                    backgroundColor: theme.colorScheme.primary,
-                    shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12.r)),
-                    elevation: 8,
-                  ),
+                  padding: EdgeInsets.symmetric(vertical: 14.h),
                 ),
               ),
               SizedBox(width: 12.w),
-              ElevatedButton(
-                onPressed: _challengeText != null && _challengeText!.isNotEmpty ? _copyChallenge : null,
-                child: Icon(Icons.bookmark_add_outlined, color: Colors.white),
-                style: ElevatedButton.styleFrom(
-                  padding: EdgeInsets.symmetric(vertical: 14.h, horizontal: 12.w),
-                  backgroundColor: Colors.white10,
-                  shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12.r)),
+              GlassCard(
+                borderRadius: BorderRadius.circular(12.r),
+                padding: EdgeInsets.symmetric(vertical: 6.h, horizontal: 6.w),
+                child: IconButton(
+                  onPressed: _challengeText != null && _challengeText!.isNotEmpty ? _copyChallenge : null,
+                  icon: const Icon(Icons.bookmark_add_outlined, color: Colors.white),
                 ),
               ),
             ],
@@ -400,7 +387,7 @@ class _ChallengePageState extends State<ChallengePage> with TickerProviderStateM
           SizedBox(height: 20.h),
           Text(localizations.tapToLoadNewChallenge, textAlign: TextAlign.center, style: TextStyle(fontSize: 20.sp, fontWeight: FontWeight.bold, color: Colors.white)),
           SizedBox(height: 10.h),
-          Text(localizations.challengeIntro, textAlign: TextAlign.center, style: TextStyle(color: Colors.white70)),
+          Text(localizations.challengeIntro, textAlign: TextAlign.center, style: const TextStyle(color: Colors.white70)),
         ],
       ),
     );
@@ -419,19 +406,17 @@ class _ChallengePageState extends State<ChallengePage> with TickerProviderStateM
           SizedBox(height: 10.h),
           Text(message, textAlign: TextAlign.center, style: TextStyle(color: Colors.white70, fontSize: 16.sp)),
           SizedBox(height: 22.h),
-          ElevatedButton(
+          GradientButton(
             onPressed: () {
               final mainScreenState = context.findAncestorStateOfType<MainScreenState>();
               if (mainScreenState != null) {
                 mainScreenState.onItemTapped(1);
               }
             },
-            style: ElevatedButton.styleFrom(
-              backgroundColor: theme.colorScheme.secondary,
-              padding: EdgeInsets.symmetric(horizontal: 26.w, vertical: 14.h),
-              shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12.r)),
-            ),
-            child: Text(localizations.upgrade),
+            padding: EdgeInsets.symmetric(horizontal: 26.w, vertical: 14.h),
+            colors: [theme.colorScheme.secondary, theme.colorScheme.primary],
+            borderRadius: BorderRadius.circular(12.r),
+            child: Text(localizations.upgrade, style: const TextStyle(color: Colors.white)),
           ),
         ],
       ),

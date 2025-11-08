@@ -1,6 +1,6 @@
 import 'dart:convert';
 import 'package:http/http.dart' as http;
-import 'dart:typed_data';
+import 'package:flutter/foundation.dart';
 import '../models/leaderboard_entry.dart';
 import '../main.dart';
 
@@ -207,7 +207,9 @@ class ApiService {
       return data.map((e) => Map<String, dynamic>.from(e as Map)).toList();
     } else if (resp.statusCode == 400) {
       // Backend considered the request invalid — don't spam logs, return empty to keep UI stable.
-      print("getLocalizedQuizQuestions: bad request (400) for ids=$idsParam lang=$lang");
+      if (kDebugMode) {
+        print("getLocalizedQuizQuestions: bad request (400) for ids=$idsParam lang=$lang");
+      }
       return <Map<String, dynamic>>[];
     } else {
       throw Exception('Failed to load localized quiz questions (${resp.statusCode})');
