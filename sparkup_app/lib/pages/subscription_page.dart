@@ -11,9 +11,6 @@ import 'package:sparkup_app/utils/color_utils.dart';
 // UserProfile ve SubscriptionUpdate için (importların artık mevcut olduğunu varsayıyoruz)
 // import '../models/user_models.dart'; 
 
-// NOT: Bu sayfada IAP servisi (örneğin in_app_purchase paketi) entegrasyonu
-// yapılmamıştır. Satın alma butonları sadece simülasyon amaçlı bir API çağrısı yapar.
-
 class SubscriptionPage extends StatefulWidget {
   final String idToken;
   const SubscriptionPage({super.key, required this.idToken});
@@ -22,8 +19,23 @@ class SubscriptionPage extends StatefulWidget {
   State<SubscriptionPage> createState() => _SubscriptionPageState();
 }
 
-class _SubscriptionPageState extends State<SubscriptionPage> {
+class _SubscriptionPageState extends State<SubscriptionPage> with SingleTickerProviderStateMixin {
   bool _isProcessing = false;
+  final PageController _pageController = PageController(viewportFraction: 0.78, keepPage: true);
+  late final AnimationController _bgController;
+
+  @override
+  void initState() {
+    super.initState();
+    _bgController = AnimationController(vsync: this, duration: const Duration(seconds: 8))..repeat(reverse: true);
+  }
+
+  @override
+  void dispose() {
+    _pageController.dispose();
+    _bgController.dispose();
+    super.dispose();
+  }
 
   Future<void> _simulatePurchase(String level) async {
     final localizations = AppLocalizations.of(context)!;
@@ -80,7 +92,6 @@ class _SubscriptionPageState extends State<SubscriptionPage> {
           {'icon': Icons.quiz_outlined, 'text': '5 ${localizations.questionsPerDay}', 'is_pro': true},
           {'icon': Icons.whatshot_outlined, 'text': '5 ${localizations.challengesPerDay}', 'is_pro': true},
           {'icon': Icons.notifications_active_outlined, 'text': '2 ${localizations.notificationsPerDay}', 'is_pro': true},
-          // multiplier badge as a feature line (icon + localized text)
           {'icon': Icons.bolt_outlined, 'text': '1.5X ${localizations.pointsPerQuestion}', 'is_pro': true},
         ],
       },
@@ -94,7 +105,6 @@ class _SubscriptionPageState extends State<SubscriptionPage> {
           {'icon': Icons.quiz_outlined, 'text': localizations.unlimitedQuizzes, 'is_pro': true},
           {'icon': Icons.whatshot_outlined, 'text': localizations.unlimitedChallenges, 'is_pro': true},
           {'icon': Icons.notifications_active_outlined, 'text': '3 ${localizations.notificationsPerDay}', 'is_pro': true},
-          // multiplier badge as a feature line (icon + localized text)
           {'icon': Icons.bolt_outlined, 'text': '2X ${localizations.pointsPerQuestion}', 'is_pro': true},
         ],
       },
@@ -103,104 +113,111 @@ class _SubscriptionPageState extends State<SubscriptionPage> {
     return Scaffold(
       backgroundColor: theme.colorScheme.surface,
       appBar: AppBar(
-        // remove visible title as requested
-        title: const SizedBox.shrink(),
-        centerTitle: true,
-        elevation: 0,
         backgroundColor: Colors.transparent,
+        elevation: 0,
+        automaticallyImplyLeading: true,
+        centerTitle: true,
       ),
       body: Stack(
         children: [
-          // soft gradient background to match other pages
-          Container(
-            decoration: BoxDecoration(
-              gradient: LinearGradient(
-                colors: [colorWithOpacity(theme.colorScheme.primary, 0.18), colorWithOpacity(theme.colorScheme.secondary, 0.12)],
-                begin: Alignment.topLeft,
-                end: Alignment.bottomRight,
+          // Ambient background blobs (darker, subtle)
+          Positioned(
+            top: -120.h,
+            left: -80.w,
+            child: FadeTransition(
+              opacity: Tween<double>(begin: 0.6, end: 0.85).animate(_bgController),
+              child: Container(
+                width: 420.w,
+                height: 420.w,
+                decoration: BoxDecoration(
+                  shape: BoxShape.circle,
+                  gradient: RadialGradient(colors: [colorWithOpacity(theme.colorScheme.primary, 0.18), Colors.transparent]),
+                ),
               ),
             ),
           ),
-          // Make the content scrollable to avoid RenderFlex overflow on small screens.
-          // Also add bottom padding that accounts for viewInsets (keyboard) and safe area.
+          Positioned(
+            bottom: -100.h,
+            right: -60.w,
+            child: FadeTransition(
+              opacity: Tween<double>(begin: 0.5, end: 0.75).animate(_bgController),
+              child: Container(
+                width: 360.w,
+                height: 360.w,
+                decoration: BoxDecoration(
+                  shape: BoxShape.circle,
+                  gradient: RadialGradient(colors: [colorWithOpacity(theme.colorScheme.secondary, 0.14), Colors.transparent]),
+                ),
+              ),
+            ),
+          ),
+
+          // Foreground content
           SafeArea(
-            child: LayoutBuilder(builder: (context, constraints) {
-              final bottomInset = MediaQuery.of(context).viewInsets.bottom;
-              return SingleChildScrollView(
-                padding: EdgeInsets.fromLTRB(16.w, 16.w, 16.w, 16.w + bottomInset),
-                physics: const BouncingScrollPhysics(),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    SizedBox(height: 8.h),
-                    Row(
+            child: Padding(
+              padding: EdgeInsets.symmetric(horizontal: 18.w, vertical: 12.h),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  // Hero card with subtle glass + CTA shortcut
+                  GlassCard(
+                    borderRadius: BorderRadius.circular(18.r),
+                    padding: EdgeInsets.symmetric(horizontal: 18.w, vertical: 14.h),
+                    child: Row(
                       children: [
                         Expanded(
-                          child: GlassCard(
-                            padding: EdgeInsets.symmetric(horizontal: 16.w, vertical: 14.h),
-                            borderRadius: BorderRadius.circular(16.r),
-                            child: Column(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                Text(localizations.chooseYourPlan, style: TextStyle(fontSize: 18.sp, fontWeight: FontWeight.w800, color: Colors.white)),
-                                SizedBox(height: 6.h),
-                                Text(localizations.subscriptionNote, style: TextStyle(fontSize: 13.sp, color: Colors.white70)),
-                              ],
-                            ),
+                          child: Text(
+                            localizations.chooseYourPlan,
+                            style: theme.textTheme.titleMedium?.copyWith(fontWeight: FontWeight.w800, fontSize: 18.sp, color: Colors.white),
                           ),
                         ),
                         SizedBox(width: 12.w),
                         Container(
-                          width: 64.w,
-                          height: 64.w,
+                          width: 52.w,
+                          height: 52.w,
                           decoration: BoxDecoration(
                             shape: BoxShape.circle,
-                            gradient: RadialGradient(colors: [theme.colorScheme.primary, theme.colorScheme.secondary]),
-                            boxShadow: [BoxShadow(color: Colors.black45, blurRadius: 12.r, offset: Offset(0,6.h))],
+                            gradient: LinearGradient(colors: [theme.colorScheme.primary, theme.colorScheme.secondary]),
+                            boxShadow: [BoxShadow(color: colorWithOpacity(Colors.black, 0.32), blurRadius: 10.r, offset: Offset(0, 6.h))],
                           ),
-                          child: Icon(Icons.workspace_premium_rounded, color: Colors.white, size: 32.sp),
-                        )
+                          child: Icon(Icons.workspace_premium_rounded, color: Colors.white, size: 26.sp),
+                        ),
                       ],
                     ),
-                    SizedBox(height: 20.h),
-                    SizedBox(height: 12.h),
+                  ),
 
-                    // Horizontal list: keep fixed height but make it non-scrollable
-                    // so it works inside the SingleChildScrollView (shrinkWrap behavior).
-                    SizedBox(
-                      height: 420.h,
-                      child: ListView.builder(
-                        scrollDirection: Axis.horizontal,
-                        itemCount: plans.length,
-                        physics: const NeverScrollableScrollPhysics(),
-                        shrinkWrap: true,
-                        itemBuilder: (context, index) {
-                          final plan = plans[index];
-                          return Padding(
-                            padding: EdgeInsets.only(right: 16.w),
-                            child: _buildSubscriptionCard(theme, localizations, plan, currentLevel),
-                          );
-                        },
-                      ),
+                  SizedBox(height: 18.h),
+
+                  // Make the pageview flexible so it doesn't overflow
+                  Expanded(
+                    child: PageView.builder(
+                      controller: _pageController,
+                      itemCount: plans.length,
+                      padEnds: true,
+                      physics: const BouncingScrollPhysics(),
+                      itemBuilder: (context, index) {
+                        final plan = plans[index];
+                        final bool isCurrent = plan['level'] == currentLevel;
+                        return Padding(
+                          padding: EdgeInsets.symmetric(horizontal: 10.w, vertical: 12.h),
+                          child: _buildSubscriptionCard(theme, localizations, plan, currentLevel, isCurrent),
+                        );
+                      },
                     ),
-                    SizedBox(height: 18.h),
-                    Center(
-                      child: Text(localizations.subscriptionNote, style: TextStyle(color: Colors.grey.shade400, fontSize: 12.sp), textAlign: TextAlign.center),
-                    ),
-                    SizedBox(height: 8.h),
-                    if (_isProcessing) Center(child: Padding(padding: EdgeInsets.only(top: 8.h), child: const CircularProgressIndicator()))
-                  ],
-                ),
-              );
-            }),
+                  ),
+
+                  SizedBox(height: 12.h),
+                  if (_isProcessing) Center(child: Padding(padding: EdgeInsets.only(top: 8.h), child: const CircularProgressIndicator())),
+                ],
+              ),
+            ),
           ),
         ],
       ),
     );
   }
 
-  Widget _buildSubscriptionCard(ThemeData theme, AppLocalizations localizations, Map<String, dynamic> plan, String currentLevel) {
-    final bool isCurrent = plan['level'] == currentLevel;
+  Widget _buildSubscriptionCard(ThemeData theme, AppLocalizations localizations, Map<String, dynamic> plan, String currentLevel, bool isCurrent) {
     final Color cardColor = plan['color'] as Color;
     final String planLevel = plan['level'] as String;
     final bool isFree = planLevel == 'free';
@@ -218,116 +235,114 @@ class _SubscriptionPageState extends State<SubscriptionPage> {
         onTap: () {
           if (!isCurrent) _simulatePurchase(planLevel);
         },
-        child: Container(
-          width: 320.w,
-          padding: EdgeInsets.all(18.w),
+        child: Material(
+          color: Colors.transparent,
+          child: Container(
+            width: double.infinity,
+            padding: EdgeInsets.all(18.w),
             decoration: BoxDecoration(
-            gradient: isCurrent
-                ? LinearGradient(colors: [colorWithOpacity(cardColor, 0.22), colorWithOpacity(cardColor, 0.06)])
-                : const LinearGradient(colors: [Colors.white10, Colors.white12]),
-            borderRadius: BorderRadius.circular(20.r),
-            border: isCurrent ? Border.all(color: colorWithOpacity(cardColor, 0.9), width: 2.w) : Border.all(color: Colors.white12),
-            boxShadow: [BoxShadow(color: Colors.black45, blurRadius: 18.r, offset: Offset(0,10.h))],
-          ),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Row(
-                children: [
-                  Expanded(
-                    child: Row(
+              gradient: isCurrent
+                  ? LinearGradient(colors: [colorWithOpacity(cardColor, 0.22), colorWithOpacity(cardColor, 0.06)], begin: Alignment.topLeft, end: Alignment.bottomRight)
+                  : LinearGradient(colors: [colorWithOpacity(Colors.white, 0.02), colorWithOpacity(Colors.white, 0.01)]),
+              borderRadius: BorderRadius.circular(20.r),
+              border: isCurrent ? Border.all(color: colorWithOpacity(cardColor, 0.9), width: 1.5.w) : Border.all(color: colorWithOpacity(Colors.white, 0.04)),
+              boxShadow: [
+                BoxShadow(color: colorWithOpacity(Colors.black, 0.45), blurRadius: 22.r, offset: Offset(0, 12.h)),
+              ],
+            ),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                // Header row: title + price badge
+                Row(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Expanded(
+                      child: Row(
+                        children: [
+                          Container(
+                            padding: EdgeInsets.symmetric(horizontal: 12.w, vertical: 8.h),
+                            decoration: BoxDecoration(color: cardColor, borderRadius: BorderRadius.circular(10.r)),
+                            child: Text(
+                              plan['title'] as String,
+                              style: TextStyle(color: Colors.black87, fontSize: 12.sp, fontWeight: FontWeight.w900),
+                              maxLines: 1,
+                              overflow: TextOverflow.ellipsis,
+                              softWrap: false,
+                            ),
+                          ),
+                          SizedBox(width: 10.w),
+                        ],
+                      ),
+                    ),
+                    SizedBox(width: 8.w),
+                    Column(
+                      crossAxisAlignment: CrossAxisAlignment.end,
                       children: [
-                        Container(
-                          padding: EdgeInsets.symmetric(horizontal: 10.w, vertical: 6.h),
-                          decoration: BoxDecoration(color: cardColor, borderRadius: BorderRadius.circular(8.r)),
-                          child: Text(plan['title'] as String, style: TextStyle(color: Colors.black87, fontSize: 18.sp, fontWeight: FontWeight.w900)),
-                        ),
+                        Text(plan['price'] as String, style: TextStyle(fontWeight: FontWeight.w800, fontSize: 14.sp)),
                       ],
                     ),
-                  ),
-                  if (isCurrent)
-                    Container(
-                      padding: EdgeInsets.symmetric(horizontal: 10.w, vertical: 6.h),
-                      decoration: BoxDecoration(
-                        color: colorWithOpacity(Colors.black, 0.18),
-                        borderRadius: BorderRadius.circular(8.r),
-                      ),
-                      child: Text(localizations.current, style: TextStyle(color: cardColor, fontWeight: FontWeight.bold)),
-                    ),
-                ],
-              ),
-              SizedBox(height: 12.h),
-
-              // accent separator
-              Container(height: 2.h, width: 60.w, decoration: BoxDecoration(gradient: LinearGradient(colors: [cardColor, colorWithOpacity(cardColor, 0.6)]), borderRadius: BorderRadius.circular(12.r))),
-              SizedBox(height: 14.h),
-
-              // features
-              ...((plan['features'] as List<Map<String, dynamic>>).map((feature) {
-                final bool featureActive = !(planLevel == 'free' && !(feature['is_pro'] as bool));
-                final Color iconColor = featureActive ? (planLevel == 'ultra' ? theme.colorScheme.secondary : (planLevel == 'pro' ? theme.colorScheme.primary : Colors.grey)) : Colors.grey.shade600;
-                final Color textColor = featureActive ? Colors.white : Colors.grey.shade500;
-                return Padding(
-                  padding: EdgeInsets.symmetric(vertical: 8.h),
-                  child: Row(
-                    children: [
-                      Container(
-                        width: 36.w,
-                        height: 36.w,
-                        decoration: BoxDecoration(
-                          shape: BoxShape.circle,
-                          color: featureActive ? colorWithOpacity(iconColor, 0.18) : Colors.white10,
-                        ),
-                        child: Icon(feature['icon'] as IconData, size: 18.sp, color: iconColor),
-                      ),
-                      SizedBox(width: 12.w),
-                      Expanded(child: Text(feature['text'] as String, style: TextStyle(color: textColor, fontSize: 15.sp))),
-                      if (!featureActive) Padding(padding: EdgeInsets.only(left: 8.w), child: Text(localizations.limited, style: TextStyle(color: Colors.grey.shade500, fontSize: 12.sp))),
-                    ],
-                  ),
-                );
-              })),
-
-              const Spacer(),
-
-              // CTA
-              SizedBox(
-                width: double.infinity,
-                child: Stack(
-                  children: [
-                    Positioned.fill(
-                      child: AnimatedOpacity(
-                        duration: const Duration(milliseconds: 320),
-                        opacity: isCurrent ? 0.0 : 1.0,
-                        child: Container(
-                                    decoration: BoxDecoration(
-                                      gradient: LinearGradient(colors: [colorWithOpacity(cardColor, 0.95), colorWithOpacity(cardColor, 0.7)]),
-                                      borderRadius: BorderRadius.circular(12.r),
-                                      boxShadow: [BoxShadow(color: colorWithOpacity(cardColor, 0.24), blurRadius: 12.r, offset: Offset(0,6.h))],
-                                    ),
-                        ),
-                      ),
-                    ),
-                    isCurrent
-                        ? GradientButton(
-                            onPressed: null,
-                            padding: EdgeInsets.symmetric(vertical: 14.h),
-                            borderRadius: BorderRadius.circular(12.r),
-                            colors: [Colors.grey.shade800, Colors.grey.shade700],
-                            child: Text(localizations.active, style: TextStyle(fontSize: 16.sp)),
-                          )
-                        : GradientButton.icon(
-                            icon: Icon(Icons.workspace_premium_rounded, color: Colors.white, size: 16.sp),
-                            label: Text(isFree ? localizations.freeTrial : localizations.upgrade, style: TextStyle(fontSize: 16.sp)),
-                            onPressed: _isProcessing ? null : () => _simulatePurchase(planLevel),
-                            padding: EdgeInsets.symmetric(vertical: 14.h),
-                            borderRadius: BorderRadius.circular(12.r),
-                            colors: [colorWithOpacity(cardColor, 0.95), colorWithOpacity(cardColor, 0.7)],
-                          ),
                   ],
                 ),
-              ),
-            ],
+
+                SizedBox(height: 14.h),
+
+                // accent separator
+                Container(height: 2.h, width: 80.w, decoration: BoxDecoration(gradient: LinearGradient(colors: [cardColor, colorWithOpacity(cardColor, 0.6)]), borderRadius: BorderRadius.circular(12.r))),
+                SizedBox(height: 14.h),
+
+                // features - compact, readable rows
+                Column(
+                  children: (plan['features'] as List<Map<String, dynamic>>).map((feature) {
+                    final bool featureActive = !(planLevel == 'free' && !(feature['is_pro'] as bool));
+                    final Color iconColor = featureActive ? (planLevel == 'ultra' ? theme.colorScheme.secondary : (planLevel == 'pro' ? theme.colorScheme.primary : Colors.grey)) : Colors.grey;
+                    final Color textColor = featureActive ? Colors.white : Colors.grey.shade500;
+                    return Padding(
+                      padding: EdgeInsets.symmetric(vertical: 8.h),
+                      child: Row(
+                        children: [
+                          Container(
+                            width: 42.w,
+                            height: 42.w,
+                            decoration: BoxDecoration(
+                              shape: BoxShape.circle,
+                              color: featureActive ? colorWithOpacity(iconColor, 0.18) : Colors.white10,
+                            ),
+                            child: Icon(feature['icon'] as IconData, size: 18.sp, color: iconColor),
+                          ),
+                          SizedBox(width: 12.w),
+                          Expanded(child: Text(feature['text'] as String, style: TextStyle(color: textColor, fontSize: 15.sp))),
+                          if (!featureActive) Padding(padding: EdgeInsets.only(left: 8.w), child: Text(localizations.limited, style: TextStyle(color: Colors.grey.shade500, fontSize: 12.sp))),
+                        ],
+                      ),
+                    );
+                  }).toList(),
+                ),
+
+                const Spacer(),
+
+                // CTA area: glass + gradient button with elevation
+                SizedBox(
+                  width: double.infinity,
+                  child: isCurrent
+                      ? GradientButton(
+                          onPressed: null,
+                          padding: EdgeInsets.symmetric(vertical: 14.h),
+                          borderRadius: BorderRadius.circular(12.r),
+                          colors: [Colors.grey.shade800, Colors.grey.shade700],
+                          child: Text(localizations.active, style: TextStyle(fontSize: 16.sp)),
+                        )
+                      : GradientButton.icon(
+                          icon: Icon(Icons.workspace_premium_rounded, color: Colors.white, size: 16.sp),
+                          label: Text(isFree ? localizations.freeTrial : localizations.upgrade, style: TextStyle(fontSize: 16.sp)),
+                          onPressed: _isProcessing ? null : () => _simulatePurchase(planLevel),
+                          padding: EdgeInsets.symmetric(vertical: 14.h),
+                          borderRadius: BorderRadius.circular(12.r),
+                          colors: [colorWithOpacity(cardColor, 0.95), colorWithOpacity(cardColor, 0.7)],
+                        ),
+                ),
+              ],
+            ),
           ),
         ),
       ),
