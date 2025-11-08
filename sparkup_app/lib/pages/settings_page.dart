@@ -252,6 +252,7 @@ class _SettingsPageState extends State<SettingsPage> with SingleTickerProviderSt
 
     return Scaffold(
       extendBodyBehindAppBar: true,
+      backgroundColor: theme.colorScheme.surface,
       appBar: AppBar(
         // remove visible title as requested
         title: const SizedBox.shrink(),
@@ -261,11 +262,11 @@ class _SettingsPageState extends State<SettingsPage> with SingleTickerProviderSt
       ),
       body: Stack(
         children: [
-          // soft gradient background
+          // soft gradient background (slightly darker to match other pages)
           Container(
             decoration: BoxDecoration(
               gradient: LinearGradient(
-                colors: [colorWithOpacity(theme.colorScheme.primary, 0.12), colorWithOpacity(theme.colorScheme.secondary, 0.06)],
+                colors: [colorWithOpacity(theme.colorScheme.primary, 0.18), colorWithOpacity(theme.colorScheme.secondary, 0.12)],
                 begin: Alignment.topLeft,
                 end: Alignment.bottomRight,
               ),

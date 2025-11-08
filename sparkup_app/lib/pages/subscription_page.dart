@@ -101,6 +101,7 @@ class _SubscriptionPageState extends State<SubscriptionPage> {
     ];
 
     return Scaffold(
+      backgroundColor: theme.colorScheme.surface,
       appBar: AppBar(
         // remove visible title as requested
         title: const SizedBox.shrink(),
@@ -108,13 +109,25 @@ class _SubscriptionPageState extends State<SubscriptionPage> {
         elevation: 0,
         backgroundColor: Colors.transparent,
       ),
-      body: Padding(
-        padding: EdgeInsets.all(16.w),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            // Hero header
-            SizedBox(height: 8.h),
+      body: Stack(
+        children: [
+          // soft gradient background to match other pages
+          Container(
+            decoration: BoxDecoration(
+              gradient: LinearGradient(
+                colors: [colorWithOpacity(theme.colorScheme.primary, 0.18), colorWithOpacity(theme.colorScheme.secondary, 0.12)],
+                begin: Alignment.topLeft,
+                end: Alignment.bottomRight,
+              ),
+            ),
+          ),
+          Padding(
+            padding: EdgeInsets.all(16.w),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                // Hero header
+                SizedBox(height: 8.h),
             Row(
               children: [
                 Expanded(
@@ -166,10 +179,12 @@ class _SubscriptionPageState extends State<SubscriptionPage> {
             Center(
               child: Text(localizations.subscriptionNote, style: TextStyle(color: Colors.grey.shade400, fontSize: 12.sp), textAlign: TextAlign.center),
             ),
-            SizedBox(height: 8.h),
-            if (_isProcessing) Center(child: Padding(padding: EdgeInsets.only(top: 8.h), child: const CircularProgressIndicator()))
-          ],
-        ),
+                SizedBox(height: 8.h),
+                if (_isProcessing) Center(child: Padding(padding: EdgeInsets.only(top: 8.h), child: const CircularProgressIndicator()))
+              ],
+            ),
+          ),
+        ],
       ),
     );
   }
