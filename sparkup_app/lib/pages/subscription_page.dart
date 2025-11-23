@@ -2,8 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import '../l10n/app_localizations.dart';
-import '../widgets/glass_card.dart';
-import '../widgets/gradient_button.dart';
+import '../widgets/animated_glass_card.dart';
+import '../widgets/morphing_gradient_button.dart';
+import '../widgets/app_background.dart';
 import '../services/api_service.dart';
 import '../providers/user_provider.dart';
 import 'package:sparkup_app/utils/color_utils.dart';
@@ -118,101 +119,66 @@ class _SubscriptionPageState extends State<SubscriptionPage> with SingleTickerPr
         automaticallyImplyLeading: true,
         centerTitle: true,
       ),
-      body: Stack(
-        children: [
-          // Ambient background blobs (darker, subtle)
-          Positioned(
-            top: -120.h,
-            left: -80.w,
-            child: FadeTransition(
-              opacity: Tween<double>(begin: 0.6, end: 0.85).animate(_bgController),
-              child: Container(
-                width: 420.w,
-                height: 420.w,
-                decoration: BoxDecoration(
-                  shape: BoxShape.circle,
-                  gradient: RadialGradient(colors: [colorWithOpacity(theme.colorScheme.primary, 0.18), Colors.transparent]),
-                ),
-              ),
-            ),
-          ),
-          Positioned(
-            bottom: -100.h,
-            right: -60.w,
-            child: FadeTransition(
-              opacity: Tween<double>(begin: 0.5, end: 0.75).animate(_bgController),
-              child: Container(
-                width: 360.w,
-                height: 360.w,
-                decoration: BoxDecoration(
-                  shape: BoxShape.circle,
-                  gradient: RadialGradient(colors: [colorWithOpacity(theme.colorScheme.secondary, 0.14), Colors.transparent]),
-                ),
-              ),
-            ),
-          ),
-
-          // Foreground content
-          SafeArea(
-            child: Padding(
-              padding: EdgeInsets.symmetric(horizontal: 18.w, vertical: 12.h),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  // Hero card with subtle glass + CTA shortcut
-                  GlassCard(
-                    borderRadius: BorderRadius.circular(18.r),
-                    padding: EdgeInsets.symmetric(horizontal: 18.w, vertical: 14.h),
-                    child: Row(
-                      children: [
-                        Expanded(
-                          child: Text(
-                            localizations.chooseYourPlan,
-                            style: theme.textTheme.titleMedium?.copyWith(fontWeight: FontWeight.w800, fontSize: 18.sp, color: Colors.white),
-                          ),
+      body: AppBackground(
+        child: SafeArea(
+          child: Padding(
+            padding: EdgeInsets.symmetric(horizontal: 18.w, vertical: 12.h),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                // Hero card with subtle glass + CTA shortcut
+                AnimatedGlassCard(
+                  borderRadius: BorderRadius.circular(18.r),
+                  padding: EdgeInsets.symmetric(horizontal: 18.w, vertical: 14.h),
+                  child: Row(
+                    children: [
+                      Expanded(
+                        child: Text(
+                          localizations.chooseYourPlan,
+                          style: theme.textTheme.titleMedium?.copyWith(fontWeight: FontWeight.w800, fontSize: 18.sp, color: Colors.white),
                         ),
-                        SizedBox(width: 12.w),
-                        Container(
-                          width: 52.w,
-                          height: 52.w,
-                          decoration: BoxDecoration(
-                            shape: BoxShape.circle,
-                            gradient: LinearGradient(colors: [theme.colorScheme.primary, theme.colorScheme.secondary]),
-                            boxShadow: [BoxShadow(color: colorWithOpacity(Colors.black, 0.32), blurRadius: 10.r, offset: Offset(0, 6.h))],
-                          ),
-                          child: Icon(Icons.workspace_premium_rounded, color: Colors.white, size: 26.sp),
+                      ),
+                      SizedBox(width: 12.w),
+                      Container(
+                        width: 52.w,
+                        height: 52.w,
+                        decoration: BoxDecoration(
+                          shape: BoxShape.circle,
+                          gradient: LinearGradient(colors: [theme.colorScheme.primary, theme.colorScheme.secondary]),
+                          boxShadow: [BoxShadow(color: colorWithOpacity(Colors.black, 0.32), blurRadius: 10.r, offset: Offset(0, 6.h))],
                         ),
-                      ],
-                    ),
+                        child: Icon(Icons.workspace_premium_rounded, color: Colors.white, size: 26.sp),
+                      ),
+                    ],
                   ),
+                ),
 
-                  SizedBox(height: 18.h),
+                SizedBox(height: 18.h),
 
-                  // Make the pageview flexible so it doesn't overflow
-                  Expanded(
-                    child: PageView.builder(
-                      controller: _pageController,
-                      itemCount: plans.length,
-                      padEnds: true,
-                      physics: const BouncingScrollPhysics(),
-                      itemBuilder: (context, index) {
-                        final plan = plans[index];
-                        final bool isCurrent = plan['level'] == currentLevel;
-                        return Padding(
-                          padding: EdgeInsets.symmetric(horizontal: 10.w, vertical: 12.h),
-                          child: _buildSubscriptionCard(theme, localizations, plan, currentLevel, isCurrent),
-                        );
-                      },
-                    ),
+                // Make the pageview flexible so it doesn't overflow
+                Expanded(
+                  child: PageView.builder(
+                    controller: _pageController,
+                    itemCount: plans.length,
+                    padEnds: true,
+                    physics: const BouncingScrollPhysics(),
+                    itemBuilder: (context, index) {
+                      final plan = plans[index];
+                      final bool isCurrent = plan['level'] == currentLevel;
+                      return Padding(
+                        padding: EdgeInsets.symmetric(horizontal: 10.w, vertical: 12.h),
+                        child: _buildSubscriptionCard(theme, localizations, plan, currentLevel, isCurrent),
+                      );
+                    },
                   ),
+                ),
 
-                  SizedBox(height: 12.h),
-                  if (_isProcessing) Center(child: Padding(padding: EdgeInsets.only(top: 8.h), child: const CircularProgressIndicator())),
-                ],
-              ),
+                SizedBox(height: 12.h),
+                if (_isProcessing) Center(child: Padding(padding: EdgeInsets.only(top: 8.h), child: const CircularProgressIndicator())),
+              ],
             ),
           ),
-        ],
+        ),
       ),
     );
   }
@@ -321,18 +287,18 @@ class _SubscriptionPageState extends State<SubscriptionPage> with SingleTickerPr
 
                 const Spacer(),
 
-                // CTA area: glass + gradient button with elevation
+                // CTA area: glass + morphing gradient button with elevation
                 SizedBox(
                   width: double.infinity,
                   child: isCurrent
-                      ? GradientButton(
+                      ? MorphingGradientButton(
                           onPressed: null,
                           padding: EdgeInsets.symmetric(vertical: 14.h),
                           borderRadius: BorderRadius.circular(12.r),
                           colors: [Colors.grey.shade800, Colors.grey.shade700],
                           child: Text(localizations.active, style: TextStyle(fontSize: 16.sp)),
                         )
-                      : GradientButton.icon(
+                      : MorphingGradientButton.icon(
                           icon: Icon(Icons.workspace_premium_rounded, color: Colors.white, size: 16.sp),
                           label: Text(isFree ? localizations.freeTrial : localizations.upgrade, style: TextStyle(fontSize: 16.sp)),
                           onPressed: _isProcessing ? null : () => _simulatePurchase(planLevel),

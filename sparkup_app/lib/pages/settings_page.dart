@@ -12,7 +12,7 @@ import '../l10n/app_localizations.dart';
 import '../locale_provider.dart';
 import '../main.dart';
 import '../providers/user_provider.dart';
-import '../widgets/glass_card.dart';
+import '../widgets/animated_glass_card.dart';
 import 'package:sparkup_app/utils/color_utils.dart';
 
 class SettingsPage extends StatefulWidget {
@@ -341,7 +341,7 @@ class _SettingsPageState extends State<SettingsPage> with SingleTickerProviderSt
       // ignore and keep default label
     }
 
-    return GlassCard(
+    return AnimatedGlassCard(
       borderRadius: BorderRadius.circular(16.r),
       padding: EdgeInsets.symmetric(vertical: 16.h, horizontal: 16.w),
       child: Column(
@@ -383,7 +383,7 @@ class _SettingsPageState extends State<SettingsPage> with SingleTickerProviderSt
   Widget _buildCardSection({required String title, required Widget child}) {
     return Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
       Padding(padding: EdgeInsets.only(left: 6.w, bottom: 8.h), child: Text(title.toUpperCase(), style: TextStyle(color: Colors.grey.shade400, fontWeight: FontWeight.bold, letterSpacing: 1.2))),
-      GlassCard(borderRadius: BorderRadius.circular(14.r), padding: EdgeInsets.symmetric(horizontal: 8.w, vertical: 6.h), child: child)
+      AnimatedGlassCard(borderRadius: BorderRadius.circular(14.r), padding: EdgeInsets.symmetric(horizontal: 8.w, vertical: 6.h), child: child)
     ]);
   }
 
