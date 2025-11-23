@@ -47,17 +47,24 @@ class _AppBackgroundState extends State<AppBackground> with SingleTickerProvider
       children: [
         Positioned.fill(
           child: AnimatedBuilder(
-              animation: _anim,
-              builder: (context, child) {
-                final media = MediaQuery.of(context);
-                final animate = !media.accessibleNavigation;
-                final a = animate ? _anim.value : 0.0;
-                return CustomPaint(
+            animation: _anim,
+            builder: (context, child) {
+              final media = MediaQuery.of(context);
+              final animate = !media.accessibleNavigation;
+              final a = animate ? _anim.value : 0.0;
+
+              // subtle rotation based on animation value for cinematic effect
+              final rotation = (a - 0.5) * 0.06; // small angle +-0.03 rad
+
+              return Transform.rotate(
+                angle: rotation,
+                child: CustomPaint(
                   painter: _BlobPainter(a, theme.colorScheme.primary, theme.colorScheme.secondary),
                   child: Container(),
-                );
-              },
-            ),
+                ),
+              );
+            },
+          ),
         ),
         widget.child,
       ],

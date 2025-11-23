@@ -43,7 +43,7 @@ class _MorphingGradientButtonState extends State<MorphingGradientButton> with Si
       final media = MediaQuery.of(context);
       final animate = !media.accessibleNavigation;
       if (animate) {
-        _ctrl.repeat();
+        _ctrl.repeat(reverse: true);
       } else {
         _ctrl.value = 0.0;
       }
@@ -82,8 +82,16 @@ class _MorphingGradientButtonState extends State<MorphingGradientButton> with Si
               return Color.lerp(a, b, frac) ?? a;
             });
 
+            // compute a gentle, softer glow that follows the pulse; respects reduced-motion
+            // bias the pulse a bit for a gentler minimum and more visible peak
+            final glowStrength = animate ? (0.18 + 0.82 * Curves.easeInOut.transform(_pulse.value)) : 0.0;
+            final glowColor = colorWithOpacity(shifted.last, 0.26 * glowStrength);
+            // larger, softer blur and slightly more spread for an aesthetic halo
+            final blur = 18.0 + 28.0 * glowStrength;
+            final spread = 1.0 + 6.0 * glowStrength;
+
             return AnimatedPhysicalModel(
-              duration: animate ? const Duration(milliseconds: 360) : Duration.zero,
+              duration: animate ? const Duration(milliseconds: 480) : Duration.zero,
               curve: Curves.easeOutCubic,
               shape: BoxShape.rectangle,
               elevation: widget.elevation * (_pressed ? 1.4 : 1.0),
@@ -95,7 +103,10 @@ class _MorphingGradientButtonState extends State<MorphingGradientButton> with Si
                 decoration: BoxDecoration(
                   gradient: LinearGradient(colors: shifted, begin: Alignment.topLeft, end: Alignment.bottomRight),
                   borderRadius: widget.borderRadius,
-                  boxShadow: [BoxShadow(color: colorWithOpacity(Colors.black, 0.08), blurRadius: 10, offset: const Offset(0, 6))],
+                  boxShadow: [
+                    BoxShadow(color: colorWithOpacity(Colors.black, 0.08), blurRadius: 10, offset: const Offset(0, 6)),
+                    BoxShadow(color: glowColor, blurRadius: blur, spreadRadius: spread, offset: const Offset(0, 8)),
+                  ],
                 ),
                 child: DefaultTextStyle.merge(style: const TextStyle(color: Colors.white), child: Center(child: widget.child)),
               ),

@@ -26,6 +26,9 @@ class MainScreenState extends State<MainScreen> with TickerProviderStateMixin {
   late final List<Widget> _pages; // pages are retained in memory
   late List<Map<String, dynamic>> _navItems;
   late AnimationController _bounceController;
+  late final AnimationController _ctaFloatController;
+  late final AnimationController _navPulseController;
+  late final Animation<double> _navPulseAnim;
 
   @override
   void initState() {
@@ -38,11 +41,17 @@ class MainScreenState extends State<MainScreen> with TickerProviderStateMixin {
       const SettingsPage(),
     ];
     _bounceController = AnimationController(vsync: this, duration: const Duration(milliseconds: 420));
+    _ctaFloatController = AnimationController(vsync: this, duration: const Duration(milliseconds: 2200));
+    _ctaFloatController.repeat(reverse: true);
+    _navPulseController = AnimationController(vsync: this, duration: const Duration(milliseconds: 1400));
+    _navPulseAnim = CurvedAnimation(parent: _navPulseController, curve: Curves.easeInOutCubic);
   }
 
   @override
   void dispose() {
     _bounceController.dispose();
+    _ctaFloatController.dispose();
+    _navPulseController.dispose();
     super.dispose();
   }
 
@@ -57,6 +66,15 @@ class MainScreenState extends State<MainScreen> with TickerProviderStateMixin {
       {'icon': Icons.whatshot_outlined, 'label': localizations.navChallenge, 'color': Colors.amber},
       {'icon': Icons.settings_outlined, 'label': localizations.navSettings, 'color': Colors.grey},
     ];
+    // Start or stop nav pulse depending on reduced-motion preference
+    final media = MediaQuery.of(context);
+    final animate = !media.accessibleNavigation;
+    if (animate) {
+      _navPulseController.repeat(reverse: true);
+    } else {
+      _navPulseController.value = 0.0;
+      _navPulseController.stop();
+    }
   }
 
   void onItemTapped(int index) {
@@ -162,18 +180,54 @@ class MainScreenState extends State<MainScreen> with TickerProviderStateMixin {
                                     mainAxisSize: MainAxisSize.min,
                                     mainAxisAlignment: MainAxisAlignment.center,
                                     children: [
-                                      AnimatedScale(
-                                        duration: const Duration(milliseconds: 260),
-                                        scale: _selectedIndex == i ? 1.12 : 1.0,
-                                        child: SizedBox(
-                                          width: 56.w,
-                                          height: 56.w,
-                                          child: Container(
+                                      AnimatedBuilder(
+                                        animation: _navPulseAnim,
+                                        builder: (context, child) {
+                                          final ringValue = _selectedIndex == i ? Curves.easeOut.transform(_navPulseAnim.value) : 0.0;
+                                          final ringOpacity = 0.08 * ringValue; // slightly more visible
+                                          final ringScale = 1.0 + 0.12 * ringValue; // larger, gentler pulse
+                                          return Stack(
                                             alignment: Alignment.center,
-                                            decoration: BoxDecoration(shape: BoxShape.circle, color: _selectedIndex == i ? colorWithOpacity(getSelectedColor(i), 0.06) : Colors.transparent),
-                                            child: Icon(_navItems[i]['icon'] as IconData, size: _selectedIndex == i ? 30.sp : 26.sp, color: _selectedIndex == i ? getSelectedColor(i) : colorWithOpacity(theme.iconTheme.color!, 0.72)),
-                                          ),
-                                        ),
+                                            children: [
+                                              // pulsing ring behind selected icon
+                                              if (_selectedIndex == i)
+                                                SizedBox(
+                                                  width: 56.w,
+                                                  height: 56.w,
+                                                  child: Center(
+                                                    child: Transform.scale(
+                                                      scale: ringScale,
+                                                      child: Container(
+                                                        width: 56.w,
+                                                        height: 56.w,
+                                                        decoration: BoxDecoration(
+                                                          shape: BoxShape.circle,
+                                                          color: colorWithOpacity(getSelectedColor(i), ringOpacity),
+                                                          boxShadow: [
+                                                            BoxShadow(color: colorWithOpacity(getSelectedColor(i), ringOpacity * 0.7), blurRadius: 8 * ringValue + 6, spreadRadius: 1.0 * ringValue),
+                                                          ],
+                                                        ),
+                                                      ),
+                                                    ),
+                                                  ),
+                                                ),
+                                              AnimatedScale(
+                                                duration: const Duration(milliseconds: 320),
+                                                scale: _selectedIndex == i ? 1.12 : 1.0,
+                                                curve: Curves.easeOutCubic,
+                                                child: SizedBox(
+                                                  width: 56.w,
+                                                  height: 56.w,
+                                                  child: Container(
+                                                    alignment: Alignment.center,
+                                                    decoration: BoxDecoration(shape: BoxShape.circle, color: _selectedIndex == i ? colorWithOpacity(getSelectedColor(i), 0.06) : Colors.transparent),
+                                                    child: Icon(_navItems[i]['icon'] as IconData, size: _selectedIndex == i ? 30.sp : 26.sp, color: _selectedIndex == i ? getSelectedColor(i) : colorWithOpacity(theme.iconTheme.color!, 0.72)),
+                                                  ),
+                                                ),
+                                              ),
+                                            ],
+                                          );
+                                        },
                                       ),
                                       SizedBox(height: 4.h),
                                     ],
