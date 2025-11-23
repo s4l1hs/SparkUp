@@ -138,13 +138,12 @@ class _LoginPageState extends State<LoginPage> with TickerProviderStateMixin {
             return SingleChildScrollView(
               padding: EdgeInsets.only(bottom: MediaQuery.of(context).viewInsets.bottom),
               physics: const BouncingScrollPhysics(),
-              child: ConstrainedBox(
+                child: ConstrainedBox(
                 constraints: BoxConstraints(minHeight: constraints.maxHeight),
-                child: IntrinsicHeight(
-                  child: Column(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    crossAxisAlignment: CrossAxisAlignment.center,
-                    children: [
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  children: [
                       // header icon + title
                       Column(
                         children: [
@@ -238,7 +237,7 @@ class _LoginPageState extends State<LoginPage> with TickerProviderStateMixin {
 
                       // CTA area (kept compact and bounded)
                       SlideTransition(
-                        position: animate ? _buttonSlideAnimation : AlwaysStoppedAnimation(Offset.zero),
+                        position: animate ? _buttonSlideAnimation : const AlwaysStoppedAnimation(Offset.zero),
                         child: ClipRRect(
                           borderRadius: BorderRadius.circular(18.r),
                           child: BackdropFilter(
@@ -347,7 +346,6 @@ class _LoginPageState extends State<LoginPage> with TickerProviderStateMixin {
                       ),
                     ],
                   ),
-                ),
               ),
             );
             },

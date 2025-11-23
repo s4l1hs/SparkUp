@@ -26,7 +26,7 @@ class _AnimatedGlassCardState extends State<AnimatedGlassCard> with SingleTicker
   void initState() {
     super.initState();
     // Slightly longer and softer entrance for a more pleasant feel.
-    _ctrl = AnimationController(vsync: this, duration: const Duration(milliseconds: 900));
+    _ctrl = AnimationController(vsync: this, duration: const Duration(milliseconds: 1000));
     _anim = CurvedAnimation(parent: _ctrl, curve: Curves.easeOut);
 
     // Animate blur and elevation for a subtle material-like pop.
@@ -74,15 +74,18 @@ class _AnimatedGlassCardState extends State<AnimatedGlassCard> with SingleTicker
       );
     }
 
+    final effectiveContainerDuration = widget.duration;
+    final effectivePhysicalDuration = Duration(milliseconds: (widget.duration.inMilliseconds * 6 ~/ 5));
+
     return FadeTransition(
       opacity: _anim,
       child: ScaleTransition(
-        scale: Tween<double>(begin: 0.992, end: 1.0).animate(CurvedAnimation(parent: _ctrl, curve: Curves.easeOutCubic)),
+        scale: Tween<double>(begin: 0.99, end: 1.0).animate(CurvedAnimation(parent: _ctrl, curve: Curves.easeOutCubic)),
         child: AnimatedBuilder(
           animation: _ctrl,
           builder: (context, child) {
             return AnimatedPhysicalModel(
-              duration: const Duration(milliseconds: 420),
+              duration: effectivePhysicalDuration,
               curve: Curves.easeOutCubic,
               shape: BoxShape.rectangle,
               elevation: _elevationAnim.value,
@@ -94,7 +97,7 @@ class _AnimatedGlassCardState extends State<AnimatedGlassCard> with SingleTicker
                 child: BackdropFilter(
                   filter: ImageFilter.blur(sigmaX: _blurAnim.value, sigmaY: _blurAnim.value),
                   child: AnimatedContainer(
-                    duration: widget.duration,
+                    duration: effectiveContainerDuration,
                     padding: widget.padding ?? const EdgeInsets.all(12),
                     decoration: BoxDecoration(
                       color: colorWithOpacity(Colors.white, 0.03),

@@ -110,18 +110,6 @@ class MainScreenState extends State<MainScreen> with TickerProviderStateMixin {
               ),
             ),
           ),
-          // glassy floating action button — opens quiz when tapped (morphing CTA)
-          Positioned(
-            right: 22.w,
-            bottom: 120.h,
-            child: MorphingGradientButton(
-              onPressed: () => onItemTapped(2),
-              colors: [Theme.of(context).colorScheme.secondary, Theme.of(context).colorScheme.primary],
-              padding: EdgeInsets.all(12.w),
-              borderRadius: BorderRadius.circular(999.r),
-              child: Icon(Icons.flash_on_rounded, color: Colors.white, size: 24.sp),
-            ),
-          ),
         ],
       ),
       bottomNavigationBar: _buildCustomBottomNav(),
@@ -177,10 +165,14 @@ class MainScreenState extends State<MainScreen> with TickerProviderStateMixin {
                                       AnimatedScale(
                                         duration: const Duration(milliseconds: 260),
                                         scale: _selectedIndex == i ? 1.12 : 1.0,
-                                        child: Container(
-                                          padding: EdgeInsets.all(_selectedIndex == i ? 8.w : 6.w),
-                                          decoration: BoxDecoration(shape: BoxShape.circle, color: _selectedIndex == i ? colorWithOpacity(getSelectedColor(i), 0.06) : Colors.transparent),
-                                          child: Icon(_navItems[i]['icon'] as IconData, size: _selectedIndex == i ? 30.sp : 26.sp, color: _selectedIndex == i ? getSelectedColor(i) : colorWithOpacity(theme.iconTheme.color!, 0.72)),
+                                        child: SizedBox(
+                                          width: 56.w,
+                                          height: 56.w,
+                                          child: Container(
+                                            alignment: Alignment.center,
+                                            decoration: BoxDecoration(shape: BoxShape.circle, color: _selectedIndex == i ? colorWithOpacity(getSelectedColor(i), 0.06) : Colors.transparent),
+                                            child: Icon(_navItems[i]['icon'] as IconData, size: _selectedIndex == i ? 30.sp : 26.sp, color: _selectedIndex == i ? getSelectedColor(i) : colorWithOpacity(theme.iconTheme.color!, 0.72)),
+                                          ),
                                         ),
                                       ),
                                       SizedBox(height: 4.h),

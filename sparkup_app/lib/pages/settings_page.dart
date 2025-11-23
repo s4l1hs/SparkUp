@@ -44,10 +44,16 @@ class _SettingsPageState extends State<SettingsPage> with SingleTickerProviderSt
   @override
   void initState() {
     super.initState();
-    _animationController = AnimationController(vsync: this, duration: const Duration(milliseconds: 600));
+    _animationController = AnimationController(vsync: this, duration: const Duration(milliseconds: 700));
     WidgetsBinding.instance.addPostFrameCallback((_) {
       _loadUserProfile();
-      _animationController.forward();
+      // Honor reduced-motion accessibility: if user requests reduced motion, skip animations
+      final bool animate = !MediaQuery.of(context).accessibleNavigation;
+      if (animate) {
+        _animationController.forward();
+      } else {
+        _animationController.value = 1.0;
+      }
     });
   }
 
@@ -250,6 +256,10 @@ class _SettingsPageState extends State<SettingsPage> with SingleTickerProviderSt
     final localizations = AppLocalizations.of(context)!;
     final theme = Theme.of(context);
 
+    // Respect user's reduced-motion accessibility setting
+    final bool animate = !MediaQuery.of(context).accessibleNavigation;
+    final Animation<double> headerAnimation = CurvedAnimation(parent: _animationController, curve: Curves.easeOutCubic);
+
     return Scaffold(
       extendBodyBehindAppBar: true,
       backgroundColor: theme.colorScheme.surface,
@@ -283,7 +293,8 @@ class _SettingsPageState extends State<SettingsPage> with SingleTickerProviderSt
               // reduce top vertical padding so content sits higher
               padding: EdgeInsets.symmetric(vertical: 8.h, horizontal: 18.w),
               children: [
-                FadeTransition(opacity: _animationController, child: _buildProfileHeader(theme, localizations)),
+                // If reduced-motion is enabled, bypass the entrance fade animation
+                animate ? FadeTransition(opacity: headerAnimation, child: _buildProfileHeader(theme, localizations)) : _buildProfileHeader(theme, localizations),
                 SizedBox(height: 8.h),
 
                 _buildCardSection(title: localizations.general, child: Column(children: [

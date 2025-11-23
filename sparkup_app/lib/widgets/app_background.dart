@@ -21,7 +21,17 @@ class _AppBackgroundState extends State<AppBackground> with SingleTickerProvider
     // Longer, eased loop so ambient motion feels organic and not mechanical
     _ctrl = AnimationController(vsync: this, duration: const Duration(seconds: 30));
     _anim = CurvedAnimation(parent: _ctrl, curve: Curves.easeInOut);
-    _ctrl.repeat(reverse: true);
+    // Start repeating only after we know the user's reduced-motion preference
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      if (!mounted) return;
+      final media = MediaQuery.of(context);
+      final animate = !media.accessibleNavigation;
+      if (animate) {
+        _ctrl.repeat(reverse: true);
+      } else {
+        _ctrl.value = 0.0;
+      }
+    });
   }
 
   @override
@@ -37,15 +47,17 @@ class _AppBackgroundState extends State<AppBackground> with SingleTickerProvider
       children: [
         Positioned.fill(
           child: AnimatedBuilder(
-            animation: _anim,
-            builder: (context, child) {
-              final a = _anim.value;
-              return CustomPaint(
-                painter: _BlobPainter(a, theme.colorScheme.primary, theme.colorScheme.secondary),
-                child: Container(),
-              );
-            },
-          ),
+              animation: _anim,
+              builder: (context, child) {
+                final media = MediaQuery.of(context);
+                final animate = !media.accessibleNavigation;
+                final a = animate ? _anim.value : 0.0;
+                return CustomPaint(
+                  painter: _BlobPainter(a, theme.colorScheme.primary, theme.colorScheme.secondary),
+                  child: Container(),
+                );
+              },
+            ),
         ),
         widget.child,
       ],

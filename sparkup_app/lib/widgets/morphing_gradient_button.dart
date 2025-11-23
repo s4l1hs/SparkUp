@@ -35,8 +35,19 @@ class _MorphingGradientButtonState extends State<MorphingGradientButton> with Si
   void initState() {
     super.initState();
     // Longer, smoother loop and an easeInOut curve for pleasant motion
-    _ctrl = AnimationController(vsync: this, duration: const Duration(milliseconds: 2200))..repeat();
+    // Start repeating only when we know the user's reduced-motion preference.
+    _ctrl = AnimationController(vsync: this, duration: const Duration(milliseconds: 2200));
     _pulse = CurvedAnimation(parent: _ctrl, curve: Curves.easeInOut);
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      if (!mounted) return;
+      final media = MediaQuery.of(context);
+      final animate = !media.accessibleNavigation;
+      if (animate) {
+        _ctrl.repeat();
+      } else {
+        _ctrl.value = 0.0;
+      }
+    });
   }
 
   @override
@@ -56,7 +67,7 @@ class _MorphingGradientButtonState extends State<MorphingGradientButton> with Si
       onTapCancel: () { setState(() => _pressed = false); },
       child: AnimatedScale(
         scale: _pressed ? 0.987 : 1.0,
-        duration: const Duration(milliseconds: 160),
+        duration: animate ? const Duration(milliseconds: 160) : Duration.zero,
         curve: Curves.easeOutCubic,
         child: AnimatedBuilder(
           animation: _pulse,
@@ -72,7 +83,7 @@ class _MorphingGradientButtonState extends State<MorphingGradientButton> with Si
             });
 
             return AnimatedPhysicalModel(
-              duration: const Duration(milliseconds: 320),
+              duration: animate ? const Duration(milliseconds: 360) : Duration.zero,
               curve: Curves.easeOutCubic,
               shape: BoxShape.rectangle,
               elevation: widget.elevation * (_pressed ? 1.4 : 1.0),
