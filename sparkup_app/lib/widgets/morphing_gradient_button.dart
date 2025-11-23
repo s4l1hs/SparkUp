@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import '../utils/color_utils.dart';
 
 class MorphingGradientButton extends StatefulWidget {
   final VoidCallback? onPressed;
@@ -33,8 +34,9 @@ class _MorphingGradientButtonState extends State<MorphingGradientButton> with Si
   @override
   void initState() {
     super.initState();
-    _ctrl = AnimationController(vsync: this, duration: const Duration(milliseconds: 1400))..repeat(reverse: true);
-    _pulse = CurvedAnimation(parent: _ctrl, curve: Curves.easeInOutSine);
+    // Longer, smoother loop and an easeInOut curve for pleasant motion
+    _ctrl = AnimationController(vsync: this, duration: const Duration(milliseconds: 2200))..repeat();
+    _pulse = CurvedAnimation(parent: _ctrl, curve: Curves.easeInOut);
   }
 
   @override
@@ -46,31 +48,49 @@ class _MorphingGradientButtonState extends State<MorphingGradientButton> with Si
   @override
   Widget build(BuildContext context) {
     final colors = widget.colors;
+    final media = MediaQuery.of(context);
+    final animate = !media.accessibleNavigation;
     return GestureDetector(
       onTapDown: (_) { setState(() => _pressed = true); },
       onTapUp: (_) { setState(() => _pressed = false); widget.onPressed?.call(); },
       onTapCancel: () { setState(() => _pressed = false); },
-      child: AnimatedBuilder(
-        animation: _pulse,
-        builder: (context, child) {
-          // morph gradient by shifting stops with animation value
-          final t = _pulse.value;
-          final shifted = [for (int i = 0; i < colors.length; i++) colors[(i + (t * colors.length).floor()) % colors.length]];
-          return PhysicalModel(
-            color: Colors.transparent,
-            elevation: widget.elevation * (_pressed ? 1.5 : 1.0),
-            borderRadius: widget.borderRadius as BorderRadius?,
-            child: Container(
-              padding: widget.padding,
-              decoration: BoxDecoration(
-                gradient: LinearGradient(colors: shifted, begin: Alignment.topLeft, end: Alignment.bottomRight),
-                borderRadius: widget.borderRadius,
-                boxShadow: [BoxShadow(color: Colors.black.withOpacity(0.28), blurRadius: 10, offset: Offset(0, 6))],
+      child: AnimatedScale(
+        scale: _pressed ? 0.987 : 1.0,
+        duration: const Duration(milliseconds: 160),
+        curve: Curves.easeOutCubic,
+        child: AnimatedBuilder(
+          animation: _pulse,
+          builder: (context, child) {
+            // Smooth morph: compute a fractional shift and lerp between adjacent colors
+            final t = (animate ? _pulse.value : 0.0) * colors.length;
+            final base = t.floor();
+            final frac = t - base;
+            final shifted = List<Color>.generate(colors.length, (i) {
+              final a = colors[(i + base) % colors.length];
+              final b = colors[(i + base + 1) % colors.length];
+              return Color.lerp(a, b, frac) ?? a;
+            });
+
+            return AnimatedPhysicalModel(
+              duration: const Duration(milliseconds: 320),
+              curve: Curves.easeOutCubic,
+              shape: BoxShape.rectangle,
+              elevation: widget.elevation * (_pressed ? 1.4 : 1.0),
+              color: Colors.transparent,
+              borderRadius: widget.borderRadius as BorderRadius? ?? BorderRadius.circular(12),
+              shadowColor: colorWithOpacity(Colors.black, 0.20),
+              child: Container(
+                padding: widget.padding,
+                decoration: BoxDecoration(
+                  gradient: LinearGradient(colors: shifted, begin: Alignment.topLeft, end: Alignment.bottomRight),
+                  borderRadius: widget.borderRadius,
+                  boxShadow: [BoxShadow(color: colorWithOpacity(Colors.black, 0.08), blurRadius: 10, offset: const Offset(0, 6))],
+                ),
+                child: DefaultTextStyle.merge(style: const TextStyle(color: Colors.white), child: Center(child: widget.child)),
               ),
-              child: DefaultTextStyle.merge(style: const TextStyle(color: Colors.white), child: Center(child: widget.child)),
-            ),
-          );
-        },
+            );
+          },
+        ),
       ),
     );
   }

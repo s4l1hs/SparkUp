@@ -48,17 +48,17 @@ class _LoginPageState extends State<LoginPage> with TickerProviderStateMixin {
 
     // Kademeli giriş animasyonları
     _iconFadeAnimation = Tween<double>(begin: 0.0, end: 1.0).animate(CurvedAnimation(parent: _entryController, curve: const Interval(0.0, 0.5, curve: Curves.easeOut)));
-    _iconScaleAnimation = Tween<double>(begin: 0.6, end: 1.0).animate(CurvedAnimation(parent: _entryController, curve: const Interval(0.0, 0.6, curve: Curves.elasticOut)));
+    _iconScaleAnimation = Tween<double>(begin: 0.86, end: 1.0).animate(CurvedAnimation(parent: _entryController, curve: const Interval(0.0, 0.6, curve: Curves.easeOutCubic)));
     _textFadeAnimation = Tween<double>(begin: 0.0, end: 1.0).animate(CurvedAnimation(parent: _entryController, curve: const Interval(0.2, 0.7, curve: Curves.easeOut)));
-    _textSlideAnimation = Tween<Offset>(begin: const Offset(0, 0.25), end: Offset.zero).animate(CurvedAnimation(parent: _entryController, curve: const Interval(0.2, 0.7, curve: Curves.easeOut)));
-    _buttonSlideAnimation = Tween<Offset>(begin: const Offset(0, 1.2), end: Offset.zero).animate(CurvedAnimation(parent: _entryController, curve: const Interval(0.6, 1.0, curve: Curves.easeOut)));
+    _textSlideAnimation = Tween<Offset>(begin: const Offset(0, 0.18), end: Offset.zero).animate(CurvedAnimation(parent: _entryController, curve: const Interval(0.2, 0.7, curve: Curves.easeOut)));
+    _buttonSlideAnimation = Tween<Offset>(begin: const Offset(0, 0.35), end: Offset.zero).animate(CurvedAnimation(parent: _entryController, curve: const Interval(0.55, 1.0, curve: Curves.easeOutCubic)));
 
     // Arka plan ışıltılarının gezinme animasyonları (farklı yönlerde)
 
 
     // İkonun nefes alma animasyonu
-    _breathingAnimation = Tween<double>(begin: 0.96, end: 1.04).animate(CurvedAnimation(parent: _breathingController, curve: Curves.easeInOut));
-    _pulseAnimation = Tween<double>(begin: 0.98, end: 1.04).animate(CurvedAnimation(parent: _pulseController, curve: Curves.easeInOut));
+    _breathingAnimation = Tween<double>(begin: 0.985, end: 1.02).animate(CurvedAnimation(parent: _breathingController, curve: Curves.easeInOutSine));
+    _pulseAnimation = Tween<double>(begin: 0.98, end: 1.03).animate(CurvedAnimation(parent: _pulseController, curve: Curves.easeInOut));
 
     _entryController.forward();
   }
@@ -127,6 +127,8 @@ class _LoginPageState extends State<LoginPage> with TickerProviderStateMixin {
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
     final localizations = AppLocalizations.of(context)!;
+    final media = MediaQuery.of(context);
+    final animate = !media.accessibleNavigation;
 
     return Scaffold(
       backgroundColor: theme.colorScheme.surface,
@@ -146,62 +148,97 @@ class _LoginPageState extends State<LoginPage> with TickerProviderStateMixin {
                       // header icon + title
                       Column(
                         children: [
-                          FadeTransition(
-                            opacity: _iconFadeAnimation,
-                            child: ScaleTransition(
-                              scale: _iconScaleAnimation,
-                              child: ScaleTransition(
-                                scale: _breathingAnimation,
-                                child: Container(
+                          animate
+                              ? FadeTransition(
+                                  opacity: _iconFadeAnimation,
+                                  child: ScaleTransition(
+                                    scale: _iconScaleAnimation,
+                                    child: ScaleTransition(
+                                      scale: _breathingAnimation,
+                                      child: Container(
+                                        width: 96.w,
+                                        height: 96.w,
+                                        decoration: BoxDecoration(
+                                          shape: BoxShape.circle,
+                                          gradient: LinearGradient(colors: [theme.colorScheme.secondary, theme.colorScheme.primary]),
+                                          boxShadow: [BoxShadow(color: colorWithOpacity(Colors.black, 0.22), blurRadius: 20.r, offset: Offset(0, 8.h))],
+                                        ),
+                                        child: Icon(Icons.lightbulb_outline, size: 44.sp, color: Colors.white),
+                                      ),
+                                    ),
+                                  ),
+                                )
+                              : Container(
                                   width: 96.w,
                                   height: 96.w,
                                   decoration: BoxDecoration(
                                     shape: BoxShape.circle,
                                     gradient: LinearGradient(colors: [theme.colorScheme.secondary, theme.colorScheme.primary]),
-                                    boxShadow: [BoxShadow(color: Colors.black26, blurRadius: 20.r, offset: Offset(0, 8.h))],
+                                    boxShadow: [BoxShadow(color: colorWithOpacity(Colors.black, 0.16), blurRadius: 18.r, offset: Offset(0, 6.h))],
                                   ),
                                   child: Icon(Icons.lightbulb_outline, size: 44.sp, color: Colors.white),
                                 ),
-                              ),
-                            ),
-                          ),
                           SizedBox(height: 18.h),
                           FadeTransition(
                             opacity: _textFadeAnimation,
-                            child: SlideTransition(
-                              position: _textSlideAnimation,
-                              child: Column(
-                                children: [
-                                  // gradient title for a more premium look
-                                  ShaderMask(
-                                    shaderCallback: (bounds) => LinearGradient(
-                                      begin: Alignment.topLeft,
-                                      end: Alignment.bottomRight,
-                                      colors: [theme.colorScheme.secondary, theme.colorScheme.primary],
-                                    ).createShader(Rect.fromLTWH(0, 0, bounds.width, bounds.height)),
-                                    blendMode: BlendMode.srcIn,
-                                    child: Text(
-                                      localizations.appName,
-                                      textAlign: TextAlign.center,
-                                      style: TextStyle(fontSize: 34.sp, fontWeight: FontWeight.bold, color: Colors.white),
+                            child: animate
+                                ? SlideTransition(
+                                    position: _textSlideAnimation,
+                                    child: Column(
+                                      children: [
+                                        // gradient title for a more premium look
+                                        ShaderMask(
+                                          shaderCallback: (bounds) => LinearGradient(
+                                            begin: Alignment.topLeft,
+                                            end: Alignment.bottomRight,
+                                            colors: [theme.colorScheme.secondary, theme.colorScheme.primary],
+                                          ).createShader(Rect.fromLTWH(0, 0, bounds.width, bounds.height)),
+                                          blendMode: BlendMode.srcIn,
+                                          child: Text(
+                                            localizations.appName,
+                                            textAlign: TextAlign.center,
+                                            style: TextStyle(fontSize: 34.sp, fontWeight: FontWeight.bold, color: Colors.white),
+                                          ),
+                                        ),
+                                        SizedBox(height: 6.h),
+                                        Text(
+                                          localizations.appSlogan,
+                                          textAlign: TextAlign.center,
+                                          style: TextStyle(fontSize: 13.sp, color: Colors.white70, fontStyle: FontStyle.italic),
+                                        ),
+                                      ],
                                     ),
+                                  )
+                                : Column(
+                                    children: [
+                                      ShaderMask(
+                                        shaderCallback: (bounds) => LinearGradient(
+                                          begin: Alignment.topLeft,
+                                          end: Alignment.bottomRight,
+                                          colors: [theme.colorScheme.secondary, theme.colorScheme.primary],
+                                        ).createShader(Rect.fromLTWH(0, 0, bounds.width, bounds.height)),
+                                        blendMode: BlendMode.srcIn,
+                                        child: Text(
+                                          localizations.appName,
+                                          textAlign: TextAlign.center,
+                                          style: TextStyle(fontSize: 34.sp, fontWeight: FontWeight.bold, color: Colors.white),
+                                        ),
+                                      ),
+                                      SizedBox(height: 6.h),
+                                      Text(
+                                        localizations.appSlogan,
+                                        textAlign: TextAlign.center,
+                                        style: TextStyle(fontSize: 13.sp, color: Colors.white70, fontStyle: FontStyle.italic),
+                                      ),
+                                    ],
                                   ),
-                                  SizedBox(height: 6.h),
-                                  Text(
-                                    localizations.appSlogan,
-                                    textAlign: TextAlign.center,
-                                    style: TextStyle(fontSize: 13.sp, color: Colors.white70, fontStyle: FontStyle.italic),
-                                  ),
-                                ],
-                              ),
-                            ),
                           ),
                         ],
                       ),
 
                       // CTA area (kept compact and bounded)
                       SlideTransition(
-                        position: _buttonSlideAnimation,
+                        position: animate ? _buttonSlideAnimation : AlwaysStoppedAnimation(Offset.zero),
                         child: ClipRRect(
                           borderRadius: BorderRadius.circular(18.r),
                           child: BackdropFilter(
@@ -209,7 +246,7 @@ class _LoginPageState extends State<LoginPage> with TickerProviderStateMixin {
                             child: Container(
                               width: double.infinity,
                               padding: EdgeInsets.symmetric(horizontal: 20.w, vertical: 18.h),
-                                decoration: BoxDecoration(
+                              decoration: BoxDecoration(
                                 color: colorWithOpacity(Colors.white, 0.03),
                                 borderRadius: BorderRadius.circular(18.r),
                                 border: Border.all(color: colorWithOpacity(Colors.white, 0.04)),
@@ -226,8 +263,9 @@ class _LoginPageState extends State<LoginPage> with TickerProviderStateMixin {
                                     onTapCancel: () => setState(() => _isButtonPressed = false),
                                     onTap: () => signInWithGoogle(context),
                                     child: AnimatedScale(
-                                      scale: _isButtonPressed ? 0.98 : 1.0,
-                                      duration: const Duration(milliseconds: 120),
+                                      scale: _isButtonPressed ? 0.985 : 1.0,
+                                      duration: const Duration(milliseconds: 160),
+                                      curve: Curves.easeOutCubic,
                                       child: AnimatedBuilder(
                                         animation: Listenable.merge([_gradientController, _pulseController]),
                                         builder: (context, child) {
@@ -238,15 +276,15 @@ class _LoginPageState extends State<LoginPage> with TickerProviderStateMixin {
                                               // smoother continuous oscillation using sine -> no sudden flip at loop boundary
                                               gradient: LinearGradient(
                                                 colors: [
-                                                    colorWithOpacity(theme.colorScheme.primary, 0.98),
-                                                    colorWithOpacity(theme.colorScheme.tertiary, 0.95),
-                                                    colorWithOpacity(theme.colorScheme.secondary, 0.95)
+                                                  colorWithOpacity(theme.colorScheme.primary, 0.98),
+                                                  colorWithOpacity(theme.colorScheme.tertiary, 0.95),
+                                                  colorWithOpacity(theme.colorScheme.secondary, 0.95)
                                                 ],
                                                 begin: Alignment(-math.sin(_gradientController.value * 2 * math.pi), -0.35),
                                                 end: Alignment(math.sin(_gradientController.value * 2 * math.pi), 0.35),
                                               ),
                                               borderRadius: BorderRadius.circular(12.r),
-                                              boxShadow: [BoxShadow(color: colorWithOpacity(Colors.black, 0.35), blurRadius: 10.r, offset: Offset(0, 6.h))],
+                                              boxShadow: [BoxShadow(color: colorWithOpacity(Colors.black, 0.18), blurRadius: 10.r, offset: Offset(0, 6.h))],
                                               border: Border.all(color: colorWithOpacity(Colors.white, 0.06)),
                                             ),
                                             child: Row(

@@ -5,8 +5,8 @@ import 'package:flutter/services.dart';
 import '../services/api_service.dart';
 import '../l10n/app_localizations.dart';
 import '../main_screen.dart';
-import '../widgets/glass_card.dart';
-import '../widgets/gradient_button.dart';
+import '../widgets/animated_glass_card.dart';
+import '../widgets/morphing_gradient_button.dart';
 import 'package:sparkup_app/utils/color_utils.dart';
 
 class ChallengePage extends StatefulWidget {
@@ -167,6 +167,7 @@ class _ChallengePageState extends State<ChallengePage> with TickerProviderStateM
   Widget build(BuildContext context) {
     final localizations = AppLocalizations.of(context)!;
     final theme = Theme.of(context);
+    final bool animate = !MediaQuery.of(context).accessibleNavigation;
 
     Widget currentContent;
 
@@ -190,10 +191,45 @@ class _ChallengePageState extends State<ChallengePage> with TickerProviderStateM
       backgroundColor: theme.colorScheme.surface,
       body: Stack(
         children: [
-          // animated ambient blobs
+          // animated ambient blobs (respect reduced-motion)
           AnimatedBuilder(
             animation: _backgroundController,
             builder: (context, child) {
+              if (!animate) {
+                return Stack(
+                  children: [
+                    Positioned.fill(
+                      child: Align(
+                        alignment: Alignment.topLeft,
+                        child: Container(
+                          width: 420.w,
+                          height: 420.w,
+                          decoration: BoxDecoration(
+                            shape: BoxShape.circle,
+                            gradient: RadialGradient(colors: [colorWithOpacity(theme.colorScheme.primary, 0.16), Colors.transparent]),
+                            boxShadow: [BoxShadow(color: colorWithOpacity(theme.colorScheme.primary, 0.08), blurRadius: 80.r, spreadRadius: 60.r)],
+                          ),
+                        ),
+                      ),
+                    ),
+                    Positioned.fill(
+                      child: Align(
+                        alignment: Alignment.topRight,
+                        child: Container(
+                          width: 320.w,
+                          height: 320.w,
+                          decoration: BoxDecoration(
+                            shape: BoxShape.circle,
+                            gradient: RadialGradient(colors: [colorWithOpacity(theme.colorScheme.secondary, 0.12), Colors.transparent]),
+                            boxShadow: [BoxShadow(color: colorWithOpacity(theme.colorScheme.secondary, 0.06), blurRadius: 80.r, spreadRadius: 40.r)],
+                          ),
+                        ),
+                      ),
+                    ),
+                  ],
+                );
+              }
+
               return Stack(
                 children: [
                   Positioned.fill(
@@ -240,20 +276,21 @@ class _ChallengePageState extends State<ChallengePage> with TickerProviderStateM
                   onTapCancel: () => setState(() => _isPressed = false),
                   onTap: (_isLoading || _limitError != null) ? null : () => _fetchChallenge(preview: false, consume: true),
                   child: AnimatedScale(
-                    duration: const Duration(milliseconds: 150),
-                    scale: _isPressed ? 0.98 : 1.0,
+                    duration: animate ? const Duration(milliseconds: 180) : Duration.zero,
+                    scale: _isPressed ? 0.985 : 1.0,
                     child: ConstrainedBox(
                       constraints: BoxConstraints(maxWidth: 720.w),
                       child: LayoutBuilder(builder: (context, constraints) {
                         final cardHeight = constraints.maxWidth * 0.95;
                         return SizedBox(
                           height: cardHeight,
-                          child: GlassCard(
+                          child: AnimatedGlassCard(
                             borderRadius: BorderRadius.circular(26.r),
                             padding: EdgeInsets.all(18.w),
                             child: AnimatedSwitcher(
-                              duration: const Duration(milliseconds: 420),
+                              duration: animate ? const Duration(milliseconds: 520) : Duration.zero,
                               transitionBuilder: (Widget child, Animation<double> animation) {
+                                if (!animate) return child;
                                 final offsetAnimation = Tween<Offset>(begin: const Offset(0.0, 0.1), end: Offset.zero).animate(animation);
                                 return FadeTransition(opacity: animation, child: SlideTransition(position: offsetAnimation, child: child));
                               },
@@ -354,15 +391,16 @@ class _ChallengePageState extends State<ChallengePage> with TickerProviderStateM
               Row(
             children: [
               Expanded(
-                child: GradientButton.icon(
+                child: MorphingGradientButton.icon(
                   icon: Icon(Icons.refresh_rounded, color: Colors.white, size: 18.sp),
                   label: Text(localizations.loadNewChallenge, style: const TextStyle(color: Colors.white)),
+                  colors: [theme.colorScheme.secondary, theme.colorScheme.primary],
                   onPressed: _isLoading || _limitError != null ? null : () => _fetchChallenge(preview: false, consume: true),
                   padding: EdgeInsets.symmetric(vertical: 14.h),
                 ),
               ),
               SizedBox(width: 12.w),
-              GlassCard(
+              AnimatedGlassCard(
                 borderRadius: BorderRadius.circular(12.r),
                 padding: EdgeInsets.symmetric(vertical: 6.h, horizontal: 6.w),
                 child: IconButton(
@@ -406,7 +444,7 @@ class _ChallengePageState extends State<ChallengePage> with TickerProviderStateM
           SizedBox(height: 10.h),
           Text(message, textAlign: TextAlign.center, style: TextStyle(color: Colors.white70, fontSize: 16.sp)),
           SizedBox(height: 22.h),
-          GradientButton(
+          MorphingGradientButton(
             onPressed: () {
               final mainScreenState = context.findAncestorStateOfType<MainScreenState>();
               if (mainScreenState != null) {

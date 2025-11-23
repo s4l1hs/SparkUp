@@ -1,6 +1,5 @@
 // lib/main_screen.dart
 
-import 'dart:ui';
 import 'dart:math';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -11,7 +10,8 @@ import 'pages/subscription_page.dart';
 import 'pages/leaderboard_page.dart';
 import 'pages/quiz_page.dart';
 import 'pages/settings_page.dart';
-import 'widgets/gradient_button.dart';
+import 'widgets/animated_glass_card.dart';
+import 'widgets/morphing_gradient_button.dart';
 
 class MainScreen extends StatefulWidget {
   final String idToken;
@@ -110,15 +110,15 @@ class MainScreenState extends State<MainScreen> with TickerProviderStateMixin {
               ),
             ),
           ),
-          // glassy floating action button — opens quiz when tapped
+          // glassy floating action button — opens quiz when tapped (morphing CTA)
           Positioned(
             right: 22.w,
             bottom: 120.h,
-            child: GradientButton(
+            child: MorphingGradientButton(
               onPressed: () => onItemTapped(2),
-              borderRadius: BorderRadius.circular(999.r),
-              padding: EdgeInsets.all(12.w),
               colors: [Theme.of(context).colorScheme.secondary, Theme.of(context).colorScheme.primary],
+              padding: EdgeInsets.all(12.w),
+              borderRadius: BorderRadius.circular(999.r),
               child: Icon(Icons.flash_on_rounded, color: Colors.white, size: 24.sp),
             ),
           ),
@@ -145,65 +145,67 @@ class MainScreenState extends State<MainScreen> with TickerProviderStateMixin {
       child: Padding(
         padding: EdgeInsets.only(left: 12.w, right: 12.w, bottom: 6.h),
         child: LayoutBuilder(builder: (context, constraints) {
+          final double notchWidth = 84.w;
 
-          return ClipRRect(
-            borderRadius: BorderRadius.circular(24.r),
-            clipBehavior: Clip.hardEdge,
-            child: BackdropFilter(
-              filter: ImageFilter.blur(sigmaX: 12.0, sigmaY: 12.0),
-              child: Container(
-                // further reduce height by a few px to avoid tiny bottom overflow
-                height: 100.h + bottomPadding,
-                padding: EdgeInsets.only(bottom: bottomPadding, top: 6.h),
-                decoration: BoxDecoration(
-                  gradient: LinearGradient(
-                    colors: [colorWithOpacity(theme.colorScheme.surface, 0.10), colorWithOpacity(theme.colorScheme.surface, 0.02)],
-                    begin: Alignment.topCenter,
-                    end: Alignment.bottomCenter,
-                  ),
-                  borderRadius: BorderRadius.circular(24.r),
-                  // reduce shadow offset so it doesn't contribute to visual overflow
-                  boxShadow: [BoxShadow(color: Colors.black38, blurRadius: 16.r, offset: Offset(0, 6.h))],
-                  border: Border.all(color: colorWithOpacity(Colors.white, 0.04)),
-                ),
-                // Row only - removed the rectangular pill highlight; keep circular selected effect
-                child: Row(
-                  children: _navItems.asMap().entries.map((entry) {
-                    final index = entry.key;
-                    final item = entry.value;
-                    final isSelected = _selectedIndex == index;
-                    final Color itemColor = isSelected ? getSelectedColor(index) : colorWithOpacity(theme.iconTheme.color!, 0.7);
-
-                    return Expanded(
-                      child: GestureDetector(
-                        onTap: () => onItemTapped(index),
-                        behavior: HitTestBehavior.opaque,
-                        child: Column(
-                          mainAxisSize: MainAxisSize.min,
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            ScaleTransition(
-                              scale: Tween<double>(begin: 1.0, end: 1.12).animate(CurvedAnimation(parent: _bounceController, curve: Curves.elasticOut)),
-                              child: AnimatedContainer(
-                                duration: const Duration(milliseconds: 260),
-                                curve: Curves.easeOut,
-                                padding: EdgeInsets.all(isSelected ? 6.w : 8.w),
-                                decoration: BoxDecoration(
-                                  shape: BoxShape.circle,
-                                  color: isSelected ? colorWithOpacity(itemColor, 0.06) : Colors.transparent,
+          return SizedBox(
+            height: 120.h + bottomPadding,
+            child: Stack(
+              alignment: Alignment.center,
+              children: [
+                // glass bar
+                Positioned.fill(
+                  bottom: 0,
+                  child: Align(
+                    alignment: Alignment.bottomCenter,
+                    child: AnimatedGlassCard(
+                      borderRadius: BorderRadius.circular(24.r),
+                      padding: EdgeInsets.symmetric(vertical: 10.h, horizontal: 12.w),
+                      child: Row(
+                        children: [
+                          for (var i = 0; i < _navItems.length; i++)
+                            if (i == 2)
+                              SizedBox(width: notchWidth)
+                            else
+                              Expanded(
+                                child: GestureDetector(
+                                  onTap: () => onItemTapped(i),
+                                  behavior: HitTestBehavior.opaque,
+                                  child: Column(
+                                    mainAxisSize: MainAxisSize.min,
+                                    mainAxisAlignment: MainAxisAlignment.center,
+                                    children: [
+                                      AnimatedScale(
+                                        duration: const Duration(milliseconds: 260),
+                                        scale: _selectedIndex == i ? 1.12 : 1.0,
+                                        child: Container(
+                                          padding: EdgeInsets.all(_selectedIndex == i ? 8.w : 6.w),
+                                          decoration: BoxDecoration(shape: BoxShape.circle, color: _selectedIndex == i ? colorWithOpacity(getSelectedColor(i), 0.06) : Colors.transparent),
+                                          child: Icon(_navItems[i]['icon'] as IconData, size: _selectedIndex == i ? 30.sp : 26.sp, color: _selectedIndex == i ? getSelectedColor(i) : colorWithOpacity(theme.iconTheme.color!, 0.72)),
+                                        ),
+                                      ),
+                                      SizedBox(height: 4.h),
+                                    ],
+                                  ),
                                 ),
-                                child: Icon(item['icon'] as IconData, size: isSelected ? 30.sp : 26.sp, color: itemColor),
                               ),
-                            ),
-                            // keep compact spacing, no labels
-                            SizedBox(height: 4.h),
-                          ],
-                        ),
+                        ],
                       ),
-                    );
-                  }).toList(),
+                    ),
+                  ),
                 ),
-              ),
+
+                // central morphing CTA
+                Positioned(
+                  bottom: 36.h,
+                  child: MorphingGradientButton(
+                    onPressed: () => onItemTapped(2),
+                    colors: [Theme.of(context).colorScheme.secondary, Theme.of(context).colorScheme.primary],
+                    padding: EdgeInsets.symmetric(horizontal: 18.w, vertical: 12.h),
+                    borderRadius: BorderRadius.circular(999.r),
+                    child: Icon(Icons.flash_on_rounded, color: Colors.white, size: 28.sp),
+                  ),
+                ),
+              ],
             ),
           );
         }),

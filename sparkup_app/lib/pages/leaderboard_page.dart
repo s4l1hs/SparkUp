@@ -230,6 +230,9 @@ class _LeaderboardPageState extends State<LeaderboardPage> with TickerProviderSt
     final localizations = AppLocalizations.of(context)!;
     final theme = Theme.of(context);
 
+    // Respect user's reduced-motion accessibility setting
+    final bool animate = !MediaQuery.of(context).accessibleNavigation;
+
     // Listen to UserProvider and keep _currentUserEntry in sync when user's total score changes.
     final userProvider = Provider.of<UserProvider?>(context);
     final providerScore = userProvider?.profile?.score;
@@ -308,13 +311,14 @@ class _LeaderboardPageState extends State<LeaderboardPage> with TickerProviderSt
         children: [
           // animated ambient background blobs for depth
           AnimatedBuilder(
-            animation: _backgroundController,
+            // If user requests reduced motion, stop the background animation updates
+            animation: animate ? _backgroundController : const AlwaysStoppedAnimation(0),
             builder: (context, child) {
               return Stack(
                 children: [
                   Positioned.fill(
                     child: Align(
-                      alignment: _backgroundAnimation1.value,
+                      alignment: animate ? _backgroundAnimation1.value : Alignment.center,
                       child: Container(
                         width: 420.w,
                         height: 420.h,
@@ -328,7 +332,7 @@ class _LeaderboardPageState extends State<LeaderboardPage> with TickerProviderSt
                   ),
                   Positioned.fill(
                     child: Align(
-                      alignment: _backgroundAnimation2.value,
+                      alignment: animate ? _backgroundAnimation2.value : Alignment.center,
                       child: Container(
                         width: 320.w,
                         height: 320.h,
@@ -654,6 +658,9 @@ class _AnimatedListItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final bool animate = !MediaQuery.of(context).accessibleNavigation;
+    if (!animate) return child;
+
     final intervalStart = (index * 0.08).clamp(0.0, 1.0);
     final intervalEnd = (intervalStart + 0.5).clamp(0.0, 1.0);
 

@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'dart:math' as math;
+import '../utils/color_utils.dart';
 // lightweight animated background painter — intentionally minimal imports
 
 class AppBackground extends StatefulWidget {
@@ -11,11 +13,15 @@ class AppBackground extends StatefulWidget {
 
 class _AppBackgroundState extends State<AppBackground> with SingleTickerProviderStateMixin {
   late final AnimationController _ctrl;
+  late final Animation<double> _anim;
 
   @override
   void initState() {
     super.initState();
-    _ctrl = AnimationController(vsync: this, duration: const Duration(seconds: 25))..repeat();
+    // Longer, eased loop so ambient motion feels organic and not mechanical
+    _ctrl = AnimationController(vsync: this, duration: const Duration(seconds: 30));
+    _anim = CurvedAnimation(parent: _ctrl, curve: Curves.easeInOut);
+    _ctrl.repeat(reverse: true);
   }
 
   @override
@@ -31,9 +37,9 @@ class _AppBackgroundState extends State<AppBackground> with SingleTickerProvider
       children: [
         Positioned.fill(
           child: AnimatedBuilder(
-            animation: _ctrl,
+            animation: _anim,
             builder: (context, child) {
-              final a = _ctrl.value;
+              final a = _anim.value;
               return CustomPaint(
                 painter: _BlobPainter(a, theme.colorScheme.primary, theme.colorScheme.secondary),
                 child: Container(),
@@ -58,14 +64,22 @@ class _BlobPainter extends CustomPainter {
     final paint = Paint();
     final w = size.width;
     final h = size.height;
+    // use smooth sine-based offsets for organic motion
+    final theta = t * 2 * 3.141592653589793;
+    final s = math.sin(theta);
+    final c = math.cos(theta);
 
-    // big soft blob
-    paint.shader = RadialGradient(colors: [c1.withOpacity(0.12), Colors.transparent]).createShader(Rect.fromCircle(center: Offset(w * (0.2 + 0.1 * (t - 0.5)), h * 0.15), radius: w * 0.5));
-    canvas.drawCircle(Offset(w * (0.2 + 0.1 * (t - 0.5)), h * 0.15), w * 0.5, paint);
+    final cx1 = 0.2 + 0.08 * s; // horizontal wobble
+    final cy1 = 0.15 + 0.03 * c; // vertical subtle shift
+    final r1 = w * (0.45 + 0.04 * s.abs());
+    paint.shader = RadialGradient(colors: [colorWithOpacity(c1, 0.12), Colors.transparent]).createShader(Rect.fromCircle(center: Offset(w * cx1, h * cy1), radius: r1));
+    canvas.drawCircle(Offset(w * cx1, h * cy1), r1, paint);
 
-    // secondary blob
-    paint.shader = RadialGradient(colors: [c2.withOpacity(0.10), Colors.transparent]).createShader(Rect.fromCircle(center: Offset(w * (0.8 - 0.1 * (t - 0.5)), h * 0.85), radius: w * 0.45));
-    canvas.drawCircle(Offset(w * (0.8 - 0.1 * (t - 0.5)), h * 0.85), w * 0.45, paint);
+    final cx2 = 0.8 - 0.08 * s;
+    final cy2 = 0.85 - 0.03 * c;
+    final r2 = w * (0.40 + 0.03 * c.abs());
+    paint.shader = RadialGradient(colors: [colorWithOpacity(c2, 0.10), Colors.transparent]).createShader(Rect.fromCircle(center: Offset(w * cx2, h * cy2), radius: r2));
+    canvas.drawCircle(Offset(w * cx2, h * cy2), r2, paint);
   }
 
   @override
