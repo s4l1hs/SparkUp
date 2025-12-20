@@ -87,7 +87,7 @@ class _SubscriptionPageState extends State<SubscriptionPage> with SingleTickerPr
         'level': 'pro',
         'title': localizations.planPro,
         'color': theme.colorScheme.primary,
-        'price': '\$4.99 / ${localizations.month}',
+        'price': '\$1.99 / ${localizations.month}',
         'multiplier': 1.5,
         'features': [
           {'icon': Icons.quiz_outlined, 'text': '5 ${localizations.questionsPerDay}', 'is_pro': true},
@@ -100,7 +100,7 @@ class _SubscriptionPageState extends State<SubscriptionPage> with SingleTickerPr
         'level': 'ultra',
         'title': localizations.planUltra,
         'color': theme.colorScheme.secondary,
-        'price': '\$9.99 / ${localizations.month}',
+        'price': '\$3.99 / ${localizations.month}',
         'multiplier': 2.0,
         'features': [
           {'icon': Icons.quiz_outlined, 'text': localizations.unlimitedQuizzes, 'is_pro': true},

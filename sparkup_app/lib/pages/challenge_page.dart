@@ -3,6 +3,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter/services.dart';
 import '../services/api_service.dart';
+import 'package:provider/provider.dart';
+import '../providers/user_provider.dart';
+import '../locale_provider.dart';
 import '../l10n/app_localizations.dart';
 import '../main_screen.dart';
 import '../widgets/animated_glass_card.dart';
@@ -99,8 +102,11 @@ class _ChallengePageState extends State<ChallengePage> with TickerProviderStateM
     final fallbackMsg = localizations?.challengeCouldNotBeLoaded ?? "Challenge could not be loaded";
 
     try {
-      final lang = Localizations.localeOf(context).languageCode;
-  final challengeData = await _apiServiceSafe(() => _apiService.getRandomChallenge(widget.idToken, lang: lang, preview: preview), const Duration(seconds: 12));
+        final userProvider = Provider.of<UserProvider>(context, listen: false);
+        await userProvider.loadProfile(widget.idToken);
+        final localeProvider = Provider.of<LocaleProvider>(context, listen: false);
+        final lang = userProvider.profile?.languageCode ?? localeProvider.locale.languageCode;
+        final challengeData = await _apiServiceSafe(() => _apiService.getRandomChallenge(widget.idToken, lang: lang, preview: preview), const Duration(seconds: 12));
       if (!mounted) return;
 
       if (challengeData is Map) {

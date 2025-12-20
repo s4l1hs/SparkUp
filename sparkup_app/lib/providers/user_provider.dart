@@ -51,6 +51,7 @@ class UserProfile {
   final int? dailyQuizUsed;
   final int? remainingQuizzes;
   final int dailyPoints;
+  final String? languageCode;
 
   UserProfile({
     this.username,
@@ -61,9 +62,10 @@ class UserProfile {
     this.dailyQuizUsed,
     this.remainingQuizzes,
     this.dailyPoints = 0,
+    this.languageCode,
   });
 
-  UserProfile copyWith({String? username, int? score, int? currentStreak, String? subscriptionLevel, int? dailyQuizLimit, int? dailyQuizUsed, int? remainingQuizzes, int? dailyPoints}) {
+  UserProfile copyWith({String? username, int? score, int? currentStreak, String? subscriptionLevel, int? dailyQuizLimit, int? dailyQuizUsed, int? remainingQuizzes, int? dailyPoints, String? languageCode}) {
     return UserProfile(
       username: username ?? this.username,
       score: score ?? this.score,
@@ -73,6 +75,7 @@ class UserProfile {
       dailyQuizUsed: dailyQuizUsed ?? this.dailyQuizUsed,
       remainingQuizzes: remainingQuizzes ?? this.remainingQuizzes,
       dailyPoints: dailyPoints ?? this.dailyPoints,
+      languageCode: languageCode ?? this.languageCode,
     );
   }
 
@@ -87,6 +90,7 @@ class UserProfile {
       dailyQuizUsed: json['daily_quiz_used'] != null ? (json['daily_quiz_used'] as num).toInt() : 0,
       remainingQuizzes: json['remaining_quizzes'] != null ? (json['remaining_quizzes'] as num).toInt() : null,
       dailyPoints: (json['daily_points'] as num?)?.toInt() ?? 0,
+      languageCode: (json['language_code'] as String?) ?? null,
     );
   }
 }

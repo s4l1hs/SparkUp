@@ -5,6 +5,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:sparkup_app/utils/color_utils.dart';
 import 'l10n/app_localizations.dart';
+import 'package:provider/provider.dart';
+import 'providers/user_provider.dart';
+import 'locale_provider.dart';
+import 'dart:ui';
 import 'pages/challenge_page.dart';
 import 'pages/subscription_page.dart';
 import 'pages/leaderboard_page.dart';
@@ -33,6 +37,19 @@ class MainScreenState extends State<MainScreen> with TickerProviderStateMixin {
   @override
   void initState() {
     super.initState();
+    // Load user profile after first frame and set app locale accordingly
+    WidgetsBinding.instance.addPostFrameCallback((_) async {
+      try {
+        final userProvider = Provider.of<UserProvider>(context, listen: false);
+        await userProvider.loadProfile(widget.idToken);
+        final lang = userProvider.profile?.languageCode ?? PlatformDispatcher.instance.locale.languageCode;
+        if (lang != null && lang.isNotEmpty) {
+          Provider.of<LocaleProvider>(context, listen: false).setLocale(lang);
+        }
+      } catch (e) {
+        // ignore errors here; app will fallback to default locale
+      }
+    });
     _pages = <Widget>[
       LeaderboardPage(idToken: widget.idToken),
       SubscriptionPage(idToken: widget.idToken),

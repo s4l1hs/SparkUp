@@ -9,6 +9,7 @@ import '../widgets/morphing_gradient_button.dart';
 import '../widgets/animated_glass_card.dart';
 import '../l10n/app_localizations.dart';
 import '../providers/user_provider.dart';
+import '../locale_provider.dart';
 import '../main_screen.dart';
 import 'package:sparkup_app/utils/color_utils.dart';
 
@@ -147,14 +148,16 @@ class _QuizPageState extends State<QuizPage> with TickerProviderStateMixin {
                 final theme = Theme.of(context);
                 final messenger = ScaffoldMessenger.of(context);
                 final userProvider = Provider.of<UserProvider>(context, listen: false);
+                // Ensure we have the latest profile so we can use user's language preference
+                await userProvider.loadProfile(widget.idToken);
+                final localeProvider = Provider.of<LocaleProvider>(context, listen: false);
                   setState(() {
                     _isLoading = true;
                     _limitError = null;
                   });
                   try {
-                    final lang = Localizations.localeOf(context).languageCode;
+                    final lang = userProvider.profile?.languageCode ?? localeProvider.locale.languageCode;
                     final questions = await _apiService.getQuizQuestions(widget.idToken, limit: 3, lang: lang, preview: isPreview);
-                await userProvider.loadProfile(widget.idToken);
                 if (!mounted) return;
 
                     if (questions.isNotEmpty) {
