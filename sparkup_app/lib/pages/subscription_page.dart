@@ -287,7 +287,7 @@ class _SubscriptionPageState extends State<SubscriptionPage> with SingleTickerPr
                             child: Icon(feature['icon'] as IconData, size: 18.sp, color: iconColor),
                           ),
                           SizedBox(width: 12.w),
-                          Expanded(child: Text(feature['text'] as String, style: TextStyle(color: textColor, fontSize: 15.sp), softWrap: true, maxLines: 3, overflow: TextOverflow.ellipsis)),
+                          Expanded(child: Text(feature['text'] as String, style: TextStyle(color: textColor, fontSize: 14.sp), softWrap: true, maxLines: 3, overflow: TextOverflow.ellipsis)),
                           if (!featureActive) Padding(padding: EdgeInsets.only(left: 8.w), child: Text(localizations.limited, style: TextStyle(color: Colors.grey.shade500, fontSize: 12.sp))),
                         ],
                       ),
