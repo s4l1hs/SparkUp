@@ -226,15 +226,17 @@ class _SubscriptionPageState extends State<SubscriptionPage> with SingleTickerPr
                     Expanded(
                       child: Row(
                         children: [
-                          Container(
-                            padding: EdgeInsets.symmetric(horizontal: 12.w, vertical: 8.h),
-                            decoration: BoxDecoration(color: cardColor, borderRadius: BorderRadius.circular(10.r)),
-                            child: Text(
-                              plan['title'] as String,
-                              style: TextStyle(color: Colors.black87, fontSize: 12.sp, fontWeight: FontWeight.w900),
-                              maxLines: 1,
-                              overflow: TextOverflow.ellipsis,
-                              softWrap: false,
+                          Flexible(
+                            child: Container(
+                              padding: EdgeInsets.symmetric(horizontal: 12.w, vertical: 8.h),
+                              decoration: BoxDecoration(color: cardColor, borderRadius: BorderRadius.circular(10.r)),
+                              child: Text(
+                                plan['title'] as String,
+                                style: TextStyle(color: Colors.black87, fontSize: 12.sp, fontWeight: FontWeight.w900),
+                                maxLines: 1,
+                                overflow: TextOverflow.ellipsis,
+                                softWrap: false,
+                              ),
                             ),
                           ),
                           SizedBox(width: 10.w),
@@ -242,10 +244,18 @@ class _SubscriptionPageState extends State<SubscriptionPage> with SingleTickerPr
                       ),
                     ),
                     SizedBox(width: 8.w),
+                    // Price: use FittedBox so long translations don't overflow
                     Column(
                       crossAxisAlignment: CrossAxisAlignment.end,
                       children: [
-                        Text(plan['price'] as String, style: TextStyle(fontWeight: FontWeight.w800, fontSize: 14.sp)),
+                        ConstrainedBox(
+                          constraints: BoxConstraints(maxWidth: 120.w),
+                          child: FittedBox(
+                            fit: BoxFit.scaleDown,
+                            alignment: Alignment.centerRight,
+                            child: Text(plan['price'] as String, style: TextStyle(fontWeight: FontWeight.w800, fontSize: 14.sp)),
+                          ),
+                        ),
                       ],
                     ),
                   ],
@@ -258,7 +268,7 @@ class _SubscriptionPageState extends State<SubscriptionPage> with SingleTickerPr
                 SizedBox(height: 14.h),
 
                 // features - compact, readable rows
-                Column(
+                    Column(
                   children: (plan['features'] as List<Map<String, dynamic>>).map((feature) {
                     final bool featureActive = !(planLevel == 'free' && !(feature['is_pro'] as bool));
                     final Color iconColor = featureActive ? (planLevel == 'ultra' ? theme.colorScheme.secondary : (planLevel == 'pro' ? theme.colorScheme.primary : Colors.grey)) : Colors.grey;
@@ -277,7 +287,7 @@ class _SubscriptionPageState extends State<SubscriptionPage> with SingleTickerPr
                             child: Icon(feature['icon'] as IconData, size: 18.sp, color: iconColor),
                           ),
                           SizedBox(width: 12.w),
-                          Expanded(child: Text(feature['text'] as String, style: TextStyle(color: textColor, fontSize: 15.sp))),
+                          Expanded(child: Text(feature['text'] as String, style: TextStyle(color: textColor, fontSize: 15.sp), softWrap: true, maxLines: 3, overflow: TextOverflow.ellipsis)),
                           if (!featureActive) Padding(padding: EdgeInsets.only(left: 8.w), child: Text(localizations.limited, style: TextStyle(color: Colors.grey.shade500, fontSize: 12.sp))),
                         ],
                       ),
@@ -296,11 +306,11 @@ class _SubscriptionPageState extends State<SubscriptionPage> with SingleTickerPr
                           padding: EdgeInsets.symmetric(vertical: 14.h),
                           borderRadius: BorderRadius.circular(12.r),
                           colors: [Colors.grey.shade800, Colors.grey.shade700],
-                          child: Text(localizations.active, style: TextStyle(fontSize: 16.sp)),
+                          child: FittedBox(fit: BoxFit.scaleDown, child: Text(localizations.active, style: TextStyle(fontSize: 16.sp))),
                         )
                       : MorphingGradientButton.icon(
                           icon: Icon(Icons.workspace_premium_rounded, color: Colors.white, size: 16.sp),
-                          label: Text(isFree ? localizations.freeTrial : localizations.upgrade, style: TextStyle(fontSize: 16.sp)),
+                          label: FittedBox(fit: BoxFit.scaleDown, child: Text(isFree ? localizations.freeTrial : localizations.upgrade, style: TextStyle(fontSize: 16.sp))),
                           onPressed: _isProcessing ? null : () => _simulatePurchase(planLevel),
                           padding: EdgeInsets.symmetric(vertical: 14.h),
                           borderRadius: BorderRadius.circular(12.r),
