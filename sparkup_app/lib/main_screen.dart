@@ -43,7 +43,7 @@ class MainScreenState extends State<MainScreen> with TickerProviderStateMixin {
         final userProvider = Provider.of<UserProvider>(context, listen: false);
         await userProvider.loadProfile(widget.idToken);
         final lang = userProvider.profile?.languageCode ?? PlatformDispatcher.instance.locale.languageCode;
-        if (lang != null && lang.isNotEmpty) {
+        if (lang.isNotEmpty) {
           Provider.of<LocaleProvider>(context, listen: false).setLocale(lang);
         }
       } catch (e) {

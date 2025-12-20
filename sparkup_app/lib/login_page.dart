@@ -254,8 +254,7 @@ class _LoginPageState extends State<LoginPage> with TickerProviderStateMixin {
                                 crossAxisAlignment: CrossAxisAlignment.center,
                                 mainAxisSize: MainAxisSize.min,
                                 children: [
-                                  Text(localizations.continueWithGoogle, style: TextStyle(color: Colors.white70, fontSize: 12.sp)),
-                                  SizedBox(height: 12.h),
+                                  SizedBox(height: 8.h),
                                   GestureDetector(
                                     onTapDown: (_) => setState(() => _isButtonPressed = true),
                                     onTapUp: (_) => setState(() => _isButtonPressed = false),
@@ -284,7 +283,7 @@ class _LoginPageState extends State<LoginPage> with TickerProviderStateMixin {
                                               ),
                                               borderRadius: BorderRadius.circular(12.r),
                                               boxShadow: [BoxShadow(color: colorWithOpacity(Colors.black, 0.18), blurRadius: 10.r, offset: Offset(0, 6.h))],
-                                              border: Border.all(color: colorWithOpacity(Colors.white, 0.06)),
+                                                // Outer border removed per design request
                                             ),
                                             child: Row(
                                               mainAxisAlignment: MainAxisAlignment.center,
@@ -329,14 +328,6 @@ class _LoginPageState extends State<LoginPage> with TickerProviderStateMixin {
                                     ),
                                   ),
                                   SizedBox(height: 12.h),
-                                  // help & "Are you sure you want to sign out?" removed per request
-                                  SizedBox(height: 8.h),
-                                  // subtle decorative divider to balance layout
-                                  Container(
-                                    height: 1.h,
-                                    width: 64.w,
-                                    decoration: BoxDecoration(color: Colors.white12, borderRadius: BorderRadius.circular(4.r)),
-                                  ),
                                   SizedBox(height: 6.h),
                                 ],
                               ),
