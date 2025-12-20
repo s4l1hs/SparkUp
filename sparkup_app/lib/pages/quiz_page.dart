@@ -476,11 +476,12 @@ class _QuizPageState extends State<QuizPage> with TickerProviderStateMixin {
 
                   return Padding(
                     key: ValueKey<int>(_currentIndex),
-                    // reduce top padding so content sits higher on screen
-                    padding: EdgeInsets.fromLTRB(16.w, 8.h, 16.w, 16.w),
+                      // reduce top padding so content sits higher on screen
+                      padding: EdgeInsets.fromLTRB(24.w, 0.h, 24.w, 24.h),
                     child: Column(
                       children: [
-                        SafeArea(
+                        Padding(
+                          padding: EdgeInsets.only(top: 12.h),
                           child: Column(
                             children: [
                               // rounded linear progress
@@ -558,12 +559,13 @@ class _QuizPageState extends State<QuizPage> with TickerProviderStateMixin {
                     // place items from top so question container height increase pushes content downward naturally
                     mainAxisAlignment: MainAxisAlignment.start,
                     children: [
+                      SizedBox(height: 12.h), // push question box slightly down
                       // question container (glass)
                       AnimatedGlassCard(
                         padding: EdgeInsets.symmetric(horizontal: 14.w, vertical: 16.h),
                         borderRadius: BorderRadius.circular(16.r),
-                        child: ConstrainedBox(
-                          constraints: BoxConstraints(minHeight: 120.h),
+                        child: SizedBox(
+                          height: 220.h, // increased fixed height so options don't shift
                           child: Center(child: Text(questionText, textAlign: TextAlign.center, style: theme.textTheme.titleLarge?.copyWith(fontWeight: FontWeight.w900, height: 1.25))),
                         ),
                       ),
