@@ -17,10 +17,26 @@ INFO_FILE = "data/manual_info.json"
 QUIZ_FILE = "data/manual_quiz.json"
 CHALLENGE_FILE = "data/manual_challenges.json"
 
-# --- 2. VERİ MODELLERİ (main.py ile aynı olmalı) ---
-class DailyInfo(SQLModel, table=True): id: Optional[int] = Field(default=None, primary_key=True); info_texts: str; category: str = Field(index=True); source: Optional[str] = None
-class QuizQuestion(SQLModel, table=True): id: Optional[int] = Field(default=None, primary_key=True); question_texts: str; options_texts: str; correct_answer_index: int; category: str = Field(index=True)
-class Challenge(SQLModel, table=True): id: Optional[int] = Field(default=None, primary_key=True); challenge_texts: str; category: str = Field(default="fun", index=True)
+
+# --- 2. VERİ MODELLERİ (server.models içinden import edilmeye çalışılır) ---
+try:
+    from server.models import DailyInfo, QuizQuestion, Challenge
+except ImportError:
+    class DailyInfo(SQLModel, table=True):
+        id: Optional[int] = Field(default=None, primary_key=True)
+        info_texts: str
+        category: str = Field(index=True)
+        source: Optional[str] = None
+    class QuizQuestion(SQLModel, table=True):
+        id: Optional[int] = Field(default=None, primary_key=True)
+        question_texts: str
+        options_texts: str
+        correct_answer_index: int
+        category: str = Field(index=True)
+    class Challenge(SQLModel, table=True):
+        id: Optional[int] = Field(default=None, primary_key=True)
+        challenge_texts: str
+        category: str = Field(default="fun", index=True)
 
 def create_db_and_tables(): 
     SQLModel.metadata.create_all(engine)

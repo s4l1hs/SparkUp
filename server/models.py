@@ -64,6 +64,14 @@ class QuizQuestion(SQLModel, table=True):
     category: str = Field(index=True)
 
 
+# DailyInfo modeli eklendi (seed_manual.py ile uyumlu)
+class DailyInfo(SQLModel, table=True):
+    id: Optional[int] = Field(default=None, primary_key=True)
+    info_texts: str
+    category: str = Field(index=True)
+    source: Optional[str] = None
+
+
 class Challenge(SQLModel, table=True):
     id: Optional[int] = Field(default=None, primary_key=True)
     challenge_texts: str
