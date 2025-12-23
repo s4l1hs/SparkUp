@@ -73,7 +73,6 @@ class _SettingsPageState extends State<SettingsPage> with SingleTickerProviderSt
   Future<void> _loadUserProfile() async {
     if (!mounted) return;
     final localizations = AppLocalizations.of(context);
-    final localeProvider = Provider.of<LocaleProvider>(context, listen: false);
     setState(() => _isLoadingProfile = true);
     try {
       final token = await _getIdToken();
@@ -93,10 +92,17 @@ class _SettingsPageState extends State<SettingsPage> with SingleTickerProviderSt
         final score = (profile['score'] as int?) ?? 0;
         final notifications = (profile['notifications_enabled'] as bool?) ?? true;
 
+        // determine effective language to display: prefer backend if explicit,
+        // but do NOT let a backend 'en' override device/provider when user hasn't chosen language
+        final localeProvider = Provider.of<LocaleProvider>(context, listen: false);
+        String effectiveLang = localeProvider.locale.languageCode;
+        if (languageCode != null && languageCode.isNotEmpty) {
+          if (!(languageCode == 'en' && !localeProvider.userSetLanguage)) {
+            effectiveLang = languageCode;
+          }
+        }
         setState(() {
-          // If backend provides a languageCode use it, otherwise keep current provider locale
-          final localeProvider = Provider.of<LocaleProvider>(context, listen: false);
-          _currentLanguageCode = languageCode ?? localeProvider.locale.languageCode;
+          _currentLanguageCode = effectiveLang;
           _username = (firebaseName != null && firebaseName.isNotEmpty) ? firebaseName : (backendUsername.isNotEmpty ? backendUsername : null);
           _userScore = score;
           _notificationsEnabled = notifications;
