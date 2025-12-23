@@ -398,7 +398,14 @@ class _QuizPageState extends State<QuizPage> with TickerProviderStateMixin {
                           },
                         ),
 
-                        // floating award
+                        // main content
+                        AnimatedSwitcher(
+                          duration: const Duration(milliseconds: 420),
+                          child: _isQuizActive && _questions.isNotEmpty
+                              ? _buildQuizView(context, localizations, theme, currentStreak)
+                              : _buildStartView(context, localizations, theme),
+                        ),
+                        // floating award (moved after main content so it sits above popups)
                         if (_showAward)
                           Positioned(
                             top: 120.h,
@@ -419,14 +426,6 @@ class _QuizPageState extends State<QuizPage> with TickerProviderStateMixin {
                               ),
                             ),
                           ),
-
-                        // main content
-                        AnimatedSwitcher(
-                          duration: const Duration(milliseconds: 420),
-                          child: _isQuizActive && _questions.isNotEmpty
-                              ? _buildQuizView(context, localizations, theme, currentStreak)
-                              : _buildStartView(context, localizations, theme),
-                        ),
                       ],
                     ),
                   );
