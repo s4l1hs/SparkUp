@@ -15,28 +15,17 @@ engine = create_engine(DATABASE_URL, echo=False)
 
 INFO_FILE = "data/manual_info.json"
 QUIZ_FILE = "data/manual_quiz.json"
+# Challenges removed from codebase; do not attempt to seed them.
 CHALLENGE_FILE = "data/manual_challenges.json"
 
 
-# --- 2. VERİ MODELLERİ (server.models içinden import edilmeye çalışılır) ---
+# Import required models from server.models. Challenges were removed from the
+# codebase — only import DailyInfo and QuizQuestion. If these are missing,
+# abort so we don't attempt to redefine models and cause table conflicts.
 try:
-    from server.models import DailyInfo, QuizQuestion, Challenge
-except ImportError:
-    class DailyInfo(SQLModel, table=True):
-        id: Optional[int] = Field(default=None, primary_key=True)
-        info_texts: str
-        category: str = Field(index=True)
-        source: Optional[str] = None
-    class QuizQuestion(SQLModel, table=True):
-        id: Optional[int] = Field(default=None, primary_key=True)
-        question_texts: str
-        options_texts: str
-        correct_answer_index: int
-        category: str = Field(index=True)
-    class Challenge(SQLModel, table=True):
-        id: Optional[int] = Field(default=None, primary_key=True)
-        challenge_texts: str
-        category: str = Field(default="fun", index=True)
+    from server.models import DailyInfo, QuizQuestion
+except ImportError as e:
+    raise RuntimeError("server.models must define DailyInfo and QuizQuestion for seeding") from e
 
 def create_db_and_tables(): 
     SQLModel.metadata.create_all(engine)
@@ -63,18 +52,8 @@ def seed_database_manual():
     with Session(engine) as session:
         
         # --- 1. Challenge'ları Doldurma ---
-        challenge_data = load_json_data(CHALLENGE_FILE)
-        if challenge_data and not session.exec(select(Challenge)).first():
-            print(f"\n💪 {len(challenge_data)} adet Challenge yükleniyor...")
-            for item in challenge_data:
-                session.add(Challenge(
-                    challenge_texts=json.dumps(item["challenge_texts"], ensure_ascii=False),
-                    category=item.get("category", "fun")
-                ))
-            session.commit()
-            print(f"✅ {len(challenge_data)} Challenge eklendi.")
-        else:
-            print("☑️ Challenge'lar zaten mevcut veya dosya boş.")
+        # Challenges have been removed from the app; skip seeding them.
+        print("ℹ️ Challenges are deprecated and will not be seeded.")
             
         # --- 2. Bilgileri (DailyInfo) Doldurma ---
         info_data = load_json_data(INFO_FILE)

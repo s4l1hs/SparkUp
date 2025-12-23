@@ -10,9 +10,8 @@ from .auth import get_current_user
 from .db import get_session
 from .models import (
     User, UserScore, UserStreak, UserSubscription, DailyLimits,
-    UserAnsweredQuestion, QuizQuestion, AnswerPayload, AnswerResponse,
-    UserScoreHistory, Challenge, UserCompletedChallenge, ChallengeResponse,
-    DeviceToken, DeviceTokenPayload, NotificationMetric, UserSeenInfo
+    UserAnsweredQuestion, UserAnswerRecord, QuizQuestion, AnswerPayload, AnswerResponse,
+    UserScoreHistory, DeviceToken, DeviceTokenPayload, NotificationMetric, UserSeenInfo
 )
 import os
 from .config import TRANSLATIONS, MANUAL_INFOS, NOTIFICATION_FREQUENCY
@@ -193,6 +192,11 @@ def submit_quiz_answer(payload: AnswerPayload, db_user: User = Depends(get_curre
             user_streak.streak_count = 0
 
         session.add(UserAnsweredQuestion(user_id=db_user.id, quizquestion_id=payload.question_id))
+        # persist answer record for analysis
+        try:
+            session.add(UserAnswerRecord(user_id=db_user.id, quizquestion_id=payload.question_id, correct=bool(is_correct)))
+        except Exception:
+            pass
         limits.questions_answered = (limits.questions_answered or 0) + 1
 
         session.add(user_score); session.add(user_streak); session.add(limits)
@@ -200,6 +204,41 @@ def submit_quiz_answer(payload: AnswerPayload, db_user: User = Depends(get_curre
         session.refresh(user_score); session.refresh(user_streak); session.refresh(limits)
 
     return AnswerResponse(correct=is_correct, correct_index=question.correct_answer_index, score_awarded=score_awarded, new_score=user_score.score)
+
+
+@router.get("/user/analysis/")
+def get_user_analysis(db_user: User = Depends(get_current_user), session = Depends(get_session)):
+    """Return per-topic correctness percentages for the requesting user."""
+    try:
+        rows = session.exec(
+            select(UserAnswerRecord, QuizQuestion)
+            .join(QuizQuestion, UserAnswerRecord.quizquestion_id == QuizQuestion.id)
+            .where(UserAnswerRecord.user_id == db_user.id)
+        ).all()
+        stats: Dict[str, Dict[str, int]] = {}
+        for pair in rows:
+            # pair is (UserAnswerRecord, QuizQuestion)
+            rec = pair[0]
+            q = pair[1]
+            cat = getattr(q, 'category', 'unknown') or 'unknown'
+            if cat not in stats:
+                stats[cat] = {'correct': 0, 'total': 0}
+            stats[cat]['total'] += 1
+            if getattr(rec, 'correct', False):
+                stats[cat]['correct'] += 1
+
+        out = []
+        for cat, vals in stats.items():
+            total = vals['total']
+            correct = vals['correct']
+            pct = int(round((correct / total) * 100)) if total > 0 else 0
+            out.append({'category': cat, 'correct': correct, 'total': total, 'percent': pct})
+
+        # sort descending by percent
+        out.sort(key=lambda x: x['percent'], reverse=True)
+        return {'analysis': out}
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
 
 
 @router.put("/user/language/")
@@ -215,93 +254,7 @@ def set_user_language(language_code: str = Query(...), db_user: User = Depends(g
         raise HTTPException(status_code=500, detail=f"Failed to update language: {e}")
 
 
-@router.get("/challenges/random/", response_model=ChallengeResponse)
-def get_random_challenge(lang: Optional[str] = Query(None), preview: bool = Query(False), consume: bool = Query(True), db_user: User = Depends(get_current_user), session = Depends(get_session)):
-    effective_lang = lang or (db_user.language_code if db_user.language_code else "en")
-    access = _get_user_access_level(db_user, session)
 
-    if not preview:
-        fresh_limits = session.exec(select(DailyLimits).where(DailyLimits.user_id == db_user.id)).first()
-        cur_count = fresh_limits.challenge_count if fresh_limits else 0
-        if access["challenge_limit"] != float('inf') and cur_count >= access["challenge_limit"] and access["level"] != "ultra":
-            tpl = TRANSLATIONS.get("daily_challenge_limit_reached", {}).get(effective_lang) or TRANSLATIONS["daily_challenge_limit_reached"]["en"]
-            return PlainTextResponse(tpl.format(limit=access["challenge_limit"]), status_code=429)
-
-    if preview:
-        all_ch = session.exec(select(Challenge)).all()
-        if not all_ch:
-            raise HTTPException(status_code=404, detail="No challenges available.")
-        chosen_challenge = random.choice(all_ch)
-        texts = {}
-        try:
-            texts = json.loads(chosen_challenge.challenge_texts or "{}")
-        except Exception:
-            texts = {}
-        challenge_text = texts.get(effective_lang) or texts.get("en") or ""
-        return ChallengeResponse(id=chosen_challenge.id, challenge_text=challenge_text, category=chosen_challenge.category)
-
-    completed_ids_raw = session.exec(select(UserCompletedChallenge.challenge_id).where(UserCompletedChallenge.user_id == db_user.id)).all()
-    completed_ids = []
-    for item in completed_ids_raw:
-        if isinstance(item, (list, tuple)):
-            if item:
-                completed_ids.append(item[0])
-        else:
-            completed_ids.append(item)
-
-    unanswered = session.exec(select(Challenge).where(Challenge.id.notin_(completed_ids))).all()
-
-    if not unanswered:
-        fresh_limits = session.exec(select(DailyLimits).where(DailyLimits.user_id == db_user.id)).first()
-        cur_count = fresh_limits.challenge_count if fresh_limits else 0
-        if access["challenge_limit"] != float('inf') and cur_count >= access["challenge_limit"] and access["level"] != "ultra":
-            tpl = TRANSLATIONS.get("daily_challenge_limit_reached", {}).get(effective_lang) or TRANSLATIONS["daily_challenge_limit_reached"]["en"]
-            return PlainTextResponse(tpl.format(limit=access["challenge_limit"]), status_code=429)
-
-        if consume:
-            session.exec(delete(UserCompletedChallenge).where(UserCompletedChallenge.user_id == db_user.id))
-            session.commit()
-            unanswered = session.exec(select(Challenge)).all()
-            if not unanswered:
-                raise HTTPException(status_code=404, detail="No challenges available.")
-        else:
-            all_ch = session.exec(select(Challenge)).all()
-            if not all_ch:
-                raise HTTPException(status_code=404, detail="No challenges available.")
-            chosen_challenge = random.choice(all_ch)
-            texts = {}
-            try:
-                texts = json.loads(chosen_challenge.challenge_texts or "{}")
-            except Exception:
-                texts = {}
-            challenge_text = texts.get(effective_lang) or texts.get("en") or ""
-            return ChallengeResponse(id=chosen_challenge.id, challenge_text=challenge_text, category=chosen_challenge.category)
-
-    chosen_challenge = random.choice(unanswered)
-
-    if consume:
-        fresh_limits = session.exec(select(DailyLimits).where(DailyLimits.user_id == db_user.id)).first()
-        cur_count = fresh_limits.challenge_count if fresh_limits else 0
-        if access["challenge_limit"] != float('inf') and cur_count >= access["challenge_limit"] and access["level"] != "ultra":
-            tpl = TRANSLATIONS.get("daily_challenge_limit_reached", {}).get(effective_lang) or TRANSLATIONS["daily_challenge_limit_reached"]["en"]
-            return PlainTextResponse(tpl.format(limit=access["challenge_limit"]), status_code=429)
-
-        session.add(UserCompletedChallenge(user_id=db_user.id, challenge_id=chosen_challenge.id))
-        if fresh_limits:
-            fresh_limits.challenge_count = (fresh_limits.challenge_count or 0) + 1
-            session.add(fresh_limits)
-        else:
-            new_limits = DailyLimits(user_id=db_user.id, challenge_count=1)
-            session.add(new_limits)
-        session.commit()
-
-    texts = {}
-    try:
-        texts = json.loads(chosen_challenge.challenge_texts or "{}")
-    except Exception:
-        texts = {}
-    challenge_text = texts.get(effective_lang) or texts.get("en") or ""
-    return ChallengeResponse(id=chosen_challenge.id, challenge_text=challenge_text, category=chosen_challenge.category)
 
 
 @router.get("/leaderboard/")
@@ -387,19 +340,10 @@ def localize_quiz(ids: str = Query(..., description="Comma separated quiz ids"),
     return result
 
 
-@router.get("/challenges/{challenge_id}/localize/", response_model=ChallengeResponse)
+@router.get("/challenges/{challenge_id}/localize/")
 def localize_challenge(challenge_id: int, lang: Optional[str] = Query(None), session = Depends(get_session)):
-    effective_lang = lang or "en"
-    ch = session.get(Challenge, challenge_id)
-    if not ch:
-        raise HTTPException(status_code=404, detail="Challenge not found.")
-    texts = {}
-    try:
-        texts = json.loads(ch.challenge_texts or "{}")
-    except Exception:
-        texts = {}
-    challenge_text = texts.get(effective_lang) or texts.get("en") or ""
-    return ChallengeResponse(id=ch.id, challenge_text=challenge_text, category=ch.category)
+    # Challenge localization removed — this endpoint is deprecated.
+    raise HTTPException(status_code=404, detail="Challenges are no longer available.")
 
 
 @router.get("/info/random/")

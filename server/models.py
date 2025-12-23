@@ -72,20 +72,22 @@ class DailyInfo(SQLModel, table=True):
     source: Optional[str] = None
 
 
-class Challenge(SQLModel, table=True):
-    id: Optional[int] = Field(default=None, primary_key=True)
-    challenge_texts: str
-    category: str = Field(default="fun", index=True)
-
 
 class UserAnsweredQuestion(SQLModel, table=True):
     user_id: int = Field(foreign_key="user.id", primary_key=True)
     quizquestion_id: int = Field(foreign_key="quizquestion.id", primary_key=True)
 
 
-class UserCompletedChallenge(SQLModel, table=True):
-    user_id: int = Field(foreign_key="user.id", primary_key=True)
-    challenge_id: int = Field(foreign_key="challenge.id", primary_key=True)
+class UserAnswerRecord(SQLModel, table=True):
+    """Persisted record of each answer attempt with correctness for analysis."""
+    id: Optional[int] = Field(default=None, primary_key=True)
+    user_id: int = Field(foreign_key="user.id", index=True)
+    quizquestion_id: int = Field(foreign_key="quizquestion.id", index=True)
+    correct: bool = Field(default=False)
+    timestamp: Optional[date] = Field(default_factory=date.today)
+
+
+
 
 
 class AnswerPayload(SQLModel):
@@ -100,10 +102,7 @@ class AnswerResponse(SQLModel):
     new_score: int
 
 
-class ChallengeResponse(SQLModel):
-    id: int
-    challenge_text: str
-    category: str
+ 
 
 
 class DeviceToken(SQLModel, table=True):

@@ -8,8 +8,7 @@ import 'l10n/app_localizations.dart';
 import 'package:provider/provider.dart';
 import 'providers/user_provider.dart';
 import 'locale_provider.dart';
-import 'dart:ui';
-import 'pages/challenge_page.dart';
+import 'pages/analysis_page.dart';
 import 'pages/subscription_page.dart';
 import 'pages/leaderboard_page.dart';
 import 'pages/quiz_page.dart';
@@ -39,10 +38,12 @@ class MainScreenState extends State<MainScreen> with TickerProviderStateMixin {
     super.initState();
     // Load user profile after first frame and set app locale accordingly
     WidgetsBinding.instance.addPostFrameCallback((_) async {
+      // Capture providers before awaiting to avoid using BuildContext across async gaps.
       final userProvider = Provider.of<UserProvider>(context, listen: false);
-      await userProvider.loadProfile(widget.idToken);
-      final lang = userProvider.profile?.languageCode;
       final localeProvider = Provider.of<LocaleProvider>(context, listen: false);
+      await userProvider.loadProfile(widget.idToken);
+      if (!mounted) return;
+      final lang = userProvider.profile?.languageCode;
       // Sadece languageCode varsa localeProvider.setLocale çağrılır
       if (lang != null && lang.isNotEmpty) {
         // If backend returns 'en' but user hasn't chosen a language, prefer device locale
@@ -50,7 +51,7 @@ class MainScreenState extends State<MainScreen> with TickerProviderStateMixin {
           // skip setting to English
         } else {
           localeProvider.setLocale(lang);
-          if (mounted) setState(() {});
+          setState(() {});
         }
       }
       // languageCode yoksa, cihaz diliyle başlatılır ve tekrar İngilizceye dönmez
@@ -59,7 +60,7 @@ class MainScreenState extends State<MainScreen> with TickerProviderStateMixin {
       LeaderboardPage(idToken: widget.idToken),
       SubscriptionPage(idToken: widget.idToken),
       QuizPage(idToken: widget.idToken),
-      ChallengePage(idToken: widget.idToken),
+      AnalysisPage(idToken: widget.idToken),
       const SettingsPage(),
     ];
     _bounceController = AnimationController(vsync: this, duration: const Duration(milliseconds: 420));
@@ -85,7 +86,7 @@ class MainScreenState extends State<MainScreen> with TickerProviderStateMixin {
       {'icon': Icons.leaderboard_outlined, 'label': localizations.navMainMenu, 'color': Colors.indigo},
       {'icon': Icons.subscriptions, 'label': localizations.subscriptions, 'color': Colors.teal},
       {'icon': Icons.quiz_outlined, 'label': localizations.navQuiz, 'color': Colors.deepOrange},
-      {'icon': Icons.whatshot_outlined, 'label': localizations.navChallenge, 'color': Colors.amber},
+      {'icon': Icons.analytics_outlined, 'label': 'Analysis', 'color': Colors.amber},
       {'icon': Icons.settings_outlined, 'label': localizations.navSettings, 'color': Colors.grey},
     ];
     // Start or stop nav pulse depending on reduced-motion preference

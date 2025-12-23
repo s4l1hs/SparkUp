@@ -5,7 +5,7 @@ import os
 import importlib.util
 from sqlmodel import Session, select
 from server.db import engine
-from server.models import QuizQuestion, DailyInfo, Challenge
+from server.models import QuizQuestion, DailyInfo
 
 def _auto_seed_if_needed():
 	from server.db import create_db_and_tables
@@ -17,8 +17,7 @@ def _auto_seed_if_needed():
 			needs_seed = True
 		if not session.exec(select(DailyInfo)).first():
 			needs_seed = True
-		if not session.exec(select(Challenge)).first():
-			needs_seed = True
+		# Challenge content removed from backend; no seed check required
 		if needs_seed:
 			print("[main.py] Otomatik veri yükleme başlatılıyor...")
 			# seed_manual.py scriptini import edip çalıştır

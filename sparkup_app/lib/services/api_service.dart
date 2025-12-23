@@ -157,6 +157,17 @@ class ApiService {
       throw Exception('Failed to load leaderboard. Status: ${response.statusCode}, Body: ${response.body}');
     }
   }
+
+  // Kullanıcı analiz verilerini getirir (category correctness)
+  Future<Map<String, dynamic>> getUserAnalysis(String idToken) async {
+    final uri = Uri.parse('$backendBaseUrl/user/analysis/');
+    final resp = await http.get(uri, headers: _getAuthHeaders(idToken));
+    if (resp.statusCode == 200) {
+      return _decodeResponseBody(resp.bodyBytes) as Map<String, dynamic>;
+    } else {
+      throw Exception('Failed to load analysis (${resp.statusCode})');
+    }
+  }
   
   // Kullanıcının kendi sıralama ve puan bilgisini getirir
   Future<LeaderboardEntry?> getUserRank(String idToken) async {
