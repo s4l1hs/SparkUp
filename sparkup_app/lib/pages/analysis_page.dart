@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-// api service not used here; provider handles fetching
-import 'package:sparkup_app/utils/color_utils.dart';
 import 'package:provider/provider.dart';
 import '../providers/analysis_provider.dart';
 
@@ -17,7 +15,6 @@ class _AnalysisPageState extends State<AnalysisPage> {
   @override
   void initState() {
     super.initState();
-    // kick off initial load via provider after first frame
     WidgetsBinding.instance.addPostFrameCallback((_) {
       try {
         final prov = Provider.of<AnalysisProvider>(context, listen: false);
@@ -26,76 +23,282 @@ class _AnalysisPageState extends State<AnalysisPage> {
     });
   }
 
+  // Başarı oranına göre renk döndüren yardımcı fonksiyon
+  Color _getPerformanceColor(int percent, ColorScheme scheme) {
+    if (percent >= 80) return Colors.greenAccent.shade700;
+    if (percent >= 50) return Colors.orangeAccent.shade700;
+    return scheme.error;
+  }
+
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
     final prov = Provider.of<AnalysisProvider>(context);
 
-    return Scaffold(
-      backgroundColor: theme.colorScheme.surface,
-      body: Padding(
-        padding: EdgeInsets.symmetric(horizontal: 16.w, vertical: 20.h),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Text('Performance Analysis', style: TextStyle(fontSize: 22.sp, fontWeight: FontWeight.bold, color: theme.colorScheme.primary)),
-            SizedBox(height: 12.h),
-            if (prov.isLoading) Center(child: CircularProgressIndicator(color: theme.colorScheme.primary)),
-            if (prov.error != null) Center(child: Text(prov.error!)),
-            if (!prov.isLoading && prov.error == null)
-              Expanded(
-                child: prov.items.isEmpty
-                    ? Center(child: Text('No analysis data yet'))
-                    : ListView.separated(
-                        itemCount: prov.items.length,
-                        separatorBuilder: (c, i) => SizedBox(height: 12.h),
-                        itemBuilder: (c, i) {
-                          final it = prov.items[i];
-                          final category = it['category'] ?? 'unknown';
-                          final percent = (it['percent'] ?? 0) as int;
-                          final correct = it['correct'] ?? 0;
-                          final total = it['total'] ?? 0;
+    final avgPercent = prov.items.isEmpty
+        ? 0
+        : (prov.items.map((e) => (e['percent'] ?? 0) as int).reduce((a, b) => a + b) ~/ prov.items.length);
 
-                          return Container(
-                            padding: EdgeInsets.all(12.w),
-                            decoration: BoxDecoration(
-                              color: theme.colorScheme.surface,
-                              borderRadius: BorderRadius.circular(12.r),
-                              boxShadow: [BoxShadow(color: Colors.black12, blurRadius: 8.r, offset: Offset(0,2))],
-                            ),
-                            child: Row(
-                              children: [
-                                Container(
-                                  width: 84.w,
-                                  height: 84.w,
-                                  decoration: BoxDecoration(
-                                    shape: BoxShape.circle,
-                                    gradient: LinearGradient(colors: [theme.colorScheme.primary, theme.colorScheme.secondary]),
-                                  ),
-                                  child: Center(
-                                    child: Text('$percent%', style: TextStyle(color: Colors.white, fontSize: 20.sp, fontWeight: FontWeight.bold)),
-                                  ),
-                                ),
-                                SizedBox(width: 12.w),
-                                Expanded(
-                                  child: Column(
-                                    crossAxisAlignment: CrossAxisAlignment.start,
-                                    children: [
-                                      Text(category, style: TextStyle(fontSize: 16.sp, fontWeight: FontWeight.w600)),
-                                      SizedBox(height: 6.h),
-                                      Text('Correctness: $correct/$total', style: TextStyle(color: colorWithOpacity(theme.colorScheme.onSurface, 0.7))),
-                                    ],
-                                  ),
-                                ),
-                                Icon(Icons.chevron_right, color: colorWithOpacity(theme.colorScheme.onSurface, 0.4)),
-                              ],
-                            ),
-                          );
-                        },
-                      ),
+    return Scaffold(
+      backgroundColor: theme.colorScheme.surface, // Arka planı hafif gri/beyaz tutuyoruz
+      body: Stack(
+        children: [
+          // Arka plana hafif dekoratif bir gradient veya desen atabiliriz (Opsiyonel)
+          Positioned(
+            top: -100.h,
+            right: -100.w,
+            child: Container(
+              width: 300.w,
+              height: 300.w,
+              decoration: BoxDecoration(
+                shape: BoxShape.circle,
+                color: theme.colorScheme.primary.withOpacity(0.05),
               ),
-          ],
-        ),
+            ),
+          ),
+          
+          SafeArea(
+            child: Padding(
+              padding: EdgeInsets.symmetric(horizontal: 20.w),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  SizedBox(height: 10.h),
+                  // Başlık
+                  Text(
+                    'Performance',
+                    style: TextStyle(
+                      fontSize: 28.sp, 
+                      fontWeight: FontWeight.w800, 
+                      color: theme.colorScheme.onSurface,
+                      letterSpacing: -0.5,
+                    ),
+                  ),
+                  SizedBox(height: 4.h),
+                  Text(
+                    'Track your progress and improve.',
+                    style: TextStyle(color: theme.colorScheme.onSurface.withOpacity(0.6), fontSize: 14.sp),
+                  ),
+                  
+                  SizedBox(height: 24.h),
+
+                  // --- HERO CARD (Genel Durum) ---
+                  Container(
+                    width: double.infinity,
+                    padding: EdgeInsets.all(20.w),
+                    decoration: BoxDecoration(
+                      gradient: LinearGradient(
+                        colors: [theme.colorScheme.primary, theme.colorScheme.secondary],
+                        begin: Alignment.topLeft,
+                        end: Alignment.bottomRight,
+                      ),
+                      borderRadius: BorderRadius.circular(24.r),
+                      boxShadow: [
+                        BoxShadow(
+                          color: theme.colorScheme.primary.withOpacity(0.4),
+                          blurRadius: 20.r,
+                          offset: Offset(0, 10.h),
+                        ),
+                      ],
+                    ),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Text(
+                              'Overall Score',
+                              style: TextStyle(color: Colors.white.withOpacity(0.9), fontSize: 16.sp, fontWeight: FontWeight.w600),
+                            ),
+                            SizedBox(height: 8.h),
+                            // Animasyonlu Sayı
+                            TweenAnimationBuilder<int>(
+                              tween: IntTween(begin: 0, end: avgPercent),
+                              duration: const Duration(milliseconds: 1500),
+                              curve: Curves.easeOutExpo,
+                              builder: (context, value, child) {
+                                return Text(
+                                  '$value%',
+                                  style: TextStyle(color: Colors.white, fontSize: 42.sp, fontWeight: FontWeight.bold),
+                                );
+                              },
+                            ),
+                            SizedBox(height: 4.h),
+                            Container(
+                              padding: EdgeInsets.symmetric(horizontal: 8.w, vertical: 4.h),
+                              decoration: BoxDecoration(
+                                color: Colors.white.withOpacity(0.2),
+                                borderRadius: BorderRadius.circular(8.r),
+                              ),
+                              child: Text(
+                                avgPercent > 70 ? 'Excellent Job! 🚀' : 'Keep Pushing! 💪',
+                                style: TextStyle(color: Colors.white, fontSize: 12.sp, fontWeight: FontWeight.w500),
+                              ),
+                            )
+                          ],
+                        ),
+                        // Sağ tarafa dekoratif bir Progress Circle
+                        SizedBox(
+                          width: 80.w,
+                          height: 80.w,
+                          child: Stack(
+                            fit: StackFit.expand,
+                            children: [
+                              CircularProgressIndicator(
+                                value: avgPercent / 100,
+                                strokeWidth: 8.w,
+                                backgroundColor: Colors.white.withOpacity(0.2),
+                                valueColor: const AlwaysStoppedAnimation(Colors.white),
+                                strokeCap: StrokeCap.round,
+                              ),
+                              Center(
+                                child: Icon(Icons.insights, color: Colors.white, size: 32.sp),
+                              ),
+                            ],
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+
+                  SizedBox(height: 24.h),
+                  
+                  Text(
+                    'Category Breakdown',
+                    style: TextStyle(fontSize: 18.sp, fontWeight: FontWeight.bold, color: theme.colorScheme.onSurface),
+                  ),
+                  SizedBox(height: 12.h),
+
+                  // --- LİSTE VE DURUMLAR ---
+                  if (prov.isLoading) 
+                    Expanded(child: Center(child: CircularProgressIndicator(color: theme.colorScheme.primary))),
+                  
+                  if (prov.error != null) 
+                    Expanded(child: Center(child: Text(prov.error!, style: TextStyle(color: theme.colorScheme.error)))),
+
+                  if (!prov.isLoading && prov.error == null)
+                    Expanded(
+                      child: prov.items.isEmpty
+                          ? Center(
+                              child: Column(
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                children: [
+                                  Icon(Icons.analytics_outlined, size: 64.sp, color: theme.colorScheme.onSurface.withOpacity(0.2)),
+                                  SizedBox(height: 16.h),
+                                  Text('No data available yet', style: TextStyle(color: theme.colorScheme.onSurface.withOpacity(0.5))),
+                                ],
+                              ),
+                            )
+                          : ListView.separated(
+                              physics: const BouncingScrollPhysics(),
+                              itemCount: prov.items.length,
+                              separatorBuilder: (c, i) => SizedBox(height: 16.h),
+                              itemBuilder: (c, i) {
+                                final it = prov.items[i];
+                                final category = it['category'] ?? 'Unknown';
+                                final percent = (it['percent'] ?? 0) as int;
+                                final correct = it['correct'] ?? 0;
+                                final total = it['total'] ?? 0;
+
+                                // Her bir item için animasyon
+                                return TweenAnimationBuilder<double>(
+                                  tween: Tween(begin: 0, end: 1),
+                                  duration: Duration(milliseconds: 400 + (i * 100)), // Kademeli giriş (Staggered animation)
+                                  curve: Curves.easeOutQuad,
+                                  builder: (context, value, child) {
+                                    return Opacity(
+                                      opacity: value,
+                                      child: Transform.translate(
+                                        offset: Offset(0, 20 * (1 - value)),
+                                        child: child,
+                                      ),
+                                    );
+                                  },
+                                  child: Container(
+                                    padding: EdgeInsets.all(16.w),
+                                    decoration: BoxDecoration(
+                                      color: theme.cardColor,
+                                      borderRadius: BorderRadius.circular(20.r),
+                                      boxShadow: [
+                                        BoxShadow(
+                                          color: Colors.black.withOpacity(0.04),
+                                          blurRadius: 10.r,
+                                          offset: const Offset(0, 4),
+                                        ),
+                                      ],
+                                      border: Border.all(color: theme.colorScheme.outline.withOpacity(0.05)),
+                                    ),
+                                    child: Column(
+                                      children: [
+                                        Row(
+                                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                          children: [
+                                            Column(
+                                              crossAxisAlignment: CrossAxisAlignment.start,
+                                              children: [
+                                                Text(
+                                                  category,
+                                                  style: TextStyle(
+                                                    fontSize: 16.sp, 
+                                                    fontWeight: FontWeight.w700,
+                                                    color: theme.colorScheme.onSurface
+                                                  ),
+                                                ),
+                                                SizedBox(height: 4.h),
+                                                Text(
+                                                  '$correct / $total Correct',
+                                                  style: TextStyle(
+                                                    fontSize: 12.sp, 
+                                                    color: theme.colorScheme.onSurface.withOpacity(0.5),
+                                                    fontWeight: FontWeight.w500
+                                                  ),
+                                                ),
+                                              ],
+                                            ),
+                                            Container(
+                                              padding: EdgeInsets.symmetric(horizontal: 10.w, vertical: 6.h),
+                                              decoration: BoxDecoration(
+                                                color: _getPerformanceColor(percent, theme.colorScheme).withOpacity(0.1),
+                                                borderRadius: BorderRadius.circular(12.r),
+                                              ),
+                                              child: Text(
+                                                '$percent%',
+                                                style: TextStyle(
+                                                  color: _getPerformanceColor(percent, theme.colorScheme),
+                                                  fontWeight: FontWeight.bold,
+                                                  fontSize: 14.sp,
+                                                ),
+                                              ),
+                                            ),
+                                          ],
+                                        ),
+                                        SizedBox(height: 12.h),
+                                        // Modern Progress Bar
+                                        ClipRRect(
+                                          borderRadius: BorderRadius.circular(10.r),
+                                          child: LinearProgressIndicator(
+                                            value: percent / 100.0,
+                                            minHeight: 10.h,
+                                            backgroundColor: theme.colorScheme.surfaceContainerHighest, // flutter 3.22+ ise, yoksa grey.shade200
+                                            valueColor: AlwaysStoppedAnimation(
+                                              _getPerformanceColor(percent, theme.colorScheme),
+                                            ),
+                                          ),
+                                        ),
+                                      ],
+                                    ),
+                                  ),
+                                );
+                              },
+                            ),
+                    ),
+                  SizedBox(height: 10.h),
+                ],
+              ),
+            ),
+          ),
+        ],
       ),
     );
   }
