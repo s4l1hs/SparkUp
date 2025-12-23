@@ -9,7 +9,7 @@ import 'package:provider/provider.dart';
 import 'providers/user_provider.dart';
 import 'locale_provider.dart';
 import 'pages/analysis_page.dart';
-import 'pages/subscription_page.dart';
+import 'pages/truefalse_page.dart';
 import 'pages/leaderboard_page.dart';
 import 'pages/quiz_page.dart';
 import 'pages/settings_page.dart';
@@ -58,7 +58,7 @@ class MainScreenState extends State<MainScreen> with TickerProviderStateMixin {
     });
     _pages = <Widget>[
       LeaderboardPage(idToken: widget.idToken),
-      SubscriptionPage(idToken: widget.idToken),
+      TrueFalsePage(idToken: widget.idToken),
       QuizPage(idToken: widget.idToken),
       AnalysisPage(idToken: widget.idToken),
       const SettingsPage(),
@@ -84,7 +84,7 @@ class MainScreenState extends State<MainScreen> with TickerProviderStateMixin {
     final localizations = AppLocalizations.of(context)!;
     _navItems = [
       {'icon': Icons.leaderboard_outlined, 'label': localizations.navMainMenu, 'color': Colors.indigo},
-      {'icon': Icons.subscriptions, 'label': localizations.subscriptions, 'color': Colors.teal},
+      {'icon': Icons.toggle_on, 'label': localizations.trueFalseTitle, 'color': Colors.teal},
       {'icon': Icons.quiz_outlined, 'label': localizations.navQuiz, 'color': Colors.deepOrange},
       {'icon': Icons.analytics_outlined, 'label': 'Analysis', 'color': Colors.amber},
       {'icon': Icons.settings_outlined, 'label': localizations.navSettings, 'color': Colors.grey},

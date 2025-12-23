@@ -14,7 +14,7 @@ from .models import (
     UserScoreHistory, DeviceToken, DeviceTokenPayload, NotificationMetric, UserSeenInfo
 )
 import os
-from .config import TRANSLATIONS, MANUAL_INFOS, NOTIFICATION_FREQUENCY
+from .config import TRANSLATIONS, MANUAL_INFOS, NOTIFICATION_FREQUENCY, MANUAL_TRUEFALSE, load_manual_truefalse
 from .utils import _get_info_text, _select_unseen_info_for_user, _send_notification_to_user, _get_user_access_level, _get_rank_name
 
 router = APIRouter()
@@ -338,6 +338,48 @@ def localize_quiz(ids: str = Query(..., description="Comma separated quiz ids"),
             "correct_answer_index": q.correct_answer_index
         })
     return result
+
+
+@router.get("/manual/truefalse/")
+def get_manual_truefalse():
+    """Return the list of manual true/false questions loaded from data/manual_truefalse.json.
+    This reads the in-memory `MANUAL_TRUEFALSE` list populated at startup by the server.
+    """
+    if not MANUAL_TRUEFALSE:
+        # Try an on-demand load from the repo-root data path in case startup loading failed.
+        try:
+            repo_root = os.path.dirname(os.path.dirname(__file__))
+            tf_path = os.path.join(repo_root, 'data', 'manual_truefalse.json')
+            if tf_path and os.path.exists(tf_path):
+                if __debug__:
+                    print(f"[on-demand] Attempting to load manual_truefalse from {tf_path}")
+                load_manual_truefalse(tf_path)
+        except Exception as e:
+            print(f"[on-demand] Failed to load manual_truefalse: {e}")
+
+    if not MANUAL_TRUEFALSE:
+        raise HTTPException(status_code=404, detail="No true/false questions available.")
+
+    return MANUAL_TRUEFALSE
+
+
+@router.get("/debug/manual_truefalse_status/")
+def debug_manual_truefalse_status():
+    """Debug endpoint: returns whether manual true/false questions are loaded and a small sample."""
+    try:
+        loaded = bool(MANUAL_TRUEFALSE)
+        count = len(MANUAL_TRUEFALSE) if loaded else 0
+        sample = MANUAL_TRUEFALSE[0] if loaded and len(MANUAL_TRUEFALSE) > 0 else None
+        # include any debug entries from the loader
+        debug_info = None
+        try:
+            from .config import MANUAL_TRUEFALSE_DEBUG
+            debug_info = MANUAL_TRUEFALSE_DEBUG
+        except Exception:
+            debug_info = None
+        return {"loaded": loaded, "count": count, "sample": sample, "debug": debug_info}
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
 
 
 @router.get("/challenges/{challenge_id}/localize/")

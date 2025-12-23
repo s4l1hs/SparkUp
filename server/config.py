@@ -48,6 +48,10 @@ NOTIFICATION_FREQUENCY = {"free": 1, "pro": 2, "ultra": 3}
 
 # runtime-loaded manual infos
 MANUAL_INFOS: List[Dict] = []
+# runtime-loaded manual true/false questions
+MANUAL_TRUEFALSE: List[Dict] = []
+# diagnostic info for why loading may have failed
+MANUAL_TRUEFALSE_DEBUG: List[Dict] = []
 
 def load_manual_infos(path: str = "data/manual_info.json"):
     global MANUAL_INFOS
@@ -59,6 +63,71 @@ def load_manual_infos(path: str = "data/manual_info.json"):
     except Exception as e:
         print(f"Failed to load {path}: {e}")
         MANUAL_INFOS = []
+
+
+def load_manual_truefalse(path: str = "data/manual_truefalse.json"):
+    """Load the manual true/false JSON from disk for runtime use.
+    The file is expected to be located at the repository root `data/` directory.
+    """
+    global MANUAL_TRUEFALSE
+    # Allow override via environment variable for debugging or deployed setups
+    env_path = os.getenv('MANUAL_TRUEFALSE_PATH')
+    candidates = [
+        path,
+        os.path.abspath(path),
+        os.path.join(os.path.dirname(os.path.dirname(__file__)), 'data', 'manual_truefalse.json'),
+        os.path.join(os.path.dirname(os.path.abspath(__file__)), '..', 'data', 'manual_truefalse.json'),
+        os.path.join(os.getcwd(), 'data', 'manual_truefalse.json'),
+    ]
+    if env_path:
+        candidates.insert(0, env_path)
+    loaded = False
+    print("[load_manual_truefalse] Candidate paths:")
+    MANUAL_TRUEFALSE_DEBUG.clear()
+    for p in candidates:
+        try:
+            exists = os.path.exists(p)
+        except Exception:
+            exists = False
+        print(f"  - {p} (exists={exists})")
+        MANUAL_TRUEFALSE_DEBUG.append({"path": p, "exists": exists})
+
+    import traceback
+    for p in candidates:
+        entry = {"path": p, "tried": False, "exists": False, "size": None, "error": None}
+        try:
+            if not os.path.exists(p):
+                # record and continue
+                MANUAL_TRUEFALSE_DEBUG.append({"path": p, "exists": False, "error": "not found"})
+                continue
+            entry["tried"] = True
+            entry["exists"] = True
+            try:
+                size = os.path.getsize(p)
+                entry["size"] = size
+            except Exception:
+                entry["size"] = None
+            print(f"Attempting to load manual_truefalse from {p} (size={entry['size']})")
+            with open(p, "r", encoding="utf-8") as f:
+                loaded_list = json.load(f)
+                if not isinstance(loaded_list, list):
+                    raise ValueError("manual_truefalse.json does not contain a JSON list")
+                # mutate existing list object so other modules that imported it see updates
+                MANUAL_TRUEFALSE.clear()
+                MANUAL_TRUEFALSE.extend(loaded_list)
+                print(f"Loaded manual_truefalse from {p}")
+                entry["loaded"] = True
+                MANUAL_TRUEFALSE_DEBUG.append(entry)
+                loaded = True
+                break
+        except Exception as e:
+            entry["error"] = str(e)
+            MANUAL_TRUEFALSE_DEBUG.append(entry)
+            print(f"Failed to load {p}: {e}")
+            traceback.print_exc()
+    if not loaded:
+        print(f"Failed to load manual_truefalse.json from any candidate path; MANUAL_TRUEFALSE empty")
+        MANUAL_TRUEFALSE.clear()
 
 
 # Try initializing Firebase Admin if credentials path provided

@@ -1,18 +1,9 @@
-// lib/pages/truefalse_page.dart
 
 import 'dart:async';
-import 'dart:convert';
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:provider/provider.dart';
-import '../l10n/app_localizations.dart';
-import '../providers/user_provider.dart';
-import '../providers/analysis_provider.dart';
-import '../locale_provider.dart';
-import 'package:sparkup_app/utils/color_utils.dart';
+import '../services/api_service.dart';
 
-enum TFAnswerState { unanswered, pending, revealed }
 
 class TrueFalsePage extends StatefulWidget {
   final String idToken;
@@ -23,288 +14,332 @@ class TrueFalsePage extends StatefulWidget {
 }
 
 class _TrueFalsePageState extends State<TrueFalsePage> with TickerProviderStateMixin {
-  List<Map<String, dynamic>> _questions = [];
+  List<dynamic> _questions = [];
   int _currentIndex = 0;
+  int _score = 0;
+  int _streak = 0; // Üst üste doğru sayısı
   bool _isLoading = true;
-  bool _answered = false;
-  TFAnswerState _answerState = TFAnswerState.unanswered;
-  bool? _selectedAnswer; // true/false
+  bool _isGameOver = false;
 
-  // score animation
-  late final AnimationController _scoreAnimController;
-  late final Animation<Offset> _scoreOffset;
-  int _lastAwarded = 0;
-  bool _showAward = false;
+  // Kart kaydırma pozisyonu (opsiyonel, swipe animasyonu için)
+  Offset _dragOffset = Offset.zero;
 
-  LocaleProvider? _localeProviderRef;
-  String? _lastLocale;
+  // Timer değişkenleri
+  Timer? _timer;
+  int _timeLeft = 60; // 60 saniye süre
+
+  // Animasyon kontrolcüleri (Kart kaydırma efekti için)
+  late AnimationController _swipeController;
 
   @override
   void initState() {
     super.initState();
-    _scoreAnimController = AnimationController(vsync: this, duration: const Duration(milliseconds: 700));
-    _scoreOffset = Tween<Offset>(begin: const Offset(0, 0.6), end: const Offset(0, -0.6)).animate(CurvedAnimation(parent: _scoreAnimController, curve: Curves.easeOut));
-    _scoreAnimController.addStatusListener((st) {
-      if (st == AnimationStatus.completed) {
-        Future.delayed(const Duration(milliseconds: 300), () {
-          if (mounted) setState(() => _showAward = false);
-        });
-      }
-    });
-
-    WidgetsBinding.instance.addPostFrameCallback((_) async {
-      try {
-        _localeProviderRef = Provider.of<LocaleProvider>(context, listen: false);
-        _localeProviderRef?.addListener(_onLocaleChanged);
-      } catch (_) {}
-      await _loadQuestions();
-    });
+    _swipeController = AnimationController(vsync: this, duration: const Duration(milliseconds: 300));
+    _loadQuestions();
   }
 
   @override
   void dispose() {
-    _scoreAnimController.dispose();
-    try { _localeProviderRef?.removeListener(_onLocaleChanged); } catch (_) {}
+    _timer?.cancel();
+    _swipeController.dispose();
     super.dispose();
   }
 
-  void _onLocaleChanged() {
-    final localeCode = _localeProviderRef?.locale.languageCode;
-    if (localeCode == null) return;
-    if (_lastLocale == localeCode) return;
-    _lastLocale = localeCode;
-    if (!_isLoading && !_answered) {
-      _loadQuestions();
-    }
-  }
-
-  String _selectSupportedLanguage(String? userLang, String deviceLang, {required bool allowBackendEn}) {
-    const supported = {'en','tr','de','fr','es','it','ru','zh','hi','ja','ar'};
-    if (userLang != null && supported.contains(userLang) && (allowBackendEn || userLang != 'en')) return userLang;
-    if (supported.contains(deviceLang)) return deviceLang;
-    return 'en';
-  }
-
+  // --- 1. JSON YÜKLEME (DATA KLASÖRÜNDEN) ---
   Future<void> _loadQuestions() async {
-    setState(() { _isLoading = true; });
-    final userProvider = Provider.of<UserProvider>(context, listen: false);
-    final localeProvider = Provider.of<LocaleProvider>(context, listen: false);
-    await userProvider.loadProfile(widget.idToken);
+    setState(() => _isLoading = true);
     try {
-      final deviceLang = localeProvider.locale.languageCode;
-      final lang = _selectSupportedLanguage(userProvider.profile?.languageCode, deviceLang, allowBackendEn: localeProvider.userSetLanguage);
-      final raw = await rootBundle.loadString('data/manual_truefalse.json');
-      final parsed = json.decode(raw) as List<dynamic>;
-      final loaded = parsed.map((e) => Map<String, dynamic>.from(e as Map)).toList();
-      // map to localized structure
-      final localized = loaded.map((q) {
-        final qm = q['question'] as Map<String, dynamic>;
-        final text = (qm[lang] as String?) ?? (qm['en'] as String? ?? '');
-        return {
-          'id': loaded.indexOf(q),
-          'category': q['category'] ?? 'General',
-          'question_text': text,
-          'correct_answer': q['correct_answer'] ?? false,
-        };
-      }).toList();
-
+      final api = ApiService();
+      final list = await api.getManualTrueFalse(idToken: widget.idToken);
+      final data = list.isNotEmpty ? List<dynamic>.from(list) : <dynamic>[];
+      if (data.isNotEmpty) data.shuffle();
       setState(() {
-        _questions = localized;
-        _currentIndex = 0;
-        _answered = false;
-        _answerState = TFAnswerState.unanswered;
-        _selectedAnswer = null;
+        _questions = data;
+        _isLoading = false;
       });
+      if (_questions.isNotEmpty) _startTimer();
     } catch (e) {
-      debugPrint('Failed to load true/false questions: $e');
-    } finally {
-      if (mounted) setState(() => _isLoading = false);
+      debugPrint("Hata: manual true/false yüklenemedi: $e");
+      setState(() => _isLoading = false);
     }
   }
 
-  Future<void> _answerQuestion(bool selected) async {
-    if (_answered || _questions.isEmpty) return;
-    setState(() { _selectedAnswer = selected; _answered = true; _answerState = TFAnswerState.pending; });
-    await Future.delayed(const Duration(milliseconds: 600));
-    if (!mounted) return;
-    final userProvider = Provider.of<UserProvider>(context, listen: false);
-    final localizations = AppLocalizations.of(context);
-    try {
-      final current = _questions[_currentIndex];
-      final correct = current['correct_answer'] as bool;
-      final bool isCorrect = selected == correct;
-      final awarded = isCorrect ? 10 : 0;
-
-      // Update local user profile (score, dailyPoints, streak)
-      final profile = userProvider.profile;
-      final newScore = (profile?.score ?? 0) + awarded;
-      final newDaily = (profile?.dailyPoints ?? 0) + awarded;
-      final newStreak = isCorrect ? ((profile?.currentStreak ?? 0) + 1) : 0;
-      if (profile != null) {
-        userProvider.setProfile(profile.copyWith(score: newScore, dailyPoints: newDaily, currentStreak: newStreak));
+  // --- 2. ZAMANLAYICI ---
+  void _startTimer() {
+    _timer = Timer.periodic(const Duration(seconds: 1), (timer) {
+      if (_timeLeft > 0) {
+        setState(() => _timeLeft--);
       } else {
-        userProvider.setProfile(UserProfile(username: null, score: newScore, currentStreak: newStreak, subscriptionLevel: 'free', dailyPoints: newDaily));
+        _endGame();
       }
+    });
+  }
 
+  // --- 3. OYUN MANTIĞI ---
+  void _handleSwipe(bool userSaidTrue) {
+    final currentQ = _questions[_currentIndex];
+    final bool isCorrectAnswer = currentQ['correct_answer'];
+    
+    // Kullanıcının cevabı doğru mu?
+    // userSaidTrue (Evet dedi) == isCorrectAnswer (Cevap Evet) -> Doğru
+    bool isUserCorrect = (userSaidTrue == isCorrectAnswer);
+
+    if (isUserCorrect) {
+      _score += 10 + (_streak * 2); // Streak bonusu
+      _streak++;
+    } else {
+      _streak = 0; // Hata yapınca seri bozulur
+      // İstersen yanlış yapınca süreden düşebilirsin: _timeLeft -= 5;
+    }
+
+    // Sonraki soruya geç
+    if (_currentIndex < _questions.length - 1) {
       setState(() {
-        _answerState = TFAnswerState.revealed;
-        if (awarded > 0) {
-          _lastAwarded = awarded;
-          _showAward = true;
-          _scoreAnimController.forward(from: 0);
-        }
+        _currentIndex++;
+        _dragOffset = Offset.zero; // Kartı merkeze getir
       });
-
-      // Notify analysis provider to refresh
-      try { Provider.of<AnalysisProvider>(context, listen: false).refresh(widget.idToken); } catch (_) {}
-
-      await Future.delayed(const Duration(milliseconds: 900));
-      if (!mounted) return;
-      if (_currentIndex >= _questions.length - 1) {
-        await _handleCompletion();
-      } else {
-        setState(() {
-          _currentIndex++;
-          _selectedAnswer = null;
-          _answered = false;
-          _answerState = TFAnswerState.unanswered;
-        });
-      }
-    } catch (e) {
-      ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text(localizations?.error ?? 'An error occurred'), backgroundColor: Theme.of(context).colorScheme.error));
-      setState(() { _answered = false; _answerState = TFAnswerState.unanswered; _selectedAnswer = null; });
+    } else {
+      _endGame(); // Sorular bitti
     }
   }
 
-  Future<void> _handleCompletion() async {
-    final localizations = AppLocalizations.of(context);
-    final theme = Theme.of(context);
-    await showDialog(
-      context: context,
-      barrierDismissible: false,
-      builder: (context) => AlertDialog(
-        backgroundColor: theme.colorScheme.surface,
-        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16.r)),
-        title: Text(localizations?.quizFinished ?? 'Finished', style: TextStyle(color: theme.colorScheme.primary, fontWeight: FontWeight.bold)),
-        content: Text(localizations?.yourScore ?? 'Your score', style: TextStyle(color: theme.colorScheme.onSurface)),
-        actions: [TextButton(onPressed: () => Navigator.of(context).pop(), child: Text(localizations?.great ?? 'Great', style: TextStyle(color: theme.colorScheme.primary)))]
-      )
-    );
-
-    if (mounted) await _loadQuestions();
+  void _endGame() {
+    _timer?.cancel();
+    setState(() => _isGameOver = true);
+    
+    // Sonuçları Provider'a kaydet (Opsiyonel)
+    // Provider.of<AnalysisProvider>(context, listen: false).addResult(...);
   }
 
-  Color _getButtonColor(bool value) {
-    if (_answerState == TFAnswerState.unanswered) return Colors.white10;
-    if (_answerState == TFAnswerState.pending) return _selectedAnswer == value ? Colors.yellow.shade700 : Colors.white10;
-    // revealed
-    final correct = _questions[_currentIndex]['correct_answer'] as bool;
-    if (value == correct) return Colors.green.shade600;
-    if (_selectedAnswer == value) return Colors.red.shade600;
-    return Colors.white12;
-  }
-
+  // --- 4. UI: KART YAPISI ---
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
-    final localizations = AppLocalizations.of(context);
-    final userProvider = Provider.of<UserProvider>(context);
+
+    if (_isLoading) {
+      return Scaffold(
+        backgroundColor: theme.colorScheme.surface,
+        body: Center(child: CircularProgressIndicator(color: theme.colorScheme.primary)),
+      );
+    }
+
+    if (_isGameOver) {
+      return _buildGameOverScreen(theme);
+    }
+
+    if (_questions.isEmpty) {
+      return Scaffold(
+        backgroundColor: theme.colorScheme.surface,
+        body: Center(child: Text('No true/false questions available', style: TextStyle(color: theme.colorScheme.onSurface))),
+      );
+    }
+
+    final currentQuestion = _questions[_currentIndex];
+    
+    // Çoklu dil desteği (Varsayılan EN, yoksa ilk dili al)
+    // JSON yapısı: "question": { "en": "...", "tr": "..." }
+    // Burada basitçe 'en' alıyoruz, cihaz diline göre 'tr' vb. seçebilirsin.
+    final questionText = currentQuestion['question']['en'] ?? currentQuestion['question'].values.first;
+    final category = currentQuestion['category'] ?? 'General';
 
     return Scaffold(
       backgroundColor: theme.colorScheme.surface,
-      body: Stack(
-        children: [
-          Padding(
-            padding: EdgeInsets.symmetric(horizontal: 20.w, vertical: 18.h),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                SizedBox(height: 8.h),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    Text(localizations?.trueFalseTitle ?? 'True / False', style: TextStyle(fontSize: 20.sp, fontWeight: FontWeight.bold, color: theme.colorScheme.primary)),
-                    Container(
-                      padding: EdgeInsets.symmetric(horizontal: 10.w, vertical: 6.h),
-                      decoration: BoxDecoration(color: colorWithOpacity(theme.colorScheme.primary, 0.95), borderRadius: BorderRadius.circular(10.r)),
-                      child: Row(children: [Icon(Icons.star_rounded, color: Colors.yellow.shade700, size: 14.sp), SizedBox(width: 6.w), Text('${userProvider.profile?.dailyPoints ?? 0} ${localizations?.points ?? 'pts'}', style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold, fontSize: 13.sp))]),
-                    ),
-                  ],
-                ),
-                SizedBox(height: 14.h),
-
-              if (_isLoading) Center(child: CircularProgressIndicator(color: theme.colorScheme.primary)),
-
-              if (!_isLoading && _questions.isEmpty) Center(child: Text(localizations?.noDataFound ?? 'No questions available', style: TextStyle(color: colorWithOpacity(theme.colorScheme.onSurface, 0.7)))),
-
-                if (!_isLoading && _questions.isNotEmpty)
-                  Expanded(
-                    child: Column(
-                      children: [
-                        // question card
-                        AnimatedContainer(
-                          duration: const Duration(milliseconds: 360),
-                          padding: EdgeInsets.all(14.w),
-                          decoration: BoxDecoration(color: theme.colorScheme.surface, borderRadius: BorderRadius.circular(14.r), boxShadow: [BoxShadow(color: Colors.black12, blurRadius: 8.r, offset: Offset(0,2))]),
-                          child: SizedBox(height: 180.h, child: Center(child: Text(_questions[_currentIndex]['question_text'] ?? '', textAlign: TextAlign.center, style: theme.textTheme.titleLarge?.copyWith(fontWeight: FontWeight.w800)))),
-                        ),
-                        SizedBox(height: 18.h),
-
-                        // True / False buttons
-                        Row(
-                          children: [
-                            Expanded(
-                              child: GestureDetector(
-                                onTap: _answered ? null : () => _answerQuestion(true),
-                                child: AnimatedContainer(
-                                  duration: const Duration(milliseconds: 300),
-                                  padding: EdgeInsets.symmetric(vertical: 16.h),
-                                  decoration: BoxDecoration(color: _getButtonColor(true), borderRadius: BorderRadius.circular(12.r), border: Border.all(color: colorWithOpacity(theme.colorScheme.primary, 0.12))),
-                                  child: Center(child: Text(localizations?.trueLabel ?? 'True', style: TextStyle(color: Colors.white, fontWeight: FontWeight.w800, fontSize: 18.sp))),
-                                ),
-                              ),
-                            ),
-                            SizedBox(width: 12.w),
-                            Expanded(
-                              child: GestureDetector(
-                                onTap: _answered ? null : () => _answerQuestion(false),
-                                child: AnimatedContainer(
-                                  duration: const Duration(milliseconds: 300),
-                                  padding: EdgeInsets.symmetric(vertical: 16.h),
-                                  decoration: BoxDecoration(color: _getButtonColor(false), borderRadius: BorderRadius.circular(12.r), border: Border.all(color: colorWithOpacity(theme.colorScheme.primary, 0.12))),
-                                  child: Center(child: Text(localizations?.falseLabel ?? 'False', style: TextStyle(color: Colors.white, fontWeight: FontWeight.w800, fontSize: 18.sp))),
-                                ),
-                              ),
-                            ),
-                          ],
-                        ),
-                        SizedBox(height: 18.h),
-                        // small footer showing category & streak
-                        Row(mainAxisAlignment: MainAxisAlignment.spaceBetween, children: [Text('${localizations?.categoryLabel ?? 'Category'}: ${_questions[_currentIndex]['category']}', style: TextStyle(color: colorWithOpacity(theme.colorScheme.onSurface, 0.7))), Text('${localizations?.streak ?? 'Streak'}: ${userProvider.profile?.currentStreak ?? 0}', style: TextStyle(color: theme.colorScheme.secondary, fontWeight: FontWeight.bold))]),
-                      ],
-                    ),
-                  ),
-              ],
-            ),
-          ),
-
-          if (_showAward)
-            Positioned(
-              top: 120.h,
-              right: 28.w,
-              child: SlideTransition(
-                position: _scoreOffset,
-                child: FadeTransition(
-                  opacity: _scoreAnimController,
-                  child: Container(
-                    padding: EdgeInsets.symmetric(horizontal: 12.w, vertical: 8.h),
-                    decoration: BoxDecoration(color: theme.colorScheme.primary, borderRadius: BorderRadius.circular(10.r), boxShadow: [BoxShadow(color: Colors.black38, blurRadius: 8.r)]),
-                        child: Row(children: [Icon(Icons.add, color: Colors.white, size: 16.sp), SizedBox(width: 8.w), Text('+$_lastAwarded ${localizations?.points ?? 'pts'}', style: const TextStyle(color: Colors.white, fontWeight: FontWeight.bold))]),
-                  ),
-                ),
+      body: SafeArea(
+        child: Column(
+          children: [
+            // Üst Bar: Süre ve Skor
+            Padding(
+              padding: EdgeInsets.symmetric(horizontal: 20.w, vertical: 10.h),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  _buildInfoChip(Icons.timer, '$_timeLeft s', _timeLeft < 10 ? Colors.red : theme.colorScheme.primary),
+                  Text("Streak: $_streak 🔥", style: TextStyle(fontSize: 16.sp, fontWeight: FontWeight.bold, color: Colors.orange)),
+                  _buildInfoChip(Icons.star, '$_score', theme.colorScheme.secondary),
+                ],
               ),
             ),
+            
+            Spacer(),
+
+            // --- SWIPE ALANI ---
+            // Draggable widget kullanarak manuel swipe yapıyoruz
+            // Stack kullanarak arkadaki kartı da gösterebilirsin (derinlik hissi için)
+            SizedBox(
+              height: 0.5.sh,
+              width: 0.85.sw,
+              child: Stack(
+                alignment: Alignment.center,
+                children: [
+                  // Arkadaki Kart (Gelecek soru - Sadece görsel dekor)
+                  if (_currentIndex < _questions.length - 1)
+                    Transform.scale(
+                      scale: 0.9,
+                      child: Opacity(
+                        opacity: 0.6,
+                        child: _buildCardContent(theme, "Next Question...", "...", Colors.grey[300]!),
+                      ),
+                    ),
+                  
+                  // Öndeki Kart (Aktif Soru)
+                  Dismissible(
+                    key: ValueKey(_currentIndex),
+                    direction: DismissDirection.horizontal,
+                    onDismissed: (direction) {
+                      bool isRightSwipe = direction == DismissDirection.startToEnd;
+                      _handleSwipe(isRightSwipe); // Sağ: True, Sol: False
+                    },
+                    background: _buildSwipeBackground(true), // Sağ Arka Plan (Yeşil/True)
+                    secondaryBackground: _buildSwipeBackground(false), // Sol Arka Plan (Kırmızı/False)
+                    child: _buildCardContent(theme, category, questionText, theme.cardColor),
+                  ),
+                ],
+              ),
+            ),
+            
+            SizedBox(height: 30.h),
+
+            // Kontrol Butonları (Swipe yapmak istemeyenler için)
+            Padding(
+              padding: EdgeInsets.symmetric(horizontal: 40.w),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceAround,
+                children: [
+                  _buildActionButton(Icons.close, Colors.red, () => _manualSwipe(false)),
+                  Text("OR", style: TextStyle(color: Colors.grey, fontSize: 12.sp)),
+                  _buildActionButton(Icons.check, Colors.green, () => _manualSwipe(true)),
+                ],
+              ),
+            ),
+            
+            Spacer(),
+            
+            Text(
+              "Swipe Right for TRUE, Left for FALSE",
+              style: TextStyle(color: Colors.grey[500], fontSize: 12.sp),
+            ),
+            SizedBox(height: 20.h),
+          ],
+        ),
+      ),
+    );
+  }
+
+  // Dismissible ile manuel tetikleme zor olduğu için butonlar bir sonraki karta geçişi simüle eder
+  // Burada basitçe fonksiyonu çağırıyoruz, Dismissible animasyonu olmadan geçer.
+  // Animasyonlu yapmak istersen Dismissible yerine Draggable kullanmak gerekir.
+  void _manualSwipe(bool value) {
+    _handleSwipe(value);
+  }
+
+  Widget _buildCardContent(ThemeData theme, String category, String text, Color bgColor) {
+    return Container(
+      width: double.infinity,
+      padding: EdgeInsets.all(24.w),
+      decoration: BoxDecoration(
+        color: bgColor,
+        borderRadius: BorderRadius.circular(24.r),
+        boxShadow: [
+          BoxShadow(color: Colors.black12, blurRadius: 15, offset: Offset(0, 8)),
         ],
+        border: Border.all(color: Colors.black.withOpacity(0.05)),
+      ),
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          Container(
+            padding: EdgeInsets.symmetric(horizontal: 12.w, vertical: 6.h),
+            decoration: BoxDecoration(
+              color: theme.colorScheme.primary.withOpacity(0.1),
+              borderRadius: BorderRadius.circular(20.r),
+            ),
+            child: Text(category.toUpperCase(), style: TextStyle(color: theme.colorScheme.primary, fontSize: 12.sp, fontWeight: FontWeight.bold)),
+          ),
+          SizedBox(height: 24.h),
+          Text(
+            text,
+            textAlign: TextAlign.center,
+            style: TextStyle(fontSize: 22.sp, fontWeight: FontWeight.w600, color: theme.colorScheme.onSurface, height: 1.3),
+          ),
+        ],
+      ),
+    );
+  }
+
+  Widget _buildSwipeBackground(bool isTrue) {
+    return Container(
+      decoration: BoxDecoration(
+        color: isTrue ? Colors.green.withOpacity(0.8) : Colors.red.withOpacity(0.8),
+        borderRadius: BorderRadius.circular(24.r),
+      ),
+      alignment: isTrue ? Alignment.centerLeft : Alignment.centerRight,
+      padding: EdgeInsets.symmetric(horizontal: 20.w),
+      child: Icon(
+        isTrue ? Icons.check_circle_outline : Icons.cancel_outlined,
+        color: Colors.white,
+        size: 40.sp,
+      ),
+    );
+  }
+
+  Widget _buildInfoChip(IconData icon, String text, Color color) {
+    return Container(
+      padding: EdgeInsets.symmetric(horizontal: 12.w, vertical: 8.h),
+      decoration: BoxDecoration(
+        color: color.withOpacity(0.1),
+        borderRadius: BorderRadius.circular(12.r),
+      ),
+      child: Row(
+        children: [
+          Icon(icon, color: color, size: 18.sp),
+          SizedBox(width: 6.w),
+          Text(text, style: TextStyle(color: color, fontWeight: FontWeight.bold, fontSize: 16.sp)),
+        ],
+      ),
+    );
+  }
+
+  Widget _buildActionButton(IconData icon, Color color, VoidCallback onTap) {
+    return GestureDetector(
+      onTap: onTap,
+      child: Container(
+        width: 64.w,
+        height: 64.w,
+        decoration: BoxDecoration(
+          shape: BoxShape.circle,
+          color: Colors.white,
+          boxShadow: [BoxShadow(color: color.withOpacity(0.3), blurRadius: 10, offset: Offset(0, 4))],
+          border: Border.all(color: color.withOpacity(0.1), width: 2),
+        ),
+        child: Icon(icon, color: color, size: 32.sp),
+      ),
+    );
+  }
+
+  Widget _buildGameOverScreen(ThemeData theme) {
+    return Scaffold(
+      body: Center(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Icon(Icons.emoji_events, size: 80.sp, color: Colors.amber),
+            SizedBox(height: 20.h),
+            Text("Time's Up!", style: TextStyle(fontSize: 28.sp, fontWeight: FontWeight.bold)),
+            SizedBox(height: 10.h),
+            Text("Final Score", style: TextStyle(color: Colors.grey)),
+            Text("$_score", style: TextStyle(fontSize: 48.sp, fontWeight: FontWeight.bold, color: theme.colorScheme.primary)),
+            SizedBox(height: 30.h),
+            ElevatedButton(
+              onPressed: () => Navigator.pop(context),
+              style: ElevatedButton.styleFrom(
+                padding: EdgeInsets.symmetric(horizontal: 40.w, vertical: 15.h),
+                backgroundColor: theme.colorScheme.primary,
+                foregroundColor: Colors.white,
+              ),
+              child: Text("Back to Menu"),
+            )
+          ],
+        ),
       ),
     );
   }

@@ -14,7 +14,33 @@ import 'providers/analysis_provider.dart';
 import 'auth_gate.dart';
 import 'package:sparkup_app/utils/color_utils.dart';
 
-String backendBaseUrl = "http://127.0.0.1:8000";
+// Use the current origin when running on Web (helps hosted web builds),
+// otherwise default to local backend for development.
+// Determine backend base URL for web and non-web builds.
+// Priority:
+// 1) Compile-time define: `--dart-define=BACKEND_BASE_URL=...`
+// 2) If running on Web in non-debug (hosted), use `Uri.base.origin`.
+// 3) If running via `flutter run` (dev server), fall back to local backend `http://127.0.0.1:8000`.
+// 4) Non-web fallback: `http://127.0.0.1:8000`.
+final String backendBaseUrl = (() {
+  const fromDefine = String.fromEnvironment('BACKEND_BASE_URL');
+  if (fromDefine.isNotEmpty) return fromDefine;
+  if (!kIsWeb) return 'http://127.0.0.1:8000';
+  try {
+    final origin = Uri.base.origin;
+    if (kDebugMode) {
+      final parsed = Uri.parse(origin);
+      // When running `flutter run -d chrome`, the origin will be localhost:<random-port>.
+      // In that case use the local backend on port 8000 to reach FastAPI.
+      if ((parsed.host == 'localhost' || parsed.host == '127.0.0.1') && parsed.port != 8000) {
+        return 'http://127.0.0.1:8000';
+      }
+    }
+    return origin;
+  } catch (e) {
+    return 'http://127.0.0.1:8000';
+  }
+})();
 
 Future<void> _firebaseMessagingBackgroundHandler(RemoteMessage message) async {
   await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);

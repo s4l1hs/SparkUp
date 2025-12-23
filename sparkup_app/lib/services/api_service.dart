@@ -169,6 +169,28 @@ class ApiService {
     }
   }
   
+  // Manual True/False questions loaded from repo-root data/manual_truefalse.json
+  Future<List<Map<String, dynamic>>> getManualTrueFalse({String? idToken}) async {
+    final uri = Uri.parse('$backendBaseUrl/manual/truefalse/');
+    final headers = idToken != null ? _getAuthHeaders(idToken) : <String, String>{};
+    if (kDebugMode) {
+      print('API getManualTrueFalse -> $uri');
+      if (idToken == null) print('No idToken provided for manual true/false request');
+    }
+    final resp = await http.get(uri, headers: headers);
+    if (resp.statusCode == 200) {
+      final data = jsonDecode(resp.body) as List<dynamic>;
+      return data.map((e) => Map<String, dynamic>.from(e as Map)).toList();
+    } else if (resp.statusCode == 404) {
+      // upstream: no manual TF available
+      if (kDebugMode) print('manual/truefalse returned 404');
+      return <Map<String, dynamic>>[];
+    } else {
+      if (kDebugMode) print('manual/truefalse failed: ${resp.statusCode} ${resp.body}');
+      throw Exception('Failed to load manual true/false (${resp.statusCode})');
+    }
+  }
+  
   // Kullanıcının kendi sıralama ve puan bilgisini getirir
   Future<LeaderboardEntry?> getUserRank(String idToken) async {
     final uri = Uri.parse('$backendBaseUrl/leaderboard/me/');
