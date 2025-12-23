@@ -2,7 +2,10 @@
 import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:provider/provider.dart';
 import '../services/api_service.dart';
+import '../providers/analysis_provider.dart';
+import 'package:sparkup_app/utils/color_utils.dart';
 
 
 class TrueFalsePage extends StatefulWidget {
@@ -21,20 +24,29 @@ class _TrueFalsePageState extends State<TrueFalsePage> with TickerProviderStateM
   bool _isLoading = true;
   bool _isGameOver = false;
 
-  // Kart kaydırma pozisyonu (opsiyonel, swipe animasyonu için)
-  Offset _dragOffset = Offset.zero;
-
   // Timer değişkenleri
   Timer? _timer;
   int _timeLeft = 60; // 60 saniye süre
 
   // Animasyon kontrolcüleri (Kart kaydırma efekti için)
   late AnimationController _swipeController;
+  late final AnimationController _backgroundController;
+  late final Animation<Alignment> _backgroundAnimation1, _backgroundAnimation2;
 
   @override
   void initState() {
     super.initState();
     _swipeController = AnimationController(vsync: this, duration: const Duration(milliseconds: 300));
+    _backgroundController = AnimationController(vsync: this, duration: const Duration(seconds: 25))..repeat(reverse: true);
+    _backgroundAnimation1 = TweenSequence<Alignment>([
+      TweenSequenceItem(tween: AlignmentTween(begin: Alignment.topLeft, end: Alignment.bottomRight), weight: 1),
+      TweenSequenceItem(tween: AlignmentTween(begin: Alignment.bottomRight, end: Alignment.topLeft), weight: 1),
+    ]).animate(_backgroundController);
+    _backgroundAnimation2 = TweenSequence<Alignment>([
+      TweenSequenceItem(tween: AlignmentTween(begin: Alignment.topRight, end: Alignment.bottomLeft), weight: 1),
+      TweenSequenceItem(tween: AlignmentTween(begin: Alignment.bottomLeft, end: Alignment.topRight), weight: 1),
+    ]).animate(_backgroundController);
+
     _loadQuestions();
   }
 
@@ -42,6 +54,7 @@ class _TrueFalsePageState extends State<TrueFalsePage> with TickerProviderStateM
   void dispose() {
     _timer?.cancel();
     _swipeController.dispose();
+    _backgroundController.dispose();
     super.dispose();
   }
 
@@ -96,11 +109,16 @@ class _TrueFalsePageState extends State<TrueFalsePage> with TickerProviderStateM
     if (_currentIndex < _questions.length - 1) {
       setState(() {
         _currentIndex++;
-        _dragOffset = Offset.zero; // Kartı merkeze getir
+// Kartı merkeze getir
       });
     } else {
       _endGame(); // Sorular bitti
     }
+    // Notify analysis provider to refresh immediately after an answer
+    try {
+      final analysisProv = Provider.of<AnalysisProvider>(context, listen: false);
+      analysisProv.refresh(widget.idToken);
+    } catch (_) {}
   }
 
   void _endGame() {
@@ -144,9 +162,49 @@ class _TrueFalsePageState extends State<TrueFalsePage> with TickerProviderStateM
 
     return Scaffold(
       backgroundColor: theme.colorScheme.surface,
-      body: SafeArea(
-        child: Column(
-          children: [
+      body: Stack(
+        children: [
+          // animated ambient blobs
+          AnimatedBuilder(
+            animation: _backgroundController,
+            builder: (context, child) {
+              return Stack(
+                children: [
+                  Positioned.fill(
+                    child: Align(
+                      alignment: _backgroundAnimation1.value,
+                      child: Container(
+                        width: 400.w,
+                        height: 400.h,
+                        decoration: BoxDecoration(
+                          shape: BoxShape.circle,
+                          gradient: RadialGradient(colors: [colorWithOpacity(theme.colorScheme.secondary, 0.14), Colors.transparent]),
+                          boxShadow: [BoxShadow(color: colorWithOpacity(theme.colorScheme.secondary, 0.06), blurRadius: 100.r, spreadRadius: 80.r)],
+                        ),
+                      ),
+                    ),
+                  ),
+                  Positioned.fill(
+                    child: Align(
+                      alignment: _backgroundAnimation2.value,
+                      child: Container(
+                        width: 300.w,
+                        height: 300.h,
+                        decoration: BoxDecoration(
+                          shape: BoxShape.circle,
+                          gradient: RadialGradient(colors: [colorWithOpacity(theme.colorScheme.primary, 0.12), Colors.transparent]),
+                          boxShadow: [BoxShadow(color: colorWithOpacity(theme.colorScheme.primary, 0.05), blurRadius: 100.r, spreadRadius: 60.r)],
+                        ),
+                      ),
+                    ),
+                  ),
+                ],
+              );
+            },
+          ),
+          SafeArea(
+            child: Column(
+              children: [
             // Üst Bar: Süre ve Skor
             Padding(
               padding: EdgeInsets.symmetric(horizontal: 20.w, vertical: 10.h),
@@ -219,8 +277,10 @@ class _TrueFalsePageState extends State<TrueFalsePage> with TickerProviderStateM
               style: TextStyle(color: Colors.grey[500], fontSize: 12.sp),
             ),
             SizedBox(height: 20.h),
-          ],
-        ),
+              ],
+            ),
+          ),
+        ],
       ),
     );
   }

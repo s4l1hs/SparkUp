@@ -18,10 +18,10 @@ def on_startup():
     try:
         repo_root = os.path.dirname(os.path.dirname(__file__))
         tf_path = os.path.join(repo_root, 'data', 'manual_truefalse.json')
-        print(f"[startup] Loading manual_truefalse from: {tf_path}")
         load_manual_truefalse(tf_path)
-    except Exception as e:
-        print(f"[startup] Failed to call load_manual_truefalse with explicit path: {e}")
+    except Exception:
+        # silent on startup to avoid noisy logs
+        pass
     try:
         _ensure_schema_compat()
     except Exception as e:

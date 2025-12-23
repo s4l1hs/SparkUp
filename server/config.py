@@ -50,8 +50,6 @@ NOTIFICATION_FREQUENCY = {"free": 1, "pro": 2, "ultra": 3}
 MANUAL_INFOS: List[Dict] = []
 # runtime-loaded manual true/false questions
 MANUAL_TRUEFALSE: List[Dict] = []
-# diagnostic info for why loading may have failed
-MANUAL_TRUEFALSE_DEBUG: List[Dict] = []
 
 def load_manual_infos(path: str = "data/manual_info.json"):
     global MANUAL_INFOS
@@ -82,51 +80,23 @@ def load_manual_truefalse(path: str = "data/manual_truefalse.json"):
     if env_path:
         candidates.insert(0, env_path)
     loaded = False
-    print("[load_manual_truefalse] Candidate paths:")
-    MANUAL_TRUEFALSE_DEBUG.clear()
     for p in candidates:
-        try:
-            exists = os.path.exists(p)
-        except Exception:
-            exists = False
-        print(f"  - {p} (exists={exists})")
-        MANUAL_TRUEFALSE_DEBUG.append({"path": p, "exists": exists})
-
-    import traceback
-    for p in candidates:
-        entry = {"path": p, "tried": False, "exists": False, "size": None, "error": None}
         try:
             if not os.path.exists(p):
-                # record and continue
-                MANUAL_TRUEFALSE_DEBUG.append({"path": p, "exists": False, "error": "not found"})
                 continue
-            entry["tried"] = True
-            entry["exists"] = True
-            try:
-                size = os.path.getsize(p)
-                entry["size"] = size
-            except Exception:
-                entry["size"] = None
-            print(f"Attempting to load manual_truefalse from {p} (size={entry['size']})")
             with open(p, "r", encoding="utf-8") as f:
                 loaded_list = json.load(f)
                 if not isinstance(loaded_list, list):
-                    raise ValueError("manual_truefalse.json does not contain a JSON list")
+                    continue
                 # mutate existing list object so other modules that imported it see updates
                 MANUAL_TRUEFALSE.clear()
                 MANUAL_TRUEFALSE.extend(loaded_list)
-                print(f"Loaded manual_truefalse from {p}")
-                entry["loaded"] = True
-                MANUAL_TRUEFALSE_DEBUG.append(entry)
                 loaded = True
                 break
-        except Exception as e:
-            entry["error"] = str(e)
-            MANUAL_TRUEFALSE_DEBUG.append(entry)
-            print(f"Failed to load {p}: {e}")
-            traceback.print_exc()
+        except Exception:
+            # intentionally silent to avoid noisy logs in normal operation
+            continue
     if not loaded:
-        print(f"Failed to load manual_truefalse.json from any candidate path; MANUAL_TRUEFALSE empty")
         MANUAL_TRUEFALSE.clear()
 
 

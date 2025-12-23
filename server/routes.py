@@ -351,11 +351,10 @@ def get_manual_truefalse():
             repo_root = os.path.dirname(os.path.dirname(__file__))
             tf_path = os.path.join(repo_root, 'data', 'manual_truefalse.json')
             if tf_path and os.path.exists(tf_path):
-                if __debug__:
-                    print(f"[on-demand] Attempting to load manual_truefalse from {tf_path}")
                 load_manual_truefalse(tf_path)
-        except Exception as e:
-            print(f"[on-demand] Failed to load manual_truefalse: {e}")
+        except Exception:
+            # silent on-demand failure to avoid noisy logs
+            pass
 
     if not MANUAL_TRUEFALSE:
         raise HTTPException(status_code=404, detail="No true/false questions available.")
@@ -370,14 +369,7 @@ def debug_manual_truefalse_status():
         loaded = bool(MANUAL_TRUEFALSE)
         count = len(MANUAL_TRUEFALSE) if loaded else 0
         sample = MANUAL_TRUEFALSE[0] if loaded and len(MANUAL_TRUEFALSE) > 0 else None
-        # include any debug entries from the loader
-        debug_info = None
-        try:
-            from .config import MANUAL_TRUEFALSE_DEBUG
-            debug_info = MANUAL_TRUEFALSE_DEBUG
-        except Exception:
-            debug_info = None
-        return {"loaded": loaded, "count": count, "sample": sample, "debug": debug_info}
+        return {"loaded": loaded, "count": count, "sample": sample}
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))
 
