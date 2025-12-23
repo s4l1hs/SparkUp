@@ -17,6 +17,7 @@ INFO_FILE = "data/manual_info.json"
 QUIZ_FILE = "data/manual_quiz.json"
 # Challenges removed from codebase; do not attempt to seed them.
 CHALLENGE_FILE = "data/manual_challenges.json"
+TF_FILE = "data/manual_truefalse.json"
 
 
 # Import required models from server.models. Challenges were removed from the
@@ -24,6 +25,11 @@ CHALLENGE_FILE = "data/manual_challenges.json"
 # abort so we don't attempt to redefine models and cause table conflicts.
 try:
     from server.models import DailyInfo, QuizQuestion
+    # TrueFalseQuestion is optional; import if available
+    try:
+        from server.models import TrueFalseQuestion
+    except Exception:
+        TrueFalseQuestion = None
 except ImportError as e:
     raise RuntimeError("server.models must define DailyInfo and QuizQuestion for seeding") from e
 
@@ -85,6 +91,24 @@ def seed_database_manual():
             print(f"✅ {len(quiz_data)} Quiz Sorusu eklendi.")
         else:
             print("☑️ Quiz Soruları zaten mevcut veya dosya boş.")
+
+        # --- 4. True/False Sorularını Doldurma ---
+        if TrueFalseQuestion is not None:
+            tf_data = load_json_data(TF_FILE)
+            if tf_data and not session.exec(select(TrueFalseQuestion)).first():
+                print(f"\n❓ {len(tf_data)} adet True/False Sorusu yükleniyor...")
+                for item in tf_data:
+                    # question mapping: store question translations as JSON string
+                    question_texts = json.dumps(item.get('question', {}), ensure_ascii=False)
+                    correct = bool(item.get('correct_answer', False))
+                    category = item.get('category', 'General')
+                    session.add(TrueFalseQuestion(question_texts=question_texts, correct_answer=correct, category=category))
+                session.commit()
+                print(f"✅ {len(tf_data)} True/False Sorusu eklendi.")
+            else:
+                print("☑️ True/False Soruları zaten mevcut veya dosya boş.")
+        else:
+            print("ℹ️ TrueFalseQuestion model not found in server.models; skipping TF seeding.")
 
     print("\n🎉 Manuel veri doldurma işlemi tamamlandı!")
 

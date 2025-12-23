@@ -176,6 +176,30 @@ abstract class AppLocalizations {
   /// **'Your Score'**
   String get yourScore;
 
+  /// No description provided for @trueFalseTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'True / False'**
+  String get trueFalseTitle;
+
+  /// No description provided for @trueLabel.
+  ///
+  /// In en, this message translates to:
+  /// **'True'**
+  String get trueLabel;
+
+  /// No description provided for @falseLabel.
+  ///
+  /// In en, this message translates to:
+  /// **'False'**
+  String get falseLabel;
+
+  /// No description provided for @categoryLabel.
+  ///
+  /// In en, this message translates to:
+  /// **'Category'**
+  String get categoryLabel;
+
   /// No description provided for @great.
   ///
   /// In en, this message translates to:

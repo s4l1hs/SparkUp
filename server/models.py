@@ -64,6 +64,14 @@ class QuizQuestion(SQLModel, table=True):
     category: str = Field(index=True)
 
 
+class TrueFalseQuestion(SQLModel, table=True):
+    """Simple table for imported True/False questions from manual data."""
+    id: Optional[int] = Field(default=None, primary_key=True)
+    question_texts: str
+    correct_answer: bool = Field(default=False)
+    category: str = Field(index=True)
+
+
 # DailyInfo modeli eklendi (seed_manual.py ile uyumlu)
 class DailyInfo(SQLModel, table=True):
     id: Optional[int] = Field(default=None, primary_key=True)

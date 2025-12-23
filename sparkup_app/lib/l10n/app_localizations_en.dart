@@ -39,6 +39,18 @@ class AppLocalizationsEn extends AppLocalizations {
   String get yourScore => 'Your Score';
 
   @override
+  String get trueFalseTitle => 'True / False';
+
+  @override
+  String get trueLabel => 'True';
+
+  @override
+  String get falseLabel => 'False';
+
+  @override
+  String get categoryLabel => 'Category';
+
+  @override
   String get great => 'Great!';
 
   @override

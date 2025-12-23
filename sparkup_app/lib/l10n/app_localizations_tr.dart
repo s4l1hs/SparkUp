@@ -40,6 +40,18 @@ class AppLocalizationsTr extends AppLocalizations {
   String get yourScore => 'Puanınız';
 
   @override
+  String get trueFalseTitle => 'Doğru / Yanlış';
+
+  @override
+  String get trueLabel => 'Doğru';
+
+  @override
+  String get falseLabel => 'Yanlış';
+
+  @override
+  String get categoryLabel => 'Kategori';
+
+  @override
   String get great => 'Harika!';
 
   @override

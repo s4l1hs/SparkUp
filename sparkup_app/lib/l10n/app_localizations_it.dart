@@ -39,6 +39,18 @@ class AppLocalizationsIt extends AppLocalizations {
   String get yourScore => 'Il tuo punteggio';
 
   @override
+  String get trueFalseTitle => 'Vero / Falso';
+
+  @override
+  String get trueLabel => 'Vero';
+
+  @override
+  String get falseLabel => 'Falso';
+
+  @override
+  String get categoryLabel => 'Categoria';
+
+  @override
   String get great => 'Ottimo!';
 
   @override

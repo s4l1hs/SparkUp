@@ -42,6 +42,18 @@ class AppLocalizationsDe extends AppLocalizations {
   String get yourScore => 'Ihre Punktzahl';
 
   @override
+  String get trueFalseTitle => 'Wahr / Falsch';
+
+  @override
+  String get trueLabel => 'Wahr';
+
+  @override
+  String get falseLabel => 'Falsch';
+
+  @override
+  String get categoryLabel => 'Kategorie';
+
+  @override
   String get great => 'Großartig!';
 
   @override

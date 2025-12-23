@@ -39,6 +39,18 @@ class AppLocalizationsZh extends AppLocalizations {
   String get yourScore => '您的得分';
 
   @override
+  String get trueFalseTitle => '对 / 错';
+
+  @override
+  String get trueLabel => '对';
+
+  @override
+  String get falseLabel => '错';
+
+  @override
+  String get categoryLabel => '类别';
+
+  @override
   String get great => '太棒了!';
 
   @override

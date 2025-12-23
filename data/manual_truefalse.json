@@ -1,0 +1,172 @@
+[
+  {
+    "category": "Science",
+    "question": {
+      "en": "Sound travels faster in water than in air.",
+      "tr": "Ses, suda havadan daha hızlı yayılır.",
+      "es": "El sonido viaja más rápido en el agua que en el aire.",
+      "fr": "Le son voyage plus vite dans l'eau que dans l'air.",
+      "de": "Schall breitet sich im Wasser schneller aus als in der Luft.",
+      "it": "Il suono viaggia più velocemente nell'acqua che nell'aria.",
+      "hi": "ध्वनि हवा की तुलना में पानी में तेज गति से यात्रा करती है।",
+      "ru": "Звук распространяется в воде быстрее, чем в воздухе.",
+      "zh": "声音在水中的传播速度比在空气中快。",
+      "ja": "音は空気中よりも水中の方が速く伝わる。",
+      "ar": "ينتقل الصوت في الماء أسرع منه في الهواء."
+    },
+    "correct_answer": true
+  },
+  {
+    "category": "History",
+    "question": {
+      "en": "The Great Wall of China is visible from the Moon with the naked eye.",
+      "tr": "Çin Seddi, Ay'dan çıplak gözle görülebilir.",
+      "es": "La Gran Muralla China es visible desde la Luna a simple vista.",
+      "fr": "La Grande Muraille de Chine est visible depuis la Lune à l'œil nu.",
+      "de": "Die Chinesische Mauer ist vom Mond aus mit bloßem Auge sichtbar.",
+      "it": "La Grande Muraglia Cinese è visibile dalla Luna a occhio nudo.",
+      "hi": "चीन की महान दीवार चंद्रमा से नग्न आंखों से दिखाई देती है।",
+      "ru": "Великую Китайскую стену видно с Луны невооруженным глазом.",
+      "zh": "从月球上可以用肉眼看到中国的长城。",
+      "ja": "万里の長城は月から肉眼で見ることができる。",
+      "ar": "يمكن رؤية سور الصين العظيم من القمر بالعين المجردة."
+    },
+    "correct_answer": false
+  },
+  {
+    "category": "Technology",
+    "question": {
+      "en": "The Python programming language was named after the snake species.",
+      "tr": "Python programlama dili, adını yılan türünden almıştır.",
+      "es": "El lenguaje de programación Python lleva el nombre de la especie de serpiente.",
+      "fr": "Le langage de programmation Python tire son nom de l'espèce de serpent.",
+      "de": "Die Programmiersprache Python wurde nach der Schlangenart benannt.",
+      "it": "Il linguaggio di programmazione Python prende il nome dalla specie di serpente.",
+      "hi": "Python प्रोग्रामिंग भाषा का नाम सांप की प्रजाति के नाम पर रखा गया था।",
+      "ru": "Язык программирования Python был назван в честь вида змей.",
+      "zh": "Python编程语言是以蛇的种类命名的。",
+      "ja": "プログラミング言語Pythonは、ヘビの種類にちなんで名付けられました。",
+      "ar": "تم تسمية لغة برمجة بايثون تيمناً بنوع من الثعابين."
+    },
+    "correct_answer": false
+  },
+  {
+    "category": "Animals",
+    "question": {
+      "en": "Octopuses have three hearts.",
+      "tr": "Ahtapotların üç kalbi vardır.",
+      "es": "Los pulpos tienen tres corazones.",
+      "fr": "Les pieuvres ont trois cœurs.",
+      "de": "Kraken haben drei Herzen.",
+      "it": "I polpi hanno tre cuori.",
+      "hi": "ऑक्टोपस के तीन दिल होते हैं।",
+      "ru": "У осьминогов три сердца.",
+      "zh": "章鱼有三颗心脏。",
+      "ja": "タコには心臓が3つある。",
+      "ar": "الأخطبوط لديه ثلاثة قلوب."
+    },
+    "correct_answer": true
+  },
+  {
+    "category": "General Knowledge",
+    "question": {
+      "en": "Tomatoes are biologically considered vegetables.",
+      "tr": "Domatesler biyolojik olarak sebze kabul edilir.",
+      "es": "Los tomates se consideran biológicamente verduras.",
+      "fr": "Les tomates sont biologiquement considérées comme des légumes.",
+      "de": "Tomaten gelten biologisch als Gemüse.",
+      "it": "I pomodori sono biologicamente considerati verdure.",
+      "hi": "टमाटर को जैविक रूप से सब्जी माना जाता है।",
+      "ru": "Помидоры биологически считаются овощами.",
+      "zh": "番茄在生物学上被认为是蔬菜。",
+      "ja": "トマトは生物学的には野菜と見なされる。",
+      "ar": "تعتبر الطماطم بيولوجيًا من الخضروات."
+    },
+    "correct_answer": false
+  },
+  {
+    "category": "Geography",
+    "question": {
+      "en": "The desert is defined solely by high temperatures.",
+      "tr": "Çöl, yalnızca yüksek sıcaklıklarla tanımlanır.",
+      "es": "El desierto se define únicamente por las altas temperaturas.",
+      "fr": "Le désert est défini uniquement par des températures élevées.",
+      "de": "Die Wüste wird ausschließlich durch hohe Temperaturen definiert.",
+      "it": "Il deserto è definito esclusivamente dalle alte temperature.",
+      "hi": "रेगिस्तान को केवल उच्च तापमान द्वारा परिभाषित किया जाता है।",
+      "ru": "Пустыня определяется исключительно высокими температурами.",
+      "zh": "沙漠仅由高温定义。",
+      "ja": "砂漠は高温によってのみ定義される。",
+      "ar": "تُعرف الصحراء فقط بارتفاع درجات الحرارة."
+    },
+    "correct_answer": false
+  },
+  {
+    "category": "Space",
+    "question": {
+      "en": "A day on Venus is longer than a year on Venus.",
+      "tr": "Venüs'te bir gün, Venüs'te bir yıldan daha uzundur.",
+      "es": "Un día en Venus es más largo que un año en Venus.",
+      "fr": "Un jour sur Vénus est plus long qu'une année sur Vénus.",
+      "de": "Ein Tag auf der Venus ist länger als ein Jahr auf der Venus.",
+      "it": "Un giorno su Venere è più lungo di un anno su Venere.",
+      "hi": "शुक्र ग्रह पर एक दिन शुक्र ग्रह पर एक साल से लंबा होता है।",
+      "ru": "День на Венере длиннее, чем год на Венере.",
+      "zh": "金星上的一天比金星上的一年还要长。",
+      "ja": "金星の1日は、金星の1年よりも長い。",
+      "ar": "اليوم على كوكب الزهرة أطول من السنة على كوكب الزهرة."
+    },
+    "correct_answer": true
+  },
+  {
+    "category": "Human Body",
+    "question": {
+      "en": "Human fingernails and hair are made of the same substance.",
+      "tr": "İnsan tırnakları ve saçı aynı maddeden yapılmıştır.",
+      "es": "Las uñas y el cabello humano están hechos de la misma sustancia.",
+      "fr": "Les ongles et les cheveux humains sont faits de la même substance.",
+      "de": "Menschliche Fingernägel und Haare bestehen aus derselben Substanz.",
+      "it": "Le unghie e i capelli umani sono fatti della stessa sostanza.",
+      "hi": "मनुष्य के नाखून और बाल एक ही पदार्थ से बने होते हैं।",
+      "ru": "Человеческие ногти и волосы состоят из одного и того же вещества.",
+      "zh": "人的指甲和头发是由同一种物质构成的。",
+      "ja": "人間の爪と髪は同じ物質でできている。",
+      "ar": "تتكون أظافر الإنسان وشعره من نفس المادة."
+    },
+    "correct_answer": true
+  },
+  {
+    "category": "Physics",
+    "question": {
+      "en": "Lightning never strikes the same place twice.",
+      "tr": "Yıldırım asla aynı yere iki kez düşmez.",
+      "es": "Un rayo nunca cae dos veces en el mismo lugar.",
+      "fr": "La foudre ne frappe jamais deux fois au même endroit.",
+      "de": "Der Blitz schlägt nie zweimal an derselben Stelle ein.",
+      "it": "Il fulmine non colpisce mai due volte lo stesso punto.",
+      "hi": "बिजली कभी भी एक ही जगह पर दो बार नहीं गिरती है।",
+      "ru": "Молния никогда не ударяет в одно и то же место дважды.",
+      "zh": "闪电从不两次击中同一个地方。",
+      "ja": "雷は決して同じ場所に2度落ちない。",
+      "ar": "البرق لا يضرب نفس المكان مرتين أبدًا."
+    },
+    "correct_answer": false
+  },
+  {
+    "category": "History",
+    "question": {
+      "en": "Cleopatra lived closer in time to the Moon landing than to the construction of the Great Pyramid.",
+      "tr": "Kleopatra, Büyük Piramit'in inşasından ziyade Ay'a inişe daha yakın bir zamanda yaşamıştır.",
+      "es": "Cleopatra vivió más cerca del alunizaje que de la construcción de la Gran Pirámide.",
+      "fr": "Cléopâtre a vécu plus près de l'alunissage que de la construction de la Grande Pyramide.",
+      "de": "Kleopatra lebte zeitlich näher an der Mondlandung als am Bau der Cheops-Pyramide.",
+      "it": "Cleopatra visse più vicino allo sbarco sulla Luna che alla costruzione della Grande Piramide.",
+      "hi": "क्लियोपेट्रा का जीवन काल ग्रेट पिरामिड के निर्माण की तुलना में चंद्रमा पर उतरने के समय के करीब था।",
+      "ru": "Клеопатра жила ближе по времени к высадке на Луну, чем к строительству Великой пирамиды.",
+      "zh": "克娄巴特拉生活的年代距离登月比距离大金字塔的建造更近。",
+      "ja": "クレオパトラは、大ピラミッドの建設よりも月面着陸に近い時代に生きていた。",
+      "ar": "عاشت كليوباترا في وقت أقرب للهبوط على القمر منه لبناء الهرم الأكبر."
+    },
+    "correct_answer": true
+  }
+]

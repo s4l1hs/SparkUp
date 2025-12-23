@@ -39,6 +39,18 @@ class AppLocalizationsHi extends AppLocalizations {
   String get yourScore => 'आपका स्कोर';
 
   @override
+  String get trueFalseTitle => 'सही / गलत';
+
+  @override
+  String get trueLabel => 'सही';
+
+  @override
+  String get falseLabel => 'गलत';
+
+  @override
+  String get categoryLabel => 'श्रेणी';
+
+  @override
   String get great => 'महान!';
 
   @override

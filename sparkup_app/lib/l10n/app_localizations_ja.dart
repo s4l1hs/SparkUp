@@ -39,6 +39,18 @@ class AppLocalizationsJa extends AppLocalizations {
   String get yourScore => 'あなたのスコア';
 
   @override
+  String get trueFalseTitle => '正しい / 間違い';
+
+  @override
+  String get trueLabel => '正しい';
+
+  @override
+  String get falseLabel => '間違い';
+
+  @override
+  String get categoryLabel => 'カテゴリ';
+
+  @override
   String get great => '素晴らしい！';
 
   @override

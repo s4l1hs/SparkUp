@@ -39,6 +39,18 @@ class AppLocalizationsRu extends AppLocalizations {
   String get yourScore => 'Ваш счет';
 
   @override
+  String get trueFalseTitle => 'Верно / Неверно';
+
+  @override
+  String get trueLabel => 'Верно';
+
+  @override
+  String get falseLabel => 'Неверно';
+
+  @override
+  String get categoryLabel => 'Категория';
+
+  @override
   String get great => 'Отлично!';
 
   @override

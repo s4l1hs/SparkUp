@@ -39,6 +39,18 @@ class AppLocalizationsAr extends AppLocalizations {
   String get yourScore => 'درجتك';
 
   @override
+  String get trueFalseTitle => 'صحيح / خطأ';
+
+  @override
+  String get trueLabel => 'صحيح';
+
+  @override
+  String get falseLabel => 'خطأ';
+
+  @override
+  String get categoryLabel => 'الفئة';
+
+  @override
   String get great => 'عظيم!';
 
   @override
