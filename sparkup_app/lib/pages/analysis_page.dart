@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import '../services/api_service.dart';
+// api service not used here; provider handles fetching
 import 'package:sparkup_app/utils/color_utils.dart';
+import 'package:provider/provider.dart';
+import '../providers/analysis_provider.dart';
 
 class AnalysisPage extends StatefulWidget {
   final String idToken;
@@ -12,38 +14,22 @@ class AnalysisPage extends StatefulWidget {
 }
 
 class _AnalysisPageState extends State<AnalysisPage> {
-  final ApiService _api = ApiService();
-  bool _isLoading = true;
-  String? _error;
-  List<Map<String, dynamic>> _items = [];
-
   @override
   void initState() {
     super.initState();
-    WidgetsBinding.instance.addPostFrameCallback((_) => _load());
-  }
-
-  Future<void> _load() async {
-    setState(() {
-      _isLoading = true;
-      _error = null;
+    // kick off initial load via provider after first frame
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      try {
+        final prov = Provider.of<AnalysisProvider>(context, listen: false);
+        prov.refresh(widget.idToken);
+      } catch (_) {}
     });
-    try {
-      final data = await _api.getUserAnalysis(widget.idToken);
-      final rawList = (data['analysis'] as List<dynamic>?) ?? <dynamic>[];
-      setState(() {
-        _items = rawList.map<Map<String, dynamic>>((e) => Map<String, dynamic>.from(e as Map<String, dynamic>)).toList();
-      });
-    } catch (e) {
-      setState(() { _error = e.toString(); });
-    } finally {
-      setState(() { _isLoading = false; });
-    }
   }
 
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
+    final prov = Provider.of<AnalysisProvider>(context);
 
     return Scaffold(
       backgroundColor: theme.colorScheme.surface,
@@ -54,17 +40,17 @@ class _AnalysisPageState extends State<AnalysisPage> {
           children: [
             Text('Performance Analysis', style: TextStyle(fontSize: 22.sp, fontWeight: FontWeight.bold, color: theme.colorScheme.primary)),
             SizedBox(height: 12.h),
-            if (_isLoading) Center(child: CircularProgressIndicator(color: theme.colorScheme.primary)),
-            if (_error != null) Center(child: Text(_error!)),
-            if (!_isLoading && _error == null)
+            if (prov.isLoading) Center(child: CircularProgressIndicator(color: theme.colorScheme.primary)),
+            if (prov.error != null) Center(child: Text(prov.error!)),
+            if (!prov.isLoading && prov.error == null)
               Expanded(
-                child: _items.isEmpty
+                child: prov.items.isEmpty
                     ? Center(child: Text('No analysis data yet'))
                     : ListView.separated(
-                        itemCount: _items.length,
+                        itemCount: prov.items.length,
                         separatorBuilder: (c, i) => SizedBox(height: 12.h),
                         itemBuilder: (c, i) {
-                          final it = _items[i];
+                          final it = prov.items[i];
                           final category = it['category'] ?? 'unknown';
                           final percent = (it['percent'] ?? 0) as int;
                           final correct = it['correct'] ?? 0;

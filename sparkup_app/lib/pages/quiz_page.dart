@@ -9,6 +9,7 @@ import '../widgets/morphing_gradient_button.dart';
 import '../widgets/animated_glass_card.dart';
 import '../l10n/app_localizations.dart';
 import '../providers/user_provider.dart';
+import '../providers/analysis_provider.dart';
 import '../locale_provider.dart';
 import '../main_screen.dart';
 import 'package:sparkup_app/utils/color_utils.dart';
@@ -252,6 +253,12 @@ class _QuizPageState extends State<QuizPage> with TickerProviderStateMixin {
 
                 userProvider.updateScore(newScore);
                 await userProvider.loadProfile(widget.idToken);
+
+                // Notify analysis provider to refresh immediately after an answer
+                try {
+                  final analysisProv = Provider.of<AnalysisProvider>(context, listen: false);
+                  analysisProv.refresh(widget.idToken);
+                } catch (_) {}
 
                       await Future.delayed(const Duration(milliseconds: 900));
                       if (!mounted) return;

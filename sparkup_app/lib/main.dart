@@ -10,6 +10,7 @@ import 'l10n/app_localizations.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'locale_provider.dart';
 import 'providers/user_provider.dart'; // USER PROVIDER IMPORT EDİLDİ
+import 'providers/analysis_provider.dart';
 import 'auth_gate.dart';
 import 'package:sparkup_app/utils/color_utils.dart';
 
@@ -38,6 +39,7 @@ void main() async {
       providers: [
         ChangeNotifierProvider(create: (context) => LocaleProvider()),
         ChangeNotifierProvider(create: (context) => UserProvider()), // UserProvider EKLENDİ
+        ChangeNotifierProvider(create: (context) => AnalysisProvider()),
       ],
       child: const MyApp(),
     ),
