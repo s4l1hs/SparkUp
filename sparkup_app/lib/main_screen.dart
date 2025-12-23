@@ -39,16 +39,21 @@ class MainScreenState extends State<MainScreen> with TickerProviderStateMixin {
     super.initState();
     // Load user profile after first frame and set app locale accordingly
     WidgetsBinding.instance.addPostFrameCallback((_) async {
-      try {
-        final userProvider = Provider.of<UserProvider>(context, listen: false);
-        await userProvider.loadProfile(widget.idToken);
-        final lang = userProvider.profile?.languageCode ?? PlatformDispatcher.instance.locale.languageCode;
-        if (lang.isNotEmpty) {
-          Provider.of<LocaleProvider>(context, listen: false).setLocale(lang);
+      final userProvider = Provider.of<UserProvider>(context, listen: false);
+      await userProvider.loadProfile(widget.idToken);
+      final lang = userProvider.profile?.languageCode;
+      final localeProvider = Provider.of<LocaleProvider>(context, listen: false);
+      // Sadece languageCode varsa localeProvider.setLocale çağrılır
+      if (lang != null && lang.isNotEmpty) {
+        // If backend returns 'en' but user hasn't chosen a language, prefer device locale
+        if (lang == 'en' && !localeProvider.userSetLanguage) {
+          // skip setting to English
+        } else {
+          localeProvider.setLocale(lang);
+          if (mounted) setState(() {});
         }
-      } catch (e) {
-        // ignore errors here; app will fallback to default locale
       }
+      // languageCode yoksa, cihaz diliyle başlatılır ve tekrar İngilizceye dönmez
     });
     _pages = <Widget>[
       LeaderboardPage(idToken: widget.idToken),

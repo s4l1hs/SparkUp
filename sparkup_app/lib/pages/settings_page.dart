@@ -29,7 +29,7 @@ class _SettingsPageState extends State<SettingsPage> with SingleTickerProviderSt
   bool _isLoadingProfile = false;
 
   bool _notificationsEnabled = true;
-  String _currentLanguageCode = 'en';
+  String _currentLanguageCode = '';
   String? _username; // stored local editable username
   int _userScore = 0;
 
@@ -87,18 +87,30 @@ class _SettingsPageState extends State<SettingsPage> with SingleTickerProviderSt
         final profile = jsonDecode(response.body) as Map<String, dynamic>;
         final firebaseName = FirebaseAuth.instance.currentUser?.displayName;
         final backendUsername = (profile['username'] as String?) ?? '';
-        final languageCode = (profile['language_code'] as String?) ?? 'en';
+        // Do not default to English when backend has no language_code.
+        // Keep it null so we don't overwrite the app locale to English.
+        final languageCode = (profile['language_code'] as String?);
         final score = (profile['score'] as int?) ?? 0;
         final notifications = (profile['notifications_enabled'] as bool?) ?? true;
 
         setState(() {
-          _currentLanguageCode = languageCode;
+          // If backend provides a languageCode use it, otherwise keep current provider locale
+          final localeProvider = Provider.of<LocaleProvider>(context, listen: false);
+          _currentLanguageCode = languageCode ?? localeProvider.locale.languageCode;
           _username = (firebaseName != null && firebaseName.isNotEmpty) ? firebaseName : (backendUsername.isNotEmpty ? backendUsername : null);
           _userScore = score;
           _notificationsEnabled = notifications;
         });
-
-  localeProvider.setLocale(_currentLanguageCode);
+        // Only change app locale if backend explicitly provided language_code
+        if (languageCode != null && languageCode.isNotEmpty) {
+          final localeProvider = Provider.of<LocaleProvider>(context, listen: false);
+          // If backend returns 'en' as a default (not user-chosen), don't override device locale
+          if (languageCode == 'en' && !localeProvider.userSetLanguage) {
+            // skip
+          } else {
+            await localeProvider.setLocale(languageCode, persist: true);
+          }
+        }
         // ensure device token registration if notifications are enabled
         if (_notificationsEnabled) {
           _ensureTokenRegisteredIfEnabled();
@@ -126,7 +138,8 @@ class _SettingsPageState extends State<SettingsPage> with SingleTickerProviderSt
       final response = await http.put(uri, headers: {'Authorization': 'Bearer $token', 'Content-Type': 'application/json'});
 
       if (response.statusCode == 200) {
-  localeProvider.setLocale(langCode);
+      // Persist that the user explicitly chose a language
+      await localeProvider.setLocale(langCode, persist: true);
         setState(() => _currentLanguageCode = langCode);
       } else {
         throw Exception('Failed to save language');
