@@ -38,6 +38,8 @@ class _QuizPageState extends State<QuizPage> with TickerProviderStateMixin {
 
   // Yeni: son kullanılan locale'i takip et
   String? _lastLocale;
+  // Keep a reference to the locale provider so we can listen for changes
+  LocaleProvider? _localeProviderRef;
 
   // score award animation
   late final AnimationController _scoreAnimController;
@@ -74,61 +76,75 @@ class _QuizPageState extends State<QuizPage> with TickerProviderStateMixin {
     // error in debug/dev builds.
     WidgetsBinding.instance.addPostFrameCallback((_) {
       _fetchQuizData(isInitialLoad: true);
+      // register locale change listener so active pages update when provider locale changes
+      try {
+        _localeProviderRef = Provider.of<LocaleProvider>(context, listen: false);
+        _localeProviderRef?.addListener(_onLocaleChanged);
+      } catch (_) {}
     });
   }
 
-                @override
-                void didChangeDependencies() {
-                  super.didChangeDependencies();
-                  final localeCode = Localizations.localeOf(context).languageCode;
-                  if (_lastLocale != localeCode) {
-                    _lastLocale = localeCode;
-                    if (!_isLoading && _isQuizActive && _questions.isNotEmpty && !_localizeInProgress) {
-                      final ids = _questions.map((q) => q['id'] as int).toList();
-                      _localizeInProgress = true;
-                      WidgetsBinding.instance.addPostFrameCallback((_) async {
-                        try {
-                          final localized = await _apiService.getLocalizedQuizQuestions(widget.idToken, ids, lang: localeCode);
-                          if (!mounted) return;
-                          if (localized.isNotEmpty) {
-                            setState(() {
-                              final Map<int, Map<String, dynamic>> byId = { for (var q in localized) (q['id'] as int) : Map<String, dynamic>.from(q) };
-                              _questions = _questions.map((q) {
-                                final id = q['id'] as int;
-                                final loc = byId[id];
-                                if (loc != null) {
-                                  return {
-                                    'id': id,
-                                    'question_text': loc['question_text'],
-                                    'options': List<dynamic>.from(loc['options'] as List),
-                                    'correct_answer_index': loc['correct_answer_index'],
-                                  };
-                                }
-                                return q;
-                              }).toList();
-                            });
-                          }
-                        } catch (e) {
-                          debugPrint("Failed to localize active quiz: $e");
-                        } finally {
-                          _localizeInProgress = false;
-                        }
-                      });
-                    } else {
-                      if (!_isLoading && !_isQuizActive) {
-                        WidgetsBinding.instance.addPostFrameCallback((_) => _fetchQuizData(isInitialLoad: false, isPreview: true));
-                      }
-                      if (_limitError != null && !_isLoading) {
-                        WidgetsBinding.instance.addPostFrameCallback((_) => _fetchQuizData(isInitialLoad: false, isPreview: true));
-                      }
-                    }
-                  }
+  // Choose effective language for API calls: prefer explicit user choice if supported,
+  // otherwise use device/app locale if supported; finally fallback to 'en'.
+  String _selectSupportedLanguage(String? userLang, String deviceLang, {required bool allowBackendEn}) {
+    const supported = {'en','tr','de','fr','es','it','ru','zh','hi','ja','ar'};
+    // Use backend/user language only if supported and either it's not 'en' or the user explicitly chose it
+    if (userLang != null && supported.contains(userLang) && (allowBackendEn || userLang != 'en')) return userLang;
+    if (supported.contains(deviceLang)) return deviceLang;
+    return 'en';
+  }
+
+  void _onLocaleChanged() {
+    final localeCode = _localeProviderRef?.locale.languageCode;
+    if (localeCode == null) return;
+    if (_lastLocale == localeCode) return;
+    _lastLocale = localeCode;
+    if (!_isLoading && _isQuizActive && _questions.isNotEmpty && !_localizeInProgress) {
+      final ids = _questions.map((q) => q['id'] as int).toList();
+      _localizeInProgress = true;
+      WidgetsBinding.instance.addPostFrameCallback((_) async {
+        try {
+          final localized = await _apiService.getLocalizedQuizQuestions(widget.idToken, ids, lang: localeCode);
+          if (!mounted) return;
+          if (localized.isNotEmpty) {
+            setState(() {
+              final Map<int, Map<String, dynamic>> byId = { for (var q in localized) (q['id'] as int) : Map<String, dynamic>.from(q) };
+              _questions = _questions.map((q) {
+                final id = q['id'] as int;
+                final loc = byId[id];
+                if (loc != null) {
+                  return {
+                    'id': id,
+                    'question_text': loc['question_text'],
+                    'options': List<dynamic>.from(loc['options'] as List),
+                    'correct_answer_index': loc['correct_answer_index'],
+                  };
                 }
+                return q;
+              }).toList();
+            });
+          }
+        } catch (e) {
+          debugPrint("Failed to localize active quiz: $e");
+        } finally {
+          _localizeInProgress = false;
+        }
+      });
+    } else {
+      if (!_isLoading && !_isQuizActive) {
+        WidgetsBinding.instance.addPostFrameCallback((_) => _fetchQuizData(isInitialLoad: false, isPreview: true));
+      }
+      if (_limitError != null && !_isLoading) {
+        WidgetsBinding.instance.addPostFrameCallback((_) => _fetchQuizData(isInitialLoad: false, isPreview: true));
+      }
+    }
+  }
 
                 @override
                 void dispose() {
                   _backgroundController.dispose();
                   _scoreAnimController.dispose();
+                  try { _localeProviderRef?.removeListener(_onLocaleChanged); } catch (_) {}
                   super.dispose();
                 }
 
@@ -156,8 +172,9 @@ class _QuizPageState extends State<QuizPage> with TickerProviderStateMixin {
                     _limitError = null;
                   });
                   try {
-                    final lang = userProvider.profile?.languageCode ?? localeProvider.locale.languageCode;
-                    final questions = await _apiService.getQuizQuestions(widget.idToken, limit: 3, lang: lang, preview: isPreview);
+                  final deviceLang = localeProvider.locale.languageCode;
+                  final lang = _selectSupportedLanguage(userProvider.profile?.languageCode, deviceLang, allowBackendEn: localeProvider.userSetLanguage);
+                  final questions = await _apiService.getQuizQuestions(widget.idToken, limit: 3, lang: lang, preview: isPreview);
                 if (!mounted) return;
 
                     if (questions.isNotEmpty) {

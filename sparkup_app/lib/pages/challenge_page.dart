@@ -28,6 +28,15 @@ class _ChallengePageState extends State<ChallengePage> with TickerProviderStateM
   String? _limitError;
   String? _generalError;
 
+  // Choose effective language for API calls: prefer explicit user choice if supported,
+  // otherwise use device/app locale if supported; finally fallback to 'en'.
+  String _selectSupportedLanguage(String? userLang, String deviceLang, {required bool allowBackendEn}) {
+    const supported = {'en','tr','de','fr','es','it','ru','zh','hi','ja','ar'};
+    if (userLang != null && supported.contains(userLang) && (allowBackendEn || userLang != 'en')) return userLang;
+    if (supported.contains(deviceLang)) return deviceLang;
+    return 'en';
+  }
+
   late final AnimationController _backgroundController;
   late final Animation<Alignment> _backgroundAnimation1;
   late final Animation<Alignment> _backgroundAnimation2;
@@ -36,6 +45,7 @@ class _ChallengePageState extends State<ChallengePage> with TickerProviderStateM
 
   // track last locale to refresh localized text without consuming limit
   String? _lastLocale;
+  LocaleProvider? _localeProviderRef;
 
   @override
   void initState() {
@@ -52,40 +62,45 @@ class _ChallengePageState extends State<ChallengePage> with TickerProviderStateM
 
     _pulseController = AnimationController(vsync: this, duration: const Duration(milliseconds: 900));
     _pulseController.repeat(reverse: true);
+    // register a listener to LocaleProvider so we react when app locale changes
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      try {
+        _localeProviderRef = Provider.of<LocaleProvider>(context, listen: false);
+        _localeProviderRef?.addListener(_onLocaleChanged);
+      } catch (_) {}
+    });
   }
 
   @override
   void dispose() {
     _backgroundController.dispose();
     _pulseController.dispose();
+    try { _localeProviderRef?.removeListener(_onLocaleChanged); } catch (_) {}
     super.dispose();
   }
 
-  @override
-  void didChangeDependencies() {
-    super.didChangeDependencies();
-    final localeCode = Localizations.localeOf(context).languageCode;
-    if (_lastLocale != localeCode) {
-      _lastLocale = localeCode;
-      if (!_isLoading && _challengeText != null && _currentChallengeId != null) {
-        WidgetsBinding.instance.addPostFrameCallback((_) async {
-          try {
-            final localized = await _apiServiceSafe(() => _apiService.getLocalizedChallenge(widget.idToken, _currentChallengeId!, lang: localeCode), const Duration(seconds: 8));
-            if (!mounted) return;
-            if (localized is Map && localized['challenge_text'] is String) {
-              setState(() {
-                _challengeText = localized['challenge_text'] as String?;
-              });
-            }
-          } catch (e) {
-            debugPrint("Failed to localize active challenge: $e");
+  void _onLocaleChanged() {
+    final localeCode = _localeProviderRef?.locale.languageCode;
+    if (localeCode == null) return;
+    if (_lastLocale == localeCode) return;
+    _lastLocale = localeCode;
+    if (!_isLoading && _challengeText != null && _currentChallengeId != null) {
+      WidgetsBinding.instance.addPostFrameCallback((_) async {
+        try {
+          final localized = await _apiServiceSafe(() => _apiService.getLocalizedChallenge(widget.idToken, _currentChallengeId!, lang: localeCode), const Duration(seconds: 8));
+          if (!mounted) return;
+          if (localized is Map && localized['challenge_text'] is String) {
+            setState(() {
+              _challengeText = localized['challenge_text'] as String?;
+            });
           }
-        });
-      } else {
-        // check limits on open but DO NOT consume (preview=false)
-        if (!_isLoading) {
-          WidgetsBinding.instance.addPostFrameCallback((_) => _fetchChallenge(preview: false, consume: false));
+        } catch (e) {
+          debugPrint("Failed to localize active challenge: $e");
         }
+      });
+    } else {
+      if (!_isLoading) {
+        WidgetsBinding.instance.addPostFrameCallback((_) => _fetchChallenge(preview: false, consume: false));
       }
     }
   }
@@ -105,7 +120,8 @@ class _ChallengePageState extends State<ChallengePage> with TickerProviderStateM
         final userProvider = Provider.of<UserProvider>(context, listen: false);
         await userProvider.loadProfile(widget.idToken);
         final localeProvider = Provider.of<LocaleProvider>(context, listen: false);
-        final lang = userProvider.profile?.languageCode ?? localeProvider.locale.languageCode;
+        final deviceLang = localeProvider.locale.languageCode;
+        final lang = _selectSupportedLanguage(userProvider.profile?.languageCode, deviceLang, allowBackendEn: localeProvider.userSetLanguage);
         final challengeData = await _apiServiceSafe(() => _apiService.getRandomChallenge(widget.idToken, lang: lang, preview: preview), const Duration(seconds: 12));
       if (!mounted) return;
 
