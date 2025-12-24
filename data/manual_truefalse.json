@@ -2244,7 +2244,7 @@
         "correct_answer": true
     },
     {
-        "category": "food_drink",
+        "category": "fun_facts",
         "question": {
             "en": "Pizza originated in Italy.",
             "tr": "Pizza İtalya'da ortaya çıkmıştır.",
@@ -2754,7 +2754,7 @@
         "correct_answer": true
     },
     {
-        "category": "food_drink",
+        "category": "fun_facts",
         "question": {
             "en": "White chocolate is not technically chocolate.",
             "tr": "Beyaz çikolata teknik olarak çikolata değildir.",
@@ -3009,7 +3009,7 @@
         "correct_answer": true
     },
     {
-        "category": "food_drink",
+        "category": "fun_facts",
         "question": {
             "en": "Peanuts are a type of nut.",
             "tr": "Yer fıstığı bir tür kuruyemiştir (sert kabuklu yemiş).",
@@ -3145,7 +3145,7 @@
         "correct_answer": false
     },
     {
-        "category": "food_drink",
+        "category": "fun_facts",
         "question": {
             "en": "Saffron is the most expensive spice in the world.",
             "tr": "Safran dünyanın en pahalı baharatıdır.",
@@ -3485,7 +3485,7 @@
         "correct_answer": true
     },
     {
-        "category": "food_drink",
+        "category": "fun_facts",
         "question": {
             "en": "Sushi always contains raw fish.",
             "tr": "Suşi her zaman çiğ balık içerir.",
@@ -3791,7 +3791,7 @@
         "correct_answer": true
     },
     {
-        "category": "food_drink",
+        "category": "fun_facts",
         "question": {
             "en": "French fries originated in France.",
             "tr": "Patates kızartması Fransa'dan çıkmıştır.",
@@ -4216,7 +4216,7 @@
         "correct_answer": true
     },
     {
-        "category": "food_drink",
+        "category": "fun_facts",
         "question": {
             "en": "Brown sugar is simply white sugar with molasses added back in.",
             "tr": "Esmer şeker, basitçe pekmez eklenmiş beyaz şekerdir.",
@@ -4488,7 +4488,7 @@
         "correct_answer": true
     },
     {
-        "category": "food_drink",
+        "category": "fun_facts",
         "question": {
             "en": "Chocolate is toxic to dogs.",
             "tr": "Çikolata köpekler için zehirlidir.",
@@ -4981,7 +4981,7 @@
         "correct_answer": false
     },
     {
-        "category": "food_drink",
+        "category": "fun_facts",
         "question": {
             "en": "Cucumbers are 95% water.",
             "tr": "Salatalıkların %95'i sudur.",
@@ -5474,7 +5474,7 @@
         "correct_answer": true
     },
     {
-        "category": "food_drink",
+        "category": "fun_facts",
         "question": {
             "en": "Tofu is made from soybeans.",
             "tr": "Tofu soya fasulyesinden yapılır.",
@@ -5712,7 +5712,7 @@
         "correct_answer": false
     },
     {
-        "category": "food_drink",
+        "category": "fun_facts",
         "question": {
             "en": "Botanically speaking, bananas are berries.",
             "tr": "Botanik olarak konuşursak, muzlar birer meyvedir (böğürtlengillerdendir).",
@@ -6188,7 +6188,7 @@
         "correct_answer": false
     },
     {
-        "category": "food_drink",
+        "category": "fun_facts",
         "question": {
             "en": "Chocolate comes from cocoa beans.",
             "tr": "Çikolata kakao çekirdeklerinden gelir.",
@@ -6426,7 +6426,7 @@
         "correct_answer": true
     },
     {
-        "category": "food_drink",
+        "category": "fun_facts",
         "question": {
             "en": "Green tea and black tea come from the same plant.",
             "tr": "Yeşil çay ve siyah çay aynı bitkiden gelir.",
@@ -6475,5 +6475,685 @@
             "ar": "ذكور فرس البحر تحمل البيض وتلد."
         },
         "correct_answer": true
+    },
+    {
+        "category": "history",
+        "question": {
+            "en": "The Great Wall of China was built in a single century.",
+            "tr": "Çin Seddi tek bir yüzyıl içinde inşa edilmiştir.",
+            "fr": "La Grande Muraille de Chine a été construite en un seul siècle.",
+            "es": "La Gran Muralla China fue construida en un solo siglo.",
+            "de": "Die Chinesische Mauer wurde in einem einzigen Jahrhundert erbaut.",
+            "it": "La Grande Muraglia cinese è stata costruita in un solo secolo.",
+            "hi": "चीन की महान दीवार एक ही सदी में बनाई गई थी।",
+            "ru": "Великая Китайская стена была построена за одно столетие.",
+            "zh": "万里长城是在一个世纪内建成的。",
+            "ja": "万里の長城は1世紀の間に建設されました。",
+            "ar": "بُني سور الصين العظيم في قرن واحد."
+        },
+        "correct_answer": false
+    },
+    {
+        "category": "science",
+        "question": {
+            "en": "Human teeth are as strong as shark teeth.",
+            "tr": "İnsan dişleri köpekbalığı dişleri kadar güçlüdür.",
+            "fr": "Les dents humaines sont aussi solides que celles des requins.",
+            "es": "Los dientes humanos son tan fuertes como los de los tiburones.",
+            "de": "Menschliche Zähne sind so stark wie Haifischzähne.",
+            "it": "I denti umani sono forti come quelli degli squali.",
+            "hi": "इंसान के दांत शार्क के दांतों जितने मजबूत होते हैं।",
+            "ru": "Человеческие зубы такие же крепкие, как зубы акулы.",
+            "zh": "人类的牙齿和鲨鱼的牙齿一样坚硬。",
+            "ja": "人間の歯はサメの歯と同じくらい強いです。",
+            "ar": "أسنان الإنسان قوية مثل أسنان القرش."
+        },
+        "correct_answer": true
+    },
+    {
+        "category": "geography_travel",
+        "question": {
+            "en": "Australia is wider than the Moon.",
+            "tr": "Avustralya, Ay'dan daha geniştir.",
+            "fr": "L'Australie est plus large que la Lune.",
+            "es": "Australia es más ancha que la Luna.",
+            "de": "Australien ist breiter als der Mond.",
+            "it": "L'Australia è più larga della Luna.",
+            "hi": "ऑस्ट्रेलिया चंद्रमा से भी चौड़ा है।",
+            "ru": "Австралия шире Луны.",
+            "zh": "澳大利亚比月亮还要宽。",
+            "ja": "オーストラリアは月よりも幅が広いです。",
+            "ar": "أستراليا أعرض من القمر."
+        },
+        "correct_answer": true
+    },
+    {
+        "category": "nature_animals",
+        "question": {
+            "en": "A snail can sleep for three years.",
+            "tr": "Bir salyangoz üç yıl boyunca uyuyabilir.",
+            "fr": "Un escargot peut dormir pendant trois ans.",
+            "es": "Un caracol puede dormir durante tres años.",
+            "de": "Eine Schnecke kann drei Jahre lang schlafen.",
+            "it": "Una lumaca può dormire per tre anni.",
+            "hi": "एक घोंघा तीन साल तक सो सकता है।",
+            "ru": "Улитка может спать три года.",
+            "zh": "蜗牛可以睡眠三年。",
+            "ja": "カタツムリは3年間眠ることができます。",
+            "ar": "يمكن للحلزون أن ينام لمدة ثلاث سنوات."
+        },
+        "correct_answer": true
+    },
+    {
+        "category": "technology",
+        "question": {
+            "en": "The first computer mouse was made of wood.",
+            "tr": "İlk bilgisayar faresi ahşaptan yapılmıştı.",
+            "fr": "La première souris d'ordinateur était en bois.",
+            "es": "El primer ratón de ordenador era de madera.",
+            "de": "Die erste Computermaus war aus Holz.",
+            "it": "Il primo mouse per computer era fatto di legno.",
+            "hi": "पहला कंप्यूटर माउस लकड़ी का बना था।",
+            "ru": "Первая компьютерная мышь была сделана из дерева.",
+            "zh": "第一只电脑鼠标是用木头做的。",
+            "ja": "最初のコンピュータマウスは木製でした。",
+            "ar": "أول فأرة كمبيوتر كانت مصنوعة من الخشب."
+        },
+        "correct_answer": true
+    },
+    {
+        "category": "fun_facts",
+        "question": {
+            "en": "Honey never spoils.",
+            "tr": "Bal asla bozulmaz.",
+            "fr": "Le miel ne se périme jamais.",
+            "es": "La miel nunca se echa a perder.",
+            "de": "Honig wird nie schlecht.",
+            "it": "Il miele non va mai a male.",
+            "hi": "शहद कभी खराब नहीं होता।",
+            "ru": "Мёд никогда не портится.",
+            "zh": "蜂蜜永远不会变质。",
+            "ja": "蜂蜜は決して腐りません。",
+            "ar": "العسل لا يفسد أبداً."
+        },
+        "correct_answer": true
+    },
+    {
+        "category": "cinema_tv",
+        "question": {
+            "en": "Mickey Mouse was the first animated character to talk.",
+            "tr": "Mickey Mouse konuşan ilk animasyon karakteriydi.",
+            "fr": "Mickey Mouse a été le premier personnage d'animation à parler.",
+            "es": "Mickey Mouse fue el primer personaje animado en hablar.",
+            "de": "Micky Maus war die erste Zeichentrickfigur, die sprach.",
+            "it": "Topolino è stato il primo personaggio animato a parlare.",
+            "hi": "मिकी माउस बात करने वाला पहला एनिमेटेड चरित्र था।",
+            "ru": "Микки Маус был первым заговорившим анимационным персонажем.",
+            "zh": "米老鼠是第一个会说话的动画角色。",
+            "ja": "ミッキーマウスは最初にしゃべったアニメキャラクターでした。",
+            "ar": "ميكي ماوس كان أول شخصية كرتونية تتحدث."
+        },
+        "correct_answer": true
+    },
+    {
+        "category": "space_astronomy",
+        "question": {
+            "en": "Venus is the hottest planet in our solar system.",
+            "tr": "Venüs, güneş sistemimizdeki en sıcak gezegendir.",
+            "fr": "Vénus est la planète la plus chaude de notre système solaire.",
+            "es": "Venus es el planeta más caliente de nuestro sistema solar.",
+            "de": "Venus ist der heißeste Planet in unserem Sonnensystem.",
+            "it": "Venere è il pianeta più caldo del nostro sistema solare.",
+            "hi": "शुक्र हमारे सौर मंडल का सबसे गर्म ग्रह है।",
+            "ru": "Венера — самая горячая планета в нашей солнечной системе.",
+            "zh": "金星是太阳系中最热的行星。",
+            "ja": "金星は太陽系で最も暑い惑星です。",
+            "ar": "الزهرة هو أحر كوكب في نظامنا الشمسي."
+        },
+        "correct_answer": true
+    },
+    {
+        "category": "sports",
+        "question": {
+            "en": "Golf balls have dimples to help them fly further.",
+            "tr": "Golf toplarının daha uzağa uçmasına yardımcı olmak için üzerlerinde çukurlar bulunur.",
+            "fr": "Les balles de golf ont des alvéoles pour les aider à voler plus loin.",
+            "es": "Las pelotas de golf tienen hoyuelos para ayudarlas a volar más lejos.",
+            "de": "Golfbälle haben Dellen, damit sie weiter fliegen.",
+            "it": "Le palline da golf hanno delle fossette per aiutarle a volare più lontano.",
+            "hi": "गोल्फ की गेंदों में गड्ढे होते हैं ताकि वे और दूर तक उड़ सकें।",
+            "ru": "На мячах для гольфа есть ямочки, чтобы они летели дальше.",
+            "zh": "高尔夫球上有凹坑是为了帮助它们飞得更远。",
+            "ja": "ゴルフボールにディンプルがあるのは、より遠くに飛ぶのを助けるためです。",
+            "ar": "كرات الجولف لها غمازات لمساعدتها على الطيران لمسافة أبعد."
+        },
+        "correct_answer": true
+    },
+    {
+        "category": "literature",
+        "question": {
+            "en": "Mary Shelley was only 18 when she started writing Frankenstein.",
+            "tr": "Mary Shelley Frankenstein'ı yazmaya başladığında sadece 18 yaşındaydı.",
+            "fr": "Mary Shelley n'avait que 18 ans lorsqu'elle a commencé à écrire Frankenstein.",
+            "es": "Mary Shelley tenía solo 18 años cuando empezó a escribir Frankenstein.",
+            "de": "Mary Shelley war erst 18, als sie anfing, Frankenstein zu schreiben.",
+            "it": "Mary Shelley aveva solo 18 anni quando iniziò a scrivere Frankenstein.",
+            "hi": "मैरी शेली केवल 18 वर्ष की थीं जब उन्होंने फ्रेंकस्टीन लिखना शुरू किया था।",
+            "ru": "Мэри Шелли было всего 18 лет, когда она начала писать «Франкенштейна».",
+            "zh": "玛丽·雪莱开始写《弗兰肯斯坦》时只有18岁。",
+            "ja": "メアリー・シェリーがフランケンシュタインを書き始めたのはわずか18歳でした。",
+            "ar": "كانت ماري شيلي في الثامنة عشرة من عمرها فقط عندما بدأت في كتابة فرانكشتاين."
+        },
+        "correct_answer": true
+    },
+    {
+        "category": "architecture",
+        "question": {
+            "en": "The Empire State Building was the world's tallest building for over 40 years.",
+            "tr": "Empire State Binası, 40 yılı aşkın bir süre boyunca dünyanın en yüksek binası olarak kalmıştır.",
+            "fr": "L'Empire State Building a été le plus haut bâtiment du monde pendant plus de 40 ans.",
+            "es": "El Empire State Building fue el edificio más alto del mundo durante más de 40 años.",
+            "de": "Das Empire State Building war über 40 Jahre lang das höchste Gebäude der Welt.",
+            "it": "L'Empire State Building è stato l'edificio più alto del mondo per oltre 40 anni.",
+            "hi": "एम्पायर स्टेट बिल्डिंग 40 से अधिक वर्षों तक दुनिया की सबसे ऊंची इमारत थी।",
+            "ru": "Эмпайр-стейт-билдинг был самым высоким зданием в мире более 40 лет.",
+            "zh": "帝国大厦曾保持世界最高建筑纪录超过40年。",
+            "ja": "エンパイア・ステート・ビルディングは40年以上にわたり世界一高いビルでした。",
+            "ar": "كان مبنى إمباير ستيت أطول مبنى في العالم لأكثر من 40 عامًا."
+        },
+        "correct_answer": true
+    },
+    {
+        "category": "philosophy",
+        "question": {
+            "en": "Socrates left many written books detailing his philosophy.",
+            "tr": "Sokrates, felsefesini detaylandıran birçok yazılı kitap bırakmıştır.",
+            "fr": "Socrate a laissé de nombreux livres écrits détaillant sa philosophie.",
+            "es": "Sócrates dejó muchos libros escritos detallando su filosofía.",
+            "de": "Sokrates hinterließ viele geschriebene Bücher, in denen er seine Philosophie erläuterte.",
+            "it": "Socrate ha lasciato molti libri scritti che descrivono la sua filosofia.",
+            "hi": "सुकरात ने अपने दर्शन का विवरण देते हुए कई लिखित पुस्तकें छोड़ीं।",
+            "ru": "Сократ оставил много написанных книг, подробно описывающих его философию.",
+            "zh": "苏格拉底留下了许多详细阐述其哲学思想的著作。",
+            "ja": "ソクラテスは自身の哲学を詳述した多くの著作を残しました。",
+            "ar": "ترك سقراط العديد من الكتب المكتوبة التي تفصل فلسفته."
+        },
+        "correct_answer": false
+    },
+    {
+        "category": "economics_finance",
+        "question": {
+            "en": "The first paper money in the world was used in China.",
+            "tr": "Dünyadaki ilk kağıt para Çin'de kullanılmıştır.",
+            "fr": "Le premier papier-monnaie au monde a été utilisé en Chine.",
+            "es": "El primer papel moneda del mundo se utilizó en China.",
+            "de": "Das erste Papiergeld der Welt wurde in China verwendet.",
+            "it": "La prima banconota al mondo è stata utilizzata in Cina.",
+            "hi": "दुनिया का पहला कागजी नोट चीन में इस्तेमाल किया गया था।",
+            "ru": "Первые бумажные деньги в мире начали использовать в Китае.",
+            "zh": "世界上最早的纸币出现在中国。",
+            "ja": "世界で最初の紙幣は中国で使用されました。",
+            "ar": "استُخدمت أول عملة ورقية في العالم في الصين."
+        },
+        "correct_answer": true
+    },
+    {
+        "category": "space_astronomy",
+        "question": {
+            "en": "A year on Mercury is shorter than a day on Mercury.",
+            "tr": "Merkür'de bir yıl, Merkür'deki bir günden daha kısadır.",
+            "fr": "Une année sur Mercure est plus courte qu'un jour sur Mercure.",
+            "es": "Un año en Mercurio es más corto que un día en Mercurio.",
+            "de": "Ein Jahr auf dem Merkur ist kürzer als ein Tag auf dem Merkur.",
+            "it": "Un anno su Mercurio è più breve di un giorno su Mercurio.",
+            "hi": "बुध पर एक वर्ष बुध पर एक दिन से छोटा होता है।",
+            "ru": "Год на Меркурии короче, чем день на Меркурии.",
+            "zh": "水星上的一年比水星上的一天还要短。",
+            "ja": "水星の1年は水星の1日よりも短いです。",
+            "ar": "السنة على عطارد أقصر من اليوم على عطارد."
+        },
+        "correct_answer": true
+    },
+    {
+        "category": "health_fitness",
+        "question": {
+            "en": "The human body is about 60% water.",
+            "tr": "İnsan vücudunun yaklaşık %60'ı sudur.",
+            "fr": "Le corps humain est composé d'environ 60 % d'eau.",
+            "es": "El cuerpo humano tiene aproximadamente un 60% de agua.",
+            "de": "Der menschliche Körper besteht zu etwa 60 % aus Wasser.",
+            "it": "Il corpo umano è composto per circa il 60% da acqua.",
+            "hi": "मानव शरीर में लगभग 60% पानी होता है।",
+            "ru": "Человеческое тело примерно на 60% состоит из воды.",
+            "zh": "人体约有60%是水。",
+            "ja": "成人の人体の約60％は水分です。",
+            "ar": "يتكون جسم الإنسان من حوالي 60% من الماء."
+        },
+        "correct_answer": true
+    },
+    {
+        "category": "fun_facts",
+        "question": {
+            "en": "A jiffy is an actual unit of time, equal to 1/100th of a second.",
+            "tr": "'Jiffy' gerçek bir zaman birimidir ve saniyenin 1/100'üne eşittir.",
+            "fr": "Un 'jiffy' est une unité de temps réelle, égale à 1/100e de seconde.",
+            "es": "Un 'jiffy' es una unidad de tiempo real, igual a 1/100 de segundo.",
+            "de": "Ein 'Jiffy' ist eine tatsächliche Zeiteinheit, die 1/100 Sekunde entspricht.",
+            "it": "Un 'jiffy' è un'unità di tempo reale, pari a 1/100 di secondo.",
+            "hi": "'Jiffy' समय की एक वास्तविक इकाई है, जो एक सेकंड के 1/100वें हिस्से के बराबर है।",
+            "ru": "«Джиффи» (jiffy) — это реальная единица времени, равная 1/100 секунды.",
+            "zh": "“瞬息”（jiffy）是一个真实的物理时间单位，等于百分之一秒。",
+            "ja": "「ジフィー」は実際の時間の単位であり、100分の1秒に相当します。",
+            "ar": "اللحظة (Jiffy) هي وحدة زمنية حقيقية، تساوي 1/100 من الثانية."
+        },
+        "correct_answer": true
+    },
+    {
+        "category": "mythology",
+        "question": {
+            "en": "In Egyptian mythology, Anubis is the god associated with mummification.",
+            "tr": "Mısır mitolojisinde Anubis, mumyalama ile ilişkilendirilen tanrıdır.",
+            "fr": "Dans la mythologie égyptienne, Anubis est le dieu associé à la momification.",
+            "es": "En la mitología egipcia, Anubis es el dios asociado con la momificación.",
+            "de": "In der ägyptischen Mythologie ist Anubis der Gott, der mit der Mumifizierung in Verbindung gebracht wird.",
+            "it": "Nella mitologia egizia, Anubi è il dio associato alla mummificazione.",
+            "hi": "मिस्र के पौराणिक कथाओं में, अनुबिस ममीकरण से जुड़ा देवता है।",
+            "ru": "В египетской мифологии Анубис — бог, связанный с мумификацией.",
+            "zh": "在埃及神话中，阿努比斯是与制作木乃伊相关的神。",
+            "ja": "エジプト神話において、アヌビスはミイラ作りを司る神です。",
+            "ar": "في الأساطير المصرية، أنوبيس هو الإله المرتبط بالتحنيط."
+        },
+        "correct_answer": true
+    },
+    {
+        "category": "literature",
+        "question": {
+            "en": "The character Sherlock Holmes lived at 221B Baker Street.",
+            "tr": "Sherlock Holmes karakteri Baker Sokak 221B adresinde yaşamıştır.",
+            "fr": "Le personnage de Sherlock Holmes vivait au 221B Baker Street.",
+            "es": "El personaje de Sherlock Holmes vivía en el 221B de Baker Street.",
+            "de": "Die Figur Sherlock Holmes wohnte in der Baker Street 221B.",
+            "it": "Il personaggio di Sherlock Holmes viveva al 221B di Baker Street.",
+            "hi": "शर्लक होम्स का पात्र 221बी बेकर स्ट्रीट में रहता था।",
+            "ru": "Персонаж Шерлок Холмс жил по адресу Бейкер-стрит, 221Б.",
+            "zh": "夏洛克·福尔摩斯这一角色居住在贝克街221B号。",
+            "ja": "シャーロック・ホームズというキャラクターはベーカー街221Bに住んでいました。",
+            "ar": "عاشت شخصية شارلوك هولمز في 221 ب شارع بيكر."
+        },
+        "correct_answer": true
+    },
+    {
+        "category": "history",
+        "question": {
+            "en": "The United States declared independence in 1776.",
+            "tr": "Amerika Birleşik Devletleri bağımsızlığını 1776 yılında ilan etmiştir.",
+            "fr": "Les États-Unis ont déclaré leur indépendance en 1776.",
+            "es": "Estados Unidos declaró su independencia en 1776.",
+            "de": "Die Vereinigten Staaten erklärten 1776 ihre Unabhängigkeit.",
+            "it": "Gli Stati Uniti dichiararono l'indipendenza nel 1776.",
+            "hi": "संयुक्त राज्य अमेरिका ने 1776 में स्वतंत्रता की घोषणा की थी।",
+            "ru": "США провозгласили независимость в 1776 году.",
+            "zh": "美国于1776年宣布独立。",
+            "ja": "アメリカ合衆国は1776年に独立を宣言しました。",
+            "ar": "أعلنت الولايات المتحدة استقلالها في عام 1776."
+        },
+        "correct_answer": true
+    },
+    {
+        "category": "video_games",
+        "question": {
+            "en": "The game 'Minecraft' was originally created by a developer known as Notch.",
+            "tr": "'Minecraft' oyunu başlangıçta Notch olarak bilinen bir geliştirici tarafından yaratılmıştır.",
+            "fr": "Le jeu 'Minecraft' a été créé à l'origine par un développeur connu sous le nom de Notch.",
+            "es": "El juego 'Minecraft' fue creado originalmente por un desarrollador conocido como Notch.",
+            "de": "Das Spiel 'Minecraft' wurde ursprünglich von einem Entwickler namens Notch erstellt.",
+            "it": "Il gioco 'Minecraft' è stato originariamente creato da uno sviluppatore noto come Notch.",
+            "hi": "'माइनक्राफ्ट' गेम मूल रूप से 'नॉच' के नाम से जाने जाने वाले एक डेवलपर द्वारा बनाया गया था।",
+            "ru": "Игра «Minecraft» была создана разработчиком, известным под псевдонимом Notch.",
+            "zh": "《我的世界》（Minecraft）最初由名为 Notch 的开发者创作。",
+            "ja": "「マインクラフト」は、もともとNotchとして知られる開発者によって作成されました。",
+            "ar": "لعبة 'ماين كرافت' أنشأها في الأصل مطور معروف باسم نوتش."
+        },
+        "correct_answer": true
+    },
+    {
+        "category": "geography_travel",
+        "question": {
+            "en": "Iceland is actually greener than Greenland.",
+            "tr": "İzlanda aslında Grönland'dan daha yeşildir.",
+            "fr": "L'Islande est en fait plus verte que le Groenland.",
+            "es": "Islandia es en realidad más verde que Groenlandia.",
+            "de": "Island ist tatsächlich grüner als Grönland.",
+            "it": "L'Islanda è in realtà più verde della Groenlandia.",
+            "hi": "आइसलैंड वास्तव में ग्रीनलैंड की तुलना में अधिक हरा है।",
+            "ru": "Исландия на самом деле зеленее Гренландии.",
+            "zh": "冰岛实际上比格陵兰岛更绿。",
+            "ja": "アイスランドは実際にはグリーンランドよりも緑が豊かです。",
+            "ar": "آيسلندا هي في الواقع أكثر خضرة من جرينلاند."
+        },
+        "correct_answer": true
+    },
+    {
+        "category": "science",
+        "question": {
+            "en": "Sharks have been on Earth longer than trees.",
+            "tr": "Köpekbalıkları Dünya'da ağaçlardan daha uzun süredir bulunmaktadır.",
+            "fr": "Les requins sont sur Terre depuis plus longtemps que les arbres.",
+            "es": "Los tiburones han estado en la Tierra más tiempo que los árboles.",
+            "de": "Haie existieren schon länger auf der Erde als Bäume.",
+            "it": "Gli squali sono sulla Terra da più tempo degli alberi.",
+            "hi": "शार्क पृथ्वी पर पेड़ों से अधिक समय से मौजूद हैं।",
+            "ru": "Акулы существуют на Земле дольше, чем деревья.",
+            "zh": "鲨鱼在地球上存在的时间比树木还要长。",
+            "ja": "サメは樹木よりも長い間、地球上に存在しています。",
+            "ar": "كانت أسماك القرش موجودة على الأرض لفترة أطول من الأشجار."
+        },
+        "correct_answer": true
+    },
+    {
+        "category": "history",
+        "question": {
+            "en": "Napoleon Bonaparte was exceptionally short for his time.",
+            "tr": "Napolyon Bonapart kendi dönemi için olağanüstü derecede kısaydı.",
+            "fr": "Napoléon Bonaparte était exceptionnellement petit pour son époque.",
+            "es": "Napoleón Bonaparte era excepcionalmente bajo para su época.",
+            "de": "Napoleon Bonaparte war für seine Zeit außergewöhnlich klein.",
+            "it": "Napoleone Bonaparte era eccezionalmente basso per la sua epoca.",
+            "hi": "नेपोलियन बोनापार्ट अपने समय के हिसाब से असाधारण रूप से छोटे कद के थे।",
+            "ru": "Наполеон Бонапарт был исключительно низкого роста для своего времени.",
+            "zh": "拿破仑·波拿巴在他的时代身材异常矮小。",
+            "ja": "ナポレオン・ボナパルトは、当時の平均からすると異例なほど小柄でした。",
+            "ar": "كان نابليون بونابرت قصير القامة بشكل استثنائي بالنسبة لوقته."
+        },
+        "correct_answer": false
+    },
+    {
+        "category": "economics_finance",
+        "question": {
+            "en": "Inflation always means the price of goods will decrease.",
+            "tr": "Enflasyon her zaman mal fiyatlarının düşeceği anlamına gelir.",
+            "fr": "L'inflation signifie toujours que le prix des marchandises va baisser.",
+            "es": "La inflación siempre significa que el precio de los bienes disminuirá.",
+            "de": "Inflation bedeutet immer, dass der Preis von Waren sinken wird.",
+            "it": "L'inflazione significa sempre che il prezzo dei beni diminuirà.",
+            "hi": "मुद्रास्फीति का हमेशा मतलब होता है कि वस्तुओं की कीमत कम हो जाएगी।",
+            "ru": "Инфляция всегда означает, что цены на товары будут снижаться.",
+            "zh": "通货膨胀总是意味着商品价格会下降。",
+            "ja": "インフレは常に商品の価格が下がることを意味します。",
+            "ar": "التضخم يعني دائمًا أن أسعار السلع ستنخفض."
+        },
+        "correct_answer": false
+    },
+    {
+        "category": "space_astronomy",
+        "question": {
+            "en": "There is a planet made largely of diamonds.",
+            "tr": "Büyük ölçüde elmaslardan oluşan bir gezegen vardır.",
+            "fr": "Il existe une planète composée en grande partie de diamants.",
+            "es": "Existe un planeta compuesto en gran parte por diamantes.",
+            "de": "Es gibt einen Planeten, der größtenteils aus Diamanten besteht.",
+            "it": "Esiste un pianeta composto in gran parte da diamanti.",
+            "hi": "मुख्य रूप से हीरे से बना एक ग्रह मौजूद है।",
+            "ru": "Существует планета, состоящая в основном из алмазов.",
+            "zh": "有一颗行星主要由钻石组成。",
+            "ja": "大部分がダイヤモンドでできている惑星が存在します。",
+            "ar": "هناك كوكب يتكون في معظمه من الألماس."
+        },
+        "correct_answer": true
+    },
+    {
+        "category": "mythology",
+        "question": {
+            "en": "Pandora's box actually contained hope.",
+            "tr": "Pandora'nın kutusu aslında umut içeriyordu.",
+            "fr": "La boîte de Pandore contenait en fait de l'espoir.",
+            "es": "La caja de Pandora en realidad contenía esperanza.",
+            "de": "Pandoras Büchse enthielt tatsächlich Hoffnung.",
+            "it": "Il vaso di Pandora conteneva effettivamente la speranza.",
+            "hi": "पेंडोरा के बॉक्स में वास्तव में आशा थी।",
+            "ru": "Ящик Пандоры на самом деле содержал надежду.",
+            "zh": "潘多拉的盒子里实际上包含了希望。",
+            "ja": "パンドラの箱には、実は「希望」が入っていました。",
+            "ar": "صندوق باندورا كان يحتوي في الواقع على الأمل."
+        },
+        "correct_answer": true
+    },
+    {
+        "category": "health_fitness",
+        "question": {
+            "en": "Cracking your knuckles causes arthritis.",
+            "tr": "Parmak çıtlatmak kireçlenmeye (artrit) neden olur.",
+            "fr": "Se faire craquer les articulations provoque de l'arthrite.",
+            "es": "Tronarse los nudillos causa artritis.",
+            "de": "Fingerknacken verursacht Arthritis.",
+            "it": "Scrocchiarsi le nocche causa l'artrite.",
+            "hi": "उंगलियां चटकाने से गठिया होता है।",
+            "ru": "Хруст костяшками пальцев вызывает артрит.",
+            "zh": "掰手指关节会导致关节炎。",
+            "ja": "指の関節を鳴らすと関節炎になります。",
+            "ar": "طقطقة المفاصل تسبب التهاب المفاصل."
+        },
+        "correct_answer": false
+    },
+    {
+        "category": "video_games",
+        "question": {
+            "en": "The PlayStation 2 is the best-selling video game console of all time.",
+            "tr": "PlayStation 2, tüm zamanların en çok satan video oyun konsoludur.",
+            "fr": "La PlayStation 2 est la console de jeu vidéo la plus vendue de tous les temps.",
+            "es": "La PlayStation 2 es la consola de videojuegos más vendida de todos los tiempos.",
+            "de": "Die PlayStation 2 ist die meistverkaufte Videospielkonsole aller Zeiten.",
+            "it": "La PlayStation 2 è la console per videogiochi più venduta di tutti i tempi.",
+            "hi": "प्लेस्टेशन 2 अब तक का सबसे अधिक बिकने वाला वीडियो गेम कंसोल है।",
+            "ru": "PlayStation 2 — самая продаваемая игровая консоль всех времен.",
+            "zh": "PlayStation 2 是史上最畅销的视频游戏机。",
+            "ja": "PlayStation 2は、史上最も売れた家庭用ゲーム機です。",
+            "ar": "بلاي ستيشن 2 هو جهاز ألعاب الفيديو الأكثر مبيعًا على الإطلاق."
+        },
+        "correct_answer": true
+    },
+    {
+        "category": "architecture",
+        "question": {
+            "en": "The Leaning Tower of Pisa was never straight.",
+            "tr": "Pisa Kulesi hiçbir zaman düz olmamıştır.",
+            "fr": "La tour de Pise n'a jamais été droite.",
+            "es": "La torre inclinada de Pisa nunca estuvo derecha.",
+            "de": "Der Schiefe Turm von Pisa war nie gerade.",
+            "it": "La Torre di Pisa non è mai stata dritta.",
+            "hi": "पीसा की झुकी हुई मीनार कभी सीधी नहीं थी।",
+            "ru": "Пизанская башня никогда не была прямой.",
+            "zh": "比萨斜塔从未直立过。",
+            "ja": "ピサの斜塔は、一度も垂直だったことはありません。",
+            "ar": "برج بيزا المائل لم يكن مستقيمًا أبدًا."
+        },
+        "correct_answer": true
+    },
+    {
+        "category": "fun_facts",
+        "question": {
+            "en": "A cloud can weigh more than a million pounds.",
+            "tr": "Bir bulutun ağırlığı bir milyon pounddan (yaklaşık 450 ton) fazla olabilir.",
+            "fr": "Un nuage peut peser plus d'un million de livres.",
+            "es": "Una nube puede pesar más de un millón de libras.",
+            "de": "Eine Wolke kann mehr als eine Million Pfund wiegen.",
+            "it": "Una nuvola può pesare più di un milione di libbre.",
+            "hi": "एक बादल का वजन दस लाख पाउंड से अधिक हो सकता है।",
+            "ru": "Облако может весить более миллиона фунтов.",
+            "zh": "一朵云的重量可能超过一百万磅。",
+            "ja": "雲の重さは100万ポンド（約450トン）以上になることがあります。",
+            "ar": "يمكن أن تزن السحابة أكثر من مليون رطل."
+        },
+        "correct_answer": true
+    },
+    {
+        "category": "science",
+        "question": {
+            "en": "Diamond is made of the same chemical element as graphite.",
+            "tr": "Elmas, grafit ile aynı kimyasal elementten oluşur.",
+            "fr": "Le diamant est composé du même élément chimique que le graphite.",
+            "es": "El diamante está hecho del mismo elemento químico que el grafito.",
+            "de": "Diamant besteht aus demselben chemischen Element wie Graphit.",
+            "it": "Il diamante è fatto dello stesso elemento chimico della grafite.",
+            "hi": "हीरा उसी रासायनिक तत्व से बना है जिससे ग्रेफाइट बना है।",
+            "ru": "Алмаз состоит из того же химического элемента, что и графит.",
+            "zh": "钻石和石墨是由同一种化学元素组成的。",
+            "ja": "ダイヤモンドはグラファイトと同じ化学元素でできています。",
+            "ar": "يتكون الألماس من نفس العنصر الكيميائي الذي يتكون منه الجرافيت."
+        },
+        "correct_answer": true
+    },
+    {
+        "category": "history",
+        "question": {
+            "en": "The pyramids of Giza were built during the time of the Roman Empire.",
+            "tr": "Giza piramitleri Roma İmparatorluğu döneminde inşa edilmiştir.",
+            "fr": "Les pyramides de Gizeh ont été construites à l'époque de l'Empire romain.",
+            "es": "Las pirámides de Giza fueron construidas durante la época del Imperio Romano.",
+            "de": "Die Pyramiden von Gizeh wurden zur Zeit des Römischen Reiches erbaut.",
+            "it": "Le piramidi di Giza furono costruite durante l'epoca dell'Impero Romano.",
+            "hi": "गीज़ा के पिरामिड रोमन साम्राज्य के समय में बनाए गए थे।",
+            "ru": "Пирамиды Гизы были построены во времена Римской империи.",
+            "zh": "吉萨金字塔是在罗马帝国时期建造的。",
+            "ja": "ギザのピラミッドはローマ帝国時代に建設されました。",
+            "ar": "بُنيت أهرامات الجيزة خلال عصر الإمبراطورية الرومانية."
+        },
+        "correct_answer": false
+    },
+    {
+        "category": "space_astronomy",
+        "question": {
+            "en": "A day on Venus is longer than a year on Venus.",
+            "tr": "Venüs'te bir gün, Venüs'teki bir yıldan daha uzundur.",
+            "fr": "Un jour sur Vénus est plus long qu'une année sur Vénus.",
+            "es": "Un día en Venus es más largo que un año en Venus.",
+            "de": "Ein Tag auf der Venus ist länger als ein Jahr auf der Venus.",
+            "it": "Un giorno su Venere è più lungo di un anno su Venere.",
+            "hi": "शुक्र ग्रह पर एक दिन शुक्र ग्रह पर एक वर्ष से लंबा होता है।",
+            "ru": "День на Венере длится дольше, чем год на Венере.",
+            "zh": "金星上的一天比金星上的一年还要长。",
+            "ja": "金星の1日は、金星の1年よりも長いです。",
+            "ar": "اليوم على كوكب الزهرة أطول من السنة على كوكب الزهرة."
+        },
+        "correct_answer": true
+    },
+    {
+        "category": "architecture",
+        "question": {
+            "en": "The Eiffel Tower was originally intended to stay permanently in Paris.",
+            "tr": "Eyfel Kulesi'nin başlangıçta Paris'te kalıcı olarak kalması planlanmıştı.",
+            "fr": "La Tour Eiffel était initialement destinée à rester de façon permanente à Paris.",
+            "es": "Originalmente se pretendía que la Torre Eiffel permaneciera permanentemente en París.",
+            "de": "Der Eiffelturm sollte ursprünglich dauerhaft in Paris bleiben.",
+            "it": "La Torre Eiffel era originariamente destinata a rimanere permanentemente a Parigi.",
+            "hi": "एफिल टॉवर मूल रूप से पेरिस में स्थायी रूप से रहने के लिए बनाया गया था।",
+            "ru": "Эйфелева башня изначально должна была остаться в Париже навсегда.",
+            "zh": "埃菲尔铁塔最初计划在巴黎永久保留。",
+            "ja": "エッフェル塔はもともとパリに恒久的に設置される予定でした。",
+            "ar": "كان من المفترض في الأصل أن يبقى برج إيفل بشكل دائم في باريس."
+        },
+        "correct_answer": false
+    },
+    {
+        "category": "literature",
+        "question": {
+            "en": "Frankenstein is the name of the monster in Mary Shelley's novel.",
+            "tr": "Frankenstein, Mary Shelley'nin romanındaki canavarın adıdır.",
+            "fr": "Frankenstein est le nombre du monstre dans le roman de Mary Shelley.",
+            "es": "Frankenstein es el nombre del monstruo en la novela de Mary Shelley.",
+            "de": "Frankenstein ist der Name des Monsters in Mary Shelleys Roman.",
+            "it": "Frankenstein è il nome del mostro nel romanzo di Mary Shelley.",
+            "hi": "मैरी शेली के उपन्यास में फ्रेंकस्टीन राक्षस का नाम है।",
+            "ru": "Франкенштейн — это имя чудовища в романе Мэри Шелли.",
+            "zh": "弗兰肯斯坦是玛丽·雪莱小说中怪物的名字。",
+            "ja": "フランケンシュタインは、メアリー・シェリーの小説に登場する怪物の名前です。",
+            "ar": "فرانكشتاين هو اسم الوحش في رواية ماري شيلي."
+        },
+        "correct_answer": false
+    },
+    {
+        "category": "mythology",
+        "question": {
+            "en": "In Greek mythology, Zeus is the father of Hercules.",
+            "tr": "Yunan mitolojisinde Zeus, Herkül'ün babasıdır.",
+            "fr": "Dans la mythologie grecque, Zeus est le père d'Hercule.",
+            "es": "En la mitología griega, Zeus es el padre de Hércules.",
+            "de": "In der griechischen Mythologie ist Zeus der Vater von Herkules.",
+            "it": "Nella mitologia greca, Zeus è il padre di Ercole.",
+            "hi": "ग्रीक पौराणिक कथाओं में, ज़ीउस हरक्यूलिस के पिता हैं।",
+            "ru": "В греческой мифологии Зевс — отец Геракла.",
+            "zh": "在希腊神话中，宙斯是赫拉克勒斯的父亲。",
+            "ja": "ギリシャ神話において、ゼウスはヘラクレスの父です。",
+            "ar": "في الأساطير اليونانية، زيوس هو والد هرقل."
+        },
+        "correct_answer": true
+    },
+    {
+        "category": "video_games",
+        "question": {
+            "en": "The first commercial video game was 'Pong'.",
+            "tr": "İlk ticari video oyunu 'Pong'dur.",
+            "fr": "Le premier jeu vidéo commercial était 'Pong'.",
+            "es": "El primer videojuego comercial fue 'Pong'.",
+            "de": "Das erste kommerzielle Videospiel war 'Pong'.",
+            "it": "Il primo videogioco commerciale è stato 'Pong'.",
+            "hi": "पहला व्यावसायिक वीडियो गेम 'पोंग' था।",
+            "ru": "Первой коммерческой видеоигрой была «Pong».",
+            "zh": "第一款商业视频游戏是《乓》（Pong）。",
+            "ja": "最初の商用ビデオゲームは「ポン (Pong)」でした。",
+            "ar": "أول لعبة فيديو تجارية كانت 'بونج'."
+        },
+        "correct_answer": false
+    },
+    {
+        "category": "fun_facts",
+        "question": {
+            "en": "Bananas grow on trees.",
+            "tr": "Muzlar ağaçta yetişir.",
+            "fr": "Les bananes poussent sur des arbres.",
+            "es": "Los plátanos crecen en los árboles.",
+            "de": "Bananen wachsen auf Bäumen.",
+            "it": "Le banane crescono sugli alberi.",
+            "hi": "केले पेड़ों पर उगते हैं।",
+            "ru": "Бананы растут на деревьях.",
+            "zh": "香蕉长在树上。",
+            "ja": "バナナは木に実ります。",
+            "ar": "الموز ينمو على الأشجار."
+        },
+        "correct_answer": false
+    },
+    {
+        "category": "philosophy",
+        "question": {
+            "en": "The famous phrase 'I think, therefore I am' was written by René Descartes.",
+            "tr": "'Düşünüyorum, öyleyse varım' sözü René Descartes tarafından yazılmıştır.",
+            "fr": "La phrase célèbre 'Je pense, donc je suis' a été écrite par René Descartes.",
+            "es": "La famosa frase 'Pienso, luego existo' fue escrita por René Descartes.",
+            "de": "Der berühmte Satz 'Ich denke, also bin ich' stammt von René Descartes.",
+            "it": "La famosa frase 'Penso, dunque sono' è stata scritta da René Descartes.",
+            "hi": "प्रसिद्ध वाक्यांश 'मैं सोचता हूँ, इसलिए मैं हूँ' रेने डेसकार्टेस द्वारा लिखा गया था।",
+            "ru": "Знаменитая фраза «Я мыслю, следовательно, я существую» была написана Рене Декартом.",
+            "zh": "名言“我思故我在”是由勒内·笛卡尔写的。",
+            "ja": "有名なフレーズ「我思う、ゆえに我あり」はルネ・デカルトによって書かれました。",
+            "ar": "العبارة الشهيرة 'أنا أفكر، إذًا أنا موجود' كتبها رينيه ديكارت."
+        },
+        "correct_answer": true
+    },
+    {
+        "category": "health_fitness",
+        "question": {
+            "en": "The human brain is fully developed by the age of 18.",
+            "tr": "İnsan beyni 18 yaşına kadar gelişimini tamamen tamamlar.",
+            "fr": "Le cerveau humain est complètement développé à l'âge de 18 ans.",
+            "es": "El cerebro humano está completamente desarrollado a los 18 años.",
+            "de": "Das menschliche Gehirn ist im Alter von 18 Jahren vollständig entwickelt.",
+            "it": "Il cervello umano è completamente sviluppato all'età di 18 anni.",
+            "hi": "मानव मस्तिष्क 18 वर्ष की आयु तक पूरी तरह से विकसित हो जाता है।",
+            "ru": "Человеческий мозг полностью развивается к 18 годам.",
+            "zh": "人类大脑在18岁时就已发育完全。",
+            "ja": "人間の脳は18歳までに完全に発達します。",
+            "ar": "يكتمل نمو عقل الإنسان تمامًا في سن 18 عامًا."
+        },
+        "correct_answer": false
     }
 ]
