@@ -32,7 +32,8 @@ final String backendBaseUrl = (() {
       final parsed = Uri.parse(origin);
       // When running `flutter run -d chrome`, the origin will be localhost:<random-port>.
       // In that case use the local backend on port 8000 to reach FastAPI.
-      if ((parsed.host == 'localhost' || parsed.host == '127.0.0.1') && parsed.port != 8000) {
+      if ((parsed.host == 'localhost' || parsed.host == '127.0.0.1') &&
+          parsed.port != 8000) {
         return 'http://127.0.0.1:8000';
       }
     }
@@ -64,7 +65,8 @@ void main() async {
     MultiProvider(
       providers: [
         ChangeNotifierProvider(create: (context) => LocaleProvider()),
-        ChangeNotifierProvider(create: (context) => UserProvider()), // UserProvider EKLENDİ
+        ChangeNotifierProvider(
+            create: (context) => UserProvider()), // UserProvider EKLENDİ
         ChangeNotifierProvider(create: (context) => AnalysisProvider()),
       ],
       child: const MyApp(),
@@ -77,11 +79,11 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-  // Revamped color palette for a more vibrant, eye-catching UI
-  const Color primaryColor = Color(0xFF00E5FF); // bright cyan
-  const Color secondaryColor = Color(0xFF7C4DFF); // vibrant purple
-  // tertiary kept for subtle surfaces
-  const Color tertiaryColor = Color(0xFFB388FF);
+    // Revamped color palette for a more vibrant, eye-catching UI
+    const Color primaryColor = Color(0xFF00E5FF); // bright cyan
+    const Color secondaryColor = Color(0xFF7C4DFF); // vibrant purple
+    // tertiary kept for subtle surfaces
+    const Color tertiaryColor = Color(0xFFB388FF);
 
     return ScreenUtilInit(
       designSize: const Size(390, 844),
@@ -138,7 +140,8 @@ class MyApp extends StatelessWidget {
             inputDecorationTheme: InputDecorationTheme(
               filled: true,
               fillColor: const Color(0xFF1A1A1A),
-              contentPadding: EdgeInsets.symmetric(vertical: 14.h, horizontal: 16.w),
+              contentPadding:
+                  EdgeInsets.symmetric(vertical: 14.h, horizontal: 16.w),
               border: OutlineInputBorder(
                 borderRadius: BorderRadius.circular(12.r),
                 borderSide: BorderSide(color: Colors.grey.shade700, width: 1.w),
@@ -151,7 +154,8 @@ class MyApp extends StatelessWidget {
                 borderRadius: BorderRadius.circular(12.r),
                 borderSide: BorderSide(color: primaryColor, width: 2.w),
               ),
-              hintStyle: TextStyle(color: Colors.grey.shade500, fontSize: 16.sp),
+              hintStyle:
+                  TextStyle(color: Colors.grey.shade500, fontSize: 16.sp),
               labelStyle: TextStyle(color: primaryColor, fontSize: 16.sp),
             ),
             elevatedButtonTheme: ElevatedButtonThemeData(
@@ -173,10 +177,23 @@ class MyApp extends StatelessWidget {
             // Use a more expressive, friendly display font across the app
             // Poppins is clean and works well for UI headings and CTAs.
             textTheme: GoogleFonts.poppinsTextTheme(TextTheme(
-              bodyLarge: TextStyle(color: Colors.white, fontSize: 16.sp, height: 1.35, fontWeight: FontWeight.w400),
-              bodyMedium: TextStyle(color: Colors.white70, fontSize: 14.sp, fontWeight: FontWeight.w400),
-              titleMedium: TextStyle(color: Colors.white, fontWeight: FontWeight.w600, fontSize: 15.sp),
-              titleLarge: TextStyle(color: primaryColor, fontWeight: FontWeight.w800, fontSize: 22.sp),
+              bodyLarge: TextStyle(
+                  color: Colors.white,
+                  fontSize: 16.sp,
+                  height: 1.35,
+                  fontWeight: FontWeight.w400),
+              bodyMedium: TextStyle(
+                  color: Colors.white70,
+                  fontSize: 14.sp,
+                  fontWeight: FontWeight.w400),
+              titleMedium: TextStyle(
+                  color: Colors.white,
+                  fontWeight: FontWeight.w600,
+                  fontSize: 15.sp),
+              titleLarge: TextStyle(
+                  color: primaryColor,
+                  fontWeight: FontWeight.w800,
+                  fontSize: 22.sp),
             )),
             bottomNavigationBarTheme: BottomNavigationBarThemeData(
               backgroundColor: const Color(0xFF1A1A1A),

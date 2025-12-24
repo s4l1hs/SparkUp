@@ -64,8 +64,10 @@ class DefaultFirebaseOptions {
     messagingSenderId: '894503455701',
     projectId: 'sparkup-6b9ad',
     storageBucket: 'sparkup-6b9ad.firebasestorage.app',
-    androidClientId: '894503455701-16hiv3r63s1tqcg98r5o3d1rm2ucfpom.apps.googleusercontent.com',
-    iosClientId: '894503455701-vth3po63emf77qm9vaqv4q7itfu9gcsg.apps.googleusercontent.com',
+    androidClientId:
+        '894503455701-16hiv3r63s1tqcg98r5o3d1rm2ucfpom.apps.googleusercontent.com',
+    iosClientId:
+        '894503455701-vth3po63emf77qm9vaqv4q7itfu9gcsg.apps.googleusercontent.com',
     iosBundleId: 'com.example.sparkupApp',
   );
 
@@ -75,8 +77,10 @@ class DefaultFirebaseOptions {
     messagingSenderId: '894503455701',
     projectId: 'sparkup-6b9ad',
     storageBucket: 'sparkup-6b9ad.firebasestorage.app',
-    androidClientId: '894503455701-16hiv3r63s1tqcg98r5o3d1rm2ucfpom.apps.googleusercontent.com',
-    iosClientId: '894503455701-vth3po63emf77qm9vaqv4q7itfu9gcsg.apps.googleusercontent.com',
+    androidClientId:
+        '894503455701-16hiv3r63s1tqcg98r5o3d1rm2ucfpom.apps.googleusercontent.com',
+    iosClientId:
+        '894503455701-vth3po63emf77qm9vaqv4q7itfu9gcsg.apps.googleusercontent.com',
     iosBundleId: 'com.example.sparkupApp',
   );
 
@@ -89,5 +93,4 @@ class DefaultFirebaseOptions {
     storageBucket: 'sparkup-6b9ad.firebasestorage.app',
     measurementId: 'G-WQ8WYVY6G1',
   );
-
 }

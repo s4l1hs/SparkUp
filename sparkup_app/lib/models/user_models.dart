@@ -34,23 +34,30 @@ class UserProfile {
       currentStreak: json['current_streak'] as int? ?? 0,
       subscriptionLevel: json['subscription_level'] as String? ?? 'free',
       subscriptionExpires: json['subscription_expires'] as String?,
-      topicPreferences: List<String>.from(json['topic_preferences'] as List? ?? []),
+      topicPreferences:
+          List<String>.from(json['topic_preferences'] as List? ?? []),
       languageCode: json['language_code'] as String? ?? 'en',
       notificationsEnabled: json['notifications_enabled'] as bool? ?? false,
     );
   }
 
   UserProfile copyWith({
-    int? score, String? rankName, int? currentStreak,
-    String? subscriptionLevel, String? subscriptionExpires,
+    int? score,
+    String? rankName,
+    int? currentStreak,
+    String? subscriptionLevel,
+    String? subscriptionExpires,
   }) {
     return UserProfile(
-      firebaseUid: firebaseUid, email: email,
-      score: score ?? this.score, rankName: rankName ?? this.rankName,
+      firebaseUid: firebaseUid,
+      email: email,
+      score: score ?? this.score,
+      rankName: rankName ?? this.rankName,
       currentStreak: currentStreak ?? this.currentStreak,
       subscriptionLevel: subscriptionLevel ?? this.subscriptionLevel,
       subscriptionExpires: subscriptionExpires ?? this.subscriptionExpires,
-      topicPreferences: topicPreferences, languageCode: languageCode,
+      topicPreferences: topicPreferences,
+      languageCode: languageCode,
       notificationsEnabled: notificationsEnabled,
     );
   }

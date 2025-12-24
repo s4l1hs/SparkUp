@@ -11,7 +11,8 @@ class AppBackground extends StatefulWidget {
   State<AppBackground> createState() => _AppBackgroundState();
 }
 
-class _AppBackgroundState extends State<AppBackground> with SingleTickerProviderStateMixin {
+class _AppBackgroundState extends State<AppBackground>
+    with SingleTickerProviderStateMixin {
   late final AnimationController _ctrl;
   late final Animation<double> _anim;
 
@@ -19,7 +20,8 @@ class _AppBackgroundState extends State<AppBackground> with SingleTickerProvider
   void initState() {
     super.initState();
     // Longer, eased loop so ambient motion feels organic and not mechanical
-    _ctrl = AnimationController(vsync: this, duration: const Duration(seconds: 30));
+    _ctrl =
+        AnimationController(vsync: this, duration: const Duration(seconds: 30));
     _anim = CurvedAnimation(parent: _ctrl, curve: Curves.easeInOut);
     // Start repeating only after we know the user's reduced-motion preference
     WidgetsBinding.instance.addPostFrameCallback((_) {
@@ -59,7 +61,8 @@ class _AppBackgroundState extends State<AppBackground> with SingleTickerProvider
               return Transform.rotate(
                 angle: rotation,
                 child: CustomPaint(
-                  painter: _BlobPainter(a, theme.colorScheme.primary, theme.colorScheme.secondary),
+                  painter: _BlobPainter(a, theme.colorScheme.primary,
+                      theme.colorScheme.secondary),
                   child: Container(),
                 ),
               );
@@ -91,16 +94,23 @@ class _BlobPainter extends CustomPainter {
     final cx1 = 0.2 + 0.08 * s; // horizontal wobble
     final cy1 = 0.15 + 0.03 * c; // vertical subtle shift
     final r1 = w * (0.45 + 0.04 * s.abs());
-    paint.shader = RadialGradient(colors: [colorWithOpacity(c1, 0.12), Colors.transparent]).createShader(Rect.fromCircle(center: Offset(w * cx1, h * cy1), radius: r1));
+    paint.shader =
+        RadialGradient(colors: [colorWithOpacity(c1, 0.12), Colors.transparent])
+            .createShader(
+                Rect.fromCircle(center: Offset(w * cx1, h * cy1), radius: r1));
     canvas.drawCircle(Offset(w * cx1, h * cy1), r1, paint);
 
     final cx2 = 0.8 - 0.08 * s;
     final cy2 = 0.85 - 0.03 * c;
     final r2 = w * (0.40 + 0.03 * c.abs());
-    paint.shader = RadialGradient(colors: [colorWithOpacity(c2, 0.10), Colors.transparent]).createShader(Rect.fromCircle(center: Offset(w * cx2, h * cy2), radius: r2));
+    paint.shader =
+        RadialGradient(colors: [colorWithOpacity(c2, 0.10), Colors.transparent])
+            .createShader(
+                Rect.fromCircle(center: Offset(w * cx2, h * cy2), radius: r2));
     canvas.drawCircle(Offset(w * cx2, h * cy2), r2, paint);
   }
 
   @override
-  bool shouldRepaint(covariant _BlobPainter oldDelegate) => oldDelegate.t != t || oldDelegate.c1 != c1 || oldDelegate.c2 != c2;
+  bool shouldRepaint(covariant _BlobPainter oldDelegate) =>
+      oldDelegate.t != t || oldDelegate.c1 != c1 || oldDelegate.c2 != c2;
 }

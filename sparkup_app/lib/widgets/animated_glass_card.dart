@@ -10,13 +10,20 @@ class AnimatedGlassCard extends StatefulWidget {
   final Duration duration;
   final double elevation;
 
-  const AnimatedGlassCard({super.key, required this.child, this.padding, this.borderRadius, this.duration = const Duration(milliseconds: 420), this.elevation = 6});
+  const AnimatedGlassCard(
+      {super.key,
+      required this.child,
+      this.padding,
+      this.borderRadius,
+      this.duration = const Duration(milliseconds: 420),
+      this.elevation = 6});
 
   @override
   State<AnimatedGlassCard> createState() => _AnimatedGlassCardState();
 }
 
-class _AnimatedGlassCardState extends State<AnimatedGlassCard> with SingleTickerProviderStateMixin {
+class _AnimatedGlassCardState extends State<AnimatedGlassCard>
+    with SingleTickerProviderStateMixin {
   late final AnimationController _ctrl;
   late final Animation<double> _anim;
   late final Animation<double> _blurAnim;
@@ -26,12 +33,16 @@ class _AnimatedGlassCardState extends State<AnimatedGlassCard> with SingleTicker
   void initState() {
     super.initState();
     // Slightly longer and softer entrance for a more pleasant feel.
-    _ctrl = AnimationController(vsync: this, duration: const Duration(milliseconds: 1000));
+    _ctrl = AnimationController(
+        vsync: this, duration: const Duration(milliseconds: 1000));
     _anim = CurvedAnimation(parent: _ctrl, curve: Curves.easeOut);
 
     // Animate blur and elevation for a subtle material-like pop.
-    _blurAnim = Tween<double>(begin: 6.0, end: 10.0).animate(CurvedAnimation(parent: _ctrl, curve: Curves.easeOut));
-    _elevationAnim = Tween<double>(begin: widget.elevation * 0.6, end: widget.elevation).animate(CurvedAnimation(parent: _ctrl, curve: Curves.easeOut));
+    _blurAnim = Tween<double>(begin: 6.0, end: 10.0)
+        .animate(CurvedAnimation(parent: _ctrl, curve: Curves.easeOut));
+    _elevationAnim =
+        Tween<double>(begin: widget.elevation * 0.6, end: widget.elevation)
+            .animate(CurvedAnimation(parent: _ctrl, curve: Curves.easeOut));
 
     _ctrl.forward();
   }
@@ -75,12 +86,14 @@ class _AnimatedGlassCardState extends State<AnimatedGlassCard> with SingleTicker
     }
 
     final effectiveContainerDuration = widget.duration;
-    final effectivePhysicalDuration = Duration(milliseconds: (widget.duration.inMilliseconds * 6 ~/ 5));
+    final effectivePhysicalDuration =
+        Duration(milliseconds: (widget.duration.inMilliseconds * 6 ~/ 5));
 
     return FadeTransition(
       opacity: _anim,
       child: ScaleTransition(
-        scale: Tween<double>(begin: 0.99, end: 1.0).animate(CurvedAnimation(parent: _ctrl, curve: Curves.easeOutCubic)),
+        scale: Tween<double>(begin: 0.99, end: 1.0).animate(
+            CurvedAnimation(parent: _ctrl, curve: Curves.easeOutCubic)),
         child: AnimatedBuilder(
           animation: _ctrl,
           builder: (context, child) {
@@ -95,7 +108,8 @@ class _AnimatedGlassCardState extends State<AnimatedGlassCard> with SingleTicker
               child: ClipRRect(
                 borderRadius: radius,
                 child: BackdropFilter(
-                  filter: ImageFilter.blur(sigmaX: _blurAnim.value, sigmaY: _blurAnim.value),
+                  filter: ImageFilter.blur(
+                      sigmaX: _blurAnim.value, sigmaY: _blurAnim.value),
                   child: AnimatedContainer(
                     duration: effectiveContainerDuration,
                     padding: widget.padding ?? const EdgeInsets.all(12),

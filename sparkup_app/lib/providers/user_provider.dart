@@ -15,7 +15,7 @@ class UserProvider extends ChangeNotifier {
     _isLoading = true;
     notifyListeners();
     try {
-  final json = await _apiService.getUserProfile(idToken);
+      final json = await _apiService.getUserProfile(idToken);
       profile = UserProfile.fromJson(json);
     } catch (e) {
       debugPrint("Kullanıcı profili yüklenirken hata oluştu: $e");
@@ -28,7 +28,15 @@ class UserProvider extends ChangeNotifier {
 
   void updateScore(int newScore) {
     if (profile == null) {
-      profile = UserProfile(username: null, score: newScore, currentStreak: 0, subscriptionLevel: 'free', dailyQuizLimit: null, dailyQuizUsed: 0, remainingQuizzes: null, dailyPoints: 0);
+      profile = UserProfile(
+          username: null,
+          score: newScore,
+          currentStreak: 0,
+          subscriptionLevel: 'free',
+          dailyQuizLimit: null,
+          dailyQuizUsed: 0,
+          remainingQuizzes: null,
+          dailyPoints: 0);
       notifyListeners();
       return;
     }
@@ -38,8 +46,15 @@ class UserProvider extends ChangeNotifier {
     }
   }
 
-  void setProfile(UserProfile p) { profile = p; notifyListeners(); }
-  void clearProfile() { profile = null; notifyListeners(); }
+  void setProfile(UserProfile p) {
+    profile = p;
+    notifyListeners();
+  }
+
+  void clearProfile() {
+    profile = null;
+    notifyListeners();
+  }
 
   /// Optimistically decrement remaining energy by 1 in the local profile and notify listeners.
   /// This is used to update UI immediately when a session start request is sent.
@@ -86,7 +101,18 @@ class UserProfile {
     this.sessionSeconds,
   });
 
-  UserProfile copyWith({String? username, int? score, int? currentStreak, String? subscriptionLevel, int? dailyQuizLimit, int? dailyQuizUsed, int? remainingQuizzes, int? dailyPoints, String? languageCode, int? remainingEnergy, int? sessionSeconds}) {
+  UserProfile copyWith(
+      {String? username,
+      int? score,
+      int? currentStreak,
+      String? subscriptionLevel,
+      int? dailyQuizLimit,
+      int? dailyQuizUsed,
+      int? remainingQuizzes,
+      int? dailyPoints,
+      String? languageCode,
+      int? remainingEnergy,
+      int? sessionSeconds}) {
     return UserProfile(
       username: username ?? this.username,
       score: score ?? this.score,
@@ -109,13 +135,23 @@ class UserProfile {
       score: (json['score'] as num?)?.toInt() ?? 0,
       currentStreak: (json['current_streak'] as num?)?.toInt() ?? 0,
       subscriptionLevel: (json['subscription_level'] as String?) ?? 'free',
-      dailyQuizLimit: json['daily_quiz_limit'] != null ? (json['daily_quiz_limit'] as num).toInt() : null,
-      dailyQuizUsed: json['daily_quiz_used'] != null ? (json['daily_quiz_used'] as num).toInt() : 0,
-      remainingQuizzes: json['remaining_quizzes'] != null ? (json['remaining_quizzes'] as num).toInt() : null,
+      dailyQuizLimit: json['daily_quiz_limit'] != null
+          ? (json['daily_quiz_limit'] as num).toInt()
+          : null,
+      dailyQuizUsed: json['daily_quiz_used'] != null
+          ? (json['daily_quiz_used'] as num).toInt()
+          : 0,
+      remainingQuizzes: json['remaining_quizzes'] != null
+          ? (json['remaining_quizzes'] as num).toInt()
+          : null,
       dailyPoints: (json['daily_points'] as num?)?.toInt() ?? 0,
       languageCode: (json['language_code'] as String?),
-      remainingEnergy: json['remaining_energy'] != null ? (json['remaining_energy'] as num).toInt() : null,
-      sessionSeconds: json['session_seconds'] != null ? (json['session_seconds'] as num).toInt() : null,
+      remainingEnergy: json['remaining_energy'] != null
+          ? (json['remaining_energy'] as num).toInt()
+          : null,
+      sessionSeconds: json['session_seconds'] != null
+          ? (json['session_seconds'] as num).toInt()
+          : null,
     );
   }
 }

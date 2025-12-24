@@ -15,7 +15,10 @@ class AnalysisProvider extends ChangeNotifier {
     try {
       final data = await _api.getUserAnalysis(idToken);
       final raw = (data['analysis'] as List<dynamic>?) ?? <dynamic>[];
-      items = raw.map<Map<String, dynamic>>((e) => Map<String, dynamic>.from(e as Map<String, dynamic>)).toList();
+      items = raw
+          .map<Map<String, dynamic>>(
+              (e) => Map<String, dynamic>.from(e as Map<String, dynamic>))
+          .toList();
     } catch (e) {
       error = e.toString();
     } finally {

@@ -20,7 +20,8 @@ class LeaderboardPage extends StatefulWidget {
   State<LeaderboardPage> createState() => _LeaderboardPageState();
 }
 
-class _LeaderboardPageState extends State<LeaderboardPage> with TickerProviderStateMixin {
+class _LeaderboardPageState extends State<LeaderboardPage>
+    with TickerProviderStateMixin {
   final ApiService _apiService = ApiService();
   UserProvider? _observedUserProvider;
 
@@ -37,22 +38,38 @@ class _LeaderboardPageState extends State<LeaderboardPage> with TickerProviderSt
   @override
   void initState() {
     super.initState();
-    _listAnimationController = AnimationController(vsync: this, duration: const Duration(milliseconds: 1000));
-    _backgroundController = AnimationController(vsync: this, duration: const Duration(seconds: 30))..repeat(reverse: true);
+    _listAnimationController = AnimationController(
+        vsync: this, duration: const Duration(milliseconds: 1000));
+    _backgroundController =
+        AnimationController(vsync: this, duration: const Duration(seconds: 30))
+          ..repeat(reverse: true);
     _backgroundAnimation1 = TweenSequence<Alignment>([
-      TweenSequenceItem(tween: AlignmentTween(begin: Alignment.topLeft, end: Alignment.bottomRight), weight: 1),
-      TweenSequenceItem(tween: AlignmentTween(begin: Alignment.bottomRight, end: Alignment.topLeft), weight: 1),
+      TweenSequenceItem(
+          tween: AlignmentTween(
+              begin: Alignment.topLeft, end: Alignment.bottomRight),
+          weight: 1),
+      TweenSequenceItem(
+          tween: AlignmentTween(
+              begin: Alignment.bottomRight, end: Alignment.topLeft),
+          weight: 1),
     ]).animate(_backgroundController);
     _backgroundAnimation2 = TweenSequence<Alignment>([
-      TweenSequenceItem(tween: AlignmentTween(begin: Alignment.bottomLeft, end: Alignment.topRight), weight: 1),
-      TweenSequenceItem(tween: AlignmentTween(begin: Alignment.topRight, end: Alignment.bottomLeft), weight: 1),
+      TweenSequenceItem(
+          tween: AlignmentTween(
+              begin: Alignment.bottomLeft, end: Alignment.topRight),
+          weight: 1),
+      TweenSequenceItem(
+          tween: AlignmentTween(
+              begin: Alignment.topRight, end: Alignment.bottomLeft),
+          weight: 1),
     ]).animate(_backgroundController);
 
     // Localizations ve context tam hazır olduktan sonra yükleme yap
     WidgetsBinding.instance.addPostFrameCallback((_) {
       _loadPageData();
       // register provider listener once after first frame
-      _observedUserProvider = Provider.of<UserProvider?>(context, listen: false);
+      _observedUserProvider =
+          Provider.of<UserProvider?>(context, listen: false);
       _observedUserProvider?.addListener(_onUserProviderChanged);
     });
   }
@@ -72,7 +89,8 @@ class _LeaderboardPageState extends State<LeaderboardPage> with TickerProviderSt
     final providerScore = prov.profile!.score;
 
     // If we have a current user entry, update its score and resort ranks
-    if (_currentUserEntry != null && providerScore != _currentUserEntry!.score) {
+    if (_currentUserEntry != null &&
+        providerScore != _currentUserEntry!.score) {
       setState(() {
         // update or insert
         final email = _currentUserEntry!.email;
@@ -80,26 +98,46 @@ class _LeaderboardPageState extends State<LeaderboardPage> with TickerProviderSt
         int foundIndex = -1;
         for (var i = 0; i < _leaderboardData.length; i++) {
           final e = _leaderboardData[i];
-          if ((email != null && e.email == email) || (username != null && e.username == username)) {
+          if ((email != null && e.email == email) ||
+              (username != null && e.username == username)) {
             foundIndex = i;
             break;
           }
         }
         if (foundIndex >= 0) {
-          _leaderboardData[foundIndex] = LeaderboardEntry(rank: _leaderboardData[foundIndex].rank, email: _leaderboardData[foundIndex].email, username: _leaderboardData[foundIndex].username, score: providerScore);
+          _leaderboardData[foundIndex] = LeaderboardEntry(
+              rank: _leaderboardData[foundIndex].rank,
+              email: _leaderboardData[foundIndex].email,
+              username: _leaderboardData[foundIndex].username,
+              score: providerScore);
         } else {
           // if not present, append entry using currentUserEntry meta
-          _leaderboardData.add(LeaderboardEntry(rank: _currentUserEntry!.rank, email: _currentUserEntry!.email, username: _currentUserEntry!.username, score: providerScore));
+          _leaderboardData.add(LeaderboardEntry(
+              rank: _currentUserEntry!.rank,
+              email: _currentUserEntry!.email,
+              username: _currentUserEntry!.username,
+              score: providerScore));
         }
 
         // resort and recompute ranks
         _leaderboardData.sort((a, b) => b.score.compareTo(a.score));
         for (var i = 0; i < _leaderboardData.length; i++) {
           final e = _leaderboardData[i];
-          _leaderboardData[i] = LeaderboardEntry(rank: i + 1, email: e.email, username: e.username, score: e.score);
+          _leaderboardData[i] = LeaderboardEntry(
+              rank: i + 1,
+              email: e.email,
+              username: e.username,
+              score: e.score);
           // update _currentUserEntry when matching
-          if ((_currentUserEntry!.email != null && _currentUserEntry!.email == e.email) || (_currentUserEntry!.username != null && _currentUserEntry!.username == e.username)) {
-            _currentUserEntry = LeaderboardEntry(rank: i + 1, email: _currentUserEntry!.email, username: _currentUserEntry!.username, score: providerScore);
+          if ((_currentUserEntry!.email != null &&
+                  _currentUserEntry!.email == e.email) ||
+              (_currentUserEntry!.username != null &&
+                  _currentUserEntry!.username == e.username)) {
+            _currentUserEntry = LeaderboardEntry(
+                rank: i + 1,
+                email: _currentUserEntry!.email,
+                username: _currentUserEntry!.username,
+                score: providerScore);
           }
         }
       });
@@ -117,8 +155,12 @@ class _LeaderboardPageState extends State<LeaderboardPage> with TickerProviderSt
 
     try {
       // Only fetch leaderboard and current user rank now (topics removed)
-  final leaderboardResp = await _apiServiceSafe(() => _apiService.getLeaderboard(widget.idToken), const Duration(seconds: 8));
-  final userRankResp = await _apiServiceSafe(() => _apiService.getUserRank(widget.idToken), const Duration(seconds: 8));
+      final leaderboardResp = await _apiServiceSafe(
+          () => _apiService.getLeaderboard(widget.idToken),
+          const Duration(seconds: 8));
+      final userRankResp = await _apiServiceSafe(
+          () => _apiService.getUserRank(widget.idToken),
+          const Duration(seconds: 8));
 
       // Normalize leaderboard
       List<LeaderboardEntry> leaderboardParsed = [];
@@ -133,7 +175,8 @@ class _LeaderboardPageState extends State<LeaderboardPage> with TickerProviderSt
       if (userRankResp is LeaderboardEntry) {
         currentUserParsed = userRankResp;
       } else if (userRankResp is Map) {
-        currentUserParsed = LeaderboardEntry.fromJson(Map<String, dynamic>.from(userRankResp));
+        currentUserParsed =
+            LeaderboardEntry.fromJson(Map<String, dynamic>.from(userRankResp));
       }
 
       if (mounted) {
@@ -152,7 +195,8 @@ class _LeaderboardPageState extends State<LeaderboardPage> with TickerProviderSt
           final fbName = fbUser.displayName;
           LeaderboardEntry? found;
           for (var e in leaderboardParsed) {
-            if ((fbEmail != null && e.email == fbEmail) || (fbName != null && e.username == fbName)) {
+            if ((fbEmail != null && e.email == fbEmail) ||
+                (fbName != null && e.username == fbName)) {
               found = e;
               break;
             }
@@ -165,24 +209,31 @@ class _LeaderboardPageState extends State<LeaderboardPage> with TickerProviderSt
     } on TimeoutException {
       if (mounted) {
         setState(() => _hasError = true);
-        final msg = AppLocalizations.of(context)?.errorCouldNotLoadData ?? "Could not load data (timeout)";
-        ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text(msg), backgroundColor: Colors.red));
+        final msg = AppLocalizations.of(context)?.errorCouldNotLoadData ??
+            "Could not load data (timeout)";
+        ScaffoldMessenger.of(context).showSnackBar(
+            SnackBar(content: Text(msg), backgroundColor: Colors.red));
       }
     } catch (e, st) {
       debugPrint("Sayfa verileri yüklenirken hata: $e\n$st");
       if (mounted) {
         setState(() => _hasError = true);
         final msg = AppLocalizations.of(context)?.noDataAvailable;
-        ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text(msg!), backgroundColor: Colors.red));
+        ScaffoldMessenger.of(context).showSnackBar(
+            SnackBar(content: Text(msg!), backgroundColor: Colors.red));
       }
     } finally {
-      if (mounted) { setState(() => _isLoading = false); }
+      if (mounted) {
+        setState(() => _isLoading = false);
+      }
     }
   }
-  
+
   // helper used earlier — keep as is
-  Future<dynamic> _apiServiceSafe(Future<dynamic> Function() fn, Duration timeout) {
-    return fn().timeout(timeout, onTimeout: () => throw TimeoutException("API timeout"));
+  Future<dynamic> _apiServiceSafe(
+      Future<dynamic> Function() fn, Duration timeout) {
+    return fn().timeout(timeout,
+        onTimeout: () => throw TimeoutException("API timeout"));
   }
 
   // Rütbe anahtarını puana göre hesaplar
@@ -207,8 +258,8 @@ class _LeaderboardPageState extends State<LeaderboardPage> with TickerProviderSt
     final parts = email.split('@');
     final name = parts[0];
     final domain = parts[1];
-    if (name.length <= 2) return '${name[0]}***@${domain.substring(0,1)}...';
-    return '${name.substring(0, 2)}***@${domain.substring(0,1)}...';
+    if (name.length <= 2) return '${name[0]}***@${domain.substring(0, 1)}...';
+    return '${name.substring(0, 2)}***@${domain.substring(0, 1)}...';
   }
 
   String _displayName(LeaderboardEntry entry) {
@@ -217,10 +268,15 @@ class _LeaderboardPageState extends State<LeaderboardPage> with TickerProviderSt
     final fbEmail = fbUser?.email;
     // If this leaderboard entry corresponds to the logged-in user (by email),
     // prefer the Firebase displayName (full name) as in settings_page.dart
-    if (fbName != null && fbName.trim().isNotEmpty && fbEmail != null && entry.email != null && entry.email == fbEmail) {
+    if (fbName != null &&
+        fbName.trim().isNotEmpty &&
+        fbEmail != null &&
+        entry.email != null &&
+        entry.email == fbEmail) {
       return fbName;
     }
-    if (entry.username != null && entry.username!.trim().isNotEmpty) return entry.username!;
+    if (entry.username != null && entry.username!.trim().isNotEmpty)
+      return entry.username!;
     return _maskEmail(entry.email);
   }
 
@@ -243,7 +299,8 @@ class _LeaderboardPageState extends State<LeaderboardPage> with TickerProviderSt
         LeaderboardEntry? found;
         for (var e in _leaderboardData) {
           if ((fbUser?.email != null && e.email == fbUser!.email) ||
-              (fbUser?.displayName != null && e.username == fbUser!.displayName)) {
+              (fbUser?.displayName != null &&
+                  e.username == fbUser!.displayName)) {
             found = e;
             break;
           }
@@ -257,7 +314,8 @@ class _LeaderboardPageState extends State<LeaderboardPage> with TickerProviderSt
       }
 
       // If we have currentUserEntry but provider score differs, update both entry and leaderboard list
-      else if (_currentUserEntry != null && providerScore != _currentUserEntry!.score) {
+      else if (_currentUserEntry != null &&
+          providerScore != _currentUserEntry!.score) {
         // Update UI in next frame to avoid setState during build
         WidgetsBinding.instance.addPostFrameCallback((_) {
           if (!mounted) return;
@@ -275,26 +333,46 @@ class _LeaderboardPageState extends State<LeaderboardPage> with TickerProviderSt
             for (var i = 0; i < _leaderboardData.length; i++) {
               final e = _leaderboardData[i];
               if ((e.email != null && e.email == _currentUserEntry!.email) ||
-                  (e.username != null && e.username == _currentUserEntry!.username)) {
+                  (e.username != null &&
+                      e.username == _currentUserEntry!.username)) {
                 foundIndex = i;
                 break;
               }
             }
             if (foundIndex >= 0) {
-              _leaderboardData[foundIndex] = LeaderboardEntry(rank: _leaderboardData[foundIndex].rank, email: _leaderboardData[foundIndex].email, username: _leaderboardData[foundIndex].username, score: providerScore);
+              _leaderboardData[foundIndex] = LeaderboardEntry(
+                  rank: _leaderboardData[foundIndex].rank,
+                  email: _leaderboardData[foundIndex].email,
+                  username: _leaderboardData[foundIndex].username,
+                  score: providerScore);
             } else {
               // if not present, append — will be re-sorted below
-              _leaderboardData.add(LeaderboardEntry(rank: _currentUserEntry!.rank, email: _currentUserEntry!.email, username: _currentUserEntry!.username, score: providerScore));
+              _leaderboardData.add(LeaderboardEntry(
+                  rank: _currentUserEntry!.rank,
+                  email: _currentUserEntry!.email,
+                  username: _currentUserEntry!.username,
+                  score: providerScore));
             }
 
             // 3) re-sort leaderboard by score desc and recompute ranks
             _leaderboardData.sort((a, b) => b.score.compareTo(a.score));
             for (var i = 0; i < _leaderboardData.length; i++) {
               final e = _leaderboardData[i];
-              _leaderboardData[i] = LeaderboardEntry(rank: i + 1, email: e.email, username: e.username, score: e.score);
+              _leaderboardData[i] = LeaderboardEntry(
+                  rank: i + 1,
+                  email: e.email,
+                  username: e.username,
+                  score: e.score);
               // also update currentUserEntry.rank if it matches
-              if ((_currentUserEntry!.email != null && _currentUserEntry!.email == e.email) || (_currentUserEntry!.username != null && _currentUserEntry!.username == e.username)) {
-                _currentUserEntry = LeaderboardEntry(rank: i + 1, email: _currentUserEntry!.email, username: _currentUserEntry!.username, score: providerScore);
+              if ((_currentUserEntry!.email != null &&
+                      _currentUserEntry!.email == e.email) ||
+                  (_currentUserEntry!.username != null &&
+                      _currentUserEntry!.username == e.username)) {
+                _currentUserEntry = LeaderboardEntry(
+                    rank: i + 1,
+                    email: _currentUserEntry!.email,
+                    username: _currentUserEntry!.username,
+                    score: providerScore);
               }
             }
           });
@@ -303,7 +381,9 @@ class _LeaderboardPageState extends State<LeaderboardPage> with TickerProviderSt
     }
 
     // Show only users after rank 10 (i.e. index >= 10). Ranks 4..10 are handled in the Top Players dashboard.
-    final listDisplay = _leaderboardData.length > 10 ? _leaderboardData.sublist(10) : <LeaderboardEntry>[]; 
+    final listDisplay = _leaderboardData.length > 10
+        ? _leaderboardData.sublist(10)
+        : <LeaderboardEntry>[];
 
     return Scaffold(
       backgroundColor: theme.colorScheme.surface,
@@ -312,34 +392,58 @@ class _LeaderboardPageState extends State<LeaderboardPage> with TickerProviderSt
           // animated ambient background blobs for depth
           AnimatedBuilder(
             // If user requests reduced motion, stop the background animation updates
-            animation: animate ? _backgroundController : const AlwaysStoppedAnimation(0),
+            animation: animate
+                ? _backgroundController
+                : const AlwaysStoppedAnimation(0),
             builder: (context, child) {
               return Stack(
                 children: [
                   Positioned.fill(
                     child: Align(
-                      alignment: animate ? _backgroundAnimation1.value : Alignment.center,
+                      alignment: animate
+                          ? _backgroundAnimation1.value
+                          : Alignment.center,
                       child: Container(
                         width: 420.w,
                         height: 420.h,
                         decoration: BoxDecoration(
                           shape: BoxShape.circle,
-                          gradient: RadialGradient(colors: [colorWithOpacity(theme.colorScheme.primary, 0.14), Colors.transparent]),
-                          boxShadow: [BoxShadow(color: colorWithOpacity(theme.colorScheme.primary, 0.06), blurRadius: 100.r, spreadRadius: 60.r)],
+                          gradient: RadialGradient(colors: [
+                            colorWithOpacity(theme.colorScheme.primary, 0.14),
+                            Colors.transparent
+                          ]),
+                          boxShadow: [
+                            BoxShadow(
+                                color: colorWithOpacity(
+                                    theme.colorScheme.primary, 0.06),
+                                blurRadius: 100.r,
+                                spreadRadius: 60.r)
+                          ],
                         ),
                       ),
                     ),
                   ),
                   Positioned.fill(
                     child: Align(
-                      alignment: animate ? _backgroundAnimation2.value : Alignment.center,
+                      alignment: animate
+                          ? _backgroundAnimation2.value
+                          : Alignment.center,
                       child: Container(
                         width: 320.w,
                         height: 320.h,
                         decoration: BoxDecoration(
                           shape: BoxShape.circle,
-                          gradient: RadialGradient(colors: [colorWithOpacity(theme.colorScheme.secondary, 0.12), Colors.transparent]),
-                          boxShadow: [BoxShadow(color: colorWithOpacity(theme.colorScheme.secondary, 0.05), blurRadius: 100.r, spreadRadius: 40.r)],
+                          gradient: RadialGradient(colors: [
+                            colorWithOpacity(theme.colorScheme.secondary, 0.12),
+                            Colors.transparent
+                          ]),
+                          boxShadow: [
+                            BoxShadow(
+                                color: colorWithOpacity(
+                                    theme.colorScheme.secondary, 0.05),
+                                blurRadius: 100.r,
+                                spreadRadius: 40.r)
+                          ],
                         ),
                       ),
                     ),
@@ -351,36 +455,53 @@ class _LeaderboardPageState extends State<LeaderboardPage> with TickerProviderSt
 
           SafeArea(
             child: _isLoading
-                ? Center(child: CircularProgressIndicator(color: theme.colorScheme.primary))
+                ? Center(
+                    child: CircularProgressIndicator(
+                        color: theme.colorScheme.primary))
                 : _hasError
-                    ? Center(child: Text("${localizations.error}: ${localizations.noDataAvailable}", style: TextStyle(color: theme.colorScheme.error)))
+                    ? Center(
+                        child: Text(
+                            "${localizations.error}: ${localizations.noDataAvailable}",
+                            style: TextStyle(color: theme.colorScheme.error)))
                     : _leaderboardData.isEmpty && _currentUserEntry == null
-                        ? Center(child: Text(localizations.noDataAvailable, style: TextStyle(color: Colors.grey.shade400)))
+                        ? Center(
+                            child: Text(localizations.noDataAvailable,
+                                style: TextStyle(color: Colors.grey.shade400)))
                         : CustomScrollView(
                             slivers: [
                               SliverPadding(
-                                padding: EdgeInsets.symmetric(horizontal: 16.w, vertical: 12.h),
+                                padding: EdgeInsets.symmetric(
+                                    horizontal: 16.w, vertical: 12.h),
                                 sliver: SliverToBoxAdapter(
-                                  child: _HeaderRow(localizations: localizations, theme: theme, currentUser: _currentUserEntry, displayNameFn: _displayName),
+                                  child: _HeaderRow(
+                                      localizations: localizations,
+                                      theme: theme,
+                                      currentUser: _currentUserEntry,
+                                      displayNameFn: _displayName),
                                 ),
                               ),
-
                               if (_leaderboardData.isNotEmpty)
                                 SliverToBoxAdapter(
                                   child: _AnimatedListItem(
                                     index: 0,
                                     controller: _listAnimationController,
-                                    child: _buildPodium(context, _leaderboardData.take(3).toList(), _leaderboardData.skip(3).toList()),
+                                    child: _buildPodium(
+                                        context,
+                                        _leaderboardData.take(3).toList(),
+                                        _leaderboardData.skip(3).toList()),
                                   ),
                                 ),
-
                               if (_currentUserEntry != null)
                                 SliverToBoxAdapter(
-                                  child: _AnimatedListItem(index: 1, controller: _listAnimationController, child: _buildUserRankCard(theme, _currentUserEntry!, localizations)),
+                                  child: _AnimatedListItem(
+                                      index: 1,
+                                      controller: _listAnimationController,
+                                      child: _buildUserRankCard(theme,
+                                          _currentUserEntry!, localizations)),
                                 ),
-
                               SliverPadding(
-                                padding: EdgeInsets.symmetric(horizontal: 16.w, vertical: 8.h),
+                                padding: EdgeInsets.symmetric(
+                                    horizontal: 16.w, vertical: 8.h),
                                 sliver: SliverList(
                                   delegate: SliverChildBuilderDelegate(
                                     (context, index) {
@@ -390,7 +511,8 @@ class _LeaderboardPageState extends State<LeaderboardPage> with TickerProviderSt
                                         child: _AnimatedListItem(
                                           index: index + 2,
                                           controller: _listAnimationController,
-                                          child: _buildLeaderboardTile(theme, entry),
+                                          child: _buildLeaderboardTile(
+                                              theme, entry),
                                         ),
                                       );
                                     },
@@ -398,8 +520,8 @@ class _LeaderboardPageState extends State<LeaderboardPage> with TickerProviderSt
                                   ),
                                 ),
                               ),
-
-                              const SliverToBoxAdapter(child: SizedBox(height: 80)),
+                              const SliverToBoxAdapter(
+                                  child: SizedBox(height: 80)),
                             ],
                           ),
           ),
@@ -408,7 +530,8 @@ class _LeaderboardPageState extends State<LeaderboardPage> with TickerProviderSt
     );
   }
 
-  Widget _buildUserRankCard(ThemeData theme, LeaderboardEntry entry, AppLocalizations localizations) {
+  Widget _buildUserRankCard(
+      ThemeData theme, LeaderboardEntry entry, AppLocalizations localizations) {
     final String rankKey = _getRankKey(entry.score);
     String getLocalizedRank(String key) {
       switch (key) {
@@ -438,30 +561,55 @@ class _LeaderboardPageState extends State<LeaderboardPage> with TickerProviderSt
         borderRadius: BorderRadius.circular(14.r),
         child: Row(
           children: [
-            _GradientAvatar(name: _displayName(entry), radius: 28.r, colors: [theme.colorScheme.secondary, theme.colorScheme.primary]),
+            _GradientAvatar(name: _displayName(entry), radius: 28.r, colors: [
+              theme.colorScheme.secondary,
+              theme.colorScheme.primary
+            ]),
             SizedBox(width: 12.w),
             Expanded(
-              child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
-                Text(localizations.yourRank, style: const TextStyle(color: Colors.white, fontWeight: FontWeight.bold)),
-                SizedBox(height: 6.h),
-                Row(children: [
-                  Text(_displayName(entry), style: TextStyle(color: Colors.grey.shade200)),
-                  SizedBox(width: 8.w),
-                  Text("($rankName)", style: TextStyle(color: theme.colorScheme.primary, fontWeight: FontWeight.bold)),
-                ]),
-              ]),
+              child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(localizations.yourRank,
+                        style: const TextStyle(
+                            color: Colors.white, fontWeight: FontWeight.bold)),
+                    SizedBox(height: 6.h),
+                    Row(children: [
+                      Text(_displayName(entry),
+                          style: TextStyle(color: Colors.grey.shade200)),
+                      SizedBox(width: 8.w),
+                      Text("($rankName)",
+                          style: TextStyle(
+                              color: theme.colorScheme.primary,
+                              fontWeight: FontWeight.bold)),
+                    ]),
+                  ]),
             ),
             Column(
               crossAxisAlignment: CrossAxisAlignment.end,
               children: [
-                Row(children: [Text(entry.score.toString(), style: TextStyle(color: theme.colorScheme.secondary, fontWeight: FontWeight.bold, fontSize: 16.sp)), SizedBox(width: 6.w), Icon(Icons.star_rounded, color: theme.colorScheme.secondary, size: 18.sp)]),
+                Row(children: [
+                  Text(entry.score.toString(),
+                      style: TextStyle(
+                          color: theme.colorScheme.secondary,
+                          fontWeight: FontWeight.bold,
+                          fontSize: 16.sp)),
+                  SizedBox(width: 6.w),
+                  Icon(Icons.star_rounded,
+                      color: theme.colorScheme.secondary, size: 18.sp)
+                ]),
                 SizedBox(height: 6.h),
                 GradientButton(
                   onPressed: () => _loadPageData(),
-                  padding: EdgeInsets.symmetric(horizontal: 12.w, vertical: 8.h),
-                  colors: [theme.colorScheme.primary, theme.colorScheme.secondary],
+                  padding:
+                      EdgeInsets.symmetric(horizontal: 12.w, vertical: 8.h),
+                  colors: [
+                    theme.colorScheme.primary,
+                    theme.colorScheme.secondary
+                  ],
                   borderRadius: BorderRadius.circular(10.r),
-                  child: Text(AppLocalizations.of(context)!.refresh, style: TextStyle(fontSize: 12.sp)),
+                  child: Text(AppLocalizations.of(context)!.refresh,
+                      style: TextStyle(fontSize: 12.sp)),
                 )
               ],
             )
@@ -477,22 +625,46 @@ class _LeaderboardPageState extends State<LeaderboardPage> with TickerProviderSt
       borderRadius: BorderRadius.circular(12.r),
       child: Row(
         children: [
-          SizedBox(width: 44.w, child: Text("#${entry.rank}", style: TextStyle(fontSize: 14.sp, color: Colors.grey.shade300, fontWeight: FontWeight.bold))),
-          _GradientAvatar(name: _displayName(entry), radius: 20.r, colors: [theme.colorScheme.primary, theme.colorScheme.secondary]),
+          SizedBox(
+              width: 44.w,
+              child: Text("#${entry.rank}",
+                  style: TextStyle(
+                      fontSize: 14.sp,
+                      color: Colors.grey.shade300,
+                      fontWeight: FontWeight.bold))),
+          _GradientAvatar(
+              name: _displayName(entry),
+              radius: 20.r,
+              colors: [theme.colorScheme.primary, theme.colorScheme.secondary]),
           SizedBox(width: 12.w),
-          Expanded(child: Text(_displayName(entry), style: const TextStyle(fontWeight: FontWeight.w800, color: Colors.white), overflow: TextOverflow.ellipsis)),
+          Expanded(
+              child: Text(_displayName(entry),
+                  style: const TextStyle(
+                      fontWeight: FontWeight.w800, color: Colors.white),
+                  overflow: TextOverflow.ellipsis)),
           SizedBox(width: 8.w),
-          Row(children: [Text(entry.score.toString(), style: TextStyle(fontSize: 14.sp, color: theme.colorScheme.primary, fontWeight: FontWeight.bold)), SizedBox(width: 6.w), Icon(Icons.star_rounded, color: theme.colorScheme.secondary, size: 16.sp)]),
+          Row(children: [
+            Text(entry.score.toString(),
+                style: TextStyle(
+                    fontSize: 14.sp,
+                    color: theme.colorScheme.primary,
+                    fontWeight: FontWeight.bold)),
+            SizedBox(width: 6.w),
+            Icon(Icons.star_rounded,
+                color: theme.colorScheme.secondary, size: 16.sp)
+          ]),
         ],
       ),
     );
   }
 
-  Widget _buildPodium(BuildContext context, List<LeaderboardEntry> topEntries, List<LeaderboardEntry> bestPlayers) {
+  Widget _buildPodium(BuildContext context, List<LeaderboardEntry> topEntries,
+      List<LeaderboardEntry> bestPlayers) {
     final theme = Theme.of(context);
     final localizations = AppLocalizations.of(context)!;
 
-    final List<LeaderboardEntry?> podium = List.generate(3, (index) => index < topEntries.length ? topEntries[index] : null);
+    final List<LeaderboardEntry?> podium = List.generate(
+        3, (index) => index < topEntries.length ? topEntries[index] : null);
 
     return Padding(
       padding: EdgeInsets.only(left: 12.w, right: 12.w, bottom: 20.h),
@@ -502,18 +674,45 @@ class _LeaderboardPageState extends State<LeaderboardPage> with TickerProviderSt
           // Stylized podium with 3D feeling
           Container(
             padding: EdgeInsets.symmetric(vertical: 14.h, horizontal: 12.w),
-              decoration: BoxDecoration(
-              gradient: LinearGradient(colors: [colorWithOpacity(theme.colorScheme.surface, 0.08), colorWithOpacity(Colors.black, 0.06)]),
+            decoration: BoxDecoration(
+              gradient: LinearGradient(colors: [
+                colorWithOpacity(theme.colorScheme.surface, 0.08),
+                colorWithOpacity(Colors.black, 0.06)
+              ]),
               borderRadius: BorderRadius.circular(16.r),
-              boxShadow: [BoxShadow(color: Colors.black45, blurRadius: 22.r, offset: Offset(0, 10.h))],
+              boxShadow: [
+                BoxShadow(
+                    color: Colors.black45,
+                    blurRadius: 22.r,
+                    offset: Offset(0, 10.h))
+              ],
               border: Border.all(color: Colors.white12),
             ),
             child: Row(
               crossAxisAlignment: CrossAxisAlignment.end,
               children: [
-                Expanded(child: _PodiumBlock(entry: podium[1], height: 120.h, color: const Color(0xFFC0C0C0), place: 2, displayNameFn: _displayName)),
-                Expanded(child: _PodiumBlock(entry: podium[0], height: 160.h, color: const Color(0xFFFFD700), place: 1, isChampion: true, displayNameFn: _displayName)),
-                Expanded(child: _PodiumBlock(entry: podium[2], height: 100.h, color: const Color(0xFFB87333), place: 3, displayNameFn: _displayName)),
+                Expanded(
+                    child: _PodiumBlock(
+                        entry: podium[1],
+                        height: 120.h,
+                        color: const Color(0xFFC0C0C0),
+                        place: 2,
+                        displayNameFn: _displayName)),
+                Expanded(
+                    child: _PodiumBlock(
+                        entry: podium[0],
+                        height: 160.h,
+                        color: const Color(0xFFFFD700),
+                        place: 1,
+                        isChampion: true,
+                        displayNameFn: _displayName)),
+                Expanded(
+                    child: _PodiumBlock(
+                        entry: podium[2],
+                        height: 100.h,
+                        color: const Color(0xFFB87333),
+                        place: 3,
+                        displayNameFn: _displayName)),
               ],
             ),
           ),
@@ -527,7 +726,11 @@ class _LeaderboardPageState extends State<LeaderboardPage> with TickerProviderSt
               borderRadius: BorderRadius.circular(12.r),
               child: Column(
                 children: [
-                  Text(localizations.topPlayers, style: TextStyle(fontSize: 16.sp, color: Colors.white, fontWeight: FontWeight.bold)),
+                  Text(localizations.topPlayers,
+                      style: TextStyle(
+                          fontSize: 16.sp,
+                          color: Colors.white,
+                          fontWeight: FontWeight.bold)),
                   SizedBox(height: 10.h),
                   const Divider(color: Colors.white12),
                   SizedBox(height: 10.h),
@@ -535,19 +738,36 @@ class _LeaderboardPageState extends State<LeaderboardPage> with TickerProviderSt
                     Padding(
                       padding: EdgeInsets.symmetric(vertical: 8.h),
                       child: Builder(builder: (context) {
-                        final entry = i < bestPlayers.length ? bestPlayers[i] : null;
+                        final entry =
+                            i < bestPlayers.length ? bestPlayers[i] : null;
                         final rank = 4 + i;
                         final name = entry != null ? _displayName(entry) : "-";
-                        final scoreText = entry != null ? "${entry.score}" : "-";
+                        final scoreText =
+                            entry != null ? "${entry.score}" : "-";
                         return Row(
                           children: [
-                            SizedBox(width: 36.w, child: Text("#$rank", style: TextStyle(color: Colors.grey.shade300, fontWeight: FontWeight.bold))),
+                            SizedBox(
+                                width: 36.w,
+                                child: Text("#$rank",
+                                    style: TextStyle(
+                                        color: Colors.grey.shade300,
+                                        fontWeight: FontWeight.bold))),
                             SizedBox(width: 8.w),
-                            Expanded(child: Text(name, style: const TextStyle(color: Colors.white, fontWeight: FontWeight.w700), overflow: TextOverflow.ellipsis)),
+                            Expanded(
+                                child: Text(name,
+                                    style: const TextStyle(
+                                        color: Colors.white,
+                                        fontWeight: FontWeight.w700),
+                                    overflow: TextOverflow.ellipsis)),
                             SizedBox(width: 8.w),
-                            Text(scoreText, style: TextStyle(color: theme.colorScheme.primary, fontWeight: FontWeight.bold)),
+                            Text(scoreText,
+                                style: TextStyle(
+                                    color: theme.colorScheme.primary,
+                                    fontWeight: FontWeight.bold)),
                             SizedBox(width: 8.w),
-                            Icon(Icons.star_rounded, color: theme.colorScheme.secondary, size: 14.sp),
+                            Icon(Icons.star_rounded,
+                                color: theme.colorScheme.secondary,
+                                size: 14.sp),
                           ],
                         );
                       }),
@@ -567,7 +787,8 @@ class _GradientAvatar extends StatelessWidget {
   final String name;
   final double radius;
   final List<Color> colors;
-  const _GradientAvatar({required this.name, required this.radius, required this.colors});
+  const _GradientAvatar(
+      {required this.name, required this.radius, required this.colors});
 
   @override
   Widget build(BuildContext context) {
@@ -578,10 +799,17 @@ class _GradientAvatar extends StatelessWidget {
       decoration: BoxDecoration(
         shape: BoxShape.circle,
         gradient: LinearGradient(colors: colors),
-        boxShadow: [BoxShadow(color: Colors.black26, blurRadius: 8.r, offset: Offset(0, 4.h))],
+        boxShadow: [
+          BoxShadow(
+              color: Colors.black26, blurRadius: 8.r, offset: Offset(0, 4.h))
+        ],
       ),
       alignment: Alignment.center,
-      child: Text(initials, style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold, fontSize: radius * 0.8.sp)),
+      child: Text(initials,
+          style: TextStyle(
+              color: Colors.white,
+              fontWeight: FontWeight.bold,
+              fontSize: radius * 0.8.sp)),
     );
   }
 }
@@ -595,7 +823,13 @@ class _PodiumBlock extends StatelessWidget {
   final bool isChampion;
   final String Function(LeaderboardEntry) displayNameFn;
 
-  const _PodiumBlock({this.entry, required this.height, required this.color, required this.place, this.isChampion = false, required this.displayNameFn});
+  const _PodiumBlock(
+      {this.entry,
+      required this.height,
+      required this.color,
+      required this.place,
+      this.isChampion = false,
+      required this.displayNameFn});
 
   @override
   Widget build(BuildContext context) {
@@ -608,22 +842,38 @@ class _PodiumBlock extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.end,
         children: [
           if (isChampion)
-            Transform.translate(offset: Offset(0, -12.h), child: Icon(Icons.emoji_events_rounded, color: Colors.amber, size: 28.sp)),
+            Transform.translate(
+                offset: Offset(0, -12.h),
+                child: Icon(Icons.emoji_events_rounded,
+                    color: Colors.amber, size: 28.sp)),
           Container(
             padding: EdgeInsets.symmetric(vertical: 8.h, horizontal: 8.w),
             decoration: BoxDecoration(
               color: colorWithOpacity(color, 0.06),
               borderRadius: BorderRadius.vertical(top: Radius.circular(12.r)),
-              border: Border.all(color: colorWithOpacity(color, 0.9), width: 1.5),
-              boxShadow: [BoxShadow(color: Colors.black38, blurRadius: 10.r, offset: Offset(0, 8.h))],
+              border:
+                  Border.all(color: colorWithOpacity(color, 0.9), width: 1.5),
+              boxShadow: [
+                BoxShadow(
+                    color: Colors.black38,
+                    blurRadius: 10.r,
+                    offset: Offset(0, 8.h))
+              ],
             ),
             child: Column(
               children: [
-                _GradientAvatar(name: display, radius: isChampion ? 32.r : 26.r, colors: [color, colorWithOpacity(color, 0.6)]),
+                _GradientAvatar(
+                    name: display,
+                    radius: isChampion ? 32.r : 26.r,
+                    colors: [color, colorWithOpacity(color, 0.6)]),
                 SizedBox(height: 8.h),
                 ConstrainedBox(
                   constraints: BoxConstraints(maxWidth: 120.w),
-                  child: Text(display, style: const TextStyle(color: Colors.white, fontWeight: FontWeight.bold), overflow: TextOverflow.ellipsis, textAlign: TextAlign.center),
+                  child: Text(display,
+                      style: const TextStyle(
+                          color: Colors.white, fontWeight: FontWeight.bold),
+                      overflow: TextOverflow.ellipsis,
+                      textAlign: TextAlign.center),
                 ),
                 SizedBox(height: 8.h),
                 Container(
@@ -631,14 +881,29 @@ class _PodiumBlock extends StatelessWidget {
                   width: double.infinity,
                   alignment: Alignment.center,
                   decoration: BoxDecoration(
-                    gradient: LinearGradient(colors: [colorWithOpacity(color, 0.9), colorWithOpacity(color, 0.35)]),
-                    borderRadius: BorderRadius.vertical(top: Radius.circular(12.r)),
-                    boxShadow: [BoxShadow(color: Colors.black54, blurRadius: 8.r, offset: Offset(0, 6.h))],
+                    gradient: LinearGradient(colors: [
+                      colorWithOpacity(color, 0.9),
+                      colorWithOpacity(color, 0.35)
+                    ]),
+                    borderRadius:
+                        BorderRadius.vertical(top: Radius.circular(12.r)),
+                    boxShadow: [
+                      BoxShadow(
+                          color: Colors.black54,
+                          blurRadius: 8.r,
+                          offset: Offset(0, 6.h))
+                    ],
                   ),
-                  child: Text(score, style: TextStyle(fontSize: 20.sp, color: Colors.white, fontWeight: FontWeight.bold)),
+                  child: Text(score,
+                      style: TextStyle(
+                          fontSize: 20.sp,
+                          color: Colors.white,
+                          fontWeight: FontWeight.bold)),
                 ),
                 SizedBox(height: 6.h),
-                Text("#$place", style: const TextStyle(color: Colors.white70, fontWeight: FontWeight.w700)),
+                Text("#$place",
+                    style: const TextStyle(
+                        color: Colors.white70, fontWeight: FontWeight.w700)),
               ],
             ),
           ),
@@ -654,7 +919,8 @@ class _AnimatedListItem extends StatelessWidget {
   final AnimationController controller;
   final Widget child;
 
-  const _AnimatedListItem({required this.index, required this.controller, required this.child});
+  const _AnimatedListItem(
+      {required this.index, required this.controller, required this.child});
 
   @override
   Widget build(BuildContext context) {
@@ -664,12 +930,15 @@ class _AnimatedListItem extends StatelessWidget {
     final intervalStart = (index * 0.08).clamp(0.0, 1.0);
     final intervalEnd = (intervalStart + 0.5).clamp(0.0, 1.0);
 
-    final animation = CurvedAnimation(parent: controller, curve: Interval(intervalStart, intervalEnd, curve: Curves.easeOut));
+    final animation = CurvedAnimation(
+        parent: controller,
+        curve: Interval(intervalStart, intervalEnd, curve: Curves.easeOut));
 
     return FadeTransition(
       opacity: animation,
       child: SlideTransition(
-        position: Tween<Offset>(begin: const Offset(0, 0.4), end: Offset.zero).animate(animation),
+        position: Tween<Offset>(begin: const Offset(0, 0.4), end: Offset.zero)
+            .animate(animation),
         child: child,
       ),
     );
@@ -683,7 +952,11 @@ class _HeaderRow extends StatelessWidget {
   final LeaderboardEntry? currentUser;
   final String Function(LeaderboardEntry) displayNameFn;
 
-  const _HeaderRow({required this.localizations, required this.theme, this.currentUser, required this.displayNameFn});
+  const _HeaderRow(
+      {required this.localizations,
+      required this.theme,
+      this.currentUser,
+      required this.displayNameFn});
 
   @override
   Widget build(BuildContext context) {
@@ -692,8 +965,10 @@ class _HeaderRow extends StatelessWidget {
     int maxEnergy = 5;
     if (profile != null) {
       final level = profile.subscriptionLevel.toLowerCase();
-      if (level == 'free') maxEnergy = 3;
-      else if (level == 'pro') maxEnergy = 5;
+      if (level == 'free')
+        maxEnergy = 3;
+      else if (level == 'pro')
+        maxEnergy = 5;
       else if (level == 'ultra') maxEnergy = 5;
     }
     final currentEnergy = profile?.remainingEnergy ?? 0;
@@ -703,16 +978,35 @@ class _HeaderRow extends StatelessWidget {
       children: [
         Row(
           children: [
-            Expanded(child: Text(localizations.leaderboard, style: TextStyle(fontSize: 22.sp, fontWeight: FontWeight.bold, color: Colors.white))),
+            Expanded(
+                child: Text(localizations.leaderboard,
+                    style: TextStyle(
+                        fontSize: 22.sp,
+                        fontWeight: FontWeight.bold,
+                        color: Colors.white))),
             if (currentUser != null)
               Row(
                 children: [
-                  _GradientAvatar(name: displayNameFn(currentUser!), radius: 18.r, colors: [theme.colorScheme.secondary, theme.colorScheme.primary]),
+                  _GradientAvatar(
+                      name: displayNameFn(currentUser!),
+                      radius: 18.r,
+                      colors: [
+                        theme.colorScheme.secondary,
+                        theme.colorScheme.primary
+                      ]),
                   SizedBox(width: 8.w),
-                  Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
-                    Text(displayNameFn(currentUser!), style: const TextStyle(color: Colors.white, fontWeight: FontWeight.bold)),
-                    Text("${currentUser!.score} ${localizations.points}", style: TextStyle(color: theme.colorScheme.secondary, fontSize: 12.sp)),
-                  ])
+                  Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text(displayNameFn(currentUser!),
+                            style: const TextStyle(
+                                color: Colors.white,
+                                fontWeight: FontWeight.bold)),
+                        Text("${currentUser!.score} ${localizations.points}",
+                            style: TextStyle(
+                                color: theme.colorScheme.secondary,
+                                fontSize: 12.sp)),
+                      ])
                 ],
               )
           ],
@@ -720,7 +1014,10 @@ class _HeaderRow extends StatelessWidget {
         if (profile != null) ...[
           SizedBox(height: 12.h),
           // Energy slider
-          _EnergySlider(current: currentEnergy.clamp(0, maxEnergy), max: maxEnergy, theme: theme),
+          _EnergySlider(
+              current: currentEnergy.clamp(0, maxEnergy),
+              max: maxEnergy,
+              theme: theme),
         ]
       ],
     );
@@ -731,256 +1028,193 @@ class _EnergySlider extends StatefulWidget {
   final int current;
   final int max;
   final ThemeData theme;
-  const _EnergySlider({required this.current, required this.max, required this.theme});
+  const _EnergySlider(
+      {required this.current, required this.max, required this.theme});
 
   @override
   State<_EnergySlider> createState() => _EnergySliderState();
 }
 
-class _EnergySliderState extends State<_EnergySlider> with SingleTickerProviderStateMixin {
-  late final AnimationController _anim;
+class _EnergySliderState extends State<_EnergySlider>
+    with SingleTickerProviderStateMixin {
+  late final AnimationController _shimmerController;
 
   @override
   void initState() {
     super.initState();
-    // single controller driving multiple visual phases
-    _anim = AnimationController(vsync: this, duration: const Duration(milliseconds: 3000))..repeat();
+    _shimmerController =
+        AnimationController(vsync: this, duration: const Duration(seconds: 2))
+          ..repeat();
   }
 
   @override
   void dispose() {
-    _anim.dispose();
+    _shimmerController.dispose();
     super.dispose();
+  }
+
+  Color _getEnergyColor(double percentage) {
+    if (percentage <= 0.25) return Colors.redAccent;
+    if (percentage <= 0.50) return Colors.orangeAccent;
+    return const Color(0xFF00E5FF); // Cyan / Electric Blue for high energy
+    // Veya temanın rengini kullanmak istersen:
+    // return widget.theme.colorScheme.primary;
   }
 
   @override
   Widget build(BuildContext context) {
-    final animate = !MediaQuery.of(context).accessibleNavigation;
-    final pct = widget.max > 0 ? (widget.current / widget.max) : 0.0;
-    final totalWidth = MediaQuery.of(context).size.width * 0.64;
-    final fillWidth = (pct <= 0 ? 0.0 : pct * totalWidth).clamp(0.0, totalWidth);
+    // Enerji yüzdesi
+    final double percentage =
+        widget.max > 0 ? (widget.current / widget.max) : 0.0;
+    final Color activeColor = _getEnergyColor(percentage);
 
-    Color lerp3(Color a, Color b, double t) => Color.lerp(a, b, t) ?? a;
-    Color startColor;
-    Color endColor;
-    if (pct <= 0.5) {
-      final t = (pct / 0.5).clamp(0.0, 1.0);
-      startColor = lerp3(Colors.red.shade600, Colors.orange.shade600, t);
-      endColor = lerp3(Colors.red.shade400, Colors.orange.shade400, t);
-    } else {
-      final t = ((pct - 0.5) / 0.5).clamp(0.0, 1.0);
-      startColor = lerp3(Colors.orange.shade700, Colors.yellow.shade700, t);
-      endColor = lerp3(Colors.orange.shade400, Colors.yellow.shade400, t);
-    }
-    final glowColor = startColor.withOpacity(0.18 + 0.6 * pct);
-
-    return AnimatedBuilder(
-      animation: animate ? _anim : const AlwaysStoppedAnimation(0),
-      builder: (context, child) {
-        final animVal = animate ? _anim.value : 0.0;
-        final gradientShift = (sin(animVal * 2 * pi) * 0.6); // gentle oscillation
-        final shimmerX = (animVal * 2) - 0.5; // -0.5..1.5 for shader movement
-
-        return Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Row(
-              children: [
-                // Bolt icon with bob, halo and trailing glow
-                Stack(
-                  alignment: Alignment.center,
-                  children: [
-                    // pulsing halo
-                    Container(
-                      width: 48.w,
-                      height: 34.h,
-                      decoration: BoxDecoration(
-                        shape: BoxShape.rectangle,
-                        borderRadius: BorderRadius.circular(12.r),
-                        boxShadow: [
-                          BoxShadow(color: glowColor.withOpacity(0.55 * (0.6 + 0.4 * pct)), blurRadius: 28.r * (0.6 + pct), spreadRadius: 6.r * pct),
-                        ],
-                      ),
+    return Padding(
+      padding: EdgeInsets.symmetric(horizontal: 4.w),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          // Üst Başlık ve Sayaç
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              Row(
+                children: [
+                  Icon(Icons.bolt_rounded, color: activeColor, size: 18.sp),
+                  SizedBox(width: 6.w),
+                  Text(
+                    AppLocalizations.of(context)?.energyLabel ?? 'Energy',
+                    style: TextStyle(
+                      color: Colors.white.withOpacity(0.9),
+                      fontSize: 14.sp,
+                      fontWeight: FontWeight.bold,
+                      letterSpacing: 0.5,
                     ),
-                    Transform.translate(
-                      offset: Offset(0, -6 * sin(animVal * 2 * pi)),
-                      child: Container(
-                        width: 40.w,
-                        height: 28.h,
-                        decoration: BoxDecoration(
-                          gradient: LinearGradient(colors: [startColor.withOpacity(0.98), endColor.withOpacity(0.98)]),
-                          borderRadius: BorderRadius.circular(10.r),
-                        ),
-                        child: Center(child: Icon(Icons.bolt, color: Colors.white, size: 18.sp)),
-                      ),
-                    ),
-                  ],
+                  ),
+                ],
+              ),
+              Container(
+                padding: EdgeInsets.symmetric(horizontal: 10.w, vertical: 4.h),
+                decoration: BoxDecoration(
+                  color: activeColor.withOpacity(0.1),
+                  borderRadius: BorderRadius.circular(12.r),
+                  border: Border.all(color: activeColor.withOpacity(0.3)),
                 ),
-                SizedBox(width: 12.w),
-                Expanded(
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Text(
-                        AppLocalizations.of(context)?.energyLabel ?? 'Energy',
-                        style: TextStyle(color: widget.theme.colorScheme.onSurface.withOpacity(0.95), fontSize: 12.sp, fontWeight: FontWeight.w800),
-                      ),
-                      SizedBox(height: 8.h),
-                      Stack(
-                        alignment: Alignment.centerLeft,
-                        children: [
-                          // track
-                          Container(
-                            height: 18.h,
-                            width: totalWidth,
-                            decoration: BoxDecoration(color: colorWithOpacity(widget.theme.colorScheme.onSurface, 0.06), borderRadius: BorderRadius.circular(14.r)),
-                          ),
-
-                          // animated fill with shifting gradient
-                          Positioned(
-                            left: 0,
-                            child: Container(
-                              height: 18.h,
-                              width: fillWidth,
-                              decoration: BoxDecoration(
-                                gradient: LinearGradient(
-                                  begin: Alignment(-1 + gradientShift, 0),
-                                  end: Alignment(1 + gradientShift, 0),
-                                  colors: [startColor, endColor],
-                                  stops: [0.0, 0.95],
-                                ),
-                                borderRadius: BorderRadius.circular(14.r),
-                                boxShadow: [BoxShadow(color: glowColor, blurRadius: 18.r * (0.6 + pct), offset: Offset(0, 6 * pct))],
-                              ),
-                              child: Stack(
-                                children: [
-                                  // moving shimmer overlay
-                                  Positioned.fill(
-                                    child: IgnorePointer(
-                                      child: ShaderMask(
-                                        blendMode: BlendMode.srcATop,
-                                        shaderCallback: (rect) {
-                                          final double w = rect.width;
-                                          final dx = (shimmerX * w);
-                                          return LinearGradient(
-                                            begin: Alignment(-1 - dx, 0),
-                                            end: Alignment(1 - dx, 0),
-                                            colors: [Colors.white.withOpacity(0.05), Colors.white.withOpacity(0.18), Colors.white.withOpacity(0.05)],
-                                            stops: [0.0, 0.5, 1.0],
-                                          ).createShader(Rect.fromLTWH(-w, 0, w * 3, rect.height));
-                                        },
-                                        child: Container(color: Colors.white),
-                                      ),
-                                    ),
-                                  ),
-
-                                  // sparkles painter
-                                  if (fillWidth > 8)
-                                    Positioned.fill(
-                                      child: IgnorePointer(
-                                        child: CustomPaint(
-                                          painter: _SparkPainter(progress: animVal, fill: fillWidth, height: 18.h, color: endColor.withOpacity(0.95), density: 12),
-                                        ),
-                                      ),
-                                    ),
-                                ],
-                              ),
-                            ),
-                          ),
-
-                          // bolt indicator with trailing glow and slight blur illusion
-                          Positioned(
-                            left: (max(0.0, fillWidth - 22.w)).clamp(0.0, totalWidth - 22.w),
-                            child: Transform.scale(
-                              scale: 0.92 + 0.12 * sin(animVal * 2 * pi),
-                              child: Stack(
-                                alignment: Alignment.center,
-                                children: [
-                                  Container(
-                                    width: 28.w,
-                                    height: 28.w,
-                                    decoration: BoxDecoration(
-                                      shape: BoxShape.circle,
-                                      color: startColor.withOpacity(0.12 + 0.3 * pct),
-                                      boxShadow: [BoxShadow(color: glowColor.withOpacity(0.85), blurRadius: 18.r * (0.6 + pct), spreadRadius: 1.2)],
-                                    ),
-                                  ),
-                                  Container(
-                                    width: 20.w,
-                                    height: 20.w,
-                                    decoration: BoxDecoration(shape: BoxShape.circle, color: Colors.white, boxShadow: [BoxShadow(color: glowColor.withOpacity(0.9), blurRadius: 10.r, spreadRadius: 0.8)]),
-                                    child: Center(child: Icon(Icons.bolt, color: startColor, size: 12.sp)),
-                                  ),
-                                ],
-                              ),
-                            ),
-                          ),
-
-                          // center text with subtle stroke/glow
-                          Positioned.fill(
-                            child: Center(
-                              child: Stack(
-                                alignment: Alignment.center,
-                                children: [
-                                  Text('${widget.current}/${widget.max}', style: TextStyle(fontSize: 12.sp, fontWeight: FontWeight.bold, foreground: Paint()..style = PaintingStyle.stroke..strokeWidth = 3..color = Colors.white.withOpacity(0.12))),
-                                  Text('${widget.current}/${widget.max}', style: TextStyle(color: Colors.black87, fontWeight: FontWeight.bold, fontSize: 12.sp)),
-                                ],
-                              ),
-                            ),
-                          ),
-                        ],
-                      ),
-                    ],
+                child: Text(
+                  '${widget.current}/${widget.max}',
+                  style: TextStyle(
+                    color: activeColor,
+                    fontWeight: FontWeight.w800,
+                    fontSize: 12.sp,
                   ),
                 ),
-                SizedBox(width: 12.w),
+              ),
+            ],
+          ),
+          SizedBox(height: 10.h),
+
+          // Segmentli Enerji Barı
+          SizedBox(
+            height: 14.h, // Bar yüksekliği
+            child: Row(
+              children: List.generate(widget.max, (index) {
+                // Bu segment dolu mu?
+                final bool isActive = index < widget.current;
+
+                return Expanded(
+                  child: Padding(
+                    padding: EdgeInsets.only(
+                        right: index == widget.max - 1
+                            ? 0
+                            : 6.w), // Segmentler arası boşluk
+                    child: isActive
+                        ? _buildActiveSegment(activeColor)
+                        : _buildInactiveSegment(),
+                  ),
+                );
+              }),
+            ),
+          ),
+
+          // Alt Bilgi (Opsiyonel: Dolmasına kalan süre vs. buraya eklenebilir)
+          if (widget.current < widget.max)
+            Padding(
+              padding: EdgeInsets.only(top: 8.h),
+              child: Text(
+                "Next refill in 14:20", // Burayı dinamik yapabilirsin
+                style: TextStyle(color: Colors.white38, fontSize: 11.sp),
+              ),
+            ),
+        ],
+      ),
+    );
+  }
+
+  Widget _buildActiveSegment(Color color) {
+    return AnimatedBuilder(
+      animation: _shimmerController,
+      builder: (context, child) {
+        return Container(
+          decoration: BoxDecoration(
+            borderRadius: BorderRadius.circular(4.r),
+            gradient: LinearGradient(
+              colors: [color.withOpacity(0.7), color, color.withOpacity(0.7)],
+              begin: Alignment.centerLeft,
+              end: Alignment.centerRight,
+            ),
+            boxShadow: [
+              BoxShadow(
+                color: color.withOpacity(0.6),
+                blurRadius: 8.r, // Glow efekti
+                offset: const Offset(0, 0),
+                spreadRadius: 1,
+              ),
+            ],
+          ),
+          child: ClipRRect(
+            borderRadius: BorderRadius.circular(4.r),
+            child: Stack(
+              children: [
+                // Shimmer Efekti (Işık yansıması geçişi)
+                Positioned.fill(
+                  child: LayoutBuilder(
+                    builder: (context, constraints) {
+                      final pos =
+                          constraints.maxWidth * 2 * _shimmerController.value -
+                              constraints.maxWidth;
+                      return Transform.translate(
+                        offset: Offset(pos, 0),
+                        child: Container(
+                          width: constraints.maxWidth * 0.5,
+                          decoration: BoxDecoration(
+                            gradient: LinearGradient(
+                              colors: [
+                                Colors.white.withOpacity(0.0),
+                                Colors.white.withOpacity(0.4),
+                                Colors.white.withOpacity(0.0)
+                              ],
+                              stops: const [0.0, 0.5, 1.0],
+                            ),
+                          ),
+                        ),
+                      );
+                    },
+                  ),
+                ),
               ],
             ),
-            SizedBox(height: 6.h),
-          ],
+          ),
         );
       },
     );
   }
-}
 
-class _SparkPainter extends CustomPainter {
-  final double progress;
-  final double fill;
-  final double height;
-  final Color color;
-  final int density;
-  _SparkPainter({required this.progress, required this.fill, required this.height, required this.color, this.density = 8});
-
-  @override
-  void paint(Canvas canvas, Size size) {
-    if (fill <= 6) return;
-    final rnd = Random((progress * 10000).toInt());
-    final base = Paint()..color = color;
-    final int count = (density).clamp(4, 28);
-
-    for (int i = 0; i < count; i++) {
-      final fx = rnd.nextDouble();
-      final localX = fx * (fill / size.width) * size.width * (0.9 + 0.1 * rnd.nextDouble());
-      final phase = progress * 2 * pi + i;
-      final localY = (0.35 + 0.35 * sin(phase)) * size.height;
-      final r = (0.6 + rnd.nextDouble() * 2.6) * (1.0 + 0.3 * sin(progress * 2 * pi + i));
-      final paint = base..color = color.withOpacity(0.06 + 0.6 * rnd.nextDouble());
-
-      // draw primary spark
-      canvas.drawCircle(Offset(localX, localY), r, paint);
-
-      // subtle trail (small faded circles)
-      final trailCount = (1 + rnd.nextInt(2));
-      for (int t = 1; t <= trailCount; t++) {
-        final tx = localX - t * (2 + rnd.nextDouble() * 4);
-        final ty = localY + t * (0.5 + rnd.nextDouble());
-        final tr = r * (0.6 - 0.15 * t);
-        canvas.drawCircle(Offset(tx.clamp(0, fill), ty.clamp(0, size.height)), tr, paint..color = paint.color.withOpacity((paint.color.opacity * (0.5 / t)).clamp(0.02, 0.35)));
-      }
-    }
+  Widget _buildInactiveSegment() {
+    return Container(
+      decoration: BoxDecoration(
+        color: Colors.white.withOpacity(0.1), // Sönük arka plan
+        borderRadius: BorderRadius.circular(4.r),
+        border: Border.all(color: Colors.white.withOpacity(0.05)),
+      ),
+    );
   }
-
-  @override
-  bool shouldRepaint(covariant _SparkPainter oldDelegate) => oldDelegate.progress != progress || oldDelegate.fill != fill || oldDelegate.density != density;
 }

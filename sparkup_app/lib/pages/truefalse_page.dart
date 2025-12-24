@@ -18,7 +18,8 @@ class TrueFalsePage extends StatefulWidget {
   State<TrueFalsePage> createState() => _TrueFalsePageState();
 }
 
-class _TrueFalsePageState extends State<TrueFalsePage> with SingleTickerProviderStateMixin {
+class _TrueFalsePageState extends State<TrueFalsePage>
+    with SingleTickerProviderStateMixin {
   bool _isLoading = false;
   bool _isQuizActive = false;
   Timer? _timer;
@@ -37,14 +38,28 @@ class _TrueFalsePageState extends State<TrueFalsePage> with SingleTickerProvider
   @override
   void initState() {
     super.initState();
-    _backgroundController = AnimationController(vsync: this, duration: const Duration(seconds: 25))..repeat(reverse: true);
+    _backgroundController =
+        AnimationController(vsync: this, duration: const Duration(seconds: 25))
+          ..repeat(reverse: true);
     _backgroundAnimation1 = TweenSequence<Alignment>([
-      TweenSequenceItem(tween: AlignmentTween(begin: Alignment.topLeft, end: Alignment.bottomRight), weight: 1),
-      TweenSequenceItem(tween: AlignmentTween(begin: Alignment.bottomRight, end: Alignment.topLeft), weight: 1),
+      TweenSequenceItem(
+          tween: AlignmentTween(
+              begin: Alignment.topLeft, end: Alignment.bottomRight),
+          weight: 1),
+      TweenSequenceItem(
+          tween: AlignmentTween(
+              begin: Alignment.bottomRight, end: Alignment.topLeft),
+          weight: 1),
     ]).animate(_backgroundController);
     _backgroundAnimation2 = TweenSequence<Alignment>([
-      TweenSequenceItem(tween: AlignmentTween(begin: Alignment.topRight, end: Alignment.bottomLeft), weight: 1),
-      TweenSequenceItem(tween: AlignmentTween(begin: Alignment.bottomLeft, end: Alignment.topRight), weight: 1),
+      TweenSequenceItem(
+          tween: AlignmentTween(
+              begin: Alignment.topRight, end: Alignment.bottomLeft),
+          weight: 1),
+      TweenSequenceItem(
+          tween: AlignmentTween(
+              begin: Alignment.bottomLeft, end: Alignment.topRight),
+          weight: 1),
     ]).animate(_backgroundController);
 
     WidgetsBinding.instance.addPostFrameCallback((_) {
@@ -89,16 +104,24 @@ class _TrueFalsePageState extends State<TrueFalsePage> with SingleTickerProvider
       if (mounted) {
         final loc = AppLocalizations.of(context);
         final msg = e.toString();
-        final bool isLimitErr = e is QuizLimitException || msg.toLowerCase().contains('429') || msg.toLowerCase().contains('limit');
+        final bool isLimitErr = e is QuizLimitException ||
+            msg.toLowerCase().contains('429') ||
+            msg.toLowerCase().contains('limit');
         showDialog(
           context: context,
           barrierDismissible: true,
           builder: (ctx) => AlertDialog(
-            title: Text(isLimitErr ? (loc?.insufficientEnergy ?? 'Insufficient energy ⚡') : (loc?.error ?? 'Error')),
+            title: Text(isLimitErr
+                ? (loc?.insufficientEnergy ?? 'Insufficient energy ⚡')
+                : (loc?.error ?? 'Error')),
             content: Text(isLimitErr
                 ? (loc?.insufficientEnergy ?? 'Insufficient energy ⚡')
                 : (loc?.quizCouldNotStart ?? 'Could not load questions.')),
-            actions: [TextButton(onPressed: () => Navigator.of(ctx).pop(), child: Text(loc?.cancel ?? 'OK'))],
+            actions: [
+              TextButton(
+                  onPressed: () => Navigator.of(ctx).pop(),
+                  child: Text(loc?.cancel ?? 'OK'))
+            ],
           ),
         );
       }
@@ -140,7 +163,8 @@ class _TrueFalsePageState extends State<TrueFalsePage> with SingleTickerProvider
 
     // Notify analysis provider to refresh immediately after an answer
     try {
-      final analysisProv = Provider.of<AnalysisProvider>(context, listen: false);
+      final analysisProv =
+          Provider.of<AnalysisProvider>(context, listen: false);
       analysisProv.refresh(widget.idToken);
     } catch (_) {}
 
@@ -165,11 +189,10 @@ class _TrueFalsePageState extends State<TrueFalsePage> with SingleTickerProvider
     if (_isLoading) {
       return Scaffold(
         backgroundColor: theme.colorScheme.surface,
-        body: Center(child: CircularProgressIndicator(color: theme.colorScheme.primary)),
+        body: Center(
+            child: CircularProgressIndicator(color: theme.colorScheme.primary)),
       );
     }
-
-    
 
     // If questions are empty but user hasn't started a session yet, show start view.
     // Only show the 'no questions' message when a session is active but nothing loaded.
@@ -183,9 +206,16 @@ class _TrueFalsePageState extends State<TrueFalsePage> with SingleTickerProvider
             child: Column(
               mainAxisSize: MainAxisSize.min,
               children: [
-                Text(loc?.noDataAvailable ?? 'No data available', textAlign: TextAlign.center, style: TextStyle(color: theme.colorScheme.onSurface, fontSize: 16.sp)),
+                Text(loc?.noDataAvailable ?? 'No data available',
+                    textAlign: TextAlign.center,
+                    style: TextStyle(
+                        color: theme.colorScheme.onSurface, fontSize: 16.sp)),
                 SizedBox(height: 12.h),
-                Text(loc?.quizCouldNotStart ?? 'Quiz could not start', textAlign: TextAlign.center, style: TextStyle(color: theme.colorScheme.onSurface.withOpacity(0.7), fontSize: 14.sp)),
+                Text(loc?.quizCouldNotStart ?? 'Quiz could not start',
+                    textAlign: TextAlign.center,
+                    style: TextStyle(
+                        color: theme.colorScheme.onSurface.withOpacity(0.7),
+                        fontSize: 14.sp)),
                 SizedBox(height: 18.h),
                 ElevatedButton(
                   onPressed: () {
@@ -223,8 +253,17 @@ class _TrueFalsePageState extends State<TrueFalsePage> with SingleTickerProvider
                         height: 400.h,
                         decoration: BoxDecoration(
                           shape: BoxShape.circle,
-                          gradient: RadialGradient(colors: [colorWithOpacity(theme.colorScheme.secondary, 0.14), Colors.transparent]),
-                          boxShadow: [BoxShadow(color: colorWithOpacity(theme.colorScheme.secondary, 0.06), blurRadius: 100.r, spreadRadius: 80.r)],
+                          gradient: RadialGradient(colors: [
+                            colorWithOpacity(theme.colorScheme.secondary, 0.14),
+                            Colors.transparent
+                          ]),
+                          boxShadow: [
+                            BoxShadow(
+                                color: colorWithOpacity(
+                                    theme.colorScheme.secondary, 0.06),
+                                blurRadius: 100.r,
+                                spreadRadius: 80.r)
+                          ],
                         ),
                       ),
                     ),
@@ -237,8 +276,17 @@ class _TrueFalsePageState extends State<TrueFalsePage> with SingleTickerProvider
                         height: 300.h,
                         decoration: BoxDecoration(
                           shape: BoxShape.circle,
-                          gradient: RadialGradient(colors: [colorWithOpacity(theme.colorScheme.primary, 0.12), Colors.transparent]),
-                          boxShadow: [BoxShadow(color: colorWithOpacity(theme.colorScheme.primary, 0.05), blurRadius: 100.r, spreadRadius: 60.r)],
+                          gradient: RadialGradient(colors: [
+                            colorWithOpacity(theme.colorScheme.primary, 0.12),
+                            Colors.transparent
+                          ]),
+                          boxShadow: [
+                            BoxShadow(
+                                color: colorWithOpacity(
+                                    theme.colorScheme.primary, 0.05),
+                                blurRadius: 100.r,
+                                spreadRadius: 60.r)
+                          ],
                         ),
                       ),
                     ),
@@ -250,7 +298,9 @@ class _TrueFalsePageState extends State<TrueFalsePage> with SingleTickerProvider
           SafeArea(
             child: AnimatedSwitcher(
               duration: const Duration(milliseconds: 420),
-              child: !_isQuizActive ? _buildStartView(theme) : _buildQuizView(theme),
+              child: !_isQuizActive
+                  ? _buildStartView(theme)
+                  : _buildQuizView(theme),
             ),
           ),
         ],
@@ -269,7 +319,9 @@ class _TrueFalsePageState extends State<TrueFalsePage> with SingleTickerProvider
         children: [
           Icon(icon, color: color, size: 18.sp),
           SizedBox(width: 6.w),
-          Text(text, style: TextStyle(color: color, fontWeight: FontWeight.bold, fontSize: 16.sp)),
+          Text(text,
+              style: TextStyle(
+                  color: color, fontWeight: FontWeight.bold, fontSize: 16.sp)),
         ],
       ),
     );
@@ -281,60 +333,87 @@ class _TrueFalsePageState extends State<TrueFalsePage> with SingleTickerProvider
     final width = mq.size.width * 0.92;
     final height = mq.size.height * 0.72;
     return Align(
-      alignment: const Alignment(0, -0.18),
-      child: Center(
-        key: const ValueKey('startView'),
-        child: _isLoading
-            ? CircularProgressIndicator(color: theme.colorScheme.primary)
-            : SizedBox(
-              width: width,
-              height: height,
-              child: AnimatedGlassCard(
-                padding: EdgeInsets.symmetric(horizontal: 20.w, vertical: 18.h),
-                borderRadius: BorderRadius.circular(18.r),
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    Column(
+        alignment: const Alignment(0, -0.18),
+        child: Center(
+          key: const ValueKey('startView'),
+          child: _isLoading
+              ? CircularProgressIndicator(color: theme.colorScheme.primary)
+              : SizedBox(
+                  width: width,
+                  height: height,
+                  child: AnimatedGlassCard(
+                    padding:
+                        EdgeInsets.symmetric(horizontal: 20.w, vertical: 18.h),
+                    borderRadius: BorderRadius.circular(18.r),
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
-                        Text(AppLocalizations.of(context)?.startTrueFalseProblems ?? 'Start True/False Problems', textAlign: TextAlign.center, style: TextStyle(fontSize: 26.sp, fontWeight: FontWeight.w900)),
-                        SizedBox(height: 12.h),
-                        SizedBox(height: 20.h),
-                      ],
-                    ),
-                    Column(
-                      children: [
-                        MorphingGradientButton.icon(
-                          icon: Icon(Icons.play_arrow_rounded, size: 26.sp, color: Colors.white),
-                          label: Text(AppLocalizations.of(context)?.startWithOneBolt ?? 'Start with 1 ⚡', style: TextStyle(fontSize: 18.sp, fontWeight: FontWeight.bold)),
-                          colors: [theme.colorScheme.secondary, theme.colorScheme.primary],
-                          onPressed: () {
-                            final userProv = Provider.of<UserProvider>(context, listen: false);
-                            final rem = userProv.profile?.remainingEnergy;
-                            if (rem != null && rem <= 0) {
-                              final loc = AppLocalizations.of(context);
-                              showDialog(
-                                context: context,
-                                builder: (ctx) => AlertDialog(
-                                  title: Text(loc?.insufficientEnergy ?? 'Insufficient energy ⚡'),
-                                  content: Text(loc?.insufficientEnergy ?? 'Insufficient energy ⚡'),
-                                  actions: [TextButton(onPressed: () => Navigator.of(ctx).pop(), child: Text(loc?.cancel ?? 'OK'))],
-                                ),
-                              );
-                              return;
-                            }
-                            _startSession();
-                          },
-                          padding: EdgeInsets.symmetric(horizontal: 36.w, vertical: 16.h),
+                        Column(
+                          children: [
+                            Text(
+                                AppLocalizations.of(context)
+                                        ?.startTrueFalseProblems ??
+                                    'Start True/False Problems',
+                                textAlign: TextAlign.center,
+                                style: TextStyle(
+                                    fontSize: 26.sp,
+                                    fontWeight: FontWeight.w900)),
+                            SizedBox(height: 12.h),
+                            SizedBox(height: 20.h),
+                          ],
+                        ),
+                        Column(
+                          children: [
+                            MorphingGradientButton.icon(
+                              icon: Icon(Icons.play_arrow_rounded,
+                                  size: 26.sp, color: Colors.white),
+                              label: Text(
+                                  AppLocalizations.of(context)
+                                          ?.startWithOneBolt ??
+                                      'Start with 1 ⚡',
+                                  style: TextStyle(
+                                      fontSize: 18.sp,
+                                      fontWeight: FontWeight.bold)),
+                              colors: [
+                                theme.colorScheme.secondary,
+                                theme.colorScheme.primary
+                              ],
+                              onPressed: () {
+                                final userProv = Provider.of<UserProvider>(
+                                    context,
+                                    listen: false);
+                                final rem = userProv.profile?.remainingEnergy;
+                                if (rem != null && rem <= 0) {
+                                  final loc = AppLocalizations.of(context);
+                                  showDialog(
+                                    context: context,
+                                    builder: (ctx) => AlertDialog(
+                                      title: Text(loc?.insufficientEnergy ??
+                                          'Insufficient energy ⚡'),
+                                      content: Text(loc?.insufficientEnergy ??
+                                          'Insufficient energy ⚡'),
+                                      actions: [
+                                        TextButton(
+                                            onPressed: () =>
+                                                Navigator.of(ctx).pop(),
+                                            child: Text(loc?.cancel ?? 'OK'))
+                                      ],
+                                    ),
+                                  );
+                                  return;
+                                }
+                                _startSession();
+                              },
+                              padding: EdgeInsets.symmetric(
+                                  horizontal: 36.w, vertical: 16.h),
+                            ),
+                          ],
                         ),
                       ],
                     ),
-                  ],
+                  ),
                 ),
-              ),
-            ),
-      )
-    );
+        ));
   }
 
   Widget _buildQuizView(ThemeData theme) {
@@ -346,9 +425,12 @@ class _TrueFalsePageState extends State<TrueFalsePage> with SingleTickerProvider
           ClipRRect(
             borderRadius: BorderRadius.circular(6.r),
             child: LinearProgressIndicator(
-              value: _sessionDuration > 0 ? (_timeLeft / _sessionDuration).clamp(0.0, 1.0) : 0.0,
+              value: _sessionDuration > 0
+                  ? (_timeLeft / _sessionDuration).clamp(0.0, 1.0)
+                  : 0.0,
               minHeight: 6.h,
-              backgroundColor: colorWithOpacity(theme.colorScheme.surface, 0.06),
+              backgroundColor:
+                  colorWithOpacity(theme.colorScheme.surface, 0.06),
               valueColor: AlwaysStoppedAnimation(theme.colorScheme.tertiary),
             ),
           ),
@@ -356,17 +438,22 @@ class _TrueFalsePageState extends State<TrueFalsePage> with SingleTickerProvider
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              _buildInfoChip(Icons.timer, '$_timeLeft s', _timeLeft < 10 ? Colors.red : theme.colorScheme.primary),
+              _buildInfoChip(Icons.timer, '$_timeLeft s',
+                  _timeLeft < 10 ? Colors.red : theme.colorScheme.primary),
               Flexible(
                 child: Center(
                   child: Text(
                     '${AppLocalizations.of(context)?.streak ?? 'Streak'}: $_streak 🔥',
-                    style: TextStyle(fontSize: 16.sp, fontWeight: FontWeight.bold, color: Colors.orange),
+                    style: TextStyle(
+                        fontSize: 16.sp,
+                        fontWeight: FontWeight.bold,
+                        color: Colors.orange),
                     overflow: TextOverflow.ellipsis,
                   ),
                 ),
               ),
-              _buildInfoChip(Icons.star, '$_score', theme.colorScheme.secondary),
+              _buildInfoChip(
+                  Icons.star, '$_score', theme.colorScheme.secondary),
             ],
           ),
           SizedBox(height: 12.h),
@@ -379,7 +466,11 @@ class _TrueFalsePageState extends State<TrueFalsePage> with SingleTickerProvider
                 borderRadius: BorderRadius.circular(16.r),
                 child: SizedBox(
                   height: 220.h,
-                  child: Center(child: Text(_currentQuestionText(), textAlign: TextAlign.center, style: theme.textTheme.titleLarge?.copyWith(fontWeight: FontWeight.w900, height: 1.25))),
+                  child: Center(
+                      child: Text(_currentQuestionText(),
+                          textAlign: TextAlign.center,
+                          style: theme.textTheme.titleLarge?.copyWith(
+                              fontWeight: FontWeight.w900, height: 1.25))),
                 ),
               ),
             ),
@@ -388,9 +479,13 @@ class _TrueFalsePageState extends State<TrueFalsePage> with SingleTickerProvider
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceAround,
             children: [
-              Expanded(child: _buildTFButton(Icons.check, Colors.green, 'TRUE', () => _answerQuestion(true))),
+              Expanded(
+                  child: _buildTFButton(Icons.check, Colors.green, 'TRUE',
+                      () => _answerQuestion(true))),
               SizedBox(width: 16.w),
-              Expanded(child: _buildTFButton(Icons.close, Colors.red, 'FALSE', () => _answerQuestion(false))),
+              Expanded(
+                  child: _buildTFButton(Icons.close, Colors.red, 'FALSE',
+                      () => _answerQuestion(false))),
             ],
           ),
         ],
@@ -411,10 +506,12 @@ class _TrueFalsePageState extends State<TrueFalsePage> with SingleTickerProvider
 
     if (raw is Map) {
       // prefer exact language, then english, then first available
-      if (raw.containsKey(lang) && (raw[lang] ?? '').toString().trim().isNotEmpty) {
+      if (raw.containsKey(lang) &&
+          (raw[lang] ?? '').toString().trim().isNotEmpty) {
         return raw[lang].toString();
       }
-      if (raw.containsKey('en') && (raw['en'] ?? '').toString().trim().isNotEmpty) {
+      if (raw.containsKey('en') &&
+          (raw['en'] ?? '').toString().trim().isNotEmpty) {
         return raw['en'].toString();
       }
       // fallback to first non-empty value
@@ -426,7 +523,8 @@ class _TrueFalsePageState extends State<TrueFalsePage> with SingleTickerProvider
     return raw.toString();
   }
 
-  Widget _buildTFButton(IconData icon, Color color, String label, VoidCallback onTap) {
+  Widget _buildTFButton(
+      IconData icon, Color color, String label, VoidCallback onTap) {
     return GestureDetector(
       onTap: onTap,
       child: Container(
@@ -434,11 +532,24 @@ class _TrueFalsePageState extends State<TrueFalsePage> with SingleTickerProvider
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(12.r),
           color: color,
-          boxShadow: [BoxShadow(color: color.withOpacity(0.3), blurRadius: 8.r, offset: const Offset(0, 4))],
+          boxShadow: [
+            BoxShadow(
+                color: color.withOpacity(0.3),
+                blurRadius: 8.r,
+                offset: const Offset(0, 4))
+          ],
         ),
         child: Row(
           mainAxisAlignment: MainAxisAlignment.center,
-          children: [Icon(icon, color: Colors.white), SizedBox(width: 12.w), Text(label, style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold, fontSize: 18.sp))],
+          children: [
+            Icon(icon, color: Colors.white),
+            SizedBox(width: 12.w),
+            Text(label,
+                style: TextStyle(
+                    color: Colors.white,
+                    fontWeight: FontWeight.bold,
+                    fontSize: 18.sp))
+          ],
         ),
       ),
     );
@@ -462,8 +573,11 @@ class _TrueFalsePageState extends State<TrueFalsePage> with SingleTickerProvider
       final secFromProfile = userProv.profile?.sessionSeconds;
       int sec = secFromProfile ?? 60;
       if (_questions.isNotEmpty) {
-        final first = _questions.firstWhere((e) => e.containsKey('session_seconds'), orElse: () => null);
-        if (first != null && first['session_seconds'] is int) sec = first['session_seconds'] as int;
+        final first = _questions.firstWhere(
+            (e) => e.containsKey('session_seconds'),
+            orElse: () => null);
+        if (first != null && first['session_seconds'] is int)
+          sec = first['session_seconds'] as int;
       }
       setState(() {
         _timeLeft = sec;
@@ -480,27 +594,38 @@ class _TrueFalsePageState extends State<TrueFalsePage> with SingleTickerProvider
       // Show a user-friendly dialog for rate-limit / energy errors
       if (mounted) {
         // On error, refresh profile from server to correct optimistic change
-        try { userProv.loadProfile(widget.idToken); } catch (_) {}
+        try {
+          userProv.loadProfile(widget.idToken);
+        } catch (_) {}
         final loc = AppLocalizations.of(context);
         final msg = e?.toString() ?? '';
-        final bool isLimitErr = e is QuizLimitException || msg.toLowerCase().contains('429') || msg.toLowerCase().contains('limit');
+        final bool isLimitErr = e is QuizLimitException ||
+            msg.toLowerCase().contains('429') ||
+            msg.toLowerCase().contains('limit');
         showDialog(
           context: context,
           barrierDismissible: true,
           builder: (ctx) => AlertDialog(
             backgroundColor: Theme.of(ctx).colorScheme.surface,
             title: Text(
-              isLimitErr ? (loc?.insufficientEnergy ?? 'Insufficient energy ⚡') : (loc?.error ?? 'Error'),
-              style: TextStyle(color: Theme.of(ctx).colorScheme.primary, fontWeight: FontWeight.bold),
+              isLimitErr
+                  ? (loc?.insufficientEnergy ?? 'Insufficient energy ⚡')
+                  : (loc?.error ?? 'Error'),
+              style: TextStyle(
+                  color: Theme.of(ctx).colorScheme.primary,
+                  fontWeight: FontWeight.bold),
             ),
             content: Text(
               isLimitErr
                   ? (loc?.insufficientEnergy ?? 'Insufficient energy ⚡')
-                  : (loc?.quizCouldNotStart ?? 'Could not start quiz. Please try again later.'),
+                  : (loc?.quizCouldNotStart ??
+                      'Could not start quiz. Please try again later.'),
               style: TextStyle(color: Theme.of(ctx).colorScheme.onSurface),
             ),
             actions: [
-              TextButton(onPressed: () => Navigator.of(ctx).pop(), child: Text(loc?.cancel ?? 'OK')),
+              TextButton(
+                  onPressed: () => Navigator.of(ctx).pop(),
+                  child: Text(loc?.cancel ?? 'OK')),
             ],
           ),
         );
@@ -520,15 +645,26 @@ class _TrueFalsePageState extends State<TrueFalsePage> with SingleTickerProvider
       barrierDismissible: false,
       builder: (context) => AlertDialog(
         backgroundColor: theme.colorScheme.surface,
-        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16.r)),
-        title: Text(AppLocalizations.of(context)?.quizFinished ?? 'Quiz finished', style: TextStyle(color: theme.colorScheme.primary, fontWeight: FontWeight.bold)),
-        content: Text("${AppLocalizations.of(context)?.yourScore ?? 'Your score'}: $_score", style: TextStyle(fontSize: 18.sp, color: theme.colorScheme.onSurface)),
-        actions: [TextButton(onPressed: () => Navigator.of(context).pop(), child: Text(AppLocalizations.of(context)?.great ?? 'Great', style: TextStyle(color: theme.colorScheme.primary)))],
+        shape:
+            RoundedRectangleBorder(borderRadius: BorderRadius.circular(16.r)),
+        title: Text(
+            AppLocalizations.of(context)?.quizFinished ?? 'Quiz finished',
+            style: TextStyle(
+                color: theme.colorScheme.primary, fontWeight: FontWeight.bold)),
+        content: Text(
+            "${AppLocalizations.of(context)?.yourScore ?? 'Your score'}: $_score",
+            style:
+                TextStyle(fontSize: 18.sp, color: theme.colorScheme.onSurface)),
+        actions: [
+          TextButton(
+              onPressed: () => Navigator.of(context).pop(),
+              child: Text(AppLocalizations.of(context)?.great ?? 'Great',
+                  style: TextStyle(color: theme.colorScheme.primary)))
+        ],
       ),
     );
     if (mounted) {
       await _loadQuestions();
     }
   }
-
 }

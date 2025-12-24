@@ -22,7 +22,8 @@ class SettingsPage extends StatefulWidget {
   State<SettingsPage> createState() => _SettingsPageState();
 }
 
-class _SettingsPageState extends State<SettingsPage> with SingleTickerProviderStateMixin {
+class _SettingsPageState extends State<SettingsPage>
+    with SingleTickerProviderStateMixin {
   bool _isSavingLanguage = false;
   bool _isSavingNotifications = false;
   // ignore: unused_field
@@ -37,14 +38,24 @@ class _SettingsPageState extends State<SettingsPage> with SingleTickerProviderSt
   StreamSubscription<String>? _tokenRefreshSub;
 
   final Map<String, String> _supportedLanguages = {
-    'en': 'English', 'tr': 'Türkçe', 'de': 'Deutsch', 'fr': 'Français', 'es': 'Español',
-    'it': 'Italiano', 'ru': 'Русский', 'zh': '中文 (简体)', 'hi': 'हिन्दी', 'ja': '日本語', 'ar': 'العربية',
+    'en': 'English',
+    'tr': 'Türkçe',
+    'de': 'Deutsch',
+    'fr': 'Français',
+    'es': 'Español',
+    'it': 'Italiano',
+    'ru': 'Русский',
+    'zh': '中文 (简体)',
+    'hi': 'हिन्दी',
+    'ja': '日本語',
+    'ar': 'العربية',
   };
 
   @override
   void initState() {
     super.initState();
-    _animationController = AnimationController(vsync: this, duration: const Duration(milliseconds: 700));
+    _animationController = AnimationController(
+        vsync: this, duration: const Duration(milliseconds: 700));
     WidgetsBinding.instance.addPostFrameCallback((_) {
       _loadUserProfile();
       // Honor reduced-motion accessibility: if user requests reduced motion, skip animations
@@ -79,10 +90,11 @@ class _SettingsPageState extends State<SettingsPage> with SingleTickerProviderSt
       if (token == null) throw Exception("User not logged in");
 
       final uri = Uri.parse("$backendBaseUrl/user/profile/");
-  final response = await http.get(uri, headers: {'Authorization': 'Bearer $token'});
+      final response =
+          await http.get(uri, headers: {'Authorization': 'Bearer $token'});
 
-  if (!mounted) return;
-  if (response.statusCode == 200) {
+      if (!mounted) return;
+      if (response.statusCode == 200) {
         final profile = jsonDecode(response.body) as Map<String, dynamic>;
         final firebaseName = FirebaseAuth.instance.currentUser?.displayName;
         final backendUsername = (profile['username'] as String?) ?? '';
@@ -90,11 +102,13 @@ class _SettingsPageState extends State<SettingsPage> with SingleTickerProviderSt
         // Keep it null so we don't overwrite the app locale to English.
         final languageCode = (profile['language_code'] as String?);
         final score = (profile['score'] as int?) ?? 0;
-        final notifications = (profile['notifications_enabled'] as bool?) ?? true;
+        final notifications =
+            (profile['notifications_enabled'] as bool?) ?? true;
 
         // determine effective language to display: prefer backend if explicit,
         // but do NOT let a backend 'en' override device/provider when user hasn't chosen language
-        final localeProvider = Provider.of<LocaleProvider>(context, listen: false);
+        final localeProvider =
+            Provider.of<LocaleProvider>(context, listen: false);
         String effectiveLang = localeProvider.locale.languageCode;
         if (languageCode != null && languageCode.isNotEmpty) {
           if (!(languageCode == 'en' && !localeProvider.userSetLanguage)) {
@@ -103,13 +117,16 @@ class _SettingsPageState extends State<SettingsPage> with SingleTickerProviderSt
         }
         setState(() {
           _currentLanguageCode = effectiveLang;
-          _username = (firebaseName != null && firebaseName.isNotEmpty) ? firebaseName : (backendUsername.isNotEmpty ? backendUsername : null);
+          _username = (firebaseName != null && firebaseName.isNotEmpty)
+              ? firebaseName
+              : (backendUsername.isNotEmpty ? backendUsername : null);
           _userScore = score;
           _notificationsEnabled = notifications;
         });
         // Only change app locale if backend explicitly provided language_code
         if (languageCode != null && languageCode.isNotEmpty) {
-          final localeProvider = Provider.of<LocaleProvider>(context, listen: false);
+          final localeProvider =
+              Provider.of<LocaleProvider>(context, listen: false);
           // If backend returns 'en' as a default (not user-chosen), don't override device locale
           if (languageCode == 'en' && !localeProvider.userSetLanguage) {
             // skip
@@ -125,35 +142,49 @@ class _SettingsPageState extends State<SettingsPage> with SingleTickerProviderSt
         throw Exception('Failed to load profile: ${response.statusCode}');
       }
     } catch (e) {
-      if (mounted) { _showErrorSnackBar(localizations?.failedToLoadProfile ?? "Failed to load profile"); }
+      if (mounted) {
+        _showErrorSnackBar(
+            localizations?.failedToLoadProfile ?? "Failed to load profile");
+      }
     } finally {
-      if (mounted) { setState(() => _isLoadingProfile = false); }
+      if (mounted) {
+        setState(() => _isLoadingProfile = false);
+      }
     }
   }
 
   Future<void> _saveLanguage(String langCode) async {
     if (_isSavingLanguage) return;
     setState(() => _isSavingLanguage = true);
-  final localizations = AppLocalizations.of(context);
-  final localeProvider = Provider.of<LocaleProvider>(context, listen: false);
+    final localizations = AppLocalizations.of(context);
+    final localeProvider = Provider.of<LocaleProvider>(context, listen: false);
     try {
       final token = await _getIdToken();
       if (token == null) throw Exception("User not logged in");
 
-      final uri = Uri.parse("$backendBaseUrl/user/language/").replace(queryParameters: {'language_code': langCode});
-      final response = await http.put(uri, headers: {'Authorization': 'Bearer $token', 'Content-Type': 'application/json'});
+      final uri = Uri.parse("$backendBaseUrl/user/language/")
+          .replace(queryParameters: {'language_code': langCode});
+      final response = await http.put(uri, headers: {
+        'Authorization': 'Bearer $token',
+        'Content-Type': 'application/json'
+      });
 
       if (response.statusCode == 200) {
-      // Persist that the user explicitly chose a language
-      await localeProvider.setLocale(langCode, persist: true);
+        // Persist that the user explicitly chose a language
+        await localeProvider.setLocale(langCode, persist: true);
         setState(() => _currentLanguageCode = langCode);
       } else {
         throw Exception('Failed to save language');
       }
     } catch (e) {
-      if (mounted) { _showErrorSnackBar(localizations?.failedToSaveLanguage ?? "Failed to save language"); }
+      if (mounted) {
+        _showErrorSnackBar(
+            localizations?.failedToSaveLanguage ?? "Failed to save language");
+      }
     } finally {
-      if (mounted) { setState(() => _isSavingLanguage = false); }
+      if (mounted) {
+        setState(() => _isSavingLanguage = false);
+      }
     }
   }
 
@@ -163,17 +194,20 @@ class _SettingsPageState extends State<SettingsPage> with SingleTickerProviderSt
       _notificationsEnabled = isEnabled;
       _isSavingNotifications = true;
     });
-  final localizations = AppLocalizations.of(context);
-  try {
+    final localizations = AppLocalizations.of(context);
+    try {
       final token = await _getIdToken();
       if (token == null) throw Exception("User not logged in");
 
       // Send as query parameter (backend may expect ?enabled=true/false)
-      final uri = Uri.parse("$backendBaseUrl/user/notifications/").replace(queryParameters: {'enabled': isEnabled.toString()});
-      final response = await http.put(uri, headers: {'Authorization': 'Bearer $token'});
+      final uri = Uri.parse("$backendBaseUrl/user/notifications/")
+          .replace(queryParameters: {'enabled': isEnabled.toString()});
+      final response =
+          await http.put(uri, headers: {'Authorization': 'Bearer $token'});
       if (response.statusCode != 200) {
         // log server response for debugging
-        debugPrint('Failed to save notifications: ${response.statusCode} ${response.body}');
+        debugPrint(
+            'Failed to save notifications: ${response.statusCode} ${response.body}');
         throw Exception('Failed to save setting');
       }
       // If enabling succeeded, register token with backend; if disabling, unregister
@@ -184,11 +218,14 @@ class _SettingsPageState extends State<SettingsPage> with SingleTickerProviderSt
       }
     } catch (e) {
       if (mounted) {
-        _showErrorSnackBar(localizations?.failedToSaveNotification ?? "Failed to save notification setting");
+        _showErrorSnackBar(localizations?.failedToSaveNotification ??
+            "Failed to save notification setting");
         setState(() => _notificationsEnabled = !isEnabled);
       }
     } finally {
-      if (mounted) { setState(() => _isSavingNotifications = false); }
+      if (mounted) {
+        setState(() => _isSavingNotifications = false);
+      }
     }
   }
 
@@ -203,7 +240,8 @@ class _SettingsPageState extends State<SettingsPage> with SingleTickerProviderSt
       }
 
       // listen for token refreshes and re-register
-      _tokenRefreshSub = FirebaseMessaging.instance.onTokenRefresh.listen((newToken) async {
+      _tokenRefreshSub =
+          FirebaseMessaging.instance.onTokenRefresh.listen((newToken) async {
         if (_notificationsEnabled) {
           await _registerDeviceTokenWithBackend(newToken);
         }
@@ -218,9 +256,16 @@ class _SettingsPageState extends State<SettingsPage> with SingleTickerProviderSt
       final idToken = await _getIdToken();
       if (idToken == null) return;
       final uri = Uri.parse("$backendBaseUrl/user/device-token/");
-      final resp = await http.post(uri, headers: {'Authorization': 'Bearer $idToken', 'Content-Type': 'application/json'}, body: jsonEncode({'token': token, 'platform': kIsWeb ? 'web' : 'native'}));
+      final resp = await http.post(uri,
+          headers: {
+            'Authorization': 'Bearer $idToken',
+            'Content-Type': 'application/json'
+          },
+          body: jsonEncode(
+              {'token': token, 'platform': kIsWeb ? 'web' : 'native'}));
       if (resp.statusCode != 200 && resp.statusCode != 201) {
-        debugPrint('Failed to register device token: ${resp.statusCode} ${resp.body}');
+        debugPrint(
+            'Failed to register device token: ${resp.statusCode} ${resp.body}');
       }
     } catch (e) {
       debugPrint('registerDeviceToken error: $e');
@@ -233,13 +278,18 @@ class _SettingsPageState extends State<SettingsPage> with SingleTickerProviderSt
       if (idToken == null) return;
       final token = await FirebaseMessaging.instance.getToken();
       if (token == null) return;
-      final uri = Uri.parse("$backendBaseUrl/user/device-token/").replace(queryParameters: {'token': token});
-      final resp = await http.delete(uri, headers: {'Authorization': 'Bearer $idToken'});
+      final uri = Uri.parse("$backendBaseUrl/user/device-token/")
+          .replace(queryParameters: {'token': token});
+      final resp =
+          await http.delete(uri, headers: {'Authorization': 'Bearer $idToken'});
       if (resp.statusCode != 200 && resp.statusCode != 204) {
-        debugPrint('Failed to unregister device token: ${resp.statusCode} ${resp.body}');
+        debugPrint(
+            'Failed to unregister device token: ${resp.statusCode} ${resp.body}');
       }
       // delete local token as well
-      try { await FirebaseMessaging.instance.deleteToken(); } catch (_) {}
+      try {
+        await FirebaseMessaging.instance.deleteToken();
+      } catch (_) {}
     } catch (e) {
       debugPrint('unregisterDeviceToken error: $e');
     }
@@ -254,20 +304,30 @@ class _SettingsPageState extends State<SettingsPage> with SingleTickerProviderSt
 
   void _showSignOutConfirmation() {
     final localizations = AppLocalizations.of(context)!;
-    showDialog(context: context, builder: (ctx) {
-      return AlertDialog(
-        title: Text(localizations.signOut),
-        content: Text(localizations.signOutConfirmation),
-        actions: [
-          TextButton(onPressed: () => Navigator.of(ctx).pop(), child: Text(localizations.cancel)),
-          TextButton(onPressed: () async {
-            Navigator.of(ctx).pop();
-            await FirebaseAuth.instance.signOut();
-            try { await GoogleSignIn().signOut(); } catch (_) {}
-          }, child: Text(localizations.signOut, style: TextStyle(color: Theme.of(context).colorScheme.error))),
-        ],
-      );
-    });
+    showDialog(
+        context: context,
+        builder: (ctx) {
+          return AlertDialog(
+            title: Text(localizations.signOut),
+            content: Text(localizations.signOutConfirmation),
+            actions: [
+              TextButton(
+                  onPressed: () => Navigator.of(ctx).pop(),
+                  child: Text(localizations.cancel)),
+              TextButton(
+                  onPressed: () async {
+                    Navigator.of(ctx).pop();
+                    await FirebaseAuth.instance.signOut();
+                    try {
+                      await GoogleSignIn().signOut();
+                    } catch (_) {}
+                  },
+                  child: Text(localizations.signOut,
+                      style: TextStyle(
+                          color: Theme.of(context).colorScheme.error))),
+            ],
+          );
+        });
   }
 
   @override
@@ -277,7 +337,8 @@ class _SettingsPageState extends State<SettingsPage> with SingleTickerProviderSt
 
     // Respect user's reduced-motion accessibility setting
     final bool animate = !MediaQuery.of(context).accessibleNavigation;
-    final Animation<double> headerAnimation = CurvedAnimation(parent: _animationController, curve: Curves.easeOutCubic);
+    final Animation<double> headerAnimation = CurvedAnimation(
+        parent: _animationController, curve: Curves.easeOutCubic);
 
     return Scaffold(
       extendBodyBehindAppBar: true,
@@ -295,7 +356,10 @@ class _SettingsPageState extends State<SettingsPage> with SingleTickerProviderSt
           Container(
             decoration: BoxDecoration(
               gradient: LinearGradient(
-                colors: [colorWithOpacity(theme.colorScheme.primary, 0.18), colorWithOpacity(theme.colorScheme.secondary, 0.12)],
+                colors: [
+                  colorWithOpacity(theme.colorScheme.primary, 0.18),
+                  colorWithOpacity(theme.colorScheme.secondary, 0.12)
+                ],
                 begin: Alignment.topLeft,
                 end: Alignment.bottomRight,
               ),
@@ -303,8 +367,16 @@ class _SettingsPageState extends State<SettingsPage> with SingleTickerProviderSt
           ),
 
           // subtle floating shapes
-          Positioned(top: -40.h, left: -24.w, child: _decorBlob(colorWithOpacity(theme.colorScheme.primary, 0.08), 180.w)),
-          Positioned(bottom: -80.h, right: -60.w, child: _decorBlob(colorWithOpacity(theme.colorScheme.secondary, 0.07), 260.w)),
+          Positioned(
+              top: -40.h,
+              left: -24.w,
+              child: _decorBlob(
+                  colorWithOpacity(theme.colorScheme.primary, 0.08), 180.w)),
+          Positioned(
+              bottom: -80.h,
+              right: -60.w,
+              child: _decorBlob(
+                  colorWithOpacity(theme.colorScheme.secondary, 0.07), 260.w)),
 
           // content
           SafeArea(
@@ -313,21 +385,33 @@ class _SettingsPageState extends State<SettingsPage> with SingleTickerProviderSt
               padding: EdgeInsets.symmetric(vertical: 8.h, horizontal: 18.w),
               children: [
                 // If reduced-motion is enabled, bypass the entrance fade animation
-                animate ? FadeTransition(opacity: headerAnimation, child: _buildProfileHeader(theme, localizations)) : _buildProfileHeader(theme, localizations),
+                animate
+                    ? FadeTransition(
+                        opacity: headerAnimation,
+                        child: _buildProfileHeader(theme, localizations))
+                    : _buildProfileHeader(theme, localizations),
                 SizedBox(height: 8.h),
 
-                _buildCardSection(title: localizations.general, child: Column(children: [
-                  _buildLanguageTile(localizations, theme),
-                  const Divider(color: Colors.white12, height: 1, indent: 68),
-                  _buildNotificationsTile(localizations, theme),
-                ])),
+                _buildCardSection(
+                    title: localizations.general,
+                    child: Column(children: [
+                      _buildLanguageTile(localizations, theme),
+                      const Divider(
+                          color: Colors.white12, height: 1, indent: 68),
+                      _buildNotificationsTile(localizations, theme),
+                    ])),
                 SizedBox(height: 18.h),
-                _buildCardSection(title: localizations.account, child: Column(children: [
-                  const Divider(color: Colors.white12, height: 1),
-                  _buildSignOutTile(localizations, theme),
-                ])),
+                _buildCardSection(
+                    title: localizations.account,
+                    child: Column(children: [
+                      const Divider(color: Colors.white12, height: 1),
+                      _buildSignOutTile(localizations, theme),
+                    ])),
                 SizedBox(height: 28.h),
-                Center(child: Text('Spark Up • v1.0.0', style: TextStyle(color: Colors.grey.shade400, fontSize: 12.sp))),
+                Center(
+                    child: Text('Spark Up • v1.0.0',
+                        style: TextStyle(
+                            color: Colors.grey.shade400, fontSize: 12.sp))),
                 SizedBox(height: 8.h),
               ],
             ),
@@ -351,20 +435,28 @@ class _SettingsPageState extends State<SettingsPage> with SingleTickerProviderSt
   Widget _buildProfileHeader(ThemeData theme, AppLocalizations localizations) {
     final provider = Provider.of<UserProvider?>(context);
     final profile = provider?.profile;
-    final displayName = (profile as dynamic)?.username ?? _username ?? localizations.anonymous ?? 'Anonymous';
+    final displayName = (profile as dynamic)?.username ??
+        _username ??
+        localizations.anonymous ??
+        'Anonymous';
     final score = (profile as dynamic)?.score ?? _userScore;
 
     // determine "member since" year: prefer Firebase creation time, fallback to backend field(s) or just show label
     String memberSinceText = localizations.memberSince;
     try {
-      final firebaseCreation = FirebaseAuth.instance.currentUser?.metadata.creationTime;
+      final firebaseCreation =
+          FirebaseAuth.instance.currentUser?.metadata.creationTime;
       if (firebaseCreation != null) {
-        memberSinceText = '${localizations.memberSince} ${firebaseCreation.year}';
+        memberSinceText =
+            '${localizations.memberSince} ${firebaseCreation.year}';
       } else {
-        final joinedRaw = (profile as dynamic)?['created_at'] ?? (profile as dynamic)?['joined_at'] ?? (profile as dynamic)?['member_since'];
+        final joinedRaw = (profile as dynamic)?['created_at'] ??
+            (profile as dynamic)?['joined_at'] ??
+            (profile as dynamic)?['member_since'];
         if (joinedRaw != null) {
           final parsed = DateTime.tryParse(joinedRaw.toString());
-          if (parsed != null) memberSinceText = '${localizations.memberSince} ${parsed.year}';
+          if (parsed != null)
+            memberSinceText = '${localizations.memberSince} ${parsed.year}';
         }
       }
     } catch (_) {
@@ -380,25 +472,67 @@ class _SettingsPageState extends State<SettingsPage> with SingleTickerProviderSt
           Row(
             children: [
               Container(
-                width: 72.w, height: 72.w,
+                width: 72.w,
+                height: 72.w,
                 decoration: BoxDecoration(
                   shape: BoxShape.circle,
-                  gradient: LinearGradient(colors: [theme.colorScheme.secondary, theme.colorScheme.primary]),
-                  boxShadow: [BoxShadow(color: Colors.black26, blurRadius: 12.r, offset: Offset(0,8.h))],
+                  gradient: LinearGradient(colors: [
+                    theme.colorScheme.secondary,
+                    theme.colorScheme.primary
+                  ]),
+                  boxShadow: [
+                    BoxShadow(
+                        color: Colors.black26,
+                        blurRadius: 12.r,
+                        offset: Offset(0, 8.h))
+                  ],
                 ),
-                child: Center(child: Text((displayName.isNotEmpty)? displayName[0].toUpperCase() : 'A', style: TextStyle(color: Colors.white, fontSize: 28.sp, fontWeight: FontWeight.bold))),
+                child: Center(
+                    child: Text(
+                        (displayName.isNotEmpty)
+                            ? displayName[0].toUpperCase()
+                            : 'A',
+                        style: TextStyle(
+                            color: Colors.white,
+                            fontSize: 28.sp,
+                            fontWeight: FontWeight.bold))),
               ),
               SizedBox(width: 14.w),
               Expanded(
-                child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
-                  Row(children: [
-                    Expanded(child: Text(displayName, style: TextStyle(color: Colors.white, fontSize: 18.sp, fontWeight: FontWeight.bold), overflow: TextOverflow.ellipsis)),
-                    Container(padding: EdgeInsets.symmetric(horizontal: 10.w, vertical: 6.h), decoration: BoxDecoration(color: theme.colorScheme.primary, borderRadius: BorderRadius.circular(12.r)), child: Row(children: [Icon(Icons.star, size: 16.sp, color: Colors.yellow.shade700), SizedBox(width: 6.w), Text('$score', style: const TextStyle(color: Colors.white, fontWeight: FontWeight.bold))])),
-                  ]),
-                  SizedBox(height: 4.h),
-                  // show "Member since YYYY" when possible
-                  Text(memberSinceText, style: TextStyle(color: Colors.white70, fontSize: 12.sp), overflow: TextOverflow.ellipsis),
-                ]),
+                child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Row(children: [
+                        Expanded(
+                            child: Text(displayName,
+                                style: TextStyle(
+                                    color: Colors.white,
+                                    fontSize: 18.sp,
+                                    fontWeight: FontWeight.bold),
+                                overflow: TextOverflow.ellipsis)),
+                        Container(
+                            padding: EdgeInsets.symmetric(
+                                horizontal: 10.w, vertical: 6.h),
+                            decoration: BoxDecoration(
+                                color: theme.colorScheme.primary,
+                                borderRadius: BorderRadius.circular(12.r)),
+                            child: Row(children: [
+                              Icon(Icons.star,
+                                  size: 16.sp, color: Colors.yellow.shade700),
+                              SizedBox(width: 6.w),
+                              Text('$score',
+                                  style: const TextStyle(
+                                      color: Colors.white,
+                                      fontWeight: FontWeight.bold))
+                            ])),
+                      ]),
+                      SizedBox(height: 4.h),
+                      // show "Member since YYYY" when possible
+                      Text(memberSinceText,
+                          style:
+                              TextStyle(color: Colors.white70, fontSize: 12.sp),
+                          overflow: TextOverflow.ellipsis),
+                    ]),
               )
             ],
           ),
@@ -412,80 +546,134 @@ class _SettingsPageState extends State<SettingsPage> with SingleTickerProviderSt
 
   Widget _buildCardSection({required String title, required Widget child}) {
     return Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
-      Padding(padding: EdgeInsets.only(left: 6.w, bottom: 8.h), child: Text(title.toUpperCase(), style: TextStyle(color: Colors.grey.shade400, fontWeight: FontWeight.bold, letterSpacing: 1.2))),
-      AnimatedGlassCard(borderRadius: BorderRadius.circular(14.r), padding: EdgeInsets.symmetric(horizontal: 8.w, vertical: 6.h), child: child)
+      Padding(
+          padding: EdgeInsets.only(left: 6.w, bottom: 8.h),
+          child: Text(title.toUpperCase(),
+              style: TextStyle(
+                  color: Colors.grey.shade400,
+                  fontWeight: FontWeight.bold,
+                  letterSpacing: 1.2))),
+      AnimatedGlassCard(
+          borderRadius: BorderRadius.circular(14.r),
+          padding: EdgeInsets.symmetric(horizontal: 8.w, vertical: 6.h),
+          child: child)
     ]);
   }
 
   Widget _buildLanguageTile(AppLocalizations localizations, ThemeData theme) {
     return ListTile(
-      leading: CircleAvatar(backgroundColor: colorWithOpacity(theme.colorScheme.primary, 0.12), child: Icon(Icons.language, color: theme.colorScheme.primary)),
+      leading: CircleAvatar(
+          backgroundColor: colorWithOpacity(theme.colorScheme.primary, 0.12),
+          child: Icon(Icons.language, color: theme.colorScheme.primary)),
       title: Text(localizations.applicationLanguage),
       subtitle: Text(_supportedLanguages[_currentLanguageCode] ?? 'English'),
-      trailing: _isSavingLanguage ? SizedBox(width: 24.w, height: 24.w, child: const CircularProgressIndicator(strokeWidth: 2)) : const Icon(Icons.keyboard_arrow_right, color: Colors.white70),
+      trailing: _isSavingLanguage
+          ? SizedBox(
+              width: 24.w,
+              height: 24.w,
+              child: const CircularProgressIndicator(strokeWidth: 2))
+          : const Icon(Icons.keyboard_arrow_right, color: Colors.white70),
       onTap: () => _showLanguageBottomSheet(localizations, theme),
     );
   }
 
-  Widget _buildNotificationsTile(AppLocalizations localizations, ThemeData theme) {
+  Widget _buildNotificationsTile(
+      AppLocalizations localizations, ThemeData theme) {
     return SwitchListTile(
-      secondary: Padding(padding: const EdgeInsets.all(8.0), child: Icon(Icons.notifications_active_outlined, color: theme.colorScheme.primary)),
+      secondary: Padding(
+          padding: const EdgeInsets.all(8.0),
+          child: Icon(Icons.notifications_active_outlined,
+              color: theme.colorScheme.primary)),
       title: Text(localizations.notifications),
       subtitle: Text(localizations.forAllAlarms),
       value: _notificationsEnabled,
-  activeThumbColor: theme.colorScheme.secondary,
-      onChanged: _isSavingNotifications ? null : (value) => _saveNotificationSetting(value),
+      activeThumbColor: theme.colorScheme.secondary,
+      onChanged: _isSavingNotifications
+          ? null
+          : (value) => _saveNotificationSetting(value),
     );
   }
 
   Widget _buildSignOutTile(AppLocalizations localizations, ThemeData theme) {
     return ListTile(
-      leading: Padding(padding: const EdgeInsets.all(8.0), child: Icon(Icons.logout, color: theme.colorScheme.secondary)),
-      title: Text(localizations.signOut, style: TextStyle(color: theme.colorScheme.secondary, fontWeight: FontWeight.w600)),
+      leading: Padding(
+          padding: const EdgeInsets.all(8.0),
+          child: Icon(Icons.logout, color: theme.colorScheme.secondary)),
+      title: Text(localizations.signOut,
+          style: TextStyle(
+              color: theme.colorScheme.secondary, fontWeight: FontWeight.w600)),
       onTap: () => _showSignOutConfirmation(),
     );
   }
 
-  void _showLanguageBottomSheet(AppLocalizations localizations, ThemeData theme) {
-    showModalBottomSheet(context: context, backgroundColor: Colors.transparent, builder: (context) {
-      return StatefulBuilder(builder: (BuildContext context, StateSetter setModalState) {
-        return Container(
-          padding: EdgeInsets.symmetric(horizontal: 12.w, vertical: 14.h),
-          decoration: BoxDecoration(color: theme.colorScheme.surface, borderRadius: BorderRadius.vertical(top: Radius.circular(20.r))),
-          child: Column(mainAxisSize: MainAxisSize.min, children: [
-            Container(width: 40.w, height: 4.h, margin: EdgeInsets.symmetric(vertical: 8.h), decoration: BoxDecoration(color: Colors.grey.shade700, borderRadius: BorderRadius.circular(2.r))),
-            Text(localizations.applicationLanguage, style: theme.textTheme.titleMedium),
-            SizedBox(height: 10.h),
-            GridView.count(
-              crossAxisCount: 3,
-              shrinkWrap: true,
-              childAspectRatio: 3,
-              crossAxisSpacing: 8.w,
-              mainAxisSpacing: 8.h,
-              padding: EdgeInsets.symmetric(vertical: 8.h),
-              children: _supportedLanguages.entries.map((entry) {
-                final isSelected = entry.key == _currentLanguageCode;
-                return GestureDetector(
-                  onTap: () {
-                    Navigator.pop(context);
-                    _saveLanguage(entry.key);
-                  },
-                  child: Container(
-                    padding: EdgeInsets.symmetric(horizontal: 8.w, vertical: 6.h),
+  void _showLanguageBottomSheet(
+      AppLocalizations localizations, ThemeData theme) {
+    showModalBottomSheet(
+        context: context,
+        backgroundColor: Colors.transparent,
+        builder: (context) {
+          return StatefulBuilder(
+              builder: (BuildContext context, StateSetter setModalState) {
+            return Container(
+              padding: EdgeInsets.symmetric(horizontal: 12.w, vertical: 14.h),
+              decoration: BoxDecoration(
+                  color: theme.colorScheme.surface,
+                  borderRadius:
+                      BorderRadius.vertical(top: Radius.circular(20.r))),
+              child: Column(mainAxisSize: MainAxisSize.min, children: [
+                Container(
+                    width: 40.w,
+                    height: 4.h,
+                    margin: EdgeInsets.symmetric(vertical: 8.h),
                     decoration: BoxDecoration(
-                      color: isSelected ? theme.colorScheme.primary : Colors.white10,
-                      borderRadius: BorderRadius.circular(12.r),
-                      border: Border.all(color: isSelected ? theme.colorScheme.primary : Colors.transparent),
-                    ),
-                    child: Center(child: Text(entry.value, textAlign: TextAlign.center, style: TextStyle(color: isSelected ? Colors.white : Colors.white70, fontSize: 13.sp))),
-                  ),
-                );
-              }).toList(),
-            ),
-            SizedBox(height: 10.h),
-          ]),
-        );
-      });
-    });
+                        color: Colors.grey.shade700,
+                        borderRadius: BorderRadius.circular(2.r))),
+                Text(localizations.applicationLanguage,
+                    style: theme.textTheme.titleMedium),
+                SizedBox(height: 10.h),
+                GridView.count(
+                  crossAxisCount: 3,
+                  shrinkWrap: true,
+                  childAspectRatio: 3,
+                  crossAxisSpacing: 8.w,
+                  mainAxisSpacing: 8.h,
+                  padding: EdgeInsets.symmetric(vertical: 8.h),
+                  children: _supportedLanguages.entries.map((entry) {
+                    final isSelected = entry.key == _currentLanguageCode;
+                    return GestureDetector(
+                      onTap: () {
+                        Navigator.pop(context);
+                        _saveLanguage(entry.key);
+                      },
+                      child: Container(
+                        padding: EdgeInsets.symmetric(
+                            horizontal: 8.w, vertical: 6.h),
+                        decoration: BoxDecoration(
+                          color: isSelected
+                              ? theme.colorScheme.primary
+                              : Colors.white10,
+                          borderRadius: BorderRadius.circular(12.r),
+                          border: Border.all(
+                              color: isSelected
+                                  ? theme.colorScheme.primary
+                                  : Colors.transparent),
+                        ),
+                        child: Center(
+                            child: Text(entry.value,
+                                textAlign: TextAlign.center,
+                                style: TextStyle(
+                                    color: isSelected
+                                        ? Colors.white
+                                        : Colors.white70,
+                                    fontSize: 13.sp))),
+                      ),
+                    );
+                  }).toList(),
+                ),
+                SizedBox(height: 10.h),
+              ]),
+            );
+          });
+        });
   }
 }

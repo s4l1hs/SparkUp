@@ -20,16 +20,22 @@ class PageTransitionWrapper {
         }
 
         // Soft eased opacity curve.
-        final opacity = CurvedAnimation(parent: animation, curve: Curves.easeInOutCubic);
+        final opacity =
+            CurvedAnimation(parent: animation, curve: Curves.easeInOutCubic);
 
         // Very gentle scale so content feels grounded.
-        final scale = Tween<double>(begin: 0.995, end: 1.0).animate(CurvedAnimation(parent: animation, curve: const Cubic(0.22, 1.0, 0.36, 1.0)));
+        final scale = Tween<double>(begin: 0.995, end: 1.0).animate(
+            CurvedAnimation(
+                parent: animation, curve: const Cubic(0.22, 1.0, 0.36, 1.0)));
 
         // Soft elevation lift to give a material feel during transition.
-        final elevationTween = Tween<double>(begin: 0.0, end: 6.0).animate(CurvedAnimation(parent: animation, curve: Curves.easeOutQuad));
+        final elevationTween = Tween<double>(begin: 0.0, end: 6.0).animate(
+            CurvedAnimation(parent: animation, curve: Curves.easeOutQuad));
 
         // Slight upward offset (tiny) to add depth without being distracting.
-        final offset = Tween<Offset>(begin: const Offset(0, 0.012), end: Offset.zero).animate(CurvedAnimation(parent: animation, curve: Curves.easeOut));
+        final offset = Tween<Offset>(
+                begin: const Offset(0, 0.012), end: Offset.zero)
+            .animate(CurvedAnimation(parent: animation, curve: Curves.easeOut));
 
         return AnimatedBuilder(
           animation: animation,
@@ -55,7 +61,8 @@ class PageTransitionWrapper {
               shadowColor: bgShadow,
               elevation: elev,
               borderRadius: BorderRadius.circular(12.0),
-              child: ClipRRect(borderRadius: BorderRadius.circular(12.0), child: current),
+              child: ClipRRect(
+                  borderRadius: BorderRadius.circular(12.0), child: current),
             );
           },
         );

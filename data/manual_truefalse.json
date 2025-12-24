@@ -11490,5 +11490,277 @@
             "ar": "الفول السوداني من المكسرات."
         },
         "correct_answer": false
+    },
+    {
+        "category": "science",
+        "question": {
+            "en": "Sound travels faster in steel than in air.",
+            "tr": "Ses, çelikte havadan daha hızlı yayılır.",
+            "fr": "Le son se propage plus vite dans l'acier que dans l'air.",
+            "es": "El sonido viaja más rápido en el acero que en el aire.",
+            "de": "Schall breitet sich in Stahl schneller aus als in Luft.",
+            "it": "Il suono viaggia più velocemente nell'acciaio che nell'aria.",
+            "hi": "ध्वनि हवा की तुलना में स्टील में तेजी से यात्रा करती है।",
+            "ru": "Звук распространяется в стали быстрее, чем в воздухе.",
+            "zh": "声音在钢铁中的传播速度比在空气中快。",
+            "ja": "音は空気中よりも鋼鉄中の方が速く伝わります。",
+            "ar": "ينتقل الصوت في الفولاذ أسرع منه في الهواء."
+        },
+        "correct_answer": true
+    },
+    {
+        "category": "sports",
+        "question": {
+            "en": "A tennis match is played in sets.",
+            "tr": "Bir tenis maçı setler halinde oynanır.",
+            "fr": "Un match de tennis se joue en sets.",
+            "es": "Un partido de tenis se juega en sets.",
+            "de": "Ein Tennismatch wird in Sätzen gespielt.",
+            "it": "Una partita di tennis si gioca in set.",
+            "hi": "टेनिस मैच सेट में खेला जाता है।",
+            "ru": "Теннисный матч играется по сетам.",
+            "zh": "网球比赛是按盘数进行的。",
+            "ja": "テニスの試合はセットで行われます。",
+            "ar": "تُلعب مباراة التنس في مجموعات."
+        },
+        "correct_answer": true
+    },
+    {
+        "category": "cinema_tv",
+        "question": {
+            "en": "The movie 'The Godfather' won the Academy Award for Best Picture.",
+            "tr": "'Baba' filmi En İyi Film Akademi Ödülü'nü kazandı.",
+            "fr": "Le film 'Le Parrain' a remporté l'Oscar du meilleur film.",
+            "es": "La película 'El Padrino' ganó el Premio de la Academia a la Mejor Película.",
+            "de": "Der Film 'Der Pate' gewann den Oscar für den besten Film.",
+            "it": "Il film 'Il Padrino' ha vinto l'Oscar per il miglior film.",
+            "hi": "फिल्म 'द गॉडफादर' ने सर्वश्रेष्ठ चित्र के लिए अकादमी पुरस्कार जीता।",
+            "ru": "Фильм «Крестный отец» получил премию «Оскар» за лучший фильм.",
+            "zh": "电影《教父》获得了奥斯卡最佳影片奖。",
+            "ja": "映画『ゴッドファーザー』はアカデミー作品賞を受賞しました。",
+            "ar": "فاز فيلم 'العراب' بجائزة الأوسكار لأفضل فيلم."
+        },
+        "correct_answer": true
+    },
+    {
+        "category": "music",
+        "question": {
+            "en": "Elvis Presley is known as the King of Rock and Roll.",
+            "tr": "Elvis Presley, Rock and Roll'un Kralı olarak bilinir.",
+            "fr": "Elvis Presley est connu comme le roi du rock and roll.",
+            "es": "Elvis Presley es conocido como el Rey del Rock and Roll.",
+            "de": "Elvis Presley ist als der King of Rock and Roll bekannt.",
+            "it": "Elvis Presley è conosciuto come il Re del Rock and Roll.",
+            "hi": "एल्विस प्रेस्ली को रॉक एंड रोल के राजा के रूप में जाना जाता है।",
+            "ru": "Элвис Пресли известен как король рок-н-ролла.",
+            "zh": "埃尔维斯·普雷斯利被称为摇滚之王。",
+            "ja": "エルヴィス・プレスリーはロックンロールの王様として知られています。",
+            "ar": "يُعرف إلفيس بريسلي بلقب ملك الروك أند رول."
+        },
+        "correct_answer": true
+    },
+    {
+        "category": "geography_travel",
+        "question": {
+            "en": "The Danube River flows into the Black Sea.",
+            "tr": "Tuna Nehri Karadeniz'e dökülür.",
+            "fr": "Le Danube se jette dans la mer Noire.",
+            "es": "El río Danubio desemboca en el Mar Negro.",
+            "de": "Die Donau mündet ins Schwarze Meer.",
+            "it": "Il fiume Danubio sfocia nel Mar Nero.",
+            "hi": "डेक्यूब नदी काला सागर में गिरती है।",
+            "ru": "Река Дунай впадает в Черное море.",
+            "zh": "多瑙河流入黑海。",
+            "ja": "ドナウ川は黒海に注いでいます。",
+            "ar": "يصب نهر الدانوب في البحر الأسود."
+        },
+        "correct_answer": true
+    },
+    {
+        "category": "mythology",
+        "question": {
+            "en": "Odin is the father of Thor in Norse mythology.",
+            "tr": "İskandinav mitolojisinde Odin, Thor'un babasıdır.",
+            "fr": "Odin est le père de Thor dans la mythologie nordique.",
+            "es": "Odín es el padre de Thor en la mitología nórdica.",
+            "de": "Odin ist der Vater von Thor in der nordischen Mythologie.",
+            "it": "Odino è il padre di Thor nella mitologia norrena.",
+            "hi": "नॉर्स पौराणिक कथाओं में ओडिन थोर के पिता हैं।",
+            "ru": "Один — отец Тора в скандинавской мифологии.",
+            "zh": "奥丁是北欧神话中雷神的父亲。",
+            "ja": "北欧神話において、オーディンはトールの父です。",
+            "ar": "أودين هو والد ثور في الميثولوجيا الإسكندنافية."
+        },
+        "correct_answer": true
+    },
+    {
+        "category": "philosophy",
+        "question": {
+            "en": "Rene Descartes was a French philosopher.",
+            "tr": "René Descartes Fransız bir filozoftu.",
+            "fr": "René Descartes était un philosophe français.",
+            "es": "René Descartes fue un filósofo francés.",
+            "de": "René Descartes war ein französischer Philosoph.",
+            "it": "René Descartes era un filosofo francese.",
+            "hi": "rene descartes एक फ्रांसीसी दार्शनिक थे।",
+            "ru": "Рене Декарт был французским философом.",
+            "zh": "勒内·笛卡尔是一位法国哲学家。",
+            "ja": "ルネ・デカルトはフランスの哲学者でした。",
+            "ar": "كان رينيه ديكارت فيلسوفاً فرنسياً."
+        },
+        "correct_answer": true
+    },
+    {
+        "category": "literature",
+        "question": {
+            "en": "The novel 'Moby Dick' begins with the line 'Call me Ishmael'.",
+            "tr": "'Moby Dick' romanı 'Bana İsmail deyin' satırıyla başlar.",
+            "fr": "Le roman 'Moby Dick' commence par la phrase 'Appelez-moi Ismaël'.",
+            "es": "La novela 'Moby Dick' comienza con la frase 'Llamadme Ismael'.",
+            "de": "Der Roman 'Moby Dick' beginnt mit dem Satz 'Nennt mich Ismael'.",
+            "it": "Il romanzo 'Moby Dick' inizia con la frase 'Chiamatemi Ismaele'.",
+            "hi": "उपन्यास 'मोबी डिक' 'कॉल मी इश्माएल' पंक्ति से शुरू होता है।",
+            "ru": "Роман «Моби Дик» начинается фразой «Зовите меня Измаил».",
+            "zh": "小说《白鲸》以“叫我以实玛利”这句开头。",
+            "ja": "小説『白鯨』は「イシュメイルと呼んでくれ」という一文で始まります。",
+            "ar": "تبدأ رواية 'موبي ديك' بعبارة 'نادني إسماعيل'."
+        },
+        "correct_answer": true
+    },
+    {
+        "category": "space_astronomy",
+        "question": {
+            "en": "On Venus, the sun rises in the west and sets in the east.",
+            "tr": "Venüs'te güneş batıdan doğar ve doğudan batar.",
+            "fr": "Sur Vénus, le soleil se lève à l'ouest et se couche à l'est.",
+            "es": "En Venus, el sol sale por el oeste y se pone por el este.",
+            "de": "Auf der Venus geht die Sonne im Westen auf und im Osten unter.",
+            "it": "Su Venere, il sole sorge a ovest e tramonta a est.",
+            "hi": "शुक्र पर, सूर्य पश्चिम में उगता है और पूर्व में अस्त होता है।",
+            "ru": "На Венере солнце встает на западе и садится на востоке.",
+            "zh": "在金星上，太阳西升东落。",
+            "ja": "金星では、太陽は西から昇り東に沈みます。",
+            "ar": "على كوكب الزهرة، تشرق الشمس من الغرب وتغرب في الشرق."
+        },
+        "correct_answer": true
+    },
+    {
+        "category": "health_fitness",
+        "question": {
+            "en": "The heart is a muscle.",
+            "tr": "Kalp bir kastır.",
+            "fr": "Le cœur est un muscle.",
+            "es": "El corazón es un músculo.",
+            "de": "Das Herz ist ein Muskel.",
+            "it": "Il cuore è un muscolo.",
+            "hi": "हृदय एक मांसपेशी है।",
+            "ru": "Сердце — это мышца.",
+            "zh": "心脏是一块肌肉。",
+            "ja": "心臓は筋肉です。",
+            "ar": "القلب عضلة."
+        },
+        "correct_answer": true
+    },
+    {
+        "category": "economics_finance",
+        "question": {
+            "en": "A recession is typically defined as two consecutive quarters of negative economic growth.",
+            "tr": "Resesyon tipik olarak iki çeyrek üst üste negatif ekonomik büyüme olarak tanımlanır.",
+            "fr": "Une récession est généralement définie comme deux trimestres consécutifs de croissance économique négative.",
+            "es": "Una recesión se define típicamente como dos trimestres consecutivos de crecimiento económico negativo.",
+            "de": "Eine Rezession wird typischerweise als zwei aufeinanderfolgende Quartale mit negativem Wirtschaftswachstum definiert.",
+            "it": "Una recessione è tipicamente definita come due trimestri consecutivi di crescita economica negativa.",
+            "hi": "मंदी को आम तौर पर नकारात्मक आर्थिक विकास की लगातार दो तिमाहियों के रूप में परिभाषित किया जाता है।",
+            "ru": "Рецессия обычно определяется как два последовательных квартала отрицательного экономического роста.",
+            "zh": "衰退通常定义为连续两个季度的经济负增长。",
+            "ja": "不況は通常、2四半期連続のマイナス経済成長と定義されます。",
+            "ar": "يُعرف الركود عادةً بأنه ربعان متتاليان من النمو الاقتصادي السلبي."
+        },
+        "correct_answer": true
+    },
+    {
+        "category": "architecture",
+        "question": {
+            "en": "The Pantheon is a historic temple located in Rome.",
+            "tr": "Pantheon, Roma'da bulunan tarihi bir tapınaktır.",
+            "fr": "Le Panthéon est un temple historique situé à Rome.",
+            "es": "El Panteón es un templo histórico ubicado en Roma.",
+            "de": "Das Pantheon ist ein historischer Tempel in Rom.",
+            "it": "Il Pantheon è un tempio storico situato a Roma.",
+            "hi": "पेंथियन रोम में स्थित एक ऐतिहासिक मंदिर है।",
+            "ru": "Пантеон — исторический храм, расположенный в Риме.",
+            "zh": "万神殿是位于罗马的一座历史悠久的神庙。",
+            "ja": "パンテオンはローマにある歴史的な神殿です。",
+            "ar": "البانثيون هو معبد تاريخي يقع في روما."
+        },
+        "correct_answer": true
+    },
+    {
+        "category": "video_games",
+        "question": {
+            "en": "Minecraft is the best-selling video game of all time.",
+            "tr": "Minecraft tüm zamanların en çok satan video oyunudur.",
+            "fr": "Minecraft est le jeu vidéo le plus vendu de tous les temps.",
+            "es": "Minecraft es el videojuego más vendido de todos los tiempos.",
+            "de": "Minecraft ist das meistverkaufte Videospiel aller Zeiten.",
+            "it": "Minecraft è il videogioco più venduto di tutti i tempi.",
+            "hi": "Minecraft अब तक का सबसे अधिक बिकने वाला वीडियो गेम है।",
+            "ru": "Minecraft — самая продаваемая видеоигра всех времен.",
+            "zh": "《我的世界》是有史以来最畅销的电子游戏。",
+            "ja": "マインクラフトは史上最も売れたビデオゲームです。",
+            "ar": "ماين كرافت هي لعبة الفيديو الأكثر مبيعًا على الإطلاق."
+        },
+        "correct_answer": true
+    },
+    {
+        "category": "general_culture",
+        "question": {
+            "en": "In Italy, cappuccino is traditionally consumed only in the morning.",
+            "tr": "İtalya'da kapuçino geleneksel olarak sadece sabahları tüketilir.",
+            "fr": "En Italie, le cappuccino est traditionnellement consommé uniquement le matin.",
+            "es": "En Italia, el capuchino se consume tradicionalmente solo por la mañana.",
+            "de": "In Italien wird Cappuccino traditionell nur am Morgen getrunken.",
+            "it": "In Italia, il cappuccino viene tradizionalmente consumato solo al mattino.",
+            "hi": "इटली में, कैपुचीनो का सेवन पारंपरिक रूप से केवल सुबह में किया जाता है।",
+            "ru": "В Италии капучино традиционно пьют только по утрам.",
+            "zh": "在意大利，传统上只在早上喝卡布奇诺。",
+            "ja": "イタリアでは、カプチーノは伝統的に朝にのみ飲まれます。",
+            "ar": "في إيطاليا، يتم تناول الكابتشينو تقليديًا في الصباح فقط."
+        },
+        "correct_answer": true
+    },
+    {
+        "category": "fun_facts",
+        "question": {
+            "en": "Tomatoes are botanically classified as fruits.",
+            "tr": "Domatesler botanik olarak meyve sınıfına girer.",
+            "fr": "Les tomates sont botaniquement classées comme des fruits.",
+            "es": "Los tomates se clasifican botánicamente como frutas.",
+            "de": "Tomaten werden botanisch als Obst klassifiziert.",
+            "it": "I pomodori sono botanicamente classificati come frutti.",
+            "hi": "टमाटर को वानस्पतिक रूप से फल के रूप में वर्गीकृत किया गया है।",
+            "ru": "Томаты ботанически классифицируются как фрукты (ягоды).",
+            "zh": "西红柿在植物学上被归类为水果。",
+            "ja": "トマトは植物学的には果物に分類されます。",
+            "ar": "تصنف الطماطم نباتيا على أنها فواكه."
+        },
+        "correct_answer": true
+    },
+    {
+        "category": "science",
+        "question": {
+            "en": "Gold is a metal that rusts easily.",
+            "tr": "Altın kolayca paslanan bir metaldir.",
+            "fr": "L'or est un métal qui rouille facilement.",
+            "es": "El oro es un metal que se oxida fácilmente.",
+            "de": "Gold ist ein Metall, das leicht rostet.",
+            "it": "L'oro è un metallo che arrugginisce facilmente.",
+            "hi": "सोना एक ऐसी धातु है जिसमें आसानी से जंग लग जाता है।",
+            "ru": "Золото — это металл, который легко ржавеет.",
+            "zh": "金是一种容易生锈的金属。",
+            "ja": "金は錆びやすい金属です。",
+            "ar": "الذهب معدن يصدأ بسهولة."
+        },
+        "correct_answer": false
     }
 ]

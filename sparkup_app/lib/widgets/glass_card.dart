@@ -14,12 +14,20 @@ class GlassCard extends StatelessWidget {
   final double blurSigma;
   final Color? tintColor;
 
-  const GlassCard({super.key, required this.child, this.padding = const EdgeInsets.all(14.0), this.borderRadius = const BorderRadius.all(Radius.circular(12)), this.blurSigma = 12.0, this.tintColor});
+  const GlassCard(
+      {super.key,
+      required this.child,
+      this.padding = const EdgeInsets.all(14.0),
+      this.borderRadius = const BorderRadius.all(Radius.circular(12)),
+      this.blurSigma = 12.0,
+      this.tintColor});
 
   @override
   Widget build(BuildContext context) {
     // Best-effort: if a BorderRadius was supplied use it, otherwise fallback to a reasonable default.
-    final BorderRadius resolvedRadius = (borderRadius is BorderRadius) ? borderRadius as BorderRadius : BorderRadius.circular(12.r);
+    final BorderRadius resolvedRadius = (borderRadius is BorderRadius)
+        ? borderRadius as BorderRadius
+        : BorderRadius.circular(12.r);
 
     return AnimatedGlassCard(
       padding: padding,

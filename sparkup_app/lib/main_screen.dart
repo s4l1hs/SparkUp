@@ -40,7 +40,8 @@ class MainScreenState extends State<MainScreen> with TickerProviderStateMixin {
     WidgetsBinding.instance.addPostFrameCallback((_) async {
       // Capture providers before awaiting to avoid using BuildContext across async gaps.
       final userProvider = Provider.of<UserProvider>(context, listen: false);
-      final localeProvider = Provider.of<LocaleProvider>(context, listen: false);
+      final localeProvider =
+          Provider.of<LocaleProvider>(context, listen: false);
       await userProvider.loadProfile(widget.idToken);
       if (!mounted) return;
       final lang = userProvider.profile?.languageCode;
@@ -63,11 +64,15 @@ class MainScreenState extends State<MainScreen> with TickerProviderStateMixin {
       AnalysisPage(idToken: widget.idToken),
       const SettingsPage(),
     ];
-    _bounceController = AnimationController(vsync: this, duration: const Duration(milliseconds: 420));
-    _ctaFloatController = AnimationController(vsync: this, duration: const Duration(milliseconds: 2200));
+    _bounceController = AnimationController(
+        vsync: this, duration: const Duration(milliseconds: 420));
+    _ctaFloatController = AnimationController(
+        vsync: this, duration: const Duration(milliseconds: 2200));
     _ctaFloatController.repeat(reverse: true);
-    _navPulseController = AnimationController(vsync: this, duration: const Duration(milliseconds: 1400));
-    _navPulseAnim = CurvedAnimation(parent: _navPulseController, curve: Curves.easeInOutCubic);
+    _navPulseController = AnimationController(
+        vsync: this, duration: const Duration(milliseconds: 1400));
+    _navPulseAnim = CurvedAnimation(
+        parent: _navPulseController, curve: Curves.easeInOutCubic);
   }
 
   @override
@@ -83,11 +88,31 @@ class MainScreenState extends State<MainScreen> with TickerProviderStateMixin {
     super.didChangeDependencies();
     final localizations = AppLocalizations.of(context)!;
     _navItems = [
-      {'icon': Icons.leaderboard_outlined, 'label': localizations.navMainMenu, 'color': Colors.indigo},
-      {'icon': Icons.toggle_on, 'label': localizations.trueFalseTitle, 'color': Colors.teal},
-      {'icon': Icons.quiz_outlined, 'label': localizations.navQuiz, 'color': Colors.deepOrange},
-      {'icon': Icons.analytics_outlined, 'label': 'Analysis', 'color': Colors.amber},
-      {'icon': Icons.settings_outlined, 'label': localizations.navSettings, 'color': Colors.grey},
+      {
+        'icon': Icons.leaderboard_outlined,
+        'label': localizations.navMainMenu,
+        'color': Colors.indigo
+      },
+      {
+        'icon': Icons.toggle_on,
+        'label': localizations.trueFalseTitle,
+        'color': Colors.teal
+      },
+      {
+        'icon': Icons.quiz_outlined,
+        'label': localizations.navQuiz,
+        'color': Colors.deepOrange
+      },
+      {
+        'icon': Icons.analytics_outlined,
+        'label': 'Analysis',
+        'color': Colors.amber
+      },
+      {
+        'icon': Icons.settings_outlined,
+        'label': localizations.navSettings,
+        'color': Colors.grey
+      },
     ];
     // Start or stop nav pulse depending on reduced-motion preference
     final media = MediaQuery.of(context);
@@ -123,9 +148,12 @@ class MainScreenState extends State<MainScreen> with TickerProviderStateMixin {
                   begin: Alignment.topLeft,
                   end: Alignment.bottomRight,
                   colors: [
-                    colorWithOpacity(Theme.of(context).colorScheme.primary, 0.08),
-                    colorWithOpacity(Theme.of(context).colorScheme.secondary, 0.06),
-                    colorWithOpacity(Theme.of(context).colorScheme.surface, 0.02),
+                    colorWithOpacity(
+                        Theme.of(context).colorScheme.primary, 0.08),
+                    colorWithOpacity(
+                        Theme.of(context).colorScheme.secondary, 0.06),
+                    colorWithOpacity(
+                        Theme.of(context).colorScheme.surface, 0.02),
                   ],
                   stops: const [0.0, 0.55, 1.0],
                 ),
@@ -144,8 +172,12 @@ class MainScreenState extends State<MainScreen> with TickerProviderStateMixin {
               child: Container(
                 width: min(200.w, screenW * 0.45),
                 height: min(200.w, screenW * 0.45),
-                  decoration: BoxDecoration(
-                  gradient: RadialGradient(colors: [colorWithOpacity(Theme.of(context).colorScheme.primary, 0.12), Colors.transparent]),
+                decoration: BoxDecoration(
+                  gradient: RadialGradient(colors: [
+                    colorWithOpacity(
+                        Theme.of(context).colorScheme.primary, 0.12),
+                    Colors.transparent
+                  ]),
                   shape: BoxShape.circle,
                 ),
               ),
@@ -160,7 +192,8 @@ class MainScreenState extends State<MainScreen> with TickerProviderStateMixin {
   Widget _buildCustomBottomNav() {
     final theme = Theme.of(context);
     final viewPadding = MediaQuery.of(context).viewPadding;
-    final double bottomPadding = viewPadding.bottom > 0 ? viewPadding.bottom : 12.h;
+    final double bottomPadding =
+        viewPadding.bottom > 0 ? viewPadding.bottom : 12.h;
 
     Color getSelectedColor(int index) {
       final c = _navItems[index]['color'];
@@ -188,7 +221,8 @@ class MainScreenState extends State<MainScreen> with TickerProviderStateMixin {
                     alignment: Alignment.bottomCenter,
                     child: AnimatedGlassCard(
                       borderRadius: BorderRadius.circular(24.r),
-                      padding: EdgeInsets.symmetric(vertical: 10.h, horizontal: 12.w),
+                      padding: EdgeInsets.symmetric(
+                          vertical: 10.h, horizontal: 12.w),
                       child: Row(
                         children: [
                           for (var i = 0; i < _navItems.length; i++)
@@ -206,9 +240,15 @@ class MainScreenState extends State<MainScreen> with TickerProviderStateMixin {
                                       AnimatedBuilder(
                                         animation: _navPulseAnim,
                                         builder: (context, child) {
-                                          final ringValue = _selectedIndex == i ? Curves.easeOut.transform(_navPulseAnim.value) : 0.0;
-                                          final ringOpacity = 0.08 * ringValue; // slightly more visible
-                                          final ringScale = 1.0 + 0.12 * ringValue; // larger, gentler pulse
+                                          final ringValue = _selectedIndex == i
+                                              ? Curves.easeOut.transform(
+                                                  _navPulseAnim.value)
+                                              : 0.0;
+                                          final ringOpacity = 0.08 *
+                                              ringValue; // slightly more visible
+                                          final ringScale = 1.0 +
+                                              0.12 *
+                                                  ringValue; // larger, gentler pulse
                                           return Stack(
                                             alignment: Alignment.center,
                                             children: [
@@ -223,11 +263,26 @@ class MainScreenState extends State<MainScreen> with TickerProviderStateMixin {
                                                       child: Container(
                                                         width: 56.w,
                                                         height: 56.w,
-                                                        decoration: BoxDecoration(
-                                                          shape: BoxShape.circle,
-                                                          color: colorWithOpacity(getSelectedColor(i), ringOpacity),
+                                                        decoration:
+                                                            BoxDecoration(
+                                                          shape:
+                                                              BoxShape.circle,
+                                                          color: colorWithOpacity(
+                                                              getSelectedColor(
+                                                                  i),
+                                                              ringOpacity),
                                                           boxShadow: [
-                                                            BoxShadow(color: colorWithOpacity(getSelectedColor(i), ringOpacity * 0.7), blurRadius: 8 * ringValue + 6, spreadRadius: 1.0 * ringValue),
+                                                            BoxShadow(
+                                                                color: colorWithOpacity(
+                                                                    getSelectedColor(
+                                                                        i),
+                                                                    ringOpacity *
+                                                                        0.7),
+                                                                blurRadius:
+                                                                    8 * ringValue +
+                                                                        6,
+                                                                spreadRadius: 1.0 *
+                                                                    ringValue),
                                                           ],
                                                         ),
                                                       ),
@@ -235,16 +290,42 @@ class MainScreenState extends State<MainScreen> with TickerProviderStateMixin {
                                                   ),
                                                 ),
                                               AnimatedScale(
-                                                duration: const Duration(milliseconds: 320),
-                                                scale: _selectedIndex == i ? 1.12 : 1.0,
+                                                duration: const Duration(
+                                                    milliseconds: 320),
+                                                scale: _selectedIndex == i
+                                                    ? 1.12
+                                                    : 1.0,
                                                 curve: Curves.easeOutCubic,
                                                 child: SizedBox(
                                                   width: 56.w,
                                                   height: 56.w,
                                                   child: Container(
                                                     alignment: Alignment.center,
-                                                    decoration: BoxDecoration(shape: BoxShape.circle, color: _selectedIndex == i ? colorWithOpacity(getSelectedColor(i), 0.06) : Colors.transparent),
-                                                    child: Icon(_navItems[i]['icon'] as IconData, size: _selectedIndex == i ? 30.sp : 26.sp, color: _selectedIndex == i ? getSelectedColor(i) : colorWithOpacity(theme.iconTheme.color!, 0.72)),
+                                                    decoration: BoxDecoration(
+                                                        shape: BoxShape.circle,
+                                                        color: _selectedIndex ==
+                                                                i
+                                                            ? colorWithOpacity(
+                                                                getSelectedColor(
+                                                                    i),
+                                                                0.06)
+                                                            : Colors
+                                                                .transparent),
+                                                    child: Icon(
+                                                        _navItems[i]['icon']
+                                                            as IconData,
+                                                        size:
+                                                            _selectedIndex == i
+                                                                ? 30.sp
+                                                                : 26.sp,
+                                                        color: _selectedIndex ==
+                                                                i
+                                                            ? getSelectedColor(
+                                                                i)
+                                                            : colorWithOpacity(
+                                                                theme.iconTheme
+                                                                    .color!,
+                                                                0.72)),
                                                   ),
                                                 ),
                                               ),
@@ -268,10 +349,15 @@ class MainScreenState extends State<MainScreen> with TickerProviderStateMixin {
                   bottom: 36.h,
                   child: MorphingGradientButton(
                     onPressed: () => onItemTapped(2),
-                    colors: [Theme.of(context).colorScheme.secondary, Theme.of(context).colorScheme.primary],
-                    padding: EdgeInsets.symmetric(horizontal: 18.w, vertical: 12.h),
+                    colors: [
+                      Theme.of(context).colorScheme.secondary,
+                      Theme.of(context).colorScheme.primary
+                    ],
+                    padding:
+                        EdgeInsets.symmetric(horizontal: 18.w, vertical: 12.h),
                     borderRadius: BorderRadius.circular(999.r),
-                    child: Icon(Icons.flash_on_rounded, color: Colors.white, size: 28.sp),
+                    child: Icon(Icons.flash_on_rounded,
+                        color: Colors.white, size: 28.sp),
                   ),
                 ),
               ],

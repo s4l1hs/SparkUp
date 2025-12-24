@@ -13,7 +13,8 @@ import 'package:sparkup_app/locale_provider.dart';
 import 'package:sparkup_app/providers/user_provider.dart';
 
 void main() {
-  testWidgets('App builds with required providers', (WidgetTester tester) async {
+  testWidgets('App builds with required providers',
+      (WidgetTester tester) async {
     // Build a minimal app that includes the providers used in production but does not initialize Firebase.
     await tester.pumpWidget(
       MultiProvider(
@@ -21,7 +22,8 @@ void main() {
           ChangeNotifierProvider(create: (_) => LocaleProvider()),
           ChangeNotifierProvider(create: (_) => UserProvider()),
         ],
-        child: const MaterialApp(home: Scaffold(body: Center(child: Text('ok')))),
+        child:
+            const MaterialApp(home: Scaffold(body: Center(child: Text('ok')))),
       ),
     );
 

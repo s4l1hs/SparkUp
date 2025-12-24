@@ -4,7 +4,8 @@ class LeaderboardEntry {
   final String? username; // added: optional username
   final int score;
 
-  LeaderboardEntry({required this.rank, this.email, this.username, required this.score});
+  LeaderboardEntry(
+      {required this.rank, this.email, this.username, required this.score});
 
   factory LeaderboardEntry.fromJson(Map<String, dynamic> json) {
     return LeaderboardEntry(

@@ -88,10 +88,14 @@ class _AnalysisPageState extends State<AnalysisPage> {
 
     final avgPercent = prov.items.isEmpty
         ? 0
-        : (prov.items.map((e) => (e['percent'] ?? 0) as int).reduce((a, b) => a + b) ~/ prov.items.length);
+        : (prov.items
+                .map((e) => (e['percent'] ?? 0) as int)
+                .reduce((a, b) => a + b) ~/
+            prov.items.length);
 
     return Scaffold(
-      backgroundColor: theme.colorScheme.surface, // Arka planı hafif gri/beyaz tutuyoruz
+      backgroundColor:
+          theme.colorScheme.surface, // Arka planı hafif gri/beyaz tutuyoruz
       body: Stack(
         children: [
           // Arka plana hafif dekoratif bir gradient veya desen atabiliriz (Opsiyonel)
@@ -107,7 +111,7 @@ class _AnalysisPageState extends State<AnalysisPage> {
               ),
             ),
           ),
-          
+
           SafeArea(
             child: Padding(
               padding: EdgeInsets.symmetric(horizontal: 20.w),
@@ -119,8 +123,8 @@ class _AnalysisPageState extends State<AnalysisPage> {
                   Text(
                     loc.performance_title,
                     style: TextStyle(
-                      fontSize: 28.sp, 
-                      fontWeight: FontWeight.w800, 
+                      fontSize: 28.sp,
+                      fontWeight: FontWeight.w800,
                       color: theme.colorScheme.onSurface,
                       letterSpacing: -0.5,
                     ),
@@ -128,9 +132,11 @@ class _AnalysisPageState extends State<AnalysisPage> {
                   SizedBox(height: 4.h),
                   Text(
                     loc.performance_subtitle,
-                    style: TextStyle(color: theme.colorScheme.onSurface.withOpacity(0.6), fontSize: 14.sp),
+                    style: TextStyle(
+                        color: theme.colorScheme.onSurface.withOpacity(0.6),
+                        fontSize: 14.sp),
                   ),
-                  
+
                   SizedBox(height: 24.h),
 
                   // --- HERO CARD (Genel Durum) ---
@@ -139,7 +145,10 @@ class _AnalysisPageState extends State<AnalysisPage> {
                     padding: EdgeInsets.all(20.w),
                     decoration: BoxDecoration(
                       gradient: LinearGradient(
-                        colors: [theme.colorScheme.primary, theme.colorScheme.secondary],
+                        colors: [
+                          theme.colorScheme.primary,
+                          theme.colorScheme.secondary
+                        ],
                         begin: Alignment.topLeft,
                         end: Alignment.bottomRight,
                       ),
@@ -160,7 +169,10 @@ class _AnalysisPageState extends State<AnalysisPage> {
                           children: [
                             Text(
                               loc.overall_score,
-                              style: TextStyle(color: Colors.white.withOpacity(0.9), fontSize: 16.sp, fontWeight: FontWeight.w600),
+                              style: TextStyle(
+                                  color: Colors.white.withOpacity(0.9),
+                                  fontSize: 16.sp,
+                                  fontWeight: FontWeight.w600),
                             ),
                             SizedBox(height: 8.h),
                             // Animasyonlu Sayı
@@ -171,20 +183,29 @@ class _AnalysisPageState extends State<AnalysisPage> {
                               builder: (context, value, child) {
                                 return Text(
                                   '$value%',
-                                  style: TextStyle(color: Colors.white, fontSize: 42.sp, fontWeight: FontWeight.bold),
+                                  style: TextStyle(
+                                      color: Colors.white,
+                                      fontSize: 42.sp,
+                                      fontWeight: FontWeight.bold),
                                 );
                               },
                             ),
                             SizedBox(height: 4.h),
                             Container(
-                              padding: EdgeInsets.symmetric(horizontal: 8.w, vertical: 4.h),
+                              padding: EdgeInsets.symmetric(
+                                  horizontal: 8.w, vertical: 4.h),
                               decoration: BoxDecoration(
                                 color: Colors.white.withOpacity(0.2),
                                 borderRadius: BorderRadius.circular(8.r),
                               ),
                               child: Text(
-                                avgPercent > 70 ? loc.excellent_job : loc.keep_pushing,
-                                style: TextStyle(color: Colors.white, fontSize: 12.sp, fontWeight: FontWeight.w500),
+                                avgPercent > 70
+                                    ? loc.excellent_job
+                                    : loc.keep_pushing,
+                                style: TextStyle(
+                                    color: Colors.white,
+                                    fontSize: 12.sp,
+                                    fontWeight: FontWeight.w500),
                               ),
                             )
                           ],
@@ -200,11 +221,13 @@ class _AnalysisPageState extends State<AnalysisPage> {
                                 value: avgPercent / 100,
                                 strokeWidth: 8.w,
                                 backgroundColor: Colors.white.withOpacity(0.2),
-                                valueColor: const AlwaysStoppedAnimation(Colors.white),
+                                valueColor:
+                                    const AlwaysStoppedAnimation(Colors.white),
                                 strokeCap: StrokeCap.round,
                               ),
                               Center(
-                                child: Icon(Icons.insights, color: Colors.white, size: 32.sp),
+                                child: Icon(Icons.insights,
+                                    color: Colors.white, size: 32.sp),
                               ),
                             ],
                           ),
@@ -214,49 +237,71 @@ class _AnalysisPageState extends State<AnalysisPage> {
                   ),
 
                   SizedBox(height: 24.h),
-                  
+
                   Text(
                     loc.category_breakdown,
-                    style: TextStyle(fontSize: 18.sp, fontWeight: FontWeight.bold, color: theme.colorScheme.onSurface),
+                    style: TextStyle(
+                        fontSize: 18.sp,
+                        fontWeight: FontWeight.bold,
+                        color: theme.colorScheme.onSurface),
                   ),
                   SizedBox(height: 12.h),
 
                   // --- LİSTE VE DURUMLAR ---
-                  if (prov.isLoading) 
-                    Expanded(child: Center(child: CircularProgressIndicator(color: theme.colorScheme.primary))),
-                  
-                  if (prov.error != null) 
-                    Expanded(child: Center(child: Text(prov.error!, style: TextStyle(color: theme.colorScheme.error)))),
+                  if (prov.isLoading)
+                    Expanded(
+                        child: Center(
+                            child: CircularProgressIndicator(
+                                color: theme.colorScheme.primary))),
+
+                  if (prov.error != null)
+                    Expanded(
+                        child: Center(
+                            child: Text(prov.error!,
+                                style: TextStyle(
+                                    color: theme.colorScheme.error)))),
 
                   if (!prov.isLoading && prov.error == null)
                     Expanded(
                       child: prov.items.isEmpty
                           ? Center(
                               child: Column(
-                                    mainAxisAlignment: MainAxisAlignment.center,
-                                    children: [
-                                      Icon(Icons.analytics_outlined, size: 64.sp, color: theme.colorScheme.onSurface.withOpacity(0.2)),
-                                      SizedBox(height: 16.h),
-                                      Text(loc.no_data_available_yet, style: TextStyle(color: theme.colorScheme.onSurface.withOpacity(0.5))),
-                                    ],
-                                  ),
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                children: [
+                                  Icon(Icons.analytics_outlined,
+                                      size: 64.sp,
+                                      color: theme.colorScheme.onSurface
+                                          .withOpacity(0.2)),
+                                  SizedBox(height: 16.h),
+                                  Text(loc.no_data_available_yet,
+                                      style: TextStyle(
+                                          color: theme.colorScheme.onSurface
+                                              .withOpacity(0.5))),
+                                ],
+                              ),
                             )
                           : ListView.separated(
                               physics: const BouncingScrollPhysics(),
                               itemCount: prov.items.length,
-                              separatorBuilder: (c, i) => SizedBox(height: 16.h),
-                                itemBuilder: (c, i) {
-                                  final it = prov.items[i];
-                                  final rawCategory = (it['category'] ?? 'unknown') as String;
-                                  final category = _localizedCategory(rawCategory, context);
-                                  final percent = (it['percent'] ?? 0) as int;
-                                  final correct = it['correct'] ?? 0;
-                                  final total = it['total'] ?? 0;
+                              separatorBuilder: (c, i) =>
+                                  SizedBox(height: 16.h),
+                              itemBuilder: (c, i) {
+                                final it = prov.items[i];
+                                final rawCategory =
+                                    (it['category'] ?? 'unknown') as String;
+                                final category =
+                                    _localizedCategory(rawCategory, context);
+                                final percent = (it['percent'] ?? 0) as int;
+                                final correct = it['correct'] ?? 0;
+                                final total = it['total'] ?? 0;
 
                                 // Her bir item için animasyon
                                 return TweenAnimationBuilder<double>(
                                   tween: Tween(begin: 0, end: 1),
-                                  duration: Duration(milliseconds: 400 + (i * 100)), // Kademeli giriş (Staggered animation)
+                                  duration: Duration(
+                                      milliseconds: 400 +
+                                          (i *
+                                              100)), // Kademeli giriş (Staggered animation)
                                   curve: Curves.easeOutQuad,
                                   builder: (context, value, child) {
                                     return Opacity(
@@ -279,45 +324,60 @@ class _AnalysisPageState extends State<AnalysisPage> {
                                           offset: const Offset(0, 4),
                                         ),
                                       ],
-                                      border: Border.all(color: theme.colorScheme.outline.withOpacity(0.05)),
+                                      border: Border.all(
+                                          color: theme.colorScheme.outline
+                                              .withOpacity(0.05)),
                                     ),
                                     child: Column(
                                       children: [
                                         Row(
-                                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                          mainAxisAlignment:
+                                              MainAxisAlignment.spaceBetween,
                                           children: [
                                             Column(
-                                              crossAxisAlignment: CrossAxisAlignment.start,
+                                              crossAxisAlignment:
+                                                  CrossAxisAlignment.start,
                                               children: [
                                                 Text(
                                                   category,
                                                   style: TextStyle(
-                                                    fontSize: 16.sp, 
-                                                    fontWeight: FontWeight.w700,
-                                                    color: theme.colorScheme.onSurface
-                                                  ),
+                                                      fontSize: 16.sp,
+                                                      fontWeight:
+                                                          FontWeight.w700,
+                                                      color: theme.colorScheme
+                                                          .onSurface),
                                                 ),
                                                 SizedBox(height: 4.h),
                                                 Text(
                                                   '$correct / $total ${loc.correct_label}',
                                                   style: TextStyle(
-                                                    fontSize: 12.sp, 
-                                                    color: theme.colorScheme.onSurface.withOpacity(0.5),
-                                                    fontWeight: FontWeight.w500
-                                                  ),
+                                                      fontSize: 12.sp,
+                                                      color: theme
+                                                          .colorScheme.onSurface
+                                                          .withOpacity(0.5),
+                                                      fontWeight:
+                                                          FontWeight.w500),
                                                 ),
                                               ],
                                             ),
                                             Container(
-                                              padding: EdgeInsets.symmetric(horizontal: 10.w, vertical: 6.h),
+                                              padding: EdgeInsets.symmetric(
+                                                  horizontal: 10.w,
+                                                  vertical: 6.h),
                                               decoration: BoxDecoration(
-                                                color: _getPerformanceColor(percent, theme.colorScheme).withOpacity(0.1),
-                                                borderRadius: BorderRadius.circular(12.r),
+                                                color: _getPerformanceColor(
+                                                        percent,
+                                                        theme.colorScheme)
+                                                    .withOpacity(0.1),
+                                                borderRadius:
+                                                    BorderRadius.circular(12.r),
                                               ),
                                               child: Text(
                                                 '$percent%',
                                                 style: TextStyle(
-                                                  color: _getPerformanceColor(percent, theme.colorScheme),
+                                                  color: _getPerformanceColor(
+                                                      percent,
+                                                      theme.colorScheme),
                                                   fontWeight: FontWeight.bold,
                                                   fontSize: 14.sp,
                                                 ),
@@ -328,13 +388,16 @@ class _AnalysisPageState extends State<AnalysisPage> {
                                         SizedBox(height: 12.h),
                                         // Modern Progress Bar
                                         ClipRRect(
-                                          borderRadius: BorderRadius.circular(10.r),
+                                          borderRadius:
+                                              BorderRadius.circular(10.r),
                                           child: LinearProgressIndicator(
                                             value: percent / 100.0,
                                             minHeight: 10.h,
-                                            backgroundColor: theme.colorScheme.surfaceContainerHighest, // flutter 3.22+ ise, yoksa grey.shade200
+                                            backgroundColor: theme.colorScheme
+                                                .surfaceContainerHighest, // flutter 3.22+ ise, yoksa grey.shade200
                                             valueColor: AlwaysStoppedAnimation(
-                                              _getPerformanceColor(percent, theme.colorScheme),
+                                              _getPerformanceColor(
+                                                  percent, theme.colorScheme),
                                             ),
                                           ),
                                         ),
