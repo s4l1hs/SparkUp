@@ -32638,5 +32638,1085 @@
                 "البني"
             ]
         }
+    },
+    {
+        "category": "history",
+        "correct_answer_index": 0,
+        "question_texts": {
+            "en": "Who was the first man to walk on the moon?",
+            "tr": "Ay'a ayak basan ilk insan kimdir?",
+            "fr": "Qui a été le premier homme à marcher sur la lune ?",
+            "es": "¿Quién fue el primer hombre en pisar la luna?",
+            "de": "Wer war der erste Mann auf dem Mond?",
+            "it": "Chi è stato il primo uomo a camminare sulla luna?",
+            "hi": "चाँद पर चलने वाला प्रथम व्यक्ति कौन था?",
+            "ru": "Кто был первым человеком, ступившим на Луну?",
+            "zh": "谁是第一个登上月球的人？",
+            "ja": "月面を歩いた最初の人間は誰ですか？",
+            "ar": "من كان أول رجل يمشي على القمر؟"
+        },
+        "options_texts": {
+            "en": [ "Neil Armstrong", "Buzz Aldrin", "Yuri Gagarin", "Michael Collins" ],
+            "tr": [ "Neil Armstrong", "Buzz Aldrin", "Yuri Gagarin", "Michael Collins" ],
+            "fr": [ "Neil Armstrong", "Buzz Aldrin", "Youri Gagarine", "Michael Collins" ],
+            "es": [ "Neil Armstrong", "Buzz Aldrin", "Yuri Gagarin", "Michael Collins" ],
+            "de": [ "Neil Armstrong", "Buzz Aldrin", "Juri Gagarin", "Michael Collins" ],
+            "it": [ "Neil Armstrong", "Buzz Aldrin", "Jurij Gagarin", "Michael Collins" ],
+            "hi": [ "नील आर्मस्ट्रांग", "बज़ एल्ड्रिन", "यूरी गगारिन", "माइकल कॉलिंस" ],
+            "ru": [ "Нил Армстронг", "Базз Олдрин", "Юрий Гагарин", "Майкл Коллинз" ],
+            "zh": [ "尼尔·阿姆斯特朗", "巴兹·奥尔德林", "尤里·加加林", "迈克尔·柯林斯" ],
+            "ja": [ "ニール・アームストロング", "バズ・オルドリン", "ユーリ・ガガーリン", "マイケル・コリンズ" ],
+            "ar": [ "نيل أرمسترونغ", "بز ألدرين", "يوري جاجارين", "مايكل كولينز" ]
+        }
+    },
+    {
+        "category": "science",
+        "correct_answer_index": 0,
+        "question_texts": {
+            "en": "Which planet is closest to the Sun?",
+            "tr": "Güneş'e en yakın gezegen hangisidir?",
+            "fr": "Quelle planète est la plus proche du Soleil ?",
+            "es": "¿Qué planeta es el más cercano al Sol?",
+            "de": "Welcher Planet ist der Sonne am nächsten?",
+            "it": "Quale pianeta è più vicino al Sole?",
+            "hi": "सूर्य के सबसे निकट कौन सा ग्रह है?",
+            "ru": "Какая планета находится ближе всего к Солнцу?",
+            "zh": "哪颗行星离太阳最近？",
+            "ja": "太陽に最も近い惑星はどれですか？",
+            "ar": "أي كوكب هو الأقرب إلى الشمس؟"
+        },
+        "options_texts": {
+            "en": [ "Mercury", "Venus", "Earth", "Mars" ],
+            "tr": [ "Merkür", "Venüs", "Dünya", "Mars" ],
+            "fr": [ "Mercure", "Vénus", "Terre", "Mars" ],
+            "es": [ "Mercurio", "Venus", "Tierra", "Marte" ],
+            "de": [ "Merkur", "Venus", "Erde", "Mars" ],
+            "it": [ "Mercurio", "Venere", "Terra", "Marte" ],
+            "hi": [ "बुध", "शुक्र", "पृथ्वी", "मंगल" ],
+            "ru": [ "Меркурий", "Венера", "Земля", "Марс" ],
+            "zh": [ "水星", "金星", "地球", "火星" ],
+            "ja": [ "水星", "金星", "地球", "火星" ],
+            "ar": [ "عطارد", "الزهرة", "الأرض", "المريخ" ]
+        }
+    },
+    {
+        "category": "art",
+        "correct_answer_index": 0,
+        "question_texts": {
+            "en": "Who painted 'The Last Supper'?",
+            "tr": "'Son Akşam Yemeği'ni kim resmetti?",
+            "fr": "Qui a peint 'La Cène' ?",
+            "es": "¿Quién pintó 'La última cena'?",
+            "de": "Wer hat 'Das Abendmahl' gemalt?",
+            "it": "Chi ha dipinto 'L'Ultima Cena'?",
+            "hi": "'द लास्ट सपर' को किसने चित्रित किया?",
+            "ru": "Кто написал «Тайную вечерю»?",
+            "zh": "谁画了《最后的晚餐》？",
+            "ja": "「最後の晩餐」を描いたのは誰ですか？",
+            "ar": "من رسم لوحة 'العشاء الأخير'؟"
+        },
+        "options_texts": {
+            "en": [ "Leonardo da Vinci", "Michelangelo", "Raphael", "Donatello" ],
+            "tr": [ "Leonardo da Vinci", "Michelangelo", "Rafael", "Donatello" ],
+            "fr": [ "Léonard de Vinci", "Michel-Ange", "Raphaël", "Donatello" ],
+            "es": [ "Leonardo da Vinci", "Miguel Ángel", "Rafael", "Donatello" ],
+            "de": [ "Leonardo da Vinci", "Michelangelo", "Raffael", "Donatello" ],
+            "it": [ "Leonardo da Vinci", "Michelangelo", "Raffaello", "Donatello" ],
+            "hi": [ "लियोनार्डो दा विंची", "माइकल एंजेलो", "रफएल", "Donatello" ],
+            "ru": [ "Леонардо да Винчи", "Микеланджело", "Рафаэль", "Донателло" ],
+            "zh": [ "列奥纳多·达·芬奇", "米开朗基罗", "拉斐尔", "多纳泰罗" ],
+            "ja": [ "レオナルド・ダ・ヴィンチ", "ミケランジェロ", "ラファエロ", "ドナテッロ" ],
+            "ar": [ "ليوناردو دافنشي", "مايكل أنجلو", "رفائيل", "دوناتيلو" ]
+        }
+    },
+    {
+        "category": "sports",
+        "correct_answer_index": 0,
+        "question_texts": {
+            "en": "In which sport is the Davis Cup awarded?",
+            "tr": "Davis Kupası hangi sporda verilir?",
+            "fr": "Dans quel sport la Coupe Davis est-elle décernée ?",
+            "es": "¿En qué deporte se otorga la Copa Davis?",
+            "de": "In welcher Sportart wird der Davis Cup verliehen?",
+            "it": "In quale sport viene assegnata la Coppa Davis?",
+            "hi": "डेविस कप किस खेल में प्रदान किया जाता है?",
+            "ru": "В каком виде спорта разыгрывается Кубок Дэвиса?",
+            "zh": "戴维斯杯是哪个项目的奖杯？",
+            "ja": "デビスカップはどのスポーツで授与されますか？",
+            "ar": "في أي رياضة يتم منح كأس ديفيز؟"
+        },
+        "options_texts": {
+            "en": [ "Tennis", "Golf", "Soccer", "Cricket" ],
+            "tr": [ "Tenis", "Golf", "Futbol", "Kriket" ],
+            "fr": [ "Tennis", "Golf", "Football", "Cricket" ],
+            "es": [ "Tenis", "Golf", "Fútbol", "Críquet" ],
+            "de": [ "Tennis", "Golf", "Fußball", "Cricket" ],
+            "it": [ "Tennis", "Golf", "Calcio", "Cricket" ],
+            "hi": [ "टेनिस", "गोल्फ़", "फ़ुटबॉल", "क्रिकेट" ],
+            "ru": [ "Теннис", "Гольф", "Футбол", "Крикет" ],
+            "zh": [ "网球", "高尔夫", "足球", "板球" ],
+            "ja": [ "テニス", "ゴルフ", "サッカー", "クリケット" ],
+            "ar": [ "التنس", "الجولف", "كرة القدم", "الكريكيت" ]
+        }
+    },
+    {
+        "category": "technology",
+        "correct_answer_index": 0,
+        "question_texts": {
+            "en": "What does 'RAM' stand for?",
+            "tr": "'RAM' neyin kısaltmasıdır?",
+            "fr": "Que signifie 'RAM' ?",
+            "es": "¿Qué significa 'RAM'?",
+            "de": "Wofür steht 'RAM'?",
+            "it": "Cosa significa 'RAM'?",
+            "hi": "'RAM' का क्या अर्थ है?",
+            "ru": "Что означает 'RAM'?",
+            "zh": "“RAM”代表什么？",
+            "ja": "「RAM」は何の略ですか？",
+            "ar": "ماذا يعني 'RAM'؟"
+        },
+        "options_texts": {
+            "en": [ "Random Access Memory", "Read Access Memory", "Run Access Memory", "Real Access Memory" ],
+            "tr": [ "Rastgele Erişimli Bellek", "Okuma Erişimli Bellek", "Çalıştırma Erişimli Bellek", "Gerçek Erişimli Bellek" ],
+            "fr": [ "Mémoire vive (Random Access Memory)", "Mémoire d'accès en lecture", "Mémoire d'accès d'exécution", "Mémoire d'accès réel" ],
+            "es": [ "Memoria de Acceso Aleatorio", "Memoria de Acceso de Lectura", "Memoria de Acceso de Ejecución", "Memoria de Acceso Real" ],
+            "de": [ "Speicher mit wahlfreiem Zugriff (Random Access Memory)", "Lesezugriffsspeicher", "Laufzugriffsspeicher", "Echtzugriffsspeicher" ],
+            "it": [ "Memoria ad Accesso Casuale", "Memoria ad Accesso di Lettura", "Memoria ad Accesso di Esecuzione", "Memoria ad Accesso Reale" ],
+            "hi": [ "रैंडम एक्सेस मेमोरी", "रीड एक्सेस मेमोरी", "रन एक्सेस मेमोरी", "रियल एक्सेस मेमोरी" ],
+            "ru": [ "Оперативная память (Random Access Memory)", "Память с доступом для чтения", "Память с доступом для запуска", "Память с реальным доступом" ],
+            "zh": [ "随机存取存储器", "读取存取存储器", "运行存取存储器", "实际存取存储器" ],
+            "ja": [ "ランダムアクセスメモリ", "リードアクセスメモリ", "ランアクセスメモリ", "リアルアクセスメモリ" ],
+            "ar": [ "ذاكرة الوصول العشوائي", "ذاكرة الوصول للقراءة", "ذاكرة الوصول للتشغيل", "ذاكرة الوصول الحقيقي" ]
+        }
+    },
+    {
+        "category": "cinema_tv",
+        "correct_answer_index": 0,
+        "question_texts": {
+            "en": "Which movie won the Academy Award for Best Picture in 2020?",
+            "tr": "2020'de En İyi Film Akademi Ödülü'nü hangi film kazandı?",
+            "fr": "Quel film a remporté l'Oscar du meilleur film en 2020 ?",
+            "es": "¿Qué película ganó el Premio de la Academia a la Mejor Película en 2020?",
+            "de": "Welcher Film gewann 2020 den Oscar für den besten Film?",
+            "it": "Quale film ha vinto l'Oscar per il miglior film nel 2020?",
+            "hi": "2020 में किस फिल्म ने सर्वश्रेष्ठ फिल्म का अकादमी पुरस्कार जीता?",
+            "ru": "Какой фильм получил премию «Оскар» за лучший фильм в 2020 году?",
+            "zh": "哪部电影获得了2020年奥斯卡最佳影片奖？",
+            "ja": "2020年のアカデミー作品賞を受賞した映画はどれですか？",
+            "ar": "أي فيلم فاز بجائزة الأوسكار لأفضل فيلم في عام 2020؟"
+        },
+        "options_texts": {
+            "en": [ "Parasite", "1917", "Joker", "Once Upon a Time in Hollywood" ],
+            "tr": [ "Parazit", "1917", "Joker", "Bir Zamanlar Hollywood'da" ],
+            "fr": [ "Parasite", "1917", "Joker", "Once Upon a Time... in Hollywood" ],
+            "es": [ "Parásitos", "1917", "Joker", "Érase una vez en... Hollywood" ],
+            "de": [ "Parasite", "1917", "Joker", "Once Upon a Time in Hollywood" ],
+            "it": [ "Parasite", "1917", "Joker", "C'era una volta a... Hollywood" ],
+            "hi": [ "पैरासाइट", "1917", "जोकर", "वन्स अपॉन ए टाइम इन हॉलीवुड" ],
+            "ru": [ "Паразиты", "1917", "Джокер", "Однажды в… Голливуде" ],
+            "zh": [ "寄生虫", "1917", "小丑", "好莱坞往事" ],
+            "ja": [ "パラサイト 半地下の家族", "1917 命をかけた伝令", "ジョーカー", "ワンス・アポン・ア・タイム・イン・ハリウッド" ],
+            "ar": [ "طفيلي (Parasite)", "1917", "جوكر", "حدث ذات مرة في هوليوود" ]
+        }
+    },
+    {
+        "category": "history",
+        "correct_answer_index": 0,
+        "question_texts": {
+            "en": "In which city is the Colosseum located?",
+            "tr": "Kolezyum hangi şehirdedir?",
+            "fr": "Dans quelle ville se trouve le Colisée ?",
+            "es": "¿En qué ciudad se encuentra el Coliseo?",
+            "de": "In welcher Stadt befindet sich das Kolosseum?",
+            "it": "In quale città si trova il Colosseo?",
+            "hi": "कोलोसियम किस शहर में स्थित है?",
+            "ru": "В каком городе находится Колизей?",
+            "zh": "罗马斗兽场位于哪个城市？",
+            "ja": "コロッセオはどの都市にありますか？",
+            "ar": "في أي مدينة يقع الكولوسيوم؟"
+        },
+        "options_texts": {
+            "en": [ "Rome", "Athens", "Paris", "Cairo" ],
+            "tr": [ "Roma", "Atina", "Paris", "Kahire" ],
+            "fr": [ "Rome", "Athènes", "Paris", "Le Caire" ],
+            "es": [ "Roma", "Atenas", "París", "El Cairo" ],
+            "de": [ "Rom", "Athen", "Paris", "Kairo" ],
+            "it": [ "Roma", "Atene", "Parigi", "Il Cairo" ],
+            "hi": [ "रोम", "एथेंस", "पेरिस", "काहिरा" ],
+            "ru": [ "Рим", "Афины", "Париж", "Каир" ],
+            "zh": [ "罗马", "雅典", "巴黎", "开罗" ],
+            "ja": [ "ローマ", "アテネ", "パリ", "カイロ" ],
+            "ar": [ "روما", "أثينا", "باريس", "القاهرة" ]
+        }
+    },
+    {
+        "category": "science",
+        "correct_answer_index": 0,
+        "question_texts": {
+            "en": "What is the chemical symbol for Gold?",
+            "tr": "Altının kimyasal sembolü nedir?",
+            "fr": "Quel est le symbole chimique de l'or ?",
+            "es": "¿Cuál es el símbolo químico del oro?",
+            "de": "Was ist das chemische Symbol für Gold?",
+            "it": "Qual è il simbolo chimico dell'oro?",
+            "hi": "सोने का रासायनिक प्रतीक क्या है?",
+            "ru": "Каков химический символ золота?",
+            "zh": "金的化学符号是什么？",
+            "ja": "金の元素記号は何ですか？",
+            "ar": "ما هو الرمز الكيميائي للذهب؟"
+        },
+        "options_texts": {
+            "en": [ "Au", "Ag", "Fe", "Hg" ],
+            "tr": [ "Au", "Ag", "Fe", "Hg" ],
+            "fr": [ "Au", "Ag", "Fe", "Hg" ],
+            "es": [ "Au", "Ag", "Fe", "Hg" ],
+            "de": [ "Au", "Ag", "Fe", "Hg" ],
+            "it": [ "Au", "Ag", "Fe", "Hg" ],
+            "hi": [ "Au", "Ag", "Fe", "Hg" ],
+            "ru": [ "Au", "Ag", "Fe", "Hg" ],
+            "zh": [ "Au", "Ag", "Fe", "Hg" ],
+            "ja": [ "Au", "Ag", "Fe", "Hg" ],
+            "ar": [ "Au", "Ag", "Fe", "Hg" ]
+        }
+    },
+    {
+        "category": "art",
+        "correct_answer_index": 0,
+        "question_texts": {
+            "en": "Who painted 'The Starry Night'?",
+            "tr": "'Yıldızlı Gece'yi kim resmetti?",
+            "fr": "Qui a peint 'La Nuit étoilée' ?",
+            "es": "¿Quién pintó 'La noche estrellada'?",
+            "de": "Wer malte 'Sternennacht'?",
+            "it": "Chi ha dipinto 'Notte stellata'?",
+            "hi": "'द स्टाररी नाइट' किसने पेंट की थी?",
+            "ru": "Кто написал картину «Звёздная ночь»?",
+            "zh": "谁画了《星月夜》？",
+            "ja": "「星月夜」を描いたのは誰ですか？",
+            "ar": "من رسم لوحة 'ليلة النجوم'؟"
+        },
+        "options_texts": {
+            "en": [ "Vincent van Gogh", "Pablo Picasso", "Claude Monet", "Salvador Dalí" ],
+            "tr": [ "Vincent van Gogh", "Pablo Picasso", "Claude Monet", "Salvador Dalí" ],
+            "fr": [ "Vincent van Gogh", "Pablo Picasso", "Claude Monet", "Salvador Dalí" ],
+            "es": [ "Vincent van Gogh", "Pablo Picasso", "Claude Monet", "Salvador Dalí" ],
+            "de": [ "Vincent van Gogh", "Pablo Picasso", "Claude Monet", "Salvador Dalí" ],
+            "it": [ "Vincent van Gogh", "Pablo Picasso", "Claude Monet", "Salvador Dalí" ],
+            "hi": [ "विंसेंट वान गॉग", "पाब्लो पिकासो", "क्लाउड मोनेट", "साल्वाडोर डाली" ],
+            "ru": [ "Винсент Ван Гог", "Пабло Пикассо", "Клод Моне", "Сальвадор Дали" ],
+            "zh": [ "文森特·梵高", "巴勃罗·毕加索", "克劳德·莫奈", "萨尔瓦多·达利" ],
+            "ja": [ "フィンセント・ファン・ゴッホ", "パブロ・ピカソ", "クロード・モネ", "サルバドール・ダリ" ],
+            "ar": [ "فنسنت فان جوخ", "بابلو بيكاسو", "كلود مونيه", "سلفادور دالي" ]
+        }
+    },
+    {
+        "category": "sports",
+        "correct_answer_index": 0,
+        "question_texts": {
+            "en": "How many players are on a standard soccer team on the field?",
+            "tr": "Bir futbol takımında sahada kaç oyuncu bulunur?",
+            "fr": "Combien de joueurs y a-t-il dans une équipe de football sur le terrain ?",
+            "es": "¿Cuántos jugadores hay en un equipo de fútbol en el campo?",
+            "de": "Wie viele Spieler hat eine Fußballmannschaft auf dem Feld?",
+            "it": "Quanti giocatori ci sono in una squadra di calcio in campo?",
+            "hi": "मैदान पर एक फुटबॉल टीम में कितने खिलाड़ी होते हैं?",
+            "ru": "Сколько игроков в футбольной команде на поле?",
+            "zh": "足球队在场上有多少名球员？",
+            "ja": "サッカーチームのフィールド上の選手は何人ですか？",
+            "ar": "كم عدد اللاعبين في فريق كرة القدم على الملعب؟"
+        },
+        "options_texts": {
+            "en": [ "11", "10", "7", "5" ],
+            "tr": [ "11", "10", "7", "5" ],
+            "fr": [ "11", "10", "7", "5" ],
+            "es": [ "11", "10", "7", "5" ],
+            "de": [ "11", "10", "7", "5" ],
+            "it": [ "11", "10", "7", "5" ],
+            "hi": [ "11", "10", "7", "5" ],
+            "ru": [ "11", "10", "7", "5" ],
+            "zh": [ "11", "10", "7", "5" ],
+            "ja": [ "11", "10", "7", "5" ],
+            "ar": [ "11", "10", "7", "5" ]
+        }
+    },
+    {
+        "category": "technology",
+        "correct_answer_index": 0,
+        "question_texts": {
+            "en": "Who is the co-founder of Microsoft?",
+            "tr": "Microsoft'un kurucu ortağı kimdir?",
+            "fr": "Qui est le cofondateur de Microsoft ?",
+            "es": "¿Quién es el cofundador de Microsoft?",
+            "de": "Wer ist der Mitbegründer von Microsoft?",
+            "it": "Chi è il co-fondatore di Microsoft?",
+            "hi": "माइक्रोसॉफ्ट का सह-संस्थापक कौन है?",
+            "ru": "Кто является соучредителем Microsoft?",
+            "zh": "谁是微软的联合创始人？",
+            "ja": "マイクロソフトの共同創業者は誰ですか？",
+            "ar": "من هو الشريك المؤسس لمايكروسوفت؟"
+        },
+        "options_texts": {
+            "en": [ "Bill Gates", "Steve Jobs", "Mark Zuckerberg", "Elon Musk" ],
+            "tr": [ "Bill Gates", "Steve Jobs", "Mark Zuckerberg", "Elon Musk" ],
+            "fr": [ "Bill Gates", "Steve Jobs", "Mark Zuckerberg", "Elon Musk" ],
+            "es": [ "Bill Gates", "Steve Jobs", "Mark Zuckerberg", "Elon Musk" ],
+            "de": [ "Bill Gates", "Steve Jobs", "Mark Zuckerberg", "Elon Musk" ],
+            "it": [ "Bill Gates", "Steve Jobs", "Mark Zuckerberg", "Elon Musk" ],
+            "hi": [ "बिल गेट्स", "स्टीव जॉब्स", "मार्क जुकरबर्ग", "एलोन मस्क" ],
+            "ru": [ "Билл Гейтс", "Стив Джобс", "Марк Цукерберг", "Илон Маск" ],
+            "zh": [ "比尔·盖茨", "史蒂夫·乔布斯", "马克·扎克伯格", "埃隆·马斯克" ],
+            "ja": [ "ビル・ゲイツ", "スティーブ・ジョブズ", "マーク・ザッカーバーグ", "イーロン・マスク" ],
+            "ar": [ "بيل غيتس", "ستيف جوبز", "مارك زوكربيرغ", "إيلون ماسك" ]
+        }
+    },
+    {
+        "category": "cinema_tv",
+        "correct_answer_index": 0,
+        "question_texts": {
+            "en": "Who directed the movie 'Jurassic Park'?",
+            "tr": "'Jurassic Park' filmini kim yönetti?",
+            "fr": "Qui a réalisé le film 'Jurassic Park' ?",
+            "es": "¿Quién dirigió la película 'Jurassic Park'?",
+            "de": "Wer führte Regie beim Film 'Jurassic Park'?",
+            "it": "Chi ha diretto il film 'Jurassic Park'?",
+            "hi": "फिल्म 'जुरासिक पार्क' का निर्देशन किसने किया?",
+            "ru": "Кто снял фильм «Парк юрского периода»?",
+            "zh": "谁执导了电影《侏罗纪公园》？",
+            "ja": "映画『ジュラシック・パーク』を監督したのは誰ですか？",
+            "ar": "من أخرج فيلم 'حديقة الديناصورات' (Jurassic Park)؟"
+        },
+        "options_texts": {
+            "en": [ "Steven Spielberg", "James Cameron", "George Lucas", "Christopher Nolan" ],
+            "tr": [ "Steven Spielberg", "James Cameron", "George Lucas", "Christopher Nolan" ],
+            "fr": [ "Steven Spielberg", "James Cameron", "George Lucas", "Christopher Nolan" ],
+            "es": [ "Steven Spielberg", "James Cameron", "George Lucas", "Christopher Nolan" ],
+            "de": [ "Steven Spielberg", "James Cameron", "George Lucas", "Christopher Nolan" ],
+            "it": [ "Steven Spielberg", "James Cameron", "George Lucas", "Christopher Nolan" ],
+            "hi": [ "स्टीवन स्पीलबर्ग", "जेम्स कैमरून", "जॉर्ज लुकास", "क्रिस्टोफर नोलन" ],
+            "ru": [ "Стивен Спилберг", "Джеймс Кэмерон", "Джордж Лукас", "Кристофер Нолан" ],
+            "zh": [ "史蒂文·斯皮尔伯格", "詹姆斯·卡梅隆", "乔治·卢卡斯", "克里斯托弗·诺兰" ],
+            "ja": [ "スティーヴン・スピルバーグ", "ジェームズ・キャメロン", "ジョージ・ルーカス", "クリストファー・ノーラン" ],
+            "ar": [ "ستيفن سبيلبرغ", "جيمس كاميرون", "جورج لوكاس", "كريستوفر نولان" ]
+        }
+    },
+    {
+        "category": "history",
+        "correct_answer_index": 0,
+        "question_texts": {
+            "en": "Who discovered America in 1492?",
+            "tr": "1492'de Amerika'yı kim keşfetti?",
+            "fr": "Qui a découvert l'Amérique en 1492 ?",
+            "es": "¿Quién descubrió América en 1492?",
+            "de": "Wer entdeckte 1492 Amerika?",
+            "it": "Chi scoprì l'America nel 1492?",
+            "hi": "1492 में अमेरिका की खोज किसने की?",
+            "ru": "Кто открыл Америку в 1492 году?",
+            "zh": "谁在1492年发现了美洲？",
+            "ja": "1492年にアメリカを発見したのは誰ですか？",
+            "ar": "من اكتشف أمريكا عام 1492؟"
+        },
+        "options_texts": {
+            "en": [ "Christopher Columbus", "Vasco da Gama", "Marco Polo", "Amerigo Vespucci" ],
+            "tr": [ "Kristof Kolomb", "Vasco da Gama", "Marco Polo", "Amerigo Vespucci" ],
+            "fr": [ "Christophe Colomb", "Vasco da Gama", "Marco Polo", "Amerigo Vespucci" ],
+            "es": [ "Cristóbal Colón", "Vasco da Gama", "Marco Polo", "Américo Vespucio" ],
+            "de": [ "Christoph Kolumbus", "Vasco da Gama", "Marco Polo", "Amerigo Vespucci" ],
+            "it": [ "Cristoforo Colombo", "Vasco da Gama", "Marco Polo", "Amerigo Vespucci" ],
+            "hi": [ "क्रिस्टोफर कोलंबस", "वास्को डि गामा", "मार्को पोलो", "आमेरिगो वेस्पूची" ],
+            "ru": [ "Христофор Колумб", "Васко да Гама", "Марко Поло", "Америго Веспуччи" ],
+            "zh": [ "克里斯托弗·哥伦布", "瓦斯科·达·伽马", "马可·波罗", "亚美利哥·韦斯普奇" ],
+            "ja": [ "クリストファー・コロンブス", "ヴァスコ・ダ・ガマ", "マルコ・ポーロ", "アメリゴ・ヴェスプッチ" ],
+            "ar": [ "كريستوفر كولومبوس", "فاسكو دا جاما", "ماركو بولو", "أميريغو فسبوتشي" ]
+        }
+    },
+    {
+        "category": "science",
+        "correct_answer_index": 0,
+        "question_texts": {
+            "en": "Which gas do plants primarily use for photosynthesis?",
+            "tr": "Bitkiler fotosentez için öncelikli olarak hangi gazı kullanır?",
+            "fr": "Quel gaz les plantes utilisent-elles principalement pour la photosynthèse ?",
+            "es": "¿Qué gas utilizan principalmente las plantas para la fotosíntesis?",
+            "de": "Welches Gas verwenden Pflanzen hauptsächlich für die Photosynthese?",
+            "it": "Quale gas usano principalmente le piante per la fotosintesi?",
+            "hi": "पौधे प्रकाश संश्लेषण के लिए मुख्य रूप से किस गैस का उपयोग करते हैं?",
+            "ru": "Какой газ растения в основном используют для фотосинтеза?",
+            "zh": "植物进行光合作用主要使用哪种气体？",
+            "ja": "植物が光合成のために主に使用するガスはどれですか？",
+            "ar": "ما هو الغاز الذي تستخدمه النباتات بشكل أساسي في عملية التمثيل الضوئي؟"
+        },
+        "options_texts": {
+            "en": [ "Carbon dioxide", "Oxygen", "Nitrogen", "Hydrogen" ],
+            "tr": [ "Karbondioksit", "Oksijen", "Azot", "Hidrojen" ],
+            "fr": [ "Dioxyde de carbone", "Oxygène", "Azote", "Hydrogène" ],
+            "es": [ "Dióxido de carbono", "Oxígeno", "Nitrógeno", "Hidrógeno" ],
+            "de": [ "Kohlendioxid", "Sauerstoff", "Stickstoff", "Wasserstoff" ],
+            "it": [ "Anidride carbonica", "Ossigeno", "Azoto", "Idrogeno" ],
+            "hi": [ "कार्बन डाइऑक्साइड", "ऑक्सीजन", "नाइट्रोजन", "हाइड्रोजन" ],
+            "ru": [ "Углекислый газ", "Кислород", "Азот", "Водород" ],
+            "zh": [ "二氧化碳", "氧气", "氮气", "氢气" ],
+            "ja": [ "二酸化炭素", "酸素", "窒素", "水素" ],
+            "ar": [ "ثاني أكسيد الكربون", "الأكسجين", "النيتروجين", "الهيدروجين" ]
+        }
+    },
+    {
+        "category": "art",
+        "correct_answer_index": 0,
+        "question_texts": {
+            "en": "In which museum is the Mona Lisa located?",
+            "tr": "Mona Lisa tablosu hangi müzede bulunmaktadır?",
+            "fr": "Dans quel musée se trouve la Joconde ?",
+            "es": "¿En qué museo se encuentra la Mona Lisa?",
+            "de": "In welchem Museum befindet sich die Mona Lisa?",
+            "it": "In quale museo si trova la Gioconda?",
+            "hi": "मोना लिसा किस संग्रहालय में स्थित है?",
+            "ru": "В каком музее находится Мона Лиза?",
+            "zh": "蒙娜丽莎收藏在哪个博物馆？",
+            "ja": "モナ・リザはどの美術館にありますか？",
+            "ar": "في أي متحف توجد لوحة الموناليزا؟"
+        },
+        "options_texts": {
+            "en": [ "The Louvre", "The British Museum", "The Met", "The Prado" ],
+            "tr": [ "Louvre Müzesi", "British Museum", "Metropolitan Müzesi", "Prado Müzesi" ],
+            "fr": [ "Le Louvre", "Le British Museum", "Le Met", "Le Prado" ],
+            "es": [ "El Louvre", "El Museo Británico", "El Met", "El Prado" ],
+            "de": [ "Der Louvre", "Das British Museum", "Das Met", "Der Prado" ],
+            "it": [ "Il Louvre", "Il British Museum", "Il Met", "Il Prado" ],
+            "hi": [ "लौवर संग्रहालय", "ब्रिटिश संग्रहालय", "द मेट", "प्राडो संग्रहालय" ],
+            "ru": [ "Лувр", "Британский музей", "Метрополитен-музей", "Музей Прадо" ],
+            "zh": [ "卢浮宫", "大英博物馆", "大都会艺术博物馆", "普拉多博物馆" ],
+            "ja": [ "ルーヴル美術館", "大英博物館", "メトロポリタン美術館", "プラド美術館" ],
+            "ar": [ "متحف اللوفر", "المتحف البريطاني", "متحف الميت", "متحف ديل برادو" ]
+        }
+    },
+    {
+        "category": "sports",
+        "correct_answer_index": 0,
+        "question_texts": {
+            "en": "In which sport is a shuttlecock used?",
+            "tr": "Hangi sporda 'shuttlecock' (tüylü top) kullanılır?",
+            "fr": "Dans quel sport utilise-t-on un volant ?",
+            "es": "¿En qué deporte se utiliza un volante (shuttlecock)?",
+            "de": "In welcher Sportart wird ein Federball verwendet?",
+            "it": "In quale sport si usa il volano?",
+            "hi": "किस खेल में शटलकॉक का उपयोग किया जाता है?",
+            "ru": "В каком виде спорта используется волан?",
+            "zh": "哪种运动使用羽毛球？",
+            "ja": "シャトルコック（羽根）を使用するスポーツはどれですか？",
+            "ar": "في أي رياضة تستخدم 'كرة الريشة' (shuttlecock)؟"
+        },
+        "options_texts": {
+            "en": [ "Badminton", "Tennis", "Table Tennis", "Squash" ],
+            "tr": [ "Badminton", "Tenis", "Masa Tenisi", "Squash" ],
+            "fr": [ "Badminton", "Tennis", "Tennis de table", "Squash" ],
+            "es": [ "Bádminton", "Tenis", "Tenis de mesa", "Squash" ],
+            "de": [ "Badminton", "Tennis", "Tischtennis", "Squash" ],
+            "it": [ "Badminton", "Tennis", "Tennistavolo", "Squash" ],
+            "hi": [ "बैडमिंटन", "टेनिस", "टेबल टेनिस", "स्क्वैश" ],
+            "ru": [ "Бадминтон", "Теннис", "Настольный теннис", "Сквош" ],
+            "zh": [ "羽毛球", "网球", "乒乓球", "壁球" ],
+            "ja": [ "バドミントン", "テニス", "卓球", "スカッシュ" ],
+            "ar": [ "كرة الريشة", "التنس", "تنس الطاولة", "الاسكواش" ]
+        }
+    },
+    {
+        "category": "technology",
+        "correct_answer_index": 0,
+        "question_texts": {
+            "en": "What does 'WWW' stand for in a website address?",
+            "tr": "Bir web sitesi adresinde 'WWW' ne anlama gelir?",
+            "fr": "Que signifie 'WWW' dans une adresse de site Web ?",
+            "es": "¿Qué significa 'WWW' en una dirección de sitio web?",
+            "de": "Wofür steht 'WWW' in einer Website-Adresse?",
+            "it": "Cosa significa 'WWW' in un indirizzo web?",
+            "hi": "वेबसाइट पते में 'WWW' का क्या अर्थ है?",
+            "ru": "Что означает 'WWW' в адресе веб-сайта?",
+            "zh": "网站地址中的“WWW”代表什么？",
+            "ja": "ウェブサイトのアドレスにある「WWW」は何の略ですか？",
+            "ar": "ماذا تعني 'WWW' في عنوان موقع الويب؟"
+        },
+        "options_texts": {
+            "en": [ "World Wide Web", "World Web Wide", "Wide World Web", "Web World Wide" ],
+            "tr": [ "World Wide Web (Dünya Çapında Ağ)", "World Web Wide", "Wide World Web", "Web World Wide" ],
+            "fr": [ "World Wide Web", "World Web Wide", "Wide World Web", "Web World Wide" ],
+            "es": [ "World Wide Web", "World Web Wide", "Wide World Web", "Web World Wide" ],
+            "de": [ "World Wide Web", "World Web Wide", "Wide World Web", "Web World Wide" ],
+            "it": [ "World Wide Web", "World Web Wide", "Wide World Web", "Web World Wide" ],
+            "hi": [ "वर्ल्ड वाइड वेब", "वर्ल्ड वेब वाइड", "वाइड वर्ल्ड वेब", "वेब वर्ल्ड वाइड" ],
+            "ru": [ "World Wide Web (Всемирная паутина)", "World Web Wide", "Wide World Web", "Web World Wide" ],
+            "zh": [ "万维网 (World Wide Web)", "World Web Wide", "Wide World Web", "Web World Wide" ],
+            "ja": [ "ワールド・ワイド・ウェブ", "ワールド・ウェブ・ワイド", "ワイド・ワールド・ウェブ", "ウェブ・ワールド・ワイド" ],
+            "ar": [ "الشبكة العنكبوتية العالمية (World Wide Web)", "World Web Wide", "Wide World Web", "Web World Wide" ]
+        }
+    },
+    {
+        "category": "cinema_tv",
+        "correct_answer_index": 0,
+        "question_texts": {
+            "en": "Who played the character Jack Dawson in the movie 'Titanic'?",
+            "tr": "'Titanik' filminde Jack Dawson karakterini kim oynadı?",
+            "fr": "Qui a joué le personnage de Jack Dawson dans le film 'Titanic' ?",
+            "es": "¿Quién interpretó al personaje de Jack Dawson en la película 'Titanic'?",
+            "de": "Wer spielte die Rolle des Jack Dawson im Film 'Titanic'?",
+            "it": "Chi ha interpretato il personaggio di Jack Dawson nel film 'Titanic'?",
+            "hi": "फिल्म 'टाइटैनिक' में जैक डॉसन का किरदार किसने निभाया था?",
+            "ru": "Кто сыграл роль Джека Доусона в фильме «Титаник»?",
+            "zh": "谁在电影《泰坦尼克号》中扮演了杰克·道森？",
+            "ja": "映画『タイタニック』でジャック・ドーソンを演じたのは誰ですか？",
+            "ar": "من لعب دور جاك دوسون في فيلم 'تيتانيك'؟"
+        },
+        "options_texts": {
+            "en": [ "Leonardo DiCaprio", "Brad Pitt", "Tom Cruise", "Johnny Depp" ],
+            "tr": [ "Leonardo DiCaprio", "Brad Pitt", "Tom Cruise", "Johnny Depp" ],
+            "fr": [ "Leonardo DiCaprio", "Brad Pitt", "Tom Cruise", "Johnny Depp" ],
+            "es": [ "Leonardo DiCaprio", "Brad Pitt", "Tom Cruise", "Johnny Depp" ],
+            "de": [ "Leonardo DiCaprio", "Brad Pitt", "Tom Cruise", "Johnny Depp" ],
+            "it": [ "Leonardo DiCaprio", "Brad Pitt", "Tom Cruise", "Johnny Depp" ],
+            "hi": [ "लियोनार्डो डिकैप्रियो", "ब्रैड पिट", "टॉम क्रूज", "जॉनी डेप" ],
+            "ru": [ "Леонардо Ди Каприо", "Брэд Питт", "Том Круз", "Джонни Депп" ],
+            "zh": [ "莱昂纳多·迪卡普里奥", "布拉德·皮特", "汤姆·克鲁斯", "约翰尼·德普" ],
+            "ja": [ "レオナルド・ディカプリオ", "ブラッド・ピット", "トム・クルーズ", "ジョニー・デップ" ],
+            "ar": [ "ليوناردو دي كابريو", "براد بيت", "توم كروز", "جوني ديب" ]
+        }
+    },
+    {
+        "category": "history",
+        "correct_answer_index": 0,
+        "question_texts": {
+            "en": "Who was the first President of the United States?",
+            "tr": "Amerika Birleşik Devletleri'nin ilk başkanı kimdir?",
+            "fr": "Qui fut le premier président des États-Unis ?",
+            "es": "¿Quién fue el primer presidente de los Estados Unidos?",
+            "de": "Wer war der erste Präsident der Vereinigten Staaten?",
+            "it": "Chi è stato il primo presidente degli Stati Uniti?",
+            "hi": "संयुक्त राज्य अमेरिका के पहले राष्ट्रपति कौन थे?",
+            "ru": "Кто был первым президентом США?",
+            "zh": "谁是美国第一任总统？",
+            "ja": "アメリカ合衆国の初代大統領は誰ですか？",
+            "ar": "من كان أول رئيس للولايات المتحدة؟"
+        },
+        "options_texts": {
+            "en": [ "George Washington", "Thomas Jefferson", "Abraham Lincoln", "John Adams" ],
+            "tr": [ "George Washington", "Thomas Jefferson", "Abraham Lincoln", "John Adams" ],
+            "fr": [ "George Washington", "Thomas Jefferson", "Abraham Lincoln", "John Adams" ],
+            "es": [ "George Washington", "Thomas Jefferson", "Abraham Lincoln", "John Adams" ],
+            "de": [ "George Washington", "Thomas Jefferson", "Abraham Lincoln", "John Adams" ],
+            "it": [ "George Washington", "Thomas Jefferson", "Abraham Lincoln", "John Adams" ],
+            "hi": [ "जॉर्ज वॉशिंगटन", "थॉमस जेफरसन", "अब्राहम लिंकन", "जॉन एडम्स" ],
+            "ru": [ "Джордж Вашингтон", "Томас Джефферсон", "Авраам Линкольн", "Джон Адамс" ],
+            "zh": [ "乔治·华盛顿", "托马斯·杰斐逊", "亚伯拉罕·林肯", "约翰·亚当斯" ],
+            "ja": [ "ジョージ・ワシントン", "トーマス・ジェファーソン", "エイブラハム・リンカーン", "ジョン・アダムズ" ],
+            "ar": [ "جورج واشنطن", "توماس جيفرسون", "أبراهام لينكولن", "جون آدامز" ]
+        }
+    },
+    {
+        "category": "science",
+        "correct_answer_index": 0,
+        "question_texts": {
+            "en": "What is the chemical formula for water?",
+            "tr": "Suyun kimyasal formülü nedir?",
+            "fr": "Quelle est la formule chimique de l'eau ?",
+            "es": "¿Cuál es la fórmula química del agua?",
+            "de": "Wie lautet die chemische Formel für Wasser?",
+            "it": "Qual è la formula chimica dell'acqua?",
+            "hi": "पानी का रासायनिक सूत्र क्या है?",
+            "ru": "Какова химическая формула воды?",
+            "zh": "水的化学式是什么？",
+            "ja": "水の化学式は何ですか？",
+            "ar": "ما هي الصيغة الكيميائية للماء؟"
+        },
+        "options_texts": {
+            "en": [ "H2O", "CO2", "O2", "NaCl" ],
+            "tr": [ "H2O", "CO2", "O2", "NaCl" ],
+            "fr": [ "H2O", "CO2", "O2", "NaCl" ],
+            "es": [ "H2O", "CO2", "O2", "NaCl" ],
+            "de": [ "H2O", "CO2", "O2", "NaCl" ],
+            "it": [ "H2O", "CO2", "O2", "NaCl" ],
+            "hi": [ "H2O", "CO2", "O2", "NaCl" ],
+            "ru": [ "H2O", "CO2", "O2", "NaCl" ],
+            "zh": [ "H2O", "CO2", "O2", "NaCl" ],
+            "ja": [ "H2O", "CO2", "O2", "NaCl" ],
+            "ar": [ "H2O", "CO2", "O2", "NaCl" ]
+        }
+    },
+    {
+        "category": "art",
+        "correct_answer_index": 0,
+        "question_texts": {
+            "en": "Who painted 'The Scream'?",
+            "tr": "'Çığlık' tablosunu kim resmetti?",
+            "fr": "Qui a peint 'Le Cri' ?",
+            "es": "¿Quién pintó 'El grito'?",
+            "de": "Wer malte 'Der Schrei'?",
+            "it": "Chi ha dipinto 'L'urlo'?",
+            "hi": "'द स्क्रीम' (चीख) पेंटिंग किसने बनाई थी?",
+            "ru": "Кто написал картину «Крик»?",
+            "zh": "谁画了《呐喊》？",
+            "ja": "「叫び」を描いたのは誰ですか？",
+            "ar": "من رسم لوحة 'الصرخة'؟"
+        },
+        "options_texts": {
+            "en": [ "Edvard Munch", "Vincent van Gogh", "Pablo Picasso", "Claude Monet" ],
+            "tr": [ "Edvard Munch", "Vincent van Gogh", "Pablo Picasso", "Claude Monet" ],
+            "fr": [ "Edvard Munch", "Vincent van Gogh", "Pablo Picasso", "Claude Monet" ],
+            "es": [ "Edvard Munch", "Vincent van Gogh", "Pablo Picasso", "Claude Monet" ],
+            "de": [ "Edvard Munch", "Vincent van Gogh", "Pablo Picasso", "Claude Monet" ],
+            "it": [ "Edvard Munch", "Vincent van Gogh", "Pablo Picasso", "Claude Monet" ],
+            "hi": [ "एडवर्ड मुंच", "विंसेंट वान गॉग", "पाब्लो पिकासो", "क्लाउड मोनेट" ],
+            "ru": [ "Эдвард Мунк", "Винсент Ван Гог", "Пабло Пикассо", "Клод Моне" ],
+            "zh": [ "爱德华·蒙克", "文森特·梵高", "巴勃罗·毕加索", "克劳德·莫奈" ],
+            "ja": [ "エドヴァルド・ムンク", "フィンセント・ファン・ゴッホ", "パブロ・ピカソ", "クロード・モネ" ],
+            "ar": [ "إدفارد مونك", "فنسنت فان جوخ", "بابلو بيكاسو", "كلود مونيه" ]
+        }
+    },
+    {
+        "category": "sports",
+        "correct_answer_index": 0,
+        "question_texts": {
+            "en": "Which country hosted the 2016 Summer Olympics?",
+            "tr": "2016 Yaz Olimpiyatları'na hangi ülke ev sahipliği yaptı?",
+            "fr": "Quel pays a accueilli les Jeux olympiques d'été de 2016 ?",
+            "es": "¿Qué país organizó los Juegos Olímpicos de Verano de 2016?",
+            "de": "Welches Land war Gastgeber der Olympischen Sommerspiele 2016?",
+            "it": "Quale paese ha ospitato le Olimpiadi estive del 2016?",
+            "hi": "2016 ग्रीष्मकालीन ओलंपिक की मेजबानी किस देश ने की थी?",
+            "ru": "Какая страна принимала летние Олимпийские игры 2016 года?",
+            "zh": "哪个国家举办了2016年夏季奥运会？",
+            "ja": "2016年の夏季オリンピックを開催した国はどこですか？",
+            "ar": "أي دولة استضافت الألعاب الأولمبية الصيفية لعام 2016؟"
+        },
+        "options_texts": {
+            "en": [ "Brazil", "China", "United Kingdom", "Japan" ],
+            "tr": [ "Brezilya", "Çin", "Birleşik Krallık", "Japonya" ],
+            "fr": [ "Brésil", "Chine", "Royaume-Uni", "Japon" ],
+            "es": [ "Brasil", "China", "Reino Unido", "Japón" ],
+            "de": [ "Brasilien", "China", "Vereinigtes Königreich", "Japan" ],
+            "it": [ "Brasile", "Cina", "Regno Unito", "Giappone" ],
+            "hi": [ "ब्राजील", "चीन", "यूनाइटेड किंगडम", "जापान" ],
+            "ru": [ "Бразилия", "Китай", "Великобритания", "Япония" ],
+            "zh": [ "巴西", "中国", "英国", "日本" ],
+            "ja": [ "ブラジル", "中国", "イギリス", "日本" ],
+            "ar": [ "البرازيل", "الصين", "المملكة المتحدة", "اليابان" ]
+        }
+    },
+    {
+        "category": "technology",
+        "correct_answer_index": 0,
+        "question_texts": {
+            "en": "What does 'CPU' stand for?",
+            "tr": "'CPU' neyin kısaltmasıdır?",
+            "fr": "Que signifie 'CPU' ?",
+            "es": "¿Qué significa 'CPU'?",
+            "de": "Wofür steht 'CPU'?",
+            "it": "Cosa significa 'CPU'?",
+            "hi": "'CPU' का क्या अर्थ है?",
+            "ru": "Что означает 'CPU'?",
+            "zh": "“CPU”代表什么？",
+            "ja": "「CPU」は何の略ですか？",
+            "ar": "ماذا تعني 'CPU'؟"
+        },
+        "options_texts": {
+            "en": [ "Central Processing Unit", "Central Process Unit", "Computer Personal Unit", "Central Processor United" ],
+            "tr": [ "Merkezi İşlem Birimi", "Merkezi İşlem Ünitesi", "Kişisel Bilgisayar Birimi", "Merkezi İşlemci Birleşik" ],
+            "fr": [ "Unité centrale de traitement", "Unité de processus central", "Unité personnelle d'ordinateur", "Processeur central uni" ],
+            "es": [ "Unidad Central de Procesamiento", "Unidad de Proceso Central", "Unidad Personal de Computadora", "Procesador Central Unido" ],
+            "de": [ "Zentrale Recheneinheit (Central Processing Unit)", "Zentralprozesseinheit", "Computer Persönliche Einheit", "Zentralprozessor vereinigt" ],
+            "it": [ "Unità Centrale di Elaborazione", "Unità di Processo Centrale", "Unità Personale del Computer", "Processore Centrale Unito" ],
+            "hi": [ "सेंट्रल प्रोसेसिंग यूनिट", "सेंट्रल प्रोसेस यूनिट", "कंप्यूटर पर्सनल यूनिट", "सेंट्रल प्रोसेसर यूनाइटेड" ],
+            "ru": [ "Центральный процессор (Central Processing Unit)", "Центральный блок процесса", "Персональный блок компьютера", "Объединенный центральный процессор" ],
+            "zh": [ "中央处理器", "中央处理单元", "计算机个人单元", "中央处理器联合" ],
+            "ja": [ "中央演算処理装置 (Central Processing Unit)", "中央プロセスユニット", "コンピュータ・パーソナル・ユニット", "セントラル・プロセッサ・ユナイテッド" ],
+            "ar": [ "وحدة المعالجة المركزية", "وحدة العملية المركزية", "وحدة الكمبيوتر الشخصية", "المعالج المركزي المتحد" ]
+        }
+    },
+    {
+        "category": "cinema_tv",
+        "correct_answer_index": 0,
+        "question_texts": {
+            "en": "Which TV series is set in the fictional continent of Westeros?",
+            "tr": "Hangi TV dizisi kurgusal Westeros kıtasında geçmektedir?",
+            "fr": "Quelle série télévisée se déroule sur le continent fictif de Westeros ?",
+            "es": "¿Qué serie de televisión se desarrolla en el continente ficticio de Westeros?",
+            "de": "Welche Fernsehserie spielt auf dem fiktiven Kontinent Westeros?",
+            "it": "Quale serie TV è ambientata nel continente immaginario di Westeros?",
+            "hi": "कौन सी टीवी श्रृंखला काल्पनिक महाद्वीप 'वेस्टरोस' में स्थापित है?",
+            "ru": "Действие какого сериала происходит на вымышленном континенте Вестерос?",
+            "zh": "哪部电视剧的故事背景设定在虚构的维斯特洛大陆？",
+            "ja": "架空の大陸ウェスタロスを舞台にしたテレビドラマはどれですか？",
+            "ar": "أي مسلسل تلفزيوني تدور أحداثه في قارة ويستروس الخيالية؟"
+        },
+        "options_texts": {
+            "en": [ "Game of Thrones", "Breaking Bad", "The Witcher", "Stranger Things" ],
+            "tr": [ "Game of Thrones (Taht Oyunları)", "Breaking Bad", "The Witcher", "Stranger Things" ],
+            "fr": [ "Game of Thrones (Le Trône de fer)", "Breaking Bad", "The Witcher", "Stranger Things" ],
+            "es": [ "Juego de Tronos", "Breaking Bad", "The Witcher", "Stranger Things" ],
+            "de": [ "Game of Thrones", "Breaking Bad", "The Witcher", "Stranger Things" ],
+            "it": [ "Il Trono di Spade", "Breaking Bad", "The Witcher", "Stranger Things" ],
+            "hi": [ "गेम ऑफ थ्रोन्स", "ब्रेकिंग बैड", "द विचर", "स्ट्रेंजर थिंग्स" ],
+            "ru": [ "Игра престолов", "Во все тяжкие", "Ведьмак", "Очень странные дела" ],
+            "zh": [ "权力的游戏", "绝命毒师", "巫师", "怪奇物语" ],
+            "ja": [ "ゲーム・オブ・スローンズ", "ブレイキング・バッド", "ウィッチャー", "ストレンジャー・シングス" ],
+            "ar": [ "صراع العروش (Game of Thrones)", "اختلال ضال (Breaking Bad)", "الويتشر (The Witcher)", "أشياء غريبة (Stranger Things)" ]
+        }
+    },
+    {
+        "category": "history",
+        "correct_answer_index": 0,
+        "question_texts": {
+            "en": "In which year did the Berlin Wall fall?",
+            "tr": "Berlin Duvarı hangi yıl yıkıldı?",
+            "fr": "En quelle année le mur de Berlin est-il tombé ?",
+            "es": "¿En qué año cayó el Muro de Berlín?",
+            "de": "In welchem Jahr fiel die Berliner Mauer?",
+            "it": "In quale anno cadde il Muro di Berlino?",
+            "hi": "बर्लिन की दीवार किस वर्ष गिरी थी?",
+            "ru": "В каком году пала Берлинская стена?",
+            "zh": "柏林墙是哪一年倒塌的？",
+            "ja": "ベルリンの壁が崩壊したのは何年ですか？",
+            "ar": "في أي عام سقط جدار برلين؟"
+        },
+        "options_texts": {
+            "en": [ "1989", "1991", "1985", "1975" ],
+            "tr": [ "1989", "1991", "1985", "1975" ],
+            "fr": [ "1989", "1991", "1985", "1975" ],
+            "es": [ "1989", "1991", "1985", "1975" ],
+            "de": [ "1989", "1991", "1985", "1975" ],
+            "it": [ "1989", "1991", "1985", "1975" ],
+            "hi": [ "1989", "1991", "1985", "1975" ],
+            "ru": [ "1989", "1991", "1985", "1975" ],
+            "zh": [ "1989", "1991", "1985", "1975" ],
+            "ja": [ "1989", "1991", "1985", "1975" ],
+            "ar": [ "1989", "1991", "1985", "1975" ]
+        }
+    },
+    {
+        "category": "science",
+        "correct_answer_index": 0,
+        "question_texts": {
+            "en": "What is the hardest natural substance on Earth?",
+            "tr": "Dünya üzerindeki en sert doğal madde nedir?",
+            "fr": "Quelle est la substance naturelle la plus dure sur Terre ?",
+            "es": "¿Cuál es la sustancia natural más dura de la Tierra?",
+            "de": "Was ist die härteste natürliche Substanz der Erde?",
+            "it": "Qual è la sostanza naturale più dura sulla Terra?",
+            "hi": "पृथ्वी पर सबसे कठोर प्राकृतिक पदार्थ कौन सा है?",
+            "ru": "Какое самое твердое природное вещество на Земле?",
+            "zh": "地球上最坚硬的天然物质是什么？",
+            "ja": "地球上で最も硬い天然物質は何ですか？",
+            "ar": "ما هي أصلب مادة طبيعية على وجه الأرض؟"
+        },
+        "options_texts": {
+            "en": [ "Diamond", "Gold", "Iron", "Quartz" ],
+            "tr": [ "Elmas", "Altın", "Demir", "Kuvars" ],
+            "fr": [ "Diamant", "Or", "Fer", "Quartz" ],
+            "es": [ "Diamante", "Oro", "Hierro", "Cuarzo" ],
+            "de": [ "Diamant", "Gold", "Eisen", "Quarz" ],
+            "it": [ "Diamante", "Oro", "Ferro", "Quarzo" ],
+            "hi": [ "हीरा", "सोना", "लोहा", "क्वार्ट्ज" ],
+            "ru": [ "Алмаз", "Золото", "Железо", "Кварц" ],
+            "zh": [ "钻石", "黄金", "铁", "石英" ],
+            "ja": [ "ダイヤモンド", "金", "鉄", "石英" ],
+            "ar": [ "الألماس", "الذهب", "الحديد", "الكوارتز" ]
+        }
+    },
+    {
+        "category": "art",
+        "correct_answer_index": 0,
+        "question_texts": {
+            "en": "Who sculpted the statue of 'David'?",
+            "tr": "'Davut' heykelini kim yaptı?",
+            "fr": "Qui a sculpté la statue de « David » ?",
+            "es": "¿Quién esculpió la estatua de 'David'?",
+            "de": "Wer schuf die Statue des 'David'?",
+            "it": "Chi ha scolpito la statua del 'David'?",
+            "hi": "'डेविड' की मूर्ति किसने बनाई थी?",
+            "ru": "Кто создал статую «Давид»?",
+            "zh": "谁雕刻了《大卫》像？",
+            "ja": "「ダヴィデ像」を制作したのは誰ですか？",
+            "ar": "من نحت تمثال 'ديفيد'؟"
+        },
+        "options_texts": {
+            "en": [ "Michelangelo", "Leonardo da Vinci", "Donatello", "Bernini" ],
+            "tr": [ "Michelangelo", "Leonardo da Vinci", "Donatello", "Bernini" ],
+            "fr": [ "Michel-Ange", "Léonard de Vinci", "Donatello", "Le Bernin" ],
+            "es": [ "Miguel Ángel", "Leonardo da Vinci", "Donatello", "Bernini" ],
+            "de": [ "Michelangelo", "Leonardo da Vinci", "Donatello", "Bernini" ],
+            "it": [ "Michelangelo", "Leonardo da Vinci", "Donatello", "Bernini" ],
+            "hi": [ "माइकल एंजेलो", "लियोनार्डो दा विंची", "डোনাटेलो", "बर्निनी" ],
+            "ru": [ "Микеланджело", "Леонардо да Винчи", "Донателло", "Бернини" ],
+            "zh": [ "米开朗基罗", "列奥纳多·达·芬奇", "多纳泰罗", "贝尼尼" ],
+            "ja": [ "ミケランジェロ", "レオナルド・ダ・ヴィンチ", "ドナテッロ", "ベルニーニ" ],
+            "ar": [ "مايكل أنجلو", "ليوناردو دافنشي", "دوناتيلو", "برنيني" ]
+        }
+    },
+    {
+        "category": "sports",
+        "correct_answer_index": 0,
+        "question_texts": {
+            "en": "In which sport is a puck used?",
+            "tr": "Hangi sporda 'puck' (pak) kullanılır?",
+            "fr": "Dans quel sport utilise-t-on un palet ?",
+            "es": "¿En qué deporte se utiliza un disco (puck)?",
+            "de": "In welcher Sportart wird ein Puck verwendet?",
+            "it": "In quale sport si usa il disco (puck)?",
+            "hi": "किस खेल में 'पक' (puck) का उपयोग किया जाता है?",
+            "ru": "В каком виде спорта используется шайба?",
+            "zh": "哪项运动使用冰球（Puck）？",
+            "ja": "パックを使用するスポーツはどれですか？",
+            "ar": "في أي رياضة يتم استخدام القرص (puck)؟"
+        },
+        "options_texts": {
+            "en": [ "Ice Hockey", "Field Hockey", "Soccer", "Basketball" ],
+            "tr": [ "Buz Hokeyi", "Çim Hokeyi", "Futbol", "Basketbol" ],
+            "fr": [ "Hockey sur glace", "Hockey sur gazon", "Football", "Basket-ball" ],
+            "es": [ "Hockey sobre hielo", "Hockey sobre hierba", "Fútbol", "Baloncesto" ],
+            "de": [ "Eishockey", "Feldhockey", "Fußball", "Basketball" ],
+            "it": [ "Hockey su ghiaccio", "Hockey su prato", "Calcio", "Pallacanestro" ],
+            "hi": [ "आइस हॉकी", "फील्ड हॉकी", "फ़ुटबॉल", "बास्केटबॉल" ],
+            "ru": [ "Хоккей с шайбой", "Хоккей на траве", "Футбол", "Баскетбол" ],
+            "zh": [ "冰球", "曲棍球", "足球", "篮球" ],
+            "ja": [ "アイスホッケー", "フィールドホッケー", "サッカー", "バスケットボール" ],
+            "ar": [ "هوكي الجليد", "الهوكي الميداني", "كرة القدم", "كرة السلة" ]
+        }
+    },
+    {
+        "category": "technology",
+        "correct_answer_index": 0,
+        "question_texts": {
+            "en": "What does 'HTML' stand for?",
+            "tr": "'HTML' neyin kısaltmasıdır?",
+            "fr": "Que signifie 'HTML' ?",
+            "es": "¿Qué significa 'HTML'?",
+            "de": "Wofür steht 'HTML'?",
+            "it": "Cosa significa 'HTML'?",
+            "hi": "'HTML' का क्या अर्थ है?",
+            "ru": "Что означает 'HTML'?",
+            "zh": "“HTML”代表什么？",
+            "ja": "「HTML」は何の略ですか？",
+            "ar": "ماذا تعني 'HTML'؟"
+        },
+        "options_texts": {
+            "en": [ "HyperText Markup Language", "HighText Machine Language", "HyperText and Links Markup", "Home Tool Markup Language" ],
+            "tr": [ "HyperText Markup Language (Hiper Metin İşaretleme Dili)", "HighText Machine Language", "HyperText and Links Markup", "Home Tool Markup Language" ],
+            "fr": [ "HyperText Markup Language", "HighText Machine Language", "HyperText and Links Markup", "Home Tool Markup Language" ],
+            "es": [ "HyperText Markup Language", "HighText Machine Language", "HyperText and Links Markup", "Home Tool Markup Language" ],
+            "de": [ "HyperText Markup Language", "HighText Machine Language", "HyperText and Links Markup", "Home Tool Markup Language" ],
+            "it": [ "HyperText Markup Language", "HighText Machine Language", "HyperText and Links Markup", "Home Tool Markup Language" ],
+            "hi": [ "हाइपरटेक्स्ट मार्कअप लैंग्वेज", "हाईटेक्स्ट मशीन लैंग्वेज", "हाइपरटेक्स्ट एंड लिंक्स मार्कअप", "होम टूल मार्कअप लैंग्वेज" ],
+            "ru": [ "HyperText Markup Language (Язык разметки гипертекста)", "HighText Machine Language", "HyperText and Links Markup", "Home Tool Markup Language" ],
+            "zh": [ "超文本标记语言 (HyperText Markup Language)", "HighText Machine Language", "HyperText and Links Markup", "Home Tool Markup Language" ],
+            "ja": [ "ハイパーテキスト・マークアップ・ランゲージ", "ハイテキスト・マシン・ランゲージ", "ハイパーテキスト・アンド・リンクス・マークアップ", "ホーム・ツール・マークアップ・ランゲージ" ],
+            "ar": [ "لغة توصيف النص التشعبي (HyperText Markup Language)", "HighText Machine Language", "HyperText and Links Markup", "Home Tool Markup Language" ]
+        }
+    },
+    {
+        "category": "cinema_tv",
+        "correct_answer_index": 0,
+        "question_texts": {
+            "en": "Who directed the movie 'Avatar' (2009)?",
+            "tr": "'Avatar' (2009) filmini kim yönetti?",
+            "fr": "Qui a réalisé le film 'Avatar' (2009) ?",
+            "es": "¿Quién dirigió la película 'Avatar' (2009)?",
+            "de": "Wer führte Regie beim Film 'Avatar' (2009)?",
+            "it": "Chi ha diretto il film 'Avatar' (2009)?",
+            "hi": "फिल्म 'अवतार' (2009) का निर्देशन किसने किया?",
+            "ru": "Кто снял фильм «Аватар» (2009)?",
+            "zh": "谁执导了电影《阿凡达》(2009)？",
+            "ja": "映画『アバター』(2009) を監督したのは誰ですか？",
+            "ar": "من أخرج فيلم 'أفاتار' (2009)؟"
+        },
+        "options_texts": {
+            "en": [ "James Cameron", "Steven Spielberg", "George Lucas", "Peter Jackson" ],
+            "tr": [ "James Cameron", "Steven Spielberg", "George Lucas", "Peter Jackson" ],
+            "fr": [ "James Cameron", "Steven Spielberg", "George Lucas", "Peter Jackson" ],
+            "es": [ "James Cameron", "Steven Spielberg", "George Lucas", "Peter Jackson" ],
+            "de": [ "James Cameron", "Steven Spielberg", "George Lucas", "Peter Jackson" ],
+            "it": [ "James Cameron", "Steven Spielberg", "George Lucas", "Peter Jackson" ],
+            "hi": [ "जेम्स कैमरून", "स्टीवन स्पीलबर्ग", "जॉर्ज लुकास", "पीटर जैक्सन" ],
+            "ru": [ "Джеймс Кэмерон", "Стивен Спилберг", "Джордж Лукас", "Питер Джексон" ],
+            "zh": [ "詹姆斯·卡梅隆", "史蒂文·斯皮尔伯格", "乔治·卢卡斯", "彼得·杰克逊" ],
+            "ja": [ "ジェームズ・キャメロン", "スティーヴン・スピルバーグ", "ジョージ・ルーカス", "ピーター・ジャクソン" ],
+            "ar": [ "جيمس كاميرون", "ستيفن سبيلبرغ", "جورج لوكاس", "بيتر جاكسون" ]
+        }
+    },
+    {
+        "category": "history",
+        "correct_answer_index": 0,
+        "question_texts": {
+            "en": "Who was the first female Prime Minister of the United Kingdom?",
+            "tr": "Birleşik Krallık'ın ilk kadın başbakanı kimdir?",
+            "fr": "Qui a été la première femme Premier ministre du Royaume-Uni ?",
+            "es": "¿Quién fue la primera mujer Primer Ministra del Reino Unido?",
+            "de": "Wer war die erste Premierministerin des Vereinigten Königreichs?",
+            "it": "Chi è stata la prima donna Primo Ministro del Regno Unito?",
+            "hi": "यूनाइटेड किंगडम की पहली महिला प्रधान मंत्री कौन थीं?",
+            "ru": "Кто была первой женщиной-премьер-министром Великобритании?",
+            "zh": "谁是英国第一位女首相？",
+            "ja": "イギリスの女性初の首相は誰ですか？",
+            "ar": "من كانت أول رئيسة وزراء للمملكة المتحدة؟"
+        },
+        "options_texts": {
+            "en": [ "Margaret Thatcher", "Theresa May", "Indira Gandhi", "Angela Merkel" ],
+            "tr": [ "Margaret Thatcher", "Theresa May", "Indira Gandhi", "Angela Merkel" ],
+            "fr": [ "Margaret Thatcher", "Theresa May", "Indira Gandhi", "Angela Merkel" ],
+            "es": [ "Margaret Thatcher", "Theresa May", "Indira Gandhi", "Angela Merkel" ],
+            "de": [ "Margaret Thatcher", "Theresa May", "Indira Gandhi", "Angela Merkel" ],
+            "it": [ "Margaret Thatcher", "Theresa May", "Indira Gandhi", "Angela Merkel" ],
+            "hi": [ "मार्गरेट थैचर", "थेरेसा मे", "इंदिरा गांधी", "एंजेला मर्केल" ],
+            "ru": [ "Маргарет Тэтчер", "Тереза Мэй", "Индира Ганди", "Ангела Меркель" ],
+            "zh": [ "玛格丽特·撒切尔", "特蕾莎·梅", "英迪拉·甘地", "安格拉·默克尔" ],
+            "ja": [ "マーガレット・サッチャー", "テリーザ・メイ", "インディラ・ガンディー", "アンゲラ・メルケル" ],
+            "ar": [ "مارغريت تاتشر", "تيريزا ماي", "أنديرا غاندي", "أنجيلا ميركل" ]
+        }
+    },
+    {
+        "category": "science",
+        "correct_answer_index": 0,
+        "question_texts": {
+            "en": "Which gas is most abundant in the Earth's atmosphere?",
+            "tr": "Dünya atmosferinde en bol bulunan gaz hangisidir?",
+            "fr": "Quel gaz est le plus abondant dans l'atmosphère terrestre ?",
+            "es": "¿Qué gas es el más abundante en la atmósfera de la Tierra?",
+            "de": "Welches Gas ist in der Erdatmosphäre am häufigsten?",
+            "it": "Quale gas è più abbondante nell'atmosfera terrestre?",
+            "hi": "पृथ्वी के वायुमंडल में कौन सी गैस सबसे प्रचुर मात्रा में है?",
+            "ru": "Какого газа больше всего в атмосфере Земли?",
+            "zh": "地球大气中含量最丰富的气体是什么？",
+            "ja": "地球の大気中に最も多く存在するガスは何ですか？",
+            "ar": "ما هو الغاز الأكثر وفرة في الغلاف الجوي للأرض؟"
+        },
+        "options_texts": {
+            "en": [ "Nitrogen", "Oxygen", "Carbon Dioxide", "Hydrogen" ],
+            "tr": [ "Azot", "Oksijen", "Karbondioksit", "Hidrojen" ],
+            "fr": [ "Azote", "Oxygène", "Dioxyde de carbone", "Hydrogène" ],
+            "es": [ "Nitrógeno", "Oxígeno", "Dióxido de carbono", "Hidrógeno" ],
+            "de": [ "Stickstoff", "Sauerstoff", "Kohlendioxid", "Wasserstoff" ],
+            "it": [ "Azoto", "Ossigeno", "Anidride carbonica", "Idrogeno" ],
+            "hi": [ "नाइट्रोजन", "ऑक्सीजन", "कार्बन डाइऑक्साइड", "हाइड्रोजन" ],
+            "ru": [ "Азот", "Кислород", "Углекислый газ", "Водород" ],
+            "zh": [ "氮气", "氧气", "二氧化碳", "氢气" ],
+            "ja": [ "窒素", "酸素", "二酸化炭素", "水素" ],
+            "ar": [ "النيتروجين", "الأكسجين", "ثاني أكسيد الكربون", "الهيدروجين" ]
+        }
+    },
+    {
+        "category": "art",
+        "correct_answer_index": 0,
+        "question_texts": {
+            "en": "Who painted 'Girl with a Pearl Earring'?",
+            "tr": "'İnci Küpeli Kız' tablosunu kim resmetti?",
+            "fr": "Qui a peint 'La Jeune Fille à la perle' ?",
+            "es": "¿Quién pintó 'La joven de la perla'?",
+            "de": "Wer malte 'Das Mädchen mit dem Perlenohrgehänge'?",
+            "it": "Chi ha dipinto 'La ragazza col turbante' (Ragazza con l'orecchino di perla)?",
+            "hi": "'गर्ल विद अ पर्ल ईयररिंग' किसने पेंट की थी?",
+            "ru": "Кто написал картину «Девушка с жемчужной сережкой»?",
+            "zh": "谁画了《戴珍珠耳环的少女》？",
+            "ja": "「真珠の耳飾りの少女」を描いたのは誰ですか？",
+            "ar": "من رسم لوحة 'الفتاة ذات القرط اللؤلؤي'؟"
+        },
+        "options_texts": {
+            "en": [ "Johannes Vermeer", "Rembrandt", "Vincent van Gogh", "Leonardo da Vinci" ],
+            "tr": [ "Johannes Vermeer", "Rembrandt", "Vincent van Gogh", "Leonardo da Vinci" ],
+            "fr": [ "Johannes Vermeer", "Rembrandt", "Vincent van Gogh", "Léonard de Vinci" ],
+            "es": [ "Johannes Vermeer", "Rembrandt", "Vincent van Gogh", "Leonardo da Vinci" ],
+            "de": [ "Jan Vermeer", "Rembrandt", "Vincent van Gogh", "Leonardo da Vinci" ],
+            "it": [ "Jan Vermeer", "Rembrandt", "Vincent van Gogh", "Leonardo da Vinci" ],
+            "hi": [ "जोहान्स वर्मीर", "रेम्ब्रांट", "विंसेंट वान गॉग", "लियोनार्डो दा विंची" ],
+            "ru": [ "Ян Вермеер", "Рембрандт", "Винсент Ван Гог", "Леонардо да Винчи" ],
+            "zh": [ "约翰内斯·维米尔", "伦勃朗", "文森特·梵高", "列奥纳多·达·芬奇" ],
+            "ja": [ "ヨハネス・フェルメール", "レンブラント", "フィンセント・ファン・ゴッホ", "レオナルド・ダ・ヴィンチ" ],
+            "ar": [ "يوهانس فيرمير", "رامبرانت", "فنسنت فان جوخ", "ليوناردو دافنشي" ]
+        }
+    },
+    {
+        "category": "sports",
+        "correct_answer_index": 0,
+        "question_texts": {
+            "en": "In which sport is the term 'slam dunk' used?",
+            "tr": "'Slam dunk' (smaç) terimi hangi sporda kullanılır?",
+            "fr": "Dans quel sport le terme 'slam dunk' est-il utilisé ?",
+            "es": "¿En qué deporte se utiliza el término 'slam dunk' (mate)?",
+            "de": "In welcher Sportart wird der Begriff 'Slam Dunk' verwendet?",
+            "it": "In quale sport viene usato il termine 'slam dunk' (schiacciata)?",
+            "hi": "'स्लैम डंक' शब्द का प्रयोग किस खेल में किया जाता है?",
+            "ru": "В каком виде спорта используется термин «слэм-данк»?",
+            "zh": "“灌篮”（Slam dunk）一词用于哪项运动？",
+            "ja": "「スラムダンク」という用語はどのスポーツで使われますか？",
+            "ar": "في أي رياضة يُستخدم مصطلح 'سلام دانك' (slam dunk)؟"
+        },
+        "options_texts": {
+            "en": [ "Basketball", "Volleyball", "Tennis", "Soccer" ],
+            "tr": [ "Basketbol", "Voleybol", "Tenis", "Futbol" ],
+            "fr": [ "Basket-ball", "Volley-ball", "Tennis", "Football" ],
+            "es": [ "Baloncesto", "Voleibol", "Tenis", "Fútbol" ],
+            "de": [ "Basketball", "Volleyball", "Tennis", "Fußball" ],
+            "it": [ "Pallacanestro", "Pallavolo", "Tennis", "Calcio" ],
+            "hi": [ "बास्केटबॉल", "वॉलीबॉल", "टेनिस", "फ़ुटबॉल" ],
+            "ru": [ "Баскетбол", "Волейбол", "Теннис", "Футбол" ],
+            "zh": [ "篮球", "排球", "网球", "足球" ],
+            "ja": [ "バスケットボール", "バレーボール", "テニス", "サッカー" ],
+            "ar": [ "كرة السلة", "الكرة الطائرة", "التنس", "كرة القدم" ]
+        }
+    },
+    {
+        "category": "technology",
+        "correct_answer_index": 0,
+        "question_texts": {
+            "en": "Which company produces the iPhone?",
+            "tr": "iPhone'u hangi şirket üretmektedir?",
+            "fr": "Quelle entreprise fabrique l'iPhone ?",
+            "es": "¿Qué compañía fabrica el iPhone?",
+            "de": "Welches Unternehmen stellt das iPhone her?",
+            "it": "Quale azienda produce l'iPhone?",
+            "hi": "iPhone कौन सी कंपनी बनाती है?",
+            "ru": "Какая компания производит iPhone?",
+            "zh": "哪家公司生产iPhone？",
+            "ja": "iPhoneを製造している会社はどこですか？",
+            "ar": "ما هي الشركة التي تصنع الآيفون؟"
+        },
+        "options_texts": {
+            "en": [ "Apple", "Samsung", "Microsoft", "Google" ],
+            "tr": [ "Apple", "Samsung", "Microsoft", "Google" ],
+            "fr": [ "Apple", "Samsung", "Microsoft", "Google" ],
+            "es": [ "Apple", "Samsung", "Microsoft", "Google" ],
+            "de": [ "Apple", "Samsung", "Microsoft", "Google" ],
+            "it": [ "Apple", "Samsung", "Microsoft", "Google" ],
+            "hi": [ "एप्पल", "सैमसंग", "माइक्रोसॉफ्ट", "गूगल" ],
+            "ru": [ "Apple", "Samsung", "Microsoft", "Google" ],
+            "zh": [ "苹果 (Apple)", "三星 (Samsung)", "微软 (Microsoft)", "谷歌 (Google)" ],
+            "ja": [ "アップル", "サムスン", "マイクロソフト", "グーグル" ],
+            "ar": [ "أبل (Apple)", "سامسونج (Samsung)", "مايكروسوفت (Microsoft)", "جوجل (Google)" ]
+        }
+    },
+    {
+        "category": "cinema_tv",
+        "correct_answer_index": 0,
+        "question_texts": {
+            "en": "Which movie franchise features the character Darth Vader?",
+            "tr": "Darth Vader karakteri hangi film serisinde yer alır?",
+            "fr": "Dans quelle franchise de films trouve-t-on le personnage de Dark Vador ?",
+            "es": "¿Qué franquicia cinematográfica presenta al personaje Darth Vader?",
+            "de": "In welcher Filmreihe kommt die Figur Darth Vader vor?",
+            "it": "In quale saga cinematografica appare il personaggio di Darth Vader?",
+            "hi": "डार्थ वाडर (Darth Vader) पात्र किस फिल्म श्रृंखला में है?",
+            "ru": "В какой кинофраншизе есть персонаж Дарт Вейдер?",
+            "zh": "哪部系列电影中有达斯·维达这个角色？",
+            "ja": "ダース・ベイダーというキャラクターが登場する映画シリーズはどれですか？",
+            "ar": "أي سلسلة أفلام تضم شخصية دارث فيدر؟"
+        },
+        "options_texts": {
+            "en": [ "Star Wars", "Star Trek", "The Matrix", "Avatar" ],
+            "tr": [ "Yıldız Savaşları (Star Wars)", "Uzay Yolu (Star Trek)", "Matrix", "Avatar" ],
+            "fr": [ "Star Wars", "Star Trek", "Matrix", "Avatar" ],
+            "es": [ "Star Wars (La Guerra de las Galaxias)", "Star Trek", "Matrix", "Avatar" ],
+            "de": [ "Star Wars", "Star Trek", "Matrix", "Avatar" ],
+            "it": [ "Star Wars (Guerre Stellari)", "Star Trek", "Matrix", "Avatar" ],
+            "hi": [ "स्टार वार्स", "स्टार ट्रेक", "द मैट्रिक्स", "अवतार" ],
+            "ru": [ "Звёздные войны", "Звёздный путь", "Матрица", "Аватар" ],
+            "zh": [ "星球大战", "星际迷航", "黑客帝国", "阿凡达" ],
+            "ja": [ "スター・ウォーズ", "スタートレック", "マトリックス", "アバター" ],
+            "ar": [ "حرب النجوم (Star Wars)", "ستار تريك (Star Trek)", "ماتريكس (The Matrix)", "أفاتار (Avatar)" ]
+        }
     }
 ]
