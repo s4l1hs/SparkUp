@@ -33,6 +33,9 @@ class AppLocalizationsAr extends AppLocalizations {
   String get startNewQuiz => 'ابدأ اختباراً جديداً';
 
   @override
+  String get startWithOneBolt => 'ابدأ بـ 1 ⚡';
+
+  @override
   String get quizFinished => 'انتهى الاختبار!';
 
   @override

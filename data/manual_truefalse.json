@@ -8345,5 +8345,889 @@
             "ar": "أول لعبة فيديو تم صنعها على الإطلاق كانت بونغ."
         },
         "correct_answer": false
+    },
+    {
+        "category": "history",
+        "question": {
+            "en": "The shortest war in history lasted 38 minutes.",
+            "tr": "Tarihteki en kısa savaş 38 dakika sürmüştür.",
+            "fr": "La guerre la plus courte de l'histoire a duré 38 minutes.",
+            "es": "La guerra más corta de la historia duró 38 minutos.",
+            "de": "Der kürzeste Krieg der Geschichte dauerte 38 Minuten.",
+            "it": "La guerra più breve della storia è durata 38 minuti.",
+            "hi": "इतिहास का सबसे छोटा युद्ध 38 मिनट तक चला था।",
+            "ru": "Самая короткая война в истории длилась 38 минут.",
+            "zh": "历史上最短的战争持续了38分钟。",
+            "ja": "歴史上最も短い戦争は38分間続きました。",
+            "ar": "أقصر حرب في التاريخ استمرت 38 دقيقة."
+        },
+        "correct_answer": true
+    },
+    {
+        "category": "nature_animals",
+        "question": {
+            "en": "A group of rhinos is called a crash.",
+            "tr": "Gergedan sürüsüne İngilizcede 'crash' denir.",
+            "fr": "Un groupe de rhinocéros est appelé un 'crash'.",
+            "es": "A un grupo de rinocerontes se le llama 'crash'.",
+            "de": "Eine Gruppe von Nashörnern wird als 'Crash' bezeichnet.",
+            "it": "Un gruppo di rinoceronti è chiamato 'crash'.",
+            "hi": "गेंडों के समूह को 'क्रैश' (crash) कहा जाता है।",
+            "ru": "Группу носорогов называют «крэш» (crash).",
+            "zh": "一群犀牛被称为“crash”。",
+            "ja": "サイの群れは「クラッシュ（crash）」と呼ばれます。",
+            "ar": "تُسمى مجموعة وحيد القرن بـ 'crash'."
+        },
+        "correct_answer": true
+    },
+    {
+        "category": "general_culture",
+        "question": {
+            "en": "The dot over the letter 'i' is called a tittle.",
+            "tr": "'i' harfinin üzerindeki noktaya 'tittle' denir.",
+            "fr": "Le point sur la lettre 'i' s'appelle un 'tittle'.",
+            "es": "El punto sobre la letra 'i' se llama 'tittle'.",
+            "de": "Der Punkt über dem Buchstaben 'i' wird 'Tittle' genannt.",
+            "it": "Il punto sulla lettera 'i' è chiamato 'tittle'.",
+            "hi": "'i' अक्षर के ऊपर के बिंदु को 'टिटल' (tittle) कहा जाता है।",
+            "ru": "Точка над буквой «i» называется «tittle».",
+            "zh": "字母“i”上面的点叫做“tittle”。",
+            "ja": "文字「i」の上の点は「ティトル（tittle）」と呼ばれます。",
+            "ar": "تسمى النقطة فوق الحرف 'i' بـ 'tittle'."
+        },
+        "correct_answer": true
+    },
+    {
+        "category": "space_astronomy",
+        "question": {
+            "en": "Venus rotates clockwise.",
+            "tr": "Venüs saat yönünde döner.",
+            "fr": "Vénus tourne dans le sens des aiguilles d'une montre.",
+            "es": "Venus gira en el sentido de las agujas del reloj.",
+            "de": "Die Venus dreht sich im Uhrzeigersinn.",
+            "it": "Venere ruota in senso orario.",
+            "hi": "शुक्र ग्रह घड़ी की दिशा में (clockwise) घूमता है।",
+            "ru": "Венера вращается по часовой стрелке.",
+            "zh": "金星顺时针旋转。",
+            "ja": "金星は時計回りに自転します。",
+            "ar": "كوكب الزهرة يدور في اتجاه عقارب الساعة."
+        },
+        "correct_answer": true
+    },
+    {
+        "category": "science",
+        "question": {
+            "en": "Human bones are composed of 50% water.",
+            "tr": "İnsan kemikleri %50 sudan oluşur.",
+            "fr": "Les os humains sont composés à 50 % d'eau.",
+            "es": "Los huesos humanos están compuestos por un 50% de agua.",
+            "de": "Menschliche Knochen bestehen zu 50 % aus Wasser.",
+            "it": "Le ossa umane sono composte per il 50% da acqua.",
+            "hi": "मानव हड्डियाँ 50% पानी से बनी होती हैं।",
+            "ru": "Человеческие кости состоят на 50% из воды.",
+            "zh": "人的骨头由50%的水组成。",
+            "ja": "人間の骨は50％が水分で構成されています。",
+            "ar": "تتكون عظام الإنسان من 50٪ ماء."
+        },
+        "correct_answer": false
+    },
+    {
+        "category": "music",
+        "question": {
+            "en": "The first video played on MTV was 'Video Killed the Radio Star'.",
+            "tr": "MTV'de yayınlanan ilk video 'Video Killed the Radio Star' idi.",
+            "fr": "La première vidéo diffusée sur MTV était 'Video Killed the Radio Star'.",
+            "es": "El primer video reproducido en MTV fue 'Video Killed the Radio Star'.",
+            "de": "Das erste auf MTV gespielte Video war 'Video Killed the Radio Star'.",
+            "it": "Il primo video trasmesso su MTV è stato 'Video Killed the Radio Star'.",
+            "hi": "एमटीवी पर चलाया गया पहला वीडियो 'वीडियो किल्ड द रेडियो स्टार' था।",
+            "ru": "Первым видео, показанным на MTV, было «Video Killed the Radio Star».",
+            "zh": "MTV播放的第一个视频是《Video Killed the Radio Star》。",
+            "ja": "MTVで最初に流れたビデオは「ラジオ・スターの悲劇（Video Killed the Radio Star）」でした。",
+            "ar": "كان أول فيديو تم تشغيله على قناة MTV هو 'Video Killed the Radio Star'."
+        },
+        "correct_answer": true
+    },
+    {
+        "category": "sports",
+        "question": {
+            "en": "Brazil is the only country to have played in every World Cup.",
+            "tr": "Brezilya, her Dünya Kupası'nda oynamış tek ülkedir.",
+            "fr": "Le Brésil est le seul pays à avoir participé à toutes les Coupes du monde.",
+            "es": "Brasil es el único país que ha jugado en todas las Copas del Mundo.",
+            "de": "Brasilien ist das einzige Land, das an jeder Weltmeisterschaft teilgenommen hat.",
+            "it": "Il Brasile è l'unico paese ad aver giocato in ogni Coppa del Mondo.",
+            "hi": "ब्राजील एकमात्र ऐसा देश है जो हर विश्व कप में खेला है।",
+            "ru": "Бразилия — единственная страна, участвовавшая в каждом чемпионате мира.",
+            "zh": "巴西是唯一参加过每届世界杯的国家。",
+            "ja": "ブラジルはすべてのワールドカップに出場した唯一の国です。",
+            "ar": "البرازيل هي الدولة الوحيدة التي لعبت في كل نهائيات كأس العالم."
+        },
+        "correct_answer": true
+    },
+    {
+        "category": "technology",
+        "question": {
+            "en": "C++ is an object-oriented programming language.",
+            "tr": "C++, nesne yönelimli bir programlama dilidir.",
+            "fr": "C++ est un langage de programmation orienté objet.",
+            "es": "C++ es un lenguaje de programación orientado a objetos.",
+            "de": "C++ ist eine objektorientierte Programmiersprache.",
+            "it": "C++ è un linguaggio di programmazione orientato agli oggetti.",
+            "hi": "C++ एक ऑब्जेक्ट-ओरिएंटेड प्रोग्रामिंग लैंग्वेज है।",
+            "ru": "C++ — это объектно-ориентированный язык программирования.",
+            "zh": "C++是一种面向对象的编程语言。",
+            "ja": "C++はオブジェクト指向プログラミング言語です。",
+            "ar": "C++ هي لغة برمجة كائنية التوجه."
+        },
+        "correct_answer": true
+    },
+    {
+        "category": "geography_travel",
+        "question": {
+            "en": "The capital of Iceland is Reykjavik.",
+            "tr": "İzlanda'nın başkenti Reykjavik'tir.",
+            "fr": "La capitale de l'Islande est Reykjavik.",
+            "es": "La capital de Islandia es Reikiavik.",
+            "de": "Die Hauptstadt von Island ist Reykjavik.",
+            "it": "La capitale dell'Islanda è Reykjavik.",
+            "hi": "आइसलैंड की राजधानी रेकजाविक है।",
+            "ru": "Столица Исландии — Рейкьявик.",
+            "zh": "冰岛的首都是雷克雅未克。",
+            "ja": "アイスランドの首都はレイキャビクです。",
+            "ar": "عاصمة أيسلندا هي ريكيافيك."
+        },
+        "correct_answer": true
+    },
+    {
+        "category": "cinema_tv",
+        "question": {
+            "en": "Walt Disney has won more Academy Awards than anyone else.",
+            "tr": "Walt Disney, herkesten daha fazla Akademi Ödülü kazanmıştır.",
+            "fr": "Walt Disney a remporté plus d'Oscars que quiconque.",
+            "es": "Walt Disney ha ganado más premios de la Academia que nadie.",
+            "de": "Walt Disney hat mehr Oscars gewonnen als jeder andere.",
+            "it": "Walt Disney ha vinto più premi Oscar di chiunque altro.",
+            "hi": "वॉल्ट डिज़नी ने किसी भी अन्य की तुलना में अधिक अकादमी पुरस्कार जीते हैं।",
+            "ru": "Уолт Дисней выиграл больше премий Оскар, чем кто-либо другой.",
+            "zh": "华特·迪士尼获得的奥斯卡奖比其他任何人都多。",
+            "ja": "ウォルト・ディズニーは誰よりも多くのアカデミー賞を受賞しています。",
+            "ar": "فاز والت ديزني بجوائز أوسكار أكثر من أي شخص آخر."
+        },
+        "correct_answer": true
+    },
+    {
+        "category": "science",
+        "question": {
+            "en": "Electrons are larger than protons.",
+            "tr": "Elektronlar protonlardan daha büyüktür.",
+            "fr": "Les électrons sont plus gros que les protons.",
+            "es": "Los electrones son más grandes que los protones.",
+            "de": "Elektronen sind größer als Protonen.",
+            "it": "Gli elettroni sono più grandi dei protoni.",
+            "hi": "इलेक्ट्रॉन प्रोटॉन से बड़े होते हैं।",
+            "ru": "Электроны больше протонов.",
+            "zh": "电子比质子大。",
+            "ja": "電子は陽子よりも大きいです。",
+            "ar": "الإلكترونات أكبر من البروتونات."
+        },
+        "correct_answer": false
+    },
+    {
+        "category": "cinema_tv",
+        "question": {
+            "en": "The 'Lord of the Rings' movies were filmed in New Zealand.",
+            "tr": "'Yüzüklerin Efendisi' filmleri Yeni Zelanda'da çekildi.",
+            "fr": "Les films 'Le Seigneur des Anneaux' ont été tournés en Nouvelle-Zélande.",
+            "es": "Las películas de 'El Señor de los Anillos' fueron filmadas en Nueva Zelanda.",
+            "de": "Die 'Herr der Ringe'-Filme wurden in Neuseeland gedreht.",
+            "it": "I film de 'Il Signore degli Anelli' sono stati girati in Nuova Zelanda.",
+            "hi": "'द लॉर्ड ऑफ द रिंग्स' फिल्में न्यूजीलैंड में फिल्माई गई थीं।",
+            "ru": "Фильмы «Властелин колец» снимались в Новой Зеландии.",
+            "zh": "电影《指环王》是在新西兰拍摄的。",
+            "ja": "映画『ロード・オブ・ザ・リング』はニュージーランドで撮影されました。",
+            "ar": "تم تصوير أفلام 'سيد الخواتم' في نيوزيلندا."
+        },
+        "correct_answer": true
+    },
+    {
+        "category": "nature_animals",
+        "question": {
+            "en": "Polar bears are found in Antarctica.",
+            "tr": "Kutup ayıları Antarktika'da bulunur.",
+            "fr": "Les ours polaires se trouvent en Antarctique.",
+            "es": "Los osos polares se encuentran en la Antártida.",
+            "de": "Eisbären gibt es in der Antarktis.",
+            "it": "Gli orsi polari si trovano in Antartide.",
+            "hi": "ध्रुवीय भालू अंटार्कटिका में पाए जाते हैं।",
+            "ru": "Белые медведи обитают в Антарктиде.",
+            "zh": "北极熊生活在南极洲。",
+            "ja": "ホッキョクグマは南極に生息しています。",
+            "ar": "توجد الدببة القطبية في القارة القطبية الجنوبية."
+        },
+        "correct_answer": false
+    },
+    {
+        "category": "literature",
+        "question": {
+            "en": "The novel 'Don Quixote' was written by Miguel de Cervantes.",
+            "tr": "'Don Kişot' romanı Miguel de Cervantes tarafından yazılmıştır.",
+            "fr": "Le roman 'Don Quichotte' a été écrit par Miguel de Cervantes.",
+            "es": "La novela 'Don Quijote' fue escrita por Miguel de Cervantes.",
+            "de": "Der Roman 'Don Quijote' wurde von Miguel de Cervantes geschrieben.",
+            "it": "Il romanzo 'Don Chisciotte' è stato scritto da Miguel de Cervantes.",
+            "hi": "उपन्यास 'डॉन क्विक्सोट' मिगुएल डी सर्वेंटीस द्वारा लिखा गया था।",
+            "ru": "Роман «Дон Кихот» был написан Мигелем де Сервантесом.",
+            "zh": "小说《堂吉诃德》是由米格尔·德·塞万提斯创作的。",
+            "ja": "小説『ドン・キホーテ』はミゲル・デ・セルバンテスによって書かれました。",
+            "ar": "كتب رواية 'دون كيشوت' ميغيل دي ثيربانتس."
+        },
+        "correct_answer": true
+    },
+    {
+        "category": "technology",
+        "question": {
+            "en": "The first smartphone was the iPhone.",
+            "tr": "İlk akıllı telefon iPhone'du.",
+            "fr": "Le premier smartphone était l'iPhone.",
+            "es": "El primer teléfono inteligente fue el iPhone.",
+            "de": "Das erste Smartphone war das iPhone.",
+            "it": "Il primo smartphone è stato l'iPhone.",
+            "hi": "पहला स्मार्टफोन iPhone था।",
+            "ru": "Первым смартфоном был iPhone.",
+            "zh": "第一款智能手机是iPhone。",
+            "ja": "最初のスマートフォンはiPhoneでした。",
+            "ar": "كان أول هاتف ذكي هو iPhone."
+        },
+        "correct_answer": false
+    },
+    {
+        "category": "fun_facts",
+        "question": {
+            "en": "Wombat poop is cube-shaped.",
+            "tr": "Vombat dışkısı küp şeklindedir.",
+            "fr": "Les crottes de wombat sont en forme de cube.",
+            "es": "La caca de wombat tiene forma de cubo.",
+            "de": "Wombat-Kot ist würfelförmig.",
+            "it": "La cacca di vombato è a forma di cubo.",
+            "hi": "वॉम्बैट का मल घन (cube) के आकार का होता है।",
+            "ru": "Фекалии вомбата имеют кубическую форму.",
+            "zh": "袋熊的粪便是立方体形状的。",
+            "ja": "ウォンバットの糞は立方体の形をしています。",
+            "ar": "فضلات الومبت مكعبة الشكل."
+        },
+        "correct_answer": true
+    },
+    {
+        "category": "music",
+        "question": {
+            "en": "The Beatles consisted of five members.",
+            "tr": "The Beatles beş üyeden oluşuyordu.",
+            "fr": "Les Beatles étaient composés de cinq membres.",
+            "es": "Los Beatles estaban formados por cinco miembros.",
+            "de": "Die Beatles bestanden aus fünf Mitgliedern.",
+            "it": "I Beatles erano composti da cinque membri.",
+            "hi": "बीटल्स में पांच सदस्य थे।",
+            "ru": "Группа The Beatles состояла из пяти участников.",
+            "zh": "披头士乐队由五名成员组成。",
+            "ja": "ビートルズは5人のメンバーで構成されていました。",
+            "ar": "كانت فرقة البيتلز تتكون من خمسة أعضاء."
+        },
+        "correct_answer": false
+    },
+    {
+        "category": "architecture",
+        "question": {
+            "en": "The Sydney Opera House is located in Australia.",
+            "tr": "Sidney Opera Binası Avustralya'da bulunur.",
+            "fr": "L'Opéra de Sydney est situé en Australie.",
+            "es": "La Ópera de Sídney se encuentra en Australia.",
+            "de": "Das Opernhaus von Sydney befindet sich in Australien.",
+            "it": "Il Teatro dell'Opera di Sydney si trova in Australia.",
+            "hi": "सिडनी ओपेरा हाउस ऑस्ट्रेलिया में स्थित है।",
+            "ru": "Сиднейский оперный театр находится в Австралии.",
+            "zh": "悉尼歌剧院位于澳大利亚。",
+            "ja": "シドニー・オペラハウスはオーストラリアにあります。",
+            "ar": "تقع دار أوبرا سيدني في أستراليا."
+        },
+        "correct_answer": true
+    },
+    {
+        "category": "video_games",
+        "question": {
+            "en": "Mario first appeared in the game 'Donkey Kong'.",
+            "tr": "Mario ilk olarak 'Donkey Kong' oyununda ortaya çıktı.",
+            "fr": "Mario est apparu pour la première fois dans le jeu 'Donkey Kong'.",
+            "es": "Mario apareció por primera vez en el juego 'Donkey Kong'.",
+            "de": "Mario erschien zuerst im Spiel 'Donkey Kong'.",
+            "it": "Mario è apparso per la prima volta nel gioco 'Donkey Kong'.",
+            "hi": "मारियो सबसे पहले 'डंकी काँग' गेम में दिखाई दिया था।",
+            "ru": "Марио впервые появился в игре «Donkey Kong».",
+            "zh": "马里奥首次出现在游戏《大金刚》中。",
+            "ja": "マリオはゲーム「ドンキーコング」で初登場しました。",
+            "ar": "ظهر ماريو لأول مرة في لعبة 'دونكي كونغ'."
+        },
+        "correct_answer": true
+    },
+    {
+        "category": "general_culture",
+        "question": {
+            "en": "Oktoberfest is a festival that originated in Germany.",
+            "tr": "Oktoberfest, Almanya'da ortaya çıkan bir festivaldir.",
+            "fr": "L'Oktoberfest est un festival originaire d'Allemagne.",
+            "es": "El Oktoberfest es un festival que se originó en Alemania.",
+            "de": "Das Oktoberfest ist ein Fest, das seinen Ursprung in Deutschland hat.",
+            "it": "L'Oktoberfest è un festival nato in Germania.",
+            "hi": "ओकट्रैफेस्ट (Oktoberfest) एक त्योहार है जिसकी उत्पत्ति जर्मनी में हुई थी।",
+            "ru": "Октоберфест — это фестиваль, зародившийся в Германии.",
+            "zh": "慕尼黑啤酒节是一个起源于德国的节日。",
+            "ja": "オクトーバーフェストはドイツ発祥の祭りです。",
+            "ar": "مهرجان أكتوبر هو مهرجان نشأ في ألمانيا."
+        },
+        "correct_answer": true
+    },
+    {
+        "category": "sports",
+        "question": {
+            "en": "In golf, a 'birdie' is one stroke under par.",
+            "tr": "Golfte 'birdie', par'ın bir vuruş altıdır.",
+            "fr": "Au golf, un 'birdie' est un coup sous le par.",
+            "es": "En golf, un 'birdie' es un golpe bajo par.",
+            "de": "Beim Golf ist ein 'Birdie' ein Schlag unter Par.",
+            "it": "Nel golf, un 'birdie' è un colpo sotto il par.",
+            "hi": "गोल्फ में, 'बर्डी' पार (par) से एक स्ट्रोक कम होता है।",
+            "ru": "В гольфе «берди» — это на один удар меньше пара.",
+            "zh": "在高尔夫球中，“小鸟球”（birdie）是指低于标准杆一杆。",
+            "ja": "ゴルフでは、「バーディー」はパーより1打少ないことです。",
+            "ar": "في الغولف، 'بيردي' (birdie) هي ضربة واحدة تحت المعدل (par)."
+        },
+        "correct_answer": true
+    },
+    {
+        "category": "health_fitness",
+        "question": {
+            "en": "Yoga originated in India.",
+            "tr": "Yoga Hindistan'da ortaya çıkmıştır.",
+            "fr": "Le yoga est originaire d'Inde.",
+            "es": "El yoga se originó en la India.",
+            "de": "Yoga hat seinen Ursprung in Indien.",
+            "it": "Lo yoga ha avuto origine in India.",
+            "hi": "योग की उत्पत्ति भारत में हुई थी।",
+            "ru": "Йога зародилась в Индии.",
+            "zh": "瑜伽起源于印度。",
+            "ja": "ヨガはインド発祥です。",
+            "ar": "نشأت اليوجا في الهند."
+        },
+        "correct_answer": true
+    },
+    {
+        "category": "science",
+        "question": {
+            "en": "Sound cannot travel through a vacuum.",
+            "tr": "Ses boşlukta (vakumda) yayılmaz.",
+            "fr": "Le son ne peut pas voyager dans le vide.",
+            "es": "El sonido no puede viajar a través del vacío.",
+            "de": "Schall kann sich im Vakuum nicht ausbreiten.",
+            "it": "Il suono non può viaggiare nel vuoto.",
+            "hi": "ध्वनि निर्वात में यात्रा नहीं कर सकती।",
+            "ru": "Звук не может распространяться в вакууме.",
+            "zh": "声音无法在真空中传播。",
+            "ja": "音は真空中を伝わることができません。",
+            "ar": "لا يمكن للصوت أن ينتقل عبر الفراغ."
+        },
+        "correct_answer": true
+    },
+    {
+        "category": "nature_animals",
+        "question": {
+            "en": "Bats are completely blind.",
+            "tr": "Yarasalar tamamen kördür.",
+            "fr": "Les chauves-souris sont complètement aveugles.",
+            "es": "Los murciélagos son completamente ciegos.",
+            "de": "Fledermäuse sind vollständig blind.",
+            "it": "I pipistrelli sono completamente ciechi.",
+            "hi": "चमगादड़ पूरी तरह से अंधे होते हैं।",
+            "ru": "Летучие мыши полностью слепы.",
+            "zh": "蝙蝠是完全失明的。",
+            "ja": "コウモリは完全に盲目です。",
+            "ar": "الخفافيش عمياء تمامًا."
+        },
+        "correct_answer": false
+    },
+    {
+        "category": "geography_travel",
+        "question": {
+            "en": "Africa is the largest continent in the world.",
+            "tr": "Afrika dünyanın en büyük kıtasıdır.",
+            "fr": "L'Afrique est le plus grand continent du monde.",
+            "es": "África es el continente más grande del mundo.",
+            "de": "Afrika ist der größte Kontinent der Welt.",
+            "it": "L'Africa è il continente più grande del mondo.",
+            "hi": "अफ्रीका दुनिया का सबसे बड़ा महाद्वीप है।",
+            "ru": "Африка — самый большой континент в мире.",
+            "zh": "非洲是世界上最大的洲。",
+            "ja": "アフリカは世界で最も大きな大陸です。",
+            "ar": "أفريقيا هي أكبر قارة في العالم."
+        },
+        "correct_answer": false
+    },
+    {
+        "category": "technology",
+        "question": {
+            "en": "HTTP stands for HyperText Transfer Protocol.",
+            "tr": "HTTP, 'HyperText Transfer Protocol' ifadesinin kısaltmasıdır.",
+            "fr": "HTTP signifie HyperText Transfer Protocol.",
+            "es": "HTTP significa Protocolo de Transferencia de Hipertexto.",
+            "de": "HTTP steht für HyperText Transfer Protocol.",
+            "it": "HTTP sta per HyperText Transfer Protocol.",
+            "hi": "HTTP का मतलब हाइपरटेक्स्ट ट्रांसफर प्रोटोकॉल है।",
+            "ru": "HTTP расшифровывается как протокол передачи гипертекста.",
+            "zh": "HTTP代表超文本传输协议。",
+            "ja": "HTTPはHyperText Transfer Protocolの略です。",
+            "ar": "HTTP تعني بروتوكول نقل النص التشعبي."
+        },
+        "correct_answer": true
+    },
+    {
+        "category": "music",
+        "question": {
+            "en": "A standard violin has four strings.",
+            "tr": "Standart bir kemanın dört teli vardır.",
+            "fr": "Un violon standard a quatre cordes.",
+            "es": "Un violín estándar tiene cuatro cuerdas.",
+            "de": "Eine Standardgeige hat vier Saiten.",
+            "it": "Un violino standard ha quattro corde.",
+            "hi": "एक मानक वायलिन में चार तार होते हैं।",
+            "ru": "У стандартной скрипки четыре струны.",
+            "zh": "标准小提琴有四根弦。",
+            "ja": "標準的なヴァイオリンには4本の弦があります。",
+            "ar": "الكمان القياسي له أربعة أوتار."
+        },
+        "correct_answer": true
+    },
+    {
+        "category": "sports",
+        "question": {
+            "en": "A regulation game of baseball has nine innings.",
+            "tr": "Nizami bir beyzbol maçı dokuz devreden (inning) oluşur.",
+            "fr": "Un match de baseball réglementaire compte neuf manches.",
+            "es": "Un juego reglamentario de béisbol tiene nueve entradas.",
+            "de": "Ein reguläres Baseballspiel hat neun Innings.",
+            "it": "Una partita regolamentare di baseball ha nove inning.",
+            "hi": "बेसबॉल के एक नियमित खेल में नौ पारियां होती हैं।",
+            "ru": "В регламентированном бейсбольном матче девять иннингов.",
+            "zh": "一场正式的棒球比赛有九局。",
+            "ja": "野球の正規の試合は9回まであります。",
+            "ar": "تتكون لعبة البيسبول الرسمية من تسعة أشواط."
+        },
+        "correct_answer": true
+    },
+    {
+        "category": "space_astronomy",
+        "question": {
+            "en": "Mars is known as the Red Planet.",
+            "tr": "Mars, Kızıl Gezegen olarak bilinir.",
+            "fr": "Mars est connue sous le nom de Planète rouge.",
+            "es": "Marte es conocido como el Planeta Rojo.",
+            "de": "Mars ist als der Rote Planet bekannt.",
+            "it": "Marte è conosciuto come il Pianeta Rosso.",
+            "hi": "मंगल को लाल ग्रह के रूप में जाना जाता है।",
+            "ru": "Марс известен как Красная планета.",
+            "zh": "火星被称为红色星球。",
+            "ja": "火星は赤い惑星として知られています。",
+            "ar": "يُعرف المريخ بالكوكب الأحمر."
+        },
+        "correct_answer": true
+    },
+    {
+        "category": "general_culture",
+        "question": {
+            "en": "The word 'sushi' literally means 'raw fish'.",
+            "tr": "'Suşi' kelimesi kelime anlamı olarak 'çiğ balık' demektir.",
+            "fr": "Le mot 'sushi' signifie littéralement 'poisson cru'.",
+            "es": "La palabra 'sushi' significa literalmente 'pescado crudo'.",
+            "de": "Das Wort 'Sushi' bedeutet wörtlich 'roher Fisch'.",
+            "it": "La parola 'sushi' significa letteralmente 'pesce crudo'.",
+            "hi": "'सुशी' शब्द का शाब्दिक अर्थ 'कच्ची मछली' है।",
+            "ru": "Слово «суши» буквально означает «сырая рыба».",
+            "zh": "“寿司”这个词的字面意思是“生鱼”。",
+            "ja": "「寿司」という言葉は文字通り「生魚」を意味します。",
+            "ar": "كلمة 'سوشي' تعني حرفيًا 'السمك النيئ'."
+        },
+        "correct_answer": false
+    },
+    {
+        "category": "history",
+        "question": {
+            "en": "The Victorian era is named after Queen Victoria.",
+            "tr": "Viktorya dönemi adını Kraliçe Victoria'dan almıştır.",
+            "fr": "L'époque victorienne tire son nom de la reine Victoria.",
+            "es": "La era victoriana lleva el nombre de la reina Victoria.",
+            "de": "Das viktorianische Zeitalter ist nach Königin Victoria benannt.",
+            "it": "L'epoca vittoriana prende il nome dalla regina Vittoria.",
+            "hi": "विक्टोरियन युग का नाम महारानी विक्टोरिया के नाम पर रखा गया है।",
+            "ru": "Викторианская эпоха названа в честь королевы Виктории.",
+            "zh": "维多利亚时代是以维多利亚女王的名字命名的。",
+            "ja": "ヴィクトリア朝はヴィクトリア女王にちなんで名付けられました。",
+            "ar": "سمي العصر الفيكتوري نسبة إلى الملكة فيكتوريا."
+        },
+        "correct_answer": true
+    },
+    {
+        "category": "art",
+        "question": {
+            "en": "Salvador Dalí painted 'The Persistence of Memory'.",
+            "tr": "'Belleğin Azmi' (Eriyen Saatler) tablosunu Salvador Dalí yapmıştır.",
+            "fr": "Salvador Dalí a peint 'La Persistance de la mémoire'.",
+            "es": "Salvador Dalí pintó 'La persistencia de la memoria'.",
+            "de": "Salvador Dalí malte 'Die Beständigkeit der Erinnerung'.",
+            "it": "Salvador Dalí ha dipinto 'La persistenza della memoria'.",
+            "hi": "सल्वाडोर डाली ने 'द पर्सिस्टेंस ऑफ मेमोरी' पेंटिंग बनाई थी।",
+            "ru": "Сальвадор Дали написал картину «Постоянство памяти».",
+            "zh": "萨尔瓦多·达利创作了《记忆的永恒》。",
+            "ja": "サルバドール・ダリは『記憶の固執』を描きました。",
+            "ar": "رسم سلفادور دالي لوحة 'إصرار الذاكرة'."
+        },
+        "correct_answer": true
+    },
+    {
+        "category": "history",
+        "question": {
+            "en": "The Titanic carried enough lifeboats for all passengers.",
+            "tr": "Titanic, tüm yolcular için yeterli cankurtaran filikası taşıyordu.",
+            "fr": "Le Titanic transportait suffisamment de canots de sauvetage pour tous les passagers.",
+            "es": "El Titanic llevaba suficientes botes salvavidas para todos los pasajeros.",
+            "de": "Die Titanic hatte genug Rettungsboote für alle Passagiere an Bord.",
+            "it": "Il Titanic aveva abbastanza scialuppe di salvataggio per tutti i passeggeri.",
+            "hi": "टाइटैनिक में सभी यात्रियों के लिए पर्याप्त जीवनरक्षक नौकाएँ थीं।",
+            "ru": "На «Титанике» было достаточно спасательных шлюпок для всех пассажиров.",
+            "zh": "泰坦尼克号携带了足够的救生艇供所有乘客使用。",
+            "ja": "タイタニック号には全乗客分の救命ボートが積まれていました。",
+            "ar": "كانت السفينة تيتانيك تحمل قوارب نجاة كافية لجميع الركاب."
+        },
+        "correct_answer": false
+    },
+    {
+        "category": "science",
+        "question": {
+            "en": "Sound travels faster in warm air than in cold air.",
+            "tr": "Ses, sıcak havada soğuk havadan daha hızlı yayılır.",
+            "fr": "Le son se propage plus vite dans l'air chaud que dans l'air froid.",
+            "es": "El sonido viaja más rápido en el aire caliente que en el aire frío.",
+            "de": "Schall breitet sich in warmer Luft schneller aus als in kalter Luft.",
+            "it": "Il suono viaggia più velocemente nell'aria calda che in quella fredda.",
+            "hi": "ध्वनि ठंडी हवा की तुलना में गर्म हवा में तेजी से चलती है।",
+            "ru": "Звук распространяется в теплом воздухе быстрее, чем в холодном.",
+            "zh": "声音在热空气中的传播速度比在冷空气中快。",
+            "ja": "音は冷たい空気中よりも暖かい空気中の方が速く伝わります。",
+            "ar": "ينتقل الصوت في الهواء الدافئ بشكل أسرع منه في الهواء البارد."
+        },
+        "correct_answer": true
+    },
+    {
+        "category": "sports",
+        "question": {
+            "en": "A standard game of bowling consists of 10 frames.",
+            "tr": "Standart bir bovling oyunu 10 kareden (frame) oluşur.",
+            "fr": "Une partie standard de bowling se compose de 10 carreaux.",
+            "es": "Un juego estándar de bolos consta de 10 entradas.",
+            "de": "Ein Standard-Bowling-Spiel besteht aus 10 Frames.",
+            "it": "Una partita standard di bowling è composta da 10 frame.",
+            "hi": "बॉलिंग के एक मानक खेल में 10 फ्रेम होते हैं।",
+            "ru": "Стандартная игра в боулинг состоит из 10 фреймов.",
+            "zh": "一局标准的保龄球比赛包含10局。",
+            "ja": "ボウリングの標準的なゲームは10フレームで構成されます。",
+            "ar": "تتكون لعبة البولينج القياسية من 10 إطارات."
+        },
+        "correct_answer": true
+    },
+    {
+        "category": "cinema_tv",
+        "question": {
+            "en": "The Wizard of Oz was the very first color movie.",
+            "tr": "Oz Büyücüsü, yapılan ilk renkli filmdir.",
+            "fr": "Le Magicien d'Oz a été le tout premier film en couleur.",
+            "es": "El Mago de Oz fue la primera película en color.",
+            "de": "Der Zauberer von Oz war der allererste Farbfilm.",
+            "it": "Il Mago di Oz è stato il primissimo film a colori.",
+            "hi": "विज़ार्ड ऑफ़ ओज़ (The Wizard of Oz) पहली रंगीन फिल्म थी।",
+            "ru": "«Волшебник страны Оз» был самым первым цветным фильмом.",
+            "zh": "《绿野仙踪》是第一部彩色电影。",
+            "ja": "『オズの魔法使』は史上初のカラー映画でした。",
+            "ar": "كان فيلم 'ساحر أوز' هو أول فيلم ملون على الإطلاق."
+        },
+        "correct_answer": false
+    },
+    {
+        "category": "music",
+        "question": {
+            "en": "The flute is considered a woodwind instrument.",
+            "tr": "Flüt, bir tahta nefesli çalgı olarak kabul edilir.",
+            "fr": "La flûte est considérée comme un instrument à vent de la famille des bois.",
+            "es": "La flauta se considera un instrumento de viento-madera.",
+            "de": "Die Flöte gilt als Holzblasinstrument.",
+            "it": "Il flauto è considerato uno strumento a fiato.",
+            "hi": "बांसुरी को काष्ठ वाद्य (woodwind instrument) माना जाता है।",
+            "ru": "Флейта считается деревянным духовым инструментом.",
+            "zh": "长笛被认为是一种木管乐器。",
+            "ja": "フルートは木管楽器とみなされます。",
+            "ar": "يعتبر الفلوت آلة نفخ خشبية."
+        },
+        "correct_answer": true
+    },
+    {
+        "category": "nature_animals",
+        "question": {
+            "en": "Sharks have a skeleton made of cartilage, not bone.",
+            "tr": "Köpekbalıklarının iskeleti kemikten değil kıkırdaktan oluşur.",
+            "fr": "Les requins ont un squelette fait de cartilage, pas d'os.",
+            "es": "Los tiburones tienen un esqueleto hecho de cartílago, no de hueso.",
+            "de": "Haie haben ein Skelett aus Knorpel, nicht aus Knochen.",
+            "it": "Gli squali hanno uno scheletro fatto di cartilagine, non di ossa.",
+            "hi": "शार्क का कंकाल हड्डी का नहीं, बल्कि उपास्थि (cartilage) का बना होता है।",
+            "ru": "Скелет акул состоит из хрящей, а не из костей.",
+            "zh": "鲨鱼的骨架是由软骨而不是骨头组成的。",
+            "ja": "サメの骨格は骨ではなく軟骨でできています。",
+            "ar": "تمتلك أسماك القرش هيكلًا عظميًا مصنوعًا من الغضاريف وليس العظام."
+        },
+        "correct_answer": true
+    },
+    {
+        "category": "geography_travel",
+        "question": {
+            "en": "The Atlantic Ocean is the largest ocean in the world.",
+            "tr": "Atlas Okyanusu dünyanın en büyük okyanusudur.",
+            "fr": "L'océan Atlantique est le plus grand océan du monde.",
+            "es": "El Océano Atlántico es el océano más grande del mundo.",
+            "de": "Der Atlantische Ozean ist der größte Ozean der Welt.",
+            "it": "L'Oceano Atlantico è l'oceano più grande del mondo.",
+            "hi": "अटलांटिक महासागर दुनिया का सबसे बड़ा महासागर है।",
+            "ru": "Атлантический океан — самый большой океан в мире.",
+            "zh": "大西洋是世界上最大的海洋。",
+            "ja": "大西洋は世界最大の海洋です。",
+            "ar": "المحيط الأطلسي هو أكبر محيط في العالم."
+        },
+        "correct_answer": false
+    },
+    {
+        "category": "mythology",
+        "question": {
+            "en": "In Greek mythology, Poseidon is the god of the sea.",
+            "tr": "Yunan mitolojisinde Poseidon deniz tanrısıdır.",
+            "fr": "Dans la mythologie grecque, Poséidon est le dieu de la mer.",
+            "es": "En la mitología griega, Poseidón es el dios del mar.",
+            "de": "In der griechischen Mythologie ist Poseidon der Gott des Meeres.",
+            "it": "Nella mitologia greca, Poseidone è il dio del mare.",
+            "hi": "ग्रीक पौराणिक कथाओं में, पोसीडॉन समुद्र का देवता है।",
+            "ru": "В греческой мифологии Посейдон — бог моря.",
+            "zh": "在希腊神话中，波塞冬是海神。",
+            "ja": "ギリシャ神話において、ポセイドンは海の神です。",
+            "ar": "في الأساطير اليونانية، بوسيدون هو إله البحر."
+        },
+        "correct_answer": true
+    },
+    {
+        "category": "literature",
+        "question": {
+            "en": "The novel 'Pride and Prejudice' was written by Emily Brontë.",
+            "tr": "'Gurur ve Önyargı' romanı Emily Brontë tarafından yazılmıştır.",
+            "fr": "Le roman 'Orgueil et Préjugés' a été écrit par Emily Brontë.",
+            "es": "La novela 'Orgullo y prejuicio' fue escrita por Emily Brontë.",
+            "de": "Der Roman 'Stolz und Vorurteil' wurde von Emily Brontë geschrieben.",
+            "it": "Il romanzo 'Orgoglio e pregiudizio' è stato scritto da Emily Brontë.",
+            "hi": "उपन्यास 'प्राइड एंड प्रेजुडिस' एमिली ब्रोंटे द्वारा लिखा गया था।",
+            "ru": "Роман «Гордость и предубеждение» был написан Эмили Бронте.",
+            "zh": "小说《傲慢与偏见》是由艾米莉·勃朗特写的。",
+            "ja": "小説『高慢と偏見』はエミリー・ブロンテによって書かれました。",
+            "ar": "رواية 'كبرياء وتحامل' كتبتها إميلي برونتي."
+        },
+        "correct_answer": false
+    },
+    {
+        "category": "video_games",
+        "question": {
+            "en": "The video game 'Pac-Man' was released in 1980.",
+            "tr": "'Pac-Man' video oyunu 1980 yılında piyasaya sürülmüştür.",
+            "fr": "Le jeu vidéo 'Pac-Man' est sorti en 1980.",
+            "es": "El videojuego 'Pac-Man' fue lanzado en 1980.",
+            "de": "Das Videospiel 'Pac-Man' wurde 1980 veröffentlicht.",
+            "it": "Il videogioco 'Pac-Man' è stato rilasciato nel 1980.",
+            "hi": "वीडियो गेम 'पैक-मैन' 1980 में जारी किया गया था।",
+            "ru": "Видеоигра «Pac-Man» была выпущена в 1980 году.",
+            "zh": "电子游戏《吃豆人》于1980年发行。",
+            "ja": "ビデオゲーム「パックマン」は1980年にリリースされました。",
+            "ar": "تم إصدار لعبة الفيديو 'باك مان' في عام 1980."
+        },
+        "correct_answer": true
+    },
+    {
+        "category": "history",
+        "question": {
+            "en": "The French Revolution began in the year 1789.",
+            "tr": "Fransız İhtilali 1789 yılında başlamıştır.",
+            "fr": "La Révolution française a commencé en 1789.",
+            "es": "La Revolución Francesa comenzó en el año 1789.",
+            "de": "Die Französische Revolution begann im Jahr 1789.",
+            "it": "La Rivoluzione francese iniziò nell'anno 1789.",
+            "hi": "फ्रांसीसी क्रांति वर्ष 1789 में शुरू हुई थी।",
+            "ru": "Великая французская революция началась в 1789 году.",
+            "zh": "法国大革命始于1789年。",
+            "ja": "フランス革命は1789年に始まりました。",
+            "ar": "بدأت الثورة الفرنسية عام 1789."
+        },
+        "correct_answer": true
+    },
+    {
+        "category": "sports",
+        "question": {
+            "en": "A standard golf course consists of 18 holes.",
+            "tr": "Standart bir golf sahası 18 delikten oluşur.",
+            "fr": "Un terrain de golf standard se compose de 18 trous.",
+            "es": "Un campo de golf estándar consta de 18 hoyos.",
+            "de": "Ein Standard-Golfplatz besteht aus 18 Löchern.",
+            "it": "Un campo da golf standard è composto da 18 buche.",
+            "hi": "एक मानक गोल्फ कोर्स में 18 छेद होते हैं।",
+            "ru": "Стандартное поле для гольфа состоит из 18 лунок.",
+            "zh": "标准高尔夫球场由18个洞组成。",
+            "ja": "標準的なゴルフコースは18ホールで構成されています。",
+            "ar": "يتكون ملعب الجولف القياسي من 18 حفرة."
+        },
+        "correct_answer": true
+    },
+    {
+        "category": "technology",
+        "question": {
+            "en": "Bluetooth technology is named after a Danish king.",
+            "tr": "Bluetooth teknolojisi adını bir Danimarka kralından almıştır.",
+            "fr": "La technologie Bluetooth porte le nom d'un roi danois.",
+            "es": "La tecnología Bluetooth lleva el nombre de un rey danés.",
+            "de": "Die Bluetooth-Technologie ist nach einem dänischen König benannt.",
+            "it": "La tecnologia Bluetooth prende il nome da un re danese.",
+            "hi": "ब्लूटूथ तकनीक का नाम डेनमार्क के एक राजा के नाम पर रखा गया है।",
+            "ru": "Технология Bluetooth названа в честь датского короля.",
+            "zh": "蓝牙技术是以一位丹麦国王的名字命名的。",
+            "ja": "Bluetooth技術はデンマークの王にちなんで名付けられました。",
+            "ar": "سميت تقنية البلوتوث على اسم ملك دنماركي."
+        },
+        "correct_answer": true
+    },
+    {
+        "category": "cinema_tv",
+        "question": {
+            "en": "The first 'Star Wars' movie was released in 1980.",
+            "tr": "İlk 'Star Wars' filmi 1980 yılında vizyona girmiştir.",
+            "fr": "Le premier film 'Star Wars' est sorti en 1980.",
+            "es": "La primera película de 'Star Wars' se estrenó en 1980.",
+            "de": "Der erste 'Star Wars'-Film wurde 1980 veröffentlicht.",
+            "it": "Il primo film di 'Guerre Stellari' è uscito nel 1980.",
+            "hi": "पहली 'स्टार वार्स' फिल्म 1980 में रिलीज हुई थी।",
+            "ru": "Первый фильм «Звездные войны» вышел в 1980 году.",
+            "zh": "第一部《星球大战》电影于1980年上映。",
+            "ja": "最初の『スター・ウォーズ』映画は1980年に公開されました。",
+            "ar": "تم إصدار أول فيلم 'حرب النجوم' في عام 1980."
+        },
+        "correct_answer": false
+    },
+    {
+        "category": "music",
+        "question": {
+            "en": "Reggae music originated in Jamaica.",
+            "tr": "Reggae müziği Jamaika'da ortaya çıkmıştır.",
+            "fr": "La musique reggae est originaire de la Jamaïque.",
+            "es": "La música reggae se originó en Jamaica.",
+            "de": "Reggae-Musik stammt aus Jamaika.",
+            "it": "La musica reggae ha avuto origine in Giamaica.",
+            "hi": "रेगे संगीत की उत्पत्ति जमैका में हुई थी।",
+            "ru": "Музыка регги зародилась на Ямайке.",
+            "zh": "雷鬼音乐起源于牙买加。",
+            "ja": "レゲエ音楽はジャマイカ発祥です。",
+            "ar": "نشأت موسيقى الريغي في جامايكا."
+        },
+        "correct_answer": true
+    },
+    {
+        "category": "nature_animals",
+        "question": {
+            "en": "Cows can sleep while standing up.",
+            "tr": "İnekler ayakta uyuyabilirler.",
+            "fr": "Les vaches peuvent dormir debout.",
+            "es": "Las vacas pueden dormir de pie.",
+            "de": "Kühe können im Stehen schlafen.",
+            "it": "Le mucche possono dormire in piedi.",
+            "hi": "गायें खड़े-खड़े सो सकती हैं।",
+            "ru": "Коровы могут спать стоя.",
+            "zh": "奶牛可以站着睡觉。",
+            "ja": "牛は立ったまま眠ることができます。",
+            "ar": "يمكن للأبقار النوم وهي واقفة."
+        },
+        "correct_answer": true
+    },
+    {
+        "category": "mythology",
+        "question": {
+            "en": "Apollo is the Greek god of the sun.",
+            "tr": "Apollo, Yunan güneş tanrısıdır.",
+            "fr": "Apollon est le dieu grec du soleil.",
+            "es": "Apolo es el dios griego del sol.",
+            "de": "Apollo ist der griechische Gott der Sonne.",
+            "it": "Apollo è il dio greco del sole.",
+            "hi": "अपोलो सूर्य के ग्रीक देवता हैं।",
+            "ru": "Аполлон — греческий бог солнца.",
+            "zh": "阿波罗是希腊的太阳神。",
+            "ja": "アポロンはギリシャ神話の太陽神です。",
+            "ar": "أبولو هو إله الشمس اليوناني."
+        },
+        "correct_answer": true
+    },
+    {
+        "category": "literature",
+        "question": {
+            "en": "The novel 'The Great Gatsby' was written by F. Scott Fitzgerald.",
+            "tr": "'Muhteşem Gatsby' romanı F. Scott Fitzgerald tarafından yazılmıştır.",
+            "fr": "Le roman 'Gatsby le Magnifique' a été écrit par F. Scott Fitzgerald.",
+            "es": "La novela 'El gran Gatsby' fue escrita por F. Scott Fitzgerald.",
+            "de": "Der Roman 'Der große Gatsby' wurde von F. Scott Fitzgerald geschrieben.",
+            "it": "Il romanzo 'Il grande Gatsby' è stato scritto da F. Scott Fitzgerald.",
+            "hi": "उपन्यास 'द ग्रेट गैट्सबी' एफ. स्कॉट फिट्जगेराल्ड द्वारा लिखा गया था।",
+            "ru": "Роман «Великий Гэтсби» был написан Ф. Скоттом Фицджеральдом.",
+            "zh": "小说《了不起的盖茨比》是由F·斯科特·菲茨杰拉德创作的。",
+            "ja": "小説『グレート・ギャツビー』はF・スコット・フィッツジェラルドによって書かれました。",
+            "ar": "كتب رواية 'غاتسبي العظيم' إف سكوت فيتزجيرالد."
+        },
+        "correct_answer": true
+    },
+    {
+        "category": "economics_finance",
+        "question": {
+            "en": "A bear market indicates that stock prices are rising.",
+            "tr": "Ayı piyasası, hisse senedi fiyatlarının yükseldiğini gösterir.",
+            "fr": "Un marché baissier indique que les prix des actions augmentent.",
+            "es": "Un mercado bajista indica que los precios de las acciones están subiendo.",
+            "de": "Ein Bärenmarkt zeigt an, dass die Aktienkurse steigen.",
+            "it": "Un mercato orso indica che i prezzi delle azioni stanno salendo.",
+            "hi": "मंदी का बाजार (bear market) यह दर्शाता है कि स्टॉक की कीमतें बढ़ रही हैं।",
+            "ru": "Медвежий рынок указывает на то, что цены на акции растут.",
+            "zh": "熊市表明股票价格正在上涨。",
+            "ja": "ベア相場は株価が上昇していることを示します。",
+            "ar": "يشير السوق الهابط (Bear market) إلى أن أسعار الأسهم آخذة في الارتفاع."
+        },
+        "correct_answer": false
+    },
+    {
+        "category": "fun_facts",
+        "question": {
+            "en": "Ketchup was once sold as medicine.",
+            "tr": "Ketçap bir zamanlar ilaç olarak satılıyordu.",
+            "fr": "Le ketchup était autrefois vendu comme médicament.",
+            "es": "El ketchup se vendía antiguamente como medicina.",
+            "de": "Ketchup wurde einst als Medizin verkauft.",
+            "it": "Il ketchup una volta veniva venduto come medicina.",
+            "hi": "केचप कभी दवा के रूप में बेचा जाता था।",
+            "ru": "Кетчуп когда-то продавался как лекарство.",
+            "zh": "番茄酱曾经作为药物出售。",
+            "ja": "ケチャップはかつて薬として販売されていました。",
+            "ar": "كان الكاتشب يباع قديماً كدواء."
+        },
+        "correct_answer": true
     }
 ]

@@ -8,6 +8,7 @@
   "noChallengeAvailable": "新しいチャレンジはありません。",
   "challengeCouldNotBeLoaded": "チャレンジをロードできませんでした。",
   "startNewQuiz": "新しいクイズを開始",
+  "startWithOneBolt": "1 ⚡で始める",
   "quizFinished": "クイズ終了！",
   "yourScore": "あなたのスコア",
   "trueFalseTitle": "正しい / 間違い",

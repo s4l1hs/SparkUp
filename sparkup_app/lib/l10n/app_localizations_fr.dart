@@ -34,6 +34,9 @@ class AppLocalizationsFr extends AppLocalizations {
   String get startNewQuiz => 'Commencer un nouveau quiz';
 
   @override
+  String get startWithOneBolt => 'Commencer avec 1 ⚡';
+
+  @override
   String get quizFinished => 'Quiz terminé!';
 
   @override

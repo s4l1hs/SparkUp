@@ -33,6 +33,9 @@ class AppLocalizationsRu extends AppLocalizations {
   String get startNewQuiz => 'Начать новую викторину';
 
   @override
+  String get startWithOneBolt => 'Начать за 1 ⚡';
+
+  @override
   String get quizFinished => 'Викторина завершена!';
 
   @override

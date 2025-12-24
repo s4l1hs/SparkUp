@@ -33,6 +33,9 @@ class AppLocalizationsIt extends AppLocalizations {
   String get startNewQuiz => 'Inizia nuovo Quiz';
 
   @override
+  String get startWithOneBolt => 'Inizia con 1 ⚡';
+
+  @override
   String get quizFinished => 'Quiz terminato!';
 
   @override

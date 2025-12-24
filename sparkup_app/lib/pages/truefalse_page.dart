@@ -272,7 +272,7 @@ class _TrueFalsePageState extends State<TrueFalsePage> with SingleTickerProvider
                       children: [
                         MorphingGradientButton.icon(
                           icon: Icon(Icons.play_arrow_rounded, size: 26.sp, color: Colors.white),
-                          label: Text(AppLocalizations.of(context)?.startTrueFalseProblems ?? 'Start', style: TextStyle(fontSize: 18.sp, fontWeight: FontWeight.bold)),
+                          label: Text(AppLocalizations.of(context)?.startWithOneBolt ?? 'Start with 1 ⚡', style: TextStyle(fontSize: 18.sp, fontWeight: FontWeight.bold)),
                           colors: [theme.colorScheme.secondary, theme.colorScheme.primary],
                           onPressed: () {
                             final userProv = Provider.of<UserProvider>(context, listen: false);

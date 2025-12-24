@@ -164,6 +164,12 @@ abstract class AppLocalizations {
   /// **'Start New Quiz'**
   String get startNewQuiz;
 
+  /// No description provided for @startWithOneBolt.
+  ///
+  /// In en, this message translates to:
+  /// **'Start with 1 ⚡'**
+  String get startWithOneBolt;
+
   /// No description provided for @quizFinished.
   ///
   /// In en, this message translates to:

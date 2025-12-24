@@ -33,6 +33,9 @@ class AppLocalizationsZh extends AppLocalizations {
   String get startNewQuiz => '开始新测验';
 
   @override
+  String get startWithOneBolt => '用 1 ⚡ 开始';
+
+  @override
   String get quizFinished => '测验完成!';
 
   @override

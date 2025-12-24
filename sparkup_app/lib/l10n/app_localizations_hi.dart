@@ -33,6 +33,9 @@ class AppLocalizationsHi extends AppLocalizations {
   String get startNewQuiz => 'नई प्रश्नोत्तरी शुरू करें';
 
   @override
+  String get startWithOneBolt => '1 ⚡ से शुरू करें';
+
+  @override
   String get quizFinished => 'प्रश्नोत्तरी समाप्त!';
 
   @override
