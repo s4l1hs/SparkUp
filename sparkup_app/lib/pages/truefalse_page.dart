@@ -5,6 +5,8 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:provider/provider.dart';
 import '../services/api_service.dart';
 import '../providers/analysis_provider.dart';
+import '../widgets/morphing_gradient_button.dart';
+import '../widgets/animated_glass_card.dart';
 import 'package:sparkup_app/utils/color_utils.dart';
 
 
@@ -22,21 +24,19 @@ class _TrueFalsePageState extends State<TrueFalsePage> with TickerProviderStateM
   int _score = 0;
   int _streak = 0; // Üst üste doğru sayısı
   bool _isLoading = true;
-  bool _isGameOver = false;
+  bool _isQuizActive = false;
 
   // Timer değişkenleri
   Timer? _timer;
   int _timeLeft = 60; // 60 saniye süre
 
-  // Animasyon kontrolcüleri (Kart kaydırma efekti için)
-  late AnimationController _swipeController;
+  // Animasyon kontrolcüleri (background blobs)
   late final AnimationController _backgroundController;
   late final Animation<Alignment> _backgroundAnimation1, _backgroundAnimation2;
 
   @override
   void initState() {
     super.initState();
-    _swipeController = AnimationController(vsync: this, duration: const Duration(milliseconds: 300));
     _backgroundController = AnimationController(vsync: this, duration: const Duration(seconds: 25))..repeat(reverse: true);
     _backgroundAnimation1 = TweenSequence<Alignment>([
       TweenSequenceItem(tween: AlignmentTween(begin: Alignment.topLeft, end: Alignment.bottomRight), weight: 1),
@@ -53,7 +53,6 @@ class _TrueFalsePageState extends State<TrueFalsePage> with TickerProviderStateM
   @override
   void dispose() {
     _timer?.cancel();
-    _swipeController.dispose();
     _backgroundController.dispose();
     super.dispose();
   }
@@ -70,7 +69,7 @@ class _TrueFalsePageState extends State<TrueFalsePage> with TickerProviderStateM
         _questions = data;
         _isLoading = false;
       });
-      if (_questions.isNotEmpty) _startTimer();
+      // Do not auto-start the session; user will start via Start button
     } catch (e) {
       debugPrint("Hata: manual true/false yüklenemedi: $e");
       setState(() => _isLoading = false);
@@ -79,54 +78,46 @@ class _TrueFalsePageState extends State<TrueFalsePage> with TickerProviderStateM
 
   // --- 2. ZAMANLAYICI ---
   void _startTimer() {
-    _timer = Timer.periodic(const Duration(seconds: 1), (timer) {
+    _timer = Timer.periodic(const Duration(seconds: 1), (timer) async {
       if (_timeLeft > 0) {
         setState(() => _timeLeft--);
       } else {
-        _endGame();
+        _timer?.cancel();
+        await _handleQuizCompletion();
       }
     });
   }
 
   // --- 3. OYUN MANTIĞI ---
-  void _handleSwipe(bool userSaidTrue) {
+  Future<void> _answerQuestion(bool userSaidTrue) async {
     final currentQ = _questions[_currentIndex];
     final bool isCorrectAnswer = currentQ['correct_answer'];
-    
-    // Kullanıcının cevabı doğru mu?
-    // userSaidTrue (Evet dedi) == isCorrectAnswer (Cevap Evet) -> Doğru
+
     bool isUserCorrect = (userSaidTrue == isCorrectAnswer);
 
     if (isUserCorrect) {
-      _score += 10 + (_streak * 2); // Streak bonusu
+      _score += 10 + (_streak * 2);
       _streak++;
     } else {
-      _streak = 0; // Hata yapınca seri bozulur
-      // İstersen yanlış yapınca süreden düşebilirsin: _timeLeft -= 5;
+      _streak = 0;
     }
 
-    // Sonraki soruya geç
-    if (_currentIndex < _questions.length - 1) {
-      setState(() {
-        _currentIndex++;
-// Kartı merkeze getir
-      });
-    } else {
-      _endGame(); // Sorular bitti
-    }
     // Notify analysis provider to refresh immediately after an answer
     try {
       final analysisProv = Provider.of<AnalysisProvider>(context, listen: false);
       analysisProv.refresh(widget.idToken);
     } catch (_) {}
+
+    if (_currentIndex < _questions.length - 1) {
+      setState(() => _currentIndex++);
+    } else {
+      await _handleQuizCompletion();
+    }
   }
 
   void _endGame() {
     _timer?.cancel();
-    setState(() => _isGameOver = true);
-    
-    // Sonuçları Provider'a kaydet (Opsiyonel)
-    // Provider.of<AnalysisProvider>(context, listen: false).addResult(...);
+    setState(() => _isQuizActive = false);
   }
 
   // --- 4. UI: KART YAPISI ---
@@ -141,9 +132,7 @@ class _TrueFalsePageState extends State<TrueFalsePage> with TickerProviderStateM
       );
     }
 
-    if (_isGameOver) {
-      return _buildGameOverScreen(theme);
-    }
+    
 
     if (_questions.isEmpty) {
       return Scaffold(
@@ -152,13 +141,7 @@ class _TrueFalsePageState extends State<TrueFalsePage> with TickerProviderStateM
       );
     }
 
-    final currentQuestion = _questions[_currentIndex];
-    
-    // Çoklu dil desteği (Varsayılan EN, yoksa ilk dili al)
-    // JSON yapısı: "question": { "en": "...", "tr": "..." }
-    // Burada basitçe 'en' alıyoruz, cihaz diline göre 'tr' vb. seçebilirsin.
-    final questionText = currentQuestion['question']['en'] ?? currentQuestion['question'].values.first;
-    final category = currentQuestion['category'] ?? 'General';
+    // question display handled inside _buildQuizView via _currentQuestionText()
 
     return Scaffold(
       backgroundColor: theme.colorScheme.surface,
@@ -203,81 +186,9 @@ class _TrueFalsePageState extends State<TrueFalsePage> with TickerProviderStateM
             },
           ),
           SafeArea(
-            child: Column(
-              children: [
-            // Üst Bar: Süre ve Skor
-            Padding(
-              padding: EdgeInsets.symmetric(horizontal: 20.w, vertical: 10.h),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  _buildInfoChip(Icons.timer, '$_timeLeft s', _timeLeft < 10 ? Colors.red : theme.colorScheme.primary),
-                  Text("Streak: $_streak 🔥", style: TextStyle(fontSize: 16.sp, fontWeight: FontWeight.bold, color: Colors.orange)),
-                  _buildInfoChip(Icons.star, '$_score', theme.colorScheme.secondary),
-                ],
-              ),
-            ),
-            
-            Spacer(),
-
-            // --- SWIPE ALANI ---
-            // Draggable widget kullanarak manuel swipe yapıyoruz
-            // Stack kullanarak arkadaki kartı da gösterebilirsin (derinlik hissi için)
-            SizedBox(
-              height: 0.5.sh,
-              width: 0.85.sw,
-              child: Stack(
-                alignment: Alignment.center,
-                children: [
-                  // Arkadaki Kart (Gelecek soru - Sadece görsel dekor)
-                  if (_currentIndex < _questions.length - 1)
-                    Transform.scale(
-                      scale: 0.9,
-                      child: Opacity(
-                        opacity: 0.6,
-                        child: _buildCardContent(theme, "Next Question...", "...", Colors.grey[300]!),
-                      ),
-                    ),
-                  
-                  // Öndeki Kart (Aktif Soru)
-                  Dismissible(
-                    key: ValueKey(_currentIndex),
-                    direction: DismissDirection.horizontal,
-                    onDismissed: (direction) {
-                      bool isRightSwipe = direction == DismissDirection.startToEnd;
-                      _handleSwipe(isRightSwipe); // Sağ: True, Sol: False
-                    },
-                    background: _buildSwipeBackground(true), // Sağ Arka Plan (Yeşil/True)
-                    secondaryBackground: _buildSwipeBackground(false), // Sol Arka Plan (Kırmızı/False)
-                    child: _buildCardContent(theme, category, questionText, theme.cardColor),
-                  ),
-                ],
-              ),
-            ),
-            
-            SizedBox(height: 30.h),
-
-            // Kontrol Butonları (Swipe yapmak istemeyenler için)
-            Padding(
-              padding: EdgeInsets.symmetric(horizontal: 40.w),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceAround,
-                children: [
-                  _buildActionButton(Icons.close, Colors.red, () => _manualSwipe(false)),
-                  Text("OR", style: TextStyle(color: Colors.grey, fontSize: 12.sp)),
-                  _buildActionButton(Icons.check, Colors.green, () => _manualSwipe(true)),
-                ],
-              ),
-            ),
-            
-            Spacer(),
-            
-            Text(
-              "Swipe Right for TRUE, Left for FALSE",
-              style: TextStyle(color: Colors.grey[500], fontSize: 12.sp),
-            ),
-            SizedBox(height: 20.h),
-              ],
+            child: AnimatedSwitcher(
+              duration: const Duration(milliseconds: 420),
+              child: !_isQuizActive ? _buildStartView(theme) : _buildQuizView(theme),
             ),
           ),
         ],
@@ -285,59 +196,24 @@ class _TrueFalsePageState extends State<TrueFalsePage> with TickerProviderStateM
     );
   }
 
-  // Dismissible ile manuel tetikleme zor olduğu için butonlar bir sonraki karta geçişi simüle eder
-  // Burada basitçe fonksiyonu çağırıyoruz, Dismissible animasyonu olmadan geçer.
-  // Animasyonlu yapmak istersen Dismissible yerine Draggable kullanmak gerekir.
-  void _manualSwipe(bool value) {
-    _handleSwipe(value);
-  }
-
-  Widget _buildCardContent(ThemeData theme, String category, String text, Color bgColor) {
+  Widget _buildCardContent(ThemeData theme, String text, Color bgColor) {
     return Container(
       width: double.infinity,
       padding: EdgeInsets.all(24.w),
       decoration: BoxDecoration(
         color: bgColor,
         borderRadius: BorderRadius.circular(24.r),
-        boxShadow: [
+        boxShadow: const [
           BoxShadow(color: Colors.black12, blurRadius: 15, offset: Offset(0, 8)),
         ],
         border: Border.all(color: Colors.black.withOpacity(0.05)),
       ),
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          Container(
-            padding: EdgeInsets.symmetric(horizontal: 12.w, vertical: 6.h),
-            decoration: BoxDecoration(
-              color: theme.colorScheme.primary.withOpacity(0.1),
-              borderRadius: BorderRadius.circular(20.r),
-            ),
-            child: Text(category.toUpperCase(), style: TextStyle(color: theme.colorScheme.primary, fontSize: 12.sp, fontWeight: FontWeight.bold)),
-          ),
-          SizedBox(height: 24.h),
-          Text(
-            text,
-            textAlign: TextAlign.center,
-            style: TextStyle(fontSize: 22.sp, fontWeight: FontWeight.w600, color: theme.colorScheme.onSurface, height: 1.3),
-          ),
-        ],
-      ),
-    );
-  }
-
-  Widget _buildSwipeBackground(bool isTrue) {
-    return Container(
-      decoration: BoxDecoration(
-        color: isTrue ? Colors.green.withOpacity(0.8) : Colors.red.withOpacity(0.8),
-        borderRadius: BorderRadius.circular(24.r),
-      ),
-      alignment: isTrue ? Alignment.centerLeft : Alignment.centerRight,
-      padding: EdgeInsets.symmetric(horizontal: 20.w),
-      child: Icon(
-        isTrue ? Icons.check_circle_outline : Icons.cancel_outlined,
-        color: Colors.white,
-        size: 40.sp,
+      child: Center(
+        child: Text(
+          text,
+          textAlign: TextAlign.center,
+          style: TextStyle(fontSize: 22.sp, fontWeight: FontWeight.w600, color: theme.colorScheme.onSurface, height: 1.3),
+        ),
       ),
     );
   }
@@ -359,48 +235,132 @@ class _TrueFalsePageState extends State<TrueFalsePage> with TickerProviderStateM
     );
   }
 
-  Widget _buildActionButton(IconData icon, Color color, VoidCallback onTap) {
-    return GestureDetector(
-      onTap: onTap,
-      child: Container(
-        width: 64.w,
-        height: 64.w,
-        decoration: BoxDecoration(
-          shape: BoxShape.circle,
-          color: Colors.white,
-          boxShadow: [BoxShadow(color: color.withOpacity(0.3), blurRadius: 10, offset: Offset(0, 4))],
-          border: Border.all(color: color.withOpacity(0.1), width: 2),
-        ),
-        child: Icon(icon, color: color, size: 32.sp),
+  // --- New: Start view and Quiz UI for True/False (button-driven) ---
+  Widget _buildStartView(ThemeData theme) {
+    return Center(
+      key: const ValueKey('startView'),
+      child: _isLoading
+          ? CircularProgressIndicator(color: theme.colorScheme.primary)
+          : MorphingGradientButton.icon(
+              icon: Icon(Icons.play_arrow_rounded, size: 22.sp, color: Colors.white),
+              label: Text('Start True/False', style: TextStyle(fontSize: 18.sp)),
+              colors: [theme.colorScheme.secondary, theme.colorScheme.primary],
+              onPressed: _startSession,
+              padding: EdgeInsets.symmetric(horizontal: 28.w, vertical: 14.h),
+            ),
+    );
+  }
+
+  Widget _buildQuizView(ThemeData theme) {
+    final progressValue = ((_currentIndex + 1) / (_questions.isNotEmpty ? _questions.length : 1)).clamp(0.0, 1.0);
+    return Padding(
+      key: ValueKey<int>(_currentIndex),
+      padding: EdgeInsets.fromLTRB(24.w, 12.h, 24.w, 24.h),
+      child: Column(
+        children: [
+          ClipRRect(
+            borderRadius: BorderRadius.circular(8.r),
+            child: LinearProgressIndicator(
+              value: progressValue,
+              minHeight: 8.h,
+              backgroundColor: colorWithOpacity(theme.colorScheme.surface, 0.08),
+              valueColor: AlwaysStoppedAnimation(theme.colorScheme.primary),
+            ),
+          ),
+          SizedBox(height: 10.h),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              _buildInfoChip(Icons.timer, '$_timeLeft s', _timeLeft < 10 ? Colors.red : theme.colorScheme.primary),
+              Text("Streak: $_streak 🔥", style: TextStyle(fontSize: 16.sp, fontWeight: FontWeight.bold, color: Colors.orange)),
+              _buildInfoChip(Icons.star, '$_score', theme.colorScheme.secondary),
+            ],
+          ),
+          SizedBox(height: 12.h),
+          Flexible(
+            fit: FlexFit.loose,
+            child: Align(
+              alignment: Alignment.topCenter,
+              child: AnimatedGlassCard(
+                padding: EdgeInsets.symmetric(horizontal: 14.w, vertical: 16.h),
+                borderRadius: BorderRadius.circular(16.r),
+                child: SizedBox(
+                  height: 220.h,
+                  child: Center(child: Text(_currentQuestionText(), textAlign: TextAlign.center, style: theme.textTheme.titleLarge?.copyWith(fontWeight: FontWeight.w900, height: 1.25))),
+                ),
+              ),
+            ),
+          ),
+          SizedBox(height: 18.h),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceAround,
+            children: [
+              Expanded(child: _buildTFButton(Icons.check, Colors.green, 'TRUE', () => _answerQuestion(true))),
+              SizedBox(width: 16.w),
+              Expanded(child: _buildTFButton(Icons.close, Colors.red, 'FALSE', () => _answerQuestion(false))),
+            ],
+          ),
+        ],
       ),
     );
   }
 
-  Widget _buildGameOverScreen(ThemeData theme) {
-    return Scaffold(
-      body: Center(
-        child: Column(
+  String _currentQuestionText() {
+    if (_questions.isEmpty || _currentIndex >= _questions.length) return '';
+    final q = _questions[_currentIndex];
+    return q['question'] is Map ? (q['question']['en'] ?? q['question'].values.first) : (q['question'] ?? '');
+  }
+
+  Widget _buildTFButton(IconData icon, Color color, String label, VoidCallback onTap) {
+    return GestureDetector(
+      onTap: onTap,
+      child: Container(
+        height: 64.h,
+        decoration: BoxDecoration(
+          borderRadius: BorderRadius.circular(12.r),
+          color: color,
+          boxShadow: [BoxShadow(color: color.withOpacity(0.3), blurRadius: 8.r, offset: const Offset(0, 4))],
+        ),
+        child: Row(
           mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Icon(Icons.emoji_events, size: 80.sp, color: Colors.amber),
-            SizedBox(height: 20.h),
-            Text("Time's Up!", style: TextStyle(fontSize: 28.sp, fontWeight: FontWeight.bold)),
-            SizedBox(height: 10.h),
-            Text("Final Score", style: TextStyle(color: Colors.grey)),
-            Text("$_score", style: TextStyle(fontSize: 48.sp, fontWeight: FontWeight.bold, color: theme.colorScheme.primary)),
-            SizedBox(height: 30.h),
-            ElevatedButton(
-              onPressed: () => Navigator.pop(context),
-              style: ElevatedButton.styleFrom(
-                padding: EdgeInsets.symmetric(horizontal: 40.w, vertical: 15.h),
-                backgroundColor: theme.colorScheme.primary,
-                foregroundColor: Colors.white,
-              ),
-              child: Text("Back to Menu"),
-            )
-          ],
+          children: [Icon(icon, color: Colors.white), SizedBox(width: 12.w), Text(label, style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold, fontSize: 18.sp))],
         ),
       ),
     );
   }
+
+  void _startSession() {
+    if (_questions.isEmpty) {
+      _loadQuestions();
+    }
+    setState(() {
+      _currentIndex = 0;
+      _score = 0;
+      _streak = 0;
+      _timeLeft = 60;
+      _isQuizActive = true;
+    });
+    _startTimer();
+  }
+
+  Future<void> _handleQuizCompletion() async {
+    _timer?.cancel();
+    final theme = Theme.of(context);
+    await showDialog(
+      context: context,
+      barrierDismissible: false,
+      builder: (context) => AlertDialog(
+        backgroundColor: theme.colorScheme.surface,
+        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16.r)),
+        title: Text('Quiz finished', style: TextStyle(color: theme.colorScheme.primary, fontWeight: FontWeight.bold)),
+        content: Text("Your score: $_score", style: TextStyle(fontSize: 18.sp, color: theme.colorScheme.onSurface)),
+        actions: [TextButton(onPressed: () => Navigator.of(context).pop(), child: Text('Great', style: TextStyle(color: theme.colorScheme.primary)))],
+      ),
+    );
+    if (mounted) {
+      await _loadQuestions();
+      setState(() => _isQuizActive = false);
+    }
+  }
+
 }
