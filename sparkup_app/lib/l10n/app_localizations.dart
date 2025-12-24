@@ -787,6 +787,120 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Limited'**
   String get limited;
+
+  /// No description provided for @category_history.
+  ///
+  /// In en, this message translates to:
+  /// **'History'**
+  String get category_history;
+
+  /// No description provided for @category_science.
+  ///
+  /// In en, this message translates to:
+  /// **'Science'**
+  String get category_science;
+
+  /// No description provided for @category_art.
+  ///
+  /// In en, this message translates to:
+  /// **'Art'**
+  String get category_art;
+
+  /// No description provided for @category_sports.
+  ///
+  /// In en, this message translates to:
+  /// **'Sports'**
+  String get category_sports;
+
+  /// No description provided for @category_technology.
+  ///
+  /// In en, this message translates to:
+  /// **'Technology'**
+  String get category_technology;
+
+  /// No description provided for @category_cinema_tv.
+  ///
+  /// In en, this message translates to:
+  /// **'Cinema & TV'**
+  String get category_cinema_tv;
+
+  /// No description provided for @category_music.
+  ///
+  /// In en, this message translates to:
+  /// **'Music'**
+  String get category_music;
+
+  /// No description provided for @category_nature_animals.
+  ///
+  /// In en, this message translates to:
+  /// **'Nature & Animals'**
+  String get category_nature_animals;
+
+  /// No description provided for @category_geography_travel.
+  ///
+  /// In en, this message translates to:
+  /// **'Geography & Travel'**
+  String get category_geography_travel;
+
+  /// No description provided for @category_mythology.
+  ///
+  /// In en, this message translates to:
+  /// **'Mythology'**
+  String get category_mythology;
+
+  /// No description provided for @category_philosophy.
+  ///
+  /// In en, this message translates to:
+  /// **'Philosophy'**
+  String get category_philosophy;
+
+  /// No description provided for @category_literature.
+  ///
+  /// In en, this message translates to:
+  /// **'Literature'**
+  String get category_literature;
+
+  /// No description provided for @category_space_astronomy.
+  ///
+  /// In en, this message translates to:
+  /// **'Space & Astronomy'**
+  String get category_space_astronomy;
+
+  /// No description provided for @category_health_fitness.
+  ///
+  /// In en, this message translates to:
+  /// **'Health & Fitness'**
+  String get category_health_fitness;
+
+  /// No description provided for @category_economics_finance.
+  ///
+  /// In en, this message translates to:
+  /// **'Economics & Finance'**
+  String get category_economics_finance;
+
+  /// No description provided for @category_architecture.
+  ///
+  /// In en, this message translates to:
+  /// **'Architecture'**
+  String get category_architecture;
+
+  /// No description provided for @category_video_games.
+  ///
+  /// In en, this message translates to:
+  /// **'Video Games'**
+  String get category_video_games;
+
+  /// No description provided for @category_general_culture.
+  ///
+  /// In en, this message translates to:
+  /// **'General Culture'**
+  String get category_general_culture;
+
+  /// No description provided for @category_fun_facts.
+  ///
+  /// In en, this message translates to:
+  /// **'Fun Facts'**
+  String get category_fun_facts;
 }
 
 class _AppLocalizationsDelegate

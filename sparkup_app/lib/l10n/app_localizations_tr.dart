@@ -348,4 +348,61 @@ class AppLocalizationsTr extends AppLocalizations {
 
   @override
   String get limited => 'Sınırlı';
+
+  @override
+  String get category_history => 'Tarih';
+
+  @override
+  String get category_science => 'Bilim';
+
+  @override
+  String get category_art => 'Sanat';
+
+  @override
+  String get category_sports => 'Spor';
+
+  @override
+  String get category_technology => 'Teknoloji';
+
+  @override
+  String get category_cinema_tv => 'Sinema / TV';
+
+  @override
+  String get category_music => 'Müzik';
+
+  @override
+  String get category_nature_animals => 'Doğa ve Hayvanlar';
+
+  @override
+  String get category_geography_travel => 'Coğrafya ve Seyahat';
+
+  @override
+  String get category_mythology => 'Mitoloji';
+
+  @override
+  String get category_philosophy => 'Felsefe';
+
+  @override
+  String get category_literature => 'Edebiyat';
+
+  @override
+  String get category_space_astronomy => 'Uzay ve Astronomi';
+
+  @override
+  String get category_health_fitness => 'Sağlık ve Fitness';
+
+  @override
+  String get category_economics_finance => 'Ekonomi ve Finans';
+
+  @override
+  String get category_architecture => 'Mimarlık';
+
+  @override
+  String get category_video_games => 'Video Oyunları';
+
+  @override
+  String get category_general_culture => 'Genel Kültür';
+
+  @override
+  String get category_fun_facts => 'Eğlenceli Bilgiler';
 }

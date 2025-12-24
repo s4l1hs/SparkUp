@@ -346,4 +346,61 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String get limited => 'محدود';
+
+  @override
+  String get category_history => 'تاريخ';
+
+  @override
+  String get category_science => 'علوم';
+
+  @override
+  String get category_art => 'فن';
+
+  @override
+  String get category_sports => 'رياضة';
+
+  @override
+  String get category_technology => 'تكنولوجيا';
+
+  @override
+  String get category_cinema_tv => 'سينما / تلفزيون';
+
+  @override
+  String get category_music => 'موسيقى';
+
+  @override
+  String get category_nature_animals => 'الطبيعة والحيوانات';
+
+  @override
+  String get category_geography_travel => 'جغرافيا وسفر';
+
+  @override
+  String get category_mythology => 'ميثولوجيا';
+
+  @override
+  String get category_philosophy => 'فلسفة';
+
+  @override
+  String get category_literature => 'أدب';
+
+  @override
+  String get category_space_astronomy => 'الفضاء وعلم الفلك';
+
+  @override
+  String get category_health_fitness => 'صحة ولياقة';
+
+  @override
+  String get category_economics_finance => 'اقتصاد ومالية';
+
+  @override
+  String get category_architecture => 'عمارة';
+
+  @override
+  String get category_video_games => 'ألعاب الفيديو';
+
+  @override
+  String get category_general_culture => 'ثقافة عامة';
+
+  @override
+  String get category_fun_facts => 'حقائق ممتعة';
 }

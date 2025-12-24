@@ -344,4 +344,61 @@ class AppLocalizationsZh extends AppLocalizations {
 
   @override
   String get limited => '受限';
+
+  @override
+  String get category_history => '历史';
+
+  @override
+  String get category_science => '科学';
+
+  @override
+  String get category_art => '艺术';
+
+  @override
+  String get category_sports => '体育';
+
+  @override
+  String get category_technology => '科技';
+
+  @override
+  String get category_cinema_tv => '电影/电视';
+
+  @override
+  String get category_music => '音乐';
+
+  @override
+  String get category_nature_animals => '自然与动物';
+
+  @override
+  String get category_geography_travel => '地理与旅行';
+
+  @override
+  String get category_mythology => '神话';
+
+  @override
+  String get category_philosophy => '哲学';
+
+  @override
+  String get category_literature => '文学';
+
+  @override
+  String get category_space_astronomy => '太空与天文学';
+
+  @override
+  String get category_health_fitness => '健康与健身';
+
+  @override
+  String get category_economics_finance => '经济与金融';
+
+  @override
+  String get category_architecture => '建筑学';
+
+  @override
+  String get category_video_games => '视频游戏';
+
+  @override
+  String get category_general_culture => '通识';
+
+  @override
+  String get category_fun_facts => '趣闻';
 }

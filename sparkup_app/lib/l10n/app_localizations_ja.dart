@@ -340,8 +340,65 @@ class AppLocalizationsJa extends AppLocalizations {
   String get challengeIntro => 'スキルを向上させる短く魅力的なチャレンジを取得しましょう。';
 
   @override
-  String get leaderboard => 'ランキング';
+  String get leaderboard => 'リーダーボード';
 
   @override
   String get limited => '制限あり';
+
+  @override
+  String get category_history => '歴史';
+
+  @override
+  String get category_science => '科学';
+
+  @override
+  String get category_art => '芸術';
+
+  @override
+  String get category_sports => 'スポーツ';
+
+  @override
+  String get category_technology => 'テクノロジー';
+
+  @override
+  String get category_cinema_tv => '映画・テレビ';
+
+  @override
+  String get category_music => '音楽';
+
+  @override
+  String get category_nature_animals => '自然と動物';
+
+  @override
+  String get category_geography_travel => '地理・旅行';
+
+  @override
+  String get category_mythology => '神話';
+
+  @override
+  String get category_philosophy => '哲学';
+
+  @override
+  String get category_literature => '文学';
+
+  @override
+  String get category_space_astronomy => '宇宙・天文学';
+
+  @override
+  String get category_health_fitness => '健康・フィットネス';
+
+  @override
+  String get category_economics_finance => '経済・金融';
+
+  @override
+  String get category_architecture => '建築';
+
+  @override
+  String get category_video_games => 'ビデオゲーム';
+
+  @override
+  String get category_general_culture => '一般教養';
+
+  @override
+  String get category_fun_facts => '豆知識';
 }

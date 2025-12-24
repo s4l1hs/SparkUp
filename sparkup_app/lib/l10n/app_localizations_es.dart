@@ -351,4 +351,61 @@ class AppLocalizationsEs extends AppLocalizations {
 
   @override
   String get limited => 'Limitado';
+
+  @override
+  String get category_history => 'Historia';
+
+  @override
+  String get category_science => 'Ciencia';
+
+  @override
+  String get category_art => 'Arte';
+
+  @override
+  String get category_sports => 'Deportes';
+
+  @override
+  String get category_technology => 'Tecnología';
+
+  @override
+  String get category_cinema_tv => 'Cine y TV';
+
+  @override
+  String get category_music => 'Música';
+
+  @override
+  String get category_nature_animals => 'Naturaleza y Animales';
+
+  @override
+  String get category_geography_travel => 'Geografía y Viajes';
+
+  @override
+  String get category_mythology => 'Mitología';
+
+  @override
+  String get category_philosophy => 'Filosofía';
+
+  @override
+  String get category_literature => 'Literatura';
+
+  @override
+  String get category_space_astronomy => 'Espacio y Astronomía';
+
+  @override
+  String get category_health_fitness => 'Salud y Fitness';
+
+  @override
+  String get category_economics_finance => 'Economía y Finanzas';
+
+  @override
+  String get category_architecture => 'Arquitectura';
+
+  @override
+  String get category_video_games => 'Videojuegos';
+
+  @override
+  String get category_general_culture => 'Cultura General';
+
+  @override
+  String get category_fun_facts => 'Datos Curiosos';
 }

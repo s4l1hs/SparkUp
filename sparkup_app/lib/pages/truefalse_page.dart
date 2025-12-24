@@ -115,11 +115,6 @@ class _TrueFalsePageState extends State<TrueFalsePage> with TickerProviderStateM
     }
   }
 
-  void _endGame() {
-    _timer?.cancel();
-    setState(() => _isQuizActive = false);
-  }
-
   // --- 4. UI: KART YAPISI ---
   @override
   Widget build(BuildContext context) {
@@ -192,28 +187,6 @@ class _TrueFalsePageState extends State<TrueFalsePage> with TickerProviderStateM
             ),
           ),
         ],
-      ),
-    );
-  }
-
-  Widget _buildCardContent(ThemeData theme, String text, Color bgColor) {
-    return Container(
-      width: double.infinity,
-      padding: EdgeInsets.all(24.w),
-      decoration: BoxDecoration(
-        color: bgColor,
-        borderRadius: BorderRadius.circular(24.r),
-        boxShadow: const [
-          BoxShadow(color: Colors.black12, blurRadius: 15, offset: Offset(0, 8)),
-        ],
-        border: Border.all(color: Colors.black.withOpacity(0.05)),
-      ),
-      child: Center(
-        child: Text(
-          text,
-          textAlign: TextAlign.center,
-          style: TextStyle(fontSize: 22.sp, fontWeight: FontWeight.w600, color: theme.colorScheme.onSurface, height: 1.3),
-        ),
       ),
     );
   }

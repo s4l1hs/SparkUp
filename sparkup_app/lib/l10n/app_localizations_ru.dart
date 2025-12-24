@@ -347,4 +347,61 @@ class AppLocalizationsRu extends AppLocalizations {
 
   @override
   String get limited => 'Ограничено';
+
+  @override
+  String get category_history => 'История';
+
+  @override
+  String get category_science => 'Наука';
+
+  @override
+  String get category_art => 'Искусство';
+
+  @override
+  String get category_sports => 'Спорт';
+
+  @override
+  String get category_technology => 'Технологии';
+
+  @override
+  String get category_cinema_tv => 'Кино/ТВ';
+
+  @override
+  String get category_music => 'Музыка';
+
+  @override
+  String get category_nature_animals => 'Природа и животные';
+
+  @override
+  String get category_geography_travel => 'География и путешествия';
+
+  @override
+  String get category_mythology => 'Мифология';
+
+  @override
+  String get category_philosophy => 'Философия';
+
+  @override
+  String get category_literature => 'Литература';
+
+  @override
+  String get category_space_astronomy => 'Космос и астрономия';
+
+  @override
+  String get category_health_fitness => 'Здоровье и фитнес';
+
+  @override
+  String get category_economics_finance => 'Экономика и финансы';
+
+  @override
+  String get category_architecture => 'Архитектура';
+
+  @override
+  String get category_video_games => 'Видеоигры';
+
+  @override
+  String get category_general_culture => 'Общая культура';
+
+  @override
+  String get category_fun_facts => 'Интересные факты';
 }

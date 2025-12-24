@@ -347,4 +347,61 @@ class AppLocalizationsHi extends AppLocalizations {
 
   @override
   String get limited => 'सीमित';
+
+  @override
+  String get category_history => 'इतिहास';
+
+  @override
+  String get category_science => 'विज्ञान';
+
+  @override
+  String get category_art => 'कला';
+
+  @override
+  String get category_sports => 'खेल';
+
+  @override
+  String get category_technology => 'प्रौद्योगिकी';
+
+  @override
+  String get category_cinema_tv => 'सिनेमा/टीवी';
+
+  @override
+  String get category_music => 'संगीत';
+
+  @override
+  String get category_nature_animals => 'प्रकृति और जानवर';
+
+  @override
+  String get category_geography_travel => 'भूगोल और यात्रा';
+
+  @override
+  String get category_mythology => 'पौराणिक कथा';
+
+  @override
+  String get category_philosophy => 'दर्शनशास्त्र';
+
+  @override
+  String get category_literature => 'साहित्य';
+
+  @override
+  String get category_space_astronomy => 'अंतरिक्ष और खगोलशास्त्र';
+
+  @override
+  String get category_health_fitness => 'स्वास्थ्य और फिटनेस';
+
+  @override
+  String get category_economics_finance => 'अर्थशास्त्र और वित्त';
+
+  @override
+  String get category_architecture => 'वास्तुकला';
+
+  @override
+  String get category_video_games => 'वीडियो गेम';
+
+  @override
+  String get category_general_culture => 'सामान्य संस्कृति';
+
+  @override
+  String get category_fun_facts => 'रोचक तथ्य';
 }

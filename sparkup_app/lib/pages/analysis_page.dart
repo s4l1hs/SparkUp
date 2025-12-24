@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:provider/provider.dart';
 import '../providers/analysis_provider.dart';
+import '../l10n/app_localizations.dart';
 
 class AnalysisPage extends StatefulWidget {
   final String idToken;
@@ -28,6 +29,55 @@ class _AnalysisPageState extends State<AnalysisPage> {
     if (percent >= 80) return Colors.greenAccent.shade700;
     if (percent >= 50) return Colors.orangeAccent.shade700;
     return scheme.error;
+  }
+
+  String _localizedCategory(String rawCategory, BuildContext context) {
+    final loc = AppLocalizations.of(context)!;
+    final key = rawCategory.toLowerCase();
+    switch (key) {
+      case 'history':
+        return loc.category_history;
+      case 'science':
+        return loc.category_science;
+      case 'art':
+        return loc.category_art;
+      case 'sports':
+        return loc.category_sports;
+      case 'technology':
+        return loc.category_technology;
+      case 'cinema_tv':
+        return loc.category_cinema_tv;
+      case 'music':
+        return loc.category_music;
+      case 'nature_animals':
+        return loc.category_nature_animals;
+      case 'geography_travel':
+        return loc.category_geography_travel;
+      case 'mythology':
+        return loc.category_mythology;
+      case 'philosophy':
+        return loc.category_philosophy;
+      case 'literature':
+        return loc.category_literature;
+      case 'space_astronomy':
+        return loc.category_space_astronomy;
+      case 'health_fitness':
+        return loc.category_health_fitness;
+      case 'economics_finance':
+        return loc.category_economics_finance;
+      case 'architecture':
+        return loc.category_architecture;
+      case 'video_games':
+        return loc.category_video_games;
+      case 'general_culture':
+        return loc.category_general_culture;
+      case 'fun_facts':
+        return loc.category_fun_facts;
+      default:
+        final pretty = rawCategory.replaceAll('_', ' ');
+        if (pretty.isEmpty) return rawCategory;
+        return pretty[0].toUpperCase() + pretty.substring(1);
+    }
   }
 
   @override
@@ -194,12 +244,13 @@ class _AnalysisPageState extends State<AnalysisPage> {
                               physics: const BouncingScrollPhysics(),
                               itemCount: prov.items.length,
                               separatorBuilder: (c, i) => SizedBox(height: 16.h),
-                              itemBuilder: (c, i) {
-                                final it = prov.items[i];
-                                final category = it['category'] ?? 'Unknown';
-                                final percent = (it['percent'] ?? 0) as int;
-                                final correct = it['correct'] ?? 0;
-                                final total = it['total'] ?? 0;
+                                itemBuilder: (c, i) {
+                                  final it = prov.items[i];
+                                  final rawCategory = (it['category'] ?? 'unknown') as String;
+                                  final category = _localizedCategory(rawCategory, context);
+                                  final percent = (it['percent'] ?? 0) as int;
+                                  final correct = it['correct'] ?? 0;
+                                  final total = it['total'] ?? 0;
 
                                 // Her bir item için animasyon
                                 return TweenAnimationBuilder<double>(
