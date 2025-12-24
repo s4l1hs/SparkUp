@@ -405,4 +405,28 @@ class AppLocalizationsIt extends AppLocalizations {
 
   @override
   String get category_fun_facts => 'Curiosità';
+
+  @override
+  String get performance_title => 'Prestazioni';
+
+  @override
+  String get performance_subtitle => 'Monitora i tuoi progressi e migliorati.';
+
+  @override
+  String get overall_score => 'Punteggio complessivo';
+
+  @override
+  String get category_breakdown => 'Ripartizione per categoria';
+
+  @override
+  String get no_data_available_yet => 'Ancora nessun dato disponibile';
+
+  @override
+  String get correct_label => 'Corretto';
+
+  @override
+  String get excellent_job => 'Ottimo lavoro! 🚀';
+
+  @override
+  String get keep_pushing => 'Continua così! 💪';
 }

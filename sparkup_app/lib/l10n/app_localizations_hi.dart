@@ -404,4 +404,28 @@ class AppLocalizationsHi extends AppLocalizations {
 
   @override
   String get category_fun_facts => 'रोचक तथ्य';
+
+  @override
+  String get performance_title => 'प्रदर्शन';
+
+  @override
+  String get performance_subtitle => 'अपनी प्रगति ट्रैक करें और बेहतर बनें।';
+
+  @override
+  String get overall_score => 'कुल स्कोर';
+
+  @override
+  String get category_breakdown => 'श्रेणी विभाजन';
+
+  @override
+  String get no_data_available_yet => 'अभी तक कोई डेटा उपलब्ध नहीं';
+
+  @override
+  String get correct_label => 'सही';
+
+  @override
+  String get excellent_job => 'शानदार! 🚀';
+
+  @override
+  String get keep_pushing => 'ऐसे ही जारी रखें! 💪';
 }

@@ -411,5 +411,30 @@ class AppLocalizationsDe extends AppLocalizations {
   String get category_general_culture => 'Allgemeinwissen';
 
   @override
-  String get category_fun_facts => 'Kurioses';
+  String get category_fun_facts => 'Unterhaltsame Fakten';
+
+  @override
+  String get performance_title => 'Leistung';
+
+  @override
+  String get performance_subtitle =>
+      'Verfolge deinen Fortschritt und verbessere dich.';
+
+  @override
+  String get overall_score => 'Gesamtpunktzahl';
+
+  @override
+  String get category_breakdown => 'Kategorien-Aufschlüsselung';
+
+  @override
+  String get no_data_available_yet => 'Noch keine Daten verfügbar';
+
+  @override
+  String get correct_label => 'Korrekt';
+
+  @override
+  String get excellent_job => 'Ausgezeichnet! 🚀';
+
+  @override
+  String get keep_pushing => 'Weiter so! 💪';
 }

@@ -404,4 +404,28 @@ class AppLocalizationsRu extends AppLocalizations {
 
   @override
   String get category_fun_facts => 'Интересные факты';
+
+  @override
+  String get performance_title => 'Результаты';
+
+  @override
+  String get performance_subtitle => 'Отслеживайте прогресс и улучшайтесь.';
+
+  @override
+  String get overall_score => 'Общий балл';
+
+  @override
+  String get category_breakdown => 'Разбивка по категориям';
+
+  @override
+  String get no_data_available_yet => 'Данных пока нет';
+
+  @override
+  String get correct_label => 'Верно';
+
+  @override
+  String get excellent_job => 'Отлично! 🚀';
+
+  @override
+  String get keep_pushing => 'Продолжайте в том же духе! 💪';
 }

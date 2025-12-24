@@ -405,4 +405,28 @@ class AppLocalizationsTr extends AppLocalizations {
 
   @override
   String get category_fun_facts => 'Eğlenceli Bilgiler';
+
+  @override
+  String get performance_title => 'Performans';
+
+  @override
+  String get performance_subtitle => 'İlerlemeni takip et ve geliş.';
+
+  @override
+  String get overall_score => 'Genel Puan';
+
+  @override
+  String get category_breakdown => 'Kategori Dağılımı';
+
+  @override
+  String get no_data_available_yet => 'Henüz veri yok';
+
+  @override
+  String get correct_label => 'Doğru';
+
+  @override
+  String get excellent_job => 'Harika! 🚀';
+
+  @override
+  String get keep_pushing => 'Devam Et! 💪';
 }

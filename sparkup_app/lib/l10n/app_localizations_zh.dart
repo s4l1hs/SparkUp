@@ -401,4 +401,28 @@ class AppLocalizationsZh extends AppLocalizations {
 
   @override
   String get category_fun_facts => '趣闻';
+
+  @override
+  String get performance_title => '表现';
+
+  @override
+  String get performance_subtitle => '跟踪您的进度并提升自己。';
+
+  @override
+  String get overall_score => '总体得分';
+
+  @override
+  String get category_breakdown => '类别细分';
+
+  @override
+  String get no_data_available_yet => '暂无数据';
+
+  @override
+  String get correct_label => '正确';
+
+  @override
+  String get excellent_job => '干得好！ 🚀';
+
+  @override
+  String get keep_pushing => '继续努力！ 💪';
 }

@@ -403,4 +403,28 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String get category_fun_facts => 'حقائق ممتعة';
+
+  @override
+  String get performance_title => 'الأداء';
+
+  @override
+  String get performance_subtitle => 'تتبّع تقدمك وتطوّر.';
+
+  @override
+  String get overall_score => 'النتيجة الكلية';
+
+  @override
+  String get category_breakdown => 'تفصيل حسب الفئة';
+
+  @override
+  String get no_data_available_yet => 'لا توجد بيانات حتى الآن';
+
+  @override
+  String get correct_label => 'صحيح';
+
+  @override
+  String get excellent_job => 'عمل رائع! 🚀';
+
+  @override
+  String get keep_pushing => 'استمر هكذا! 💪';
 }

@@ -901,6 +901,54 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Fun Facts'**
   String get category_fun_facts;
+
+  /// No description provided for @performance_title.
+  ///
+  /// In en, this message translates to:
+  /// **'Performance'**
+  String get performance_title;
+
+  /// No description provided for @performance_subtitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Track your progress and improve.'**
+  String get performance_subtitle;
+
+  /// No description provided for @overall_score.
+  ///
+  /// In en, this message translates to:
+  /// **'Overall Score'**
+  String get overall_score;
+
+  /// No description provided for @category_breakdown.
+  ///
+  /// In en, this message translates to:
+  /// **'Category Breakdown'**
+  String get category_breakdown;
+
+  /// No description provided for @no_data_available_yet.
+  ///
+  /// In en, this message translates to:
+  /// **'No data available yet'**
+  String get no_data_available_yet;
+
+  /// No description provided for @correct_label.
+  ///
+  /// In en, this message translates to:
+  /// **'Correct'**
+  String get correct_label;
+
+  /// No description provided for @excellent_job.
+  ///
+  /// In en, this message translates to:
+  /// **'Excellent Job! 🚀'**
+  String get excellent_job;
+
+  /// No description provided for @keep_pushing.
+  ///
+  /// In en, this message translates to:
+  /// **'Keep Pushing! 💪'**
+  String get keep_pushing;
 }
 
 class _AppLocalizationsDelegate

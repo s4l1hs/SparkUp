@@ -137,5 +137,13 @@
   "category_architecture": "建筑学",
   "category_video_games": "视频游戏",
   "category_general_culture": "通识",
-  "category_fun_facts": "趣闻"
+  "category_fun_facts": "趣闻",
+  "performance_title": "表现",
+  "performance_subtitle": "跟踪您的进度并提升自己。",
+  "overall_score": "总体得分",
+  "category_breakdown": "类别细分",
+  "no_data_available_yet": "暂无数据",
+  "correct_label": "正确",
+  "excellent_job": "干得好！ 🚀",
+  "keep_pushing": "继续努力！ 💪"
 }

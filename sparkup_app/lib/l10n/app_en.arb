@@ -140,4 +140,13 @@
   "category_video_games": "Video Games",
   "category_general_culture": "General Culture",
   "category_fun_facts": "Fun Facts"
+  ,
+  "performance_title": "Performance",
+  "performance_subtitle": "Track your progress and improve.",
+  "overall_score": "Overall Score",
+  "category_breakdown": "Category Breakdown",
+  "no_data_available_yet": "No data available yet",
+  "correct_label": "Correct",
+  "excellent_job": "Excellent Job! 🚀",
+  "keep_pushing": "Keep Pushing! 💪"
 }

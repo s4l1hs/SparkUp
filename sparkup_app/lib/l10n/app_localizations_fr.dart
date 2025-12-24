@@ -411,4 +411,29 @@ class AppLocalizationsFr extends AppLocalizations {
 
   @override
   String get category_fun_facts => 'Anecdotes';
+
+  @override
+  String get performance_title => 'Performance';
+
+  @override
+  String get performance_subtitle => 'Suivez vos progrès et améliorez-vous.';
+
+  @override
+  String get overall_score => 'Score global';
+
+  @override
+  String get category_breakdown => 'Répartition par catégorie';
+
+  @override
+  String get no_data_available_yet =>
+      'Aucune donnée disponible pour l\'instant';
+
+  @override
+  String get correct_label => 'Correct';
+
+  @override
+  String get excellent_job => 'Excellent ! 🚀';
+
+  @override
+  String get keep_pushing => 'Continuez comme ça ! 💪';
 }

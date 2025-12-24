@@ -84,6 +84,7 @@ class _AnalysisPageState extends State<AnalysisPage> {
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
     final prov = Provider.of<AnalysisProvider>(context);
+    final loc = AppLocalizations.of(context)!;
 
     final avgPercent = prov.items.isEmpty
         ? 0
@@ -116,7 +117,7 @@ class _AnalysisPageState extends State<AnalysisPage> {
                   SizedBox(height: 10.h),
                   // Başlık
                   Text(
-                    'Performance',
+                    loc.performance_title,
                     style: TextStyle(
                       fontSize: 28.sp, 
                       fontWeight: FontWeight.w800, 
@@ -126,7 +127,7 @@ class _AnalysisPageState extends State<AnalysisPage> {
                   ),
                   SizedBox(height: 4.h),
                   Text(
-                    'Track your progress and improve.',
+                    loc.performance_subtitle,
                     style: TextStyle(color: theme.colorScheme.onSurface.withOpacity(0.6), fontSize: 14.sp),
                   ),
                   
@@ -158,7 +159,7 @@ class _AnalysisPageState extends State<AnalysisPage> {
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
                             Text(
-                              'Overall Score',
+                              loc.overall_score,
                               style: TextStyle(color: Colors.white.withOpacity(0.9), fontSize: 16.sp, fontWeight: FontWeight.w600),
                             ),
                             SizedBox(height: 8.h),
@@ -182,7 +183,7 @@ class _AnalysisPageState extends State<AnalysisPage> {
                                 borderRadius: BorderRadius.circular(8.r),
                               ),
                               child: Text(
-                                avgPercent > 70 ? 'Excellent Job! 🚀' : 'Keep Pushing! 💪',
+                                avgPercent > 70 ? loc.excellent_job : loc.keep_pushing,
                                 style: TextStyle(color: Colors.white, fontSize: 12.sp, fontWeight: FontWeight.w500),
                               ),
                             )
@@ -215,7 +216,7 @@ class _AnalysisPageState extends State<AnalysisPage> {
                   SizedBox(height: 24.h),
                   
                   Text(
-                    'Category Breakdown',
+                    loc.category_breakdown,
                     style: TextStyle(fontSize: 18.sp, fontWeight: FontWeight.bold, color: theme.colorScheme.onSurface),
                   ),
                   SizedBox(height: 12.h),
@@ -232,13 +233,13 @@ class _AnalysisPageState extends State<AnalysisPage> {
                       child: prov.items.isEmpty
                           ? Center(
                               child: Column(
-                                mainAxisAlignment: MainAxisAlignment.center,
-                                children: [
-                                  Icon(Icons.analytics_outlined, size: 64.sp, color: theme.colorScheme.onSurface.withOpacity(0.2)),
-                                  SizedBox(height: 16.h),
-                                  Text('No data available yet', style: TextStyle(color: theme.colorScheme.onSurface.withOpacity(0.5))),
-                                ],
-                              ),
+                                    mainAxisAlignment: MainAxisAlignment.center,
+                                    children: [
+                                      Icon(Icons.analytics_outlined, size: 64.sp, color: theme.colorScheme.onSurface.withOpacity(0.2)),
+                                      SizedBox(height: 16.h),
+                                      Text(loc.no_data_available_yet, style: TextStyle(color: theme.colorScheme.onSurface.withOpacity(0.5))),
+                                    ],
+                                  ),
                             )
                           : ListView.separated(
                               physics: const BouncingScrollPhysics(),
@@ -298,7 +299,7 @@ class _AnalysisPageState extends State<AnalysisPage> {
                                                 ),
                                                 SizedBox(height: 4.h),
                                                 Text(
-                                                  '$correct / $total Correct',
+                                                  '$correct / $total ${loc.correct_label}',
                                                   style: TextStyle(
                                                     fontSize: 12.sp, 
                                                     color: theme.colorScheme.onSurface.withOpacity(0.5),

@@ -137,5 +137,13 @@
   "category_architecture": "Architektur",
   "category_video_games": "Videospiele",
   "category_general_culture": "Allgemeinwissen",
-  "category_fun_facts": "Kurioses"
+  "category_fun_facts": "Unterhaltsame Fakten",
+  "performance_title": "Leistung",
+  "performance_subtitle": "Verfolge deinen Fortschritt und verbessere dich.",
+  "overall_score": "Gesamtpunktzahl",
+  "category_breakdown": "Kategorien-Aufschlüsselung",
+  "no_data_available_yet": "Noch keine Daten verfügbar",
+  "correct_label": "Korrekt",
+  "excellent_job": "Ausgezeichnet! 🚀",
+  "keep_pushing": "Weiter so! 💪"
 }

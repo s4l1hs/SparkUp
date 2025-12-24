@@ -401,4 +401,28 @@ class AppLocalizationsJa extends AppLocalizations {
 
   @override
   String get category_fun_facts => '豆知識';
+
+  @override
+  String get performance_title => 'パフォーマンス';
+
+  @override
+  String get performance_subtitle => '進捗を追跡して改善しましょう。';
+
+  @override
+  String get overall_score => '総合スコア';
+
+  @override
+  String get category_breakdown => 'カテゴリー別内訳';
+
+  @override
+  String get no_data_available_yet => 'まだデータがありません';
+
+  @override
+  String get correct_label => '正解';
+
+  @override
+  String get excellent_job => '素晴らしい！ 🚀';
+
+  @override
+  String get keep_pushing => '頑張り続けましょう！ 💪';
 }

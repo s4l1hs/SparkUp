@@ -138,5 +138,13 @@
   "category_architecture": "Architecture",
   "category_video_games": "Jeux Vidéo",
   "category_general_culture": "Culture Générale",
-  "category_fun_facts": "Anecdotes"
+  "category_fun_facts": "Anecdotes",
+  "performance_title": "Performance",
+  "performance_subtitle": "Suivez vos progrès et améliorez-vous.",
+  "overall_score": "Score global",
+  "category_breakdown": "Répartition par catégorie",
+  "no_data_available_yet": "Aucune donnée disponible pour l'instant",
+  "correct_label": "Correct",
+  "excellent_job": "Excellent ! 🚀",
+  "keep_pushing": "Continuez comme ça ! 💪"
 }
