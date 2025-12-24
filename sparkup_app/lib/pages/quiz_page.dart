@@ -497,45 +497,63 @@ class _QuizPageState extends State<QuizPage> with TickerProviderStateMixin {
 
                 Widget _buildStartView(BuildContext context, AppLocalizations? localizations, ThemeData theme) {
                   if (_limitError != null) return _buildLimitExceededView(context, localizations, theme);
-                  return Center(
-                    key: const ValueKey('startView'),
-                    child: _isLoading
-                        ? CircularProgressIndicator(color: theme.colorScheme.primary)
-                        : MorphingGradientButton.icon(
-                            icon: Icon(Icons.play_arrow_rounded, size: 22.sp, color: Colors.white),
-                            label: Column(
-                              crossAxisAlignment: CrossAxisAlignment.center,
-                              children: [
-                                Text(localizations?.startNewQuiz ?? 'Start Quiz', style: TextStyle(fontSize: 18.sp)),
-                                SizedBox(height: 4.h),
-                                Builder(builder: (c) {
-                                  final userProv = Provider.of<UserProvider>(c, listen: false);
-                                  final rem = userProv.profile?.remainingEnergy;
-                                  final sec = userProv.profile?.sessionSeconds ?? 60;
-                                  return Text('${rem ?? '-'} energy • ${sec}s', style: TextStyle(fontSize: 12.sp, color: Colors.white70));
-                                })
-                              ],
-                            ),
-                            colors: [theme.colorScheme.secondary, theme.colorScheme.primary],
-                            onPressed: () {
-                              final userProv = Provider.of<UserProvider>(context, listen: false);
-                              final rem = userProv.profile?.remainingEnergy;
-                              if (rem != null && rem <= 0) {
-                                final loc = AppLocalizations.of(context);
-                                showDialog(
-                                  context: context,
-                                  builder: (ctx) => AlertDialog(
-                                    title: Text(loc?.limitExceeded ?? 'Limit Exceeded'),
-                                    content: Text(loc?.limitExceeded ?? 'You do not have enough energy to start.'),
-                                    actions: [TextButton(onPressed: () => Navigator.of(ctx).pop(), child: Text(loc?.cancel ?? 'OK'))],
+                  final mq = MediaQuery.of(context);
+                  final width = mq.size.width * 0.92;
+                  final height = mq.size.height * 0.72;
+                  return Align(
+                    alignment: const Alignment(0, -0.36),
+                    child: Center(
+                      key: const ValueKey('startView'),
+                      child: _isLoading
+                          ? CircularProgressIndicator(color: theme.colorScheme.primary)
+                          : SizedBox(
+                            width: width,
+                            height: height,
+                            child: AnimatedGlassCard(
+                              padding: EdgeInsets.symmetric(horizontal: 20.w, vertical: 18.h),
+                              borderRadius: BorderRadius.circular(18.r),
+                              child: Column(
+                                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                children: [
+                                  Column(
+                                    children: [
+                                      Text(localizations?.startNewQuiz ?? 'Start Quiz', textAlign: TextAlign.center, style: TextStyle(fontSize: 26.sp, fontWeight: FontWeight.w900)),
+                                      SizedBox(height: 12.h),
+                                      SizedBox(height: 20.h),
+                                    ],
                                   ),
-                                );
-                                return;
-                              }
-                              _startQuizSession();
-                            },
-                            padding: EdgeInsets.symmetric(horizontal: 28.w, vertical: 14.h),
-                          ),
+                                  Column(
+                                    children: [
+                                      MorphingGradientButton.icon(
+                                        icon: Icon(Icons.play_arrow_rounded, size: 26.sp, color: Colors.white),
+                                        label: Text(localizations?.startNewQuiz ?? 'Start Quiz', style: TextStyle(fontSize: 18.sp, fontWeight: FontWeight.bold)),
+                                        colors: [theme.colorScheme.secondary, theme.colorScheme.primary],
+                                        onPressed: () {
+                                          final userProv = Provider.of<UserProvider>(context, listen: false);
+                                          final rem = userProv.profile?.remainingEnergy;
+                                          if (rem != null && rem <= 0) {
+                                            final loc = AppLocalizations.of(context);
+                                            showDialog(
+                                              context: context,
+                                              builder: (ctx) => AlertDialog(
+                                                title: Text(loc?.limitExceeded ?? 'Limit Exceeded'),
+                                                content: Text(loc?.limitExceeded ?? 'You do not have enough energy to start.'),
+                                                actions: [TextButton(onPressed: () => Navigator.of(ctx).pop(), child: Text(loc?.cancel ?? 'OK'))],
+                                              ),
+                                            );
+                                            return;
+                                          }
+                                          _startQuizSession();
+                                        },
+                                        padding: EdgeInsets.symmetric(horizontal: 36.w, vertical: 16.h),
+                                      ),
+                                    ],
+                                  ),
+                                ],
+                              ),
+                            ),
+                          )
+                        )
                   );
                 }
 

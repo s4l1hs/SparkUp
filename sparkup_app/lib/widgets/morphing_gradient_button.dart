@@ -18,7 +18,7 @@ class MorphingGradientButton extends StatefulWidget {
       padding: padding,
       borderRadius: borderRadius,
       elevation: elevation,
-      child: Row(mainAxisSize: MainAxisSize.min, children: [icon, const SizedBox(width: 8), label]),
+      child: Row(mainAxisSize: MainAxisSize.min, children: [icon, const SizedBox(width: 8), Flexible(child: label)]),
     );
   }
 
