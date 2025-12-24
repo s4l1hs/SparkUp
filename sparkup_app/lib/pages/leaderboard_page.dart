@@ -743,7 +743,8 @@ class _EnergySliderState extends State<_EnergySlider> with SingleTickerProviderS
   @override
   void initState() {
     super.initState();
-    _anim = AnimationController(vsync: this, duration: const Duration(milliseconds: 2000))..repeat();
+    // single controller driving multiple visual phases
+    _anim = AnimationController(vsync: this, duration: const Duration(milliseconds: 3000))..repeat();
   }
 
   @override
@@ -754,6 +755,7 @@ class _EnergySliderState extends State<_EnergySlider> with SingleTickerProviderS
 
   @override
   Widget build(BuildContext context) {
+    final animate = !MediaQuery.of(context).accessibleNavigation;
     final pct = widget.max > 0 ? (widget.current / widget.max) : 0.0;
     final totalWidth = MediaQuery.of(context).size.width * 0.64;
     final fillWidth = (pct <= 0 ? 0.0 : pct * totalWidth).clamp(0.0, totalWidth);
@@ -773,30 +775,46 @@ class _EnergySliderState extends State<_EnergySlider> with SingleTickerProviderS
     final glowColor = startColor.withOpacity(0.18 + 0.6 * pct);
 
     return AnimatedBuilder(
-      animation: _anim,
+      animation: animate ? _anim : const AlwaysStoppedAnimation(0),
       builder: (context, child) {
-        final animVal = _anim.value;
-        // moving gradient offset
-        final gradientShift = (animVal * 2) - 1; // -1..1
+        final animVal = animate ? _anim.value : 0.0;
+        final gradientShift = (sin(animVal * 2 * pi) * 0.6); // gentle oscillation
+        final shimmerX = (animVal * 2) - 0.5; // -0.5..1.5 for shader movement
 
         return Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Row(
               children: [
-                // Bolt icon with subtle up/down bob and inner glow
-                Transform.translate(
-                  offset: Offset(0, -4 * sin(animVal * 2 * pi)),
-                  child: Container(
-                    width: 40.w,
-                    height: 28.h,
-                    decoration: BoxDecoration(
-                      gradient: LinearGradient(colors: [startColor.withOpacity(0.95), endColor.withOpacity(0.95)]),
-                      borderRadius: BorderRadius.circular(10.r),
-                      boxShadow: [BoxShadow(color: glowColor, blurRadius: 18.r, spreadRadius: 1.5 * pct, offset: Offset(0, 6 * pct))],
+                // Bolt icon with bob, halo and trailing glow
+                Stack(
+                  alignment: Alignment.center,
+                  children: [
+                    // pulsing halo
+                    Container(
+                      width: 48.w,
+                      height: 34.h,
+                      decoration: BoxDecoration(
+                        shape: BoxShape.rectangle,
+                        borderRadius: BorderRadius.circular(12.r),
+                        boxShadow: [
+                          BoxShadow(color: glowColor.withOpacity(0.55 * (0.6 + 0.4 * pct)), blurRadius: 28.r * (0.6 + pct), spreadRadius: 6.r * pct),
+                        ],
+                      ),
                     ),
-                    child: Center(child: Icon(Icons.bolt, color: Colors.white, size: 18.sp)),
-                  ),
+                    Transform.translate(
+                      offset: Offset(0, -6 * sin(animVal * 2 * pi)),
+                      child: Container(
+                        width: 40.w,
+                        height: 28.h,
+                        decoration: BoxDecoration(
+                          gradient: LinearGradient(colors: [startColor.withOpacity(0.98), endColor.withOpacity(0.98)]),
+                          borderRadius: BorderRadius.circular(10.r),
+                        ),
+                        child: Center(child: Icon(Icons.bolt, color: Colors.white, size: 18.sp)),
+                      ),
+                    ),
+                  ],
                 ),
                 SizedBox(width: 12.w),
                 Expanded(
@@ -817,6 +835,7 @@ class _EnergySliderState extends State<_EnergySlider> with SingleTickerProviderS
                             width: totalWidth,
                             decoration: BoxDecoration(color: colorWithOpacity(widget.theme.colorScheme.onSurface, 0.06), borderRadius: BorderRadius.circular(14.r)),
                           ),
+
                           // animated fill with shifting gradient
                           Positioned(
                             left: 0,
@@ -828,41 +847,81 @@ class _EnergySliderState extends State<_EnergySlider> with SingleTickerProviderS
                                   begin: Alignment(-1 + gradientShift, 0),
                                   end: Alignment(1 + gradientShift, 0),
                                   colors: [startColor, endColor],
+                                  stops: [0.0, 0.95],
                                 ),
                                 borderRadius: BorderRadius.circular(14.r),
-                                boxShadow: [BoxShadow(color: glowColor, blurRadius: 14.r * (0.5 + pct), offset: Offset(0, 6 * pct))],
+                                boxShadow: [BoxShadow(color: glowColor, blurRadius: 18.r * (0.6 + pct), offset: Offset(0, 6 * pct))],
+                              ),
+                              child: Stack(
+                                children: [
+                                  // moving shimmer overlay
+                                  Positioned.fill(
+                                    child: IgnorePointer(
+                                      child: ShaderMask(
+                                        blendMode: BlendMode.srcATop,
+                                        shaderCallback: (rect) {
+                                          final double w = rect.width;
+                                          final dx = (shimmerX * w);
+                                          return LinearGradient(
+                                            begin: Alignment(-1 - dx, 0),
+                                            end: Alignment(1 - dx, 0),
+                                            colors: [Colors.white.withOpacity(0.05), Colors.white.withOpacity(0.18), Colors.white.withOpacity(0.05)],
+                                            stops: [0.0, 0.5, 1.0],
+                                          ).createShader(Rect.fromLTWH(-w, 0, w * 3, rect.height));
+                                        },
+                                        child: Container(color: Colors.white),
+                                      ),
+                                    ),
+                                  ),
+
+                                  // sparkles painter
+                                  if (fillWidth > 8)
+                                    Positioned.fill(
+                                      child: IgnorePointer(
+                                        child: CustomPaint(
+                                          painter: _SparkPainter(progress: animVal, fill: fillWidth, height: 18.h, color: endColor.withOpacity(0.95), density: 12),
+                                        ),
+                                      ),
+                                    ),
+                                ],
                               ),
                             ),
                           ),
-                          // floating sparkles inside fill
-                          if (fillWidth > 8)
-                            Positioned.fill(
-                              child: IgnorePointer(
-                                child: CustomPaint(
-                                  painter: _SparkPainter(progress: animVal, fill: fillWidth, height: 18.h, color: endColor.withOpacity(0.9)),
-                                ),
-                              ),
-                            ),
-                          // bolt indicator at fill edge
+
+                          // bolt indicator with trailing glow and slight blur illusion
                           Positioned(
-                            left: (max(0.0, fillWidth - 18.w)).clamp(0.0, totalWidth - 18.w),
+                            left: (max(0.0, fillWidth - 22.w)).clamp(0.0, totalWidth - 22.w),
                             child: Transform.scale(
-                              scale: 0.92 + 0.08 * sin(animVal * 2 * pi),
-                              child: Container(
-                                width: 18.w,
-                                height: 18.w,
-                                decoration: BoxDecoration(shape: BoxShape.circle, color: Colors.white, boxShadow: [BoxShadow(color: glowColor.withOpacity(0.85), blurRadius: 10.r, spreadRadius: 1.0)]),
-                                child: Center(child: Icon(Icons.bolt, color: startColor, size: 12.sp)),
+                              scale: 0.92 + 0.12 * sin(animVal * 2 * pi),
+                              child: Stack(
+                                alignment: Alignment.center,
+                                children: [
+                                  Container(
+                                    width: 28.w,
+                                    height: 28.w,
+                                    decoration: BoxDecoration(
+                                      shape: BoxShape.circle,
+                                      color: startColor.withOpacity(0.12 + 0.3 * pct),
+                                      boxShadow: [BoxShadow(color: glowColor.withOpacity(0.85), blurRadius: 18.r * (0.6 + pct), spreadRadius: 1.2)],
+                                    ),
+                                  ),
+                                  Container(
+                                    width: 20.w,
+                                    height: 20.w,
+                                    decoration: BoxDecoration(shape: BoxShape.circle, color: Colors.white, boxShadow: [BoxShadow(color: glowColor.withOpacity(0.9), blurRadius: 10.r, spreadRadius: 0.8)]),
+                                    child: Center(child: Icon(Icons.bolt, color: startColor, size: 12.sp)),
+                                  ),
+                                ],
                               ),
                             ),
                           ),
+
                           // center text with subtle stroke/glow
                           Positioned.fill(
                             child: Center(
                               child: Stack(
                                 alignment: Alignment.center,
                                 children: [
-                                  // glow behind text
                                   Text('${widget.current}/${widget.max}', style: TextStyle(fontSize: 12.sp, fontWeight: FontWeight.bold, foreground: Paint()..style = PaintingStyle.stroke..strokeWidth = 3..color = Colors.white.withOpacity(0.12))),
                                   Text('${widget.current}/${widget.max}', style: TextStyle(color: Colors.black87, fontWeight: FontWeight.bold, fontSize: 12.sp)),
                                 ],
@@ -890,23 +949,38 @@ class _SparkPainter extends CustomPainter {
   final double fill;
   final double height;
   final Color color;
-  _SparkPainter({required this.progress, required this.fill, required this.height, required this.color});
+  final int density;
+  _SparkPainter({required this.progress, required this.fill, required this.height, required this.color, this.density = 8});
 
   @override
   void paint(Canvas canvas, Size size) {
-    if (fill <= 4) return;
-    final rnd = Random((progress * 1000).toInt());
-    final paint = Paint()..color = color.withOpacity(0.9);
-    final count = 6;
+    if (fill <= 6) return;
+    final rnd = Random((progress * 10000).toInt());
+    final base = Paint()..color = color;
+    final int count = (density).clamp(4, 28);
+
     for (int i = 0; i < count; i++) {
       final fx = rnd.nextDouble();
-      final x = (fx * (fill / size.width)) * size.width * 0.98;
-      final y = (0.5 + 0.35 * sin(progress * 2 * pi + i)) * size.height;
-      final r = 1.0 + rnd.nextDouble() * 2.4;
-      canvas.drawCircle(Offset(x, y), r, paint..color = paint.color.withOpacity(0.08 + 0.6 * rnd.nextDouble()));
+      final localX = fx * (fill / size.width) * size.width * (0.9 + 0.1 * rnd.nextDouble());
+      final phase = progress * 2 * pi + i;
+      final localY = (0.35 + 0.35 * sin(phase)) * size.height;
+      final r = (0.6 + rnd.nextDouble() * 2.6) * (1.0 + 0.3 * sin(progress * 2 * pi + i));
+      final paint = base..color = color.withOpacity(0.06 + 0.6 * rnd.nextDouble());
+
+      // draw primary spark
+      canvas.drawCircle(Offset(localX, localY), r, paint);
+
+      // subtle trail (small faded circles)
+      final trailCount = (1 + rnd.nextInt(2));
+      for (int t = 1; t <= trailCount; t++) {
+        final tx = localX - t * (2 + rnd.nextDouble() * 4);
+        final ty = localY + t * (0.5 + rnd.nextDouble());
+        final tr = r * (0.6 - 0.15 * t);
+        canvas.drawCircle(Offset(tx.clamp(0, fill), ty.clamp(0, size.height)), tr, paint..color = paint.color.withOpacity((paint.color.opacity * (0.5 / t)).clamp(0.02, 0.35)));
+      }
     }
   }
 
   @override
-  bool shouldRepaint(covariant _SparkPainter oldDelegate) => oldDelegate.progress != progress || oldDelegate.fill != fill;
+  bool shouldRepaint(covariant _SparkPainter oldDelegate) => oldDelegate.progress != progress || oldDelegate.fill != fill || oldDelegate.density != density;
 }

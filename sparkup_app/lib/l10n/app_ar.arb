@@ -86,6 +86,7 @@
   "limitExceeded": "تم تجاوز الحد",
   "streak": "سلسلة",
   "streakBonus": "مكافأة السلسلة",
+    "insufficientEnergy": "طاقة غير كافية ⚡",
   "maxStreak": "أقصى سلسلة",
   "streakBroken": "تم كسر السلسلة",
   "points": "نقاط",

@@ -85,6 +85,7 @@
   "limitExceeded": "Limite Superato",
   "streak": "Striscia",
   "streakBonus": "Bonus Striscia",
+    "insufficientEnergy": "Energia insufficiente ⚡",
   "maxStreak": "Max Striscia",
   "streakBroken": "Striscia Interrotta",
   "points": "Punti",

@@ -90,6 +90,7 @@
   "upgrade": "Upgrade",
   "subscriptionNote": "This is a purchase simulation. Must be integrated with a real payment system.",
   "limitExceeded": "Limit Exceeded",
+  "insufficientEnergy": "Insufficient energy ⚡",
   "streak": "Streak",
   "streakBonus": "Streak Bonus",
   "maxStreak": "Max Streak",

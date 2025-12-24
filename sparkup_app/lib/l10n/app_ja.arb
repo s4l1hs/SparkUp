@@ -83,6 +83,7 @@
   "upgrade": "アップグレード",
   "subscriptionNote": "これは購入シミュレーションです。実際の決済システムとの統合が必要です。",
   "limitExceeded": "制限を超過しました",
+  "insufficientEnergy": "エネルギー不足 ⚡",
   "streak": "連勝",
   "streakBonus": "連勝ボーナス",
   "maxStreak": "最大連勝",

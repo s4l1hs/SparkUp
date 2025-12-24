@@ -89,6 +89,7 @@
   "upgrade": "Mise à niveau",
   "subscriptionNote": "Ceci est une simulation d'achat. Doit être intégré à un véritable système de paiement.",
   "limitExceeded": "Limite Dépassée",
+  "insufficientEnergy": "Énergie insuffisante ⚡",
   "streak": "Série",
   "streakBonus": "Bonus de Série",
   "maxStreak": "Série Max",

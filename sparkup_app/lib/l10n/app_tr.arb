@@ -83,6 +83,7 @@
   "upgrade": "Yükselt",
   "subscriptionNote": "Satın alma simülasyonudur. Gerçek ödeme sistemi ile entegrasyon yapılmalıdır.",
   "limitExceeded": "Limit Aşıldı",
+  "insufficientEnergy": "Yetersiz enerji ⚡",
   "streak": "Seri",
   "streakBonus": "Seri Bonusu",
   "maxStreak": "Maksimum Seri",

@@ -261,6 +261,9 @@ class AppLocalizationsAr extends AppLocalizations {
   String get limitExceeded => 'تم تجاوز الحد';
 
   @override
+  String get insufficientEnergy => 'طاقة غير كافية ⚡';
+
+  @override
   String get streak => 'سلسلة';
 
   @override

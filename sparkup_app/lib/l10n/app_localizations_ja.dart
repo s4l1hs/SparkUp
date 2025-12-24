@@ -259,6 +259,9 @@ class AppLocalizationsJa extends AppLocalizations {
   String get limitExceeded => '制限を超過しました';
 
   @override
+  String get insufficientEnergy => 'エネルギー不足 ⚡';
+
+  @override
   String get streak => '連勝';
 
   @override

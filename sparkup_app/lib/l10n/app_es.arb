@@ -89,6 +89,7 @@
   "upgrade": "Actualizar",
   "subscriptionNote": "Esto es una simulación de compra. Debe integrarse con un sistema de pago real.",
   "limitExceeded": "Límite Excedido",
+  "insufficientEnergy": "Energía insuficiente ⚡",
   "streak": "Racha",
   "streakBonus": "Bono de Racha",
   "maxStreak": "Racha Máx.",

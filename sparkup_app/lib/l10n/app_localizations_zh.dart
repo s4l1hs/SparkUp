@@ -259,6 +259,9 @@ class AppLocalizationsZh extends AppLocalizations {
   String get limitExceeded => '超出限制';
 
   @override
+  String get insufficientEnergy => '能量不足 ⚡';
+
+  @override
   String get streak => '连击';
 
   @override

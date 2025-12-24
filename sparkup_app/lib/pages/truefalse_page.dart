@@ -94,9 +94,9 @@ class _TrueFalsePageState extends State<TrueFalsePage> with SingleTickerProvider
           context: context,
           barrierDismissible: true,
           builder: (ctx) => AlertDialog(
-            title: Text(isLimitErr ? (loc?.limitExceeded ?? 'Limit Exceeded') : (loc?.error ?? 'Error')),
+            title: Text(isLimitErr ? (loc?.insufficientEnergy ?? 'Insufficient energy ⚡') : (loc?.error ?? 'Error')),
             content: Text(isLimitErr
-                ? (loc?.limitExceeded ?? 'You do not have enough energy to start.')
+                ? (loc?.insufficientEnergy ?? 'Insufficient energy ⚡')
                 : (loc?.quizCouldNotStart ?? 'Could not load questions.')),
             actions: [TextButton(onPressed: () => Navigator.of(ctx).pop(), child: Text(loc?.cancel ?? 'OK'))],
           ),
@@ -316,8 +316,8 @@ class _TrueFalsePageState extends State<TrueFalsePage> with SingleTickerProvider
                               showDialog(
                                 context: context,
                                 builder: (ctx) => AlertDialog(
-                                  title: Text(loc?.limitExceeded ?? 'Limit Exceeded'),
-                                  content: Text(loc?.limitExceeded ?? 'You do not have enough energy to start.'),
+                                  title: Text(loc?.insufficientEnergy ?? 'Insufficient energy ⚡'),
+                                  content: Text(loc?.insufficientEnergy ?? 'Insufficient energy ⚡'),
                                   actions: [TextButton(onPressed: () => Navigator.of(ctx).pop(), child: Text(loc?.cancel ?? 'OK'))],
                                 ),
                               );
@@ -490,12 +490,12 @@ class _TrueFalsePageState extends State<TrueFalsePage> with SingleTickerProvider
           builder: (ctx) => AlertDialog(
             backgroundColor: Theme.of(ctx).colorScheme.surface,
             title: Text(
-              isLimitErr ? (loc?.limitExceeded ?? 'Limit Exceeded') : (loc?.error ?? 'Error'),
+              isLimitErr ? (loc?.insufficientEnergy ?? 'Insufficient energy ⚡') : (loc?.error ?? 'Error'),
               style: TextStyle(color: Theme.of(ctx).colorScheme.primary, fontWeight: FontWeight.bold),
             ),
             content: Text(
               isLimitErr
-                  ? (loc?.limitExceeded ?? 'You have reached your session limit. Please upgrade or wait until your energy resets.')
+                  ? (loc?.insufficientEnergy ?? 'Insufficient energy ⚡')
                   : (loc?.quizCouldNotStart ?? 'Could not start quiz. Please try again later.'),
               style: TextStyle(color: Theme.of(ctx).colorScheme.onSurface),
             ),

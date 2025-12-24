@@ -614,6 +614,12 @@ abstract class AppLocalizations {
   /// **'Limit Exceeded'**
   String get limitExceeded;
 
+  /// No description provided for @insufficientEnergy.
+  ///
+  /// In en, this message translates to:
+  /// **'Insufficient energy ⚡'**
+  String get insufficientEnergy;
+
   /// No description provided for @streak.
   ///
   /// In en, this message translates to:

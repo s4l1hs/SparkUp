@@ -261,6 +261,9 @@ class AppLocalizationsHi extends AppLocalizations {
   String get limitExceeded => 'सीमा पार हो गई';
 
   @override
+  String get insufficientEnergy => 'पर्याप्त ऊर्जा नहीं ⚡';
+
+  @override
   String get streak => 'स्ट्रीक';
 
   @override

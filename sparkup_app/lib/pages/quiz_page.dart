@@ -541,8 +541,8 @@ class _QuizPageState extends State<QuizPage> with TickerProviderStateMixin {
                                             showDialog(
                                               context: context,
                                               builder: (ctx) => AlertDialog(
-                                                title: Text(loc?.limitExceeded ?? 'Limit Exceeded'),
-                                                content: Text(loc?.limitExceeded ?? 'You do not have enough energy to start.'),
+                                                title: Text(loc?.insufficientEnergy ?? 'Insufficient energy ⚡'),
+                                                content: Text(loc?.insufficientEnergy ?? 'Insufficient energy ⚡'),
                                                 actions: [TextButton(onPressed: () => Navigator.of(ctx).pop(), child: Text(loc?.cancel ?? 'OK'))],
                                               ),
                                             );
@@ -572,7 +572,7 @@ class _QuizPageState extends State<QuizPage> with TickerProviderStateMixin {
                         children: [
                           Icon(Icons.lock_outline_rounded, size: 60.sp, color: theme.colorScheme.error),
                           SizedBox(height: 20.h),
-                          Text(localizations?.limitExceeded ?? 'Limit exceeded', style: theme.textTheme.titleLarge?.copyWith(color: theme.colorScheme.error)),
+                          Text(localizations?.insufficientEnergy ?? 'Insufficient energy ⚡', style: theme.textTheme.titleLarge?.copyWith(color: theme.colorScheme.error)),
                           SizedBox(height: 10.h),
                           Text(_limitError ?? (localizations?.upgrade ?? 'Upgrade'), textAlign: TextAlign.center, style: TextStyle(color: colorWithOpacity(theme.colorScheme.onSurface, 0.7), fontSize: 16.sp)),
                           SizedBox(height: 30.h),

@@ -261,6 +261,9 @@ class AppLocalizationsRu extends AppLocalizations {
   String get limitExceeded => 'Лимит Превышен';
 
   @override
+  String get insufficientEnergy => 'Недостаточно энергии ⚡';
+
+  @override
   String get streak => 'Серия';
 
   @override

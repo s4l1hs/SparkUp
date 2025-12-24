@@ -268,6 +268,9 @@ class AppLocalizationsDe extends AppLocalizations {
   String get limitExceeded => 'Limit überschritten';
 
   @override
+  String get insufficientEnergy => 'Unzureichende Energie ⚡';
+
+  @override
   String get streak => 'Serie';
 
   @override
