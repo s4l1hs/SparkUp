@@ -1,18 +1,16 @@
 // lib/pages/quiz_page.dart
-
 import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:provider/provider.dart';
-import '../services/api_service.dart';
-import '../widgets/morphing_gradient_button.dart';
-import '../widgets/animated_glass_card.dart';
-import '../l10n/app_localizations.dart';
 import '../providers/user_provider.dart';
 import '../providers/analysis_provider.dart';
+import '../l10n/app_localizations.dart';
+import '../widgets/animated_glass_card.dart';
+import '../widgets/morphing_gradient_button.dart';
+import '../services/api_service.dart';
 import '../locale_provider.dart';
-import '../main_screen.dart';
-import 'package:sparkup_app/utils/color_utils.dart';
+import '../utils/color_utils.dart';
 
 enum AnswerState { unanswered, pending, revealed }
 
@@ -24,30 +22,7 @@ class QuizPage extends StatefulWidget {
   State<QuizPage> createState() => _QuizPageState();
 }
 
-// Helper widget for info chips (timer, score, etc.)
-Widget _buildInfoChip(IconData icon, String label, Color color) {
-  return Container(
-    padding: EdgeInsets.symmetric(horizontal: 12.w, vertical: 6.h),
-    decoration: BoxDecoration(
-      color: color.withOpacity(0.12),
-      borderRadius: BorderRadius.circular(10.r),
-      border: Border.all(color: color.withOpacity(0.32)),
-    ),
-    child: Row(
-      mainAxisSize: MainAxisSize.min,
-      children: [
-        Icon(icon, color: color, size: 18.sp),
-        SizedBox(width: 6.w),
-        Text(label, style: TextStyle(color: color, fontWeight: FontWeight.bold, fontSize: 14.sp)),
-      ],
-    ),
-  );
-}
-
 class _QuizPageState extends State<QuizPage> with TickerProviderStateMixin {
-  final ApiService _apiService = ApiService();
-  bool _localizeInProgress = false;
-  bool _isQuizActive = false, _isLoading = false, _answered = false;
   String? _limitError;
   List<Map<String, dynamic>> _questions = [];
   int _currentIndex = 0, _sessionScore = 0;
@@ -56,6 +31,12 @@ class _QuizPageState extends State<QuizPage> with TickerProviderStateMixin {
   late final AnimationController _backgroundController;
   late final Animation<Alignment> _backgroundAnimation1, _backgroundAnimation2;
   AnswerState _answerState = AnswerState.unanswered;
+
+  bool _isLoading = false;
+  bool _isQuizActive = false;
+  bool _answered = false;
+  bool _localizeInProgress = false;
+  final ApiService _apiService = ApiService();
 
   // Yeni: son kullanılan locale'i takip et
   String? _lastLocale;
@@ -133,6 +114,23 @@ class _QuizPageState extends State<QuizPage> with TickerProviderStateMixin {
     if (userLang != null && supported.contains(userLang) && (allowBackendEn || userLang != 'en')) return userLang;
     if (supported.contains(deviceLang)) return deviceLang;
     return 'en';
+  }
+
+  Widget _buildInfoChip(IconData icon, String text, Color color) {
+    return Container(
+      padding: EdgeInsets.symmetric(horizontal: 12.w, vertical: 8.h),
+      decoration: BoxDecoration(
+        color: color.withOpacity(0.1),
+        borderRadius: BorderRadius.circular(12.r),
+      ),
+      child: Row(
+        children: [
+          Icon(icon, color: color, size: 18.sp),
+          SizedBox(width: 6.w),
+          Text(text, style: TextStyle(color: color, fontWeight: FontWeight.bold, fontSize: 16.sp)),
+        ],
+      ),
+    );
   }
 
   void _onLocaleChanged() {
@@ -273,8 +271,15 @@ class _QuizPageState extends State<QuizPage> with TickerProviderStateMixin {
                 }
 
                 void _startQuizSession() {
-                  _sessionScore = 0;
-                  _fetchQuizData(isInitialLoad: false, isPreview: false);
+                _sessionScore = 0;
+                final userProv = Provider.of<UserProvider>(context, listen: false);
+                // optimistic UI update: consume 1 energy locally
+                userProv.consumeEnergyOptimistic();
+                _fetchQuizData(isInitialLoad: false, isPreview: false).catchError((e) {
+                  // sync profile from server to correct optimistic change on error
+                  try { userProv.loadProfile(widget.idToken); } catch (_) {}
+                  throw e;
+                });
                 }
 
                 Future<void> _answerQuestion(int selectedIndex) async {
@@ -571,10 +576,12 @@ class _QuizPageState extends State<QuizPage> with TickerProviderStateMixin {
                           SizedBox(height: 10.h),
                           Text(_limitError ?? (localizations?.upgrade ?? 'Upgrade'), textAlign: TextAlign.center, style: TextStyle(color: colorWithOpacity(theme.colorScheme.onSurface, 0.7), fontSize: 16.sp)),
                           SizedBox(height: 30.h),
-                          MorphingGradientButton(
+                              MorphingGradientButton(
                             onPressed: () {
-                              final mainScreenState = context.findAncestorStateOfType<MainScreenState>();
-                              if (mainScreenState != null) mainScreenState.onItemTapped(1);
+                              final mainScreenState = context.findAncestorStateOfType<State>();
+                              if (mainScreenState != null) {
+                                try { (mainScreenState as dynamic).onItemTapped(1); } catch (_) {}
+                              }
                             },
                             padding: EdgeInsets.symmetric(horizontal: 22.w, vertical: 12.h),
                             colors: [theme.colorScheme.secondary, theme.colorScheme.primary],

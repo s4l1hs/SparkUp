@@ -687,20 +687,127 @@ class _HeaderRow extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Row(
+    final userProv = Provider.of<UserProvider?>(context);
+    final profile = userProv?.profile;
+    int maxEnergy = 5;
+    if (profile != null) {
+      final level = profile.subscriptionLevel.toLowerCase();
+      if (level == 'free') maxEnergy = 3;
+      else if (level == 'pro') maxEnergy = 5;
+      else if (level == 'ultra') maxEnergy = 5;
+    }
+    final currentEnergy = profile?.remainingEnergy ?? 0;
+
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        Expanded(child: Text(localizations.leaderboard, style: TextStyle(fontSize: 22.sp, fontWeight: FontWeight.bold, color: Colors.white))),
-        if (currentUser != null)
-          Row(
-            children: [
-              _GradientAvatar(name: displayNameFn(currentUser!), radius: 18.r, colors: [theme.colorScheme.secondary, theme.colorScheme.primary]),
-              SizedBox(width: 8.w),
-              Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
-                Text(displayNameFn(currentUser!), style: const TextStyle(color: Colors.white, fontWeight: FontWeight.bold)),
-                Text("${currentUser!.score} ${localizations.points}", style: TextStyle(color: theme.colorScheme.secondary, fontSize: 12.sp)),
-              ])
-            ],
-          )
+        Row(
+          children: [
+            Expanded(child: Text(localizations.leaderboard, style: TextStyle(fontSize: 22.sp, fontWeight: FontWeight.bold, color: Colors.white))),
+            if (currentUser != null)
+              Row(
+                children: [
+                  _GradientAvatar(name: displayNameFn(currentUser!), radius: 18.r, colors: [theme.colorScheme.secondary, theme.colorScheme.primary]),
+                  SizedBox(width: 8.w),
+                  Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
+                    Text(displayNameFn(currentUser!), style: const TextStyle(color: Colors.white, fontWeight: FontWeight.bold)),
+                    Text("${currentUser!.score} ${localizations.points}", style: TextStyle(color: theme.colorScheme.secondary, fontSize: 12.sp)),
+                  ])
+                ],
+              )
+          ],
+        ),
+        if (profile != null) ...[
+          SizedBox(height: 12.h),
+          // Energy slider
+          _EnergySlider(current: currentEnergy.clamp(0, maxEnergy), max: maxEnergy, theme: theme),
+        ]
+      ],
+    );
+  }
+}
+
+class _EnergySlider extends StatelessWidget {
+  final int current;
+  final int max;
+  final ThemeData theme;
+  const _EnergySlider({required this.current, required this.max, required this.theme});
+
+  @override
+  Widget build(BuildContext context) {
+    final pct = max > 0 ? (current / max) : 0.0;
+    final totalWidth = MediaQuery.of(context).size.width * 0.64;
+    final fillWidth = pct <= 0 ? 0.0 : pct * totalWidth;
+
+    // compute dynamic colors: red -> orange -> yellow based on pct
+    Color lerp3(Color a, Color b, double t) => Color.lerp(a, b, t) ?? a;
+    Color startColor;
+    Color endColor;
+    if (pct <= 0.5) {
+      final t = (pct / 0.5).clamp(0.0, 1.0);
+      startColor = lerp3(Colors.red.shade600, Colors.orange.shade600, t);
+      endColor = lerp3(Colors.red.shade400, Colors.orange.shade400, t);
+    } else {
+      final t = ((pct - 0.5) / 0.5).clamp(0.0, 1.0);
+      startColor = lerp3(Colors.orange.shade700, Colors.yellow.shade700, t);
+      endColor = lerp3(Colors.orange.shade400, Colors.yellow.shade400, t);
+    }
+    final glowColor = startColor.withOpacity(0.16 + 0.5 * pct);
+
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        Row(
+          children: [
+            Container(
+              width: 40.w,
+              height: 28.h,
+              decoration: BoxDecoration(
+                color: startColor,
+                borderRadius: BorderRadius.circular(10.r),
+                boxShadow: [BoxShadow(color: glowColor, blurRadius: 10.r, offset: const Offset(0, 6))],
+              ),
+              child: Center(child: Icon(Icons.bolt, color: Colors.white, size: 18.sp)),
+            ),
+            SizedBox(width: 12.w),
+            Expanded(
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text('Energy', style: TextStyle(color: theme.colorScheme.onSurface.withOpacity(0.9), fontSize: 12.sp, fontWeight: FontWeight.w700)),
+                  SizedBox(height: 8.h),
+                  Stack(
+                    children: [
+                      Container(
+                        height: 18.h,
+                        width: totalWidth,
+                        decoration: BoxDecoration(color: colorWithOpacity(theme.colorScheme.onSurface, 0.06), borderRadius: BorderRadius.circular(14.r)),
+                      ),
+                      AnimatedContainer(
+                        duration: const Duration(milliseconds: 420),
+                        curve: Curves.easeOutCubic,
+                        height: 18.h,
+                        width: fillWidth,
+                        decoration: BoxDecoration(
+                          gradient: LinearGradient(colors: [startColor, endColor]),
+                          borderRadius: BorderRadius.circular(14.r),
+                          boxShadow: [BoxShadow(color: glowColor, blurRadius: 10.r, offset: const Offset(0, 6))],
+                        ),
+                        foregroundDecoration: BoxDecoration(borderRadius: BorderRadius.circular(14.r)),
+                      ),
+                      Positioned.fill(
+                        child: Center(
+                          child: Text('$current/$max', style: TextStyle(color: Colors.black87, fontWeight: FontWeight.bold, fontSize: 12.sp)),
+                        ),
+                      ),
+                    ],
+                  ),
+                ],
+              ),
+            ),
+            SizedBox(width: 12.w),
+          ],
+        ),
       ],
     );
   }

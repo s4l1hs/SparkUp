@@ -40,6 +40,23 @@ class UserProvider extends ChangeNotifier {
 
   void setProfile(UserProfile p) { profile = p; notifyListeners(); }
   void clearProfile() { profile = null; notifyListeners(); }
+
+  /// Optimistically decrement remaining energy by 1 in the local profile and notify listeners.
+  /// This is used to update UI immediately when a session start request is sent.
+  void consumeEnergyOptimistic() {
+    if (profile == null) return;
+    final current = profile!.remainingEnergy ?? 0;
+    final next = (current - 1) < 0 ? 0 : (current - 1);
+    profile = profile!.copyWith(remainingEnergy: next);
+    notifyListeners();
+  }
+
+  /// Set remaining energy explicitly (used to sync with server state).
+  void setRemainingEnergy(int? remaining) {
+    if (profile == null) return;
+    profile = profile!.copyWith(remainingEnergy: remaining);
+    notifyListeners();
+  }
 }
 
 class UserProfile {

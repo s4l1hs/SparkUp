@@ -1,16 +1,14 @@
-
 import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:provider/provider.dart';
-import 'package:sparkup_app/l10n/app_localizations.dart';
 import '../providers/user_provider.dart';
-import '../services/api_service.dart';
 import '../providers/analysis_provider.dart';
-import '../widgets/morphing_gradient_button.dart';
+import '../services/api_service.dart';
+import '../l10n/app_localizations.dart';
 import '../widgets/animated_glass_card.dart';
-import 'package:sparkup_app/utils/color_utils.dart';
-
+import '../widgets/morphing_gradient_button.dart';
+import '../utils/color_utils.dart';
 
 class TrueFalsePage extends StatefulWidget {
   final String idToken;
@@ -20,22 +18,20 @@ class TrueFalsePage extends StatefulWidget {
   State<TrueFalsePage> createState() => _TrueFalsePageState();
 }
 
-class _TrueFalsePageState extends State<TrueFalsePage> with TickerProviderStateMixin {
+class _TrueFalsePageState extends State<TrueFalsePage> with SingleTickerProviderStateMixin {
+  bool _isLoading = false;
+  bool _isQuizActive = false;
+  Timer? _timer;
   List<dynamic> _questions = [];
   int _currentIndex = 0;
   int _score = 0;
-  int _streak = 0; // Üst üste doğru sayısı
-  bool _isLoading = false;
-  bool _isQuizActive = false;
-
-  // Timer değişkenleri
-  Timer? _timer;
-  int _timeLeft = 60; // 60 saniye süre
+  int _streak = 0;
+  int _timeLeft = 0;
   int _sessionDuration = 60;
 
-  // Animasyon kontrolcüleri (background blobs)
   late final AnimationController _backgroundController;
-  late final Animation<Alignment> _backgroundAnimation1, _backgroundAnimation2;
+  late final Animation<Alignment> _backgroundAnimation1;
+  late final Animation<Alignment> _backgroundAnimation2;
 
   @override
   void initState() {
@@ -50,8 +46,9 @@ class _TrueFalsePageState extends State<TrueFalsePage> with TickerProviderStateM
       TweenSequenceItem(tween: AlignmentTween(begin: Alignment.bottomLeft, end: Alignment.topRight), weight: 1),
     ]).animate(_backgroundController);
 
-    // Do not pre-load questions here because the backend now consumes 1 energy per session
-    // when `/manual/truefalse/` is requested. Questions will be loaded when the user starts a session.
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      // Intentionally left blank; do not auto-start the session here.
+    });
   }
 
   @override
@@ -421,6 +418,9 @@ class _TrueFalsePageState extends State<TrueFalsePage> with TickerProviderStateM
       _isQuizActive = true;
       _isLoading = true;
     });
+    final userProv = Provider.of<UserProvider>(context, listen: false);
+    // optimistic UI update: consume 1 energy locally
+    userProv.consumeEnergyOptimistic();
 
     // Load questions from server (this call will consume 1 energy on the backend)
     _loadQuestions().then((_) {
@@ -445,6 +445,8 @@ class _TrueFalsePageState extends State<TrueFalsePage> with TickerProviderStateM
       });
       // Show a user-friendly dialog for rate-limit / energy errors
       if (mounted) {
+        // On error, refresh profile from server to correct optimistic change
+        try { userProv.loadProfile(widget.idToken); } catch (_) {}
         final loc = AppLocalizations.of(context);
         final msg = e?.toString() ?? '';
         final bool isLimitErr = e is QuizLimitException || msg.toLowerCase().contains('429') || msg.toLowerCase().contains('limit');
