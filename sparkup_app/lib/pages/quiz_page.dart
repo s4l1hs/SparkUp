@@ -24,6 +24,26 @@ class QuizPage extends StatefulWidget {
   State<QuizPage> createState() => _QuizPageState();
 }
 
+// Helper widget for info chips (timer, score, etc.)
+Widget _buildInfoChip(IconData icon, String label, Color color) {
+  return Container(
+    padding: EdgeInsets.symmetric(horizontal: 12.w, vertical: 6.h),
+    decoration: BoxDecoration(
+      color: color.withOpacity(0.12),
+      borderRadius: BorderRadius.circular(10.r),
+      border: Border.all(color: color.withOpacity(0.32)),
+    ),
+    child: Row(
+      mainAxisSize: MainAxisSize.min,
+      children: [
+        Icon(icon, color: color, size: 18.sp),
+        SizedBox(width: 6.w),
+        Text(label, style: TextStyle(color: color, fontWeight: FontWeight.bold, fontSize: 14.sp)),
+      ],
+    ),
+  );
+}
+
 class _QuizPageState extends State<QuizPage> with TickerProviderStateMixin {
   final ApiService _apiService = ApiService();
   bool _localizeInProgress = false;
@@ -551,15 +571,6 @@ class _QuizPageState extends State<QuizPage> with TickerProviderStateMixin {
                 Widget _buildQuizView(BuildContext context, AppLocalizations? localizations, ThemeData theme, int currentStreak) {
                   final userProvider = Provider.of<UserProvider>(context);
                   final profile = userProvider.profile;
-                  final dailyPoints = profile?.dailyPoints ?? 0;
-
-                  final int dailyUsed = profile?.dailyQuizUsed ?? 0;
-                  final int displayIndex = dailyUsed + 1;
-                  final int? dailyLimit = profile?.dailyQuizLimit;
-                  final double progressValue = (() {
-                    final denom = (dailyLimit != null && dailyLimit > 0) ? dailyLimit.toDouble() : _questions.length.toDouble();
-                    return (displayIndex.toDouble() / denom).clamp(0.0, 1.0);
-                  })();
 
                   return Padding(
                     key: ValueKey<int>(_currentIndex),
@@ -571,17 +582,7 @@ class _QuizPageState extends State<QuizPage> with TickerProviderStateMixin {
                           padding: EdgeInsets.only(top: 12.h),
                           child: Column(
                             children: [
-                              // rounded linear progress
-                              ClipRRect(
-                                borderRadius: BorderRadius.circular(8.r),
-                                child: LinearProgressIndicator(
-                                  value: progressValue,
-                                  minHeight: 8.h,
-                                  backgroundColor: colorWithOpacity(theme.colorScheme.surface, 0.08),
-                                  valueColor: AlwaysStoppedAnimation(theme.colorScheme.primary),
-                                ),
-                              ),
-                              SizedBox(height: 8.h),
+                              SizedBox(height: 4.h),
                               // session time slider
                               ClipRRect(
                                 borderRadius: BorderRadius.circular(6.r),
@@ -596,43 +597,17 @@ class _QuizPageState extends State<QuizPage> with TickerProviderStateMixin {
                               Row(
                                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                                 children: [
-                                  // Show session timer here instead of question counter
-                                  Container(
-                                    padding: EdgeInsets.symmetric(horizontal: 10.w, vertical: 6.h),
-                                    decoration: BoxDecoration(
-                                      color: colorWithOpacity(theme.colorScheme.primary, 0.12),
-                                      borderRadius: BorderRadius.circular(10.r),
+                                  _buildInfoChip(Icons.timer, '$_timeLeft s', _timeLeft < 10 ? Colors.red : theme.colorScheme.primary),
+                                  Flexible(
+                                    child: Center(
+                                      child: Text(
+                                        '${localizations?.streak ?? 'Streak'}: ${profile?.currentStreak ?? 0} 🔥',
+                                        style: TextStyle(fontSize: 16.sp, fontWeight: FontWeight.bold, color: Colors.orange),
+                                        overflow: TextOverflow.ellipsis,
+                                      ),
                                     ),
-                                    child: Row(children: [
-                                      Icon(Icons.timer, size: 18.sp, color: theme.colorScheme.primary),
-                                      SizedBox(width: 8.w),
-                                      Text('$_timeLeft s', style: TextStyle(color: theme.colorScheme.primary, fontSize: 16.sp, fontWeight: FontWeight.bold)),
-                                    ]),
                                   ),
-                                  Row(
-                                    children: [
-                                          // timer moved to the left; removed duplicate here
-                                      Container(
-                                        padding: EdgeInsets.symmetric(horizontal: 10.w, vertical: 6.h),
-                                        decoration: BoxDecoration(color: colorWithOpacity(theme.colorScheme.primary, 0.95), borderRadius: BorderRadius.circular(10.r)),
-                                        child: Row(children: [
-                                          Icon(Icons.star_rounded, color: Colors.yellow.shade700, size: 14.sp),
-                                          SizedBox(width: 6.w),
-                                          Text("$dailyPoints ${localizations?.points ?? 'pts'}", style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold, fontSize: 13.sp)),
-                                        ]),
-                                      ),
-                                      SizedBox(width: 10.w),
-                                      Container(
-                                        padding: EdgeInsets.symmetric(horizontal: 10.w, vertical: 4.h),
-                                        decoration: BoxDecoration(
-                                          color: colorWithOpacity(theme.colorScheme.secondary, 0.18),
-                                          borderRadius: BorderRadius.circular(10.r),
-                                          border: Border.all(color: colorWithOpacity(theme.colorScheme.secondary, 0.22)),
-                                        ),
-                                        child: Text("${localizations?.streak ?? 'Streak'}: ${profile?.currentStreak ?? 0}", style: TextStyle(color: theme.colorScheme.secondary, fontWeight: FontWeight.bold, fontSize: 14.sp)),
-                                      ),
-                                    ],
-                                  ),
+                                  _buildInfoChip(Icons.star, '$_sessionScore', theme.colorScheme.secondary),
                                 ],
                               ),
                             ],

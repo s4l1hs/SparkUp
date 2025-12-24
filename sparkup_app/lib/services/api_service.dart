@@ -181,6 +181,9 @@ class ApiService {
     } else if (resp.statusCode == 404) {
       // upstream: no manual TF available
       return <Map<String, dynamic>>[];
+    } else if (resp.statusCode == 429) {
+      final detail = resp.body;
+      throw QuizLimitException(detail);
     } else {
       throw Exception('Failed to load manual true/false (${resp.statusCode})');
     }

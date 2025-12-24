@@ -387,7 +387,29 @@ class _TrueFalsePageState extends State<TrueFalsePage> with TickerProviderStateM
   String _currentQuestionText() {
     if (_questions.isEmpty || _currentIndex >= _questions.length) return '';
     final q = _questions[_currentIndex];
-    return q['question'] is Map ? (q['question']['en'] ?? q['question'].values.first) : (q['question'] ?? '');
+    final raw = q['question'];
+    if (raw == null) return '';
+    // determine current app language
+    String lang = 'en';
+    try {
+      lang = Localizations.localeOf(context).languageCode;
+    } catch (_) {}
+
+    if (raw is Map) {
+      // prefer exact language, then english, then first available
+      if (raw.containsKey(lang) && (raw[lang] ?? '').toString().trim().isNotEmpty) {
+        return raw[lang].toString();
+      }
+      if (raw.containsKey('en') && (raw['en'] ?? '').toString().trim().isNotEmpty) {
+        return raw['en'].toString();
+      }
+      // fallback to first non-empty value
+      for (final v in raw.values) {
+        if (v != null && v.toString().trim().isNotEmpty) return v.toString();
+      }
+      return '';
+    }
+    return raw.toString();
   }
 
   Widget _buildTFButton(IconData icon, Color color, String label, VoidCallback onTap) {
@@ -442,18 +464,18 @@ class _TrueFalsePageState extends State<TrueFalsePage> with TickerProviderStateM
       if (mounted) {
         final loc = AppLocalizations.of(context);
         final msg = e?.toString() ?? '';
-        final is429 = msg.contains('429');
+        final bool isLimitErr = e is QuizLimitException || msg.toLowerCase().contains('429') || msg.toLowerCase().contains('limit');
         showDialog(
           context: context,
           barrierDismissible: true,
           builder: (ctx) => AlertDialog(
             backgroundColor: Theme.of(ctx).colorScheme.surface,
             title: Text(
-              is429 ? (loc?.limitExceeded ?? 'Limit Exceeded') : (loc?.error ?? 'Error'),
+              isLimitErr ? (loc?.limitExceeded ?? 'Limit Exceeded') : (loc?.error ?? 'Error'),
               style: TextStyle(color: Theme.of(ctx).colorScheme.primary, fontWeight: FontWeight.bold),
             ),
             content: Text(
-              is429
+              isLimitErr
                   ? (loc?.limitExceeded ?? 'You have reached your session limit. Please upgrade or wait until your energy resets.')
                   : (loc?.quizCouldNotStart ?? 'Could not start quiz. Please try again later.'),
               style: TextStyle(color: Theme.of(ctx).colorScheme.onSurface),
