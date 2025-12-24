@@ -26,6 +26,7 @@ class _TrueFalsePageState extends State<TrueFalsePage> with SingleTickerProvider
   int _currentIndex = 0;
   int _score = 0;
   int _streak = 0;
+  int _wrongCount = 0;
   int _timeLeft = 0;
   int _sessionDuration = 60;
 
@@ -73,9 +74,34 @@ class _TrueFalsePageState extends State<TrueFalsePage> with SingleTickerProvider
       // Do not auto-start the session; user will start via Start button
     } catch (e) {
       debugPrint("Hata: manual true/false yüklenemedi: $e");
-      setState(() => _isLoading = false);
-      // Rethrow so the caller (_startSession) can handle the failure
-      rethrow;
+      setState(() {
+        _isLoading = false;
+        _questions = [];
+      });
+
+      // Try to refresh user profile to correct optimistic energy changes
+      try {
+        final userProv = Provider.of<UserProvider>(context, listen: false);
+        await userProv.loadProfile(widget.idToken);
+      } catch (_) {}
+
+      // Show a user-friendly dialog (limit or generic) without throwing further
+      if (mounted) {
+        final loc = AppLocalizations.of(context);
+        final msg = e.toString();
+        final bool isLimitErr = e is QuizLimitException || msg.toLowerCase().contains('429') || msg.toLowerCase().contains('limit');
+        showDialog(
+          context: context,
+          barrierDismissible: true,
+          builder: (ctx) => AlertDialog(
+            title: Text(isLimitErr ? (loc?.limitExceeded ?? 'Limit Exceeded') : (loc?.error ?? 'Error')),
+            content: Text(isLimitErr
+                ? (loc?.limitExceeded ?? 'You do not have enough energy to start.')
+                : (loc?.quizCouldNotStart ?? 'Could not load questions.')),
+            actions: [TextButton(onPressed: () => Navigator.of(ctx).pop(), child: Text(loc?.cancel ?? 'OK'))],
+          ),
+        );
+      }
     }
   }
 
@@ -106,8 +132,10 @@ class _TrueFalsePageState extends State<TrueFalsePage> with SingleTickerProvider
     if (isUserCorrect) {
       _score += 10 + (_streak * 2);
       _streak++;
+      _wrongCount = 0;
     } else {
       _streak = 0;
+      _wrongCount++;
     }
 
     // Notify analysis provider to refresh immediately after an answer
@@ -115,6 +143,12 @@ class _TrueFalsePageState extends State<TrueFalsePage> with SingleTickerProvider
       final analysisProv = Provider.of<AnalysisProvider>(context, listen: false);
       analysisProv.refresh(widget.idToken);
     } catch (_) {}
+
+    if (_wrongCount >= 3) {
+      // End session immediately on 3 wrong answers
+      await _handleQuizCompletion();
+      return;
+    }
 
     if (_currentIndex < _questions.length - 1) {
       setState(() => _currentIndex++);
@@ -476,6 +510,10 @@ class _TrueFalsePageState extends State<TrueFalsePage> with SingleTickerProvider
 
   Future<void> _handleQuizCompletion() async {
     _cancelTimer();
+    // ensure quiz is marked inactive so Start view returns like in QuizPage
+    setState(() {
+      _isQuizActive = false;
+    });
     final theme = Theme.of(context);
     await showDialog(
       context: context,
@@ -483,14 +521,13 @@ class _TrueFalsePageState extends State<TrueFalsePage> with SingleTickerProvider
       builder: (context) => AlertDialog(
         backgroundColor: theme.colorScheme.surface,
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16.r)),
-        title: Text('Quiz finished', style: TextStyle(color: theme.colorScheme.primary, fontWeight: FontWeight.bold)),
-        content: Text("Your score: $_score", style: TextStyle(fontSize: 18.sp, color: theme.colorScheme.onSurface)),
-        actions: [TextButton(onPressed: () => Navigator.of(context).pop(), child: Text('Great', style: TextStyle(color: theme.colorScheme.primary)))],
+        title: Text(AppLocalizations.of(context)?.quizFinished ?? 'Quiz finished', style: TextStyle(color: theme.colorScheme.primary, fontWeight: FontWeight.bold)),
+        content: Text("${AppLocalizations.of(context)?.yourScore ?? 'Your score'}: $_score", style: TextStyle(fontSize: 18.sp, color: theme.colorScheme.onSurface)),
+        actions: [TextButton(onPressed: () => Navigator.of(context).pop(), child: Text(AppLocalizations.of(context)?.great ?? 'Great', style: TextStyle(color: theme.colorScheme.primary)))],
       ),
     );
     if (mounted) {
       await _loadQuestions();
-      setState(() => _isQuizActive = false);
     }
   }
 

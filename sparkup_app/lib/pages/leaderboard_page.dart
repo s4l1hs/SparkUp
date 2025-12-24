@@ -727,19 +727,37 @@ class _HeaderRow extends StatelessWidget {
   }
 }
 
-class _EnergySlider extends StatelessWidget {
+class _EnergySlider extends StatefulWidget {
   final int current;
   final int max;
   final ThemeData theme;
   const _EnergySlider({required this.current, required this.max, required this.theme});
 
   @override
-  Widget build(BuildContext context) {
-    final pct = max > 0 ? (current / max) : 0.0;
-    final totalWidth = MediaQuery.of(context).size.width * 0.64;
-    final fillWidth = pct <= 0 ? 0.0 : pct * totalWidth;
+  State<_EnergySlider> createState() => _EnergySliderState();
+}
 
-    // compute dynamic colors: red -> orange -> yellow based on pct
+class _EnergySliderState extends State<_EnergySlider> with SingleTickerProviderStateMixin {
+  late final AnimationController _anim;
+
+  @override
+  void initState() {
+    super.initState();
+    _anim = AnimationController(vsync: this, duration: const Duration(milliseconds: 2000))..repeat();
+  }
+
+  @override
+  void dispose() {
+    _anim.dispose();
+    super.dispose();
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    final pct = widget.max > 0 ? (widget.current / widget.max) : 0.0;
+    final totalWidth = MediaQuery.of(context).size.width * 0.64;
+    final fillWidth = (pct <= 0 ? 0.0 : pct * totalWidth).clamp(0.0, totalWidth);
+
     Color lerp3(Color a, Color b, double t) => Color.lerp(a, b, t) ?? a;
     Color startColor;
     Color endColor;
@@ -752,63 +770,143 @@ class _EnergySlider extends StatelessWidget {
       startColor = lerp3(Colors.orange.shade700, Colors.yellow.shade700, t);
       endColor = lerp3(Colors.orange.shade400, Colors.yellow.shade400, t);
     }
-    final glowColor = startColor.withOpacity(0.16 + 0.5 * pct);
+    final glowColor = startColor.withOpacity(0.18 + 0.6 * pct);
 
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        Row(
+    return AnimatedBuilder(
+      animation: _anim,
+      builder: (context, child) {
+        final animVal = _anim.value;
+        // moving gradient offset
+        final gradientShift = (animVal * 2) - 1; // -1..1
+
+        return Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Container(
-              width: 40.w,
-              height: 28.h,
-              decoration: BoxDecoration(
-                color: startColor,
-                borderRadius: BorderRadius.circular(10.r),
-                boxShadow: [BoxShadow(color: glowColor, blurRadius: 10.r, offset: const Offset(0, 6))],
-              ),
-              child: Center(child: Icon(Icons.bolt, color: Colors.white, size: 18.sp)),
-            ),
-            SizedBox(width: 12.w),
-            Expanded(
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Text('Energy', style: TextStyle(color: theme.colorScheme.onSurface.withOpacity(0.9), fontSize: 12.sp, fontWeight: FontWeight.w700)),
-                  SizedBox(height: 8.h),
-                  Stack(
+            Row(
+              children: [
+                // Bolt icon with subtle up/down bob and inner glow
+                Transform.translate(
+                  offset: Offset(0, -4 * sin(animVal * 2 * pi)),
+                  child: Container(
+                    width: 40.w,
+                    height: 28.h,
+                    decoration: BoxDecoration(
+                      gradient: LinearGradient(colors: [startColor.withOpacity(0.95), endColor.withOpacity(0.95)]),
+                      borderRadius: BorderRadius.circular(10.r),
+                      boxShadow: [BoxShadow(color: glowColor, blurRadius: 18.r, spreadRadius: 1.5 * pct, offset: Offset(0, 6 * pct))],
+                    ),
+                    child: Center(child: Icon(Icons.bolt, color: Colors.white, size: 18.sp)),
+                  ),
+                ),
+                SizedBox(width: 12.w),
+                Expanded(
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      Container(
-                        height: 18.h,
-                        width: totalWidth,
-                        decoration: BoxDecoration(color: colorWithOpacity(theme.colorScheme.onSurface, 0.06), borderRadius: BorderRadius.circular(14.r)),
+                      Text(
+                        AppLocalizations.of(context)?.energyLabel ?? 'Energy',
+                        style: TextStyle(color: widget.theme.colorScheme.onSurface.withOpacity(0.95), fontSize: 12.sp, fontWeight: FontWeight.w800),
                       ),
-                      AnimatedContainer(
-                        duration: const Duration(milliseconds: 420),
-                        curve: Curves.easeOutCubic,
-                        height: 18.h,
-                        width: fillWidth,
-                        decoration: BoxDecoration(
-                          gradient: LinearGradient(colors: [startColor, endColor]),
-                          borderRadius: BorderRadius.circular(14.r),
-                          boxShadow: [BoxShadow(color: glowColor, blurRadius: 10.r, offset: const Offset(0, 6))],
-                        ),
-                        foregroundDecoration: BoxDecoration(borderRadius: BorderRadius.circular(14.r)),
-                      ),
-                      Positioned.fill(
-                        child: Center(
-                          child: Text('$current/$max', style: TextStyle(color: Colors.black87, fontWeight: FontWeight.bold, fontSize: 12.sp)),
-                        ),
+                      SizedBox(height: 8.h),
+                      Stack(
+                        alignment: Alignment.centerLeft,
+                        children: [
+                          // track
+                          Container(
+                            height: 18.h,
+                            width: totalWidth,
+                            decoration: BoxDecoration(color: colorWithOpacity(widget.theme.colorScheme.onSurface, 0.06), borderRadius: BorderRadius.circular(14.r)),
+                          ),
+                          // animated fill with shifting gradient
+                          Positioned(
+                            left: 0,
+                            child: Container(
+                              height: 18.h,
+                              width: fillWidth,
+                              decoration: BoxDecoration(
+                                gradient: LinearGradient(
+                                  begin: Alignment(-1 + gradientShift, 0),
+                                  end: Alignment(1 + gradientShift, 0),
+                                  colors: [startColor, endColor],
+                                ),
+                                borderRadius: BorderRadius.circular(14.r),
+                                boxShadow: [BoxShadow(color: glowColor, blurRadius: 14.r * (0.5 + pct), offset: Offset(0, 6 * pct))],
+                              ),
+                            ),
+                          ),
+                          // floating sparkles inside fill
+                          if (fillWidth > 8)
+                            Positioned.fill(
+                              child: IgnorePointer(
+                                child: CustomPaint(
+                                  painter: _SparkPainter(progress: animVal, fill: fillWidth, height: 18.h, color: endColor.withOpacity(0.9)),
+                                ),
+                              ),
+                            ),
+                          // bolt indicator at fill edge
+                          Positioned(
+                            left: (max(0.0, fillWidth - 18.w)).clamp(0.0, totalWidth - 18.w),
+                            child: Transform.scale(
+                              scale: 0.92 + 0.08 * sin(animVal * 2 * pi),
+                              child: Container(
+                                width: 18.w,
+                                height: 18.w,
+                                decoration: BoxDecoration(shape: BoxShape.circle, color: Colors.white, boxShadow: [BoxShadow(color: glowColor.withOpacity(0.85), blurRadius: 10.r, spreadRadius: 1.0)]),
+                                child: Center(child: Icon(Icons.bolt, color: startColor, size: 12.sp)),
+                              ),
+                            ),
+                          ),
+                          // center text with subtle stroke/glow
+                          Positioned.fill(
+                            child: Center(
+                              child: Stack(
+                                alignment: Alignment.center,
+                                children: [
+                                  // glow behind text
+                                  Text('${widget.current}/${widget.max}', style: TextStyle(fontSize: 12.sp, fontWeight: FontWeight.bold, foreground: Paint()..style = PaintingStyle.stroke..strokeWidth = 3..color = Colors.white.withOpacity(0.12))),
+                                  Text('${widget.current}/${widget.max}', style: TextStyle(color: Colors.black87, fontWeight: FontWeight.bold, fontSize: 12.sp)),
+                                ],
+                              ),
+                            ),
+                          ),
+                        ],
                       ),
                     ],
                   ),
-                ],
-              ),
+                ),
+                SizedBox(width: 12.w),
+              ],
             ),
-            SizedBox(width: 12.w),
+            SizedBox(height: 6.h),
           ],
-        ),
-      ],
+        );
+      },
     );
   }
+}
+
+class _SparkPainter extends CustomPainter {
+  final double progress;
+  final double fill;
+  final double height;
+  final Color color;
+  _SparkPainter({required this.progress, required this.fill, required this.height, required this.color});
+
+  @override
+  void paint(Canvas canvas, Size size) {
+    if (fill <= 4) return;
+    final rnd = Random((progress * 1000).toInt());
+    final paint = Paint()..color = color.withOpacity(0.9);
+    final count = 6;
+    for (int i = 0; i < count; i++) {
+      final fx = rnd.nextDouble();
+      final x = (fx * (fill / size.width)) * size.width * 0.98;
+      final y = (0.5 + 0.35 * sin(progress * 2 * pi + i)) * size.height;
+      final r = 1.0 + rnd.nextDouble() * 2.4;
+      canvas.drawCircle(Offset(x, y), r, paint..color = paint.color.withOpacity(0.08 + 0.6 * rnd.nextDouble()));
+    }
+  }
+
+  @override
+  bool shouldRepaint(covariant _SparkPainter oldDelegate) => oldDelegate.progress != progress || oldDelegate.fill != fill;
 }

@@ -36,6 +36,9 @@ class AppLocalizationsZh extends AppLocalizations {
   String get startWithOneBolt => '用 1 ⚡ 开始';
 
   @override
+  String get energyLabel => '能量';
+
+  @override
   String get quizFinished => '测验完成!';
 
   @override

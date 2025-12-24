@@ -9229,5 +9229,855 @@
             "ar": "كان الكاتشب يباع قديماً كدواء."
         },
         "correct_answer": true
+    },
+    {
+        "category": "sports",
+        "question": {
+            "en": "A marathon is 26.2 miles long.",
+            "tr": "Bir maraton 26,2 mil uzunluğundadır.",
+            "fr": "Un marathon fait 26,2 miles de long.",
+            "es": "Un maratón tiene 26,2 millas de largo.",
+            "de": "Ein Marathon ist 26,2 Meilen lang.",
+            "it": "Una maratona è lunga 26,2 miglia.",
+            "hi": "मैराथन 26.2 मील लंबी होती है।",
+            "ru": "Марафон составляет 26,2 мили.",
+            "zh": "马拉松长26.2英里。",
+            "ja": "マラソンの距離は26.2マイルです。",
+            "ar": "طول الماراثون 26.2 ميلاً."
+        },
+        "correct_answer": true
+    },
+    {
+        "category": "technology",
+        "question": {
+            "en": "The first computer bug was a moth.",
+            "tr": "İlk bilgisayar hatası (bug) bir güveydi.",
+            "fr": "Le premier bug informatique était un papillon de nuit.",
+            "es": "El primer error informático fue una polilla.",
+            "de": "Der erste Computerfehler war eine Motte.",
+            "it": "Il primo bug informatico è stato una falena.",
+            "hi": "पहला कंप्यूटर बग एक पतंगा था।",
+            "ru": "Первым компьютерным багом была моль.",
+            "zh": "第一个计算机错误是一只飞蛾。",
+            "ja": "最初のコンピュータバグは蛾でした。",
+            "ar": "كان أول خطأ في الكمبيوتر عبارة عن عثة."
+        },
+        "correct_answer": true
+    },
+    {
+        "category": "cinema_tv",
+        "question": {
+            "en": "The movie 'Avatar' was directed by James Cameron.",
+            "tr": "'Avatar' filmi James Cameron tarafından yönetilmiştir.",
+            "fr": "Le film 'Avatar' a été réalisé par James Cameron.",
+            "es": "La película 'Avatar' fue dirigida por James Cameron.",
+            "de": "Der Film 'Avatar' wurde von James Cameron gedreht.",
+            "it": "Il film 'Avatar' è stato diretto da James Cameron.",
+            "hi": "फिल्म 'अवतार' का निर्देशन जेम्स कैमरून ने किया था।",
+            "ru": "Фильм «Аватар» был снят Джеймсом Кэмероном.",
+            "zh": "电影《阿凡达》由詹姆斯·卡梅隆执导。",
+            "ja": "映画『アバター』はジェームズ・キャメロンが監督しました。",
+            "ar": "فيلم 'أفاتار' من إخراج جيمس كاميرون."
+        },
+        "correct_answer": true
+    },
+    {
+        "category": "geography_travel",
+        "question": {
+            "en": "The equator divides the Earth into Northern and Southern Hemispheres.",
+            "tr": "Ekvator, Dünya'yı Kuzey ve Güney Yarımküre olarak ikiye ayırır.",
+            "fr": "L'équateur divise la Terre en hémisphères nord et sud.",
+            "es": "El ecuador divide la Tierra en hemisferios norte y sur.",
+            "de": "Der Äquator teilt die Erde in eine Nord- und eine Südhalbkugel.",
+            "it": "L'equatore divide la Terra negli emisferi settentrionale e meridionale.",
+            "hi": "भूमध्य रेखा पृथ्वी को उत्तरी और दक्षिणी गोलार्ध में विभाजित करती है।",
+            "ru": "Экватор делит Землю на Северное и Южное полушария.",
+            "zh": "赤道将地球分为北半球和南半球。",
+            "ja": "赤道は地球を北半球と南半球に分けます。",
+            "ar": "يقسم خط الاستواء الأرض إلى نصفي الكرة الشمالي والجنوبي."
+        },
+        "correct_answer": true
+    },
+    {
+        "category": "mythology",
+        "question": {
+            "en": "Zeus is the king of the Greek gods.",
+            "tr": "Zeus, Yunan tanrılarının kralıdır.",
+            "fr": "Zeus est le roi des dieux grecs.",
+            "es": "Zeus es el rey de los dioses griegos.",
+            "de": "Zeus ist der König der griechischen Götter.",
+            "it": "Zeus è il re degli dei greci.",
+            "hi": "ज़ीउस ग्रीक देवताओं का राजा है।",
+            "ru": "Зевс — царь греческих богов.",
+            "zh": "宙斯是希腊众神之王。",
+            "ja": "ゼウスはギリシャの神々の王です。",
+            "ar": "زيوس هو ملك الآلهة اليونانية."
+        },
+        "correct_answer": true
+    },
+    {
+        "category": "philosophy",
+        "question": {
+            "en": "Socrates wrote many books.",
+            "tr": "Sokrates birçok kitap yazmıştır.",
+            "fr": "Socrate a écrit de nombreux livres.",
+            "es": "Sócrates escribió muchos libros.",
+            "de": "Sokrates schrieb viele Bücher.",
+            "it": "Socrate ha scritto molti libri.",
+            "hi": "सुकरात ने कई किताबें लिखीं।",
+            "ru": "Сократ написал много книг.",
+            "zh": "苏格拉底写了很多书。",
+            "ja": "ソクラテスは多くの本を書きました。",
+            "ar": "كتب سقراط العديد من الكتب."
+        },
+        "correct_answer": false
+    },
+    {
+        "category": "literature",
+        "question": {
+            "en": "The play 'Hamlet' was written by William Shakespeare.",
+            "tr": "'Hamlet' oyunu William Shakespeare tarafından yazılmıştır.",
+            "fr": "La pièce 'Hamlet' a été écrite par William Shakespeare.",
+            "es": "La obra 'Hamlet' fue escrita por William Shakespeare.",
+            "de": "Das Stück 'Hamlet' wurde von William Shakespeare geschrieben.",
+            "it": "L'opera 'Amleto' è stata scritta da William Shakespeare.",
+            "hi": "नाटक 'हेमलेट' विलियम शेक्सपियर द्वारा लिखा गया था।",
+            "ru": "Пьеса «Гамлет» была написана Уильямом Шекспиром.",
+            "zh": "戏剧《哈姆雷特》是由威廉·莎士比亚创作的。",
+            "ja": "戯曲『ハムレット』はウィリアム・シェイクスピアによって書かれました。",
+            "ar": "كتب مسرحية 'هاملت' ويليام شكسبير."
+        },
+        "correct_answer": true
+    },
+    {
+        "category": "space_astronomy",
+        "question": {
+            "en": "The Earth orbits the Sun.",
+            "tr": "Dünya Güneş'in etrafında döner.",
+            "fr": "La Terre tourne autour du Soleil.",
+            "es": "La Tierra orbita alrededor del Sol.",
+            "de": "Die Erde kreist um die Sonne.",
+            "it": "La Terra orbita attorno al Sole.",
+            "hi": "पृथ्वी सूर्य की परिक्रमा करती है।",
+            "ru": "Земля вращается вокруг Солнца.",
+            "zh": "地球绕着太阳转。",
+            "ja": "地球は太陽の周りを回っています。",
+            "ar": "تدور الأرض حول الشمس."
+        },
+        "correct_answer": true
+    },
+    {
+        "category": "health_fitness",
+        "question": {
+            "en": "The heart has four chambers.",
+            "tr": "Kalbin dört odacığı vardır.",
+            "fr": "Le cœur a quatre chambres.",
+            "es": "El corazón tiene cuatro cámaras.",
+            "de": "Das Herz hat vier Kammern.",
+            "it": "Il cuore ha quattro camere.",
+            "hi": "हृदय में चार कक्ष होते हैं।",
+            "ru": "Сердце имеет четыре камеры.",
+            "zh": "心脏有四个腔室。",
+            "ja": "心臓には4つの部屋があります。",
+            "ar": "للقلب أربع غرف."
+        },
+        "correct_answer": true
+    },
+    {
+        "category": "economics_finance",
+        "question": {
+            "en": "Inflation means the general level of prices is falling.",
+            "tr": "Enflasyon, genel fiyat seviyesinin düştüğü anlamına gelir.",
+            "fr": "L'inflation signifie que le niveau général des prix baisse.",
+            "es": "La inflación significa que el nivel general de precios está bajando.",
+            "de": "Inflation bedeutet, dass das allgemeine Preisniveau sinkt.",
+            "it": "L'inflazione significa che il livello generale dei prezzi sta scendendo.",
+            "hi": "मुद्रास्फीति का अर्थ है कि कीमतों का सामान्य स्तर गिर रहा है।",
+            "ru": "Инфляция означает, что общий уровень цен падает.",
+            "zh": "通货膨胀意味着物价总水平正在下降。",
+            "ja": "インフレとは、物価の一般的な水準が下がっていることを意味します。",
+            "ar": "التضخم يعني أن المستوى العام للأسعار آخذ في الانخفاض."
+        },
+        "correct_answer": false
+    },
+    {
+        "category": "architecture",
+        "question": {
+            "en": "The Colosseum was built in Paris.",
+            "tr": "Kolezyum Paris'te inşa edilmiştir.",
+            "fr": "Le Colisée a été construit à Paris.",
+            "es": "El Coliseo fue construido en París.",
+            "de": "Das Kolosseum wurde in Paris gebaut.",
+            "it": "Il Colosseo fu costruito a Parigi.",
+            "hi": "コロシアム पेरिस में बनाया गया था।",
+            "ru": "Колизей был построен в Париже.",
+            "zh": "斗兽场建在巴黎。",
+            "ja": "コロッセオはパリに建設されました。",
+            "ar": "بني الكولوسيوم في باريس."
+        },
+        "correct_answer": false
+    },
+    {
+        "category": "video_games",
+        "question": {
+            "en": "The game 'Super Mario Bros.' was released in 1985.",
+            "tr": "'Super Mario Bros.' oyunu 1985 yılında piyasaya sürülmüştür.",
+            "fr": "Le jeu 'Super Mario Bros.' est sorti en 1985.",
+            "es": "El juego 'Super Mario Bros.' fue lanzado en 1985.",
+            "de": "Das Spiel 'Super Mario Bros.' wurde 1985 veröffentlicht.",
+            "it": "Il gioco 'Super Mario Bros.' è stato rilasciato nel 1985.",
+            "hi": "खेल 'सुपर मारियो ब्रदर्स' 1985 में जारी किया गया था।",
+            "ru": "Игра «Super Mario Bros.» была выпущена в 1985 году.",
+            "zh": "游戏《超级马里奥兄弟》于1985年发行。",
+            "ja": "ゲーム『スーパーマリオブラザーズ』は1985年に発売されました。",
+            "ar": "تم إصدار لعبة 'سوبر ماريو بروس' في عام 1985."
+        },
+        "correct_answer": true
+    },
+    {
+        "category": "general_culture",
+        "question": {
+            "en": "Sushi is a traditional dish from China.",
+            "tr": "Suşi, Çin'den gelen geleneksel bir yemektir.",
+            "fr": "Le sushi est un plat traditionnel de Chine.",
+            "es": "El sushi es un plato tradicional de China.",
+            "de": "Sushi ist ein traditionelles Gericht aus China.",
+            "it": "Il sushi è un piatto tradizionale della Cina.",
+            "hi": "सुशी चीन का एक पारंपरिक व्यंजन है।",
+            "ru": "Суши — это традиционное блюдо из Китая.",
+            "zh": "寿司是一道源自中国的传统菜肴。",
+            "ja": "寿司は中国の伝統料理です。",
+            "ar": "السوشي هو طبق تقليدي من الصين."
+        },
+        "correct_answer": false
+    },
+    {
+        "category": "fun_facts",
+        "question": {
+            "en": "Honey is made by bees from nectar.",
+            "tr": "Bal, arılar tarafından nektardan yapılır.",
+            "fr": "Le miel est fabriqué par les abeilles à partir du nectar.",
+            "es": "La miel es elaborada por las abejas a partir del néctar.",
+            "de": "Honig wird von Bienen aus Nektar hergestellt.",
+            "it": "Il miele è prodotto dalle api dal nettare.",
+            "hi": "शहद मधुमक्खियों द्वारा अमृत से बनाया जाता है।",
+            "ru": "Мед производится пчелами из нектара.",
+            "zh": "蜂蜜是由蜜蜂用花蜜酿造的。",
+            "ja": "蜂蜜はミツバチが花の蜜から作ります。",
+            "ar": "يصنع النحل العسل من الرحيق."
+        },
+        "correct_answer": true
+    },
+    {
+        "category": "economics_finance",
+        "question": {
+            "en": "The currency of India is the Rupee.",
+            "tr": "Hindistan'ın para birimi Rupidir.",
+            "fr": "La monnaie de l'Inde est la Roupie.",
+            "es": "La moneda de la India es la Rupia.",
+            "de": "Die Währung Indiens ist die Rupie.",
+            "it": "La valuta dell'India è la Rupia.",
+            "hi": "भारत की मुद्रा रुपया है।",
+            "ru": "Валюта Индии — рупия.",
+            "zh": "印度的货币是卢比。",
+            "ja": "インドの通貨はルピーです。",
+            "ar": "عملة الهند هي الروبية."
+        },
+        "correct_answer": true
+    },
+    {
+        "category": "science",
+        "question": {
+            "en": "The chemical symbol for Oxygen is 'O'.",
+            "tr": "Oksijenin kimyasal sembolü 'O'dur.",
+            "fr": "Le symbole chimique de l'oxygène est 'O'.",
+            "es": "El símbolo químico del oxígeno es 'O'.",
+            "de": "Das chemische Symbol für Sauerstoff ist 'O'.",
+            "it": "Il simbolo chimico dell'ossigeno è 'O'.",
+            "hi": "ऑक्सीजन का रासायनिक प्रतीक 'O' है।",
+            "ru": "Химический символ кислорода — «O».",
+            "zh": "氧气的化学符号是“O”。",
+            "ja": "酸素の化学記号は「O」です。",
+            "ar": "الرمز الكيميائي للأكسجين هو 'O'."
+        },
+        "correct_answer": true
+    },
+    {
+        "category": "geography_travel",
+        "question": {
+            "en": "The capital of Japan is Osaka.",
+            "tr": "Japonya'nın başkenti Osaka'dır.",
+            "fr": "La capitale du Japon est Osaka.",
+            "es": "La capital de Japón es Osaka.",
+            "de": "Die Hauptstadt von Japan ist Osaka.",
+            "it": "La capitale del Giappone è Osaka.",
+            "hi": "जापान की राजधानी ओसाका है।",
+            "ru": "Столица Японии — Осака.",
+            "zh": "日本的首都是大阪。",
+            "ja": "日本の首都は大阪です。",
+            "ar": "عاصمة اليابان هي أوساكا."
+        },
+        "correct_answer": false
+    },
+    {
+        "category": "history",
+        "question": {
+            "en": "The first man to walk on the moon was Neil Armstrong.",
+            "tr": "Ayda yürüyen ilk insan Neil Armstrong'dur.",
+            "fr": "Le premier homme à marcher sur la lune fut Neil Armstrong.",
+            "es": "El primer hombre en caminar sobre la luna fue Neil Armstrong.",
+            "de": "Der erste Mann auf dem Mond war Neil Armstrong.",
+            "it": "Il primo uomo a camminare sulla luna è stato Neil Armstrong.",
+            "hi": "चांद पर चलने वाले पहले व्यक्ति नील आर्मस्ट्रांग थे।",
+            "ru": "Первым человеком, ступившим на Луну, был Нил Армстронг.",
+            "zh": "第一个在月球上行走的人是尼尔·阿姆斯特朗。",
+            "ja": "月面を最初に歩いた人間はニール・アームストロングです。",
+            "ar": "كان نيل أرمسترونج أول رجل يمشي على سطح القمر."
+        },
+        "correct_answer": true
+    },
+    {
+        "category": "music",
+        "question": {
+            "en": "Modern piano keys are typically made of ivory.",
+            "tr": "Modern piyano tuşları genellikle fildişinden yapılır.",
+            "fr": "Les touches de piano modernes sont généralement en ivoire.",
+            "es": "Las teclas de piano modernas suelen estar hechas de marfil.",
+            "de": "Moderne Klaviertasten bestehen typischerweise aus Elfenbein.",
+            "it": "I tasti del pianoforte moderni sono tipicamente fatti di avorio.",
+            "hi": "आधुनिक पियानो की कुंजियाँ आमतौर पर हाथीदांत से बनी होती हैं।",
+            "ru": "Современные клавиши фортепиано обычно изготавливаются из слоновой кости.",
+            "zh": "现代钢琴键通常由象牙制成。",
+            "ja": "現代のピアノの鍵盤は通常、象牙で作られています。",
+            "ar": "تُصنع مفاتيح البيانو الحديثة عادةً من العاج."
+        },
+        "correct_answer": false
+    },
+    {
+        "category": "history",
+        "question": {
+            "en": "The Statue of Liberty was a gift from France to the United States.",
+            "tr": "Özgürlük Heykeli, Fransa'dan Amerika Birleşik Devletleri'ne bir hediyeydi.",
+            "fr": "La Statue de la Liberté était un cadeau de la France aux États-Unis.",
+            "es": "La Estatua de la Libertad fue un regalo de Francia a los Estados Unidos.",
+            "de": "Die Freiheitsstatue war ein Geschenk Frankreichs an die Vereinigten Staaten.",
+            "it": "La Statua della Libertà è stata un dono della Francia agli Stati Uniti.",
+            "hi": "स्टैच्यू ऑफ लिबर्टी फ्रांस की ओर से संयुक्त राज्य अमेरिका को एक उपहार था।",
+            "ru": "Статуя Свободы была подарком Франции Соединенным Штатам.",
+            "zh": "自由女神像是法国送给美国的礼物。",
+            "ja": "自由の女神像はフランスからアメリカへの贈り物でした。",
+            "ar": "كان تمثال الحرية هدية من فرنسا للولايات المتحدة."
+        },
+        "correct_answer": true
+    },
+    {
+        "category": "science",
+        "question": {
+            "en": "Albert Einstein discovered the law of universal gravitation.",
+            "tr": "Albert Einstein, evrensel kütleçekim yasasını keşfetti.",
+            "fr": "Albert Einstein a découvert la loi de la gravitation universelle.",
+            "es": "Albert Einstein descubrió la ley de la gravitación universal.",
+            "de": "Albert Einstein entdeckte das Gesetz der universellen Gravitation.",
+            "it": "Albert Einstein scoprì la legge di gravitazione universale.",
+            "hi": "अल्बर्ट आइंस्टीन ने गुरुत्वाकर्षण के सार्वभौमिक नियम की खोज की।",
+            "ru": "Альберт Эйнштейн открыл закон всемирного тяготения.",
+            "zh": "阿尔伯特·爱因斯坦发现了万有引力定律。",
+            "ja": "アルバート・アインシュタインは万有引力の法則を発見しました。",
+            "ar": "اكتشف ألبرت أينشتاين قانون الجاذبية العامة."
+        },
+        "correct_answer": false
+    },
+    {
+        "category": "nature_animals",
+        "question": {
+            "en": "Penguins are found in the North Pole.",
+            "tr": "Penguenler Kuzey Kutbu'nda bulunur.",
+            "fr": "Les manchots se trouvent au pôle Nord.",
+            "es": "Los pingüinos se encuentran en el Polo Norte.",
+            "de": "Pinguine kommen am Nordpol vor.",
+            "it": "I pinguini si trovano al Polo Nord.",
+            "hi": "पेंगुइन उत्तरी ध्रुव में पाए जाते हैं।",
+            "ru": "Пингвины обитают на Северном полюсе.",
+            "zh": "企鹅在北极被发现。",
+            "ja": "ペンギンは北極に生息しています。",
+            "ar": "توجد طيور البطريق في القطب الشمالي."
+        },
+        "correct_answer": false
+    },
+    {
+        "category": "geography_travel",
+        "question": {
+            "en": "The Amazon rainforest is located primarily in Brazil.",
+            "tr": "Amazon yağmur ormanları esas olarak Brezilya'da bulunur.",
+            "fr": "La forêt amazonienne est située principalement au Brésil.",
+            "es": "La selva amazónica se encuentra principalmente en Brasil.",
+            "de": "Der Amazonas-Regenwald liegt hauptsächlich in Brasilien.",
+            "it": "La foresta pluviale amazzonica si trova principalmente in Brasile.",
+            "hi": "अमेज़न वर्षावन मुख्य रूप से ब्राजील में स्थित है।",
+            "ru": "Тропические леса Амазонки расположены в основном в Бразилии.",
+            "zh": "亚马逊雨林主要位于巴西。",
+            "ja": "アマゾンの熱帯雨林は主にブラジルに位置しています。",
+            "ar": "تقع غابات الأمازون المطيرة في المقام الأول في البرازيل."
+        },
+        "correct_answer": true
+    },
+    {
+        "category": "sports",
+        "question": {
+            "en": "The Olympic Games originated in ancient Greece.",
+            "tr": "Olimpiyat Oyunları antik Yunanistan'da ortaya çıkmıştır.",
+            "fr": "Les Jeux olympiques sont originaires de la Grèce antique.",
+            "es": "Los Juegos Olímpicos se originaron en la antigua Grecia.",
+            "de": "Die Olympischen Spiele haben ihren Ursprung im antiken Griechenland.",
+            "it": "I Giochi Olimpici hanno avuto origine nell'antica Grecia.",
+            "hi": "ओलंपिक खेलों की उत्पत्ति प्राचीन यूनान में हुई थी।",
+            "ru": "Олимпийские игры зародились в Древней Греции.",
+            "zh": "奥林匹克运动会起源于古希腊。",
+            "ja": "オリンピックは古代ギリシャで始まりました。",
+            "ar": "نشأت الألعاب الأولمبية في اليونان القديمة."
+        },
+        "correct_answer": true
+    },
+    {
+        "category": "technology",
+        "question": {
+            "en": "JavaScript and Java are the same programming language.",
+            "tr": "JavaScript ve Java aynı programlama dilidir.",
+            "fr": "JavaScript et Java sont le même langage de programmation.",
+            "es": "JavaScript y Java son el mismo lenguaje de programación.",
+            "de": "JavaScript und Java sind dieselbe Programmiersprache.",
+            "it": "JavaScript e Java sono lo stesso linguaggio di programmazione.",
+            "hi": "जावास्क्रिप्ट और जावा एक ही प्रोग्रामिंग भाषा हैं।",
+            "ru": "JavaScript и Java — это один и тот же язык программирования.",
+            "zh": "JavaScript和Java是同一种编程语言。",
+            "ja": "JavaScriptとJavaは同じプログラミング言語です。",
+            "ar": "جافا سكريبت وجافا هما نفس لغة البرمجة."
+        },
+        "correct_answer": false
+    },
+    {
+        "category": "literature",
+        "question": {
+            "en": "The 'Harry Potter' books were written by J.K. Rowling.",
+            "tr": "'Harry Potter' kitapları J.K. Rowling tarafından yazılmıştır.",
+            "fr": "Les livres 'Harry Potter' ont été écrits par J.K. Rowling.",
+            "es": "Los libros de 'Harry Potter' fueron escritos por J.K. Rowling.",
+            "de": "Die 'Harry Potter'-Bücher wurden von J.K. Rowling geschrieben.",
+            "it": "I libri di 'Harry Potter' sono stati scritti da J.K. Rowling.",
+            "hi": "'हैरी पॉटर' की किताबें जे.के. रोलिंग द्वारा लिखी गई थीं।",
+            "ru": "Книги о Гарри Поттере были написаны Джоан Роулинг.",
+            "zh": "《哈利·波特》系列书籍是由J.K.罗琳写的。",
+            "ja": "『ハリー・ポッター』の本はJ.K.ローリングによって書かれました。",
+            "ar": "كتبت سلسلة كتب 'هاري بوتر' جي كي رولينغ."
+        },
+        "correct_answer": true
+    },
+    {
+        "category": "art",
+        "question": {
+            "en": "The painting 'The Starry Night' was created by Claude Monet.",
+            "tr": "'Yıldızlı Gece' tablosu Claude Monet tarafından yapılmıştır.",
+            "fr": "Le tableau 'La Nuit étoilée' a été créé par Claude Monet.",
+            "es": "El cuadro 'La noche estrellada' fue creado por Claude Monet.",
+            "de": "Das Gemälde 'Sternennacht' wurde von Claude Monet geschaffen.",
+            "it": "Il dipinto 'Notte stellata' è stato creato da Claude Monet.",
+            "hi": "पेंटिंग 'द स्टाररी नाइट' क्लाउड मोनेट द्वारा बनाई गई थी।",
+            "ru": "Картина «Звездная ночь» была создана Клодом Моне.",
+            "zh": "画作《星月夜》是由克劳德·莫奈创作的。",
+            "ja": "絵画『星月夜』はクロード・モネによって制作されました。",
+            "ar": "تم إنشاء لوحة 'ليلة النجوم' بواسطة كلود مونيه."
+        },
+        "correct_answer": false
+    },
+    {
+        "category": "general_culture",
+        "question": {
+            "en": "A standard deck of playing cards has 52 cards.",
+            "tr": "Standart bir oyun kağıdı destesinde 52 kart bulunur.",
+            "fr": "Un jeu de cartes standard compte 52 cartes.",
+            "es": "Una baraja estándar de cartas tiene 52 cartas.",
+            "de": "Ein Standard-Kartenspiel hat 52 Karten.",
+            "it": "Un mazzo standard di carte da gioco ha 52 carte.",
+            "hi": "ताश के पत्तों के एक मानक डेक में 52 पत्ते होते हैं।",
+            "ru": "В стандартной колоде игральных карт 52 карты.",
+            "zh": "一副标准扑克牌有52张牌。",
+            "ja": "標準的なトランプのデッキには52枚のカードがあります。",
+            "ar": "تحتوي مجموعة أوراق اللعب القياسية على 52 ورقة."
+        },
+        "correct_answer": true
+    },
+    {
+        "category": "health_fitness",
+        "question": {
+            "en": "The human body has two kidneys.",
+            "tr": "İnsan vücudunda iki böbrek bulunur.",
+            "fr": "Le corps humain a deux reins.",
+            "es": "El cuerpo humano tiene dos riñones.",
+            "de": "Der menschliche Körper hat zwei Nieren.",
+            "it": "Il corpo umano ha due reni.",
+            "hi": "मानव शरीर में दो गुर्दे होते हैं।",
+            "ru": "В организме человека две почки.",
+            "zh": "人体有两个肾脏。",
+            "ja": "人間の体には2つの腎臓があります。",
+            "ar": "يحتوي جسم الإنسان على كليتين."
+        },
+        "correct_answer": true
+    },
+    {
+        "category": "space_astronomy",
+        "question": {
+            "en": "The planet Mars is larger than Earth.",
+            "tr": "Mars gezegeni Dünya'dan daha büyüktür.",
+            "fr": "La planète Mars est plus grande que la Terre.",
+            "es": "El planeta Marte es más grande que la Tierra.",
+            "de": "Der Planet Mars ist größer als die Erde.",
+            "it": "Il pianeta Marte è più grande della Terra.",
+            "hi": "मंगल ग्रह पृथ्वी से बड़ा है।",
+            "ru": "Планета Марс больше Земли.",
+            "zh": "火星比地球大。",
+            "ja": "火星は地球よりも大きいです。",
+            "ar": "كوكب المريخ أكبر من الأرض."
+        },
+        "correct_answer": false
+    },
+    {
+        "category": "economics_finance",
+        "question": {
+            "en": "The currency of China is the Yen.",
+            "tr": "Çin'in para birimi Yendir.",
+            "fr": "La monnaie de la Chine est le Yen.",
+            "es": "La moneda de China es el Yen.",
+            "de": "Die Währung Chinas ist der Yen.",
+            "it": "La valuta della Cina è lo Yen.",
+            "hi": "चीन की मुद्रा येन है।",
+            "ru": "Валюта Китая — иена.",
+            "zh": "中国的货币是日元。",
+            "ja": "中国の通貨は円です。",
+            "ar": "عملة الصين هي الين."
+        },
+        "correct_answer": false
+    },
+    {
+        "category": "nature_animals",
+        "question": {
+            "en": "Sharks are older than trees.",
+            "tr": "Köpekbalıkları ağaçlardan daha yaşlıdır (daha önce evrimleşmiştir).",
+            "fr": "Les requins sont plus vieux que les arbres.",
+            "es": "Los tiburones son más antiguos que los árboles.",
+            "de": "Haie sind älter als Bäume.",
+            "it": "Gli squali sono più antichi degli alberi.",
+            "hi": "शार्क पेड़ों से पुरानी हैं।",
+            "ru": "Акулы древнее деревьев.",
+            "zh": "鲨鱼比树木更古老。",
+            "ja": "サメは木よりも古くから存在します。",
+            "ar": "أسماك القرش أقدم من الأشجار."
+        },
+        "correct_answer": true
+    },
+    {
+        "category": "science",
+        "question": {
+            "en": "The atomic symbol for Potassium is 'K'.",
+            "tr": "Potasyumun atom sembolü 'K'dir.",
+            "fr": "Le symbole atomique du potassium est 'K'.",
+            "es": "El símbolo atómico del potasio es 'K'.",
+            "de": "Das atomare Symbol für Kalium ist 'K'.",
+            "it": "Il simbolo atomico del potassio è 'K'.",
+            "hi": "पोटेशियम का परमाणु प्रतीक 'K' है।",
+            "ru": "Атомный символ калия — «K».",
+            "zh": "钾的原子符号是“K”。",
+            "ja": "カリウムの原子記号は「K」です。",
+            "ar": "الرمز الذري للبوتاسيوم هو 'K'."
+        },
+        "correct_answer": true
+    },
+    {
+        "category": "geography_travel",
+        "question": {
+            "en": "The capital of Italy is Milan.",
+            "tr": "İtalya'nın başkenti Milano'dur.",
+            "fr": "La capitale de l'Italie est Milan.",
+            "es": "La capital de Italia es Milán.",
+            "de": "Die Hauptstadt von Italien ist Mailand.",
+            "it": "La capitale d'Italia è Milano.",
+            "hi": "इटली की राजधानी मिलान है।",
+            "ru": "Столица Италии — Милан.",
+            "zh": "意大利的首都是米兰。",
+            "ja": "イタリアの首都はミラノです。",
+            "ar": "عاصمة إيطاليا هي ميلانو."
+        },
+        "correct_answer": false
+    },
+    {
+        "category": "history",
+        "question": {
+            "en": "The first woman in space was Valentina Tereshkova.",
+            "tr": "Uzaya giden ilk kadın Valentina Tereshkova'dır.",
+            "fr": "La première femme dans l'espace était Valentina Terechkova.",
+            "es": "La primera mujer en el espacio fue Valentina Tereshkova.",
+            "de": "Die erste Frau im Weltraum war Walentina Tereschkowa.",
+            "it": "La prima donna nello spazio è stata Valentina Tereshkova.",
+            "hi": "अंतरिक्ष में जाने वाली पहली महिला वेलेंटीना टेरेश्कोवा थीं।",
+            "ru": "Первой женщиной в космосе была Валентина Терешкова.",
+            "zh": "第一位进入太空的女性是瓦莲京娜·捷列什科娃。",
+            "ja": "宇宙に行った最初の女性はワレンチナ・テレシコワでした。",
+            "ar": "كانت فالنتينا تيريشكوفا أول امرأة في الفضاء."
+        },
+        "correct_answer": true
+    },
+    {
+        "category": "music",
+        "question": {
+            "en": "The saxophone was invented by Adolphe Sax.",
+            "tr": "Saksafon Adolphe Sax tarafından icat edilmiştir.",
+            "fr": "Le saxophone a été inventé par Adolphe Sax.",
+            "es": "El saxofón fue inventado por Adolphe Sax.",
+            "de": "Das Saxophon wurde von Adolphe Sax erfunden.",
+            "it": "Il sassofono è stato inventato da Adolphe Sax.",
+            "hi": "सैक्सोफोन का आविष्कार एडोल्फ सैक्स ने किया था।",
+            "ru": "Саксофон был изобретен Адольфом Саксом.",
+            "zh": "萨克斯管是由阿道夫·萨克斯发明的。",
+            "ja": "サックスはアドルフ・サックスによって発明されました。",
+            "ar": "اخترع أدولف ساكس الساكسفون."
+        },
+        "correct_answer": true
+    },
+    {
+        "category": "nature_animals",
+        "question": {
+            "en": "Elephants are the only mammals that cannot jump.",
+            "tr": "Filler zıplayamayan tek memelidir.",
+            "fr": "Les éléphants sont les seuls mammifères qui ne peuvent pas sauter.",
+            "es": "Los elefantes son los únicos mamíferos que no pueden saltar.",
+            "de": "Elefanten sind die einzigen Säugetiere, die nicht springen können.",
+            "it": "Gli elefanti sono gli unici mammiferi che non possono saltare.",
+            "hi": "हाथी एकमात्र स्तनधारी हैं जो कूद नहीं सकते।",
+            "ru": "Слоны — единственные млекопитающие, которые не умеют прыгать.",
+            "zh": "大象是唯一不会跳跃的哺乳动物。",
+            "ja": "ゾウはジャンプできない唯一の哺乳類です。",
+            "ar": "الفيلة هي الثدييات الوحيدة التي لا تستطيع القفز."
+        },
+        "correct_answer": true
+    },
+    {
+        "category": "geography_travel",
+        "question": {
+            "en": "The capital of Spain is Barcelona.",
+            "tr": "İspanya'nın başkenti Barselona'dır.",
+            "fr": "La capitale de l'Espagne est Barcelone.",
+            "es": "La capital de España es Barcelona.",
+            "de": "Die Hauptstadt von Spanien ist Barcelona.",
+            "it": "La capitale della Spagna è Barcellona.",
+            "hi": "स्पेन की राजधानी बार्सिलोना है।",
+            "ru": "Столица Испании — Барселона.",
+            "zh": "西班牙的首都是巴塞罗那。",
+            "ja": "スペインの首都はバルセロナです。",
+            "ar": "عاصمة إسبانيا هي برشلونة."
+        },
+        "correct_answer": false
+    },
+    {
+        "category": "mythology",
+        "question": {
+            "en": "Zeus is the Roman god of the sky.",
+            "tr": "Zeus, Roma gökyüzü tanrısıdır.",
+            "fr": "Zeus est le dieu romain du ciel.",
+            "es": "Zeus es el dios romano del cielo.",
+            "de": "Zeus ist der römische Gott des Himmels.",
+            "it": "Zeus è il dio romano del cielo.",
+            "hi": "ज़ीउस आकाश का रोमन देवता है।",
+            "ru": "Зевс — римский бог неба.",
+            "zh": "宙斯是罗马的天空之神。",
+            "ja": "ゼウスはローマの空の神です。",
+            "ar": "زيوس هو إله السماء الروماني."
+        },
+        "correct_answer": false
+    },
+    {
+        "category": "philosophy",
+        "question": {
+            "en": "Descartes said 'I think, therefore I am'.",
+            "tr": "Descartes 'Düşünüyorum, öyleyse varım' demiştir.",
+            "fr": "Descartes a dit 'Je pense, donc je suis'.",
+            "es": "Descartes dijo 'Pienso, luego existo'.",
+            "de": "Descartes sagte 'Ich denke, also bin ich'.",
+            "it": "Cartesio disse 'Penso, dunque sono'.",
+            "hi": "डेसकार्टेस ने कहा 'मैं सोचता हूं, इसलिए मैं हूं'।",
+            "ru": "Декарт сказал: «Я мыслю, следовательно, я существую».",
+            "zh": "笛卡尔说“我思故我在”。",
+            "ja": "デカルトは「我思う、ゆえに我あり」と言いました。",
+            "ar": "قال ديكارت 'أنا أفكر، إذن أنا موجود'."
+        },
+        "correct_answer": true
+    },
+    {
+        "category": "literature",
+        "question": {
+            "en": "The 'Iliad' was written by Homer.",
+            "tr": "'İlyada' Homeros tarafından yazılmıştır.",
+            "fr": "L''Iliade' a été écrite par Homère.",
+            "es": "La 'Ilíada' fue escrita por Homero.",
+            "de": "Die 'Ilias' wurde von Homer geschrieben.",
+            "it": "L''Iliade' è stata scritta da Omero.",
+            "hi": "'इलियाड' होमर द्वारा लिखी गई थी।",
+            "ru": "«Илиада» была написана Гомером.",
+            "zh": "《伊利亚特》是荷马写的。",
+            "ja": "「イリアス」はホメロスによって書かれました。",
+            "ar": "كتب هوميروس 'الإلياذة'."
+        },
+        "correct_answer": true
+    },
+    {
+        "category": "space_astronomy",
+        "question": {
+            "en": "The Sun is a yellow dwarf star.",
+            "tr": "Güneş sarı bir cüce yıldızdır.",
+            "fr": "Le Soleil est une étoile naine jaune.",
+            "es": "El Sol es una estrella enana amarilla.",
+            "de": "Die Sonne ist ein gelber Zwergstern.",
+            "it": "Il Sole è una stella nana gialla.",
+            "hi": "सूर्य एक पीला बौना तारा है।",
+            "ru": "Солнце — желтый карлик.",
+            "zh": "太阳是一颗黄矮星。",
+            "ja": "太陽は黄色矮星です。",
+            "ar": "الشمس نجم قزم أصفر."
+        },
+        "correct_answer": true
+    },
+    {
+        "category": "health_fitness",
+        "question": {
+            "en": "The femur is the smallest bone in the body.",
+            "tr": "Femur (uyluk kemiği), vücuttaki en küçük kemiktir.",
+            "fr": "Le fémur est le plus petit os du corps.",
+            "es": "El fémur es el hueso más pequeño del cuerpo.",
+            "de": "Der Oberschenkelknochen ist der kleinste Knochen im Körper.",
+            "it": "Il femore è l'osso più piccolo del corpo.",
+            "hi": "फीमर शरीर की सबसे छोटी हड्डी है।",
+            "ru": "Бедренная кость — самая маленькая кость в теле.",
+            "zh": "股骨是人体最小的骨头。",
+            "ja": "大腿骨は人体で最も小さい骨です。",
+            "ar": "عظم الفخذ هو أصغر عظم في الجسم."
+        },
+        "correct_answer": false
+    },
+    {
+        "category": "economics_finance",
+        "question": {
+            "en": "A bull market means prices are falling.",
+            "tr": "Boğa piyasası fiyatların düştüğü anlamına gelir.",
+            "fr": "Un marché haussier signifie que les prix baissent.",
+            "es": "Un mercado alcista significa que los precios están bajando.",
+            "de": "Ein Bullenmarkt bedeutet, dass die Preise fallen.",
+            "it": "Un mercato toro significa che i prezzi stanno scendendo.",
+            "hi": "बुल मार्केट का मतलब है कीमतें गिर रही हैं।",
+            "ru": "Бычий рынок означает падение цен.",
+            "zh": "牛市意味着价格下跌。",
+            "ja": "強気相場は価格が下落していることを意味します。",
+            "ar": "السوق الصاعدة تعني أن الأسعار تنخفض."
+        },
+        "correct_answer": false
+    },
+    {
+        "category": "architecture",
+        "question": {
+            "en": "The Taj Mahal is in Jaipur.",
+            "tr": "Tac Mahal Jaipur'dadır.",
+            "fr": "Le Taj Mahal est à Jaipur.",
+            "es": "El Taj Mahal está en Jaipur.",
+            "de": "Das Taj Mahal befindet sich in Jaipur.",
+            "it": "Il Taj Mahal è a Jaipur.",
+            "hi": "ताजमहल जयपुर में है।",
+            "ru": "Тадж-Махал находится в Джайпуре.",
+            "zh": "泰姬陵在斋浦尔。",
+            "ja": "タージ・マハルはジャイプールにあります。",
+            "ar": "يقع تاج محل في جايبور."
+        },
+        "correct_answer": false
+    },
+    {
+        "category": "video_games",
+        "question": {
+            "en": "The first video game console was the Magnavox Odyssey.",
+            "tr": "İlk video oyun konsolu Magnavox Odyssey idi.",
+            "fr": "La première console de jeux vidéo était la Magnavox Odyssey.",
+            "es": "La primera consola de videojuegos fue la Magnavox Odyssey.",
+            "de": "Die erste Videospielkonsole war die Magnavox Odyssey.",
+            "it": "La prima console per videogiochi è stata la Magnavox Odyssey.",
+            "hi": "पहला वीडियो गेम कंसोल मैग्नावॉक्स ओडिसी था।",
+            "ru": "Первой игровой консолью была Magnavox Odyssey.",
+            "zh": "第一台视频游戏机是Magnavox Odyssey。",
+            "ja": "最初のビデオゲームコンソールはマグナボックス・オデッセイでした。",
+            "ar": "كانت أول وحدة تحكم لألعاب الفيديو هي Magnavox Odyssey."
+        },
+        "correct_answer": true
+    },
+    {
+        "category": "general_culture",
+        "question": {
+            "en": "Sushi means 'raw fish'.",
+            "tr": "Suşi 'çiğ balık' anlamına gelir.",
+            "fr": "Sushi signifie 'poisson cru'.",
+            "es": "Sushi significa 'pescado crudo'.",
+            "de": "Sushi bedeutet 'roher Fisch'.",
+            "it": "Sushi significa 'pesce crudo'.",
+            "hi": "सुशी का मतलब 'कच्ची मछली' है।",
+            "ru": "Суши означает «сырая рыба».",
+            "zh": "寿司的意思是“生鱼”。",
+            "ja": "寿司は「生魚」を意味します。",
+            "ar": "السوشي يعني 'السمك النيئ'."
+        },
+        "correct_answer": false
+    },
+    {
+        "category": "fun_facts",
+        "question": {
+            "en": "Bananas are curved because they grow towards the sun.",
+            "tr": "Muzlar güneşe doğru büyüdükleri için kavislidir.",
+            "fr": "Les bananes sont courbées parce qu'elles poussent vers le soleil.",
+            "es": "Los plátanos son curvos porque crecen hacia el sol.",
+            "de": "Bananen sind gekrümmt, weil sie zur Sonne wachsen.",
+            "it": "Le banane sono curve perché crescono verso il sole.",
+            "hi": "केले मुड़े हुए होते हैं क्योंकि वे सूर्य की ओर बढ़ते हैं।",
+            "ru": "Бананы изогнуты, потому что растут к солнцу.",
+            "zh": "香蕉是弯曲的，因为它们向着太阳生长。",
+            "ja": "バナナが曲がっているのは太陽に向かって成長するからです。",
+            "ar": "الموز منحني لأنه ينمو باتجاه الشمس."
+        },
+        "correct_answer": true
+    },
+    {
+        "category": "science",
+        "question": {
+            "en": "Gold is a noble metal.",
+            "tr": "Altın bir soy metaldir.",
+            "fr": "L'or est un métal noble.",
+            "es": "El oro es un metal noble.",
+            "de": "Gold ist ein Edelmetall.",
+            "it": "L'oro è un metallo nobile.",
+            "hi": "सोना एक उत्कृष्ट धातु है।",
+            "ru": "Золото — благородный металл.",
+            "zh": "金是一种贵金属。",
+            "ja": "金は貴金属です。",
+            "ar": "الذهب معدن نبيل."
+        },
+        "correct_answer": true
+    },
+    {
+        "category": "history",
+        "question": {
+            "en": "The Great Pyramid of Giza was built for Khufu.",
+            "tr": "Giza'daki Büyük Piramit, Khufu (Keops) için inşa edilmiştir.",
+            "fr": "La Grande Pyramide de Gizeh a été construite pour Khéops.",
+            "es": "La Gran Pirámide de Giza fue construida para Keops.",
+            "de": "Die Große Pyramide von Gizeh wurde für Cheops gebaut.",
+            "it": "La Grande Piramide di Giza fu costruita per Cheope.",
+            "hi": "गीज़ा का महान पिरामिड खुफु के लिए बनाया गया था।",
+            "ru": "Великая пирамида Гизы была построена для Хуфу.",
+            "zh": "吉萨大金字塔是为胡夫建造的。",
+            "ja": "ギザの大ピラミッドはクフ王のために建てられました。",
+            "ar": "تم بناء الهرم الأكبر بالجيزة لخوفو."
+        },
+        "correct_answer": true
     }
 ]

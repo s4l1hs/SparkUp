@@ -170,6 +170,12 @@ abstract class AppLocalizations {
   /// **'Start with 1 ⚡'**
   String get startWithOneBolt;
 
+  /// No description provided for @energyLabel.
+  ///
+  /// In en, this message translates to:
+  /// **'Energy'**
+  String get energyLabel;
+
   /// No description provided for @quizFinished.
   ///
   /// In en, this message translates to:

@@ -37,6 +37,9 @@ class AppLocalizationsTr extends AppLocalizations {
   String get startWithOneBolt => '1 ⚡ ile Başla';
 
   @override
+  String get energyLabel => 'Enerji';
+
+  @override
   String get quizFinished => 'Sınav Bitti!';
 
   @override
