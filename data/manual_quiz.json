@@ -31248,16 +31248,16 @@
                 "High Transfer Text Protocol"
             ],
             "hi": [
-                "हाइपरटेक्स्ट परहस्त शिष्टाचार",
+                "हाइपरटेक्स्ट ट्रांसफर प्रोटोकॉल",
                 "हाइपरलिंक ट्रांसफर प्रोटोकॉल",
-                "हाइपरटेक्स्ट ट्रांसमिशन प्रक्रिया",
+                "हाइपरटेक्स्ट ट्रांसमिशन प्रोसीजर",
                 "हाई ट्रांसफर टेक्स्ट प्रोटोकॉल"
             ],
             "ru": [
-                "HyperText Transfer Protocol",
-                "Hyperlink Transfer Protocol",
-                "HyperText Transmission Procedure",
-                "High Transfer Text Protocol"
+                "Протокол передачи гипертекста",
+                "Протокол передачи гиперссылок",
+                "Процедура передачи гипертекста",
+                "Протокол передачи текста с высокой скоростью"
             ],
             "zh": [
                 "超文本传输协议",
@@ -31266,14 +31266,14 @@
                 "高传输文本协议"
             ],
             "ja": [
-                "HyperText Transfer Protocol",
-                "Hyperlink Transfer Protocol",
-                "HyperText Transmission Procedure",
-                "High Transfer Text Protocol"
+                "ハイパーテキスト転送プロトコル",
+                "ハイパーリンク転送プロトコル",
+                "ハイパーテキスト送信手順",
+                "高転送テキストプロトコル"
             ],
             "ar": [
                 "بروتوكول نقل النص الفائق",
-                "بروتوكول نقل الارتباط",
+                "بروتوكول نقل الارتباط التشعبي",
                 "إجراء نقل النص الفائق",
                 "بروتوكول النص عالي النقل"
             ]
@@ -31455,15 +31455,15 @@
         "question_texts": {
             "en": "Which planet is known as the Red Planet?",
             "tr": "Hangi gezegen Kızıl Gezegen olarak bilinir?",
-            "fr": "Which planet is known as the Red Planet?",
-            "es": "Which planet is known as the Red Planet?",
-            "de": "Which planet is known as the Red Planet?",
-            "it": "Which planet is known as the Red Planet?",
+            "fr": "Quelle planète est connue sous le nom de planète rouge ?",
+            "es": "¿Qué planeta es conocido como el Planeta Rojo?",
+            "de": "Welcher Planet ist als der Rote Planet bekannt?",
+            "it": "Quale pianeta è conosciuto come il Pianeta Rosso?",
             "hi": "किस ग्रह को लाल ग्रह के नाम से जाना जाता है?",
-            "ru": "Which planet is known as the Red Planet?",
-            "zh": "Which planet is known as the Red Planet?",
-            "ja": "Which planet is known as the Red Planet?",
-            "ar": "Which planet is known as the Red Planet?"
+            "ru": "Какая планета известна как Красная планета?",
+            "zh": "哪颗行星被称为红色星球？",
+            "ja": "赤い惑星として知られている惑星はどれですか？",
+            "ar": "أي كوكب يُعرف بالكوكب الأحمر؟"
         },
         "options_texts": {
             "en": [
@@ -31540,15 +31540,15 @@
         "question_texts": {
             "en": "What is the common name for a small, portable computer you can carry on your lap?",
             "tr": "Kucağınızda taşıyabileceğiniz küçük, taşınabilir bilgisayarın yaygın adı nedir?",
-            "fr": "What is the common name for a small, portable computer you can carry on your lap?",
-            "es": "What is the common name for a small, portable computer you can carry on your lap?",
-            "de": "What is the common name for a small, portable computer you can carry on your lap?",
-            "it": "What is the common name for a small, portable computer you can carry on your lap?",
-            "hi": "उस छोटे, पोर्टेबल कंप्यूटर का सामान्य नाम क्या है जिसे आप अपनी गोद में ले जा सकते हैं?",
-            "ru": "What is the common name for a small, portable computer you can carry on your lap?",
-            "zh": "What is the common name for a small, portable computer you can carry on your lap?",
-            "ja": "What is the common name for a small, portable computer you can carry on your lap?",
-            "ar": "What is the common name for a small, portable computer you can carry on your lap?"
+            "fr": "Quel est le nom commun d'un petit ordinateur portable que vous pouvez poser sur vos genoux ?",
+            "es": "¿Cuál es el nombre común de un ordenador portátil pequeño que puedes llevar en tu regazo?",
+            "de": "Wie lautet die gebräuchliche Bezeichnung für einen kleinen, tragbaren Computer, den man auf dem Schoß tragen kann?",
+            "it": "Qual è il nome comune di un piccolo computer portatile che puoi tenere sulle ginocchia?",
+            "hi": "उस छोटे, पोर्टेबल कंप्यूटर का सामान्य नाम क्या है जिसे आप अपनी गोद में रख सकते हैं?",
+            "ru": "Как обычно называют маленький портативный компьютер, который можно держать на коленях?",
+            "zh": "一种可以放在膝盖上使用的便携式小型计算机的通用名称是什么？",
+            "ja": "膝の上に乗せて使える小型の携帯用コンピュータの一般的な名称は何ですか？",
+            "ar": "ما هو الاسم الشائع لجهاز كمبيوتر صغير محمول يمكنك حمله في حضنك؟"
         },
         "options_texts": {
             "en": [
@@ -31620,105 +31620,20 @@
         }
     },
     {
-        "category": "math",
-        "correct_answer_index": 2,
-        "question_texts": {
-            "en": "What is 8 × 7?",
-            "tr": "8 × 7 nedir?",
-            "fr": "What is 8 × 7?",
-            "es": "What is 8 × 7?",
-            "de": "What is 8 × 7?",
-            "it": "What is 8 × 7?",
-            "hi": "8×7 क्या है?",
-            "ru": "What is 8 × 7?",
-            "zh": "What is 8 × 7?",
-            "ja": "What is 8 × 7?",
-            "ar": "What is 8 × 7?"
-        },
-        "options_texts": {
-            "en": [
-                "48",
-                "54",
-                "56",
-                "64"
-            ],
-            "tr": [
-                "48",
-                "54",
-                "56",
-                "64"
-            ],
-            "fr": [
-                "48",
-                "54",
-                "56",
-                "64"
-            ],
-            "es": [
-                "48",
-                "54",
-                "56",
-                "64"
-            ],
-            "de": [
-                "48",
-                "54",
-                "56",
-                "64"
-            ],
-            "it": [
-                "48",
-                "54",
-                "56",
-                "64"
-            ],
-            "hi": [
-                "48",
-                "54",
-                "56",
-                "64"
-            ],
-            "ru": [
-                "48",
-                "54",
-                "56",
-                "64"
-            ],
-            "zh": [
-                "48",
-                "54",
-                "56",
-                "64"
-            ],
-            "ja": [
-                "48",
-                "54",
-                "56",
-                "64"
-            ],
-            "ar": [
-                "48",
-                "54",
-                "56",
-                "64"
-            ]
-        }
-    },
-    {
         "category": "geography_travel",
         "correct_answer_index": 1,
         "question_texts": {
             "en": "Which river runs through the city of Paris?",
             "tr": "Hangi nehir Paris şehrinden geçer?",
-            "fr": "Which river runs through the city of Paris?",
-            "es": "Which river runs through the city of Paris?",
-            "de": "Which river runs through the city of Paris?",
-            "it": "Which river runs through the city of Paris?",
+            "fr": "Quel fleuve traverse la ville de Paris ?",
+            "es": "¿Qué río atraviesa la ciudad de París?",
+            "de": "Welcher Fluss fließt durch die Stadt Paris?",
+            "it": "Quale fiume attraversa la città di Parigi?",
             "hi": "कौन सी नदी पेरिस शहर से होकर बहती है?",
-            "ru": "Which river runs through the city of Paris?",
-            "zh": "Which river runs through the city of Paris?",
-            "ja": "Which river runs through the city of Paris?",
-            "ar": "Which river runs through the city of Paris?"
+            "ru": "Какая река протекает через город Париж?",
+            "zh": "哪条河流流经巴黎市区？",
+            "ja": "パリの街を流れる川はどれですか？",
+            "ar": "أي نهر يمر عبر مدينة باريس؟"
         },
         "options_texts": {
             "en": [
@@ -31794,16 +31709,16 @@
         "correct_answer_index": 0,
         "question_texts": {
             "en": "Which animal is known as the largest land mammal?",
-            "tr": "Hangi hayvan en büyük kara memeli olarak bilinir?",
-            "fr": "Which animal is known as the largest land mammal?",
-            "es": "Which animal is known as the largest land mammal?",
-            "de": "Which animal is known as the largest land mammal?",
-            "it": "Which animal is known as the largest land mammal?",
+            "tr": "Hangi hayvan en büyük kara memelisi olarak bilinir?",
+            "fr": "Quel animal est connu comme le plus grand mammifère terrestre ?",
+            "es": "¿Qué animal es conocido como el mamífero terrestre más grande?",
+            "de": "Welches Tier ist als das größte Landsäugetier bekannt?",
+            "it": "Quale animale è conosciuto come il più grande mammifero terrestre?",
             "hi": "कौन सा जानवर सबसे बड़े भूमि स्तनपायी के रूप में जाना जाता है?",
-            "ru": "Which animal is known as the largest land mammal?",
-            "zh": "Which animal is known as the largest land mammal?",
-            "ja": "Which animal is known as the largest land mammal?",
-            "ar": "Which animal is known as the largest land mammal?"
+            "ru": "Какое животное известно как самое крупное наземное млекопитающее?",
+            "zh": "哪种动物被称为最大的陆生哺乳动物？",
+            "ja": "最大の陸生哺乳類として知られている動物はどれですか？",
+            "ar": "أي حيوان يُعرف بأنه أكبر حيوان ثديي بري؟"
         },
         "options_texts": {
             "en": [
@@ -31875,7 +31790,7 @@
         }
     },
     {
-        "category": "general_knowledge",
+        "category": "general_culture",
         "correct_answer_index": 2,
         "question_texts": {
             "en": "What is the capital of Australia?",
@@ -32300,7 +32215,7 @@
         }
     },
     {
-        "category": "food",
+        "category": "health_fitness",
         "correct_answer_index": 1,
         "question_texts": {
             "en": "Which fruit is known for having a high vitamin C content?",
@@ -32470,7 +32385,7 @@
         }
     },
     {
-        "category": "movies",
+        "category": "cinema_tv",
         "correct_answer_index": 1,
         "question_texts": {
             "en": "Which movie series features the character 'Luke Skywalker'?",
@@ -32555,7 +32470,7 @@
         }
     },
     {
-        "category": "nature",
+        "category": "nature_animals",
         "correct_answer_index": 0,
         "question_texts": {
             "en": "Which of these is a type of evergreen tree?",
@@ -32640,7 +32555,7 @@
         }
     },
     {
-        "category": "general_knowledge",
+        "category": "general_culture",
         "correct_answer_index": 0,
         "question_texts": {
             "en": "Which color do you get by mixing red and blue?",
