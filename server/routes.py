@@ -208,7 +208,8 @@ def submit_quiz_answer(payload: AnswerPayload, db_user: User = Depends(get_curre
             else:
                 base_score = 10
             streak_bonus = min(user_streak.streak_count, 5) * 2
-            score_awarded = base_score + streak_bonus
+            # Quiz questions award double the per-question points compared to True/False.
+            score_awarded = (base_score + streak_bonus) * 2
             user_score.score += score_awarded
             user_streak.streak_count += 1
             try:

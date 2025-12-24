@@ -31,6 +31,7 @@ class _TrueFalsePageState extends State<TrueFalsePage> with TickerProviderStateM
   // Timer değişkenleri
   Timer? _timer;
   int _timeLeft = 60; // 60 saniye süre
+  int _sessionDuration = 60;
 
   // Animasyon kontrolcüleri (background blobs)
   late final AnimationController _backgroundController;
@@ -76,6 +77,8 @@ class _TrueFalsePageState extends State<TrueFalsePage> with TickerProviderStateM
     } catch (e) {
       debugPrint("Hata: manual true/false yüklenemedi: $e");
       setState(() => _isLoading = false);
+      // Rethrow so the caller (_startSession) can handle the failure
+      rethrow;
     }
   }
 
@@ -140,9 +143,32 @@ class _TrueFalsePageState extends State<TrueFalsePage> with TickerProviderStateM
     // If questions are empty but user hasn't started a session yet, show start view.
     // Only show the 'no questions' message when a session is active but nothing loaded.
     if (_isQuizActive && _questions.isEmpty) {
+      final loc = AppLocalizations.of(context);
       return Scaffold(
         backgroundColor: theme.colorScheme.surface,
-        body: Center(child: Text('No true/false questions available', style: TextStyle(color: theme.colorScheme.onSurface))),
+        body: Center(
+          child: Padding(
+            padding: EdgeInsets.symmetric(horizontal: 24.w),
+            child: Column(
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                Text(loc?.noDataAvailable ?? 'No data available', textAlign: TextAlign.center, style: TextStyle(color: theme.colorScheme.onSurface, fontSize: 16.sp)),
+                SizedBox(height: 12.h),
+                Text(loc?.quizCouldNotStart ?? 'Quiz could not start', textAlign: TextAlign.center, style: TextStyle(color: theme.colorScheme.onSurface.withOpacity(0.7), fontSize: 14.sp)),
+                SizedBox(height: 18.h),
+                ElevatedButton(
+                  onPressed: () {
+                    setState(() {
+                      _isQuizActive = false;
+                      _questions = [];
+                    });
+                  },
+                  child: Text(loc?.cancel ?? 'Back'),
+                ),
+              ],
+            ),
+          ),
+        ),
       );
     }
 
@@ -227,35 +253,59 @@ class _TrueFalsePageState extends State<TrueFalsePage> with TickerProviderStateM
           : Builder(builder: (c) {
               final userProv = Provider.of<UserProvider>(c, listen: false);
               final rem = userProv.profile?.remainingEnergy;
-              final sec = userProv.profile?.sessionSeconds ?? 60;
               final loc = AppLocalizations.of(c);
               final bool disabled = rem != null && rem <= 0;
+              final maxLabelWidth = MediaQuery.of(c).size.width * 0.65;
               return MorphingGradientButton.icon(
                 icon: Icon(Icons.play_arrow_rounded, size: 26.sp, color: Colors.white),
-                label: Column(
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  children: [
-                    Text(
-                      loc?.startTrueFalseProblems ?? 'Start True/False Problems',
-                      style: TextStyle(fontSize: 20.sp, fontWeight: FontWeight.w900, color: Colors.white),
-                    ),
-                    SizedBox(height: 6.h),
-                    Row(
-                      mainAxisSize: MainAxisSize.min,
-                      children: [
-                        Container(
-                          padding: EdgeInsets.symmetric(horizontal: 8.w, vertical: 4.h),
-                          decoration: BoxDecoration(color: Colors.white24, borderRadius: BorderRadius.circular(8.r)),
-                          child: Row(children: [Icon(Icons.bolt, color: Colors.yellow.shade200, size: 16.sp), SizedBox(width: 6.w), Text('1 energy', style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold))]),
-                        ),
-                        SizedBox(width: 10.w),
-                        Text('${rem ?? '-'} left • ${sec}s', style: TextStyle(fontSize: 12.sp, color: Colors.white70)),
-                      ],
-                    ),
-                  ],
+                label: SizedBox(
+                  width: maxLabelWidth,
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    mainAxisSize: MainAxisSize.min,
+                    children: [
+                      Text(
+                        loc?.startTrueFalseProblems ?? 'Start True/False Problems',
+                        textAlign: TextAlign.center,
+                        maxLines: 2,
+                        overflow: TextOverflow.ellipsis,
+                        style: TextStyle(fontSize: 20.sp, fontWeight: FontWeight.w900, color: Colors.white),
+                      ),
+                      SizedBox(height: 8.h),
+                      Row(
+                        mainAxisSize: MainAxisSize.min,
+                        children: [
+                          Container(
+                            padding: EdgeInsets.symmetric(horizontal: 10.w, vertical: 6.h),
+                            decoration: BoxDecoration(color: Colors.white24, borderRadius: BorderRadius.circular(10.r)),
+                            child: Row(children: [Icon(Icons.bolt, color: Colors.yellow.shade200, size: 16.sp), SizedBox(width: 6.w), Text('1 energy', style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold))]),
+                          ),
+                        ],
+                      ),
+                      SizedBox(height: 6.h),
+                      Text(
+                        loc?.trueFalseTitle ?? '',
+                        style: TextStyle(fontSize: 12.sp, color: Colors.white70),
+                      ),
+                    ],
+                  ),
                 ),
                 colors: disabled ? [Colors.grey.shade600, Colors.grey.shade500] : [theme.colorScheme.secondary, theme.colorScheme.primary],
-                onPressed: disabled ? null : () { _startSession(); },
+                onPressed: () {
+                  if (disabled) {
+                    final loc = AppLocalizations.of(context);
+                    showDialog(
+                      context: context,
+                      builder: (ctx) => AlertDialog(
+                        title: Text(loc?.limitExceeded ?? 'Limit Exceeded'),
+                        content: Text(loc?.limitExceeded ?? 'You do not have enough energy to start.'),
+                        actions: [TextButton(onPressed: () => Navigator.of(ctx).pop(), child: Text(loc?.cancel ?? 'OK'))],
+                      ),
+                    );
+                    return;
+                  }
+                  _startSession();
+                },
                 padding: EdgeInsets.symmetric(horizontal: 36.w, vertical: 18.h),
               );
             }),
@@ -278,14 +328,29 @@ class _TrueFalsePageState extends State<TrueFalsePage> with TickerProviderStateM
               valueColor: AlwaysStoppedAnimation(theme.colorScheme.primary),
             ),
           ),
+          SizedBox(height: 8.h),
+          ClipRRect(
+            borderRadius: BorderRadius.circular(6.r),
+            child: LinearProgressIndicator(
+              value: _sessionDuration > 0 ? (_timeLeft / _sessionDuration).clamp(0.0, 1.0) : 0.0,
+              minHeight: 6.h,
+              backgroundColor: colorWithOpacity(theme.colorScheme.surface, 0.06),
+              valueColor: AlwaysStoppedAnimation(theme.colorScheme.tertiary),
+            ),
+          ),
           SizedBox(height: 10.h),
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               _buildInfoChip(Icons.timer, '$_timeLeft s', _timeLeft < 10 ? Colors.red : theme.colorScheme.primary),
-              Text(
-                '${AppLocalizations.of(context)?.streak ?? 'Streak'}: $_streak 🔥',
-                style: TextStyle(fontSize: 16.sp, fontWeight: FontWeight.bold, color: Colors.orange),
+              Flexible(
+                child: Center(
+                  child: Text(
+                    '${AppLocalizations.of(context)?.streak ?? 'Streak'}: $_streak 🔥',
+                    style: TextStyle(fontSize: 16.sp, fontWeight: FontWeight.bold, color: Colors.orange),
+                    overflow: TextOverflow.ellipsis,
+                  ),
+                ),
               ),
               _buildInfoChip(Icons.star, '$_score', theme.colorScheme.secondary),
             ],
@@ -363,6 +428,7 @@ class _TrueFalsePageState extends State<TrueFalsePage> with TickerProviderStateM
       }
       setState(() {
         _timeLeft = sec;
+        _sessionDuration = sec;
         _isLoading = false;
       });
       _cancelTimer();
@@ -372,6 +438,32 @@ class _TrueFalsePageState extends State<TrueFalsePage> with TickerProviderStateM
         _isLoading = false;
         _isQuizActive = false;
       });
+      // Show a user-friendly dialog for rate-limit / energy errors
+      if (mounted) {
+        final loc = AppLocalizations.of(context);
+        final msg = e?.toString() ?? '';
+        final is429 = msg.contains('429');
+        showDialog(
+          context: context,
+          barrierDismissible: true,
+          builder: (ctx) => AlertDialog(
+            backgroundColor: Theme.of(ctx).colorScheme.surface,
+            title: Text(
+              is429 ? (loc?.limitExceeded ?? 'Limit Exceeded') : (loc?.error ?? 'Error'),
+              style: TextStyle(color: Theme.of(ctx).colorScheme.primary, fontWeight: FontWeight.bold),
+            ),
+            content: Text(
+              is429
+                  ? (loc?.limitExceeded ?? 'You have reached your session limit. Please upgrade or wait until your energy resets.')
+                  : (loc?.quizCouldNotStart ?? 'Could not start quiz. Please try again later.'),
+              style: TextStyle(color: Theme.of(ctx).colorScheme.onSurface),
+            ),
+            actions: [
+              TextButton(onPressed: () => Navigator.of(ctx).pop(), child: Text(loc?.cancel ?? 'OK')),
+            ],
+          ),
+        );
+      }
     });
   }
 

@@ -27,7 +27,7 @@ class QuizPage extends StatefulWidget {
 class _QuizPageState extends State<QuizPage> with TickerProviderStateMixin {
   final ApiService _apiService = ApiService();
   bool _localizeInProgress = false;
-  bool _isQuizActive = false, _isLoading = true, _answered = false;
+  bool _isQuizActive = false, _isLoading = false, _answered = false;
   String? _limitError;
   List<Map<String, dynamic>> _questions = [];
   int _currentIndex = 0, _sessionScore = 0;
@@ -50,6 +50,7 @@ class _QuizPageState extends State<QuizPage> with TickerProviderStateMixin {
   // session timer
   Timer? _sessionTimer;
   int _timeLeft = 0;
+  int _sessionDuration = 60;
 
   void _startSessionTimer() {
     _sessionTimer = Timer.periodic(const Duration(seconds: 1), (t) {
@@ -96,8 +97,7 @@ class _QuizPageState extends State<QuizPage> with TickerProviderStateMixin {
     // available. Calling them from initState can cause the "dependOnInheritedWidgetOfExactType"
     // error in debug/dev builds.
     WidgetsBinding.instance.addPostFrameCallback((_) {
-      _fetchQuizData(isInitialLoad: true);
-      // register locale change listener so active pages update when provider locale changes
+      // Do not auto-start a quiz session on page load; fetch preview data only when needed.
       try {
         _localeProviderRef = Provider.of<LocaleProvider>(context, listen: false);
         _localeProviderRef?.addListener(_onLocaleChanged);
@@ -205,7 +205,6 @@ class _QuizPageState extends State<QuizPage> with TickerProviderStateMixin {
                         final profile = userProvider.profile;
                         _currentIndex = 0;
                         _sessionScore = profile?.dailyPoints ?? 0;
-                        _isQuizActive = true;
                         _answered = false;
                         _selectedAnswerIndex = null;
                         _answerState = AnswerState.unanswered;
@@ -217,12 +216,19 @@ class _QuizPageState extends State<QuizPage> with TickerProviderStateMixin {
                         final s = _questions.first['session_seconds'];
                         if (s is int) sec = s;
                       }
-                      _cancelSessionTimer();
-                      setState(() => _timeLeft = sec);
-                      _startSessionTimer();
+                      // If this fetch is a preview, do not start the session or timer. Actual session starts via _startQuizSession which calls _fetchQuizData with isPreview=false.
+                      if (!isPreview) {
+                        _cancelSessionTimer();
+                        setState(() {
+                          _timeLeft = sec;
+                          _sessionDuration = sec;
+                          _isQuizActive = true;
+                        });
+                        _startSessionTimer();
+                      }
                     } else {
                       setState(() {
-                        _isQuizActive = false;
+                        if (!isPreview) _isQuizActive = false;
                       });
                     }
                   } catch (e) {
@@ -494,7 +500,18 @@ class _QuizPageState extends State<QuizPage> with TickerProviderStateMixin {
                             onPressed: () {
                               final userProv = Provider.of<UserProvider>(context, listen: false);
                               final rem = userProv.profile?.remainingEnergy;
-                              if (rem != null && rem <= 0) return; // disabled
+                              if (rem != null && rem <= 0) {
+                                final loc = AppLocalizations.of(context);
+                                showDialog(
+                                  context: context,
+                                  builder: (ctx) => AlertDialog(
+                                    title: Text(loc?.limitExceeded ?? 'Limit Exceeded'),
+                                    content: Text(loc?.limitExceeded ?? 'You do not have enough energy to start.'),
+                                    actions: [TextButton(onPressed: () => Navigator.of(ctx).pop(), child: Text(loc?.cancel ?? 'OK'))],
+                                  ),
+                                );
+                                return;
+                              }
                               _startQuizSession();
                             },
                             padding: EdgeInsets.symmetric(horizontal: 28.w, vertical: 14.h),
@@ -562,6 +579,17 @@ class _QuizPageState extends State<QuizPage> with TickerProviderStateMixin {
                                   minHeight: 8.h,
                                   backgroundColor: colorWithOpacity(theme.colorScheme.surface, 0.08),
                                   valueColor: AlwaysStoppedAnimation(theme.colorScheme.primary),
+                                ),
+                              ),
+                              SizedBox(height: 8.h),
+                              // session time slider
+                              ClipRRect(
+                                borderRadius: BorderRadius.circular(6.r),
+                                child: LinearProgressIndicator(
+                                  value: _sessionDuration > 0 ? (_timeLeft / _sessionDuration).clamp(0.0, 1.0) : 0.0,
+                                  minHeight: 6.h,
+                                  backgroundColor: colorWithOpacity(theme.colorScheme.surface, 0.06),
+                                  valueColor: AlwaysStoppedAnimation(theme.colorScheme.tertiary),
                                 ),
                               ),
                               SizedBox(height: 10.h), // reduced from 14.h
