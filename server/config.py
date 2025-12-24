@@ -15,6 +15,13 @@ SUBSCRIPTION_LIMITS = {
     "ultra": {"quiz_limit": float('inf'), "challenge_limit": float('inf')},
 }
 
+# New subscription access model: energy per day and session length in seconds
+SUBSCRIPTION_ACCESS = {
+    "free": {"energy_per_day": 3, "session_seconds": 60},
+    "pro": {"energy_per_day": 5, "session_seconds": 60},
+    "ultra": {"energy_per_day": 5, "session_seconds": 90},
+}
+
 TRANSLATIONS = {
     "daily_quiz_limit_reached": {
         "en": "Daily quiz limit reached ({limit}).",

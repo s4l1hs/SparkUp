@@ -47,6 +47,26 @@ class _QuizPageState extends State<QuizPage> with TickerProviderStateMixin {
   late final Animation<Offset> _scoreOffset;
   int _lastAwarded = 0;
   bool _showAward = false;
+  // session timer
+  Timer? _sessionTimer;
+  int _timeLeft = 0;
+
+  void _startSessionTimer() {
+    _sessionTimer = Timer.periodic(const Duration(seconds: 1), (t) {
+      if (!mounted) return;
+      if (_timeLeft > 0) {
+        setState(() => _timeLeft--);
+      } else {
+        _cancelSessionTimer();
+        _handleQuizCompletion();
+      }
+    });
+  }
+
+  void _cancelSessionTimer() {
+    try { _sessionTimer?.cancel(); } catch (_) {}
+    _sessionTimer = null;
+  }
 
   @override
   void initState() {
@@ -145,6 +165,7 @@ class _QuizPageState extends State<QuizPage> with TickerProviderStateMixin {
                 void dispose() {
                   _backgroundController.dispose();
                   _scoreAnimController.dispose();
+                  try { _sessionTimer?.cancel(); } catch (_) {}
                   try { _localeProviderRef?.removeListener(_onLocaleChanged); } catch (_) {}
                   super.dispose();
                 }
@@ -190,6 +211,15 @@ class _QuizPageState extends State<QuizPage> with TickerProviderStateMixin {
                         _answerState = AnswerState.unanswered;
                         _limitError = null;
                       });
+                      // set session timer from server hint or profile
+                      int sec = userProvider.profile?.sessionSeconds ?? 60;
+                      if (_questions.isNotEmpty && _questions.first.containsKey('session_seconds')) {
+                        final s = _questions.first['session_seconds'];
+                        if (s is int) sec = s;
+                      }
+                      _cancelSessionTimer();
+                      setState(() => _timeLeft = sec);
+                      _startSessionTimer();
                     } else {
                       setState(() {
                         _isQuizActive = false;
@@ -298,6 +328,7 @@ class _QuizPageState extends State<QuizPage> with TickerProviderStateMixin {
                 }
 
                 Future<void> _handleQuizCompletion() async {
+                  _cancelSessionTimer();
                   final localizations = AppLocalizations.of(context);
                   final theme = Theme.of(context);
 
@@ -446,9 +477,26 @@ class _QuizPageState extends State<QuizPage> with TickerProviderStateMixin {
                         ? CircularProgressIndicator(color: theme.colorScheme.primary)
                         : MorphingGradientButton.icon(
                             icon: Icon(Icons.play_arrow_rounded, size: 22.sp, color: Colors.white),
-                            label: Text(localizations?.startNewQuiz ?? 'Start Quiz', style: TextStyle(fontSize: 18.sp)),
+                            label: Column(
+                              crossAxisAlignment: CrossAxisAlignment.center,
+                              children: [
+                                Text(localizations?.startNewQuiz ?? 'Start Quiz', style: TextStyle(fontSize: 18.sp)),
+                                SizedBox(height: 4.h),
+                                Builder(builder: (c) {
+                                  final userProv = Provider.of<UserProvider>(c, listen: false);
+                                  final rem = userProv.profile?.remainingEnergy;
+                                  final sec = userProv.profile?.sessionSeconds ?? 60;
+                                  return Text('${rem ?? '-'} energy • ${sec}s', style: TextStyle(fontSize: 12.sp, color: Colors.white70));
+                                })
+                              ],
+                            ),
                             colors: [theme.colorScheme.secondary, theme.colorScheme.primary],
-                            onPressed: _startQuizSession,
+                            onPressed: () {
+                              final userProv = Provider.of<UserProvider>(context, listen: false);
+                              final rem = userProv.profile?.remainingEnergy;
+                              if (rem != null && rem <= 0) return; // disabled
+                              _startQuizSession();
+                            },
                             padding: EdgeInsets.symmetric(horizontal: 28.w, vertical: 14.h),
                           ),
                   );
@@ -491,7 +539,6 @@ class _QuizPageState extends State<QuizPage> with TickerProviderStateMixin {
                   final int dailyUsed = profile?.dailyQuizUsed ?? 0;
                   final int displayIndex = dailyUsed + 1;
                   final int? dailyLimit = profile?.dailyQuizLimit;
-                  final bool overLimit = dailyLimit != null && displayIndex > dailyLimit;
                   final double progressValue = (() {
                     final denom = (dailyLimit != null && dailyLimit > 0) ? dailyLimit.toDouble() : _questions.length.toDouble();
                     return (displayIndex.toDouble() / denom).clamp(0.0, 1.0);
@@ -521,12 +568,22 @@ class _QuizPageState extends State<QuizPage> with TickerProviderStateMixin {
                               Row(
                                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                                 children: [
-                                  if (!overLimit)
-                                    Text("${localizations?.question ?? 'Question'} $displayIndex/${dailyLimit ?? _questions.length}", style: TextStyle(color: theme.colorScheme.primary, fontSize: 17.sp, fontWeight: FontWeight.bold))
-                                  else
-                                    const SizedBox.shrink(),
+                                  // Show session timer here instead of question counter
+                                  Container(
+                                    padding: EdgeInsets.symmetric(horizontal: 10.w, vertical: 6.h),
+                                    decoration: BoxDecoration(
+                                      color: colorWithOpacity(theme.colorScheme.primary, 0.12),
+                                      borderRadius: BorderRadius.circular(10.r),
+                                    ),
+                                    child: Row(children: [
+                                      Icon(Icons.timer, size: 18.sp, color: theme.colorScheme.primary),
+                                      SizedBox(width: 8.w),
+                                      Text('$_timeLeft s', style: TextStyle(color: theme.colorScheme.primary, fontSize: 16.sp, fontWeight: FontWeight.bold)),
+                                    ]),
+                                  ),
                                   Row(
                                     children: [
+                                          // timer moved to the left; removed duplicate here
                                       Container(
                                         padding: EdgeInsets.symmetric(horizontal: 10.w, vertical: 6.h),
                                         decoration: BoxDecoration(color: colorWithOpacity(theme.colorScheme.primary, 0.95), borderRadius: BorderRadius.circular(10.r)),

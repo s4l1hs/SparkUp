@@ -42,6 +42,9 @@ class AppLocalizationsEs extends AppLocalizations {
   String get trueFalseTitle => 'Verdadero / Falso';
 
   @override
+  String get startTrueFalseProblems => 'Iniciar Verdadero/Falso';
+
+  @override
   String get trueLabel => 'Verdadero';
 
   @override

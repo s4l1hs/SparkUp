@@ -16,6 +16,8 @@ class DailyLimits(SQLModel, table=True):
     quiz_count: int = Field(default=0)
     challenge_count: int = Field(default=0)
     questions_answered: int = Field(default=0)
+    # energy_used counts how many sessions (quiz or true/false) the user has consumed today
+    energy_used: int = Field(default=0)
     last_reset: date = Field(default_factory=date.today)
     notifications_sent: int = Field(default=0)
     user_id: int = Field(foreign_key="user.id", unique=True)

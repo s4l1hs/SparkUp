@@ -45,6 +45,9 @@ class AppLocalizationsDe extends AppLocalizations {
   String get trueFalseTitle => 'Wahr / Falsch';
 
   @override
+  String get startTrueFalseProblems => 'Wahr/Falsch-Aufgaben starten';
+
+  @override
   String get trueLabel => 'Wahr';
 
   @override

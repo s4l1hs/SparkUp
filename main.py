@@ -7,6 +7,26 @@ from sqlmodel import Session, select
 from server.db import engine
 from server.models import QuizQuestion, DailyInfo
 
+# Run lightweight migrations on startup (idempotent)
+def _run_startup_migrations():
+	try:
+		mig_path = os.path.join(os.path.dirname(__file__), 'server', 'migrations', 'add_energy_used.py')
+		if os.path.exists(mig_path):
+			spec = importlib.util.spec_from_file_location('add_energy_used', mig_path)
+			mig_mod = importlib.util.module_from_spec(spec)
+			spec.loader.exec_module(mig_mod)
+			try:
+				# call main() if available
+				if hasattr(mig_mod, 'main'):
+					mig_mod.main()
+			except Exception as e:
+				print(f"[main.py] Migration script executed but returned error: {e}")
+	except Exception as e:
+		print(f"[main.py] Failed to run startup migrations: {e}")
+
+
+_run_startup_migrations()
+
 def _auto_seed_if_needed():
 	from server.db import create_db_and_tables
 	# Önce tabloları oluştur
@@ -28,3 +48,4 @@ def _auto_seed_if_needed():
 			seed_mod.seed_database_manual()
 
 _auto_seed_if_needed()
+ 

@@ -11,6 +11,7 @@
   "quizFinished": "Викторина завершена!",
   "yourScore": "Ваш счет",
   "trueFalseTitle": "Верно / Неверно",
+  "startTrueFalseProblems": "Начать задания «Верно/Неверно»",
   "trueLabel": "Верно",
   "falseLabel": "Неверно",
   "categoryLabel": "Категория",

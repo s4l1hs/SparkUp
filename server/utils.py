@@ -2,7 +2,7 @@ import json
 import random
 from datetime import date
 from typing import Optional, Dict
-from .config import MANUAL_INFOS, TRANSLATIONS, NOTIFICATION_FREQUENCY, load_manual_infos, SUBSCRIPTION_LIMITS
+from .config import MANUAL_INFOS, TRANSLATIONS, NOTIFICATION_FREQUENCY, load_manual_infos, SUBSCRIPTION_LIMITS, SUBSCRIPTION_ACCESS
 from .models import (
     UserSeenInfo, DeviceToken, DailyLimits, NotificationMetric, UserScoreHistory,
     UserSubscription, UserScore, UserStreak
@@ -38,9 +38,17 @@ def _get_user_access_level(db_user, session) -> Dict:
         limits.challenge_count = 0
         limits.questions_answered = 0
         limits.notifications_sent = 0
+        # reset daily energy consumption
+        limits.energy_used = 0
         limits.last_reset = today
         session.add(limits); session.commit()
     level = sub.level
+    # compute energy info from SUBSCRIPTION_ACCESS
+    access = SUBSCRIPTION_ACCESS.get(level, {"energy_per_day": 3, "session_seconds": 60})
+    energy_per_day = int(access.get("energy_per_day", 3))
+    remaining_energy = max(0, energy_per_day - (limits.energy_used or 0))
+    session_seconds = int(access.get("session_seconds", 60))
+
     return {
         "level": level,
         "quiz_count": limits.quiz_count,
@@ -48,7 +56,11 @@ def _get_user_access_level(db_user, session) -> Dict:
         "questions_answered": limits.questions_answered,
         "quiz_limit": SUBSCRIPTION_LIMITS[level]["quiz_limit"],
         "challenge_limit": SUBSCRIPTION_LIMITS[level]["challenge_limit"],
-        "daily_limits_obj": limits
+        "daily_limits_obj": limits,
+        "energy_per_day": energy_per_day,
+        "energy_used": limits.energy_used or 0,
+        "remaining_energy": remaining_energy,
+        "session_seconds": session_seconds,
     }
 
 

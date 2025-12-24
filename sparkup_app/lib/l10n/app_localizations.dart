@@ -182,6 +182,12 @@ abstract class AppLocalizations {
   /// **'True / False'**
   String get trueFalseTitle;
 
+  /// No description provided for @startTrueFalseProblems.
+  ///
+  /// In en, this message translates to:
+  /// **'Start True/False Problems'**
+  String get startTrueFalseProblems;
+
   /// No description provided for @trueLabel.
   ///
   /// In en, this message translates to:

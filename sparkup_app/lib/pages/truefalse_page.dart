@@ -3,6 +3,8 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:provider/provider.dart';
+import 'package:sparkup_app/l10n/app_localizations.dart';
+import '../providers/user_provider.dart';
 import '../services/api_service.dart';
 import '../providers/analysis_provider.dart';
 import '../widgets/morphing_gradient_button.dart';
@@ -23,7 +25,7 @@ class _TrueFalsePageState extends State<TrueFalsePage> with TickerProviderStateM
   int _currentIndex = 0;
   int _score = 0;
   int _streak = 0; // Üst üste doğru sayısı
-  bool _isLoading = true;
+  bool _isLoading = false;
   bool _isQuizActive = false;
 
   // Timer değişkenleri
@@ -47,7 +49,8 @@ class _TrueFalsePageState extends State<TrueFalsePage> with TickerProviderStateM
       TweenSequenceItem(tween: AlignmentTween(begin: Alignment.bottomLeft, end: Alignment.topRight), weight: 1),
     ]).animate(_backgroundController);
 
-    _loadQuestions();
+    // Do not pre-load questions here because the backend now consumes 1 energy per session
+    // when `/manual/truefalse/` is requested. Questions will be loaded when the user starts a session.
   }
 
   @override
@@ -86,6 +89,11 @@ class _TrueFalsePageState extends State<TrueFalsePage> with TickerProviderStateM
         await _handleQuizCompletion();
       }
     });
+  }
+
+  void _cancelTimer() {
+    _timer?.cancel();
+    _timer = null;
   }
 
   // --- 3. OYUN MANTIĞI ---
@@ -129,7 +137,9 @@ class _TrueFalsePageState extends State<TrueFalsePage> with TickerProviderStateM
 
     
 
-    if (_questions.isEmpty) {
+    // If questions are empty but user hasn't started a session yet, show start view.
+    // Only show the 'no questions' message when a session is active but nothing loaded.
+    if (_isQuizActive && _questions.isEmpty) {
       return Scaffold(
         backgroundColor: theme.colorScheme.surface,
         body: Center(child: Text('No true/false questions available', style: TextStyle(color: theme.colorScheme.onSurface))),
@@ -214,13 +224,41 @@ class _TrueFalsePageState extends State<TrueFalsePage> with TickerProviderStateM
       key: const ValueKey('startView'),
       child: _isLoading
           ? CircularProgressIndicator(color: theme.colorScheme.primary)
-          : MorphingGradientButton.icon(
-              icon: Icon(Icons.play_arrow_rounded, size: 22.sp, color: Colors.white),
-              label: Text('Start True/False', style: TextStyle(fontSize: 18.sp)),
-              colors: [theme.colorScheme.secondary, theme.colorScheme.primary],
-              onPressed: _startSession,
-              padding: EdgeInsets.symmetric(horizontal: 28.w, vertical: 14.h),
-            ),
+          : Builder(builder: (c) {
+              final userProv = Provider.of<UserProvider>(c, listen: false);
+              final rem = userProv.profile?.remainingEnergy;
+              final sec = userProv.profile?.sessionSeconds ?? 60;
+              final loc = AppLocalizations.of(c);
+              final bool disabled = rem != null && rem <= 0;
+              return MorphingGradientButton.icon(
+                icon: Icon(Icons.play_arrow_rounded, size: 26.sp, color: Colors.white),
+                label: Column(
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  children: [
+                    Text(
+                      loc?.startTrueFalseProblems ?? 'Start True/False Problems',
+                      style: TextStyle(fontSize: 20.sp, fontWeight: FontWeight.w900, color: Colors.white),
+                    ),
+                    SizedBox(height: 6.h),
+                    Row(
+                      mainAxisSize: MainAxisSize.min,
+                      children: [
+                        Container(
+                          padding: EdgeInsets.symmetric(horizontal: 8.w, vertical: 4.h),
+                          decoration: BoxDecoration(color: Colors.white24, borderRadius: BorderRadius.circular(8.r)),
+                          child: Row(children: [Icon(Icons.bolt, color: Colors.yellow.shade200, size: 16.sp), SizedBox(width: 6.w), Text('1 energy', style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold))]),
+                        ),
+                        SizedBox(width: 10.w),
+                        Text('${rem ?? '-'} left • ${sec}s', style: TextStyle(fontSize: 12.sp, color: Colors.white70)),
+                      ],
+                    ),
+                  ],
+                ),
+                colors: disabled ? [Colors.grey.shade600, Colors.grey.shade500] : [theme.colorScheme.secondary, theme.colorScheme.primary],
+                onPressed: disabled ? null : () { _startSession(); },
+                padding: EdgeInsets.symmetric(horizontal: 36.w, vertical: 18.h),
+              );
+            }),
     );
   }
 
@@ -245,7 +283,10 @@ class _TrueFalsePageState extends State<TrueFalsePage> with TickerProviderStateM
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               _buildInfoChip(Icons.timer, '$_timeLeft s', _timeLeft < 10 ? Colors.red : theme.colorScheme.primary),
-              Text("Streak: $_streak 🔥", style: TextStyle(fontSize: 16.sp, fontWeight: FontWeight.bold, color: Colors.orange)),
+              Text(
+                '${AppLocalizations.of(context)?.streak ?? 'Streak'}: $_streak 🔥',
+                style: TextStyle(fontSize: 16.sp, fontWeight: FontWeight.bold, color: Colors.orange),
+              ),
               _buildInfoChip(Icons.star, '$_score', theme.colorScheme.secondary),
             ],
           ),
@@ -303,21 +344,39 @@ class _TrueFalsePageState extends State<TrueFalsePage> with TickerProviderStateM
   }
 
   void _startSession() {
-    if (_questions.isEmpty) {
-      _loadQuestions();
-    }
     setState(() {
       _currentIndex = 0;
       _score = 0;
       _streak = 0;
-      _timeLeft = 60;
       _isQuizActive = true;
+      _isLoading = true;
     });
-    _startTimer();
+
+    // Load questions from server (this call will consume 1 energy on the backend)
+    _loadQuestions().then((_) {
+      final userProv = Provider.of<UserProvider>(context, listen: false);
+      final secFromProfile = userProv.profile?.sessionSeconds;
+      int sec = secFromProfile ?? 60;
+      if (_questions.isNotEmpty) {
+        final first = _questions.firstWhere((e) => e.containsKey('session_seconds'), orElse: () => null);
+        if (first != null && first['session_seconds'] is int) sec = first['session_seconds'] as int;
+      }
+      setState(() {
+        _timeLeft = sec;
+        _isLoading = false;
+      });
+      _cancelTimer();
+      _startTimer();
+    }).catchError((e) {
+      setState(() {
+        _isLoading = false;
+        _isQuizActive = false;
+      });
+    });
   }
 
   Future<void> _handleQuizCompletion() async {
-    _timer?.cancel();
+    _cancelTimer();
     final theme = Theme.of(context);
     await showDialog(
       context: context,

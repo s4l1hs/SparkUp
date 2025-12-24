@@ -55,6 +55,10 @@ def get_user_profile(db_user: User = Depends(get_current_user), session = Depend
     if quiz_limit != float('inf'):
         remaining = max(0, int(quiz_limit) - int(used))
 
+    # energy/session info
+    remaining_energy = access.get("remaining_energy")
+    session_seconds = access.get("session_seconds")
+
     return {
         "firebase_uid": db_user.firebase_uid,
         "email": db_user.email,
@@ -69,6 +73,8 @@ def get_user_profile(db_user: User = Depends(get_current_user), session = Depend
         "daily_quiz_limit": None if quiz_limit == float('inf') else int(quiz_limit),
         "daily_quiz_used": int(used),
         "remaining_quizzes": remaining,
+        "remaining_energy": int(remaining_energy) if remaining_energy is not None else None,
+        "session_seconds": int(session_seconds) if session_seconds is not None else None,
         "daily_points": int(daily_points),
     }
 
@@ -78,14 +84,21 @@ def get_quiz_questions(limit: int = 3, lang: Optional[str] = Query(None), previe
     access = _get_user_access_level(db_user, session)
     effective_lang = lang or (db_user.language_code if db_user.language_code else "en")
 
-    if access["quiz_limit"] != float('inf'):
-        remaining = int(access["quiz_limit"]) - int(access["questions_answered"])
-    else:
-        remaining = None
+    # Calculate remaining quizzes for the user
+    quiz_limit = access.get("quiz_limit")
+    used = access.get("questions_answered")
+    remaining = None
+    if quiz_limit is not None and quiz_limit != float('inf'):
+        remaining = max(0, int(quiz_limit) - int(used))
 
-    if not preview and remaining is not None and remaining <= 0 and access["level"] != "ultra":
+    # Energy-based access: each non-preview session costs 1 energy
+    remaining_energy = access.get("remaining_energy")
+    session_seconds = access.get("session_seconds")
+
+    if not preview and remaining_energy is not None and remaining_energy <= 0 and access["level"] != "ultra":
         tpl = TRANSLATIONS.get("daily_quiz_limit_reached", {}).get(effective_lang) or TRANSLATIONS["daily_quiz_limit_reached"]["en"]
-        return PlainTextResponse(tpl.format(limit=access["quiz_limit"]), status_code=429)
+        # Use a similar message but the client should prefer using remaining_energy/session_seconds
+        return PlainTextResponse(tpl.format(limit=access.get("quiz_limit")), status_code=429)
 
     answered_ids_raw = session.exec(select(UserAnsweredQuestion.quizquestion_id).where(UserAnsweredQuestion.user_id == db_user.id)).all()
     answered_ids = []
@@ -131,6 +144,16 @@ def get_quiz_questions(limit: int = 3, lang: Optional[str] = Query(None), previe
         except Exception:
             return ""
 
+    # If this is a real session (not preview), consume one energy now
+    if not preview:
+        try:
+            limits_obj = access.get("daily_limits_obj")
+            if limits_obj:
+                limits_obj.energy_used = (limits_obj.energy_used or 0) + 1
+                session.add(limits_obj); session.commit(); session.refresh(limits_obj)
+        except Exception:
+            session.rollback()
+
     result = []
     for q in chosen:
         question_text = _get_text("question_texts", q)
@@ -148,6 +171,10 @@ def get_quiz_questions(limit: int = 3, lang: Optional[str] = Query(None), previe
             "options": options_parsed,
             "correct_answer_index": q.correct_answer_index
         })
+    # include session_seconds hint for client
+    if session_seconds is not None:
+        for r in result:
+            r["session_seconds"] = session_seconds
 
     return result
 
@@ -341,7 +368,7 @@ def localize_quiz(ids: str = Query(..., description="Comma separated quiz ids"),
 
 
 @router.get("/manual/truefalse/")
-def get_manual_truefalse():
+def get_manual_truefalse(db_user: User = Depends(get_current_user), session = Depends(get_session)):
     """Return the list of manual true/false questions loaded from data/manual_truefalse.json.
     This reads the in-memory `MANUAL_TRUEFALSE` list populated at startup by the server.
     """
@@ -359,7 +386,28 @@ def get_manual_truefalse():
     if not MANUAL_TRUEFALSE:
         raise HTTPException(status_code=404, detail="No true/false questions available.")
 
-    return MANUAL_TRUEFALSE
+    # Ensure user has energy for a true/false session (cost 1 energy) and consume it
+    access = _get_user_access_level(db_user, session)
+    remaining_energy = access.get("remaining_energy")
+    if remaining_energy is not None and remaining_energy <= 0 and access["level"] != "ultra":
+        tpl = TRANSLATIONS.get("daily_quiz_limit_reached", {}).get(db_user.language_code or "en") or TRANSLATIONS["daily_quiz_limit_reached"]["en"]
+        return PlainTextResponse(tpl.format(limit=access.get("quiz_limit")), status_code=429)
+
+    try:
+        limits_obj = access.get("daily_limits_obj")
+        if limits_obj:
+            limits_obj.energy_used = (limits_obj.energy_used or 0) + 1
+            session.add(limits_obj); session.commit(); session.refresh(limits_obj)
+    except Exception:
+        session.rollback()
+
+    # Return questions and include session_seconds hint
+    out = []
+    for tf in MANUAL_TRUEFALSE:
+        item = dict(tf)
+        item["session_seconds"] = access.get("session_seconds")
+        out.append(item)
+    return out
 
 
 @router.get("/debug/manual_truefalse_status/")

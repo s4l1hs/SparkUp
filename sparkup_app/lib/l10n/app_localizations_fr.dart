@@ -43,6 +43,9 @@ class AppLocalizationsFr extends AppLocalizations {
   String get trueFalseTitle => 'Vrai / Faux';
 
   @override
+  String get startTrueFalseProblems => 'Démarrer Vrai/Faux';
+
+  @override
   String get trueLabel => 'Vrai';
 
   @override
