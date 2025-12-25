@@ -383,7 +383,13 @@ class _QuizPageState extends State<QuizPage> with TickerProviderStateMixin {
           await _handleQuizCompletion();
         } else {
           if (_currentIndex >= _questions.length - 1) {
-            await _handleQuizCompletion();
+            // Reached end of current batch; fetch more questions and continue session
+            try {
+              await _fetchMoreQuestions();
+            } catch (e) {
+              // If fetching more questions fails, end the session gracefully
+              await _handleQuizCompletion();
+            }
           } else {
             _nextQuestion();
           }
@@ -400,6 +406,42 @@ class _QuizPageState extends State<QuizPage> with TickerProviderStateMixin {
           _selectedAnswerIndex = null;
         });
       }
+    }
+  }
+
+  Future<void> _fetchMoreQuestions() async {
+    if (!mounted) return;
+    final userProvider = Provider.of<UserProvider>(context, listen: false);
+    final localeProvider = Provider.of<LocaleProvider>(context, listen: false);
+    try {
+      // Ensure profile is reasonably fresh for language/session hints
+      await userProvider.loadProfile(widget.idToken);
+    } catch (_) {}
+
+    final deviceLang = localeProvider.locale.languageCode;
+    final lang = _selectSupportedLanguage(
+        userProvider.profile?.languageCode, deviceLang,
+        allowBackendEn: localeProvider.userSetLanguage);
+
+    try {
+      final questions = await _apiService.getQuizQuestions(widget.idToken,
+          limit: 3, lang: lang, preview: false);
+      if (!mounted) return;
+      if (questions.isNotEmpty) {
+        setState(() {
+          _questions = questions
+              .map((q) => Map<String, dynamic>.from(q as Map))
+              .toList();
+          _currentIndex = 0;
+          _selectedAnswerIndex = null;
+          _answered = false;
+          _answerState = AnswerState.unanswered;
+        });
+      } else {
+        throw Exception('No questions available');
+      }
+    } catch (e) {
+      rethrow;
     }
   }
 
@@ -452,7 +494,9 @@ class _QuizPageState extends State<QuizPage> with TickerProviderStateMixin {
     );
 
     if (mounted) {
-      await _fetchQuizData(isInitialLoad: true);
+      // Fetch preview data only so the Start menu is shown again and
+      // we do not auto-start a new session when the results dialog is closed.
+      await _fetchQuizData(isInitialLoad: true, isPreview: true);
     }
   }
 

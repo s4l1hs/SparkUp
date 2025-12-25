@@ -15808,5 +15808,957 @@
             "ar": "تقضي القطط حوالي 70٪ من حياتها نائمة."
         },
         "correct_answer": true
+    },
+    {
+        "category": "art",
+        "question": {
+            "en": "The 'Starry Night' was painted by Vincent van Gogh.",
+            "tr": "'Yıldızlı Gece' Vincent van Gogh tarafından yapılmıştır.",
+            "fr": "'La Nuit étoilée' a été peinte par Vincent van Gogh.",
+            "es": "'La noche estrellada' fue pintada por Vincent van Gogh.",
+            "de": "'Die Sternennacht' wurde von Vincent van Gogh gemalt.",
+            "it": "'La notte stellata' è stata dipinta da Vincent van Gogh.",
+            "hi": "'तारों भरी रात' (Starry Night) विंसेंट वैन गॉग द्वारा चित्रित की गई थी।",
+            "ru": "«Звездная ночь» была написана Винсентом Ван Гогом.",
+            "zh": "《星月夜》是文森特·梵高画的。",
+            "ja": "『星月夜』はフィンセント・ファン・ゴッホによって描かれました。",
+            "ar": "رسم فينسنت فان جوخ لوحة 'ليلة النجوم'."
+        },
+        "correct_answer": true
+    },
+    {
+        "category": "cinema_tv",
+        "question": {
+            "en": "The movie 'The Matrix' was released in 1999.",
+            "tr": "'Matrix' filmi 1999 yılında vizyona girmiştir.",
+            "fr": "Le film 'Matrix' est sorti en 1999.",
+            "es": "La película 'The Matrix' se estrenó en 1999.",
+            "de": "Der Film 'Matrix' wurde 1999 veröffentlicht.",
+            "it": "Il film 'Matrix' è uscito nel 1999.",
+            "hi": "फिल्म 'द मैट्रिक्स' 1999 में रिलीज़ हुई थी।",
+            "ru": "Фильм «Матрица» вышел на экраны в 1999 году.",
+            "zh": "电影《黑客帝国》于1999年上映。",
+            "ja": "映画『マトリックス』は1999年に公開されました。",
+            "ar": "تم إصدار فيلم 'الماتريكس' في عام 1999."
+        },
+        "correct_answer": true
+    },
+    {
+        "category": "music",
+        "question": {
+            "en": "The Beatles were a band from Liverpool.",
+            "tr": "The Beatles, Liverpoollu bir müzik grubuydu.",
+            "fr": "Les Beatles étaient un groupe de Liverpool.",
+            "es": "The Beatles era una banda de Liverpool.",
+            "de": "Die Beatles waren eine Band aus Liverpool.",
+            "it": "I Beatles erano una band di Liverpool.",
+            "hi": "बीटल्स लिवरपूल का एक बैंड था।",
+            "ru": "The Beatles были группой из Ливерпуля.",
+            "zh": "披头士乐队是一支来自利物浦的乐队。",
+            "ja": "ビートルズはリバプール出身のバンドでした。",
+            "ar": "كانت فرقة البيتلز فرقة من ليفربول."
+        },
+        "correct_answer": true
+    },
+    {
+        "category": "nature_animals",
+        "question": {
+            "en": "Tigers are social animals that live in groups.",
+            "tr": "Kaplanlar gruplar halinde yaşayan sosyal hayvanlardır.",
+            "fr": "Les tigres sont des animaux sociaux qui vivent en groupe.",
+            "es": "Los tigres son animales sociales que viven en grupos.",
+            "de": "Tiger sind soziale Tiere, die in Gruppen leben.",
+            "it": "Le tigri sono animali sociali che vivono in gruppo.",
+            "hi": "बाघ सामाजिक जानवर हैं जो समूहों में रहते हैं।",
+            "ru": "Тигры — социальные животные, живущие группами.",
+            "zh": "老虎是群居的群居动物。",
+            "ja": "トラは集団で生活する社会的な動物です。",
+            "ar": "النمور حيوانات اجتماعية تعيش في مجموعات."
+        },
+        "correct_answer": false
+    },
+    {
+        "category": "mythology",
+        "question": {
+            "en": "Poseidon is the Greek god of the sea.",
+            "tr": "Poseidon, Yunan deniz tanrısıdır.",
+            "fr": "Poséidon est le dieu grec de la mer.",
+            "es": "Poseidón es el dios griego del mar.",
+            "de": "Poseidon ist der griechische Gott des Meeres.",
+            "it": "Poseidone è il dio greco del mare.",
+            "hi": "पोसीडॉन समुद्र के ग्रीक देवता हैं।",
+            "ru": "Посейдон — греческий бог моря.",
+            "zh": "波塞冬是希腊的海神。",
+            "ja": "ポセイドンはギリシャ神話の海の神です。",
+            "ar": "بوسيدون هو إله البحر اليوناني."
+        },
+        "correct_answer": true
+    },
+    {
+        "category": "literature",
+        "question": {
+            "en": "The 'Iliad' is an epic poem by Homer.",
+            "tr": "'İlyada', Homeros'un epik bir şiiridir.",
+            "fr": "'L'Iliade' est un poème épique d'Homère.",
+            "es": "'La Ilíada' es un poema épico de Homero.",
+            "de": "Die 'Ilias' ist ein episches Gedicht von Homer.",
+            "it": "'L'Iliade' è un poema epico di Omero.",
+            "hi": "'इलियाड' होमर का एक महाकाव्य है।",
+            "ru": "«Илиада» — эпическая поэма Гомера.",
+            "zh": "《伊利亚特》是荷马的史诗。",
+            "ja": "『イリアス』はホメロスの叙事詩です。",
+            "ar": "'الإلياذة' قصيدة ملحمية لهوميروس."
+        },
+        "correct_answer": true
+    },
+    {
+        "category": "video_games",
+        "question": {
+            "en": "The game 'Fortnite' was developed by Epic Games.",
+            "tr": "'Fortnite' oyunu Epic Games tarafından geliştirilmiştir.",
+            "fr": "Le jeu 'Fortnite' a été développé par Epic Games.",
+            "es": "El juego 'Fortnite' fue desarrollado por Epic Games.",
+            "de": "Das Spiel 'Fortnite' wurde von Epic Games entwickelt.",
+            "it": "Il gioco 'Fortnite' è stato sviluppato da Epic Games.",
+            "hi": "'फोर्टनाइट' गेम एपिक गेम्स द्वारा विकसित किया गया था।",
+            "ru": "Игра «Fortnite» была разработана Epic Games.",
+            "zh": "游戏《堡垒之夜》由Epic Games开发。",
+            "ja": "ゲーム『フォートナイト』はEpic Gamesによって開発されました。",
+            "ar": "تم تطوير لعبة 'Fortnite' بواسطة Epic Games."
+        },
+        "correct_answer": true
+    },
+    {
+        "category": "general_culture",
+        "question": {
+            "en": "Chopsticks are traditionally used to eat soup.",
+            "tr": "Yemek çubukları geleneksel olarak çorba içmek için kullanılır.",
+            "fr": "Les baguettes sont traditionnellement utilisées pour manger de la soupe.",
+            "es": "Los palillos se utilizan tradicionalmente para tomar sopa.",
+            "de": "Essstäbchen werden traditionell zum Suppe essen verwendet.",
+            "it": "Le bacchette sono tradizionalmente usate per mangiare la zuppa.",
+            "hi": "चॉपस्टिक्स का उपयोग पारंपरिक रूप से सूप पीने के लिए किया जाता है।",
+            "ru": "Палочки для еды традиционно используются для еды супа.",
+            "zh": "筷子传统上用于喝汤。",
+            "ja": "箸は伝統的にスープを飲むために使われます。",
+            "ar": "تستخدم عيدان تناول الطعام تقليديًا لتناول الحساء."
+        },
+        "correct_answer": false
+    },
+    {
+        "category": "history",
+        "question": {
+            "en": "The Great Wall of China is longer than the Nile River.",
+            "tr": "Çin Seddi, Nil Nehri'nden daha uzundur.",
+            "fr": "La Grande Muraille de Chine est plus longue que le Nil.",
+            "es": "La Gran Muralla China es más larga que el río Nilo.",
+            "de": "Die Chinesische Mauer ist länger als der Nil.",
+            "it": "La Grande Muraglia Cinese è più lunga del fiume Nilo.",
+            "hi": "चीन की महान दीवार नील नदी से लंबी है।",
+            "ru": "Великая Китайская стена длиннее реки Нил.",
+            "zh": "长城比尼罗河长。",
+            "ja": "万里の長城はナイル川よりも長いです。",
+            "ar": "سور الصين العظيم أطول من نهر النيل."
+        },
+        "correct_answer": true
+    },
+    {
+        "category": "art",
+        "question": {
+            "en": "Salvador Dalí is associated with the Surrealist movement.",
+            "tr": "Salvador Dalí, Sürrealist akımla ilişkilendirilir.",
+            "fr": "Salvador Dalí est associé au mouvement surréaliste.",
+            "es": "Salvador Dalí está asociado con el movimiento surrealista.",
+            "de": "Salvador Dalí wird mit der surrealistischen Bewegung in Verbindung gebracht.",
+            "it": "Salvador Dalí è associato al movimento surrealista.",
+            "hi": "साल्वाडोर डाली अतियथार्थवादी आंदोलन से जुड़े हैं।",
+            "ru": "Сальвадор Дали ассоциируется с сюрреалистическим движением.",
+            "zh": "萨尔瓦多·达利与超现实主义运动有关。",
+            "ja": "サルバドール・ダリはシュルレアリスム運動に関連しています。",
+            "ar": "سلفادور دالي مرتبط بالحركة السريالية."
+        },
+        "correct_answer": true
+    },
+    {
+        "category": "sports",
+        "question": {
+            "en": "In basketball, a free throw is worth one point.",
+            "tr": "Basketbolda serbest atış bir puan değerindedir.",
+            "fr": "Au basket-ball, un lancer franc vaut un point.",
+            "es": "En baloncesto, un tiro libre vale un punto.",
+            "de": "Im Basketball ist ein Freiwurf einen Punkt wert.",
+            "it": "Nel basket, un tiro libero vale un punto.",
+            "hi": "बास्केटबॉल में, फ्री थ्रो एक अंक का होता है।",
+            "ru": "В баскетболе штрафной бросок приносит одно очко.",
+            "zh": "在篮球中，罚球得一分。",
+            "ja": "バスケットボールでは、フリースローは1点です。",
+            "ar": "في كرة السلة، الرمية الحرة تساوي نقطة واحدة."
+        },
+        "correct_answer": true
+    },
+    {
+        "category": "technology",
+        "question": {
+            "en": "The first computer bug was an actual moth.",
+            "tr": "İlk bilgisayar hatası (bug) gerçek bir güveydi.",
+            "fr": "Le premier bug informatique était un vrai papillon de nuit.",
+            "es": "El primer error informático fue una polilla real.",
+            "de": "Der erste Computerfehler war eine echte Motte.",
+            "it": "Il primo bug informatico era una vera falena.",
+            "hi": "पहला कंप्यूटर बग एक वास्तविक कीट (moth) था।",
+            "ru": "Первой компьютерной ошибкой (багом) был настоящий мотылек.",
+            "zh": "第一个计算机漏洞是一只真正的飞蛾。",
+            "ja": "最初のコンピュータのバグは本物の蛾でした。",
+            "ar": "كان أول خطأ في الكمبيوتر (bug) هو عثة حقيقية."
+        },
+        "correct_answer": true
+    },
+    {
+        "category": "cinema_tv",
+        "question": {
+            "en": "The Simpsons is the longest-running American scripted primetime television series.",
+            "tr": "Simpsonlar, Amerikan televizyon tarihinin en uzun soluklu senaryolu prime time dizisidir.",
+            "fr": "Les Simpson est la plus longue série télévisée américaine scénarisée diffusée en prime time.",
+            "es": "Los Simpson es la serie de televisión estadounidense con guion en horario estelar de mayor duración.",
+            "de": "Die Simpsons ist die am längsten laufende amerikanische Drehbuch-Primetime-Fernsehserie.",
+            "it": "I Simpson è la serie televisiva americana di prima serata più longeva.",
+            "hi": "द सिम्पसन्स सबसे लंबे समय तक चलने वाली अमेरिकी पटकथा वाली प्राइमटाइम टेलीविजन श्रृंखला है।",
+            "ru": "«Симпсоны» — самый продолжительный американский сценарный телесериал в прайм-тайм.",
+            "zh": "《辛普森一家》是美国历史上播放时间最长的黄金时段有剧本电视剧。",
+            "ja": "『ザ・シンプソンズ』は、アメリカで最も長く続いている脚本のあるプライムタイムのテレビシリーズです。",
+            "ar": "عائلة سمبسون هي أطول مسلسل تلفزيوني أمريكي يعرض في وقت الذروة."
+        },
+        "correct_answer": true
+    },
+    {
+        "category": "music",
+        "question": {
+            "en": "Elvis Presley was born in Mississippi.",
+            "tr": "Elvis Presley Mississippi'de doğmuştur.",
+            "fr": "Elvis Presley est né dans le Mississippi.",
+            "es": "Elvis Presley nació en Misisipi.",
+            "de": "Elvis Presley wurde in Mississippi geboren.",
+            "it": "Elvis Presley è nato nel Mississippi.",
+            "hi": "एल्विस प्रेस्ली का जन्म मिसिसिपी में हुआ था।",
+            "ru": "Элвис Пресли родился в Миссисипи.",
+            "zh": "埃尔维斯·普雷斯利出生于密西西比州。",
+            "ja": "エルヴィス・プレスリーはミシシッピ州で生まれました。",
+            "ar": "ولد إلفيس بريسلي في ولاية ميسيسيبي."
+        },
+        "correct_answer": true
+    },
+    {
+        "category": "geography_travel",
+        "question": {
+            "en": "Mount Fuji is located in South Korea.",
+            "tr": "Fuji Dağı Güney Kore'de bulunur.",
+            "fr": "Le mont Fuji est situé en Corée du Sud.",
+            "es": "El monte Fuji se encuentra en Corea del Sur.",
+            "de": "Der Fuji befindet sich in Südkorea.",
+            "it": "Il monte Fuji si trova nella Corea del Sud.",
+            "hi": "माउंट फ़ूजी दक्षिण कोरिया में स्थित है।",
+            "ru": "Гора Фудзи находится в Южной Корее.",
+            "zh": "富士山位于韩国。",
+            "ja": "富士山は韓国にあります。",
+            "ar": "يقع جبل فوجي في كوريا الجنوبية."
+        },
+        "correct_answer": false
+    },
+    {
+        "category": "mythology",
+        "question": {
+            "en": "Zeus's weapon is the thunderbolt.",
+            "tr": "Zeus'un silahı yıldırımdır.",
+            "fr": "L'arme de Zeus est la foudre.",
+            "es": "El arma de Zeus es el rayo.",
+            "de": "Zeus' Waffe ist der Blitz.",
+            "it": "L'arma di Zeus è la folgore.",
+            "hi": "ज़ीउस का हथियार वज्र है।",
+            "ru": "Оружие Зевса — молния.",
+            "zh": "宙斯的武器是雷电。",
+            "ja": "ゼウスの武器は雷霆（ケラウノス）です。",
+            "ar": "سلاح زيوس هو الصاعقة."
+        },
+        "correct_answer": true
+    },
+    {
+        "category": "philosophy",
+        "question": {
+            "en": "René Descartes coined the phrase 'I think, therefore I am'.",
+            "tr": "'Düşünüyorum, öyleyse varım' sözünü René Descartes icat etmiştir.",
+            "fr": "René Descartes a inventé l'expression 'Je pense, donc je suis'.",
+            "es": "René Descartes acuñó la frase 'Pienso, luego existo'.",
+            "de": "René Descartes prägte den Satz 'Ich denke, also bin ich'.",
+            "it": "René Descartes ha coniato la frase 'Penso, dunque sono'.",
+            "hi": "रेने डेसकार्टेस ने 'मैं सोचता हूं, इसलिए मैं हूं' वाक्यांश गढ़ा।",
+            "ru": "Рене Декарт является автором фразы «Я мыслю, следовательно, я существую».",
+            "zh": "勒内·笛卡尔创造了“我思故我在”这句话。",
+            "ja": "ルネ・デカルトは「我思う、故に我あり」という言葉を作りました。",
+            "ar": "صاغ رينيه ديكارت عبارة 'أنا أفكر، إذن أنا موجود'."
+        },
+        "correct_answer": true
+    },
+    {
+        "category": "space_astronomy",
+        "question": {
+            "en": "The sun is mainly composed of Hydrogen and Helium.",
+            "tr": "Güneş esas olarak Hidrojen ve Helyumdan oluşur.",
+            "fr": "Le soleil est principalement composé d'hydrogène et d'hélium.",
+            "es": "El sol está compuesto principalmente de hidrógeno y helio.",
+            "de": "Die Sonne besteht hauptsächlich aus Wasserstoff und Helium.",
+            "it": "Il sole è composto principalmente da idrogeno ed elio.",
+            "hi": "सूर्य मुख्य रूप से हाइड्रोजन और हीलियम से बना है।",
+            "ru": "Солнце в основном состоит из водорода и гелия.",
+            "zh": "太阳主要由氢和氦组成。",
+            "ja": "太陽は主に水素とヘリウムで構成されています。",
+            "ar": "تتكون الشمس بشكل رئيسي من الهيدروجين والهيليوم."
+        },
+        "correct_answer": true
+    },
+    {
+        "category": "video_games",
+        "question": {
+            "en": "Luigi is Mario's older brother.",
+            "tr": "Luigi, Mario'nun ağabeyidir.",
+            "fr": "Luigi est le frère aîné de Mario.",
+            "es": "Luigi es el hermano mayor de Mario.",
+            "de": "Luigi ist Marios älterer Bruder.",
+            "it": "Luigi è il fratello maggiore di Mario.",
+            "hi": "लुइगी मारियो का बड़ा भाई है।",
+            "ru": "Луиджи — старший брат Марио.",
+            "zh": "路易吉是马里奥的哥哥。",
+            "ja": "ルイージはマリオの兄です。",
+            "ar": "لويجي هو الأخ الأكبر لماريو."
+        },
+        "correct_answer": false
+    },
+    {
+        "category": "general_culture",
+        "question": {
+            "en": "Sushi means 'raw fish' in Japanese.",
+            "tr": "Sushi Japoncada 'çiğ balık' anlamına gelir.",
+            "fr": "Sushi signifie 'poisson cru' en japonais.",
+            "es": "Sushi significa 'pescado crudo' en japonés.",
+            "de": "Sushi bedeutet auf Japanisch 'roher Fisch'.",
+            "it": "Sushi significa 'pesce crudo' in giapponese.",
+            "hi": "सुशी का जापानी में अर्थ 'कच्ची मछली' है।",
+            "ru": "Суши означает «сырая рыба» по-японски.",
+            "zh": "寿司在日语中的意思是“生鱼”。",
+            "ja": "寿司は日本語で「生魚」を意味します。",
+            "ar": "السوشي يعني 'السمك النيئ' باللغة اليابانية."
+        },
+        "correct_answer": false
+    },
+    {
+        "category": "fun_facts",
+        "question": {
+            "en": "Bananas are radioactive.",
+            "tr": "Muzlar radyoaktiftir.",
+            "fr": "Les bananes sont radioactives.",
+            "es": "Los plátanos son radiactivos.",
+            "de": "Bananen sind radioaktiv.",
+            "it": "Le banane sono radioattive.",
+            "hi": "केले रेडियोधर्मी होते हैं।",
+            "ru": "Бананы радиоактивны.",
+            "zh": "香蕉具有放射性。",
+            "ja": "バナナは放射能を持っています。",
+            "ar": "الموز مشع."
+        },
+        "correct_answer": true
+    },
+    {
+        "category": "economics_finance",
+        "question": {
+            "en": "The currency of Russia is the Ruble.",
+            "tr": "Rusya'nın para birimi Ruble'dir.",
+            "fr": "La monnaie de la Russie est le rouble.",
+            "es": "La moneda de Rusia es el rublo.",
+            "de": "Die Währung von Russland ist der Rubel.",
+            "it": "La valuta della Russia è il rublo.",
+            "hi": "रूस की मुद्रा रूबल है।",
+            "ru": "Валюта России — рубль.",
+            "zh": "俄罗斯的货币是卢布。",
+            "ja": "ロシアの通貨はルーブルです。",
+            "ar": "عملة روسيا هي الروبل."
+        },
+        "correct_answer": true
+    },
+    {
+        "category": "science",
+        "question": {
+            "en": "DNA stands for Deoxyribonucleic acid.",
+            "tr": "DNA, Deoksiribonükleik asit anlamına gelir.",
+            "fr": "L'ADN signifie acide désoxyribonucléique.",
+            "es": "ADN significa ácido desoxirribonucleico.",
+            "de": "DNA steht für Desoxyribonukleinsäure.",
+            "it": "DNA sta per acido desossiribonucleico.",
+            "hi": "DNA का मतलब डीऑक्सीराइबोन्यूक्लिक एसिड है।",
+            "ru": "ДНК расшифровывается как дезоксирибонуклеиновая кислота.",
+            "zh": "DNA代表脱氧核糖核酸。",
+            "ja": "DNAはデオキシリボ核酸の略です。",
+            "ar": "DNA يرمز إلى الحمض النووي الريبوزي منقوص الأكسجين."
+        },
+        "correct_answer": true
+    },
+    {
+        "category": "health_fitness",
+        "question": {
+            "en": "The femur is the longest bone in the human body.",
+            "tr": "Femur (uyluk kemiği) insan vücudundaki en uzun kemiktir.",
+            "fr": "Le fémur est l'os le plus long du corps humain.",
+            "es": "El fémur es el hueso más largo del cuerpo humano.",
+            "de": "Der Oberschenkelknochen ist der längste Knochen im menschlichen Körper.",
+            "it": "Il femore è l'osso più lungo del corpo umano.",
+            "hi": "फीमर मानव शरीर की सबसे लंबी हड्डी है।",
+            "ru": "Бедренная кость — самая длинная кость в теле человека.",
+            "zh": "股骨是人体中最长的骨头。",
+            "ja": "大腿骨は人体で最も長い骨です。",
+            "ar": "عظم الفخذ هو أطول عظم في جسم الإنسان."
+        },
+        "correct_answer": true
+    },
+    {
+        "category": "literature",
+        "question": {
+            "en": "George Orwell wrote the novel '1984'.",
+            "tr": "'1984' romanını George Orwell yazmıştır.",
+            "fr": "George Orwell a écrit le roman '1984'.",
+            "es": "George Orwell escribió la novela '1984'.",
+            "de": "George Orwell schrieb den Roman '1984'.",
+            "it": "George Orwell ha scritto il romanzo '1984'.",
+            "hi": "जॉर्ज ऑरवेल ने उपन्यास '1984' लिखा था।",
+            "ru": "Джордж Оруэлл написал роман «1984».",
+            "zh": "乔治·奥威尔写了小说《1984》。",
+            "ja": "ジョージ・オーウェルは小説『1984年』を書きました。",
+            "ar": "كتب جورج أورويل رواية '1984'."
+        },
+        "correct_answer": true
+    },
+    {
+        "category": "architecture",
+        "question": {
+            "en": "The Statue of Liberty is made of copper.",
+            "tr": "Özgürlük Heykeli bakırdan yapılmıştır.",
+            "fr": "La statue de la Liberté est faite de cuivre.",
+            "es": "La Estatua de la Libertad está hecha de cobre.",
+            "de": "Die Freiheitsstatue besteht aus Kupfer.",
+            "it": "La Statua della Libertà è fatta di rame.",
+            "hi": "स्टैच्यू ऑफ लिबर्टी तांबे से बनी है।",
+            "ru": "Статуя Свободы сделана из меди.",
+            "zh": "自由女神像是用铜做的。",
+            "ja": "自由の女神は銅で作られています。",
+            "ar": "تمثال الحرية مصنوع من النحاس."
+        },
+        "correct_answer": true
+    },
+    {
+        "category": "science",
+        "question": {
+            "en": "Electrons are smaller than protons.",
+            "tr": "Elektronlar protonlardan daha küçüktür.",
+            "fr": "Les électrons sont plus petits que les protons.",
+            "es": "Los electrones son más pequeños que los protones.",
+            "de": "Elektronen sind kleiner als Protonen.",
+            "it": "Gli elettroni sono più piccoli dei protoni.",
+            "hi": "इलेक्ट्रॉन प्रोटॉन से छोटे होते हैं।",
+            "ru": "Электроны меньше протонов.",
+            "zh": "电子比质子小。",
+            "ja": "電子は陽子よりも小さいです。",
+            "ar": "الإلكترونات أصغر من البروتونات."
+        },
+        "correct_answer": true
+    },
+    {
+        "category": "technology",
+        "question": {
+            "en": "The first email was sent by Ray Tomlinson.",
+            "tr": "İlk e-posta Ray Tomlinson tarafından gönderildi.",
+            "fr": "Le premier e-mail a été envoyé par Ray Tomlinson.",
+            "es": "El primer correo electrónico fue enviado por Ray Tomlinson.",
+            "de": "Die erste E-Mail wurde von Ray Tomlinson gesendet.",
+            "it": "La prima e-mail è stata inviata da Ray Tomlinson.",
+            "hi": "पहला ईमेल रे टॉमलिंसन द्वारा भेजा गया था।",
+            "ru": "Первое электронное письмо было отправлено Рэем Томлинсоном.",
+            "zh": "第一封电子邮件是由雷·汤姆林森发送的。",
+            "ja": "最初の電子メールはレイ・トムリンソンによって送信されました。",
+            "ar": "أرسل راي توملينسون أول بريد إلكتروني."
+        },
+        "correct_answer": true
+    },
+    {
+        "category": "cinema_tv",
+        "question": {
+            "en": "The Lord of the Rings movies were filmed in New Zealand.",
+            "tr": "Yüzüklerin Efendisi filmleri Yeni Zelanda'da çekildi.",
+            "fr": "Les films 'Le Seigneur des anneaux' ont été tournés en Nouvelle-Zélande.",
+            "es": "Las películas de 'El Señor de los Anillos' se filmaron en Nueva Zelanda.",
+            "de": "Die 'Herr der Ringe'-Filme wurden in Neuseeland gedreht.",
+            "it": "I film de 'Il Signore degli Anelli' sono stati girati in Nuova Zelanda.",
+            "hi": "'द लॉर्ड ऑफ द रिंग्स' फिल्में न्यूजीलैंड में शूट की गई थीं।",
+            "ru": "Фильмы «Властелин колец» снимались в Новой Зеландии.",
+            "zh": "《指环王》电影是在新西兰拍摄的。",
+            "ja": "『ロード・オブ・ザ・リング』の映画はニュージーランドで撮影されました。",
+            "ar": "تم تصوير أفلام 'سيد الخواتم' في نيوزيلندا."
+        },
+        "correct_answer": true
+    },
+    {
+        "category": "music",
+        "question": {
+            "en": "Bob Marley was a reggae singer.",
+            "tr": "Bob Marley bir reggae şarkıcısıydı.",
+            "fr": "Bob Marley était un chanteur de reggae.",
+            "es": "Bob Marley fue un cantante de reggae.",
+            "de": "Bob Marley war ein Reggae-Sänger.",
+            "it": "Bob Marley era un cantante reggae.",
+            "hi": "बॉब मार्ले एक रेगे गायक थे।",
+            "ru": "Боб Марли был регги-певцом.",
+            "zh": "鲍勃·马利是一位雷鬼歌手。",
+            "ja": "ボブ・マーリーはレゲエ歌手でした。",
+            "ar": "كان بوب مارلي مغني ريغي."
+        },
+        "correct_answer": true
+    },
+    {
+        "category": "geography_travel",
+        "question": {
+            "en": "Antarctica has no permanent residents.",
+            "tr": "Antarktika'nın daimi sakinleri yoktur.",
+            "fr": "L'Antarctique n'a pas de résidents permanents.",
+            "es": "La Antártida no tiene residentes permanentes.",
+            "de": "Die Antarktis hat keine ständigen Bewohner.",
+            "it": "L'Antartide non ha residenti permanenti.",
+            "hi": "अंटार्कटिका में कोई स्थायी निवासी नहीं है।",
+            "ru": "В Антарктиде нет постоянных жителей.",
+            "zh": "南极洲没有常住居民。",
+            "ja": "南極には永住者がいません。",
+            "ar": "ليس للقارة القطبية الجنوبية سكان دائمون."
+        },
+        "correct_answer": true
+    },
+    {
+        "category": "mythology",
+        "question": {
+            "en": "Thor's hammer is called Mjolnir.",
+            "tr": "Thor'un çekicinin adı Mjolnir'dir.",
+            "fr": "Le marteau de Thor s'appelle Mjolnir.",
+            "es": "El martillo de Thor se llama Mjolnir.",
+            "de": "Thors Hammer heißt Mjölnir.",
+            "it": "Il martello di Thor si chiama Mjolnir.",
+            "hi": "थोर के हथौड़े को माजोलनिर कहा जाता है।",
+            "ru": "Молот Тора называется Мьёльнир.",
+            "zh": "托尔的锤子叫雷神之锤。",
+            "ja": "トールのハンマーはミョルニルと呼ばれます。",
+            "ar": "تسمى مطرقة ثور ميولنير."
+        },
+        "correct_answer": true
+    },
+    {
+        "category": "philosophy",
+        "question": {
+            "en": "Friedrich Nietzsche said 'God is dead'.",
+            "tr": "Friedrich Nietzsche 'Tanrı öldü' demiştir.",
+            "fr": "Friedrich Nietzsche a dit 'Dieu est mort'.",
+            "es": "Friedrich Nietzsche dijo 'Dios ha muerto'.",
+            "de": "Friedrich Nietzsche sagte 'Gott ist tot'.",
+            "it": "Friedrich Nietzsche ha detto 'Dio è morto'.",
+            "hi": "फ्रेडरिक नीत्शे ने कहा था 'ईश्वर मर चुका है'.",
+            "ru": "Фридрих Ницше сказал: «Бог мертв».",
+            "zh": "弗里德里希·尼采说过“上帝已死”。",
+            "ja": "フリードリヒ・ニーチェは「神は死んだ」と言いました。",
+            "ar": "قال فريدريك نيتشه 'مات الله'."
+        },
+        "correct_answer": true
+    },
+    {
+        "category": "economics_finance",
+        "question": {
+            "en": "The yen is the currency of China.",
+            "tr": "Yen, Çin'in para birimidir.",
+            "fr": "Le yen est la monnaie de la Chine.",
+            "es": "El yen es la moneda de China.",
+            "de": "Der Yen ist die Währung von China.",
+            "it": "Lo yen è la valuta della Cina.",
+            "hi": "येन चीन की मुद्रा है।",
+            "ru": "Иена — валюта Китая.",
+            "zh": "日元是中国的货币。",
+            "ja": "円は中国の通貨です。",
+            "ar": "الين هو عملة الصين."
+        },
+        "correct_answer": false
+    },
+    {
+        "category": "architecture",
+        "question": {
+            "en": "The White House is located in Washington, D.C.",
+            "tr": "Beyaz Saray Washington, D.C.'de bulunur.",
+            "fr": "La Maison Blanche est située à Washington, D.C.",
+            "es": "La Casa Blanca se encuentra en Washington, D.C.",
+            "de": "Das Weiße Haus befindet sich in Washington, D.C.",
+            "it": "La Casa Bianca si trova a Washington, D.C.",
+            "hi": "व्हाइट हाउस वाशिंगटन, डी.सी. में स्थित है।",
+            "ru": "Белый дом находится в Вашингтоне, округ Колумбия.",
+            "zh": "白宫位于华盛顿特区。",
+            "ja": "ホワイトハウスはワシントンD.C.にあります。",
+            "ar": "يقع البيت الأبيض في واشنطن العاصمة."
+        },
+        "correct_answer": true
+    },
+    {
+        "category": "general_culture",
+        "question": {
+            "en": "The Union Jack is the flag of the United Kingdom.",
+            "tr": "Union Jack, Birleşik Krallık'ın bayrağıdır.",
+            "fr": "L'Union Jack est le drapeau du Royaume-Uni.",
+            "es": "La Union Jack es la bandera del Reino Unido.",
+            "de": "Der Union Jack ist die Flagge des Vereinigten Königreichs.",
+            "it": "L'Union Jack è la bandiera del Regno Unito.",
+            "hi": "यूनियन जैक यूनाइटेड किंगडम का झंडा है।",
+            "ru": "Юнион Джек — флаг Соединенного Королевства.",
+            "zh": "米字旗是英国的国旗。",
+            "ja": "ユニオンジャックはイギリスの国旗です。",
+            "ar": "علم الاتحاد هو علم المملكة المتحدة."
+        },
+        "correct_answer": true
+    },
+    {
+        "category": "fun_facts",
+        "question": {
+            "en": "Honeybees can recognize human faces.",
+            "tr": "Bal arıları insan yüzlerini tanıyabilir.",
+            "fr": "Les abeilles mellifères peuvent reconnaître les visages humains.",
+            "es": "Las abejas melíferas pueden reconocer rostros humanos.",
+            "de": "Honigbienen können menschliche Gesichter erkennen.",
+            "it": "Le api possono riconoscere i volti umani.",
+            "hi": "मधुमक्खियां इंसानों के चेहरों को पहचान सकती हैं।",
+            "ru": "Медоносные пчелы могут распознавать человеческие лица.",
+            "zh": "蜜蜂可以识别人脸。",
+            "ja": "ミツバチは人間の顔を認識することができます。",
+            "ar": "يمكن لنحل العسل التعرف على الوجوه البشرية."
+        },
+        "correct_answer": true
+    },
+    {
+        "category": "science",
+        "question": {
+            "en": "A convex lens curves outward.",
+            "tr": "Dışbükey mercek dışa doğru kavis yapar.",
+            "fr": "Une lentille convexe se courbe vers l'extérieur.",
+            "es": "Una lente convexa se curva hacia afuera.",
+            "de": "Eine konvexe Linse wölbt sich nach außen.",
+            "it": "Una lente convessa si curva verso l'esterno.",
+            "hi": "एक उत्तल लेंस बाहर की ओर मुड़ता है।",
+            "ru": "Выпуклая линза изгибается наружу.",
+            "zh": "凸透镜向外弯曲。",
+            "ja": "凸レンズは外側に湾曲しています。",
+            "ar": "العدسة المحدبة تنحني للخارج."
+        },
+        "correct_answer": true
+    },
+    {
+        "category": "science",
+        "question": {
+            "en": "The Richter scale measures the intensity of earthquakes.",
+            "tr": "Richter ölçeği depremlerin şiddetini ölçer.",
+            "fr": "L'échelle de Richter mesure l'intensité des tremblements de terre.",
+            "es": "La escala de Richter mide la intensidad de los terremotos.",
+            "de": "Die Richterskala misst die Intensität von Erdbeben.",
+            "it": "La scala Richter misura l'intensità dei terremoti.",
+            "hi": "रिक्टर पैमाना भूकंप की तीव्रता को मापता है।",
+            "ru": "Шкала Рихтера измеряет интенсивность землетрясений.",
+            "zh": "里氏震级用于测量地震的强度。",
+            "ja": "リヒター尺度は地震の強さを測定します。",
+            "ar": "يقيس مقياس ريختر شدة الزلازل."
+        },
+        "correct_answer": true
+    },
+    {
+        "category": "geography_travel",
+        "question": {
+            "en": "The capital of Italy is Rome.",
+            "tr": "İtalya'nın başkenti Roma'dır.",
+            "fr": "La capitale de l'Italie est Rome.",
+            "es": "La capital de Italia es Roma.",
+            "de": "Die Hauptstadt von Italien ist Rom.",
+            "it": "La capitale dell'Italia è Roma.",
+            "hi": "इटली की राजधानी रोम है।",
+            "ru": "Столица Италии — Рим.",
+            "zh": "意大利的首都是罗马。",
+            "ja": "イタリアの首都はローマです。",
+            "ar": "عاصمة إيطاليا هي روما."
+        },
+        "correct_answer": true
+    },
+    {
+        "category": "nature_animals",
+        "question": {
+            "en": "An octopus has 8 legs.",
+            "tr": "Bir ahtapotun 8 bacağı (kolu) vardır.",
+            "fr": "Une pieuvre a 8 bras.",
+            "es": "Un pulpo tiene 8 patas.",
+            "de": "Ein Oktopus hat 8 Arme.",
+            "it": "Un polpo ha 8 tentacoli.",
+            "hi": "ऑक्टोपस के 8 पैर होते हैं।",
+            "ru": "У осьминога 8 щупалец.",
+            "zh": "章鱼有8条腿。",
+            "ja": "タコには8本の足（腕）があります。",
+            "ar": "للأخطبوط 8 أرجل."
+        },
+        "correct_answer": true
+    },
+    {
+        "category": "science",
+        "question": {
+            "en": "The symbol for Potassium is K.",
+            "tr": "Potasyumun sembolü K'dir.",
+            "fr": "Le symbole du potassium est K.",
+            "es": "El símbolo del potasio es K.",
+            "de": "Das Symbol für Kalium ist K.",
+            "it": "Il simbolo del potassio è K.",
+            "hi": "पोटेशियम का प्रतीक K है।",
+            "ru": "Символ калия — К.",
+            "zh": "钾的符号是K。",
+            "ja": "カリウムの記号はKです。",
+            "ar": "رمز البوتاسيوم هو K."
+        },
+        "correct_answer": true
+    },
+    {
+        "category": "art",
+        "question": {
+            "en": "The 'Last Supper' is by Leonardo da Vinci.",
+            "tr": "'Son Akşam Yemeği' Leonardo da Vinci'ye aittir.",
+            "fr": "'La Cène' est de Léonard de Vinci.",
+            "es": "'La Última Cena' es de Leonardo da Vinci.",
+            "de": "Das 'Abendmahl' stammt von Leonardo da Vinci.",
+            "it": "L''Ultima Cena' è di Leonardo da Vinci.",
+            "hi": "'लास्ट सपर' लियोनार्डो दा विंची द्वारा है।",
+            "ru": "«Тайная вечеря» написана Леонардо да Винчи.",
+            "zh": "《最后的晚餐》是列奥纳多·达·芬奇画的。",
+            "ja": "『最後の晩餐』はレオナルド・ダ・ヴィンチによるものです。",
+            "ar": "'العشاء الأخير' ليوناردو دافنشي."
+        },
+        "correct_answer": true
+    },
+    {
+        "category": "sports",
+        "question": {
+            "en": "In baseball, a touchdown is 6 points.",
+            "tr": "Beyzbolda bir touchdown 6 puandır.",
+            "fr": "Au baseball, un touchdown vaut 6 points.",
+            "es": "En béisbol, un touchdown son 6 puntos.",
+            "de": "Im Baseball gibt es für einen Touchdown 6 Punkte.",
+            "it": "Nel baseball, un touchdown vale 6 punti.",
+            "hi": "बेसबॉल में, एक टचडाउन 6 अंक का होता है।",
+            "ru": "В бейсболе тачдаун дает 6 очков.",
+            "zh": "在棒球中，达阵得6分。",
+            "ja": "野球では、タッチダウンは6点です。",
+            "ar": "في البيسبول، الهبوط يساوي 6 نقاط."
+        },
+        "correct_answer": false
+    },
+    {
+        "category": "technology",
+        "question": {
+            "en": "Python is a compiled language.",
+            "tr": "Python derlenen (compiled) bir dildir.",
+            "fr": "Python est un langage compilé.",
+            "es": "Python es un lenguaje compilado.",
+            "de": "Python ist eine kompilierte Sprache.",
+            "it": "Python è un linguaggio compilato.",
+            "hi": "पायथन एक संकलित भाषा है।",
+            "ru": "Python — это компилируемый язык.",
+            "zh": "Python是一种编译语言。",
+            "ja": "Pythonはコンパイル言語です。",
+            "ar": "بايثون لغة مجمعة."
+        },
+        "correct_answer": false
+    },
+    {
+        "category": "music",
+        "question": {
+            "en": "The violin has 6 strings.",
+            "tr": "Kemanın 6 teli vardır.",
+            "fr": "Le violon a 6 cordes.",
+            "es": "El violín tiene 6 cuerdas.",
+            "de": "Die Geige hat 6 Saiten.",
+            "it": "Il violino ha 6 corde.",
+            "hi": "वायलिन में 6 तार होते हैं।",
+            "ru": "У скрипки 6 струн.",
+            "zh": "小提琴有6根弦。",
+            "ja": "バイオリンには6本の弦があります。",
+            "ar": "الكمان له 6 أوتار."
+        },
+        "correct_answer": false
+    },
+    {
+        "category": "geography_travel",
+        "question": {
+            "en": "The Nile is the longest river in the world.",
+            "tr": "Nil, dünyanın en uzun nehridir.",
+            "fr": "Le Nil est le plus long fleuve du monde.",
+            "es": "El Nilo es el río más largo del mundo.",
+            "de": "Der Nil ist der längste Fluss der Welt.",
+            "it": "Il Nilo è il fiume più lungo del mondo.",
+            "hi": "नील दुनिया की सबसे लंबी नदी है।",
+            "ru": "Нил — самая длинная река в мире.",
+            "zh": "尼罗河是世界上最长的河流。",
+            "ja": "ナイル川は世界で最も長い川です。",
+            "ar": "النيل هو أطول نهر في العالم."
+        },
+        "correct_answer": true
+    },
+    {
+        "category": "mythology",
+        "question": {
+            "en": "Hercules is a Roman god.",
+            "tr": "Herkül bir Roma tanrısıdır.",
+            "fr": "Hercule est un dieu romain.",
+            "es": "Hércules es un dios romano.",
+            "de": "Herkules ist ein römischer Gott.",
+            "it": "Ercole è un dio romano.",
+            "hi": "हरक्यूलिस एक रोमन देवता है।",
+            "ru": "Геркулес — римский бог.",
+            "zh": "赫拉克勒斯是一个罗马神。",
+            "ja": "ヘラクレスはローマの神です。",
+            "ar": "هرقل إله روماني."
+        },
+        "correct_answer": true
+    },
+    {
+        "category": "philosophy",
+        "question": {
+            "en": "Nietzsche wrote 'Beyond Good and Evil'.",
+            "tr": "'İyinin ve Kötünün Ötesinde' kitabını Nietzsche yazmıştır.",
+            "fr": "Nietzsche a écrit 'Par-delà le bien et le mal'.",
+            "es": "Nietzsche escribió 'Más allá del bien y del mal'.",
+            "de": "Nietzsche schrieb 'Jenseits von Gut und Böse'.",
+            "it": "Nietzsche ha scritto 'Al di là del bene e del male'.",
+            "hi": "नीत्शे ने 'बियॉन्ड गुड एंड एविल' लिखा था।",
+            "ru": "Ницше написал «По ту сторону добра и зла».",
+            "zh": "尼采写了《善恶的彼岸》。",
+            "ja": "ニーチェは『善悪の彼岸』を書きました。",
+            "ar": "كتب نيتشه 'ما وراء الخير والشر'."
+        },
+        "correct_answer": true
+    },
+    {
+        "category": "literature",
+        "question": {
+            "en": "Aldous Huxley wrote 'Brave New World'.",
+            "tr": "'Cesur Yeni Dünya' kitabını Aldous Huxley yazmıştır.",
+            "fr": "Aldous Huxley a écrit 'Le Meilleur des mondes'.",
+            "es": "Aldous Huxley escribió 'Un mundo feliz'.",
+            "de": "Aldous Huxley schrieb 'Schöne neue Welt'.",
+            "it": "Aldous Huxley ha scritto 'Il mondo nuovo'.",
+            "hi": "एल्डस हक्सले ने 'ब्रेव न्यू वर्ल्ड' लिखा था।",
+            "ru": "Олдос Хаксли написал «О дивный новый мир».",
+            "zh": "奥尔德斯·赫胥黎写了《美丽新世界》。",
+            "ja": "オルダス・ハクスリーは『すばらしい新世界』を書きました。",
+            "ar": "كتب ألدوس هكسلي 'عالم جديد شجاع'."
+        },
+        "correct_answer": true
+    },
+    {
+        "category": "space_astronomy",
+        "question": {
+            "en": "Pluto is classified as a planet.",
+            "tr": "Plüton bir gezegen olarak sınıflandırılır.",
+            "fr": "Pluton est classé comme une planète.",
+            "es": "Plutón está clasificado como un planeta.",
+            "de": "Pluto wird als Planet klassifiziert.",
+            "it": "Plutone è classificato come pianeta.",
+            "hi": "प्लूटो को एक ग्रह के रूप में वर्गीकृत किया गया है।",
+            "ru": "Плутон классифицируется как планета.",
+            "zh": "冥王星被归类为行星。",
+            "ja": "冥王星は惑星として分類されています。",
+            "ar": "يصنف بلوتو على أنه كوكب."
+        },
+        "correct_answer": false
+    },
+    {
+        "category": "health_fitness",
+        "question": {
+            "en": "The liver is the largest internal organ.",
+            "tr": "Karaciğer en büyük iç organdır.",
+            "fr": "Le foie est le plus grand organe interne.",
+            "es": "El hígado es el órgano interno más grande.",
+            "de": "Die Leber ist das größte innere Organ.",
+            "it": "Il fegato è l'organo interno più grande.",
+            "hi": "लीवर सबसे बड़ा आंतरिक अंग है।",
+            "ru": "Печень — самый большой внутренний орган.",
+            "zh": "肝脏是最大的内脏器官。",
+            "ja": "肝臓は最大の内臓器官です。",
+            "ar": "الكبد هو أكبر عضو داخلي."
+        },
+        "correct_answer": true
+    },
+    {
+        "category": "architecture",
+        "question": {
+            "en": "The Burj Khalifa is located in Dubai.",
+            "tr": "Burj Khalifa Dubai'de bulunmaktadır.",
+            "fr": "Le Burj Khalifa est situé à Dubaï.",
+            "es": "El Burj Khalifa se encuentra en Dubái.",
+            "de": "Der Burj Khalifa befindet sich in Dubai.",
+            "it": "Il Burj Khalifa si trova a Dubai.",
+            "hi": "बुर्ज खलीफा दुबई में स्थित है।",
+            "ru": "Бурдж-Халифа находится в Дубае.",
+            "zh": "哈利法塔位于迪拜。",
+            "ja": "ブルジュ・ハリファはドバイにあります。",
+            "ar": "يقع برج خليفة في دبي."
+        },
+        "correct_answer": true
+    },
+    {
+        "category": "video_games",
+        "question": {
+            "en": "Sonic the Hedgehog is blue.",
+            "tr": "Sonic the Hedgehog mavidir.",
+            "fr": "Sonic le hérisson est bleu.",
+            "es": "Sonic el erizo es azul.",
+            "de": "Sonic the Hedgehog ist blau.",
+            "it": "Sonic il riccio è blu.",
+            "hi": "सोनिक द हेजहोग नीला है।",
+            "ru": "Ёжик Соник синий.",
+            "zh": "刺猬索尼克是蓝色的。",
+            "ja": "ソニック・ザ・ヘッジホッグは青色です。",
+            "ar": "القنفذ سونيك أزرق."
+        },
+        "correct_answer": true
+    },
+    {
+        "category": "fun_facts",
+        "question": {
+            "en": "You can sneeze with your eyes open.",
+            "tr": "Gözleriniz açıkken hapşırabilirsiniz.",
+            "fr": "Vous pouvez éternuer les yeux ouverts.",
+            "es": "Puedes estornudar con los ojos abiertos.",
+            "de": "Man kann mit offenen Augen niesen.",
+            "it": "Puoi starnutire con gli occhi aperti.",
+            "hi": "आप अपनी आँखें खुली रखकर छींक सकते हैं।",
+            "ru": "Вы можете чихнуть с открытыми глазами.",
+            "zh": "你可以睁着眼睛打喷嚏。",
+            "ja": "目を開けたままくしゃみができます。",
+            "ar": "يمكنك العطس وعيناك مفتوحتان."
+        },
+        "correct_answer": false
+    },
+    {
+        "category": "science",
+        "question": {
+            "en": "The element Gold has the symbol Ag.",
+            "tr": "Altın elementinin sembolü Ag'dir.",
+            "fr": "Le symbole de l'élément Or est Ag.",
+            "es": "El símbolo del elemento Oro es Ag.",
+            "de": "Das Element Gold hat das Symbol Ag.",
+            "it": "Il simbolo dell'elemento Oro è Ag.",
+            "hi": "सोना तत्व का प्रतीक Ag है।",
+            "ru": "Символ элемента Золото — Ag.",
+            "zh": "元素金的符号是Ag。",
+            "ja": "金という元素の記号はAgです。",
+            "ar": "رمز عنصر الذهب هو Ag."
+        },
+        "correct_answer": false
     }
 ]
