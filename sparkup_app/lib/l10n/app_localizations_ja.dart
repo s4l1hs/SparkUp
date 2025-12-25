@@ -292,6 +292,9 @@ class AppLocalizationsJa extends AppLocalizations {
   String get correct => '正解';
 
   @override
+  String get incorrect => '不正解';
+
+  @override
   String get errorCouldNotLoadData => 'データを読み込めませんでした。';
 
   @override

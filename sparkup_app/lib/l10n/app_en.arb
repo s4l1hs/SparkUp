@@ -101,6 +101,7 @@
   "errorSubmittingAnswer": "Error submitting answer.",
   "wrongAnswerResetStreak": "Wrong answer! Streak reset.",
   "correct": "Correct",
+  "incorrect": "Incorrect",
   "errorCouldNotLoadData": "Could not load data.",
   "topPlayers": "Top Players",
 

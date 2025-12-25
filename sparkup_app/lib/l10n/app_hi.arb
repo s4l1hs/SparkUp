@@ -94,6 +94,7 @@
   "errorSubmittingAnswer": "उत्तर सबमिट करने में त्रुटि।",
   "wrongAnswerResetStreak": "गलत उत्तर! स्ट्रीक रीसेट हुई।",
   "correct": "सही",
+  "incorrect": "गलत",
   "errorCouldNotLoadData": "डेटा लोड नहीं हो सका।",
   "topPlayers": "शीर्ष खिलाड़ी",
   "yourName": "आपका नाम",

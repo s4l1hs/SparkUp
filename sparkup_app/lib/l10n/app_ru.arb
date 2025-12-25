@@ -94,6 +94,7 @@
   "errorSubmittingAnswer": "Ошибка при отправке ответа.",
   "wrongAnswerResetStreak": "Неверный ответ! Серия сброшена.",
   "correct": "Верно",
+  "incorrect": "Неверно",
   "errorCouldNotLoadData": "Не удалось загрузить данные.",
   "topPlayers": "Лучшие игроки",
   "yourName": "Ваше имя",

@@ -94,6 +94,7 @@
   "errorSubmittingAnswer": "回答送信エラーです。",
   "wrongAnswerResetStreak": "不正解！連勝がリセットされました。",
   "correct": "正解",
+  "incorrect": "不正解",
   "errorCouldNotLoadData": "データを読み込めませんでした。",
   "topPlayers": "トッププレイヤー",
 

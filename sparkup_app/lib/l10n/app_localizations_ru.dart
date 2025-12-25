@@ -294,6 +294,9 @@ class AppLocalizationsRu extends AppLocalizations {
   String get correct => 'Верно';
 
   @override
+  String get incorrect => 'Неверно';
+
+  @override
   String get errorCouldNotLoadData => 'Не удалось загрузить данные.';
 
   @override

@@ -680,6 +680,12 @@ abstract class AppLocalizations {
   /// **'Correct'**
   String get correct;
 
+  /// No description provided for @incorrect.
+  ///
+  /// In en, this message translates to:
+  /// **'Incorrect'**
+  String get incorrect;
+
   /// No description provided for @errorCouldNotLoadData.
   ///
   /// In en, this message translates to:

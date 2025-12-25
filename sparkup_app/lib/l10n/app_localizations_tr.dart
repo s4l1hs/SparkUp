@@ -295,6 +295,9 @@ class AppLocalizationsTr extends AppLocalizations {
   String get correct => 'Doğru';
 
   @override
+  String get incorrect => 'Yanlış';
+
+  @override
   String get errorCouldNotLoadData => 'Veriler yüklenemedi.';
 
   @override

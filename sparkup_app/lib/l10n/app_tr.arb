@@ -94,6 +94,7 @@
   "errorSubmittingAnswer": "Cevap gönderilirken hata oluştu.",
   "wrongAnswerResetStreak": "Yanlış cevap! Seri sıfırlandı.",
   "correct": "Doğru",
+  "incorrect": "Yanlış",
   "errorCouldNotLoadData": "Veriler yüklenemedi.",
   "topPlayers": "En İyi Oyuncular",
   "yourName": "Adınız",

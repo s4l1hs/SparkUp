@@ -100,6 +100,7 @@
   "errorSubmittingAnswer": "提交答案时出错。",
   "wrongAnswerResetStreak": "回答错误！连击已重置。",
   "correct": "正确",
+  "incorrect": "错误",
   "errorCouldNotLoadData": "无法加载数据。",
   "topPlayers": "排行榜前列",
 

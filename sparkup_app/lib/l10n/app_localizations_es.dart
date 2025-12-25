@@ -298,6 +298,9 @@ class AppLocalizationsEs extends AppLocalizations {
   String get correct => 'Correcto';
 
   @override
+  String get incorrect => 'Incorrecto';
+
+  @override
   String get errorCouldNotLoadData => 'No se pudieron cargar los datos.';
 
   @override

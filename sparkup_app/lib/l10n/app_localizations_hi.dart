@@ -294,6 +294,9 @@ class AppLocalizationsHi extends AppLocalizations {
   String get correct => 'सही';
 
   @override
+  String get incorrect => 'गलत';
+
+  @override
   String get errorCouldNotLoadData => 'डेटा लोड नहीं हो सका।';
 
   @override

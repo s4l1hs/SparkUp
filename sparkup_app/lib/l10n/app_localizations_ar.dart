@@ -294,6 +294,9 @@ class AppLocalizationsAr extends AppLocalizations {
   String get correct => 'صحيح';
 
   @override
+  String get incorrect => 'غير صحيح';
+
+  @override
   String get errorCouldNotLoadData => 'تعذر تحميل البيانات.';
 
   @override

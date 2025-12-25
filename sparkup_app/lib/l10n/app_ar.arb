@@ -95,6 +95,7 @@
   "errorSubmittingAnswer": "خطأ في إرسال الإجابة.",
   "wrongAnswerResetStreak": "إجابة خاطئة! تمت إعادة تعيين السلسلة.",
   "correct": "صحيح",
+  "incorrect": "غير صحيح",
   "errorCouldNotLoadData": "تعذر تحميل البيانات.",
   "topPlayers": "أفضل اللاعبين",
   "yourName": "اسمك",

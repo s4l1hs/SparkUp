@@ -94,6 +94,7 @@
   "errorSubmittingAnswer": "Errore nell'invio della risposta.",
   "wrongAnswerResetStreak": "Risposta sbagliata! Striscia azzerata.",
   "correct": "Corretto",
+  "incorrect": "Errato",
   "errorCouldNotLoadData": "Impossibile caricare i dati.",
   "topPlayers": "Migliori giocatori",
   "yourName": "Il tuo nome",

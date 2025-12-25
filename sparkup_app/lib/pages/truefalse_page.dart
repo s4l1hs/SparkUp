@@ -19,7 +19,7 @@ class TrueFalsePage extends StatefulWidget {
 }
 
 class _TrueFalsePageState extends State<TrueFalsePage>
-    with SingleTickerProviderStateMixin {
+  with TickerProviderStateMixin {
   bool _isLoading = false;
   bool _isQuizActive = false;
   Timer? _timer;
@@ -30,6 +30,12 @@ class _TrueFalsePageState extends State<TrueFalsePage>
   int _wrongCount = 0;
   bool _processingAnswer = false;
   bool _sessionEnding = false;
+  // Session token used to invalidate in-flight fetches when a session ends.
+  int _sessionToken = 0;
+  bool _forceEnded = false;
+  bool _showFeedback = false;
+  bool _lastAnswerCorrect = false;
+  late final AnimationController _feedbackAnimController;
   int _timeLeft = 0;
   int _sessionDuration = 60;
 
@@ -67,12 +73,15 @@ class _TrueFalsePageState extends State<TrueFalsePage>
     WidgetsBinding.instance.addPostFrameCallback((_) {
       // Intentionally left blank; do not auto-start the session here.
     });
+    _feedbackAnimController =
+        AnimationController(vsync: this, duration: const Duration(milliseconds: 420));
   }
 
   @override
   void dispose() {
     _timer?.cancel();
     _backgroundController.dispose();
+    _feedbackAnimController.dispose();
     super.dispose();
   }
 
@@ -82,13 +91,14 @@ class _TrueFalsePageState extends State<TrueFalsePage>
     // Capture localization and user provider before any awaits to avoid using BuildContext across async gaps
     final loc = AppLocalizations.of(context);
     final userProvNow = Provider.of<UserProvider>(context, listen: false);
+    final int token = _sessionToken;
     try {
       final api = ApiService();
       final list = await api.getManualTrueFalse(idToken: widget.idToken);
       final data = list.isNotEmpty ? List<dynamic>.from(list) : <dynamic>[];
       if (data.isNotEmpty) data.shuffle();
-      // If session is ending or not active anymore, discard fetched data
-      if (_sessionEnding || !_isQuizActive) {
+      // If session is ending or not active anymore, or token invalidated, discard fetched data
+      if (_sessionEnding || !_isQuizActive || token != _sessionToken || _wrongCount >= 3 || _forceEnded) {
         setState(() => _isLoading = false);
         return;
       }
@@ -156,45 +166,81 @@ class _TrueFalsePageState extends State<TrueFalsePage>
   Future<void> _answerQuestion(bool userSaidTrue) async {
     if (!_isQuizActive || _processingAnswer || _sessionEnding) return;
     setState(() => _processingAnswer = true);
+
     try {
       final currentQ = _questions[_currentIndex];
-      final bool isCorrectAnswer = currentQ['correct_answer'];
+      // Cevap kontrolü (Mevcut kodun aynısı)
+      bool isCorrectAnswer;
+      final rawCorrect = currentQ['correct_answer'];
+      if (rawCorrect is bool) {
+        isCorrectAnswer = rawCorrect;
+      } else if (rawCorrect is String) {
+        final lc = rawCorrect.toLowerCase().trim();
+        isCorrectAnswer = (lc == 'true' || lc == '1' || lc == 't');
+      } else if (rawCorrect is num) {
+        isCorrectAnswer = rawCorrect.toInt() != 0;
+      } else {
+        isCorrectAnswer = false;
+      }
 
       final bool isUserCorrect = (userSaidTrue == isCorrectAnswer);
+      bool isGameOver = false;
 
+      // Puanlama ve Yanlış Kontrolü
       if (isUserCorrect) {
         setState(() {
           _score += 10 + (_streak * 2);
           _streak++;
-          _wrongCount = 0;
         });
       } else {
         setState(() {
           _streak = 0;
           _wrongCount++;
         });
+        
+        // 3. Yanlışı yaptığı an isGameOver TRUE oluyor
+        if (_wrongCount >= 3) {
+          isGameOver = true;
+        }
       }
 
-      // Notify analysis provider to refresh immediately after an answer
+      // 1. ÖNCE Feedback Göster (Kullanıcı ekranda dev kırmızı çarpıyı görsün)
+      _lastAnswerCorrect = isUserCorrect;
+      setState(() => _showFeedback = true);
       try {
-        final analysisProv =
-            Provider.of<AnalysisProvider>(context, listen: false);
+        _feedbackAnimController.forward(from: 0);
+      } catch (_) {}
+
+      // 2. EĞER OYUN BİTTİYSE:
+      if (isGameOver) {
+        // Kullanıcının "Hata yaptım" ekranını algılaması için çok kısa (0.6sn) bekle
+        // Bunu kaldırırsan kullanıcı ne olduğunu anlamadan popup çıkar, bu süre iyidir.
+        await Future.delayed(const Duration(milliseconds: 600)); 
+        
+        if (mounted) setState(() => _showFeedback = false); // Kırmızı ekranı kaldır
+        
+        if (!_forceEnded) _forceEnded = true;
+        await _endSessionNow(); // VE ANINDA BİTİR (Soru geçişi yapma)
+        return; 
+      }
+
+      // Oyun bitmediyse feedback süresi kadar bekle ve devam et
+      await Future.delayed(const Duration(milliseconds: 600));
+      if (mounted) setState(() => _showFeedback = false);
+
+      // Analysis provider güncellemesi
+      try {
+        final analysisProv = Provider.of<AnalysisProvider>(context, listen: false);
         analysisProv.refresh(widget.idToken);
       } catch (_) {}
 
-      if (_wrongCount >= 3) {
-        await _endSessionNow();
-        return;
-      }
-
+      // Bir sonraki soruya geçiş
       if (_currentIndex < _questions.length - 1) {
         setState(() => _currentIndex++);
       } else {
-        // Reached end of batch: try loading more questions and continue session
         try {
           await _fetchMoreQuestionsTF();
         } catch (e) {
-          // If fetching fails, end session gracefully
           await _handleQuizCompletion();
         }
       }
@@ -204,12 +250,13 @@ class _TrueFalsePageState extends State<TrueFalsePage>
   }
 
   Future<void> _endSessionNow() async {
-    if (!_isQuizActive && !_sessionEnding) {
-      // defensive: ensure we still run completion
+    // Mark session as ending and invalidate any in-flight fetches.
+    _sessionToken++;
+    _forceEnded = true;
+    if (!_sessionEnding) {
       setState(() => _sessionEnding = true);
     }
     setState(() {
-      _sessionEnding = true;
       _isQuizActive = false;
     });
     _cancelTimer();
@@ -224,14 +271,15 @@ class _TrueFalsePageState extends State<TrueFalsePage>
     if (!mounted) return;
     setState(() => _isLoading = true);
     final userProv = Provider.of<UserProvider>(context, listen: false);
+    final int token = _sessionToken;
     try {
       final api = ApiService();
       final list = await api.getManualTrueFalse(idToken: widget.idToken);
       final data = list.isNotEmpty ? List<dynamic>.from(list) : <dynamic>[];
       if (data.isNotEmpty) data.shuffle();
       if (!mounted) return;
-      // If session ended while fetching, do not apply fetched questions
-      if (_sessionEnding || !_isQuizActive) {
+      // If session ended while fetching, token invalidated, or 3 wrongs reached, do not apply fetched questions
+      if (_sessionEnding || !_isQuizActive || token != _sessionToken || _wrongCount >= 3 || _forceEnded) {
         setState(() => _isLoading = false);
         return;
       }
@@ -388,6 +436,44 @@ class _TrueFalsePageState extends State<TrueFalsePage>
                   : _buildQuizView(theme),
             ),
           ),
+          // Feedback overlay for correct/incorrect answers
+          if (_showFeedback)
+            Positioned.fill(
+              child: FadeTransition(
+                opacity: _feedbackAnimController.drive(
+                    Tween<double>(begin: 0.0, end: 1.0)
+                        .chain(CurveTween(curve: Curves.easeOut))),
+                child: Container(
+                  color: _lastAnswerCorrect
+                      ? colorWithOpacity(Colors.green, 0.28)
+                      : colorWithOpacity(Colors.red, 0.28),
+                  child: Center(
+                    child: Column(
+                      mainAxisSize: MainAxisSize.min,
+                      children: [
+                        Icon(
+                          _lastAnswerCorrect
+                              ? Icons.check_circle_outline_rounded
+                              : Icons.highlight_off_rounded,
+                          size: 92.sp,
+                          color: Colors.white,
+                        ),
+                        SizedBox(height: 12.h),
+                        Text(
+                          _lastAnswerCorrect
+                              ? (AppLocalizations.of(context)?.correct ?? 'Correct')
+                              : (AppLocalizations.of(context)?.incorrect ?? 'Incorrect'),
+                          style: TextStyle(
+                              color: Colors.white,
+                              fontSize: 22.sp,
+                              fontWeight: FontWeight.bold),
+                        ),
+                      ],
+                    ),
+                  ),
+                ),
+              ),
+            ),
         ],
       ),
     );
@@ -567,14 +653,14 @@ class _TrueFalsePageState extends State<TrueFalsePage>
                 Expanded(
                   child: _buildTFButton(Icons.check, Colors.green, 'TRUE',
                     () {
-                  if (!_isQuizActive || _processingAnswer || _sessionEnding) return;
+                  if (!_isQuizActive || _processingAnswer || _sessionEnding || _forceEnded) return;
                   _answerQuestion(true);
                   })),
               SizedBox(width: 16.w),
                 Expanded(
                   child: _buildTFButton(Icons.close, Colors.red, 'FALSE',
                     () {
-                  if (!_isQuizActive || _processingAnswer || _sessionEnding) return;
+                  if (!_isQuizActive || _processingAnswer || _sessionEnding || _forceEnded) return;
                   _answerQuestion(false);
                   })),
             ],
@@ -655,6 +741,9 @@ class _TrueFalsePageState extends State<TrueFalsePage>
       _isQuizActive = true;
       _isLoading = true;
     });
+    // Invalidate any previous in-flight fetches and mark a new session token.
+    _sessionToken++;
+    _forceEnded = false;
     final userProv = Provider.of<UserProvider>(context, listen: false);
     final loc = AppLocalizations.of(context);
     // optimistic UI update: consume 1 energy locally
@@ -723,40 +812,54 @@ class _TrueFalsePageState extends State<TrueFalsePage>
 
   Future<void> _handleQuizCompletion() async {
     _cancelTimer();
-    // ensure quiz is marked inactive so Start view returns like in QuizPage
+    
+    // Oyunun neden bittiğini yakala (Süre mi bitti, Yanlış mı?)
+    final bool isGameOverByLives = _wrongCount >= 3;
+
+    // Quiz'i inaktif yap ama wrongCount'u henüz sıfırlama
     setState(() {
       _isQuizActive = false;
-      _wrongCount = 0;
     });
+
     final theme = Theme.of(context);
+    final loc = AppLocalizations.of(context);
+
+    // Dialog Başlığı ve İçeriğini duruma göre ayarla
+    final String title = (loc?.quizFinished ?? 'Quiz Finished');
+        
+    final String message = "${loc?.yourScore ?? 'Your score'}: $_score";
+
     await showDialog(
       context: context,
       barrierDismissible: false,
       builder: (context) => AlertDialog(
         backgroundColor: theme.colorScheme.surface,
-        shape:
-            RoundedRectangleBorder(borderRadius: BorderRadius.circular(16.r)),
+        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16.r)),
         title: Text(
-            AppLocalizations.of(context)?.quizFinished ?? 'Quiz finished',
+            title,
             style: TextStyle(
-                color: theme.colorScheme.primary, fontWeight: FontWeight.bold)),
+                color: isGameOverByLives ? Colors.red : theme.colorScheme.primary, 
+                fontWeight: FontWeight.bold)),
         content: Text(
-            "${AppLocalizations.of(context)?.yourScore ?? 'Your score'}: $_score",
-            style:
-                TextStyle(fontSize: 18.sp, color: theme.colorScheme.onSurface)),
+            message,
+            style: TextStyle(fontSize: 18.sp, color: theme.colorScheme.onSurface)),
         actions: [
           TextButton(
               onPressed: () => Navigator.of(context).pop(),
-              child: Text(AppLocalizations.of(context)?.great ?? 'Great',
+              child: Text(
+                  loc?.great ?? 'Great', // "Great" yerine OK daha uygun olabilir
                   style: TextStyle(color: theme.colorScheme.primary)))
         ],
       ),
     );
+
     if (mounted) {
-      // After completion show Start view; clear loaded questions so Start view appears.
+      // Dialog kapandıktan sonra temizlik yap
       setState(() {
         _questions = [];
         _currentIndex = 0;
+        _wrongCount = 0; // ŞİMDİ sıfırla
+        _score = 0;
       });
     }
   }

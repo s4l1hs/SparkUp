@@ -100,6 +100,7 @@
   "errorSubmittingAnswer": "Error al enviar la respuesta.",
   "wrongAnswerResetStreak": "Respuesta incorrecta! Racha reiniciada.",
   "correct": "Correcto",
+  "incorrect": "Incorrecto",
   "errorCouldNotLoadData": "No se pudieron cargar los datos.",
   "topPlayers": "Mejores jugadores",
 

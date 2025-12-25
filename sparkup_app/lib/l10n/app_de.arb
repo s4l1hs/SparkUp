@@ -100,6 +100,7 @@
   "errorSubmittingAnswer": "Fehler beim Senden der Antwort.",
   "wrongAnswerResetStreak": "Falsche Antwort! Serie zurückgesetzt.",
   "correct": "Richtig",
+  "incorrect": "Falsch",
   "errorCouldNotLoadData": "Daten konnten nicht geladen werden.",
   "topPlayers": "Top‑Spieler",
 
