@@ -5814,23 +5814,6 @@
         "correct_answer": false
     },
     {
-        "category": "general_culture",
-        "question": {
-            "en": "The currency of Russia is the Ruble.",
-            "tr": "Rusya'nın para birimi Ruble'dir.",
-            "fr": "La monnaie de la Russie est le rouble.",
-            "es": "La moneda de Rusia es el rublo.",
-            "de": "Die Währung von Russland ist der Rubel.",
-            "it": "La valuta della Russia è il Rublo.",
-            "hi": "रूस की मुद्रा रूबल है।",
-            "ru": "Валюта России — рубль.",
-            "zh": "俄罗斯的货币是卢布。",
-            "ja": "ロシアの通貨はルーブルです。",
-            "ar": "عملة روسيا هي الروبل."
-        },
-        "correct_answer": true
-    },
-    {
         "category": "music",
         "question": {
             "en": "Elvis Presley was known as 'The King of Rock and Roll'.",
@@ -16201,57 +16184,6 @@
         "correct_answer": true
     },
     {
-        "category": "health_fitness",
-        "question": {
-            "en": "The femur is the longest bone in the human body.",
-            "tr": "Femur (uyluk kemiği) insan vücudundaki en uzun kemiktir.",
-            "fr": "Le fémur est l'os le plus long du corps humain.",
-            "es": "El fémur es el hueso más largo del cuerpo humano.",
-            "de": "Der Oberschenkelknochen ist der längste Knochen im menschlichen Körper.",
-            "it": "Il femore è l'osso più lungo del corpo umano.",
-            "hi": "फीमर मानव शरीर की सबसे लंबी हड्डी है।",
-            "ru": "Бедренная кость — самая длинная кость в теле человека.",
-            "zh": "股骨是人体中最长的骨头。",
-            "ja": "大腿骨は人体で最も長い骨です。",
-            "ar": "عظم الفخذ هو أطول عظم في جسم الإنسان."
-        },
-        "correct_answer": true
-    },
-    {
-        "category": "literature",
-        "question": {
-            "en": "George Orwell wrote the novel '1984'.",
-            "tr": "'1984' romanını George Orwell yazmıştır.",
-            "fr": "George Orwell a écrit le roman '1984'.",
-            "es": "George Orwell escribió la novela '1984'.",
-            "de": "George Orwell schrieb den Roman '1984'.",
-            "it": "George Orwell ha scritto il romanzo '1984'.",
-            "hi": "जॉर्ज ऑरवेल ने उपन्यास '1984' लिखा था।",
-            "ru": "Джордж Оруэлл написал роман «1984».",
-            "zh": "乔治·奥威尔写了小说《1984》。",
-            "ja": "ジョージ・オーウェルは小説『1984年』を書きました。",
-            "ar": "كتب جورج أورويل رواية '1984'."
-        },
-        "correct_answer": true
-    },
-    {
-        "category": "architecture",
-        "question": {
-            "en": "The Statue of Liberty is made of copper.",
-            "tr": "Özgürlük Heykeli bakırdan yapılmıştır.",
-            "fr": "La statue de la Liberté est faite de cuivre.",
-            "es": "La Estatua de la Libertad está hecha de cobre.",
-            "de": "Die Freiheitsstatue besteht aus Kupfer.",
-            "it": "La Statua della Libertà è fatta di rame.",
-            "hi": "स्टैच्यू ऑफ लिबर्टी तांबे से बनी है।",
-            "ru": "Статуя Свободы сделана из меди.",
-            "zh": "自由女神像是用铜做的。",
-            "ja": "自由の女神は銅で作られています。",
-            "ar": "تمثال الحرية مصنوع من النحاس."
-        },
-        "correct_answer": true
-    },
-    {
         "category": "science",
         "question": {
             "en": "Electrons are smaller than protons.",
@@ -16758,6 +16690,431 @@
             "zh": "元素金的符号是Ag。",
             "ja": "金という元素の記号はAgです。",
             "ar": "رمز عنصر الذهب هو Ag."
+        },
+        "correct_answer": false
+    },
+    {
+        "category": "history",
+        "question": {
+            "en": "The printing press was invented by Johannes Gutenberg.",
+            "tr": "Matbaayı Johannes Gutenberg icat etmiştir.",
+            "fr": "L'imprimerie a été inventée par Johannes Gutenberg.",
+            "es": "La imprenta fue inventada por Johannes Gutenberg.",
+            "de": "Der Buchdruck wurde von Johannes Gutenberg erfunden.",
+            "it": "La stampa è stata inventata da Johannes Gutenberg.",
+            "hi": "प्रिंटिंग प्रेस का आविष्कार जोहान्स गुटेनबर्ग ने किया था।",
+            "ru": "Печатный станок был изобретен Иоганном Гутенбергом.",
+            "zh": "印刷机是由约翰内斯·古腾堡发明的。",
+            "ja": "印刷機はヨハネス・グーテンベルクによって発明されました。",
+            "ar": "اخترع يوهانس جوتنبرج المطبعة."
+        },
+        "correct_answer": true
+    },
+    {
+        "category": "science",
+        "question": {
+            "en": "The atomic number of Carbon is 6.",
+            "tr": "Karbonun atom numarası 6'dır.",
+            "fr": "Le numéro atomique du carbone est 6.",
+            "es": "El número atómico del carbono es 6.",
+            "de": "Die Ordnungszahl von Kohlenstoff ist 6.",
+            "it": "Il numero atomico del carbonio è 6.",
+            "hi": "कार्बन की परमाणु संख्या 6 है।",
+            "ru": "Атомный номер углерода — 6.",
+            "zh": "碳的原子序数是6。",
+            "ja": "炭素の原子番号は6です。",
+            "ar": "العدد الذري للكربون هو 6."
+        },
+        "correct_answer": true
+    },
+    {
+        "category": "art",
+        "question": {
+            "en": "Auguste Rodin created 'The Thinker'.",
+            "tr": "'Düşünen Adam' heykelini Auguste Rodin yapmıştır.",
+            "fr": "Auguste Rodin a créé 'Le Penseur'.",
+            "es": "Auguste Rodin creó 'El Pensador'.",
+            "de": "Auguste Rodin schuf 'Der Denker'.",
+            "it": "Auguste Rodin ha creato 'Il Pensatore'.",
+            "hi": "अगस्टे रोडिन ने 'द थिंकर' बनाया।",
+            "ru": "Огюст Роден создал «Мыслителя».",
+            "zh": "奥古斯特·罗丹创作了《思想者》。",
+            "ja": "オーギュスト・ロダンは『考える人』を制作しました。",
+            "ar": "أنشأ أوغست رودان 'المفكر'."
+        },
+        "correct_answer": true
+    },
+    {
+        "category": "sports",
+        "question": {
+            "en": "A standard golf course has 18 holes.",
+            "tr": "Standart bir golf sahasında 18 delik vardır.",
+            "fr": "Un parcours de golf standard compte 18 trous.",
+            "es": "Un campo de golf estándar tiene 18 hoyos.",
+            "de": "Ein Standard-Golfplatz hat 18 Löcher.",
+            "it": "Un campo da golf standard ha 18 buche.",
+            "hi": "एक मानक गोल्फ कोर्स में 18 छेद होते हैं।",
+            "ru": "Стандартное поле для гольфа имеет 18 лунок.",
+            "zh": "标准高尔夫球场有18个洞。",
+            "ja": "標準的なゴルフコースには18ホールあります。",
+            "ar": "يحتوي ملعب الجولف القياسي على 18 حفرة."
+        },
+        "correct_answer": true
+    },
+    {
+        "category": "mythology",
+        "question": {
+            "en": "Romulus and Remus are associated with the founding of Rome.",
+            "tr": "Romulus ve Remus, Roma'nın kuruluşuyla ilişkilendirilir.",
+            "fr": "Romulus et Rémus sont associés à la fondation de Rome.",
+            "es": "Rómulo y Remo están asociados con la fundación de Roma.",
+            "de": "Romulus und Remus werden mit der Gründung Roms in Verbindung gebracht.",
+            "it": "Romolo e Remo sono associati alla fondazione di Roma.",
+            "hi": "रोमुलस और रेमुस रोम की स्थापना से जुड़े हैं।",
+            "ru": "Ромул и Рем связаны с основанием Рима.",
+            "zh": "罗慕路斯和雷穆斯与罗马的建立有关。",
+            "ja": "ロムルスとレムスはローマの建国に関連しています。",
+            "ar": "يرتبط رومولوس وريموس بتأسيس روما."
+        },
+        "correct_answer": true
+    },
+    {
+        "category": "philosophy",
+        "question": {
+            "en": "Sun Tzu wrote 'The Art of War'.",
+            "tr": "'Savaş Sanatı'nı Sun Tzu yazmıştır.",
+            "fr": "Sun Tzu a écrit 'L'Art de la guerre'.",
+            "es": "Sun Tzu escribió 'El arte de la guerra'.",
+            "de": "Sun Tzu schrieb 'Die Kunst des Krieges'.",
+            "it": "Sun Tzu ha scritto 'L'arte della guerra'.",
+            "hi": "सन त्ज़ु ने 'युद्ध की कला' (The Art of War) लिखी थी।",
+            "ru": "Сунь-цзы написал «Искусство войны».",
+            "zh": "孙子写了《孙子兵法》。",
+            "ja": "孫子は『孫子』（兵法書）を書きました。",
+            "ar": "كتب صن تزو 'فن الحرب'."
+        },
+        "correct_answer": true
+    },
+    {
+        "category": "space_astronomy",
+        "question": {
+            "en": "Halley's Comet is visible from Earth approximately every 76 years.",
+            "tr": "Halley Kuyruklu Yıldızı, Dünya'dan yaklaşık her 76 yılda bir görülebilir.",
+            "fr": "La comète de Halley est visible depuis la Terre environ tous les 76 ans.",
+            "es": "El cometa Halley es visible desde la Tierra aproximadamente cada 76 años.",
+            "de": "Der Halleysche Komet ist von der Erde aus etwa alle 76 Jahre sichtbar.",
+            "it": "La cometa di Halley è visibile dalla Terra circa ogni 76 anni.",
+            "hi": "हेली धूमकेतु पृथ्वी से लगभग हर 76 वर्षों में दिखाई देता है।",
+            "ru": "Комета Галлея видна с Земли примерно каждые 76 лет.",
+            "zh": "哈雷彗星大约每76年从地球上可以看到一次。",
+            "ja": "ハレー彗星は約76年ごとに地球から見ることができます。",
+            "ar": "مذنب هالي مرئي من الأرض كل 76 عامًا تقريبًا."
+        },
+        "correct_answer": true
+    },
+    {
+        "category": "economics_finance",
+        "question": {
+            "en": "The World Trade Organization is headquartered in Geneva.",
+            "tr": "Dünya Ticaret Örgütü'nün merkezi Cenevre'dedir.",
+            "fr": "L'Organisation mondiale du commerce a son siège à Genève.",
+            "es": "La Organización Mundial del Comercio tiene su sede en Ginebra.",
+            "de": "Die Welthandelsorganisation hat ihren Hauptsitz in Genf.",
+            "it": "L'Organizzazione mondiale del commercio ha sede a Ginevra.",
+            "hi": "विश्व व्यापार संगठन का मुख्यालय जिनेवा में है।",
+            "ru": "Штаб-квартира Всемирной торговой организации находится в Женеве.",
+            "zh": "世界贸易组织总部设在日内瓦。",
+            "ja": "世界貿易機関の本部はジュネーブにあります。",
+            "ar": "يقع المقر الرئيسي لمنظمة التجارة العالمية في جنيف."
+        },
+        "correct_answer": true
+    },
+    {
+        "category": "architecture",
+        "question": {
+            "en": "The Parthenon was dedicated to the goddess Athena.",
+            "tr": "Parthenon, tanrıça Athena'ya adanmıştır.",
+            "fr": "Le Parthénon était dédié à la déesse Athéna.",
+            "es": "El Partenón estaba dedicado a la diosa Atenea.",
+            "de": "Der Parthenon war der Göttin Athene gewidmet.",
+            "it": "Il Partenone era dedicato alla dea Atena.",
+            "hi": "पार्थेनन देवी एथेना को समर्पित था।",
+            "ru": "Парфенон был посвящен богине Афине.",
+            "zh": "帕特农神庙是献给女神雅典娜的。",
+            "ja": "パルテノン神殿は女神アテナに捧げられました。",
+            "ar": "كان البارثينون مخصصًا للإلهة أثينا."
+        },
+        "correct_answer": true
+    },
+    {
+        "category": "general_culture",
+        "question": {
+            "en": "Christmas is celebrated on December 25th.",
+            "tr": "Noel 25 Aralık'ta kutlanır.",
+            "fr": "Noël est célébré le 25 décembre.",
+            "es": "La Navidad se celebra el 25 de diciembre.",
+            "de": "Weihnachten wird am 25. Dezember gefeiert.",
+            "it": "Il Natale si festeggia il 25 dicembre.",
+            "hi": "क्रिसमस 25 दिसंबर को मनाया जाता है।",
+            "ru": "Рождество (по григорианскому календарю) отмечается 25 декабря.",
+            "zh": "圣诞节在12月25日庆祝。",
+            "ja": "クリスマスは12月25日に祝われます。",
+            "ar": "يتم الاحتفال بعيد الميلاد في 25 ديسمبر."
+        },
+        "correct_answer": true
+    },
+    {
+        "category": "science",
+        "question": {
+            "en": "The chemical symbol for Silver is Ag.",
+            "tr": "Gümüşün kimyasal sembolü Ag'dir.",
+            "fr": "Le symbole chimique de l'argent est Ag.",
+            "es": "El símbolo químico de la plata es Ag.",
+            "de": "Das chemische Symbol für Silber ist Ag.",
+            "it": "Il simbolo chimico dell'argento è Ag.",
+            "hi": "चांदी का रासायनिक प्रतीक Ag है।",
+            "ru": "Химический символ серебра — Ag.",
+            "zh": "银的化学符号是Ag。",
+            "ja": "銀の化学記号はAgです。",
+            "ar": "الرمز الكيميائي للفضة هو Ag."
+        },
+        "correct_answer": true
+    },
+    {
+        "category": "art",
+        "question": {
+            "en": "Claude Monet painted 'Water Lilies'.",
+            "tr": "'Nilüferler' tablosunu Claude Monet yapmıştır.",
+            "fr": "Claude Monet a peint 'Les Nymphéas'.",
+            "es": "Claude Monet pintó 'Los nenúfares'.",
+            "de": "Claude Monet malte 'Seerosen'.",
+            "it": "Claude Monet ha dipinto 'Ninfee'.",
+            "hi": "'वाटर लिली' को क्लाउड मोनेट ने चित्रित किया था।",
+            "ru": "Клод Моне написал «Кувшинки».",
+            "zh": "克劳德·莫奈画了《睡莲》。",
+            "ja": "クロード・モネは『睡蓮』を描きました。",
+            "ar": "رسم كلود مونيه 'زنابق الماء'."
+        },
+        "correct_answer": true
+    },
+    {
+        "category": "sports",
+        "question": {
+            "en": "A standard billiard table has 6 pockets.",
+            "tr": "Standart bir bilardo masasının 6 cebi vardır.",
+            "fr": "Une table de billard standard a 6 poches.",
+            "es": "Una mesa de billar estándar tiene 6 troneras.",
+            "de": "Ein Standard-Billardtisch hat 6 Taschen.",
+            "it": "Un tavolo da biliardo standard ha 6 buche.",
+            "hi": "एक मानक बिलियर्ड टेबल में 6 पॉकेट होते हैं।",
+            "ru": "У стандартного бильярдного стола 6 луз.",
+            "zh": "标准的台球桌有6个袋口。",
+            "ja": "標準的なビリヤード台には6つのポケットがあります。",
+            "ar": "طاولة البلياردو القياسية بها 6 جيوب."
+        },
+        "correct_answer": true
+    },
+    {
+        "category": "technology",
+        "question": {
+            "en": "The first computer was called ENIAC.",
+            "tr": "İlk bilgisayarın adı ENIAC idi.",
+            "fr": "Le premier ordinateur s'appelait ENIAC.",
+            "es": "La primera computadora se llamó ENIAC.",
+            "de": "Der erste Computer hieß ENIAC.",
+            "it": "Il primo computer si chiamava ENIAC.",
+            "hi": "पहले कंप्यूटर का नाम ENIAC था।",
+            "ru": "Первый компьютер назывался ENIAC.",
+            "zh": "第一台计算机叫ENIAC。",
+            "ja": "最初のコンピュータはENIACと呼ばれていました。",
+            "ar": "كان يسمى الكمبيوتر الأول ENIAC."
+        },
+        "correct_answer": true
+    },
+    {
+        "category": "geography_travel",
+        "question": {
+            "en": "The Amazon Rainforest is located in South America.",
+            "tr": "Amazon Yağmur Ormanları Güney Amerika'da bulunur.",
+            "fr": "La forêt amazonienne est située en Amérique du Sud.",
+            "es": "La selva amazónica se encuentra en América del Sur.",
+            "de": "Der Amazonas-Regenwald befindet sich in Südamerika.",
+            "it": "La foresta pluviale amazzonica si trova in Sud America.",
+            "hi": "अमेज़न वर्षावन दक्षिण अमेरिका में स्थित है।",
+            "ru": "Дождевые леса Амазонии находятся в Южной Америке.",
+            "zh": "亚马逊雨林位于南美洲。",
+            "ja": "アマゾン熱帯雨林は南アメリカにあります。",
+            "ar": "تقع غابات الأمازون المطيرة في أمريكا الجنوبية."
+        },
+        "correct_answer": true
+    },
+    {
+        "category": "mythology",
+        "question": {
+            "en": "Anubis is the Egyptian god of the dead.",
+            "tr": "Anubis, Mısır ölüm tanrısıdır.",
+            "fr": "Anubis est le dieu égyptien des morts.",
+            "es": "Anubis es el dios egipcio de los muertos.",
+            "de": "Anubis ist der ägyptische Gott der Toten.",
+            "it": "Anubi è il dio egizio dei morti.",
+            "hi": "अनुबिस मिस्र के मृतकों के देवता हैं।",
+            "ru": "Анубис — египетский бог мертвых.",
+            "zh": "阿努比斯是埃及的死神。",
+            "ja": "アヌビスはエジプトの死者の神です。",
+            "ar": "أنوبيس هو إله الموتى المصري."
+        },
+        "correct_answer": true
+    },
+    {
+        "category": "literature",
+        "question": {
+            "en": "Sherlock Holmes' assistant is Dr. Watson.",
+            "tr": "Sherlock Holmes'un asistanı Dr. Watson'dır.",
+            "fr": "L'assistant de Sherlock Holmes est le Dr Watson.",
+            "es": "El asistente de Sherlock Holmes es el Dr. Watson.",
+            "de": "Der Assistent von Sherlock Holmes ist Dr. Watson.",
+            "it": "L'assistente di Sherlock Holmes è il Dr. Watson.",
+            "hi": "शरलॉक होम्स के सहायक डॉ. वॉटसन हैं।",
+            "ru": "Помощник Шерлока Холмса — доктор Ватсон.",
+            "zh": "夏洛克·福尔摩斯的助手是华生医生。",
+            "ja": "シャーロック・ホームズの助手はワトソン博士です。",
+            "ar": "مساعد شيرلوك هولمز هو الدكتور واتسون."
+        },
+        "correct_answer": true
+    },
+    {
+        "category": "space_astronomy",
+        "question": {
+            "en": "The Moon is a planet.",
+            "tr": "Ay bir gezegendir.",
+            "fr": "La Lune est une planète.",
+            "es": "La Luna es un planeta.",
+            "de": "Der Mond ist ein Planet.",
+            "it": "La Luna è un pianeta.",
+            "hi": "चंद्रमा एक ग्रह है।",
+            "ru": "Луна — это планета.",
+            "zh": "月球是一颗行星。",
+            "ja": "月は惑星です。",
+            "ar": "القمر كوكب."
+        },
+        "correct_answer": false
+    },
+    {
+        "category": "health_fitness",
+        "question": {
+            "en": "Hair continues to grow after death.",
+            "tr": "Saçlar öldükten sonra da uzamaya devam eder.",
+            "fr": "Les cheveux continuent de pousser après la mort.",
+            "es": "El cabello sigue creciendo después de la muerte.",
+            "de": "Haare wachsen nach dem Tod weiter.",
+            "it": "I capelli continuano a crescere dopo la morte.",
+            "hi": "मृत्यु के बाद भी बाल बढ़ते रहते हैं।",
+            "ru": "Волосы продолжают расти после смерти.",
+            "zh": "死后头发还会继续生长。",
+            "ja": "死後も髪は伸び続けます。",
+            "ar": "يستمر الشعر في النمو بعد الموت."
+        },
+        "correct_answer": false
+    },
+    {
+        "category": "economics_finance",
+        "question": {
+            "en": "The Dow Jones is a stock market index.",
+            "tr": "Dow Jones bir borsa endeksidir.",
+            "fr": "Le Dow Jones est un indice boursier.",
+            "es": "El Dow Jones es un índice bursátil.",
+            "de": "Der Dow Jones ist ein Aktienindex.",
+            "it": "Il Dow Jones è un indice azionario.",
+            "hi": "डॉव जोन्स एक शेयर बाजार सूचकांक है।",
+            "ru": "Доу-Джонс — это фондовой индекс.",
+            "zh": "道琼斯是一个股票市场指数。",
+            "ja": "ダウ・ジョーンズは株式市場指数です。",
+            "ar": "مؤشر داو جونز هو مؤشر لسوق الأوراق المالية."
+        },
+        "correct_answer": true
+    },
+    {
+        "category": "architecture",
+        "question": {
+            "en": "The Sydney Opera House is in Australia.",
+            "tr": "Sidney Opera Binası Avustralya'dadır.",
+            "fr": "L'Opéra de Sydney est en Australie.",
+            "es": "La Ópera de Sídney está en Australia.",
+            "de": "Das Opernhaus von Sydney befindet sich in Australien.",
+            "it": "Il Teatro dell'Opera di Sydney si trova in Australia.",
+            "hi": "सिडनी ओपेरा हाउस ऑस्ट्रेलिया में है।",
+            "ru": "Сиднейский оперный театр находится в Австралии.",
+            "zh": "悉尼歌剧院在澳大利亚。",
+            "ja": "シドニー・オペラハウスはオーストラリアにあります。",
+            "ar": "دار أوبرا سيدني تقع في أستراليا."
+        },
+        "correct_answer": true
+    },
+    {
+        "category": "video_games",
+        "question": {
+            "en": "Minecraft allows players to build with blocks.",
+            "tr": "Minecraft, oyuncuların bloklarla inşa etmesine olanak tanır.",
+            "fr": "Minecraft permet aux joueurs de construire avec des blocs.",
+            "es": "Minecraft permite a los jugadores construir con bloques.",
+            "de": "Minecraft ermöglicht es Spielern, mit Blöcken zu bauen.",
+            "it": "Minecraft permette ai giocatori di costruire con blocchi.",
+            "hi": "Minecraft खिलाड़ियों को ब्लॉक के साथ निर्माण करने की अनुमति देता है।",
+            "ru": "Minecraft позволяет игрокам строить из блоков.",
+            "zh": "《我的世界》允许玩家用方块进行建造。",
+            "ja": "『マインクラフト』では、プレイヤーはブロックを使って建築することができます。",
+            "ar": "تسمح 'ماين كرافت' للاعبين بالبناء باستخدام الكتل."
+        },
+        "correct_answer": true
+    },
+    {
+        "category": "general_culture",
+        "question": {
+            "en": "Thanksgiving is celebrated in November in the US.",
+            "tr": "Şükran Günü ABD'de Kasım ayında kutlanır.",
+            "fr": "Thanksgiving est célébré en novembre aux États-Unis.",
+            "es": "El Día de Acción de Gracias se celebra en noviembre en los EE. UU.",
+            "de": "Thanksgiving wird in den USA im November gefeiert.",
+            "it": "Il Giorno del Ringraziamento si festeggia a novembre negli Stati Uniti.",
+            "hi": "अमेरिका में नवंबर में थैंक्सगिविंग मनाया जाता है।",
+            "ru": "День благодарения отмечается в США в ноябре.",
+            "zh": "美国的感恩节在十一月庆祝。",
+            "ja": "感謝祭はアメリカでは11月に祝われます。",
+            "ar": "يتم الاحتفال بعيد الشكر في نوفمبر في الولايات المتحدة."
+        },
+        "correct_answer": true
+    },
+    {
+        "category": "fun_facts",
+        "question": {
+            "en": "Avocados are fruits.",
+            "tr": "Avokado bir meyvedir.",
+            "fr": "Les avocats sont des fruits.",
+            "es": "Los aguacates son frutas.",
+            "de": "Avocados sind Früchte.",
+            "it": "Gli avocado sono frutti.",
+            "hi": "एवोकाडो फल हैं।",
+            "ru": "Авокадо — это фрукты.",
+            "zh": "牛油果是水果。",
+            "ja": "アボカドは果物です。",
+            "ar": "الأفوكادو فاكهة."
+        },
+        "correct_answer": true
+    },
+    {
+        "category": "science",
+        "question": {
+            "en": "A triangle has four sides.",
+            "tr": "Bir üçgenin dört kenarı vardır.",
+            "fr": "Un triangle a quatre côtés.",
+            "es": "Un triángulo tiene cuatro lados.",
+            "de": "Ein Dreieck hat vier Seiten.",
+            "it": "Un triangolo ha quattro lati.",
+            "hi": "त्रिभुज की चार भुजाएँ होती हैं।",
+            "ru": "У треугольника четыре стороны.",
+            "zh": "三角形有四条边。",
+            "ja": "三角形には4つの辺があります。",
+            "ar": "المثلث له أربعة أضلاع."
         },
         "correct_answer": false
     }

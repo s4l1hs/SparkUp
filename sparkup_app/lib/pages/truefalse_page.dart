@@ -28,6 +28,7 @@ class _TrueFalsePageState extends State<TrueFalsePage>
   int _score = 0;
   int _streak = 0;
   int _wrongCount = 0;
+  bool _processingAnswer = false;
   int _timeLeft = 0;
   int _sessionDuration = 60;
 
@@ -147,18 +148,26 @@ class _TrueFalsePageState extends State<TrueFalsePage>
 
   // --- 3. OYUN MANTIĞI ---
   Future<void> _answerQuestion(bool userSaidTrue) async {
+    if (_processingAnswer) return;
+    _processingAnswer = true;
     final currentQ = _questions[_currentIndex];
     final bool isCorrectAnswer = currentQ['correct_answer'];
 
     bool isUserCorrect = (userSaidTrue == isCorrectAnswer);
 
     if (isUserCorrect) {
-      _score += 10 + (_streak * 2);
-      _streak++;
-      _wrongCount = 0;
+      setState(() {
+        _score += 10 + (_streak * 2);
+        _streak++;
+        _wrongCount = 0;
+      });
+      debugPrint('TF: correct answer — reset _wrongCount to 0');
     } else {
-      _streak = 0;
-      _wrongCount++;
+      setState(() {
+        _streak = 0;
+        _wrongCount++;
+      });
+      debugPrint('TF: wrong answer — _wrongCount is now $_wrongCount');
     }
 
     // Notify analysis provider to refresh immediately after an answer
@@ -169,15 +178,70 @@ class _TrueFalsePageState extends State<TrueFalsePage>
     } catch (_) {}
 
     if (_wrongCount >= 3) {
-      // End session immediately on 3 wrong answers
-      await _handleQuizCompletion();
+      // Ensure timer is stopped and session ends immediately on 3 wrong answers
+      _cancelTimer();
+      debugPrint('TF: reached 3 wrong answers — ending session');
+      try {
+        await _handleQuizCompletion();
+      } finally {
+        _processingAnswer = false;
+      }
       return;
     }
 
     if (_currentIndex < _questions.length - 1) {
       setState(() => _currentIndex++);
+      _processingAnswer = false;
     } else {
-      await _handleQuizCompletion();
+      // Reached end of batch: try loading more questions and continue session
+      try {
+        await _fetchMoreQuestionsTF();
+      } catch (e) {
+        // If fetching fails, end session gracefully
+        await _handleQuizCompletion();
+      } finally {
+        _processingAnswer = false;
+      }
+    }
+  }
+
+  Future<void> _fetchMoreQuestionsTF() async {
+    if (!mounted) return;
+    setState(() => _isLoading = true);
+    final userProv = Provider.of<UserProvider>(context, listen: false);
+    try {
+      final api = ApiService();
+      final list = await api.getManualTrueFalse(idToken: widget.idToken);
+      final data = list.isNotEmpty ? List<dynamic>.from(list) : <dynamic>[];
+      if (data.isNotEmpty) data.shuffle();
+      if (!mounted) return;
+      setState(() {
+        _questions = data;
+        _currentIndex = 0;
+        _isLoading = false;
+      });
+
+      // Reset/continue timer using profile/session seconds
+      final secFromProfile = userProv.profile?.sessionSeconds;
+      int sec = secFromProfile ?? 60;
+      if (_questions.isNotEmpty) {
+        final first = _questions.firstWhere(
+            (e) => e.containsKey('session_seconds'),
+            orElse: () => null);
+        if (first != null && first['session_seconds'] is int)
+          sec = first['session_seconds'] as int;
+      }
+      setState(() {
+        _timeLeft = sec;
+        _sessionDuration = sec;
+      });
+      _cancelTimer();
+      _startTimer();
+    } catch (e) {
+      setState(() {
+        _isLoading = false;
+      });
+      rethrow;
     }
   }
 
