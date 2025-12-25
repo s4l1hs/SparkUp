@@ -1136,15 +1136,7 @@ class _EnergySliderState extends State<_EnergySlider>
             ),
           ),
 
-          // Alt Bilgi (Opsiyonel: Dolmasına kalan süre vs. buraya eklenebilir)
-          if (widget.current < widget.max)
-            Padding(
-              padding: EdgeInsets.only(top: 8.h),
-              child: Text(
-                "Next refill in 14:20", // Burayı dinamik yapabilirsin
-                style: TextStyle(color: Colors.white38, fontSize: 11.sp),
-              ),
-            ),
+          // Alt Bilgi: (refill info removed — handled server-side)
         ],
       ),
     );

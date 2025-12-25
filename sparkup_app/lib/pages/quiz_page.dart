@@ -47,6 +47,7 @@ class _QuizPageState extends State<QuizPage> with TickerProviderStateMixin {
   late final Animation<Offset> _scoreOffset;
   int _lastAwarded = 0;
   bool _showAward = false;
+  int _wrongAnswers = 0;
   // session timer
   Timer? _sessionTimer;
   int _timeLeft = 0;
@@ -266,6 +267,7 @@ class _QuizPageState extends State<QuizPage> with TickerProviderStateMixin {
           final profile = userProvider.profile;
           _currentIndex = 0;
           _sessionScore = profile?.dailyPoints ?? 0;
+          _wrongAnswers = 0;
           _answered = false;
           _selectedAnswerIndex = null;
           _answerState = AnswerState.unanswered;
@@ -313,6 +315,7 @@ class _QuizPageState extends State<QuizPage> with TickerProviderStateMixin {
     final userProv = Provider.of<UserProvider>(context, listen: false);
     // optimistic UI update: consume 1 energy locally
     userProv.consumeEnergyOptimistic();
+    _wrongAnswers = 0;
     _fetchQuizData(isInitialLoad: false, isPreview: false).catchError((e) {
       // sync profile from server to correct optimistic change on error
       try {
@@ -342,7 +345,7 @@ class _QuizPageState extends State<QuizPage> with TickerProviderStateMixin {
           () => _apiService.submitQuizAnswer(
               widget.idToken, questionId, selectedIndex),
           const Duration(seconds: 8));
-      if (response is Map) {
+        if (response is Map) {
         final newScore = response['new_score'] as int? ?? 0;
         final awarded = response['score_awarded'] as int? ?? 0;
 
@@ -356,6 +359,7 @@ class _QuizPageState extends State<QuizPage> with TickerProviderStateMixin {
           }
         });
 
+        // update user profile/score
         userProvider.updateScore(newScore);
         await userProvider.loadProfile(widget.idToken);
 
@@ -367,10 +371,21 @@ class _QuizPageState extends State<QuizPage> with TickerProviderStateMixin {
         await Future.delayed(const Duration(milliseconds: 900));
         if (!mounted) return;
 
-        if (_currentIndex >= _questions.length - 1) {
+        // Track wrong answers locally; if 3 wrongs occur the session ends immediately.
+        final correctIndex = _questions[_currentIndex]['correct_answer_index'] as int;
+        final wasCorrect = selectedIndex == correctIndex;
+        if (!wasCorrect) {
+          setState(() => _wrongAnswers++);
+        }
+
+        if (_wrongAnswers >= 3) {
           await _handleQuizCompletion();
         } else {
-          _nextQuestion();
+          if (_currentIndex >= _questions.length - 1) {
+            await _handleQuizCompletion();
+          } else {
+            _nextQuestion();
+          }
         }
       } else {
         throw Exception('Unexpected response');

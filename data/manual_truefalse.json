@@ -11762,5 +11762,974 @@
             "ar": "الذهب معدن يصدأ بسهولة."
         },
         "correct_answer": false
+    },
+    {
+        "category": "history",
+        "question": {
+            "en": "The Rosetta Stone was key to deciphering Egyptian hieroglyphs.",
+            "tr": "Rosetta Taşı, Mısır hiyerogliflerinin çözülmesinde kilit rol oynamıştır.",
+            "fr": "La pierre de Rosette a été la clé pour déchiffrer les hiéroglyphes égyptiens.",
+            "es": "La Piedra de Rosetta fue clave para descifrar los jeroglíficos egipcios.",
+            "de": "Der Stein von Rosette war der Schlüssel zur Entzifferung der ägyptischen Hieroglyphen.",
+            "it": "La Stele di Rosetta è stata fondamentale per decifrare i geroglifici egizi.",
+            "hi": "मिस्र के चित्रलिपि को समझने के लिए रोसेटा स्टोन महत्वपूर्ण था।",
+            "ru": "Розеттский камень стал ключом к расшифровке египетских иероглифов.",
+            "zh": "罗塞塔石碑是破译埃及象形文字的关键。",
+            "ja": "ロゼッタ・ストーンはエジプトのヒエログリフを解読する鍵となりました。",
+            "ar": "كان حجر رشيد مفتاحًا لفك رموز الهيروغليفية المصرية."
+        },
+        "correct_answer": true
+    },
+    {
+        "category": "science",
+        "question": {
+            "en": "The most common element in the universe is Hydrogen.",
+            "tr": "Evrende en çok bulunan element hidrojendir.",
+            "fr": "L'élément le plus courant dans l'univers est l'hydrogène.",
+            "es": "El elemento más común en el universo es el hidrógeno.",
+            "de": "Das häufigste Element im Universum ist Wasserstoff.",
+            "it": "L'elemento più comune nell'universo è l'idrogeno.",
+            "hi": "ब्रह्मांड में सबसे आम तत्व हाइड्रोजन है।",
+            "ru": "Самым распространенным элементом во Вселенной является водород.",
+            "zh": "宇宙中最常见的元素是氢。",
+            "ja": "宇宙で最も一般的な元素は水素です。",
+            "ar": "العنصر الأكثر شيوعًا في الكون هو الهيدروجين."
+        },
+        "correct_answer": true
+    },
+    {
+        "category": "art",
+        "question": {
+            "en": "The painting 'The Birth of Venus' was created by Sandro Botticelli.",
+            "tr": "'Venüs'ün Doğuşu' tablosu Sandro Botticelli tarafından yapılmıştır.",
+            "fr": "Le tableau 'La Naissance de Vénus' a été créé par Sandro Botticelli.",
+            "es": "El cuadro 'El nacimiento de Venus' fue creado por Sandro Botticelli.",
+            "de": "Das Gemälde 'Die Geburt der Venus' wurde von Sandro Botticelli geschaffen.",
+            "it": "Il dipinto 'La Nascita di Venere' è stato creato da Sandro Botticelli.",
+            "hi": "पेंटिंग 'द बर्थ ऑफ वीनस' सैंड्रो बोतित्सेली द्वारा बनाई गई थी।",
+            "ru": "Картина «Рождение Венеры» была создана Сандро Боттичелли.",
+            "zh": "画作《维纳斯的诞生》是由桑德罗·波提切利创作的。",
+            "ja": "絵画『ヴィーナスの誕生』はサンドロ・ボッティチェッリによって制作されました。",
+            "ar": "تم إنشاء لوحة 'ولادة فينوس' بواسطة ساندرو بوتيتشيلي."
+        },
+        "correct_answer": true
+    },
+    {
+        "category": "sports",
+        "question": {
+            "en": "Rugby originated in Australia.",
+            "tr": "Ragbi Avustralya'da ortaya çıkmıştır.",
+            "fr": "Le rugby est originaire d'Australie.",
+            "es": "El rugby se originó en Australia.",
+            "de": "Rugby hat seinen Ursprung in Australien.",
+            "it": "Il rugby ha avuto origine in Australia.",
+            "hi": "रग्बी की उत्पत्ति ऑस्ट्रेलिया में हुई थी।",
+            "ru": "Регби зародилось в Австралии.",
+            "zh": "橄榄球起源于澳大利亚。",
+            "ja": "ラグビーはオーストラリア発祥です。",
+            "ar": "نشأت لعبة الرغبي في أستراليا."
+        },
+        "correct_answer": false
+    },
+    {
+        "category": "technology",
+        "question": {
+            "en": "Ada Lovelace is considered the first computer programmer.",
+            "tr": "Ada Lovelace, ilk bilgisayar programcısı olarak kabul edilir.",
+            "fr": "Ada Lovelace est considérée comme la première programmeuse informatique.",
+            "es": "Ada Lovelace es considerada la primera programadora de computadoras.",
+            "de": "Ada Lovelace gilt als die erste Computerprogrammiererin.",
+            "it": "Ada Lovelace è considerata la prima programmatrice di computer.",
+            "hi": "एडा लवलेस को पहला कंप्यूटर प्रोग्रामर माना जाता है।",
+            "ru": "Ада Лавлейс считается первым программистом.",
+            "zh": "阿达·洛芙莱斯被认为是第一位计算机程序员。",
+            "ja": "エイダ・ラブレースは最初のコンピュータプログラマとみなされています。",
+            "ar": "تعتبر أدا لوفليس أول مبرمجة كمبيوتر."
+        },
+        "correct_answer": true
+    },
+    {
+        "category": "cinema_tv",
+        "question": {
+            "en": "The movie 'Titanic' was the first to gross over $1 billion worldwide.",
+            "tr": "'Titanic' filmi dünya çapında 1 milyar dolar hasılatı geçen ilk filmdi.",
+            "fr": "Le film 'Titanic' a été le premier à rapporter plus d'un milliard de dollars dans le monde.",
+            "es": "La película 'Titanic' fue la primera en recaudar más de mil millones de dólares en todo el mundo.",
+            "de": "Der Film 'Titanic' war der erste, der weltweit über 1 Milliarde Dollar einspielte.",
+            "it": "Il film 'Titanic' è stato il primo a incassare oltre 1 miliardo di dollari in tutto il mondo.",
+            "hi": "फिल्म 'टाइटैनिक' दुनिया भर में $ 1 बिलियन से अधिक की कमाई करने वाली पहली फिल्म थी।",
+            "ru": "Фильм «Титаник» стал первым, собравшим в мировом прокате более 1 миллиарда долларов.",
+            "zh": "电影《泰坦尼克号》是第一部全球票房超过10亿美元的电影。",
+            "ja": "映画『タイタニック』は、世界興行収入が10億ドルを超えた最初の映画でした。",
+            "ar": "كان فيلم 'تيتانيك' أول فيلم يحقق أكثر من مليار دولار في جميع أنحاء العالم."
+        },
+        "correct_answer": true
+    },
+    {
+        "category": "music",
+        "question": {
+            "en": "Mozart composed the opera 'The Magic Flute'.",
+            "tr": "Mozart 'Sihirli Flüt' operasını bestelemiştir.",
+            "fr": "Mozart a composé l'opéra 'La Flûte enchantée'.",
+            "es": "Mozart compuso la ópera 'La flauta mágica'.",
+            "de": "Mozart komponierte die Oper 'Die Zauberflöte'.",
+            "it": "Mozart ha composto l'opera 'Il flauto magico'.",
+            "hi": "मोज़ार्ट ने ओपेरा 'द मैजिक फ्लूट' की रचना की।",
+            "ru": "Моцарт сочинил оперу «Волшебная флейта».",
+            "zh": "莫扎特创作了歌剧《魔笛》。",
+            "ja": "モーツァルトはオペラ『魔笛』を作曲しました。",
+            "ar": "ألف موزارت أوبرا 'الناي السحري'."
+        },
+        "correct_answer": true
+    },
+    {
+        "category": "nature_animals",
+        "question": {
+            "en": "Octopuses have three hearts.",
+            "tr": "Ahtapotların üç kalbi vardır.",
+            "fr": "Les poulpes ont trois cœurs.",
+            "es": "Los pulpos tienen tres corazones.",
+            "de": "Kraken haben drei Herzen.",
+            "it": "I polpi hanno tre cuori.",
+            "hi": "ऑक्टोपस के तीन दिल होते हैं।",
+            "ru": "У осьминогов три сердца.",
+            "zh": "章鱼有三颗心脏。",
+            "ja": "タコには心臓が3つあります。",
+            "ar": "للأخطبوط ثلاثة قلوب."
+        },
+        "correct_answer": true
+    },
+    {
+        "category": "geography_travel",
+        "question": {
+            "en": "Vatican City is the smallest country in the world.",
+            "tr": "Vatikan Şehri dünyanın en küçük ülkesidir.",
+            "fr": "Le Vatican est le plus petit pays du monde.",
+            "es": "La Ciudad del Vaticano es el país más pequeño del mundo.",
+            "de": "Die Vatikanstadt ist das kleinste Land der Welt.",
+            "it": "Città del Vaticano è il paese più piccolo del mondo.",
+            "hi": "वेटिकन सिटी दुनिया का सबसे छोटा देश है।",
+            "ru": "Ватикан — самая маленькая страна в мире.",
+            "zh": "梵蒂冈城是世界上最小的国家。",
+            "ja": "バチカン市国は世界で最も小さい国です。",
+            "ar": "مدينة الفاتيكان هي أصغر دولة في العالم."
+        },
+        "correct_answer": true
+    },
+    {
+        "category": "mythology",
+        "question": {
+            "en": "Hades is the Greek god of the underworld.",
+            "tr": "Hades, Yunan yeraltı dünyası tanrısıdır.",
+            "fr": "Hadès est le dieu grec des enfers.",
+            "es": "Hades es el dios griego del inframundo.",
+            "de": "Hades ist der griechische Gott der Unterwelt.",
+            "it": "Ade è il dio greco degli inferi.",
+            "hi": "हेड्स अंडरवर्ल्ड के ग्रीक देवता हैं।",
+            "ru": "Аид — греческий бог подземного мира.",
+            "zh": "哈迪斯是希腊的冥界之神。",
+            "ja": "ハデスはギリシャ神話の冥界の神です。",
+            "ar": "هاديس هو إله العالم السفلي اليوناني."
+        },
+        "correct_answer": true
+    },
+    {
+        "category": "philosophy",
+        "question": {
+            "en": "Immanuel Kant was a German philosopher.",
+            "tr": "Immanuel Kant Alman bir filozoftu.",
+            "fr": "Emmanuel Kant était un philosophe allemand.",
+            "es": "Immanuel Kant fue un filósofo alemán.",
+            "de": "Immanuel Kant war ein deutscher Philosoph.",
+            "it": "Immanuel Kant era un filosofo tedesco.",
+            "hi": "इमानुएल कांट एक जर्मन दार्शनिक थे।",
+            "ru": "Иммануил Кант был немецким философом.",
+            "zh": "伊曼努尔·康德是一位德国哲学家。",
+            "ja": "イマヌエル・カントはドイツの哲学者でした。",
+            "ar": "كان إيمانويل كانط فيلسوفًا ألمانيًا."
+        },
+        "correct_answer": true
+    },
+    {
+        "category": "literature",
+        "question": {
+            "en": "The novel 'The Hobbit' was written by J.R.R. Tolkien.",
+            "tr": "'Hobbit' romanı J.R.R. Tolkien tarafından yazılmıştır.",
+            "fr": "Le roman 'Le Hobbit' a été écrit par J.R.R. Tolkien.",
+            "es": "La novela 'El Hobbit' fue escrita por J.R.R. Tolkien.",
+            "de": "Der Roman 'Der Hobbit' wurde von J.R.R. Tolkien geschrieben.",
+            "it": "Il romanzo 'Lo Hobbit' è stato scritto da J.R.R. Tolkien.",
+            "hi": "उपन्यास 'द हॉबिट' जे.आर.आर. टोल्किन द्वारा लिखा गया था।",
+            "ru": "Роман «Хоббит» был написан Дж. Р. Р. Толкином.",
+            "zh": "小说《霍比特人》是由J.R.R.托尔金创作的。",
+            "ja": "小説『ホビット』はJ.R.R.トールキンによって書かれました。",
+            "ar": "كتب رواية 'الهوبيت' جي آر آر تولكين."
+        },
+        "correct_answer": true
+    },
+    {
+        "category": "health_fitness",
+        "question": {
+            "en": "The liver is the only internal organ capable of regenerating itself.",
+            "tr": "Karaciğer, kendini yenileyebilen tek iç organdır.",
+            "fr": "Le foie est le seul organe interne capable de se régénérer.",
+            "es": "El hígado es el único órgano interno capaz de regenerarse.",
+            "de": "Die Leber ist das einzige innere Organ, das sich regenerieren kann.",
+            "it": "Il fegato è l'unico organo interno in grado di rigenerarsi.",
+            "hi": "लीवर एकमात्र आंतरिक अंग है जो खुद को पुनर्जीवित करने में सक्षम है।",
+            "ru": "Печень — единственный внутренний орган, способный к регенерации.",
+            "zh": "肝脏是唯一能够自我再生的内部器官。",
+            "ja": "肝臓は自己再生能力を持つ唯一の内臓です。",
+            "ar": "الكبد هو العضو الداخلي الوحيد القادر على تجديد نفسه."
+        },
+        "correct_answer": true
+    },
+    {
+        "category": "economics_finance",
+        "question": {
+            "en": "The currency of the United Kingdom is the Pound Sterling.",
+            "tr": "Birleşik Krallık'ın para birimi İngiliz Sterlinidir.",
+            "fr": "La monnaie du Royaume-Uni est la livre sterling.",
+            "es": "La moneda del Reino Unido es la libra esterlina.",
+            "de": "Die Währung des Vereinigten Königreichs ist das Pfund Sterling.",
+            "it": "La valuta del Regno Unito è la sterlina.",
+            "hi": "यूनाइटेड किंगडम की मुद्रा पाउंड स्टर्लिंग है।",
+            "ru": "Валюта Соединенного Королевства — фунт стерлингов.",
+            "zh": "英国的货币是英镑。",
+            "ja": "英国の通貨はポンドスターリングです。",
+            "ar": "عملة المملكة المتحدة هي الجنيه الإسترليني."
+        },
+        "correct_answer": true
+    },
+    {
+        "category": "architecture",
+        "question": {
+            "en": "The Great Sphinx of Giza is missing its nose.",
+            "tr": "Giza'daki Büyük Sfenks'in burnu eksiktir.",
+            "fr": "Le Grand Sphinx de Gizeh a perdu son nez.",
+            "es": "A la Gran Esfinge de Giza le falta la nariz.",
+            "de": "Der Großen Sphinx von Gizeh fehlt die Nase.",
+            "it": "Alla Grande Sfinge di Giza manca il naso.",
+            "hi": "गीज़ा के महान स्फिंक्स की नाक गायब है।",
+            "ru": "У Большого сфинкса в Гизе отсутствует нос.",
+            "zh": "吉萨大狮身人面像缺少鼻子。",
+            "ja": "ギザの大スフィンクスには鼻がありません。",
+            "ar": "تمثال أبو الهول بالجيزة يفتقد أنفه."
+        },
+        "correct_answer": true
+    },
+    {
+        "category": "video_games",
+        "question": {
+            "en": "Princess Zelda is the main protagonist of 'The Legend of Zelda' games.",
+            "tr": "'The Legend of Zelda' oyunlarının ana kahramanı Prenses Zelda'dır.",
+            "fr": "La princesse Zelda est la protagoniste principale des jeux 'The Legend of Zelda'.",
+            "es": "La princesa Zelda es la protagonista principal de los juegos de 'The Legend of Zelda'.",
+            "de": "Prinzessin Zelda ist die Hauptprotagonistin der 'The Legend of Zelda'-Spiele.",
+            "it": "La principessa Zelda è la protagonista principale dei giochi 'The Legend of Zelda'.",
+            "hi": "'द लीजेंड ऑफ ज़ेल्डा' गेम की मुख्य नायिका राजकुमारी ज़ेल्डा है।",
+            "ru": "Принцесса Зельда — главная героиня игр «The Legend of Zelda».",
+            "zh": "塞尔达公主是《塞尔达传说》游戏的主角。",
+            "ja": "ゼルダ姫は「ゼルダの伝説」ゲームの主人公です。",
+            "ar": "الأميرة زيلدا هي البطل الرئيسي لألعاب 'أسطورة زيلدا'."
+        },
+        "correct_answer": false
+    },
+    {
+        "category": "fun_facts",
+        "question": {
+            "en": "Flamingos turn pink because of their diet.",
+            "tr": "Flamingolar beslenmeleri nedeniyle pembeye döner.",
+            "fr": "Les flamants roses deviennent roses à cause de leur alimentation.",
+            "es": "Los flamencos se vuelven rosas debido a su dieta.",
+            "de": "Flamingos werden aufgrund ihrer Ernährung rosa.",
+            "it": "I fenicotteri diventano rosa a causa della loro dieta.",
+            "hi": "फ्लेमिंगो अपने आहार के कारण गुलाबी हो जाते हैं।",
+            "ru": "Фламинго розовеют из-за своего рациона.",
+            "zh": "火烈鸟变粉红色是因为它们的饮食。",
+            "ja": "フラミンゴは食事のためにピンク色になります。",
+            "ar": "تتحول طيور النحام إلى اللون الوردي بسبب نظامها الغذائي."
+        },
+        "correct_answer": true
+    },
+    {
+        "category": "history",
+        "question": {
+            "en": "The Aztec empire was located in modern-day Mexico.",
+            "tr": "Aztek İmparatorluğu günümüz Meksika'sında bulunuyordu.",
+            "fr": "L'empire aztèque était situé dans le Mexique actuel.",
+            "es": "El imperio azteca estaba ubicado en el actual México.",
+            "de": "Das Aztekenreich befand sich im heutigen Mexiko.",
+            "it": "L'impero azteco si trovava nell'odierno Messico.",
+            "hi": "एज़्टेक साम्राज्य आधुनिक मेक्सिको में स्थित था।",
+            "ru": "Империя ацтеков располагалась на территории современной Мексики.",
+            "zh": "阿兹特克帝国位于现在的墨西哥。",
+            "ja": "アステカ帝国は現在のメキシコに位置していました。",
+            "ar": "كانت إمبراطورية الأزتيك تقع في المكسيك الحديثة."
+        },
+        "correct_answer": true
+    },
+    {
+        "category": "science",
+        "question": {
+            "en": "Water freezes at 0 degrees Celsius.",
+            "tr": "Su 0 santigrat derecede donar.",
+            "fr": "L'eau gèle à 0 degré Celsius.",
+            "es": "El agua se congela a 0 grados Celsius.",
+            "de": "Wasser gefriert bei 0 Grad Celsius.",
+            "it": "L'acqua congela a 0 gradi Celsius.",
+            "hi": "पानी 0 डिग्री सेल्सियस पर जम जाता है।",
+            "ru": "Вода замерзает при 0 градусах по Цельсию.",
+            "zh": "水在0摄氏度结冰。",
+            "ja": "水は摂氏0度で凍ります。",
+            "ar": "يتجمد الماء عند 0 درجة مئوية."
+        },
+        "correct_answer": true
+    },
+    {
+        "category": "history",
+        "question": {
+            "en": "The Declaration of Independence was signed in 1776.",
+            "tr": "Bağımsızlık Bildirgesi 1776 yılında imzalandı.",
+            "fr": "La Déclaration d'indépendance a été signée en 1776.",
+            "es": "La Declaración de Independencia se firmó en 1776.",
+            "de": "Die Unabhängigkeitserklärung wurde 1776 unterzeichnet.",
+            "it": "La Dichiarazione di Indipendenza fu firmata nel 1776.",
+            "hi": "स्वतंत्रता की घोषणा पर 1776 में हस्ताक्षर किए गए थे।",
+            "ru": "Декларация независимости была подписана в 1776 году.",
+            "zh": "《独立宣言》于1776年签署。",
+            "ja": "独立宣言は1776年に署名されました。",
+            "ar": "تم التوقيع على إعلان الاستقلال عام 1776."
+        },
+        "correct_answer": true
+    },
+    {
+        "category": "science",
+        "question": {
+            "en": "Light takes approximately 8 minutes to reach Earth from the Sun.",
+            "tr": "Işığın Güneş'ten Dünya'ya ulaşması yaklaşık 8 dakika sürer.",
+            "fr": "La lumière met environ 8 minutes pour atteindre la Terre depuis le Soleil.",
+            "es": "La luz tarda aproximadamente 8 minutos en llegar a la Tierra desde el Sol.",
+            "de": "Licht braucht etwa 8 Minuten, um von der Sonne zur Erde zu gelangen.",
+            "it": "La luce impiega circa 8 minuti per raggiungere la Terra dal Sole.",
+            "hi": "सूर्य से पृथ्वी तक पहुँचने में प्रकाश को लगभग 8 मिनट लगते हैं।",
+            "ru": "Свету требуется примерно 8 минут, чтобы добраться от Солнца до Земли.",
+            "zh": "光从太阳到达地球大约需要8分钟。",
+            "ja": "光が太陽から地球に到達するのに約8分かかります。",
+            "ar": "يستغرق الضوء حوالي 8 دقائق للوصول إلى الأرض من الشمس."
+        },
+        "correct_answer": true
+    },
+    {
+        "category": "art",
+        "question": {
+            "en": "The sculpture 'David' was created by Michelangelo.",
+            "tr": "'Davut' heykeli Michelangelo tarafından yapılmıştır.",
+            "fr": "La sculpture 'David' a été créée par Michel-Ange.",
+            "es": "La escultura 'David' fue creada por Miguel Ángel.",
+            "de": "Die Skulptur 'David' wurde von Michelangelo geschaffen.",
+            "it": "La scultura 'David' è stata creata da Michelangelo.",
+            "hi": "मूर्तिकला 'डेविड' माइकल एंजेलो द्वारा बनाई गई थी।",
+            "ru": "Скульптура «Давид» была создана Микеланджело.",
+            "zh": "雕塑《大卫》是由米开朗基罗创作的。",
+            "ja": "彫刻『ダビデ像』はミケランジェロによって制作されました。",
+            "ar": "تم إنشاء تمثال 'ديفيد' بواسطة مايكل أنجلو."
+        },
+        "correct_answer": true
+    },
+    {
+        "category": "sports",
+        "question": {
+            "en": "In baseball, a grand slam is worth 4 runs.",
+            "tr": "Beyzbolda, bir grand slam (dolu kaleyle yapılan sayı vuruşu) 4 sayı değerindedir.",
+            "fr": "Au baseball, un grand chelem vaut 4 points.",
+            "es": "En béisbol, un grand slam vale 4 carreras.",
+            "de": "Im Baseball ist ein Grand Slam 4 Runs wert.",
+            "it": "Nel baseball, un grande slam vale 4 punti.",
+            "hi": "बेसबॉल में, एक ग्रैंड स्लैम 4 रन का होता है।",
+            "ru": "В бейсболе грэнд-слэм приносит 4 очка.",
+            "zh": "在棒球中，满贯本垒打得4分。",
+            "ja": "野球では、満塁ホームランは4点です。",
+            "ar": "في البيسبول، تساوي الضربة الكبرى (Grand Slam) 4 أشواط."
+        },
+        "correct_answer": true
+    },
+    {
+        "category": "technology",
+        "question": {
+            "en": "The '@' symbol is used in email addresses.",
+            "tr": "'@' sembolü e-posta adreslerinde kullanılır.",
+            "fr": "Le symbole '@' est utilisé dans les adresses e-mail.",
+            "es": "El símbolo '@' se utiliza en las direcciones de correo electrónico.",
+            "de": "Das '@'-Symbol wird in E-Mail-Adressen verwendet.",
+            "it": "Il simbolo '@' viene utilizzato negli indirizzi e-mail.",
+            "hi": "ईमेल पतों में '@' प्रतीक का उपयोग किया जाता है।",
+            "ru": "Символ «@» используется в адресах электронной почты.",
+            "zh": "“@”符号用于电子邮件地址。",
+            "ja": "「@」記号はメールアドレスで使用されます。",
+            "ar": "يستخدم الرمز '@' في عناوين البريد الإلكتروني."
+        },
+        "correct_answer": true
+    },
+    {
+        "category": "cinema_tv",
+        "question": {
+            "en": "The character James Bond was created by Ian Fleming.",
+            "tr": "James Bond karakteri Ian Fleming tarafından yaratılmıştır.",
+            "fr": "Le personnage de James Bond a été créé par Ian Fleming.",
+            "es": "El personaje de James Bond fue creado por Ian Fleming.",
+            "de": "Die Figur James Bond wurde von Ian Fleming geschaffen.",
+            "it": "Il personaggio di James Bond è stato creato da Ian Fleming.",
+            "hi": "जेम्स बॉन्ड चरित्र इयान फ्लेमिंग द्वारा बनाया गया था।",
+            "ru": "Персонаж Джеймс Бонд был создан Яном Флемингом.",
+            "zh": "詹姆斯·邦德这个角色是由伊恩·弗莱明创造的。",
+            "ja": "ジェームズ・ボンドというキャラクターはイアン・フレミングによって作られました。",
+            "ar": "تم إنشاء شخصية جيمس بوند بواسطة إيان فليمنج."
+        },
+        "correct_answer": true
+    },
+    {
+        "category": "music",
+        "question": {
+            "en": "Bob Dylan won the Nobel Prize in Literature.",
+            "tr": "Bob Dylan Nobel Edebiyat Ödülü'nü kazandı.",
+            "fr": "Bob Dylan a remporté le prix Nobel de littérature.",
+            "es": "Bob Dylan ganó el Premio Nobel de Literatura.",
+            "de": "Bob Dylan gewann den Nobelpreis für Literatur.",
+            "it": "Bob Dylan ha vinto il Premio Nobel per la Letteratura.",
+            "hi": "बॉब डायलन ने साहित्य का नोबेल पुरस्कार जीता।",
+            "ru": "Боб Дилан получил Нобелевскую премию по литературе.",
+            "zh": "鲍勃·迪伦获得了诺贝尔文学奖。",
+            "ja": "ボブ・ディランはノーベル文学賞を受賞しました。",
+            "ar": "فاز بوب ديلان بجائزة نوبل في الأدب."
+        },
+        "correct_answer": true
+    },
+    {
+        "category": "nature_animals",
+        "question": {
+            "en": "A group of jellyfish is called a smack.",
+            "tr": "Denizanası grubuna İngilizcede 'smack' denir.",
+            "fr": "Un groupe de méduses est appelé un 'smack'.",
+            "es": "A un grupo de medusas se le llama 'smack'.",
+            "de": "Eine Gruppe von Quallen wird als 'Smack' bezeichnet.",
+            "it": "Un gruppo di meduse è chiamato 'smack'.",
+            "hi": "जेलीफ़िश के समूह को 'स्मैक' (smack) कहा जाता है।",
+            "ru": "Группу медуз называют «smack».",
+            "zh": "一群水母被称为“smack”。",
+            "ja": "クラゲの群れは「スマック（smack）」と呼ばれます。",
+            "ar": "تُسمى مجموعة قناديل البحر بـ 'smack'."
+        },
+        "correct_answer": true
+    },
+    {
+        "category": "geography_travel",
+        "question": {
+            "en": "Antarctica is the driest continent on Earth.",
+            "tr": "Antarktika, Dünya üzerindeki en kurak kıtadır.",
+            "fr": "L'Antarctique est le continent le plus sec de la Terre.",
+            "es": "La Antártida es el continente más seco de la Tierra.",
+            "de": "Die Antarktis ist der trockenste Kontinent der Erde.",
+            "it": "L'Antartide è il continente più secco della Terra.",
+            "hi": "अंटार्कटिका पृथ्वी पर सबसे शुष्क महाद्वीप है।",
+            "ru": "Антарктида — самый сухой континент на Земле.",
+            "zh": "南极洲是地球上最干燥的大陆。",
+            "ja": "南極大陸は地球上で最も乾燥した大陸です。",
+            "ar": "القارة القطبية الجنوبية هي القارة الأكثر جفافاً على وجه الأرض."
+        },
+        "correct_answer": true
+    },
+    {
+        "category": "mythology",
+        "question": {
+            "en": "Athena was born from the head of Zeus.",
+            "tr": "Athena, Zeus'un başından doğmuştur.",
+            "fr": "Athéna est née de la tête de Zeus.",
+            "es": "Atenea nació de la cabeza de Zeus.",
+            "de": "Athena wurde aus dem Kopf des Zeus geboren.",
+            "it": "Atena nacque dalla testa di Zeus.",
+            "hi": "एथेना का जन्म ज़ीउस के सिर से हुआ था।",
+            "ru": "Афина родилась из головы Зевса.",
+            "zh": "雅典娜是从宙斯的头里诞生的。",
+            "ja": "アテナはゼウスの頭から生まれました。",
+            "ar": "ولدت أثينا من رأس زيوس."
+        },
+        "correct_answer": true
+    },
+    {
+        "category": "philosophy",
+        "question": {
+            "en": "John Locke is known as the 'Father of Liberalism'.",
+            "tr": "John Locke, 'Liberalizmin Babası' olarak bilinir.",
+            "fr": "John Locke est connu comme le 'Père du libéralisme'.",
+            "es": "John Locke es conocido como el 'Padre del Liberalismo'.",
+            "de": "John Locke gilt als 'Vater des Liberalismus'.",
+            "it": "John Locke è conosciuto come il 'Padre del Liberalismo'.",
+            "hi": "जॉन लोके को 'उदारवाद का जनक' माना जाता है।",
+            "ru": "Джон Локк известен как «отец либерализма».",
+            "zh": "约翰·洛克被称为“自由主义之父”。",
+            "ja": "ジョン・ロックは「自由主義の父」として知られています。",
+            "ar": "يُعرف جون لوك باسم 'أبو الليبرالية'."
+        },
+        "correct_answer": true
+    },
+    {
+        "category": "literature",
+        "question": {
+            "en": "'Alice's Adventures in Wonderland' was written by Lewis Carroll.",
+            "tr": "'Alice Harikalar Diyarında' Lewis Carroll tarafından yazılmıştır.",
+            "fr": "'Les Aventures d'Alice au pays des merveilles' a été écrit par Lewis Carroll.",
+            "es": "'Las aventuras de Alicia en el país de las maravillas' fue escrito por Lewis Carroll.",
+            "de": "'Alice im Wunderland' wurde von Lewis Carroll geschrieben.",
+            "it": "'Le avventure di Alice nel Paese delle Meraviglie' è stato scritto da Lewis Carroll.",
+            "hi": "'एलिस इन वंडरलैंड' लुईस कैरोल द्वारा लिखी गई थी।",
+            "ru": "«Приключения Алисы в Стране чудес» были написаны Льюисом Кэрроллом.",
+            "zh": "《爱丽丝梦游仙境》是由路易斯·卡罗尔写的。",
+            "ja": "『不思議の国のアリス』はルイス・キャロルによって書かれました。",
+            "ar": "كتب لويس كارول 'مغامرات أليس في بلاد العجائب'."
+        },
+        "correct_answer": true
+    },
+    {
+        "category": "space_astronomy",
+        "question": {
+            "en": "Mercury is the hottest planet in the solar system.",
+            "tr": "Merkür güneş sistemindeki en sıcak gezegendir.",
+            "fr": "Mercure est la planète la plus chaude du système solaire.",
+            "es": "Mercurio es el planeta más caliente del sistema solar.",
+            "de": "Merkur ist der heißeste Planet im Sonnensystem.",
+            "it": "Mercurio è il pianeta più caldo del sistema solare.",
+            "hi": "बुध सौरमंडल का सबसे गर्म ग्रह है।",
+            "ru": "Меркурий — самая горячая планета в Солнечной системе.",
+            "zh": "水星是太阳系中最热的行星。",
+            "ja": "水星は太陽系で最も暑い惑星です。",
+            "ar": "عطارد هو الكوكب الأكثر سخونة في النظام الشمسي."
+        },
+        "correct_answer": false
+    },
+    {
+        "category": "economics_finance",
+        "question": {
+            "en": "Bitcoin was created by Satoshi Nakamoto.",
+            "tr": "Bitcoin, Satoshi Nakamoto tarafından yaratılmıştır.",
+            "fr": "Le Bitcoin a été créé par Satoshi Nakamoto.",
+            "es": "Bitcoin fue creado por Satoshi Nakamoto.",
+            "de": "Bitcoin wurde von Satoshi Nakamoto geschaffen.",
+            "it": "Bitcoin è stato creato da Satoshi Nakamoto.",
+            "hi": "बिटकॉइन सातोशी नाकामोतो द्वारा बनाया गया था।",
+            "ru": "Биткойн был создан Сатоши Накамото.",
+            "zh": "比特币是由中本聪创造的。",
+            "ja": "ビットコインはサトシ・ナカモトによって作られました。",
+            "ar": "تم إنشاء البيتكوين بواسطة ساتوشي ناكاموتو."
+        },
+        "correct_answer": true
+    },
+    {
+        "category": "architecture",
+        "question": {
+            "en": "St. Basil's Cathedral is located in Moscow.",
+            "tr": "Aziz Vasil Katedrali Moskova'da bulunmaktadır.",
+            "fr": "La cathédrale Saint-Basile est située à Moscou.",
+            "es": "La Catedral de San Basilio se encuentra en Moscú.",
+            "de": "Die Basilius-Kathedrale befindet sich in Moskau.",
+            "it": "La Cattedrale di San Basilio si trova a Mosca.",
+            "hi": "सेंट बेसिल कैथेड्रल मास्को में स्थित है।",
+            "ru": "Храм Василия Блаженного находится в Москве.",
+            "zh": "圣瓦西里大教堂位于莫斯科。",
+            "ja": "聖ワシリイ大聖堂はモスクワにあります。",
+            "ar": "تقع كاتدرائية القديس باسيل في موسكو."
+        },
+        "correct_answer": true
+    },
+    {
+        "category": "video_games",
+        "question": {
+            "en": "Master Chief is the main character of the 'Halo' video games.",
+            "tr": "Master Chief, 'Halo' video oyunlarının ana karakteridir.",
+            "fr": "Master Chief est le personnage principal des jeux vidéo 'Halo'.",
+            "es": "El Jefe Maestro es el personaje principal de los videojuegos 'Halo'.",
+            "de": "Master Chief ist die Hauptfigur der 'Halo'-Videospiele.",
+            "it": "Master Chief è il personaggio principale dei videogiochi 'Halo'.",
+            "hi": "मास्टर चीफ 'हेलो' वीडियो गेम का मुख्य पात्र है।",
+            "ru": "Мастер Чиф — главный герой видеоигр «Halo».",
+            "zh": "士官长是《光环》系列电子游戏的主角。",
+            "ja": "マスターチーフは「ヘイロー」ビデオゲームの主人公です。",
+            "ar": "الماستر شيف هو الشخصية الرئيسية في ألعاب الفيديو 'هيلو'."
+        },
+        "correct_answer": true
+    },
+    {
+        "category": "general_culture",
+        "question": {
+            "en": "The Japanese tea ceremony is a traditional cultural activity.",
+            "tr": "Japon çay seremonisi geleneksel bir kültürel aktivitedir.",
+            "fr": "La cérémonie du thé japonaise est une activité culturelle traditionnelle.",
+            "es": "La ceremonia del té japonesa es una actividad cultural tradicional.",
+            "de": "Die japanische Teezeremonie ist eine traditionelle kulturelle Aktivität.",
+            "it": "La cerimonia del tè giapponese è un'attività culturale tradizionale.",
+            "hi": "जापानी चाय समारोह एक पारंपरिक सांस्कृतिक गतिविधि है।",
+            "ru": "Японская чайная церемония — это традиционное культурное мероприятие.",
+            "zh": "日本茶道是一项传统的文化活动。",
+            "ja": "日本の茶道は伝統的な文化活動です。",
+            "ar": "حفل الشاي الياباني هو نشاط ثقافي تقليدي."
+        },
+        "correct_answer": true
+    },
+    {
+        "category": "fun_facts",
+        "question": {
+            "en": "Cows have best friends.",
+            "tr": "İneklerin en iyi arkadaşları vardır (ve ayrıldıklarında strese girerler).",
+            "fr": "Les vaches ont des meilleurs amis.",
+            "es": "Las vacas tienen mejores amigos.",
+            "de": "Kühe haben beste Freunde.",
+            "it": "Le mucche hanno migliori amici.",
+            "hi": "गायों के सबसे अच्छे दोस्त होते हैं।",
+            "ru": "У коров есть лучшие друзья.",
+            "zh": "奶牛有最好的朋友。",
+            "ja": "牛には親友がいます。",
+            "ar": "للأبقار أصدقاء مفضلون."
+        },
+        "correct_answer": true
+    },
+    {
+        "category": "history",
+        "question": {
+            "en": "The United Nations was established in 1945.",
+            "tr": "Birleşmiş Milletler 1945 yılında kurulmuştur.",
+            "fr": "L'Organisation des Nations Unies a été créée en 1945.",
+            "es": "Las Naciones Unidas se establecieron en 1945.",
+            "de": "Die Vereinten Nationen wurden 1945 gegründet.",
+            "it": "Le Nazioni Unite sono state fondate nel 1945.",
+            "hi": "संयुक्त राष्ट्र की स्थापना 1945 में हुई थी।",
+            "ru": "Организация Объединенных Наций была создана в 1945 году.",
+            "zh": "联合国成立于1945年。",
+            "ja": "国際連合は1945年に設立されました。",
+            "ar": "تأسست الأمم المتحدة عام 1945."
+        },
+        "correct_answer": true
+    },
+    {
+        "category": "science",
+        "question": {
+            "en": "The chemical symbol for Gold is 'Au'.",
+            "tr": "Altının kimyasal sembolü 'Au'dur.",
+            "fr": "Le symbole chimique de l'or est 'Au'.",
+            "es": "El símbolo químico del oro es 'Au'.",
+            "de": "Das chemische Symbol für Gold ist 'Au'.",
+            "it": "Il simbolo chimico dell'oro è 'Au'.",
+            "hi": "सोने का रासायनिक प्रतीक 'Au' है।",
+            "ru": "Химический символ золота — «Au».",
+            "zh": "金的化学符号是“Au”。",
+            "ja": "金の化学記号は「Au」です。",
+            "ar": "الرمز الكيميائي للذهب هو 'Au'."
+        },
+        "correct_answer": true
+    },
+    {
+        "category": "art",
+        "question": {
+            "en": "Rembrandt painted 'The Night Watch'.",
+            "tr": "'Gece Devriyesi' tablosunu Rembrandt yapmıştır.",
+            "fr": "Rembrandt a peint 'La Ronde de nuit'.",
+            "es": "Rembrandt pintó 'La ronda de noche'.",
+            "de": "Rembrandt malte 'Die Nachtwache'.",
+            "it": "Rembrandt ha dipinto 'Ronda di notte'.",
+            "hi": "रेम्ब्रांट ने 'द नाइट वॉच' को पेंट किया था।",
+            "ru": "Рембрандт написал картину «Ночной дозор».",
+            "zh": "伦勃朗创作了《夜巡》。",
+            "ja": "レンブラントは『夜警』を描きました。",
+            "ar": "رسم رامبرانت 'دورية الليل'."
+        },
+        "correct_answer": true
+    },
+    {
+        "category": "sports",
+        "question": {
+            "en": "In tennis, the score 40-40 is called 'Deuce'.",
+            "tr": "Teniste 40-40'lık skora 'Deuce' (Berabere) denir.",
+            "fr": "Au tennis, le score de 40-40 est appelé 'Deuce' (Égalité).",
+            "es": "En tenis, la puntuación de 40-40 se llama 'Deuce' (Iguales).",
+            "de": "Im Tennis wird der Spielstand 40-40 als 'Deuce' bezeichnet.",
+            "it": "Nel tennis, il punteggio di 40-40 è chiamato 'Deuce' (Parità).",
+            "hi": "टेनिस में, 40-40 के स्कोर को 'ड्यूस' कहा जाता है।",
+            "ru": "В теннисе счет 40:40 называется «ровно» (Deuce).",
+            "zh": "在网球中，40-40的比分被称为“Deuce”（平分）。",
+            "ja": "テニスでは、40対40のスコアは「デュース」と呼ばれます。",
+            "ar": "في التنس، تسمى النتيجة 40-40 'دوس' (تعادل)."
+        },
+        "correct_answer": true
+    },
+    {
+        "category": "technology",
+        "question": {
+            "en": "The 'S' in HTTPS stands for 'Secure'.",
+            "tr": "HTTPS'deki 'S', 'Secure' (Güvenli) anlamına gelir.",
+            "fr": "Le 'S' de HTTPS signifie 'Secure' (Sécurisé).",
+            "es": "La 'S' en HTTPS significa 'Secure' (Seguro).",
+            "de": "Das 'S' in HTTPS steht für 'Secure' (Sicher).",
+            "it": "La 'S' in HTTPS sta per 'Secure' (Sicuro).",
+            "hi": "HTTPS में 'S' का अर्थ 'Secure' (सुरक्षित) है।",
+            "ru": "Буква «S» в HTTPS означает «Secure» (безопасный).",
+            "zh": "HTTPS中的“S”代表“安全”（Secure）。",
+            "ja": "HTTPSの「S」は「Secure（安全）」の略です。",
+            "ar": "حرف 'S' في HTTPS يرمز إلى 'آمن' (Secure)."
+        },
+        "correct_answer": true
+    },
+    {
+        "category": "cinema_tv",
+        "question": {
+            "en": "The TV series 'Breaking Bad' is set in New Mexico.",
+            "tr": "'Breaking Bad' dizisi New Mexico'da geçmektedir.",
+            "fr": "La série télévisée 'Breaking Bad' se déroule au Nouveau-Mexique.",
+            "es": "La serie de televisión 'Breaking Bad' está ambientada en Nuevo México.",
+            "de": "Die Fernsehserie 'Breaking Bad' spielt in New Mexico.",
+            "it": "La serie TV 'Breaking Bad' è ambientata nel New Mexico.",
+            "hi": "टीवी श्रृंखला 'ब्रेकिंग बैड' न्यू मैक्सिको में सेट है।",
+            "ru": "Действие сериала «Во все тяжкие» происходит в Нью-Мексико.",
+            "zh": "电视剧《绝命毒师》的故事背景设定在新墨西哥州。",
+            "ja": "テレビドラマ『ブレイキング・バッド』はニューメキシコ州が舞台です。",
+            "ar": "تدور أحداث مسلسل 'اختلال ضال' (Breaking Bad) في نيو مكسيكو."
+        },
+        "correct_answer": true
+    },
+    {
+        "category": "music",
+        "question": {
+            "en": "Pink Floyd released the album 'The Wall'.",
+            "tr": "Pink Floyd, 'The Wall' albümünü yayınlamıştır.",
+            "fr": "Pink Floyd a sorti l'album 'The Wall'.",
+            "es": "Pink Floyd lanzó el álbum 'The Wall'.",
+            "de": "Pink Floyd veröffentlichte das Album 'The Wall'.",
+            "it": "I Pink Floyd hanno pubblicato l'album 'The Wall'.",
+            "hi": "पिंक फ़्लॉइड ने 'द वॉल' एल्बम जारी किया।",
+            "ru": "Pink Floyd выпустили альбом «The Wall».",
+            "zh": "平克·弗洛伊德发行了专辑《迷墙》。",
+            "ja": "ピンク・フロイドはアルバム『ザ・ウォール』をリリースしました。",
+            "ar": "أصدرت فرقة بينك فلويد ألبوم 'الجدار' (The Wall)."
+        },
+        "correct_answer": true
+    },
+    {
+        "category": "nature_animals",
+        "question": {
+            "en": "A female deer is called a doe.",
+            "tr": "Dişi geyiğe İngilizcede 'doe' denir.",
+            "fr": "Une biche femelle est appelée une 'doe' en anglais.",
+            "es": "A una cierva se le llama 'doe' en inglés.",
+            "de": "Ein weibliches Reh wird im Englischen als 'Doe' bezeichnet.",
+            "it": "Una femmina di cervo è chiamata 'doe' in inglese.",
+            "hi": "मादा हिरण को 'डो' (doe) कहा जाता है।",
+            "ru": "Самку оленя называют «doe».",
+            "zh": "母鹿被称为“doe”。",
+            "ja": "雌の鹿は英語で「ドウ（doe）」と呼ばれます。",
+            "ar": "تُسمى أنثى الغزال بـ 'doe'."
+        },
+        "correct_answer": true
+    },
+    {
+        "category": "geography_travel",
+        "question": {
+            "en": "Mount Kilimanjaro is located in Tanzania.",
+            "tr": "Kilimanjaro Dağı Tanzanya'da bulunur.",
+            "fr": "Le mont Kilimandjaro est situé en Tanzanie.",
+            "es": "El monte Kilimanjaro se encuentra en Tanzania.",
+            "de": "Der Kilimandscharo befindet sich in Tansania.",
+            "it": "Il monte Kilimangiaro si trova in Tanzania.",
+            "hi": "माउंट किलिमंजारो तंजानिया में स्थित है।",
+            "ru": "Гора Килиманджаро находится в Танзании.",
+            "zh": "乞力马扎罗山位于坦桑尼亚。",
+            "ja": "キリマンジャロ山はタンザニアにあります。",
+            "ar": "يقع جبل كليمنجارو في تنزانيا."
+        },
+        "correct_answer": true
+    },
+    {
+        "category": "mythology",
+        "question": {
+            "en": "Loki is the Norse god of mischief.",
+            "tr": "Loki, İskandinav fesatlık (kötülük/hile) tanrısıdır.",
+            "fr": "Loki est le dieu nordique de la malice.",
+            "es": "Loki es el dios nórdico de las travesuras.",
+            "de": "Loki ist der nordische Gott des Schabernacks.",
+            "it": "Loki è il dio norreno dell'inganno.",
+            "hi": "लोकी नॉर्स शरारत के देवता हैं।",
+            "ru": "Локи — скандинавский бог хитрости и обмана.",
+            "zh": "洛基是北欧神话中的恶作剧之神。",
+            "ja": "ロキは北欧神話のいたずらの神です。",
+            "ar": "لوكي هو إله الأذى في الميثولوجيا الإسكندنافية."
+        },
+        "correct_answer": true
+    },
+    {
+        "category": "philosophy",
+        "question": {
+            "en": "Jean-Paul Sartre was an existentialist philosopher.",
+            "tr": "Jean-Paul Sartre varoluşçu bir filozoftu.",
+            "fr": "Jean-Paul Sartre était un philosophe existentialiste.",
+            "es": "Jean-Paul Sartre fue un filósofo existencialista.",
+            "de": "Jean-Paul Sartre war ein existentialistischer Philosoph.",
+            "it": "Jean-Paul Sartre era un filosofo esistenzialista.",
+            "hi": "जीन-पॉल सार्त्र एक अस्तित्ववादी दार्शनिक थे।",
+            "ru": "Жан-Поль Сартр был философом-экзистенциалистом.",
+            "zh": "让-保罗·萨特是一位存在主义哲学家。",
+            "ja": "ジャン＝ポール・サルトルは実存主義の哲学者でした。",
+            "ar": "كان جان بول سارتر فيلسوفًا وجوديًا."
+        },
+        "correct_answer": true
+    },
+    {
+        "category": "literature",
+        "question": {
+            "en": "Harper Lee wrote the novel 'To Kill a Mockingbird'.",
+            "tr": "'Bülbülü Öldürmek' romanını Harper Lee yazmıştır.",
+            "fr": "Harper Lee a écrit le roman 'Ne tirez pas sur l'oiseau moqueur'.",
+            "es": "Harper Lee escribió la novela 'Matar a un ruiseñor'.",
+            "de": "Harper Lee schrieb den Roman 'Wer die Nachtigall stört'.",
+            "it": "Harper Lee ha scritto il romanzo 'Il buio oltre la siepe'.",
+            "hi": "हार्पर ली ने उपन्यास 'टू किल अ मॉकिंगबर्ड' लिखा था।",
+            "ru": "Харпер Ли написала роман «Убить пересмешника».",
+            "zh": "哈珀·李写了小说《杀死一只知更鸟》。",
+            "ja": "ハーパー・リーは小説『アラバマ物語』を書きました。",
+            "ar": "كتبت هاربر لي رواية 'أن تقتل طائراً بريئاً'."
+        },
+        "correct_answer": true
+    },
+    {
+        "category": "space_astronomy",
+        "question": {
+            "en": "Ganymede is the largest moon in the solar system.",
+            "tr": "Ganymede, güneş sistemindeki en büyük uydudur.",
+            "fr": "Ganymède est la plus grande lune du système solaire.",
+            "es": "Ganímedes es la luna más grande del sistema solar.",
+            "de": "Ganymed ist der größte Mond im Sonnensystem.",
+            "it": "Ganimede è la luna più grande del sistema solare.",
+            "hi": "गेनीमेड सौरमंडल का सबसे बड़ा चंद्रमा है।",
+            "ru": "Ганимед — самая большая луна в Солнечной системе.",
+            "zh": "木卫三是太阳系中最大的卫星。",
+            "ja": "ガニメデは太陽系で最も大きな衛星です。",
+            "ar": "جانيميد هو أكبر قمر في النظام الشمسي."
+        },
+        "correct_answer": true
+    },
+    {
+        "category": "health_fitness",
+        "question": {
+            "en": "The stapes (in the ear) is the smallest bone in the human body.",
+            "tr": "Üzengi kemiği (kulakta), insan vücudundaki en küçük kemiktir.",
+            "fr": "L'étrier (dans l'oreille) est le plus petit os du corps humain.",
+            "es": "El estribo (en el oído) es el hueso más pequeño del cuerpo humano.",
+            "de": "Der Steigbügel (im Ohr) ist der kleinste Knochen im menschlichen Körper.",
+            "it": "La staffa (nell'orecchio) è l'osso più piccolo del corpo umano.",
+            "hi": "स्टेप्स (कान में) मानव शरीर की सबसे छोटी हड्डी है।",
+            "ru": "Стремечко (в ухе) — самая маленькая кость в теле человека.",
+            "zh": "镫骨（在耳朵里）是人体最小的骨头。",
+            "ja": "アブミ骨（耳の中にある）は人体で最も小さい骨です。",
+            "ar": "عظم الركاب (في الأذن) هو أصغر عظم في جسم الإنسان."
+        },
+        "correct_answer": true
+    },
+    {
+        "category": "economics_finance",
+        "question": {
+            "en": "The Euro is the official currency of Germany.",
+            "tr": "Euro, Almanya'nın resmi para birimidir.",
+            "fr": "L'euro est la monnaie officielle de l'Allemagne.",
+            "es": "El euro es la moneda oficial de Alemania.",
+            "de": "Der Euro ist die offizielle Währung Deutschlands.",
+            "it": "L'Euro è la valuta ufficiale della Germania.",
+            "hi": "यूरो जर्मनी की आधिकारिक मुद्रा है।",
+            "ru": "Евро — официальная валюта Германии.",
+            "zh": "欧元是德国的官方货币。",
+            "ja": "ユーロはドイツの公式通貨です。",
+            "ar": "اليورو هو العملة الرسمية لألمانيا."
+        },
+        "correct_answer": true
+    },
+    {
+        "category": "architecture",
+        "question": {
+            "en": "The Golden Gate Bridge is located in San Francisco.",
+            "tr": "Golden Gate Köprüsü San Francisco'da bulunur.",
+            "fr": "Le Golden Gate Bridge est situé à San Francisco.",
+            "es": "El puente Golden Gate se encuentra en San Francisco.",
+            "de": "Die Golden Gate Bridge befindet sich in San Francisco.",
+            "it": "Il Golden Gate Bridge si trova a San Francisco.",
+            "hi": "गोल्डन गेट ब्रिज सैन फ्रांसिस्को में स्थित है।",
+            "ru": "Мост Золотые Ворота находится в Сан-Франциско.",
+            "zh": "金门大桥位于旧金山。",
+            "ja": "ゴールデンゲートブリッジはサンフランシスコにあります。",
+            "ar": "يقع جسر البوابة الذهبية في سان فرانسيسكو."
+        },
+        "correct_answer": true
+    },
+    {
+        "category": "video_games",
+        "question": {
+            "en": "Samus Aran is the protagonist of the 'Metroid' video games.",
+            "tr": "Samus Aran, 'Metroid' video oyunlarının kahramanıdır.",
+            "fr": "Samus Aran est la protagoniste des jeux vidéo 'Metroid'.",
+            "es": "Samus Aran es la protagonista de los videojuegos 'Metroid'.",
+            "de": "Samus Aran ist die Protagonistin der 'Metroid'-Videospiele.",
+            "it": "Samus Aran è la protagonista dei videogiochi 'Metroid'.",
+            "hi": "सैमसन अरन 'मेट्रॉइड' वीडियो गेम की नायिका है।",
+            "ru": "Самус Аран — главная героиня видеоигр серии Metroid.",
+            "zh": "萨姆斯·阿兰是《银河战士》系列电子游戏的主角。",
+            "ja": "サムス・アランは「メトロイド」シリーズの主人公です。",
+            "ar": "ساموس آران هي بطلة ألعاب الفيديو 'ميترويد'."
+        },
+        "correct_answer": true
+    },
+    {
+        "category": "general_culture",
+        "question": {
+            "en": "The croissant originated in Austria.",
+            "tr": "Kruvasan Avusturya'da ortaya çıkmıştır.",
+            "fr": "Le croissant est originaire d'Autriche.",
+            "es": "El croissant se originó en Austria.",
+            "de": "Das Croissant stammt ursprünglich aus Österreich.",
+            "it": "Il cornetto ha avuto origine in Austria.",
+            "hi": "क्रोइसैन की उत्पत्ति ऑस्ट्रिया में हुई थी।",
+            "ru": "Круассан появился в Австрии.",
+            "zh": "羊角面包起源于奥地利。",
+            "ja": "クロワッサンはオーストリア発祥です。",
+            "ar": "نشأ الكرواسون في النمسا."
+        },
+        "correct_answer": true
+    },
+    {
+        "category": "fun_facts",
+        "question": {
+            "en": "Strawberries are botanically considered berries.",
+            "tr": "Çilekler botanik olarak üzümsü meyve (berry) kabul edilir.",
+            "fr": "Les fraises sont botaniquement considérées comme des baies.",
+            "es": "Las fresas se consideran botánicamente bayas.",
+            "de": "Erdbeeren gelten botanisch als Beeren.",
+            "it": "Le fragole sono botanicamente considerate bacche.",
+            "hi": "स्ट्रॉबेरी को वानस्पतिक रूप से बेरी माना जाता है।",
+            "ru": "Клубника ботанически считается ягодой.",
+            "zh": "草莓在植物学上被认为是浆果。",
+            "ja": "イチゴは植物学的にはベリー（液果）とみなされます。",
+            "ar": "تعتبر الفراولة نباتيًا من التوت."
+        },
+        "correct_answer": false
+    },
+    {
+        "category": "geography_travel",
+        "question": {
+            "en": "The Grand Canyon is located in the state of Nevada.",
+            "tr": "Büyük Kanyon Nevada eyaletinde bulunur.",
+            "fr": "Le Grand Canyon est situé dans l'État du Nevada.",
+            "es": "El Gran Cañón se encuentra en el estado de Nevada.",
+            "de": "Der Grand Canyon befindet sich im Bundesstaat Nevada.",
+            "it": "Il Grand Canyon si trova nello stato del Nevada.",
+            "hi": "ग्रांड कैनियन नेवादा राज्य में स्थित है।",
+            "ru": "Гранд-Каньон находится в штате Невада.",
+            "zh": "大峡谷位于内华达州。",
+            "ja": "グランドキャニオンはネバダ州にあります。",
+            "ar": "يقع جراند كانيون في ولاية نيفادا."
+        },
+        "correct_answer": false
     }
 ]
