@@ -245,8 +245,14 @@ class _QuizPageState extends State<QuizPage> with TickerProviderStateMixin {
     final messenger = ScaffoldMessenger.of(context);
     final userProvider = Provider.of<UserProvider>(context, listen: false);
     final localeProvider = Provider.of<LocaleProvider>(context, listen: false);
-    // Ensure we have the latest profile so we can use user's language preference
-    await userProvider.loadProfile(widget.idToken);
+    // Only refresh profile from server for initial/preview loads.
+    // Preserve any local optimistic remainingEnergy when merging so the
+    // UI never increases energy unexpectedly (for example after session end).
+    if (isInitialLoad || isPreview) {
+      final preserve = userProvider.profile?.remainingEnergy != null;
+      await userProvider.loadProfile(widget.idToken,
+          preserveRemainingEnergy: preserve);
+    }
     setState(() {
       _isLoading = true;
     });
@@ -315,8 +321,6 @@ class _QuizPageState extends State<QuizPage> with TickerProviderStateMixin {
   void _startQuizSession() {
     _sessionScore = 0;
     final userProv = Provider.of<UserProvider>(context, listen: false);
-    // optimistic UI update: consume 1 energy locally
-    userProv.consumeEnergyOptimistic();
     _wrongAnswers = 0;
     _fetchQuizData(isInitialLoad: false, isPreview: false).catchError((e) {
       // sync profile from server to correct optimistic change on error
@@ -363,7 +367,12 @@ class _QuizPageState extends State<QuizPage> with TickerProviderStateMixin {
 
         // update user profile/score
         userProvider.updateScore(newScore);
-        await userProvider.loadProfile(widget.idToken);
+        // Merge server profile but preserve any recent optimistic energy
+        // decrement so the slider isn't overwritten immediately after start.
+        try {
+          await userProvider.loadProfile(widget.idToken,
+              preserveRemainingEnergy: true);
+        } catch (_) {}
 
         // Notify analysis provider to refresh immediately after an answer
         try {
@@ -416,8 +425,11 @@ class _QuizPageState extends State<QuizPage> with TickerProviderStateMixin {
     final userProvider = Provider.of<UserProvider>(context, listen: false);
     final localeProvider = Provider.of<LocaleProvider>(context, listen: false);
     try {
-      // Ensure profile is reasonably fresh for language/session hints
-      await userProvider.loadProfile(widget.idToken);
+      // Ensure profile is reasonably fresh for language/session hints.
+      // Preserve any recent optimistic energy decrement so the UI isn't
+      // overwritten when fetching more questions mid-session.
+      await userProvider.loadProfile(widget.idToken,
+          preserveRemainingEnergy: true);
     } catch (_) {}
 
     final deviceLang = localeProvider.locale.languageCode;
@@ -708,8 +720,7 @@ class _QuizPageState extends State<QuizPage> with TickerProviderStateMixin {
                                   theme.colorScheme.primary
                                 ],
                                 onPressed: () {
-                                  final userProv = Provider.of<UserProvider>(
-                                      context,
+                                  final userProv = Provider.of<UserProvider>(context,
                                       listen: false);
                                   final rem = userProv.profile?.remainingEnergy;
                                   if (rem != null && rem <= 0) {
@@ -731,6 +742,8 @@ class _QuizPageState extends State<QuizPage> with TickerProviderStateMixin {
                                     );
                                     return;
                                   }
+                                  // optimistic UI update: consume 1 energy locally
+                                  userProv.consumeEnergyOptimistic();
                                   _startQuizSession();
                                 },
                                 padding: EdgeInsets.symmetric(

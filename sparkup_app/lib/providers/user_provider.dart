@@ -10,13 +10,28 @@ class UserProvider extends ChangeNotifier {
 
   bool get isLoading => _isLoading;
 
-  Future<void> loadProfile(String? idToken) async {
+  /// Load the user profile from server.
+  /// If [preserveRemainingEnergy] is true, the method will preserve a
+  /// recently-applied local optimistic energy decrement by taking the
+  /// minimum between the local remainingEnergy and the server value.
+  Future<void> loadProfile(String? idToken,
+      {bool preserveRemainingEnergy = false}) async {
     if (idToken == null || idToken.isEmpty) return;
     _isLoading = true;
     notifyListeners();
     try {
       final json = await _apiService.getUserProfile(idToken);
-      profile = UserProfile.fromJson(json);
+      final serverProfile = UserProfile.fromJson(json);
+      if (preserveRemainingEnergy && profile?.remainingEnergy != null) {
+        final localRem = profile!.remainingEnergy!;
+        final serverRem = serverProfile.remainingEnergy;
+        // If server didn't provide a value, keep local; otherwise keep the
+        // lower (most-recent) value so an optimistic decrement isn't overwritten.
+        final chosen = (serverRem == null) ? localRem : (localRem < serverRem ? localRem : serverRem);
+        profile = serverProfile.copyWith(remainingEnergy: chosen);
+      } else {
+        profile = serverProfile;
+      }
     } catch (e) {
       debugPrint("Kullanıcı profili yüklenirken hata oluştu: $e");
       // keep previous profile if available
