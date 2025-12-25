@@ -13,6 +13,7 @@ from .models import (
     UserAnsweredQuestion, UserAnswerRecord, QuizQuestion, AnswerPayload, AnswerResponse,
     UserScoreHistory, DeviceToken, DeviceTokenPayload, NotificationMetric, UserSeenInfo
 )
+from .models import UserEnergy
 import os
 from .config import TRANSLATIONS, MANUAL_INFOS, NOTIFICATION_FREQUENCY, MANUAL_TRUEFALSE, load_manual_truefalse
 from .utils import _get_info_text, _select_unseen_info_for_user, _send_notification_to_user, _get_user_access_level, _get_rank_name
@@ -141,7 +142,23 @@ def get_quiz_questions(limit: int = 3, lang: Optional[str] = Query(None), previe
         except Exception:
             return ""
 
-    # If this is a real session (not preview), consume one energy now (handled client-side optimistically)
+    # If this is a real session (not preview), persistently consume one energy now.
+    if not preview:
+        user_energy = session.exec(select(UserEnergy).where(UserEnergy.user_id == db_user.id)).first()
+        if not user_energy:
+            # create a fallback row using access energy_per_day
+            user_energy = UserEnergy(user_id=db_user.id, remaining_energy=access.get("energy_per_day", 3))
+            try:
+                session.add(user_energy); session.commit(); session.refresh(user_energy)
+            except Exception:
+                session.rollback()
+        if user_energy.remaining_energy <= 0:
+            raise HTTPException(status_code=403, detail="Insufficient energy")
+        try:
+            user_energy.remaining_energy = int(user_energy.remaining_energy) - 1
+            session.add(user_energy); session.commit(); session.refresh(user_energy)
+        except Exception:
+            session.rollback()
     # Server no longer persists per-user daily limits here.
 
     result = []
@@ -374,10 +391,21 @@ def get_manual_truefalse(db_user: User = Depends(get_current_user), session = De
 
     # Ensure user has energy for a true/false session (cost 1 energy) and consume it
     access = _get_user_access_level(db_user, session)
-    remaining_energy = access.get("remaining_energy")
-    # Removed server-side true/false daily-limit enforcement; client should use remaining_energy from profile.
-
-    # Server no longer persists per-user daily limits on true/false fetch.
+    # Persistently decrement energy for a real session
+    user_energy = session.exec(select(UserEnergy).where(UserEnergy.user_id == db_user.id)).first()
+    if not user_energy:
+        user_energy = UserEnergy(user_id=db_user.id, remaining_energy=access.get("energy_per_day", 3))
+        try:
+            session.add(user_energy); session.commit(); session.refresh(user_energy)
+        except Exception:
+            session.rollback()
+    if user_energy.remaining_energy <= 0:
+        raise HTTPException(status_code=403, detail="Insufficient energy")
+    try:
+        user_energy.remaining_energy = int(user_energy.remaining_energy) - 1
+        session.add(user_energy); session.commit(); session.refresh(user_energy)
+    except Exception:
+        session.rollback()
 
     # Return questions and include session_seconds hint
     out = []

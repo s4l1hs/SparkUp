@@ -45,6 +45,8 @@ class User(SQLModel, table=True):
     score: Optional[UserScore] = Relationship(back_populates="user", sa_relationship_kwargs={"cascade": "all, delete-orphan"})
     streak: Optional[UserStreak] = Relationship(back_populates="user", sa_relationship_kwargs={"cascade": "all, delete-orphan"})
     subscription: Optional[UserSubscription] = Relationship(back_populates="user", sa_relationship_kwargs={"cascade": "all, delete-orphan"})
+    # Per-user energy state (stored in separate table for safer migrations)
+    energy: Optional["UserEnergy"] = Relationship(back_populates="user", sa_relationship_kwargs={"cascade": "all, delete-orphan"})
 
 
 class QuizQuestion(SQLModel, table=True):
@@ -84,6 +86,16 @@ class UserAnswerRecord(SQLModel, table=True):
     quizquestion_id: int = Field(foreign_key="quizquestion.id", index=True)
     correct: bool = Field(default=False)
     timestamp: Optional[date] = Field(default_factory=date.today)
+
+
+class UserEnergy(SQLModel, table=True):
+    """Per-user persistent energy state. Stored separately to avoid altering the
+    primary `User` table schema on upgrades.
+    """
+    user_id: int = Field(foreign_key="user.id", primary_key=True)
+    remaining_energy: int = Field(default=0)
+    last_reset: Optional[date] = Field(default_factory=date.today)
+    user: "User" = Relationship(back_populates="energy")
 
 
 

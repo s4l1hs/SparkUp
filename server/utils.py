@@ -5,7 +5,7 @@ from typing import Optional, Dict
 from .config import MANUAL_INFOS, TRANSLATIONS, NOTIFICATION_FREQUENCY, load_manual_infos, SUBSCRIPTION_LIMITS, SUBSCRIPTION_ACCESS
 from .models import (
     UserSeenInfo, DeviceToken, NotificationMetric, UserSubscription, UserScoreHistory,
-    UserScore, UserStreak
+    UserScore, UserStreak, UserEnergy
 )
 from sqlmodel import select, delete
 from firebase_admin import messaging
@@ -33,8 +33,32 @@ def _get_user_access_level(db_user, session) -> Dict:
     # compute energy info from SUBSCRIPTION_ACCESS
     access = SUBSCRIPTION_ACCESS.get(level, {"energy_per_day": 3, "session_seconds": 60})
     energy_per_day = int(access.get("energy_per_day", 3))
-    remaining_energy = energy_per_day
     session_seconds = int(access.get("session_seconds", 60))
+
+    # Persisted per-user energy row; reset lazily when date changes.
+    user_energy = session.exec(select(UserEnergy).where(UserEnergy.user_id == db_user.id)).first()
+    if not user_energy:
+        # create with full energy
+        user_energy = UserEnergy(user_id=db_user.id, remaining_energy=energy_per_day, last_reset=today)
+        try:
+            session.add(user_energy)
+            session.commit()
+            session.refresh(user_energy)
+        except Exception:
+            session.rollback()
+            user_energy = None
+    else:
+        try:
+            if not getattr(user_energy, 'last_reset', None) or user_energy.last_reset < today:
+                user_energy.remaining_energy = energy_per_day
+                user_energy.last_reset = today
+                session.add(user_energy)
+                session.commit()
+                session.refresh(user_energy)
+        except Exception:
+            session.rollback()
+
+    remaining_energy = int(user_energy.remaining_energy) if user_energy else energy_per_day
 
     return {
         "level": level,
@@ -45,7 +69,7 @@ def _get_user_access_level(db_user, session) -> Dict:
         "challenge_limit": SUBSCRIPTION_LIMITS[level]["challenge_limit"],
         "daily_limits_obj": None,
         "energy_per_day": energy_per_day,
-        "energy_used": 0,
+        "energy_used": max(0, energy_per_day - remaining_energy),
         "remaining_energy": remaining_energy,
         "session_seconds": session_seconds,
     }
