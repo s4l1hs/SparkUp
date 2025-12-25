@@ -11,6 +11,7 @@ import '../widgets/morphing_gradient_button.dart';
 import '../services/api_service.dart';
 import '../locale_provider.dart';
 import '../utils/color_utils.dart';
+import 'dart:ui' as ui;
 
 enum AnswerState { unanswered, pending, revealed }
 
@@ -31,6 +32,10 @@ class _QuizPageState extends State<QuizPage> with TickerProviderStateMixin {
   late final Animation<Alignment> _backgroundAnimation1, _backgroundAnimation2;
   AnswerState _answerState = AnswerState.unanswered;
 
+  // Feedback Animasyonu için değişkenler
+  late final AnimationController _feedbackAnimController;
+  bool _showFeedback = false;
+  bool _lastAnswerCorrect = false;
   bool _isLoading = false;
   bool _isQuizActive = false;
   bool _answered = false;
@@ -77,6 +82,8 @@ class _QuizPageState extends State<QuizPage> with TickerProviderStateMixin {
   @override
   void initState() {
     super.initState();
+    _feedbackAnimController = AnimationController(
+        vsync: this, duration: const Duration(milliseconds: 500));
     _backgroundController =
         AnimationController(vsync: this, duration: const Duration(seconds: 25))
           ..repeat(reverse: true);
@@ -230,6 +237,7 @@ class _QuizPageState extends State<QuizPage> with TickerProviderStateMixin {
   void dispose() {
     _backgroundController.dispose();
     _scoreAnimController.dispose();
+    _feedbackAnimController.dispose();
     try {
       _sessionTimer?.cancel();
     } catch (_) {}
@@ -341,66 +349,74 @@ class _QuizPageState extends State<QuizPage> with TickerProviderStateMixin {
       _answered = true;
       _answerState = AnswerState.pending;
     });
-    await Future.delayed(const Duration(milliseconds: 700));
+    
+    // API isteği öncesi hafif bir bekleme (opsiyonel, UI hissi için)
+    await Future.delayed(const Duration(milliseconds: 400));
     if (!mounted) return;
 
     final localizations = AppLocalizations.of(context);
     final userProvider = Provider.of<UserProvider>(context, listen: false);
     final analysisProv = Provider.of<AnalysisProvider>(context, listen: false);
+
     try {
       final questionId = _questions[_currentIndex]['id'] as int;
+      // Cevabın doğruluğunu lokal olarak kontrol et (Animasyon için erken bilgi)
+      final correctIndex = _questions[_currentIndex]['correct_answer_index'] as int;
+      final bool isLocallyCorrect = (selectedIndex == correctIndex);
+
       final response = await _apiServiceSafe(
           () => _apiService.submitQuizAnswer(
               widget.idToken, questionId, selectedIndex),
           const Duration(seconds: 8));
+
       if (response is Map) {
         final newScore = response['new_score'] as int? ?? 0;
         final awarded = response['score_awarded'] as int? ?? 0;
 
+        // 1. Durumu ve Puanı Güncelle
         setState(() {
           _answerState = AnswerState.revealed;
           if (awarded > 0) {
             _sessionScore += awarded;
             _lastAwarded = awarded;
-            _showAward = true;
-            _scoreAnimController.forward(from: 0);
+            // _showAward = true; // Eski küçük animasyonu kapatalım, yenisi daha büyük
+          }
+          // Yanlış sayısı takibi
+          if (!isLocallyCorrect) {
+            _wrongAnswers++;
           }
         });
 
-        // update user profile/score
+        // 2. User Provider & Analysis Update
         userProvider.updateScore(newScore);
-        // Merge server profile but preserve any recent optimistic energy
-        // decrement so the slider isn't overwritten immediately after start.
         try {
-          await userProvider.loadProfile(widget.idToken,
-              preserveRemainingEnergy: true);
-        } catch (_) {}
-
-        // Notify analysis provider to refresh immediately after an answer
-        try {
+          await userProvider.loadProfile(widget.idToken, preserveRemainingEnergy: true);
           analysisProv.refresh(widget.idToken);
         } catch (_) {}
 
-        await Future.delayed(const Duration(milliseconds: 900));
-        if (!mounted) return;
+        // 3. FEEDBACK ANİMASYONUNU BAŞLAT
+        _lastAnswerCorrect = isLocallyCorrect;
+        setState(() => _showFeedback = true);
+        try {
+          _feedbackAnimController.forward(from: 0);
+        } catch (_) {}
 
-        // Track wrong answers locally; if 3 wrongs occur the session ends immediately.
-        final correctIndex =
-            _questions[_currentIndex]['correct_answer_index'] as int;
-        final wasCorrect = selectedIndex == correctIndex;
-        if (!wasCorrect) {
-          setState(() => _wrongAnswers++);
-        }
+        // 4. OYUN SONU KONTROLÜ (Animasyon sürerken bekle)
+        // Kullanıcının feedback'i görmesi için süre tanı (800ms ideal)
+        await Future.delayed(const Duration(milliseconds: 800));
+
+        if (!mounted) return;
+        setState(() => _showFeedback = false); // Feedback'i kapat
 
         if (_wrongAnswers >= 3) {
+          // 3 Yanlış -> Oyun Biter
           await _handleQuizCompletion();
         } else {
+          // Devam -> Sonraki Soru
           if (_currentIndex >= _questions.length - 1) {
-            // Reached end of current batch; fetch more questions and continue session
             try {
               await _fetchMoreQuestions();
             } catch (e) {
-              // If fetching more questions fails, end the session gracefully
               await _handleQuizCompletion();
             }
           } else {
@@ -666,6 +682,167 @@ class _QuizPageState extends State<QuizPage> with TickerProviderStateMixin {
                     ]),
                   ),
                 ),
+              ),
+            ),
+           // --- QUIZ PAGE FEEDBACK (COMBO MODU) ---
+          if (_showFeedback)
+            Positioned.fill(
+              child: Stack(
+                children: [
+                  // 1. Arka Plan Bulanıklığı
+                  BackdropFilter(
+                    filter: ui.ImageFilter.blur(sigmaX: 6.0, sigmaY: 6.0),
+                    child: Container(
+                      color: _lastAnswerCorrect
+                          ? Colors.green.withOpacity(0.1)
+                          : Colors.red.withOpacity(0.1),
+                    ),
+                  ),
+
+                  // 2. Animasyonlu Kart
+                  Center(
+                    child: AnimatedBuilder(
+                      animation: _feedbackAnimController,
+                      builder: (context, child) {
+                        // Elastik efekt
+                        final double animValue = CurvedAnimation(
+                                parent: _feedbackAnimController,
+                                curve: Curves.elasticOut)
+                            .value;
+                        final double opacityValue = CurvedAnimation(
+                                parent: _feedbackAnimController,
+                                curve: const Interval(0.0, 0.5,
+                                    curve: Curves.easeOut))
+                            .value;
+
+                        // Streak durumuna göre başlık belirle
+                        String titleText;
+                        if (!_lastAnswerCorrect) {
+                          titleText = localizations?.incorrect ?? 'WRONG!';
+                        } else if (currentStreak >= 2) {
+                          titleText = "UNSTOPPABLE! 🔥"; // Alternatif gaz sözü
+                        } else {
+                          titleText = localizations?.correct ?? 'CORRECT!';
+                        }
+
+                        return Opacity(
+                          opacity: opacityValue,
+                          child: Transform.scale(
+                            scale: 0.6 + (animValue * 0.4),
+                            child: Container(
+                              padding: EdgeInsets.symmetric(
+                                  horizontal: 40.w, vertical: 32.h),
+                              decoration: BoxDecoration(
+                                color: theme.colorScheme.surface.withOpacity(0.95),
+                                borderRadius: BorderRadius.circular(24.r),
+                                border: Border.all(
+                                  color: _lastAnswerCorrect
+                                      ? (currentStreak >= 2 ? Colors.orange : Colors.green.withOpacity(0.5))
+                                      : Colors.red.withOpacity(0.5),
+                                  width: 2,
+                                ),
+                                boxShadow: [
+                                  BoxShadow(
+                                    color: _lastAnswerCorrect
+                                        ? (currentStreak >= 2 ? Colors.orange.withOpacity(0.5) : Colors.green.withOpacity(0.5))
+                                        : Colors.red.withOpacity(0.5),
+                                    blurRadius: 30,
+                                    spreadRadius: 2,
+                                  ),
+                                  const BoxShadow(
+                                    color: Colors.black26,
+                                    blurRadius: 20,
+                                    offset: Offset(0, 10),
+                                  ),
+                                ],
+                              ),
+                              child: Column(
+                                mainAxisSize: MainAxisSize.min,
+                                children: [
+                                  // İKON
+                                  Container(
+                                    padding: EdgeInsets.all(16.r),
+                                    decoration: BoxDecoration(
+                                      shape: BoxShape.circle,
+                                      color: _lastAnswerCorrect
+                                          ? Colors.green.withOpacity(0.15)
+                                          : Colors.red.withOpacity(0.15),
+                                    ),
+                                    child: Icon(
+                                      _lastAnswerCorrect
+                                          ? (currentStreak >= 2 ? Icons.whatshot_rounded : Icons.check_rounded)
+                                          : Icons.close_rounded,
+                                      size: 72.sp,
+                                      color: _lastAnswerCorrect
+                                          ? (currentStreak >= 2 ? Colors.orange : Colors.greenAccent)
+                                          : Colors.redAccent,
+                                    ),
+                                  ),
+                                  SizedBox(height: 16.h),
+
+                                  // ANA METİN (Duygu)
+                                  Text(
+                                    titleText,
+                                    style: TextStyle(
+                                      color: _lastAnswerCorrect
+                                          ? (currentStreak >= 2 ? Colors.orange : Colors.green)
+                                          : Colors.red,
+                                      fontSize: 26.sp,
+                                      fontWeight: FontWeight.w900,
+                                      letterSpacing: 1.0,
+                                    ),
+                                  ),
+                                  
+                                  SizedBox(height: 8.h),
+                                  
+                                  // ALT BİLGİ (Puan - Ödül)
+                                  if (_lastAnswerCorrect)
+                                     Text(
+                                      "+$_lastAwarded Points",
+                                      style: TextStyle(
+                                        color: theme.colorScheme.onSurface,
+                                        fontSize: 20.sp,
+                                        fontWeight: FontWeight.bold,
+                                      ),
+                                    )
+                                  else
+                                    Text(
+                                      "${3 - _wrongAnswers} chances left",
+                                      style: TextStyle(
+                                        color: theme.colorScheme.onSurface
+                                            .withOpacity(0.6),
+                                        fontSize: 16.sp,
+                                      ),
+                                    ),
+
+                                  // STREAK BONUS ETİKETİ (Statü - Sadece seri varsa)
+                                  if (_lastAnswerCorrect && currentStreak > 1)
+                                    Container(
+                                      margin: EdgeInsets.only(top: 12.h),
+                                      padding: EdgeInsets.symmetric(horizontal: 12.w, vertical: 6.h),
+                                      decoration: BoxDecoration(
+                                        color: Colors.orange.withOpacity(0.15),
+                                        borderRadius: BorderRadius.circular(10.r),
+                                        border: Border.all(color: Colors.orange.withOpacity(0.5)),
+                                      ),
+                                      child: Text(
+                                        "Streak Bonus x$currentStreak 🔥",
+                                        style: TextStyle(
+                                          color: Colors.orange,
+                                          fontSize: 14.sp,
+                                          fontWeight: FontWeight.w900,
+                                        ),
+                                      ),
+                                    ),
+                                ],
+                              ),
+                            ),
+                          ),
+                        );
+                      },
+                    ),
+                  ),
+                ],
               ),
             ),
         ],

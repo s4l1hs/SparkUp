@@ -1,4 +1,5 @@
 import 'dart:async';
+import 'dart:ui' as ui;
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:provider/provider.dart';
@@ -436,42 +437,162 @@ class _TrueFalsePageState extends State<TrueFalsePage>
                   : _buildQuizView(theme),
             ),
           ),
-          // Feedback overlay for correct/incorrect answers
+          // --- TRUE/FALSE PAGE FEEDBACK (COMBO MODU) ---
           if (_showFeedback)
             Positioned.fill(
-              child: FadeTransition(
-                opacity: _feedbackAnimController.drive(
-                    Tween<double>(begin: 0.0, end: 1.0)
-                        .chain(CurveTween(curve: Curves.easeOut))),
-                child: Container(
-                  color: _lastAnswerCorrect
-                      ? colorWithOpacity(Colors.green, 0.28)
-                      : colorWithOpacity(Colors.red, 0.28),
-                  child: Center(
-                    child: Column(
-                      mainAxisSize: MainAxisSize.min,
-                      children: [
-                        Icon(
-                          _lastAnswerCorrect
-                              ? Icons.check_circle_outline_rounded
-                              : Icons.highlight_off_rounded,
-                          size: 92.sp,
-                          color: Colors.white,
-                        ),
-                        SizedBox(height: 12.h),
-                        Text(
-                          _lastAnswerCorrect
-                              ? (AppLocalizations.of(context)?.correct ?? 'Correct')
-                              : (AppLocalizations.of(context)?.incorrect ?? 'Incorrect'),
-                          style: TextStyle(
-                              color: Colors.white,
-                              fontSize: 22.sp,
-                              fontWeight: FontWeight.bold),
-                        ),
-                      ],
+              child: Stack(
+                children: [
+                  // 1. Arka Plan
+                  BackdropFilter(
+                    filter: ui.ImageFilter.blur(sigmaX: 8.0, sigmaY: 8.0),
+                    child: Container(
+                      color: _lastAnswerCorrect
+                          ? Colors.green.withOpacity(0.15)
+                          : Colors.red.withOpacity(0.15),
                     ),
                   ),
-                ),
+                  
+                  // 2. Animasyonlu İçerik
+                  Center(
+                    child: AnimatedBuilder(
+                      animation: _feedbackAnimController,
+                      builder: (context, child) {
+                        final double animValue =
+                            CurvedAnimation(parent: _feedbackAnimController, curve: Curves.elasticOut).value;
+                        final double opacityValue = 
+                            CurvedAnimation(parent: _feedbackAnimController, curve: const Interval(0.0, 0.6, curve: Curves.easeOut)).value;
+
+                        // Başlık Mantığı
+                        String titleText;
+                        if (!_lastAnswerCorrect) {
+                          titleText = AppLocalizations.of(context)?.incorrect ?? 'OOPS!';
+                        } else if (_streak >= 2) {
+                          titleText = "UNSTOPPABLE! 🔥"; // Alternatif gaz sözü
+                        } else {
+                          titleText = AppLocalizations.of(context)?.correct ?? 'AWESOME!';
+                        }
+
+                        return Opacity(
+                          opacity: opacityValue,
+                          child: Transform.scale(
+                            scale: 0.5 + (animValue * 0.5),
+                            child: Container(
+                              padding: EdgeInsets.symmetric(horizontal: 40.w, vertical: 30.h),
+                              decoration: BoxDecoration(
+                                color: theme.colorScheme.surface.withOpacity(0.95),
+                                borderRadius: BorderRadius.circular(30.r),
+                                border: Border.all(
+                                  color: _lastAnswerCorrect 
+                                    ? (_streak >= 2 ? Colors.orange : Colors.green.withOpacity(0.5)) 
+                                    : Colors.red.withOpacity(0.5),
+                                  width: 2,
+                                ),
+                                boxShadow: [
+                                  BoxShadow(
+                                    color: _lastAnswerCorrect 
+                                      ? (_streak >= 2 ? Colors.orange.withOpacity(0.6) : Colors.green.withOpacity(0.6)) 
+                                      : Colors.red.withOpacity(0.6),
+                                    blurRadius: 40,
+                                    spreadRadius: 5,
+                                  ),
+                                  const BoxShadow(
+                                    color: Colors.black26,
+                                    blurRadius: 20,
+                                    offset: Offset(0, 10),
+                                  ),
+                                ],
+                              ),
+                              child: Column(
+                                mainAxisSize: MainAxisSize.min,
+                                children: [
+                                  // İkon
+                                  Container(
+                                    padding: EdgeInsets.all(16.r),
+                                    decoration: BoxDecoration(
+                                      shape: BoxShape.circle,
+                                      color: _lastAnswerCorrect ? Colors.green.withOpacity(0.1) : Colors.red.withOpacity(0.1),
+                                    ),
+                                    child: Icon(
+                                      _lastAnswerCorrect
+                                          ? (_streak >= 2 ? Icons.whatshot : Icons.check_rounded)
+                                          : Icons.close_rounded,
+                                      size: 80.sp,
+                                      color: _lastAnswerCorrect 
+                                        ? (_streak >= 2 ? Colors.orange : Colors.greenAccent) 
+                                        : Colors.redAccent,
+                                    ),
+                                  ),
+                                  SizedBox(height: 20.h),
+                                  
+                                  // Ana Metin
+                                  Text(
+                                    titleText,
+                                    style: TextStyle(
+                                      color: _lastAnswerCorrect 
+                                        ? (_streak >= 2 ? Colors.orange : Colors.green) 
+                                        : Colors.red,
+                                      fontSize: 28.sp,
+                                      fontWeight: FontWeight.w900,
+                                      letterSpacing: 1.2,
+                                    ),
+                                  ),
+                                  
+                                  SizedBox(height: 8.h),
+
+                                  // Alt Bilgi (Puan)
+                                  if (_lastAnswerCorrect)
+                                     Text(
+                                      "+${10 + (_streak > 0 ? (_streak-1)*2 : 0)} Points", // Tahmini puan hesabı görseli
+                                      style: TextStyle(
+                                        color: theme.colorScheme.onSurface,
+                                        fontSize: 20.sp,
+                                        fontWeight: FontWeight.bold,
+                                      ),
+                                    )
+                                  else
+                                    Text(
+                                      "${3 - _wrongCount} lives left",
+                                      style: TextStyle(
+                                        color: theme.colorScheme.onSurface.withOpacity(0.6),
+                                        fontSize: 16.sp,
+                                      ),
+                                    ),
+
+                                  // STREAK BONUS KUTUSU
+                                  if (_lastAnswerCorrect && _streak > 1) 
+                                    Container(
+                                      margin: EdgeInsets.only(top: 12.h),
+                                      padding: EdgeInsets.symmetric(horizontal: 14.w, vertical: 6.h),
+                                      decoration: BoxDecoration(
+                                        color: Colors.deepOrange.withOpacity(0.1),
+                                        borderRadius: BorderRadius.circular(12.r),
+                                        border: Border.all(color: Colors.deepOrange.withOpacity(0.6)),
+                                      ),
+                                      child: Row(
+                                        mainAxisSize: MainAxisSize.min,
+                                        children: [
+                                          Icon(Icons.bolt, color: Colors.deepOrange, size: 18.sp),
+                                          SizedBox(width: 4.w),
+                                          Text(
+                                            "Streak Bonus x$_streak",
+                                            style: TextStyle(
+                                              color: Colors.deepOrange,
+                                              fontSize: 16.sp,
+                                              fontWeight: FontWeight.w800,
+                                            ),
+                                          ),
+                                        ],
+                                      ),
+                                    ),
+                                ],
+                              ),
+                            ),
+                          ),
+                        );
+                      },
+                    ),
+                  ),
+                ],
               ),
             ),
         ],
