@@ -87,9 +87,9 @@ class ApiService {
 
   // Quiz soruları getirir (429 Hata Kontrolü Eklendi)
   Future<List<Map<String, dynamic>>> getQuizQuestions(String idToken,
-      {int limit = 3, String? lang, bool preview = false}) async {
+      {int limit = 3, String? lang, bool preview = false, bool consume = false}) async {
     final uri = Uri.parse(
-        "$backendBaseUrl/quiz/?limit=$limit${lang != null ? '&lang=$lang' : ''}${preview ? '&preview=true' : ''}");
+        "$backendBaseUrl/quiz/?limit=$limit${lang != null ? '&lang=$lang' : ''}${preview ? '&preview=true' : ''}${consume ? '&consume=true' : ''}");
     final resp =
         await http.get(uri, headers: {'Authorization': 'Bearer $idToken'});
     if (resp.statusCode == 200) {

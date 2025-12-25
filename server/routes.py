@@ -81,7 +81,7 @@ def get_user_profile(db_user: User = Depends(get_current_user), session = Depend
 
 
 @router.get("/quiz/", response_model=List[Dict])
-def get_quiz_questions(limit: int = 3, lang: Optional[str] = Query(None), preview: bool = Query(False), db_user: User = Depends(get_current_user), session = Depends(get_session)):
+def get_quiz_questions(limit: int = 3, lang: Optional[str] = Query(None), preview: bool = Query(False), consume: bool = Query(False), db_user: User = Depends(get_current_user), session = Depends(get_session)):
     access = _get_user_access_level(db_user, session)
     effective_lang = lang or (db_user.language_code if db_user.language_code else "en")
 
@@ -142,8 +142,10 @@ def get_quiz_questions(limit: int = 3, lang: Optional[str] = Query(None), previe
         except Exception:
             return ""
 
-    # If this is a real session (not preview), persistently consume one energy now.
-    if not preview:
+    # If this is a real session (not preview) and the client requested consumption,
+    # persistently consume one energy now. Clients should only ask to `consume`
+    # when starting a session; mid-session fetches should not pass `consume=true`.
+    if not preview and consume:
         user_energy = session.exec(select(UserEnergy).where(UserEnergy.user_id == db_user.id)).first()
         if not user_energy:
             # create a fallback row using access energy_per_day

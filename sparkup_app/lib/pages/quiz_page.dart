@@ -50,8 +50,10 @@ class _QuizPageState extends State<QuizPage> with TickerProviderStateMixin {
   int _wrongAnswers = 0;
   // session timer
   Timer? _sessionTimer;
+
+  // Timer state
   int _timeLeft = 0;
-  int _sessionDuration = 60;
+  int _sessionDuration = 0;
 
   void _startSessionTimer() {
     _sessionTimer = Timer.periodic(const Duration(seconds: 1), (t) {
@@ -262,7 +264,7 @@ class _QuizPageState extends State<QuizPage> with TickerProviderStateMixin {
           userProvider.profile?.languageCode, deviceLang,
           allowBackendEn: localeProvider.userSetLanguage);
       final questions = await _apiService.getQuizQuestions(widget.idToken,
-          limit: 3, lang: lang, preview: isPreview);
+          limit: 3, lang: lang, preview: isPreview, consume: !isPreview);
       if (!mounted) return;
 
       if (questions.isNotEmpty) {
@@ -439,7 +441,7 @@ class _QuizPageState extends State<QuizPage> with TickerProviderStateMixin {
 
     try {
       final questions = await _apiService.getQuizQuestions(widget.idToken,
-          limit: 3, lang: lang, preview: false);
+          limit: 3, lang: lang, preview: false, consume: false);
       if (!mounted) return;
       if (questions.isNotEmpty) {
         setState(() {
