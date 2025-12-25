@@ -11,17 +11,7 @@ class UserSubscription(SQLModel, table=True):
     user: "User" = Relationship(back_populates="subscription")
 
 
-class DailyLimits(SQLModel, table=True):
-    id: Optional[int] = Field(default=None, primary_key=True)
-    quiz_count: int = Field(default=0)
-    challenge_count: int = Field(default=0)
-    questions_answered: int = Field(default=0)
-    # energy_used counts how many sessions (quiz or true/false) the user has consumed today
-    energy_used: int = Field(default=0)
-    last_reset: date = Field(default_factory=date.today)
-    notifications_sent: int = Field(default=0)
-    user_id: int = Field(foreign_key="user.id", unique=True)
-    user: "User" = Relationship(back_populates="daily_limits")
+
 
 
 class UserStreak(SQLModel, table=True):
@@ -55,7 +45,6 @@ class User(SQLModel, table=True):
     score: Optional[UserScore] = Relationship(back_populates="user", sa_relationship_kwargs={"cascade": "all, delete-orphan"})
     streak: Optional[UserStreak] = Relationship(back_populates="user", sa_relationship_kwargs={"cascade": "all, delete-orphan"})
     subscription: Optional[UserSubscription] = Relationship(back_populates="user", sa_relationship_kwargs={"cascade": "all, delete-orphan"})
-    daily_limits: Optional[DailyLimits] = Relationship(back_populates="user", sa_relationship_kwargs={"cascade": "all, delete-orphan"})
 
 
 class QuizQuestion(SQLModel, table=True):

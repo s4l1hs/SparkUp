@@ -1751,23 +1751,6 @@
         "correct_answer": true
     },
     {
-        "category": "geography_travel",
-        "question": {
-            "en": "Africa is the largest continent in the world.",
-            "tr": "Afrika dünyanın en büyük kıtasıdır.",
-            "fr": "L'Afrique est le plus grand continent du monde.",
-            "es": "África es el continente más grande del mundo.",
-            "de": "Afrika ist der größte Kontinent der Welt.",
-            "it": "L'Africa è il continente più grande del mondo.",
-            "hi": "अफ्रीका दुनिया का सबसे बड़ा महाद्वीप है।",
-            "ru": "Африка — самый большой континент в мире.",
-            "zh": "非洲是世界上最大的大陆。",
-            "ja": "アフリカは世界で最も大きな大陸です。",
-            "ar": "أفريقيا هي أكبر قارة في العالم."
-        },
-        "correct_answer": false
-    },
-    {
         "category": "science",
         "question": {
             "en": "Sound can travel through a vacuum.",
@@ -4301,23 +4284,6 @@
         "correct_answer": false
     },
     {
-        "category": "cinema_tv",
-        "question": {
-            "en": "The movie 'Frozen' features a snowman named Olaf.",
-            "tr": "'Karlar Ülkesi' filminde Olaf adında bir kardan adam vardır.",
-            "fr": "Le film 'La Reine des neiges' met en scène un bonhomme de neige nommé Olaf.",
-            "es": "La película 'Frozen' presenta a un muñeco de nieve llamado Olaf.",
-            "de": "Der Film 'Die Eiskönigin' zeigt einen Schneemann namens Olaf.",
-            "it": "Il film 'Frozen' presenta un pupazzo di neve di nome Olaf.",
-            "hi": "फिल्म 'फ्रोजन' में ओलाफ नाम का एक स्नोमैन है।",
-            "ru": "В фильме «Холодное сердце» есть снеговик по имени Олаф.",
-            "zh": "电影《冰雪奇缘》中有一个叫奥拉夫的雪人。",
-            "ja": "映画「アナと雪の女王」にはオラフという名前の雪だるまが登場します。",
-            "ar": "يضم فيلم 'فروزن' رجل ثلج اسمه أولاف."
-        },
-        "correct_answer": true
-    },
-    {
         "category": "nature_animals",
         "question": {
             "en": "Snakes are mammals.",
@@ -6256,23 +6222,6 @@
         "correct_answer": true
     },
     {
-        "category": "sports",
-        "question": {
-            "en": "In chess, the Queen is the most powerful piece.",
-            "tr": "Satrançta Vezir (Kraliçe) en güçlü taştır.",
-            "fr": "Aux échecs, la Reine est la pièce la plus puissante.",
-            "es": "En el ajedrez, la Reina es la pieza más poderosa.",
-            "de": "Im Schach ist die Dame die stärkste Figur.",
-            "it": "Negli scacchi, la Regina è il pezzo più potente.",
-            "hi": "शतरंज में वजीर (रानी) सबसे शक्तिशाली मोहरा होता है।",
-            "ru": "В шахматах ферзь — самая сильная фигура.",
-            "zh": "在国际象棋中，王后是最强大的棋子。",
-            "ja": "チェスでは、クイーンが最も強力な駒です。",
-            "ar": "في الشطرنج، الوزير (الملكة) هو القطعة الأقوى."
-        },
-        "correct_answer": true
-    },
-    {
         "category": "literature",
         "question": {
             "en": "Mark Twain wrote 'The Adventures of Tom Sawyer'.",
@@ -6286,23 +6235,6 @@
             "zh": "马克·吐温写了《汤姆·索亚历险记》。",
             "ja": "マーク・トウェインは「トム・ソーヤーの冒険」を書きました。",
             "ar": "كتب مارك توين 'مغامرات توم سوير'."
-        },
-        "correct_answer": true
-    },
-    {
-        "category": "music",
-        "question": {
-            "en": "A standard violin has four strings.",
-            "tr": "Standart bir kemanın dört teli vardır.",
-            "fr": "Un violon standard a quatre cordes.",
-            "es": "Un violín estándar tiene cuatro cuerdas.",
-            "de": "Eine Standardgeige hat vier Saiten.",
-            "it": "Un violino standard ha quattro corde.",
-            "hi": "एक मानक वायलिन में चार तार होते हैं।",
-            "ru": "У стандартной скрипки четыре струны.",
-            "zh": "标准小提琴有四根弦。",
-            "ja": "標準的なヴァイオリンには4本の弦があります。",
-            "ar": "يحتوي الكمان القياسي على أربعة أوتار."
         },
         "correct_answer": true
     },
@@ -10217,23 +10149,6 @@
         "correct_answer": true
     },
     {
-        "category": "philosophy",
-        "question": {
-            "en": "Niccolò Machiavelli wrote 'The Prince'.",
-            "tr": "Niccolò Machiavelli 'Prens' (The Prince) kitabını yazmıştır.",
-            "fr": "Nicolas Machiavel a écrit 'Le Prince'.",
-            "es": "Nicolás Maquiavelo escribió 'El Príncipe'.",
-            "de": "Niccolò Machiavelli schrieb 'Der Fürst'.",
-            "it": "Niccolò Machiavelli ha scritto 'Il Principe'.",
-            "hi": "निकोलस मैकियावेली ने 'द प्रिंस' लिखी थी।",
-            "ru": "Никколо Макиавелли написал «Государя».",
-            "zh": "尼科洛·马基雅维利写了《君主论》。",
-            "ja": "ニッコロ・マキャヴェッリは『君主論』を書きました。",
-            "ar": "كتب نيكولو مكيافيلي كتاب 'الأمير'."
-        },
-        "correct_answer": true
-    },
-    {
         "category": "literature",
         "question": {
             "en": "The novel 'Brave New World' was written by George Orwell.",
@@ -11879,40 +11794,6 @@
             "zh": "莫扎特创作了歌剧《魔笛》。",
             "ja": "モーツァルトはオペラ『魔笛』を作曲しました。",
             "ar": "ألف موزارت أوبرا 'الناي السحري'."
-        },
-        "correct_answer": true
-    },
-    {
-        "category": "nature_animals",
-        "question": {
-            "en": "Octopuses have three hearts.",
-            "tr": "Ahtapotların üç kalbi vardır.",
-            "fr": "Les poulpes ont trois cœurs.",
-            "es": "Los pulpos tienen tres corazones.",
-            "de": "Kraken haben drei Herzen.",
-            "it": "I polpi hanno tre cuori.",
-            "hi": "ऑक्टोपस के तीन दिल होते हैं।",
-            "ru": "У осьминогов три сердца.",
-            "zh": "章鱼有三颗心脏。",
-            "ja": "タコには心臓が3つあります。",
-            "ar": "للأخطبوط ثلاثة قلوب."
-        },
-        "correct_answer": true
-    },
-    {
-        "category": "geography_travel",
-        "question": {
-            "en": "Vatican City is the smallest country in the world.",
-            "tr": "Vatikan Şehri dünyanın en küçük ülkesidir.",
-            "fr": "Le Vatican est le plus petit pays du monde.",
-            "es": "La Ciudad del Vaticano es el país más pequeño del mundo.",
-            "de": "Die Vatikanstadt ist das kleinste Land der Welt.",
-            "it": "Città del Vaticano è il paese più piccolo del mondo.",
-            "hi": "वेटिकन सिटी दुनिया का सबसे छोटा देश है।",
-            "ru": "Ватикан — самая маленькая страна в мире.",
-            "zh": "梵蒂冈城是世界上最小的国家。",
-            "ja": "バチカン市国は世界で最も小さい国です。",
-            "ar": "مدينة الفاتيكان هي أصغر دولة في العالم."
         },
         "correct_answer": true
     },
@@ -13634,40 +13515,6 @@
         "correct_answer": true
     },
     {
-        "category": "history",
-        "question": {
-            "en": "The Berlin Wall was built in 1961.",
-            "tr": "Berlin Duvarı 1961 yılında inşa edildi.",
-            "fr": "Le mur de Berlin a été construit en 1961.",
-            "es": "El Muro de Berlín se construyó en 1961.",
-            "de": "Die Berliner Mauer wurde 1961 gebaut.",
-            "it": "Il Muro di Berlino fu costruito nel 1961.",
-            "hi": "बर्लिन की दीवार 1961 में बनाई गई थी।",
-            "ru": "Берлинская стена была построена в 1961 году.",
-            "zh": "柏林墙建于1961年。",
-            "ja": "ベルリンの壁は1961年に建設されました。",
-            "ar": "بني جدار برلين عام 1961."
-        },
-        "correct_answer": true
-    },
-    {
-        "category": "nature_animals",
-        "question": {
-            "en": "Camels store water in their humps.",
-            "tr": "Develer hörgüçlerinde su depolar.",
-            "fr": "Les chameaux stockent de l'eau dans leurs bosses.",
-            "es": "Los camellos almacenan agua en sus jorobas.",
-            "de": "Kamele speichern Wasser in ihren Höckern.",
-            "it": "I cammelli immagazzinano acqua nelle loro gobbe.",
-            "hi": "ऊंट अपने कूबड़ में पानी जमा करते हैं।",
-            "ru": "Верблюды запасают воду в своих горбах.",
-            "zh": "骆驼在驼峰里储存水。",
-            "ja": "ラクダはこぶに水を蓄えます。",
-            "ar": "تخزن الإبل الماء في حدباتها."
-        },
-        "correct_answer": false
-    },
-    {
         "category": "art",
         "question": {
             "en": "Pablo Picasso is a founder of Cubism.",
@@ -13700,23 +13547,6 @@
             "ar": "تحتوي كرة الجولف على غمازات (نتوءات)."
         },
         "correct_answer": true
-    },
-    {
-        "category": "technology",
-        "question": {
-            "en": "Wi-Fi stands for 'Wireless Fidelity'.",
-            "tr": "Wi-Fi, 'Wireless Fidelity' anlamına gelir.",
-            "fr": "Wi-Fi signifie 'Wireless Fidelity'.",
-            "es": "Wi-Fi significa 'Wireless Fidelity'.",
-            "de": "Wi-Fi steht für 'Wireless Fidelity'.",
-            "it": "Wi-Fi sta per 'Wireless Fidelity'.",
-            "hi": "वाई-फाई का मतलब 'वायरलेस फिडेलिटी' है।",
-            "ru": "Wi-Fi расшифровывается как «Wireless Fidelity».",
-            "zh": "Wi-Fi代表“无线保真”。",
-            "ja": "Wi-Fiは「Wireless Fidelity」の略です。",
-            "ar": "Wi-Fi تعني 'Wireless Fidelity'."
-        },
-        "correct_answer": false
     },
     {
         "category": "cinema_tv",
@@ -14195,23 +14025,6 @@
         "correct_answer": true
     },
     {
-        "category": "architecture",
-        "question": {
-            "en": "The Eiffel Tower was originally intended to be a temporary structure.",
-            "tr": "Eyfel Kulesi'nin başlangıçta geçici bir yapı olması amaçlanmıştı.",
-            "fr": "La tour Eiffel était à l'origine destinée à être une structure temporaire.",
-            "es": "La Torre Eiffel fue pensada originalmente para ser una estructura temporal.",
-            "de": "Der Eiffelturm war ursprünglich als temporäres Bauwerk gedacht.",
-            "it": "La Torre Eiffel era originariamente destinata a essere una struttura temporanea.",
-            "hi": "एफिल टॉवर मूल रूप से एक अस्थायी संरचना होने का इरादा था।",
-            "ru": "Эйфелева башня изначально задумывалась как временное сооружение.",
-            "zh": "埃菲尔铁塔最初原本是一座临时建筑。",
-            "ja": "エッフェル塔はもともと一時的な建造物となる予定でした。",
-            "ar": "كان المقصود من برج إيفل في الأصل أن يكون هيكلًا مؤقتًا."
-        },
-        "correct_answer": true
-    },
-    {
         "category": "video_games",
         "question": {
             "en": "The ghosts in 'Pac-Man' are named Blinky, Pinky, Inky, and Clyde.",
@@ -14297,23 +14110,6 @@
         "correct_answer": true
     },
     {
-        "category": "art",
-        "question": {
-            "en": "The primary colors are red, yellow, and blue.",
-            "tr": "Ana renkler kırmızı, sarı ve mavidir.",
-            "fr": "Les couleurs primaires sont le rouge, le jaune et le bleu.",
-            "es": "Los colores primarios son rojo, amarillo y azul.",
-            "de": "Die Primärfarben sind Rot, Gelb und Blau.",
-            "it": "I colori primari sono rosso, giallo e blu.",
-            "hi": "प्राथमिक रंग लाल, पीला और नीला हैं।",
-            "ru": "Основные цвета — красный, желтый и синий.",
-            "zh": "三原色是红、黄、蓝。",
-            "ja": "三原色は赤、黄、青です。",
-            "ar": "الألوان الأساسية هي الأحمر والأصفر والأزرق."
-        },
-        "correct_answer": true
-    },
-    {
         "category": "sports",
         "question": {
             "en": "In boxing, a standard round lasts three minutes.",
@@ -14395,23 +14191,6 @@
             "zh": "阿佛洛狄忒是希腊的爱神。",
             "ja": "アフロディーテはギリシャ神話の愛の女神です。",
             "ar": "أفروديت هي إلهة الحب اليونانية."
-        },
-        "correct_answer": true
-    },
-    {
-        "category": "literature",
-        "question": {
-            "en": "Mark Twain wrote 'The Adventures of Tom Sawyer'.",
-            "tr": "'Tom Sawyer'ın Maceraları'nı Mark Twain yazmıştır.",
-            "fr": "Mark Twain a écrit 'Les Aventures de Tom Sawyer'.",
-            "es": "Mark Twain escribió 'Las aventuras de Tom Sawyer'.",
-            "de": "Mark Twain schrieb 'Die Abenteuer des Tom Sawyer'.",
-            "it": "Mark Twain ha scritto 'Le avventure di Tom Sawyer'.",
-            "hi": "मार्क ट्वेन ने 'द एडवेंचर्स ऑफ टॉम सॉयर' लिखा था।",
-            "ru": "Марк Твен написал «Приключения Тома Сойера».",
-            "zh": "马克·吐温写了《汤姆·索亚历险记》。",
-            "ja": "マーク・トウェインは『トム・ソーヤーの冒険』を書きました。",
-            "ar": "كتب مارك توين 'مغامرات توم سوير'."
         },
         "correct_answer": true
     },
@@ -14877,40 +14656,6 @@
     {
         "category": "geography_travel",
         "question": {
-            "en": "Greenland is the largest island in the world.",
-            "tr": "Grönland dünyanın en büyük adasıdır.",
-            "fr": "Le Groenland est la plus grande île du monde.",
-            "es": "Groenlandia es la isla más grande del mundo.",
-            "de": "Grönland ist die größte Insel der Welt.",
-            "it": "La Groenlandia è l'isola più grande del mondo.",
-            "hi": "ग्रीनलैंड दुनिया का सबसे बड़ा द्वीप है।",
-            "ru": "Гренландия — самый большой остров в мире.",
-            "zh": "格陵兰岛是世界上最大的岛屿。",
-            "ja": "グリーンランドは世界最大の島です。",
-            "ar": "جرينلاند هي أكبر جزيرة في العالم."
-        },
-        "correct_answer": true
-    },
-    {
-        "category": "science",
-        "question": {
-            "en": "A light-year is a unit of time.",
-            "tr": "Işık yılı bir zaman birimidir.",
-            "fr": "Une année-lumière est une unité de temps.",
-            "es": "Un año luz es una unidad de tiempo.",
-            "de": "Ein Lichtjahr ist eine Zeiteinheit.",
-            "it": "Un anno luce è un'unità di tempo.",
-            "hi": "प्रकाश-वर्ष समय की एक इकाई है।",
-            "ru": "Световой год — это единица времени.",
-            "zh": "光年是时间单位。",
-            "ja": "光年は時間の単位です。",
-            "ar": "السنة الضوئية هي وحدة زمنية."
-        },
-        "correct_answer": false
-    },
-    {
-        "category": "geography_travel",
-        "question": {
             "en": "Mount Everest is the highest peak on Earth.",
             "tr": "Everest Dağı, Dünya'nın en yüksek zirvesidir.",
             "fr": "Le mont Everest est le plus haut sommet de la Terre.",
@@ -15130,23 +14875,6 @@
         "correct_answer": true
     },
     {
-        "category": "technology",
-        "question": {
-            "en": "PDF stands for Portable Document Format.",
-            "tr": "PDF, 'Portable Document Format' (Taşınabilir Belge Formatı) anlamına gelir.",
-            "fr": "PDF signifie Portable Document Format.",
-            "es": "PDF significa Formato de Documento Portátil.",
-            "de": "PDF steht für Portable Document Format.",
-            "it": "PDF sta per Portable Document Format.",
-            "hi": "PDF का मतलब पोर्टेबल डॉक्यूमेंट फॉर्मेट है।",
-            "ru": "PDF означает Portable Document Format (формат переносимых документов).",
-            "zh": "PDF代表便携式文档格式。",
-            "ja": "PDFはPortable Document Formatの略です。",
-            "ar": "PDF تعني تنسيق المستندات المحمولة."
-        },
-        "correct_answer": true
-    },
-    {
         "category": "music",
         "question": {
             "en": "The harp is a percussion instrument.",
@@ -15283,23 +15011,6 @@
         "correct_answer": true
     },
     {
-        "category": "technology",
-        "question": {
-            "en": "Google was founded in 1998.",
-            "tr": "Google 1998 yılında kuruldu.",
-            "fr": "Google a été fondé en 1998.",
-            "es": "Google fue fundada en 1998.",
-            "de": "Google wurde 1998 gegründet.",
-            "it": "Google è stata fondata nel 1998.",
-            "hi": "Google की स्थापना 1998 में हुई थी।",
-            "ru": "Google была основана в 1998 году.",
-            "zh": "谷歌成立于1998年。",
-            "ja": "Googleは1998年に設立されました。",
-            "ar": "تأسست جوجل في عام 1998."
-        },
-        "correct_answer": true
-    },
-    {
         "category": "music",
         "question": {
             "en": "Michael Jackson released the album 'Thriller'.",
@@ -15364,23 +15075,6 @@
             "zh": "朱庇特是罗马的众神之王。",
             "ja": "ユピテルはローマの神々の王です。",
             "ar": "جوبيتر هو ملك الآلهة الروماني."
-        },
-        "correct_answer": true
-    },
-    {
-        "category": "philosophy",
-        "question": {
-            "en": "Plato was a student of Socrates.",
-            "tr": "Platon, Sokrates'in öğrencisiydi.",
-            "fr": "Platon était un élève de Socrate.",
-            "es": "Platón fue alumno de Sócrates.",
-            "de": "Platon war ein Schüler von Sokrates.",
-            "it": "Platone era un allievo di Socrate.",
-            "hi": "प्लेटो सुकरात के छात्र थे।",
-            "ru": "Платон был учеником Сократа.",
-            "zh": "柏拉图是苏格拉底的学生。",
-            "ja": "プラトンはソクラテスの弟子でした。",
-            "ar": "كان أفلاطون تلميذا لسقراط."
         },
         "correct_answer": true
     },
@@ -15521,23 +15215,6 @@
         "correct_answer": true
     },
     {
-        "category": "nature_animals",
-        "question": {
-            "en": "Sharks are mammals.",
-            "tr": "Köpekbalıkları memelidir.",
-            "fr": "Les requins sont des mammifères.",
-            "es": "Los tiburones son mamíferos.",
-            "de": "Haie sind Säugetiere.",
-            "it": "Gli squali sono mammiferi.",
-            "hi": "शार्क स्तनधारी हैं।",
-            "ru": "Акулы — млекопитающие.",
-            "zh": "鲨鱼是哺乳动物。",
-            "ja": "サメは哺乳類です。",
-            "ar": "أسماك القرش من الثدييات."
-        },
-        "correct_answer": false
-    },
-    {
         "category": "science",
         "question": {
             "en": "The chemical symbol for Sodium is 'S'.",
@@ -15553,23 +15230,6 @@
             "ar": "الرمز الكيميائي للصوديوم هو 'S'."
         },
         "correct_answer": false
-    },
-    {
-        "category": "history",
-        "question": {
-            "en": "The Magna Carta was signed in 1215.",
-            "tr": "Magna Carta 1215 yılında imzalandı.",
-            "fr": "La Magna Carta a été signée en 1215.",
-            "es": "La Carta Magna se firmó en 1215.",
-            "de": "Die Magna Carta wurde 1215 unterzeichnet.",
-            "it": "La Magna Carta fu firmata nel 1215.",
-            "hi": "मैग्ना कार्टा पर 1215 में हस्ताक्षर किए गए थे।",
-            "ru": "Великая хартия вольностей была подписана в 1215 году.",
-            "zh": "《大宪章》签署于1215年。",
-            "ja": "マグナ・カルタは1215年に署名されました。",
-            "ar": "تم التوقيع على الماجنا كارتا عام 1215."
-        },
-        "correct_answer": true
     },
     {
         "category": "science",
@@ -15776,23 +15436,6 @@
         "correct_answer": false
     },
     {
-        "category": "economics_finance",
-        "question": {
-            "en": "The Euro is the official currency of the United Kingdom.",
-            "tr": "Euro, Birleşik Krallık'ın resmi para birimidir.",
-            "fr": "L'euro est la monnaie officielle du Royaume-Uni.",
-            "es": "El euro es la moneda oficial del Reino Unido.",
-            "de": "Der Euro ist die offizielle Währung des Vereinigten Königreichs.",
-            "it": "L'Euro è la valuta ufficiale del Regno Unito.",
-            "hi": "यूरो यूनाइटेड किंगडम की आधिकारिक मुद्रा है।",
-            "ru": "Евро — официальная валюта Соединенного Королевства.",
-            "zh": "欧元是英国的官方货币。",
-            "ja": "ユーロは英国の公式通貨です。",
-            "ar": "اليورو هو العملة الرسمية للمملكة المتحدة."
-        },
-        "correct_answer": false
-    },
-    {
         "category": "architecture",
         "question": {
             "en": "The Sphinx has the body of a lion.",
@@ -15874,6 +15517,295 @@
             "zh": "当暴露在阳光下时，身体会产生维生素D。",
             "ja": "ビタミンDは、日光に当たると体内で生成されます。",
             "ar": "ينتج الجسم فيتامين د عند التعرض لأشعة الشمس."
+        },
+        "correct_answer": true
+    },
+    {
+        "category": "history",
+        "question": {
+            "en": "The Apollo 11 mission landed on the moon in 1969.",
+            "tr": "Apollo 11 görevi 1969'da aya indi.",
+            "fr": "La mission Apollo 11 a atterri sur la lune en 1969.",
+            "es": "La misión Apolo 11 aterrizó en la luna en 1969.",
+            "de": "Die Mission Apollo 11 landete 1969 auf dem Mond.",
+            "it": "La missione Apollo 11 sbarcò sulla luna nel 1969.",
+            "hi": "अपोलो 11 मिशन 1969 में चंद्रमा पर उतरा।",
+            "ru": "Миссия «Аполлон-11» высадилась на Луне в 1969 году.",
+            "zh": "阿波罗11号任务于1969年登月。",
+            "ja": "アポロ11号のミッションは1969年に月に着陸しました。",
+            "ar": "هبطت مهمة أبولو 11 على سطح القمر عام 1969."
+        },
+        "correct_answer": true
+    },
+    {
+        "category": "science",
+        "question": {
+            "en": "Oxygen is necessary for combustion.",
+            "tr": "Yanma için oksijen gereklidir.",
+            "fr": "L'oxygène est nécessaire à la combustion.",
+            "es": "El oxígeno es necesario para la combustión.",
+            "de": "Sauerstoff ist für die Verbrennung notwendig.",
+            "it": "L'ossigeno è necessario per la combustione.",
+            "hi": "दहन के लिए ऑक्सीजन आवश्यक है।",
+            "ru": "Кислород необходим для горения.",
+            "zh": "燃烧需要氧气。",
+            "ja": "燃焼には酸素が必要です。",
+            "ar": "الأكسجين ضروري للاحتراق."
+        },
+        "correct_answer": true
+    },
+    {
+        "category": "art",
+        "question": {
+            "en": "Leonardo da Vinci was also an inventor.",
+            "tr": "Leonardo da Vinci aynı zamanda bir mucitti.",
+            "fr": "Léonard de Vinci était aussi un inventeur.",
+            "es": "Leonardo da Vinci también fue inventor.",
+            "de": "Leonardo da Vinci war auch ein Erfinder.",
+            "it": "Leonardo da Vinci era anche un inventore.",
+            "hi": "लियोनार्डो दा विंची एक आविष्कारक भी थे।",
+            "ru": "Леонардо да Винчи также был изобретателем.",
+            "zh": "列奥纳多·达·芬奇也是一位发明家。",
+            "ja": "レオナルド・ダ・ヴィンチは発明家でもありました。",
+            "ar": "كان ليوناردو دافنشي مخترعًا أيضًا."
+        },
+        "correct_answer": true
+    },
+    {
+        "category": "sports",
+        "question": {
+            "en": "In volleyball, a team can hit the ball up to three times before returning it.",
+            "tr": "Voleybolda bir takım topu geri göndermeden önce en fazla üç kez vurabilir.",
+            "fr": "Au volley-ball, une équipe peut frapper le ballon jusqu'à trois fois avant de le renvoyer.",
+            "es": "En voleibol, un equipo puede golpear la pelota hasta tres veces antes de devolverla.",
+            "de": "Beim Volleyball darf eine Mannschaft den Ball bis zu dreimal berühren, bevor sie ihn zurückspielt.",
+            "it": "Nella pallavolo, una squadra può colpire la palla fino a tre volte prima di restituirla.",
+            "hi": "वॉलीबॉल में, एक टीम गेंद को वापस करने से पहले तीन बार तक मार सकती है।",
+            "ru": "В волейболе команда может ударить по мячу до трех раз, прежде чем вернуть его.",
+            "zh": "在排球比赛中，一支球队最多可以击球三次，然后将其击回。",
+            "ja": "バレーボールでは、チームはボールを返す前に最大3回打つことができます。",
+            "ar": "في الكرة الطائرة، يمكن للفريق ضرب الكرة حتى ثلاث مرات قبل إعادتها."
+        },
+        "correct_answer": true
+    },
+    {
+        "category": "music",
+        "question": {
+            "en": "Ludwig van Beethoven was German.",
+            "tr": "Ludwig van Beethoven Alman'dı.",
+            "fr": "Ludwig van Beethoven était allemand.",
+            "es": "Ludwig van Beethoven era alemán.",
+            "de": "Ludwig van Beethoven war Deutscher.",
+            "it": "Ludwig van Beethoven era tedesco.",
+            "hi": "लुडविग वैन बीथोवेन जर्मन थे।",
+            "ru": "Людвиг ван Бетховен был немцем.",
+            "zh": "路德维希·范·贝多芬是德国人。",
+            "ja": "ルートヴィヒ・ヴァン・ベートーヴェンはドイツ人でした。",
+            "ar": "كان لودفيج فان بيتهوفن ألمانيًا."
+        },
+        "correct_answer": true
+    },
+    {
+        "category": "nature_animals",
+        "question": {
+            "en": "Penguins can fly.",
+            "tr": "Penguenler uçabilir.",
+            "fr": "Les manchots peuvent voler.",
+            "es": "Los pingüinos pueden volar.",
+            "de": "Pinguine können fliegen.",
+            "it": "I pinguini possono volare.",
+            "hi": "पेंगुइन उड़ सकते हैं।",
+            "ru": "Пингвины умеют летать.",
+            "zh": "企鹅会飞。",
+            "ja": "ペンギンは飛べます。",
+            "ar": "يمكن لطيور البطريق الطيران."
+        },
+        "correct_answer": false
+    },
+    {
+        "category": "geography_travel",
+        "question": {
+            "en": "The Sahara is the largest hot desert in the world.",
+            "tr": "Sahra, dünyadaki en büyük sıcak çöldür.",
+            "fr": "Le Sahara est le plus grand désert chaud du monde.",
+            "es": "El Sahara es el desierto cálido más grande del mundo.",
+            "de": "Die Sahara ist die größte heiße Wüste der Welt.",
+            "it": "Il Sahara è il più grande deserto caldo del mondo.",
+            "hi": "सहारा दुनिया का सबसे बड़ा गर्म रेगिस्तान है।",
+            "ru": "Сахара — самая большая жаркая пустыня в мире.",
+            "zh": "撒哈拉沙漠是世界上最大的热沙漠。",
+            "ja": "サハラ砂漠は世界最大の暑い砂漠です。",
+            "ar": "الصحراء الكبرى هي أكبر صحراء ساخنة في العالم."
+        },
+        "correct_answer": true
+    },
+    {
+        "category": "mythology",
+        "question": {
+            "en": "Achilles had a vulnerable heel.",
+            "tr": "Aşil'in savunmasız bir topuğu vardı.",
+            "fr": "Achille avait un talon vulnérable.",
+            "es": "Aquiles tenía un talón vulnerable.",
+            "de": "Achilles hatte eine verwundbare Ferse.",
+            "it": "Achille aveva un tallone vulnerabile.",
+            "hi": "اخिल्स की एड़ी कमजोर थी।",
+            "ru": "У Ахиллеса была уязвимая пятка.",
+            "zh": "阿喀琉斯有一个脆弱的脚后跟。",
+            "ja": "アキレスには弱点となる踵（かかと）がありました。",
+            "ar": "كان لأخيل كعب ضعيف."
+        },
+        "correct_answer": true
+    },
+    {
+        "category": "philosophy",
+        "question": {
+            "en": "Thomas Hobbes wrote 'Leviathan'.",
+            "tr": "'Leviathan' kitabını Thomas Hobbes yazmıştır.",
+            "fr": "Thomas Hobbes a écrit 'Léviathan'.",
+            "es": "Thomas Hobbes escribió 'Leviatán'.",
+            "de": "Thomas Hobbes schrieb 'Leviathan'.",
+            "it": "Thomas Hobbes ha scritto 'Leviatano'.",
+            "hi": "थॉमस हॉब्स ने 'लेविथान' लिखा था।",
+            "ru": "Томас Гоббс написал «Левиафан».",
+            "zh": "托马斯·霍布斯写了《利维坦》。",
+            "ja": "トマス・ホッブズは『リヴァイアサン』を書きました。",
+            "ar": "كتب توماس هوبز 'ليفياثان'."
+        },
+        "correct_answer": true
+    },
+    {
+        "category": "literature",
+        "question": {
+            "en": "The 'Harry Potter' series consists of seven main books.",
+            "tr": "'Harry Potter' serisi yedi ana kitaptan oluşur.",
+            "fr": "La série 'Harry Potter' se compose de sept livres principaux.",
+            "es": "La serie 'Harry Potter' consta de siete libros principales.",
+            "de": "Die 'Harry Potter'-Reihe besteht aus sieben Hauptbüchern.",
+            "it": "La serie 'Harry Potter' è composta da sette libri principali.",
+            "hi": "'हैरी पॉटर' श्रृंखला में सात मुख्य पुस्तकें हैं।",
+            "ru": "Серия «Гарри Поттер» состоит из семи основных книг.",
+            "zh": "《哈利·波特》系列由七本主要书籍组成。",
+            "ja": "『ハリー・ポッター』シリーズは7冊の主要な本で構成されています。",
+            "ar": "تتكون سلسلة 'هاري بوتر' من سبعة كتب رئيسية."
+        },
+        "correct_answer": true
+    },
+    {
+        "category": "space_astronomy",
+        "question": {
+            "en": "Mars has two moons.",
+            "tr": "Mars'ın iki uydusu vardır.",
+            "fr": "Mars a deux lunes.",
+            "es": "Marte tiene dos lunas.",
+            "de": "Mars hat zwei Monde.",
+            "it": "Marte ha due lune.",
+            "hi": "मंगल के दो चंद्रमा हैं।",
+            "ru": "У Марса две луны.",
+            "zh": "火星有两颗卫星。",
+            "ja": "火星には2つの衛星があります。",
+            "ar": "للمريخ قمرين."
+        },
+        "correct_answer": true
+    },
+    {
+        "category": "health_fitness",
+        "question": {
+            "en": "Lungs are used for breathing.",
+            "tr": "Akciğerler nefes almak için kullanılır.",
+            "fr": "Les poumons servent à respirer.",
+            "es": "Los pulmones se utilizan para respirar.",
+            "de": "Lungen werden zum Atmen verwendet.",
+            "it": "I polmoni servono per respirare.",
+            "hi": "फेफड़ों का उपयोग सांस लेने के लिए किया जाता है।",
+            "ru": "Легкие используются для дыхания.",
+            "zh": "肺用于呼吸。",
+            "ja": "肺は呼吸に使われます。",
+            "ar": "تستخدم الرئتين للتنفس."
+        },
+        "correct_answer": true
+    },
+    {
+        "category": "economics_finance",
+        "question": {
+            "en": "A depression is an economic downturn more severe than a recession.",
+            "tr": "Depresyon, resesyondan daha şiddetli bir ekonomik durgunluktur.",
+            "fr": "Une dépression est un ralentissement économique plus grave qu'une récession.",
+            "es": "Una depresión es una recesión económica más grave que una recesión.",
+            "de": "Eine Depression ist ein wirtschaftlicher Abschwung, der schwerwiegender ist als eine Rezession.",
+            "it": "Una depressione è una recessione economica più grave di una recessione.",
+            "hi": "मंदी (Depression) एक आर्थिक मंदी है जो मंदी (Recession) से अधिक गंभीर है।",
+            "ru": "Депрессия — это экономический спад, более серьезный, чем рецессия.",
+            "zh": "萧条是比衰退更严重的经济低迷。",
+            "ja": "恐慌は不況よりも深刻な経済の落ち込みです。",
+            "ar": "الكساد هو انكماش اقتصادي أكثر حدة من الركود."
+        },
+        "correct_answer": true
+    },
+    {
+        "category": "architecture",
+        "question": {
+            "en": "The Notre Dame Cathedral is located in Paris.",
+            "tr": "Notre Dame Katedrali Paris'te bulunmaktadır.",
+            "fr": "La cathédrale Notre-Dame est située à Paris.",
+            "es": "La Catedral de Notre Dame se encuentra en París.",
+            "de": "Die Kathedrale Notre Dame befindet sich in Paris.",
+            "it": "La Cattedrale di Notre Dame si trova a Parigi.",
+            "hi": "नोट्रे डेम कैथेड्रल पेरिस में स्थित है।",
+            "ru": "Собор Парижской Богоматери находится в Париже.",
+            "zh": "巴黎圣母院位于巴黎。",
+            "ja": "ノートルダム大聖堂はパリにあります。",
+            "ar": "تقع كاتدرائية نوتردام في باريس."
+        },
+        "correct_answer": true
+    },
+    {
+        "category": "video_games",
+        "question": {
+            "en": "'Fortnite' features a battle royale mode.",
+            "tr": "'Fortnite' bir battle royale (hayatta kalma) moduna sahiptir.",
+            "fr": "'Fortnite' propose un mode battle royale.",
+            "es": "'Fortnite' cuenta con un modo battle royale.",
+            "de": "'Fortnite' verfügt über einen Battle-Royale-Modus.",
+            "it": "'Fortnite' presenta una modalità battle royale.",
+            "hi": "'फोर्टनाइट' में बैटल रॉयल मोड है।",
+            "ru": "В «Fortnite» есть режим королевской битвы.",
+            "zh": "《堡垒之夜》拥有大逃杀模式。",
+            "ja": "『フォートナイト』にはバトルロイヤルモードがあります。",
+            "ar": "تتميز 'فورتنايت' بوضع المعركة الملكية."
+        },
+        "correct_answer": true
+    },
+    {
+        "category": "general_culture",
+        "question": {
+            "en": "Spanish is the primary language spoken in Mexico.",
+            "tr": "Meksika'da konuşulan birincil dil İspanyolcadır.",
+            "fr": "L'espagnol est la principale langue parlée au Mexique.",
+            "es": "El español es el idioma principal que se habla en México.",
+            "de": "Spanisch ist die Hauptsprache in Mexiko.",
+            "it": "Lo spagnolo è la lingua principale parlata in Messico.",
+            "hi": "मैक्सिको में बोली जाने वाली प्राथमिक भाषा स्पेनिश है।",
+            "ru": "Испанский язык является основным языком, на котором говорят в Мексике.",
+            "zh": "西班牙语是墨西哥的主要语言。",
+            "ja": "スペイン語はメキシコで話されている主要な言語です。",
+            "ar": "الإسبانية هي اللغة الأساسية المستخدمة في المكسيك."
+        },
+        "correct_answer": true
+    },
+    {
+        "category": "fun_facts",
+        "question": {
+            "en": "Cats spend about 70% of their lives sleeping.",
+            "tr": "Kediler hayatlarının yaklaşık %70'ini uyuyarak geçirirler.",
+            "fr": "Les chats passent environ 70 % de leur vie à dormir.",
+            "es": "Los gatos pasan alrededor del 70% de sus vidas durmiendo.",
+            "de": "Katzen verbringen etwa 70 % ihres Lebens mit Schlafen.",
+            "it": "I gatti trascorrono circa il 70% della loro vita dormendo.",
+            "hi": "बिल्लियाँ अपने जीवन का लगभग 70% हिस्सा सोने में बिताती हैं।",
+            "ru": "Кошки проводят около 70% своей жизни во сне.",
+            "zh": "猫一生中大约70%的时间都在睡觉。",
+            "ja": "猫は人生の約70％を寝て過ごします。",
+            "ar": "تقضي القطط حوالي 70٪ من حياتها نائمة."
         },
         "correct_answer": true
     }

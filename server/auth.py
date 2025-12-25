@@ -1,7 +1,7 @@
 from fastapi import Depends, HTTPException
 from fastapi.security import HTTPBearer, HTTPAuthorizationCredentials
 from .db import get_session
-from .models import User, UserScore, UserStreak, UserSubscription, DailyLimits
+from .models import User, UserScore, UserStreak, UserSubscription
 from firebase_admin import auth
 from sqlmodel import select
 from sqlalchemy.exc import IntegrityError
@@ -22,7 +22,7 @@ def get_current_user(token: HTTPAuthorizationCredentials = Depends(token_auth_sc
             new_user = User(
                 firebase_uid=uid, email=decoded_token.get('email'),
                 score=UserScore(), streak=UserStreak(),
-                subscription=UserSubscription(), daily_limits=DailyLimits()
+                subscription=UserSubscription()
             )
             session.add(new_user); session.commit(); session.refresh(new_user)
             return new_user

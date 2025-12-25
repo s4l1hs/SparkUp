@@ -25,16 +25,7 @@ def _ensure_schema_compat():
             except Exception:
                 pass
 
-        try:
-            res = conn.execute(text("PRAGMA table_info('dailylimits')")).fetchall()
-            cols = [r[1] for r in res]
-            if 'notifications_sent' not in cols:
-                conn.execute(text("ALTER TABLE dailylimits ADD COLUMN notifications_sent INTEGER DEFAULT 0"))
-        except Exception:
-            try:
-                conn.execute(text("ALTER TABLE dailylimits ADD COLUMN notifications_sent INTEGER DEFAULT 0"))
-            except Exception:
-                pass
+        # legacy DailyLimits table checks removed — feature deprecated
 
         # Ensure DeviceToken has last_seen column (older DBs may not have it)
         try:

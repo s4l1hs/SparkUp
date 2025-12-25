@@ -9,7 +9,7 @@ from sqlmodel import select, delete, func
 from .auth import get_current_user
 from .db import get_session
 from .models import (
-    User, UserScore, UserStreak, UserSubscription, DailyLimits,
+    User, UserScore, UserStreak, UserSubscription,
     UserAnsweredQuestion, UserAnswerRecord, QuizQuestion, AnswerPayload, AnswerResponse,
     UserScoreHistory, DeviceToken, DeviceTokenPayload, NotificationMetric, UserSeenInfo
 )
@@ -141,15 +141,8 @@ def get_quiz_questions(limit: int = 3, lang: Optional[str] = Query(None), previe
         except Exception:
             return ""
 
-    # If this is a real session (not preview), consume one energy now
-    if not preview:
-        try:
-            limits_obj = access.get("daily_limits_obj")
-            if limits_obj:
-                limits_obj.energy_used = (limits_obj.energy_used or 0) + 1
-                session.add(limits_obj); session.commit(); session.refresh(limits_obj)
-        except Exception:
-            session.rollback()
+    # If this is a real session (not preview), consume one energy now (handled client-side optimistically)
+    # Server no longer persists per-user daily limits here.
 
     result = []
     for q in chosen:
@@ -183,8 +176,7 @@ def submit_quiz_answer(payload: AnswerPayload, db_user: User = Depends(get_curre
         raise HTTPException(status_code=404, detail="Question not found.")
     user_score = session.exec(select(UserScore).where(UserScore.user_id==db_user.id)).first()
     user_streak = session.exec(select(UserStreak).where(UserStreak.user_id==db_user.id)).first()
-    limits = session.exec(select(DailyLimits).where(DailyLimits.user_id == db_user.id)).first()
-    if not user_score or not user_streak or not limits:
+    if not user_score or not user_streak:
         raise HTTPException(status_code=500, detail="User data missing.")
 
     access = _get_user_access_level(db_user, session)
@@ -220,11 +212,9 @@ def submit_quiz_answer(payload: AnswerPayload, db_user: User = Depends(get_curre
             session.add(UserAnswerRecord(user_id=db_user.id, quizquestion_id=payload.question_id, correct=bool(is_correct)))
         except Exception:
             pass
-        limits.questions_answered = (limits.questions_answered or 0) + 1
-
-        session.add(user_score); session.add(user_streak); session.add(limits)
+        session.add(user_score); session.add(user_streak)
         session.commit()
-        session.refresh(user_score); session.refresh(user_streak); session.refresh(limits)
+        session.refresh(user_score); session.refresh(user_streak)
 
     return AnswerResponse(correct=is_correct, correct_index=question.correct_answer_index, score_awarded=score_awarded, new_score=user_score.score)
 
@@ -387,13 +377,7 @@ def get_manual_truefalse(db_user: User = Depends(get_current_user), session = De
     remaining_energy = access.get("remaining_energy")
     # Removed server-side true/false daily-limit enforcement; client should use remaining_energy from profile.
 
-    try:
-        limits_obj = access.get("daily_limits_obj")
-        if limits_obj:
-            limits_obj.energy_used = (limits_obj.energy_used or 0) + 1
-            session.add(limits_obj); session.commit(); session.refresh(limits_obj)
-    except Exception:
-        session.rollback()
+    # Server no longer persists per-user daily limits on true/false fetch.
 
     # Return questions and include session_seconds hint
     out = []
@@ -492,10 +476,7 @@ def run_scan(internal_secret: Optional[str] = Query(None), session = Depends(get
         sub = session.exec(select(UserSubscription).where(UserSubscription.user_id == u.id)).first()
         level = sub.level if sub else "free"
         allowed = NOTIFICATION_FREQUENCY.get(level, 1)
-        limits = session.exec(select(DailyLimits).where(DailyLimits.user_id == u.id)).first()
-        sent_today = limits.notifications_sent if limits else 0
-        if sent_today >= allowed:
-            continue
+        # Daily per-user notification limits removed; send based on NOTIFICATION_FREQUENCY not enforced per-user.
         picked = _select_unseen_info_for_user(session, u)
         if not picked:
             results.append({"user_id": u.id, "status": "no_info"})

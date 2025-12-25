@@ -4,8 +4,8 @@ from datetime import date
 from typing import Optional, Dict
 from .config import MANUAL_INFOS, TRANSLATIONS, NOTIFICATION_FREQUENCY, load_manual_infos, SUBSCRIPTION_LIMITS, SUBSCRIPTION_ACCESS
 from .models import (
-    UserSeenInfo, DeviceToken, DailyLimits, NotificationMetric, UserScoreHistory,
-    UserSubscription, UserScore, UserStreak
+    UserSeenInfo, DeviceToken, NotificationMetric, UserSubscription, UserScoreHistory,
+    UserScore, UserStreak
 )
 from sqlmodel import select, delete
 from firebase_admin import messaging
@@ -22,10 +22,6 @@ def _get_rank_name(score: int) -> str:
 
 def _get_user_access_level(db_user, session) -> Dict:
     today = date.today()
-    limits = session.exec(select(DailyLimits).where(DailyLimits.user_id == db_user.id)).first()
-    if not limits:
-        limits = DailyLimits(user_id=db_user.id)
-        session.add(limits); session.commit(); session.refresh(limits)
     sub = session.exec(select(UserSubscription).where(UserSubscription.user_id == db_user.id)).first()
     if not sub:
         sub = UserSubscription(user_id=db_user.id)
@@ -33,32 +29,23 @@ def _get_user_access_level(db_user, session) -> Dict:
     if sub.expires_at and sub.expires_at < today:
         sub.level, sub.expires_at = "free", None
         session.add(sub); session.commit()
-    if limits.last_reset < today:
-        limits.quiz_count = 0
-        limits.challenge_count = 0
-        limits.questions_answered = 0
-        limits.notifications_sent = 0
-        # reset daily energy consumption
-        limits.energy_used = 0
-        limits.last_reset = today
-        session.add(limits); session.commit()
     level = sub.level
     # compute energy info from SUBSCRIPTION_ACCESS
     access = SUBSCRIPTION_ACCESS.get(level, {"energy_per_day": 3, "session_seconds": 60})
     energy_per_day = int(access.get("energy_per_day", 3))
-    remaining_energy = max(0, energy_per_day - (limits.energy_used or 0))
+    remaining_energy = energy_per_day
     session_seconds = int(access.get("session_seconds", 60))
 
     return {
         "level": level,
-        "quiz_count": limits.quiz_count,
-        "challenge_count": limits.challenge_count,
-        "questions_answered": limits.questions_answered,
+        "quiz_count": 0,
+        "challenge_count": 0,
+        "questions_answered": 0,
         "quiz_limit": SUBSCRIPTION_LIMITS[level]["quiz_limit"],
         "challenge_limit": SUBSCRIPTION_LIMITS[level]["challenge_limit"],
-        "daily_limits_obj": limits,
+        "daily_limits_obj": None,
         "energy_per_day": energy_per_day,
-        "energy_used": limits.energy_used or 0,
+        "energy_used": 0,
         "remaining_energy": remaining_energy,
         "session_seconds": session_seconds,
     }
@@ -175,12 +162,6 @@ def _send_notification_to_user(session, db_user, info_idx: int, info_obj: Dict) 
 
     try:
         session.add(UserSeenInfo(user_id=db_user.id, info_index=info_idx))
-        limits = session.exec(select(DailyLimits).where(DailyLimits.user_id == db_user.id)).first()
-        if not limits:
-            limits = DailyLimits(user_id=db_user.id, notifications_sent=1)
-        else:
-            limits.notifications_sent = (limits.notifications_sent or 0) + 1
-        session.add(limits)
         session.commit()
     except Exception as e:
         session.rollback()
