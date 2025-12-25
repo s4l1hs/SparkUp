@@ -338,14 +338,14 @@ class _QuizPageState extends State<QuizPage> with TickerProviderStateMixin {
 
     final localizations = AppLocalizations.of(context);
     final userProvider = Provider.of<UserProvider>(context, listen: false);
-      final analysisProv = Provider.of<AnalysisProvider>(context, listen: false);
+    final analysisProv = Provider.of<AnalysisProvider>(context, listen: false);
     try {
       final questionId = _questions[_currentIndex]['id'] as int;
       final response = await _apiServiceSafe(
           () => _apiService.submitQuizAnswer(
               widget.idToken, questionId, selectedIndex),
           const Duration(seconds: 8));
-        if (response is Map) {
+      if (response is Map) {
         final newScore = response['new_score'] as int? ?? 0;
         final awarded = response['score_awarded'] as int? ?? 0;
 
@@ -372,7 +372,8 @@ class _QuizPageState extends State<QuizPage> with TickerProviderStateMixin {
         if (!mounted) return;
 
         // Track wrong answers locally; if 3 wrongs occur the session ends immediately.
-        final correctIndex = _questions[_currentIndex]['correct_answer_index'] as int;
+        final correctIndex =
+            _questions[_currentIndex]['correct_answer_index'] as int;
         final wasCorrect = selectedIndex == correctIndex;
         if (!wasCorrect) {
           setState(() => _wrongAnswers++);

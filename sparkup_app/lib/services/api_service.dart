@@ -4,20 +4,8 @@ import 'package:flutter/foundation.dart';
 import '../models/leaderboard_entry.dart';
 import '../main.dart';
 
-// --- YENİ HATA SINIFLARI ---
-class QuizLimitException implements Exception {
-  final String message;
-  QuizLimitException(this.message);
-  @override
-  String toString() => 'QuizLimitException: $message';
-}
-
-class ChallengeLimitException implements Exception {
-  final String message;
-  ChallengeLimitException(this.message);
-  @override
-  String toString() => 'ChallengeLimitException: $message';
-}
+// Note: daily quiz/challenge limit concept removed from client-side.
+// Server responses are treated as generic errors; energy gating is handled via `remaining_energy` in profile.
 
 class ApiService {
   Map<String, String> _getAuthHeaders(String idToken) {
@@ -107,11 +95,9 @@ class ApiService {
     if (resp.statusCode == 200) {
       final data = jsonDecode(resp.body) as List<dynamic>;
       return data.map((e) => Map<String, dynamic>.from(e as Map)).toList();
-    } else if (resp.statusCode == 429) {
-      final detail = resp.body;
-      throw QuizLimitException(detail);
     } else {
-      throw Exception('Failed to load quiz questions (${resp.statusCode})');
+      throw Exception(
+          'Failed to load quiz questions (${resp.statusCode}): ${resp.body}');
     }
   }
 
@@ -124,11 +110,9 @@ class ApiService {
         await http.get(uri, headers: {'Authorization': 'Bearer $idToken'});
     if (resp.statusCode == 200) {
       return Map<String, dynamic>.from(jsonDecode(resp.body) as Map);
-    } else if (resp.statusCode == 429) {
-      final detail = resp.body;
-      throw ChallengeLimitException(detail);
     } else {
-      throw Exception('Failed to load challenge (${resp.statusCode})');
+      throw Exception(
+          'Failed to load challenge (${resp.statusCode}): ${resp.body}');
     }
   }
 
@@ -191,11 +175,9 @@ class ApiService {
     } else if (resp.statusCode == 404) {
       // upstream: no manual TF available
       return <Map<String, dynamic>>[];
-    } else if (resp.statusCode == 429) {
-      final detail = resp.body;
-      throw QuizLimitException(detail);
     } else {
-      throw Exception('Failed to load manual true/false (${resp.statusCode})');
+      throw Exception(
+          'Failed to load manual true/false (${resp.statusCode}): ${resp.body}');
     }
   }
 

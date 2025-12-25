@@ -95,10 +95,7 @@ def get_quiz_questions(limit: int = 3, lang: Optional[str] = Query(None), previe
     remaining_energy = access.get("remaining_energy")
     session_seconds = access.get("session_seconds")
 
-    if not preview and remaining_energy is not None and remaining_energy <= 0 and access["level"] != "ultra":
-        tpl = TRANSLATIONS.get("daily_quiz_limit_reached", {}).get(effective_lang) or TRANSLATIONS["daily_quiz_limit_reached"]["en"]
-        # Use a similar message but the client should prefer using remaining_energy/session_seconds
-        return PlainTextResponse(tpl.format(limit=access.get("quiz_limit")), status_code=429)
+    # Daily quota enforcement removed: access gated by `remaining_energy` value in profile only.
 
     answered_ids_raw = session.exec(select(UserAnsweredQuestion.quizquestion_id).where(UserAnsweredQuestion.user_id == db_user.id)).all()
     answered_ids = []
@@ -191,9 +188,7 @@ def submit_quiz_answer(payload: AnswerPayload, db_user: User = Depends(get_curre
         raise HTTPException(status_code=500, detail="User data missing.")
 
     access = _get_user_access_level(db_user, session)
-    if access["quiz_limit"] != float('inf') and access["questions_answered"] >= access["quiz_limit"] and access["level"] != "ultra":
-        tpl = TRANSLATIONS.get("daily_quiz_limit_reached", {}).get(db_user.language_code or "en") or TRANSLATIONS["daily_quiz_limit_reached"]["en"]
-        return PlainTextResponse(tpl.format(limit=access["quiz_limit"]), status_code=429)
+    # Daily quiz-count enforcement removed: allow submissions as long as other access checks (energy) permit.
 
     already_answered = session.exec(select(UserAnsweredQuestion).where(UserAnsweredQuestion.user_id == db_user.id, UserAnsweredQuestion.quizquestion_id == payload.question_id)).first()
     is_correct = (question.correct_answer_index == payload.answer_index)
@@ -390,9 +385,7 @@ def get_manual_truefalse(db_user: User = Depends(get_current_user), session = De
     # Ensure user has energy for a true/false session (cost 1 energy) and consume it
     access = _get_user_access_level(db_user, session)
     remaining_energy = access.get("remaining_energy")
-    if remaining_energy is not None and remaining_energy <= 0 and access["level"] != "ultra":
-        tpl = TRANSLATIONS.get("daily_quiz_limit_reached", {}).get(db_user.language_code or "en") or TRANSLATIONS["daily_quiz_limit_reached"]["en"]
-        return PlainTextResponse(tpl.format(limit=access.get("quiz_limit")), status_code=429)
+    # Removed server-side true/false daily-limit enforcement; client should use remaining_energy from profile.
 
     try:
         limits_obj = access.get("daily_limits_obj")

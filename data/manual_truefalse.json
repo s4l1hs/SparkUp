@@ -12731,5 +12731,3150 @@
             "ar": "يقع جراند كانيون في ولاية نيفادا."
         },
         "correct_answer": false
+    },
+    {
+        "category": "history",
+        "question": {
+            "en": "The First World War ended in 1918.",
+            "tr": "Birinci Dünya Savaşı 1918'de sona erdi.",
+            "fr": "La Première Guerre mondiale s'est terminée en 1918.",
+            "es": "La Primera Guerra Mundial terminó en 1918.",
+            "de": "Der Erste Weltkrieg endete 1918.",
+            "it": "La Prima Guerra Mondiale terminò nel 1918.",
+            "hi": "प्रथम विश्व युद्ध 1918 में समाप्त हुआ।",
+            "ru": "Первая мировая война закончилась в 1918 году.",
+            "zh": "第一次世界大战于1918年结束。",
+            "ja": "第一次世界大戦は1918年に終わりました。",
+            "ar": "انتهت الحرب العالمية الأولى عام 1918."
+        },
+        "correct_answer": true
+    },
+    {
+        "category": "geography_travel",
+        "question": {
+            "en": "The capital of Australia is Canberra.",
+            "tr": "Avustralya'nın başkenti Canberra'dır.",
+            "fr": "La capitale de l'Australie est Canberra.",
+            "es": "La capital de Australia es Canberra.",
+            "de": "Die Hauptstadt von Australien ist Canberra.",
+            "it": "La capitale dell'Australia è Canberra.",
+            "hi": "ऑस्ट्रेलिया की राजधानी कैनबरा है।",
+            "ru": "Столица Австралии — Канберра.",
+            "zh": "澳大利亚的首都是堪培拉。",
+            "ja": "オーストラリアの首都はキャンベラです。",
+            "ar": "عاصمة أستراليا هي كانبيرا."
+        },
+        "correct_answer": true
+    },
+    {
+        "category": "art",
+        "question": {
+            "en": "The painting 'American Gothic' depicts a farmer and his wife.",
+            "tr": "'Amerikan Gotiği' tablosu bir çiftçiyi ve karısını tasvir eder.",
+            "fr": "Le tableau 'American Gothic' représente un fermier et sa femme.",
+            "es": "El cuadro 'Gótico estadounidense' representa a un granjero y su esposa.",
+            "de": "Das Gemälde 'American Gothic' zeigt einen Bauern und seine Frau.",
+            "it": "Il dipinto 'American Gothic' raffigura un contadino e sua moglie.",
+            "hi": "पेंटिंग 'अमेरिकन गॉथिक' एक किसान और उसकी पत्नी को दर्शाती है।",
+            "ru": "Картина «Американская готика» изображает фермера и его жену.",
+            "zh": "画作《美国哥特式》描绘了一位农民和他的妻子。",
+            "ja": "絵画『アメリカン・ゴシック』は農夫とその妻を描いています。",
+            "ar": "تصور لوحة 'القوطية الأمريكية' مزارعًا وزوجته."
+        },
+        "correct_answer": false
+    },
+    {
+        "category": "sports",
+        "question": {
+            "en": "In soccer, the goalkeeper is the only player allowed to touch the ball with their hands.",
+            "tr": "Futbolda topa elle dokunmasına izin verilen tek oyuncu kalecidir.",
+            "fr": "Au football, le gardien de but est le seul joueur autorisé à toucher le ballon avec ses mains.",
+            "es": "En fútbol, el portero es el único jugador autorizado a tocar el balón con las manos.",
+            "de": "Im Fußball ist der Torwart der einzige Spieler, der den Ball mit den Händen berühren darf.",
+            "it": "Nel calcio, il portiere è l'unico giocatore autorizzato a toccare la palla con le mani.",
+            "hi": "फ़ुटबॉल में, गोलकीपर एकमात्र ऐसा खिलाड़ी है जिसे अपने हाथों से गेंद को छूने की अनुमति है।",
+            "ru": "В футболе вратарь — единственный игрок, которому разрешено касаться мяча руками.",
+            "zh": "在足球比赛中，守门员是唯一可以用手触球的球员。",
+            "ja": "サッカーにおいて、ゴールキーパーは手でボールに触れることが許されている唯一の選手です。",
+            "ar": "في كرة القدم، حارس المرمى هو اللاعب الوحيد المسموح له بلمس الكرة بيديه."
+        },
+        "correct_answer": true
+    },
+    {
+        "category": "cinema_tv",
+        "question": {
+            "en": "The first feature-length computer-animated film was 'Toy Story'.",
+            "tr": "İlk uzun metrajlı bilgisayar animasyon filmi 'Oyuncak Hikayesi'dir.",
+            "fr": "Le premier long métrage d'animation par ordinateur était 'Toy Story'.",
+            "es": "La primera película de animación por computadora de largometraje fue 'Toy Story'.",
+            "de": "Der erste abendfüllende computeranimierte Film war 'Toy Story'.",
+            "it": "Il primo lungometraggio animato al computer è stato 'Toy Story'.",
+            "hi": "पहली फीचर-लेंथ कंप्यूटर-एनिमेटेड फिल्म 'टॉय स्टोरी' थी।",
+            "ru": "Первым полнометражным компьютерным мультфильмом была «История игрушек».",
+            "zh": "第一部电脑动画长片是《玩具总动员》。",
+            "ja": "最初の長編コンピュータアニメーション映画は『トイ・ストーリー』でした。",
+            "ar": "كان أول فيلم رسوم متحركة طويل بالكمبيوتر هو 'حكاية لعبة'."
+        },
+        "correct_answer": true
+    },
+    {
+        "category": "technology",
+        "question": {
+            "en": "Bill Gates invented the World Wide Web.",
+            "tr": "Bill Gates World Wide Web'i icat etti.",
+            "fr": "Bill Gates a inventé le World Wide Web.",
+            "es": "Bill Gates inventó la World Wide Web.",
+            "de": "Bill Gates hat das World Wide Web erfunden.",
+            "it": "Bill Gates ha inventato il World Wide Web.",
+            "hi": "बिल गेट्स ने वर्ल्ड वाइड वेब का आविष्कार किया।",
+            "ru": "Билл Гейтс изобрел Всемирную паутину.",
+            "zh": "比尔·盖茨发明了万维网。",
+            "ja": "ビル・ゲイツはワールドワイドウェブを発明しました。",
+            "ar": "اخترع بيل غيتس الشبكة العنكبوتية العالمية."
+        },
+        "correct_answer": false
+    },
+    {
+        "category": "nature_animals",
+        "question": {
+            "en": "Dolphins sleep with one eye open.",
+            "tr": "Yunuslar tek gözü açık uyurlar.",
+            "fr": "Les dauphins dorment avec un œil ouvert.",
+            "es": "Los delfines duermen con un ojo abierto.",
+            "de": "Delfine schlafen mit einem offenen Auge.",
+            "it": "I delfini dormono con un occhio aperto.",
+            "hi": "डॉल्फिन एक आंख खुली रखकर सोती हैं।",
+            "ru": "Дельфины спят с одним открытым глазом.",
+            "zh": "海豚睁着一只眼睛睡觉。",
+            "ja": "イルカは片目を開けて眠ります。",
+            "ar": "تنام الدلافين وعين واحدة مفتوحة."
+        },
+        "correct_answer": true
+    },
+    {
+        "category": "philosophy",
+        "question": {
+            "en": "Karl Marx wrote 'Das Kapital'.",
+            "tr": "Karl Marx 'Das Kapital' (Kapital) kitabını yazmıştır.",
+            "fr": "Karl Marx a écrit 'Le Capital'.",
+            "es": "Karl Marx escribió 'El Capital'.",
+            "de": "Karl Marx schrieb 'Das Kapital'.",
+            "it": "Karl Marx ha scritto 'Il Capitale'.",
+            "hi": "कार्ल मार्क्स ने 'दास कैपिटल' लिखी थी।",
+            "ru": "Карл Маркс написал «Капитал».",
+            "zh": "卡尔·马克思写了《资本论》。",
+            "ja": "カール・マルクスは『資本論』を書きました。",
+            "ar": "كتب كارل ماركس 'رأس المال'."
+        },
+        "correct_answer": true
+    },
+    {
+        "category": "space_astronomy",
+        "question": {
+            "en": "The universe is expanding.",
+            "tr": "Evren genişlemektedir.",
+            "fr": "L'univers est en expansion.",
+            "es": "El universo se está expandiendo.",
+            "de": "Das Universum dehnt sich aus.",
+            "it": "L'universo si sta espandendo.",
+            "hi": "ब्रह्मांड का विस्तार हो रहा है।",
+            "ru": "Вселенная расширяется.",
+            "zh": "宇宙正在膨胀。",
+            "ja": "宇宙は膨張しています。",
+            "ar": "الكون يتوسع."
+        },
+        "correct_answer": true
+    },
+    {
+        "category": "fun_facts",
+        "question": {
+            "en": "Apples float in water.",
+            "tr": "Elmalar suda yüzer.",
+            "fr": "Les pommes flottent dans l'eau.",
+            "es": "Las manzanas flotan en el agua.",
+            "de": "Äpfel schwimmen im Wasser.",
+            "it": "Le mele galleggiano nell'acqua.",
+            "hi": "सेब पानी में तैरते हैं।",
+            "ru": "Яблоки плавают в воде.",
+            "zh": "苹果浮在水面上。",
+            "ja": "リンゴは水に浮きます。",
+            "ar": "التفاح يطفو في الماء."
+        },
+        "correct_answer": true
+    },
+    {
+        "category": "fun_facts",
+        "question": {
+            "en": "Goldfish have a three-second memory.",
+            "tr": "Japon balıklarının hafızası üç saniyedir.",
+            "fr": "Les poissons rouges ont une mémoire de trois secondes.",
+            "es": "Los peces dorados tienen una memoria de tres segundos.",
+            "de": "Goldfische haben ein Drei-Sekunden-Gedächtnis.",
+            "it": "I pesci rossi hanno una memoria di tre secondi.",
+            "hi": "गोल्डफिश की याददाश्त तीन सेकंड की होती है।",
+            "ru": "У золотых рыбок трехсекундная память.",
+            "zh": "金鱼只有三秒钟的记忆。",
+            "ja": "金魚の記憶力は3秒です。",
+            "ar": "الأسماك الذهبية لديها ذاكرة مدتها ثلاث ثوان."
+        },
+        "correct_answer": false
+    },
+    {
+        "category": "architecture",
+        "question": {
+            "en": "The 'Oval Office' is located in the White House.",
+            "tr": "'Oval Ofis' Beyaz Saray'da bulunur.",
+            "fr": "Le 'Bureau ovale' est situé à la Maison Blanche.",
+            "es": "El 'Despacho Oval' se encuentra en la Casa Blanca.",
+            "de": "Das 'Oval Office' befindet sich im Weißen Haus.",
+            "it": "Lo 'Studio Ovale' si trova nella Casa Bianca.",
+            "hi": "'ओवल ऑफिस' व्हाइट हाउस में स्थित है।",
+            "ru": "Овальный кабинет находится в Белом доме.",
+            "zh": "“椭圆形办公室”位于白宫。",
+            "ja": "「オーバルオフィス」はホワイトハウスにあります。",
+            "ar": "يقع 'المكتب البيضاوي' في البيت الأبيض."
+        },
+        "correct_answer": true
+    },
+    {
+        "category": "video_games",
+        "question": {
+            "en": "The game 'Pong' simulates a game of tennis.",
+            "tr": "'Pong' oyunu bir tenis oyununu simüle eder.",
+            "fr": "Le jeu 'Pong' simule une partie de tennis.",
+            "es": "El juego 'Pong' simula un partido de tenis.",
+            "de": "Das Spiel 'Pong' simuliert ein Tennisspiel.",
+            "it": "Il gioco 'Pong' simula una partita di tennis.",
+            "hi": "खेल 'पोंग' टेनिस के खेल का अनुकरण करता है।",
+            "ru": "Игра «Pong» имитирует игру в теннис.",
+            "zh": "游戏《Pong》模拟了一场网球比赛。",
+            "ja": "ゲーム『ポン』はテニスの試合をシミュレートしています。",
+            "ar": "لعبة 'بونغ' تحاكي لعبة التنس."
+        },
+        "correct_answer": true
+    },
+    {
+        "category": "general_culture",
+        "question": {
+            "en": "The national flag of Japan features a red circle.",
+            "tr": "Japonya'nın ulusal bayrağında kırmızı bir daire bulunur.",
+            "fr": "Le drapeau national du Japon comporte un cercle rouge.",
+            "es": "La bandera nacional de Japón presenta un círculo rojo.",
+            "de": "Die Nationalflagge Japans zeigt einen roten Kreis.",
+            "it": "La bandiera nazionale del Giappone presenta un cerchio rosso.",
+            "hi": "जापान के राष्ट्रीय ध्वज में एक लाल वृत्त है।",
+            "ru": "На государственном флаге Японии изображен красный круг.",
+            "zh": "日本国旗上有一个红色的圆圈。",
+            "ja": "日本の国旗には赤い円が描かれています。",
+            "ar": "يتميز علم اليابان الوطني بدائرة حمراء."
+        },
+        "correct_answer": true
+    },
+    {
+        "category": "economics_finance",
+        "question": {
+            "en": "A 'bull market' involves falling stock prices.",
+            "tr": "'Boğa piyasası' hisse senedi fiyatlarının düşmesini içerir.",
+            "fr": "Un 'marché haussier' implique une chute des prix des actions.",
+            "es": "Un 'mercado alcista' implica la caída de los precios de las acciones.",
+            "de": "Ein 'Bullenmarkt' beinhaltet fallende Aktienkurse.",
+            "it": "Un 'mercato toro' comporta un calo dei prezzi delle azioni.",
+            "hi": "'बुल मार्केट' में गिरती हुई स्टॉक कीमतें शामिल होती हैं।",
+            "ru": "«Бычий рынок» предполагает падение цен на акции.",
+            "zh": "“牛市”涉及股票价格下跌。",
+            "ja": "「強気相場」は株価の下落を伴います。",
+            "ar": "ينطوي 'السوق الصاعدة' على انخفاض أسعار الأسهم."
+        },
+        "correct_answer": false
+    },
+    {
+        "category": "music",
+        "question": {
+            "en": "The flute is a brass instrument.",
+            "tr": "Flüt bir bakır üflemeli çalgıdır.",
+            "fr": "La flûte est un instrument de la famille des cuivres.",
+            "es": "La flauta es un instrumento de metal.",
+            "de": "Die Flöte ist ein Blechblasinstrument.",
+            "it": "Il flauto è uno strumento in ottone.",
+            "hi": "बांसुरी एक पीतल (brass) वाद्ययंत्र है।",
+            "ru": "Флейта — это медный духовой инструмент.",
+            "zh": "长笛是一种铜管乐器。",
+            "ja": "フルートは金管楽器です。",
+            "ar": "الفلوت هو آلة نحاسية."
+        },
+        "correct_answer": false
+    },
+    {
+        "category": "history",
+        "question": {
+            "en": "The US Civil War began in 1861.",
+            "tr": "ABD İç Savaşı 1861'de başladı.",
+            "fr": "La guerre civile américaine a commencé en 1861.",
+            "es": "La Guerra Civil estadounidense comenzó en 1861.",
+            "de": "Der amerikanische Bürgerkrieg begann 1861.",
+            "it": "La guerra civile americana iniziò nel 1861.",
+            "hi": "अमेरिकी गृहयुद्ध 1861 में शुरू हुआ।",
+            "ru": "Гражданская война в США началась в 1861 году.",
+            "zh": "美国内战始于1861年。",
+            "ja": "アメリカ南北戦争は1861年に始まりました。",
+            "ar": "بدأت الحرب الأهلية الأمريكية في عام 1861."
+        },
+        "correct_answer": true
+    },
+    {
+        "category": "science",
+        "question": {
+            "en": "The hardest natural mineral is diamond.",
+            "tr": "En sert doğal mineral elmastır.",
+            "fr": "Le minéral naturel le plus dur est le diamant.",
+            "es": "El mineral natural más duro es el diamante.",
+            "de": "Das härteste natürliche Mineral ist Diamant.",
+            "it": "Il minerale naturale più duro è il diamante.",
+            "hi": "सबसे कठोर प्राकृतिक खनिज हीरा है।",
+            "ru": "Самый твердый природный минерал — алмаз.",
+            "zh": "最硬的天然矿物是钻石。",
+            "ja": "最も硬い天然鉱物はダイヤモンドです。",
+            "ar": "أصلب معدن طبيعي هو الماس."
+        },
+        "correct_answer": true
+    },
+    {
+        "category": "literature",
+        "question": {
+            "en": "Sherlock Holmes is a fictional character created by Arthur Conan Doyle.",
+            "tr": "Sherlock Holmes, Arthur Conan Doyle tarafından yaratılan kurgusal bir karakterdir.",
+            "fr": "Sherlock Holmes est un personnage de fiction créé par Arthur Conan Doyle.",
+            "es": "Sherlock Holmes es un personaje de ficción creado por Arthur Conan Doyle.",
+            "de": "Sherlock Holmes ist eine fiktive Figur, die von Arthur Conan Doyle geschaffen wurde.",
+            "it": "Sherlock Holmes è un personaggio immaginario creato da Arthur Conan Doyle.",
+            "hi": "शरलॉक होम्स आर्थर कॉनन डॉयल द्वारा बनाया गया एक काल्पनिक चरित्र है।",
+            "ru": "Шерлок Холмс — вымышленный персонаж, созданный Артуром Конан Дойлем.",
+            "zh": "夏洛克·福尔摩斯是由阿瑟·柯南·道尔创造的虚构人物。",
+            "ja": "シャーロック・ホームズはアーサー・コナン・ドイルによって作られた架空の人物です。",
+            "ar": "شرلوك هولمز هو شخصية خيالية أنشأها آرثر كونان دويل."
+        },
+        "correct_answer": true
+    },
+    {
+        "category": "history",
+        "question": {
+            "en": "The Hundred Years' War was fought between France and England.",
+            "tr": "Yüzyıl Savaşları Fransa ve İngiltere arasında yapılmıştır.",
+            "fr": "La guerre de Cent Ans a opposé la France et l'Angleterre.",
+            "es": "La Guerra de los Cien Años se libró entre Francia e Inglaterra.",
+            "de": "Der Hundertjährige Krieg wurde zwischen Frankreich und England ausgetragen.",
+            "it": "La Guerra dei Cent'anni fu combattuta tra Francia e Inghilterra.",
+            "hi": "सौ साल का युद्ध फ्रांस और इंग्लैंड के बीच लड़ा गया था।",
+            "ru": "Столетняя война велась между Францией и Англией.",
+            "zh": "百年战争是在法国和英国之间进行的。",
+            "ja": "百年戦争はフランスとイングランドの間で戦われました。",
+            "ar": "دارت حرب المائة عام بين فرنسا وإنجلترا."
+        },
+        "correct_answer": true
+    },
+    {
+        "category": "science",
+        "question": {
+            "en": "Sound travels faster in solids than in liquids.",
+            "tr": "Ses katılarda sıvılardan daha hızlı yayılır.",
+            "fr": "Le son se propage plus vite dans les solides que dans les liquides.",
+            "es": "El sonido viaja más rápido en sólidos que en líquidos.",
+            "de": "Schall breitet sich in Festkörpern schneller aus als in Flüssigkeiten.",
+            "it": "Il suono viaggia più velocemente nei solidi che nei liquidi.",
+            "hi": "ध्वनि द्रवों की तुलना में ठोस पदार्थों में तेजी से यात्रा करती है।",
+            "ru": "Звук распространяется в твердых телах быстрее, чем в жидкостях.",
+            "zh": "声音在固体中的传播速度比在液体中快。",
+            "ja": "音は液体よりも固体の中を速く伝わります。",
+            "ar": "ينتقل الصوت في المواد الصلبة أسرع منه في السوائل."
+        },
+        "correct_answer": true
+    },
+    {
+        "category": "art",
+        "question": {
+            "en": "Vincent van Gogh only sold one painting during his lifetime.",
+            "tr": "Vincent van Gogh hayatı boyunca sadece bir tablo satmıştır.",
+            "fr": "Vincent van Gogh n'a vendu qu'un seul tableau de son vivant.",
+            "es": "Vincent van Gogh solo vendió un cuadro durante su vida.",
+            "de": "Vincent van Gogh verkaufte zu Lebzeiten nur ein Gemälde.",
+            "it": "Vincent van Gogh ha venduto un solo dipinto durante la sua vita.",
+            "hi": "विंसेंट वैन गॉग ने अपने जीवनकाल में केवल एक पेंटिंग बेची।",
+            "ru": "Винсент Ван Гог продал при жизни только одну картину.",
+            "zh": "文森特·梵高生前只卖出过一幅画。",
+            "ja": "フィンセント・ファン・ゴッホは生前に絵画を1枚しか売りませんでした。",
+            "ar": "باع فنسنت فان جوخ لوحة واحدة فقط خلال حياته."
+        },
+        "correct_answer": true
+    },
+    {
+        "category": "sports",
+        "question": {
+            "en": "A bowling perfect game score is 300.",
+            "tr": "Bovlingde mükemmel oyun puanı 300'dür.",
+            "fr": "Le score parfait au bowling est de 300.",
+            "es": "La puntuación perfecta en un juego de bolos es 300.",
+            "de": "Ein perfektes Bowling-Ergebnis ist 300.",
+            "it": "Il punteggio perfetto nel bowling è 300.",
+            "hi": "बॉलिंग में परफेक्ट गेम का स्कोर 300 है।",
+            "ru": "Идеальный счет в боулинге — 300.",
+            "zh": "保龄球满分是300分。",
+            "ja": "ボウリングのパーフェクトゲームのスコアは300点です。",
+            "ar": "النتيجة المثالية للعبة البولينج هي 300."
+        },
+        "correct_answer": true
+    },
+    {
+        "category": "technology",
+        "question": {
+            "en": "The programming language Python is named after a snake.",
+            "tr": "Python programlama dili adını bir yılandan almıştır.",
+            "fr": "Le langage de programmation Python porte le nom d'un serpent.",
+            "es": "El lenguaje de programación Python lleva el nombre de una serpiente.",
+            "de": "Die Programmiersprache Python ist nach einer Schlange benannt.",
+            "it": "Il linguaggio di programmazione Python prende il nome da un serpente.",
+            "hi": "पायथन प्रोग्रामिंग भाषा का नाम एक सांप के नाम पर रखा गया है।",
+            "ru": "Язык программирования Python назван в честь змеи.",
+            "zh": "Python编程语言是以一种蛇命名的。",
+            "ja": "プログラミング言語Pythonはヘビにちなんで名付けられました。",
+            "ar": "سميت لغة البرمجة بايثون على اسم ثعبان."
+        },
+        "correct_answer": false
+    },
+    {
+        "category": "cinema_tv",
+        "question": {
+            "en": "The movie 'Jurassic Park' was directed by Steven Spielberg.",
+            "tr": "'Jurassic Park' filmi Steven Spielberg tarafından yönetilmiştir.",
+            "fr": "Le film 'Jurassic Park' a été réalisé par Steven Spielberg.",
+            "es": "La película 'Parque Jurásico' fue dirigida por Steven Spielberg.",
+            "de": "Der Film 'Jurassic Park' wurde von Steven Spielberg gedreht.",
+            "it": "Il film 'Jurassic Park' è stato diretto da Steven Spielberg.",
+            "hi": "फिल्म 'जुरासिक पार्क' का निर्देशन स्टीवन स्पीलबर्ग ने किया था।",
+            "ru": "Фильм «Парк Юрского периода» снял Стивен Спилберг.",
+            "zh": "电影《侏罗纪公园》由史蒂文·斯皮尔伯格执导。",
+            "ja": "映画『ジュラシック・パーク』はスティーヴン・スピルバーグが監督しました。",
+            "ar": "فيلم 'الحديقة الجوراسية' من إخراج ستيفن سبيلبرغ."
+        },
+        "correct_answer": true
+    },
+    {
+        "category": "music",
+        "question": {
+            "en": "Beethoven continued to compose music after he became deaf.",
+            "tr": "Beethoven sağır olduktan sonra da müzik bestelemeye devam etti.",
+            "fr": "Beethoven a continué à composer de la musique après être devenu sourd.",
+            "es": "Beethoven continuó componiendo música después de quedarse sordo.",
+            "de": "Beethoven komponierte auch noch Musik, nachdem er taub geworden war.",
+            "it": "Beethoven continuò a comporre musica dopo essere diventato sordo.",
+            "hi": "बीथोवेन बहरे होने के बाद भी संगीत रचना करते रहे।",
+            "ru": "Бетховен продолжал сочинять музыку после того, как оглох.",
+            "zh": "贝多芬失聪后继续创作音乐。",
+            "ja": "ベートーヴェンは耳が聞こえなくなった後も作曲を続けました。",
+            "ar": "استمر بيتهوفن في تأليف الموسيقى بعد أن أصبح أصم."
+        },
+        "correct_answer": true
+    },
+    {
+        "category": "nature_animals",
+        "question": {
+            "en": "Polar bears have black skin under their white fur.",
+            "tr": "Kutup ayılarının beyaz kürklerinin altında siyah derileri vardır.",
+            "fr": "Les ours polaires ont la peau noire sous leur fourrure blanche.",
+            "es": "Los osos polares tienen la piel negra bajo su pelaje blanco.",
+            "de": "Eisbären haben unter ihrem weißen Fell eine schwarze Haut.",
+            "it": "Gli orsi polari hanno la pelle nera sotto la pelliccia bianca.",
+            "hi": "ध्रुवीय भालू के सफेद फर के नीचे काली त्वचा होती है।",
+            "ru": "У белых медведей черная кожа под белым мехом.",
+            "zh": "北极熊的白毛下面是黑色的皮肤。",
+            "ja": "ホッキョクグマの白い毛の下の皮膚は黒色です。",
+            "ar": "الدببة القطبية لها جلد أسود تحت فرائها الأبيض."
+        },
+        "correct_answer": true
+    },
+    {
+        "category": "geography_travel",
+        "question": {
+            "en": "The capital of Brazil is Rio de Janeiro.",
+            "tr": "Brezilya'nın başkenti Rio de Janeiro'dur.",
+            "fr": "La capitale du Brésil est Rio de Janeiro.",
+            "es": "La capital de Brasil es Río de Janeiro.",
+            "de": "Die Hauptstadt von Brasilien ist Rio de Janeiro.",
+            "it": "La capitale del Brasile è Rio de Janeiro.",
+            "hi": "ब्राजील की राजधानी रियो डी जनेरियो है।",
+            "ru": "Столица Бразилии — Рио-де-Жанейро.",
+            "zh": "巴西的首都是里约热内卢。",
+            "ja": "ブラジルの首都はリオデジャネイロです。",
+            "ar": "عاصمة البرازيل هي ريو دي جانيرو."
+        },
+        "correct_answer": false
+    },
+    {
+        "category": "mythology",
+        "question": {
+            "en": "Zeus is the father of Hercules.",
+            "tr": "Zeus, Herkül'ün babasıdır.",
+            "fr": "Zeus est le père d'Hercule.",
+            "es": "Zeus es el padre de Hércules.",
+            "de": "Zeus ist der Vater von Herkules.",
+            "it": "Zeus è il padre di Ercole.",
+            "hi": "ज़ीउस हरक्यूलिस के पिता हैं।",
+            "ru": "Зевс — отец Геркулеса.",
+            "zh": "宙斯是赫拉克勒斯的父亲。",
+            "ja": "ゼウスはヘラクレスの父です。",
+            "ar": "زيوس هو والد هرقل."
+        },
+        "correct_answer": true
+    },
+    {
+        "category": "philosophy",
+        "question": {
+            "en": "Plato was a student of Aristotle.",
+            "tr": "Platon, Aristoteles'in öğrencisiydi.",
+            "fr": "Platon était un élève d'Aristote.",
+            "es": "Platón fue alumno de Aristóteles.",
+            "de": "Platon war ein Schüler von Aristoteles.",
+            "it": "Platone fu allievo di Aristotele.",
+            "hi": "प्लेटो अरस्तू का छात्र था।",
+            "ru": "Платон был учеником Аристотеля.",
+            "zh": "柏拉图是亚里士多德的学生。",
+            "ja": "プラトンはアリストテレスの弟子でした。",
+            "ar": "كان أفلاطون تلميذا لأرسطو."
+        },
+        "correct_answer": false
+    },
+    {
+        "category": "literature",
+        "question": {
+            "en": "The play 'Macbeth' was written by Shakespeare.",
+            "tr": "'Macbeth' oyunu Shakespeare tarafından yazılmıştır.",
+            "fr": "La pièce 'Macbeth' a été écrite par Shakespeare.",
+            "es": "La obra 'Macbeth' fue escrita por Shakespeare.",
+            "de": "Das Stück 'Macbeth' wurde von Shakespeare geschrieben.",
+            "it": "L'opera 'Macbeth' è stata scritta da Shakespeare.",
+            "hi": "नाटक 'मैकबेथ' शेक्सपियर द्वारा लिखा गया था।",
+            "ru": "Пьеса «Макбет» была написана Шекспиром.",
+            "zh": "戏剧《麦克白》是由莎士比亚创作的。",
+            "ja": "戯曲『マクベス』はシェイクスピアによって書かれました。",
+            "ar": "كتب مسرحية 'ماكبث' شكسبير."
+        },
+        "correct_answer": true
+    },
+    {
+        "category": "space_astronomy",
+        "question": {
+            "en": "The planet Jupiter has a Great Red Spot.",
+            "tr": "Jüpiter gezegeninde Büyük Kırmızı Leke vardır.",
+            "fr": "La planète Jupiter a une Grande Tache rouge.",
+            "es": "El planeta Júpiter tiene una Gran Mancha Roja.",
+            "de": "Der Planet Jupiter hat einen Großen Roten Fleck.",
+            "it": "Il pianeta Giove ha una Grande Macchia Rossa.",
+            "hi": "बृहस्पति ग्रह पर एक ग्रेट रेड स्पॉट है।",
+            "ru": "На планете Юпитер есть Большое красное пятно.",
+            "zh": "木星上有一个大红斑。",
+            "ja": "木星には大赤斑があります。",
+            "ar": "كوكب المشتري لديه بقعة حمراء عظيمة."
+        },
+        "correct_answer": true
+    },
+    {
+        "category": "health_fitness",
+        "question": {
+            "en": "The average human body temperature is 37 degrees Celsius.",
+            "tr": "Ortalama insan vücut sıcaklığı 37 santigrat derecedir.",
+            "fr": "La température moyenne du corps humain est de 37 degrés Celsius.",
+            "es": "La temperatura corporal humana promedio es de 37 grados Celsius.",
+            "de": "Die durchschnittliche menschliche Körpertemperatur beträgt 37 Grad Celsius.",
+            "it": "La temperatura media del corpo umano è di 37 gradi Celsius.",
+            "hi": "औसत मानव शरीर का तापमान 37 डिग्री सेल्सियस है।",
+            "ru": "Средняя температура тела человека составляет 37 градусов по Цельсию.",
+            "zh": "人体平均体温为37摄氏度。",
+            "ja": "人間の平均体温は摂氏37度です。",
+            "ar": "متوسط درجة حرارة جسم الإنسان هو 37 درجة مئوية."
+        },
+        "correct_answer": true
+    },
+    {
+        "category": "economics_finance",
+        "question": {
+            "en": "The New York Stock Exchange is the largest stock exchange in the world.",
+            "tr": "New York Menkul Kıymetler Borsası dünyanın en büyük borsasıdır.",
+            "fr": "La Bourse de New York est la plus grande bourse du monde.",
+            "es": "La Bolsa de Nueva York es la bolsa de valores más grande del mundo.",
+            "de": "Die New York Stock Exchange ist die größte Börse der Welt.",
+            "it": "La Borsa di New York è la più grande borsa valori del mondo.",
+            "hi": "न्यूयॉर्क स्टॉक एक्सचेंज दुनिया का सबसे बड़ा स्टॉक एक्सचेंज है।",
+            "ru": "Нью-Йоркская фондовая биржа — крупнейшая фондовая биржа в мире.",
+            "zh": "纽约证券交易所是世界上最大的证券交易所。",
+            "ja": "ニューヨーク証券取引所は世界最大の証券取引所です。",
+            "ar": "بورصة نيويورك هي أكبر بورصة في العالم."
+        },
+        "correct_answer": true
+    },
+    {
+        "category": "architecture",
+        "question": {
+            "en": "The Taj Mahal was built by Shah Jahan.",
+            "tr": "Tac Mahal, Şah Cihan tarafından inşa ettirilmiştir.",
+            "fr": "Le Taj Mahal a été construit par Shah Jahan.",
+            "es": "El Taj Mahal fue construido por Shah Jahan.",
+            "de": "Das Taj Mahal wurde von Shah Jahan erbaut.",
+            "it": "Il Taj Mahal fu costruito da Shah Jahan.",
+            "hi": "ताजमहल का निर्माण शाहजहाँ ने करवाया था।",
+            "ru": "Тадж-Махал был построен Шах-Джаханом.",
+            "zh": "泰姬陵是由沙贾汗建造的。",
+            "ja": "タージ・マハルはシャー・ジャハーンによって建てられました。",
+            "ar": "بنى تاج محل شاه جهان."
+        },
+        "correct_answer": true
+    },
+    {
+        "category": "video_games",
+        "question": {
+            "en": "The game 'Tetris' involves fitting falling blocks together.",
+            "tr": "'Tetris' oyunu düşen blokları birbirine uydurmayı içerir.",
+            "fr": "Le jeu 'Tetris' consiste à emboîter des blocs qui tombent.",
+            "es": "El juego 'Tetris' consiste en encajar bloques que caen.",
+            "de": "Im Spiel 'Tetris' müssen herabfallende Blöcke zusammengefügt werden.",
+            "it": "Il gioco 'Tetris' consiste nell'incastrare blocchi che cadono.",
+            "hi": "'टेट्रिस' गेम में गिरते हुए ब्लॉकों को एक साथ फिट करना शामिल है।",
+            "ru": "Игра «Тетрис» заключается в том, чтобы складывать падающие блоки вместе.",
+            "zh": "游戏《俄罗斯方块》涉及将下落的方块拼在一起。",
+            "ja": "ゲーム『テトリス』は落ちてくるブロックを組み合わせるゲームです。",
+            "ar": "تتضمن لعبة 'تتريس' تركيب الكتل المتساقطة معًا."
+        },
+        "correct_answer": true
+    },
+    {
+        "category": "general_culture",
+        "question": {
+            "en": "Oktoberfest is held annually in Munich, Germany.",
+            "tr": "Oktoberfest her yıl Almanya'nın Münih kentinde düzenlenir.",
+            "fr": "L'Oktoberfest a lieu chaque année à Munich, en Allemagne.",
+            "es": "El Oktoberfest se celebra anualmente en Múnich, Alemania.",
+            "de": "Das Oktoberfest findet jährlich in München, Deutschland, statt.",
+            "it": "L'Oktoberfest si tiene ogni anno a Monaco di Baviera, in Germania.",
+            "hi": "ओकट्रैफेस्ट प्रतिवर्ष म्यूनिख, जर्मनी में आयोजित किया जाता है।",
+            "ru": "Октоберфест проводится ежегодно в Мюнхене, Германия.",
+            "zh": "慕尼黑啤酒节每年在德国慕尼黑举行。",
+            "ja": "オクトーバーフェストは毎年ドイツのミュンヘンで開催されます。",
+            "ar": "يقام مهرجان أكتوبر سنوياً في ميونيخ، ألمانيا."
+        },
+        "correct_answer": true
+    },
+    {
+        "category": "history",
+        "question": {
+            "en": "The ancient city of Rome was built on seven hills.",
+            "tr": "Antik Roma şehri yedi tepe üzerine inşa edilmiştir.",
+            "fr": "La ville antique de Rome a été construite sur sept collines.",
+            "es": "La antigua ciudad de Roma fue construida sobre siete colinas.",
+            "de": "Die antike Stadt Rom wurde auf sieben Hügeln erbaut.",
+            "it": "L'antica città di Roma fu costruita su sette colli.",
+            "hi": "प्राचीन रोम शहर सात पहाड़ियों पर बनाया गया था।",
+            "ru": "Древний город Рим был построен на семи холмах.",
+            "zh": "古罗马城建在七座山丘上。",
+            "ja": "古代ローマの都市は7つの丘の上に建設されました。",
+            "ar": "بنيت مدينة روما القديمة على سبعة تلال."
+        },
+        "correct_answer": true
+    },
+    {
+        "category": "science",
+        "question": {
+            "en": "Sound travels faster in a vacuum than in air.",
+            "tr": "Ses, boşlukta havadan daha hızlı yayılır.",
+            "fr": "Le son se propage plus vite dans le vide que dans l'air.",
+            "es": "El sonido viaja más rápido en el vacío que en el aire.",
+            "de": "Schall breitet sich im Vakuum schneller aus als in der Luft.",
+            "it": "Il suono viaggia più velocemente nel vuoto che nell'aria.",
+            "hi": "ध्वनि हवा की तुलना में निर्वात में तेजी से यात्रा करती है।",
+            "ru": "Звук распространяется в вакууме быстрее, чем в воздухе.",
+            "zh": "声音在真空中比在空气中传播得快。",
+            "ja": "音は空気中よりも真空中で速く伝わります。",
+            "ar": "ينتقل الصوت في الفراغ أسرع منه في الهواء."
+        },
+        "correct_answer": false
+    },
+    {
+        "category": "art",
+        "question": {
+            "en": "The color purple was historically associated with royalty.",
+            "tr": "Mor renk tarihsel olarak kraliyetle ilişkilendirilmiştir.",
+            "fr": "La couleur pourpre était historiquement associée à la royauté.",
+            "es": "El color púrpura se asociaba históricamente con la realeza.",
+            "de": "Die Farbe Lila wurde historisch mit dem Königtum assoziiert.",
+            "it": "Il colore viola era storicamente associato alla regalità.",
+            "hi": "बैंगनी रंग ऐतिहासिक रूप से राजघराने से जुड़ा था।",
+            "ru": "Фиолетовый цвет исторически ассоциировался с королевской властью.",
+            "zh": "紫色在历史上与皇室有关。",
+            "ja": "紫色は歴史的に王族と関連付けられていました。",
+            "ar": "ارتبط اللون الأرجواني تاريخياً بالملوك."
+        },
+        "correct_answer": true
+    },
+    {
+        "category": "sports",
+        "question": {
+            "en": "In bowling, three strikes in a row is called a turkey.",
+            "tr": "Bovlingde arka arkaya üç strike yapmaya 'hindi' (turkey) denir.",
+            "fr": "Au bowling, trois strikes d'affilée s'appellent un 'dindon' (turkey).",
+            "es": "En los bolos, tres plenos seguidos se llaman 'pavo' (turkey).",
+            "de": "Beim Bowling werden drei Strikes in Folge als 'Turkey' bezeichnet.",
+            "it": "Nel bowling, tre strike di fila sono chiamati 'tacchino' (turkey).",
+            "hi": "बॉलिंग में, लगातार तीन स्ट्राइक को 'टर्की' कहा जाता है।",
+            "ru": "В боулинге три страйка подряд называются «индейка» (turkey).",
+            "zh": "在保龄球中，连续三次全中被称为“火鸡”（turkey）。",
+            "ja": "ボウリングで3回連続ストライクを出すことを「ターキー」と呼びます。",
+            "ar": "في البولينج، تسمى ثلاث ضربات متتالية 'ديك رومي' (turkey)."
+        },
+        "correct_answer": true
+    },
+    {
+        "category": "technology",
+        "question": {
+            "en": "The first mobile phone call was made in 1973.",
+            "tr": "İlk cep telefonu araması 1973 yılında yapıldı.",
+            "fr": "Le premier appel par téléphone portable a été passé en 1973.",
+            "es": "La primera llamada de teléfono móvil se realizó en 1973.",
+            "de": "Der erste Handyanruf wurde 1973 getätigt.",
+            "it": "La prima chiamata con il cellulare è stata effettuata nel 1973.",
+            "hi": "पहला मोबाइल फोन कॉल 1973 में किया गया था।",
+            "ru": "Первый звонок по мобильному телефону был сделан в 1973 году.",
+            "zh": "第一次移动电话通话是在1973年进行的。",
+            "ja": "最初の携帯電話通話は1973年に行われました。",
+            "ar": "تم إجراء أول مكالمة هاتفية محمولة في عام 1973."
+        },
+        "correct_answer": true
+    },
+    {
+        "category": "cinema_tv",
+        "question": {
+            "en": "The movie 'E.T.' features a candy called M&Ms.",
+            "tr": "'E.T.' filminde M&Ms adlı bir şekerleme yer alır.",
+            "fr": "Le film 'E.T.' met en scène des bonbons appelés M&Ms.",
+            "es": "La película 'E.T.' presenta un caramelo llamado M&Ms.",
+            "de": "Im Film 'E.T.' kommt eine Süßigkeit namens M&Ms vor.",
+            "it": "Il film 'E.T.' presenta delle caramelle chiamate M&Ms.",
+            "hi": "फिल्म 'ई.टी.' में M&Ms नामक कैंडी दिखाई गई है।",
+            "ru": "В фильме «Инопланетянин» фигурируют конфеты M&Ms.",
+            "zh": "电影《E.T.》中出现了一种叫做M&Ms的糖果。",
+            "ja": "映画『E.T.』にはM&Msというキャンディが登場します。",
+            "ar": "يتميز فيلم 'E.T.' بحلوى تسمى M&Ms."
+        },
+        "correct_answer": false
+    },
+    {
+        "category": "music",
+        "question": {
+            "en": "The piano was originally called the pianoforte.",
+            "tr": "Piyanonun orijinal adı pianoforte idi.",
+            "fr": "Le piano s'appelait à l'origine le pianoforte.",
+            "es": "El piano se llamaba originalmente pianoforte.",
+            "de": "Das Klavier hieß ursprünglich Pianoforte.",
+            "it": "Il pianoforte era originariamente chiamato pianoforte.",
+            "hi": "पियानो को मूल रूप से पियानोफोर्ट कहा जाता था।",
+            "ru": "Фортепиано изначально называлось пианофорте.",
+            "zh": "钢琴最初被称为pianoforte。",
+            "ja": "ピアノはもともとピアノフォルテと呼ばれていました。",
+            "ar": "كان البيانو يسمى في الأصل بيانوفورتي."
+        },
+        "correct_answer": true
+    },
+    {
+        "category": "geography_travel",
+        "question": {
+            "en": "The Dead Sea is located between Jordan and Israel.",
+            "tr": "Ölü Deniz, Ürdün ve İsrail arasında yer almaktadır.",
+            "fr": "La mer Morte est située entre la Jordanie et Israël.",
+            "es": "El Mar Muerto se encuentra entre Jordania e Israel.",
+            "de": "Das Tote Meer liegt zwischen Jordanien und Israel.",
+            "it": "Il Mar Morto si trova tra la Giordania e Israele.",
+            "hi": "मृत सागर जॉर्डन और इज़राइल के बीच स्थित है।",
+            "ru": "Мертвое море расположено между Иорданией и Израилем.",
+            "zh": "死海位于约旦和以色列之间。",
+            "ja": "死海はヨルダンとイスラエルの間に位置しています。",
+            "ar": "يقع البحر الميت بين الأردن وإسرائيل."
+        },
+        "correct_answer": true
+    },
+    {
+        "category": "philosophy",
+        "question": {
+            "en": "Confucius lived in ancient Greece.",
+            "tr": "Konfüçyüs antik Yunanistan'da yaşamıştır.",
+            "fr": "Confucius vivait dans la Grèce antique.",
+            "es": "Confucio vivió en la antigua Grecia.",
+            "de": "Konfuzius lebte im antiken Griechenland.",
+            "it": "Confucio visse nell'antica Grecia.",
+            "hi": "कन्फ्यूशियस प्राचीन यूनान में रहते थे।",
+            "ru": "Конфуций жил в Древней Греции.",
+            "zh": "孔子生活在古希腊。",
+            "ja": "孔子は古代ギリシャに住んでいました。",
+            "ar": "عاش كونفوشيوس في اليونان القديمة."
+        },
+        "correct_answer": false
+    },
+    {
+        "category": "literature",
+        "question": {
+            "en": "The poem 'The Raven' was written by Edgar Allan Poe.",
+            "tr": "'Kuzgun' şiiri Edgar Allan Poe tarafından yazılmıştır.",
+            "fr": "Le poème 'Le Corbeau' a été écrit par Edgar Allan Poe.",
+            "es": "El poema 'El cuervo' fue escrito por Edgar Allan Poe.",
+            "de": "Das Gedicht 'Der Rabe' wurde von Edgar Allan Poe geschrieben.",
+            "it": "La poesia 'Il corvo' è stata scritta da Edgar Allan Poe.",
+            "hi": "कविता 'द रेवेन' एडगर एलन पो द्वारा लिखी गई थी।",
+            "ru": "Стихотворение «Ворон» было написано Эдгаром Алланом По.",
+            "zh": "诗歌《乌鸦》是由埃德加·爱伦·坡写的。",
+            "ja": "詩『大鴉』はエドガー・アラン・ポーによって書かれました。",
+            "ar": "كتب قصيدة 'الغراب' إدغار آلان بو."
+        },
+        "correct_answer": true
+    },
+    {
+        "category": "space_astronomy",
+        "question": {
+            "en": "Uranus rotates on its side.",
+            "tr": "Uranüs yan yatmış şekilde döner.",
+            "fr": "Uranus tourne sur le côté.",
+            "es": "Urano gira de lado.",
+            "de": "Uranus rotiert auf der Seite.",
+            "it": "Urano ruota su un fianco.",
+            "hi": "यूरेनस अपनी तरफ झुक कर घूमता है।",
+            "ru": "Уран вращается, лежа на боку.",
+            "zh": "天王星侧着旋转。",
+            "ja": "天王星は横倒しに回転しています。",
+            "ar": "يدور أورانوس على جانبه."
+        },
+        "correct_answer": true
+    },
+    {
+        "category": "health_fitness",
+        "question": {
+            "en": "The human body has more than 600 muscles.",
+            "tr": "İnsan vücudunda 600'den fazla kas bulunur.",
+            "fr": "Le corps humain possède plus de 600 muscles.",
+            "es": "El cuerpo humano tiene más de 600 músculos.",
+            "de": "Der menschliche Körper hat mehr als 600 Muskeln.",
+            "it": "Il corpo umano ha più di 600 muscoli.",
+            "hi": "मानव शरीर में 600 से अधिक मांसपेशियां होती हैं।",
+            "ru": "В теле человека более 600 мышц.",
+            "zh": "人体有600多块肌肉。",
+            "ja": "人間の体には600以上の筋肉があります。",
+            "ar": "يحتوي جسم الإنسان على أكثر من 600 عضلة."
+        },
+        "correct_answer": true
+    },
+    {
+        "category": "economics_finance",
+        "question": {
+            "en": "The World Bank is headquartered in Washington, D.C.",
+            "tr": "Dünya Bankası'nın merkezi Washington, D.C.'dedir.",
+            "fr": "Le siège de la Banque mondiale est situé à Washington, D.C.",
+            "es": "La sede del Banco Mundial se encuentra en Washington, D.C.",
+            "de": "Der Hauptsitz der Weltbank befindet sich in Washington, D.C.",
+            "it": "La sede della Banca Mondiale è a Washington, D.C.",
+            "hi": "विश्व बैंक का मुख्यालय वाशिंगटन, डी.सी. में है।",
+            "ru": "Штаб-квартира Всемирного банка находится в Вашингтоне, округ Колумбия.",
+            "zh": "世界班克总部位于华盛顿特区。",
+            "ja": "世界銀行の本部はワシントンD.C.にあります。",
+            "ar": "يقع مقر البنك الدولي في واشنطن العاصمة."
+        },
+        "correct_answer": true
+    },
+    {
+        "category": "architecture",
+        "question": {
+            "en": "The Leaning Tower of Pisa leans because of an earthquake.",
+            "tr": "Pisa Kulesi bir deprem yüzünden eğilmektedir.",
+            "fr": "La tour de Pise penche à cause d'un tremblement de terre.",
+            "es": "La Torre de Pisa se inclina debido a un terremoto.",
+            "de": "Der Schiefe Turm von Pisa neigt sich aufgrund eines Erdbebens.",
+            "it": "La Torre di Pisa pende a causa di un terremoto.",
+            "hi": "पीसा की झुकी हुई मीनार भूकंप के कारण झुकी हुई है।",
+            "ru": "Пизанская башня наклонена из-за землетрясения.",
+            "zh": "比萨斜塔倾斜是因为地震。",
+            "ja": "ピサの斜塔が傾いているのは地震のせいです。",
+            "ar": "يميل برج بيزا المائل بسبب الزلزال."
+        },
+        "correct_answer": false
+    },
+    {
+        "category": "general_culture",
+        "question": {
+            "en": "The handshake originated as a way to show you were unarmed.",
+            "tr": "Tokalaşma, silahsız olduğunuzu göstermenin bir yolu olarak ortaya çıkmıştır.",
+            "fr": "La poignée de main est née comme un moyen de montrer que l'on n'était pas armé.",
+            "es": "El apretón de manos se originó como una forma de mostrar que no se estaba armado.",
+            "de": "Der Händedruck entstand als eine Möglichkeit zu zeigen, dass man unbewaffnet war.",
+            "it": "La stretta di mano è nata come un modo per mostrare di non essere armati.",
+            "hi": "हाथ मिलाना यह दिखाने के लिए उत्पन्न हुआ कि आप निहत्थे थे।",
+            "ru": "Рукопожатие возникло как способ показать, что вы безоружны.",
+            "zh": "握手起源于一种表明自己没带武器的方式。",
+            "ja": "握手は武器を持っていないことを示す方法として始まりました。",
+            "ar": "نشأت المصافحة كوسيلة لإظهار أنك غير مسلح."
+        },
+        "correct_answer": true
+    },
+    {
+        "category": "fun_facts",
+        "question": {
+            "en": "A day on Mars is about the same length as a day on Earth.",
+            "tr": "Mars'ta bir gün, Dünya'daki bir günle yaklaşık aynı uzunluktadır.",
+            "fr": "Une journée sur Mars a à peu près la même durée qu'une journée sur Terre.",
+            "es": "Un día en Marte tiene aproximadamente la misma duración que un día en la Tierra.",
+            "de": "Ein Tag auf dem Mars ist ungefähr so lang wie ein Tag auf der Erde.",
+            "it": "Un giorno su Marte ha circa la stessa durata di un giorno sulla Terra.",
+            "hi": "मंगल ग्रह पर एक दिन पृथ्वी पर एक दिन के लगभग बराबर होता है।",
+            "ru": "День на Марсе примерно равен дню на Земле.",
+            "zh": "火星上的一天大约和地球上的一天一样长。",
+            "ja": "火星の1日は地球の1日とほぼ同じ長さです。",
+            "ar": "اليوم على كوكب المريخ له نفس طول اليوم على الأرض تقريبًا."
+        },
+        "correct_answer": true
+    },
+    {
+        "category": "history",
+        "question": {
+            "en": "The Berlin Wall was built in 1961.",
+            "tr": "Berlin Duvarı 1961 yılında inşa edildi.",
+            "fr": "Le mur de Berlin a été construit en 1961.",
+            "es": "El Muro de Berlín se construyó en 1961.",
+            "de": "Die Berliner Mauer wurde 1961 gebaut.",
+            "it": "Il Muro di Berlino fu costruito nel 1961.",
+            "hi": "बर्लिन की दीवार 1961 में बनाई गई थी।",
+            "ru": "Берлинская стена была построена в 1961 году.",
+            "zh": "柏林墙建于1961年。",
+            "ja": "ベルリンの壁は1961年に建設されました。",
+            "ar": "بني جدار برلين عام 1961."
+        },
+        "correct_answer": true
+    },
+    {
+        "category": "nature_animals",
+        "question": {
+            "en": "Camels store water in their humps.",
+            "tr": "Develer hörgüçlerinde su depolar.",
+            "fr": "Les chameaux stockent de l'eau dans leurs bosses.",
+            "es": "Los camellos almacenan agua en sus jorobas.",
+            "de": "Kamele speichern Wasser in ihren Höckern.",
+            "it": "I cammelli immagazzinano acqua nelle loro gobbe.",
+            "hi": "ऊंट अपने कूबड़ में पानी जमा करते हैं।",
+            "ru": "Верблюды запасают воду в своих горбах.",
+            "zh": "骆驼在驼峰里储存水。",
+            "ja": "ラクダはこぶに水を蓄えます。",
+            "ar": "تخزن الإبل الماء في حدباتها."
+        },
+        "correct_answer": false
+    },
+    {
+        "category": "art",
+        "question": {
+            "en": "Pablo Picasso is a founder of Cubism.",
+            "tr": "Pablo Picasso, Kübizm'in kurucularından biridir.",
+            "fr": "Pablo Picasso est l'un des fondateurs du cubisme.",
+            "es": "Pablo Picasso es uno de los fundadores del cubismo.",
+            "de": "Pablo Picasso ist einer der Begründer des Kubismus.",
+            "it": "Pablo Picasso è un fondatore del cubismo.",
+            "hi": "पाब्लो पिकासो क्यूबिज़्म (घनवाद) के संस्थापक हैं।",
+            "ru": "Пабло Пикассо — основатель кубизма.",
+            "zh": "巴勃罗·毕加索是立体主义的创始人。",
+            "ja": "パブロ・ピカソはキュビズムの創始者です。",
+            "ar": "بابلو بيكاسو هو مؤسس التكعيبية."
+        },
+        "correct_answer": true
+    },
+    {
+        "category": "sports",
+        "question": {
+            "en": "A golf ball has dimples.",
+            "tr": "Golf topunun üzerinde çukurlar vardır.",
+            "fr": "Une balle de golf a des alvéoles.",
+            "es": "Una pelota de golf tiene hoyuelos.",
+            "de": "Ein Golfball hat Dellen (Dimples).",
+            "it": "Una pallina da golf ha delle fossette.",
+            "hi": "गोल्फ की गेंद में डिंपल (गड्ढे) होते हैं।",
+            "ru": "У мяча для гольфа есть ямочки.",
+            "zh": "高尔夫球上有凹痕。",
+            "ja": "ゴルフボールにはディンプル（くぼみ）があります。",
+            "ar": "تحتوي كرة الجولف على غمازات (نتوءات)."
+        },
+        "correct_answer": true
+    },
+    {
+        "category": "technology",
+        "question": {
+            "en": "Wi-Fi stands for 'Wireless Fidelity'.",
+            "tr": "Wi-Fi, 'Wireless Fidelity' anlamına gelir.",
+            "fr": "Wi-Fi signifie 'Wireless Fidelity'.",
+            "es": "Wi-Fi significa 'Wireless Fidelity'.",
+            "de": "Wi-Fi steht für 'Wireless Fidelity'.",
+            "it": "Wi-Fi sta per 'Wireless Fidelity'.",
+            "hi": "वाई-फाई का मतलब 'वायरलेस फिडेलिटी' है।",
+            "ru": "Wi-Fi расшифровывается как «Wireless Fidelity».",
+            "zh": "Wi-Fi代表“无线保真”。",
+            "ja": "Wi-Fiは「Wireless Fidelity」の略です。",
+            "ar": "Wi-Fi تعني 'Wireless Fidelity'."
+        },
+        "correct_answer": false
+    },
+    {
+        "category": "cinema_tv",
+        "question": {
+            "en": "The movie 'Frozen' features a snowman named Olaf.",
+            "tr": "'Karlar Ülkesi' (Frozen) filminde Olaf adında bir kardan adam vardır.",
+            "fr": "Le film 'La Reine des neiges' met en scène un bonhomme de neige nommé Olaf.",
+            "es": "La película 'Frozen' presenta a un muñeco de nieve llamado Olaf.",
+            "de": "Im Film 'Die Eiskönigin' gibt es einen Schneemann namens Olaf.",
+            "it": "Il film 'Frozen' presenta un pupazzo di neve di nome Olaf.",
+            "hi": "फिल्म 'फ्रोजन' में ओलाफ नाम का एक स्नोमैन है।",
+            "ru": "В мультфильме «Холодное сердце» есть снеговик по имени Олаф.",
+            "zh": "电影《冰雪奇缘》中有一个叫奥拉夫的雪人。",
+            "ja": "映画『アナと雪の女王』にはオラフという雪だるまが登場します。",
+            "ar": "فيلم 'فروزن' يضم رجل ثلج يدعى أولاف."
+        },
+        "correct_answer": true
+    },
+    {
+        "category": "music",
+        "question": {
+            "en": "The guitar typically has six strings.",
+            "tr": "Gitarın tipik olarak altı teli vardır.",
+            "fr": "La guitare a généralement six cordes.",
+            "es": "La guitarra suele tener seis cuerdas.",
+            "de": "Die Gitarre hat typischerweise sechs Saiten.",
+            "it": "La chitarra ha tipicamente sei corde.",
+            "hi": "गिटार में आमतौर पर छह तार होते हैं।",
+            "ru": "У гитары обычно шесть струн.",
+            "zh": "吉他通常有六根弦。",
+            "ja": "ギターには通常6本の弦があります。",
+            "ar": "تحتوي القيثارة عادة على ستة أوتار."
+        },
+        "correct_answer": true
+    },
+    {
+        "category": "nature_animals",
+        "question": {
+            "en": "Spiders are insects.",
+            "tr": "Örümcekler böcektir.",
+            "fr": "Les araignées sont des insectes.",
+            "es": "Las arañas son insectos.",
+            "de": "Spinnen sind Insekten.",
+            "it": "I ragni sono insetti.",
+            "hi": "मकड़ियाँ कीड़े (insects) हैं।",
+            "ru": "Пауки — это насекомые.",
+            "zh": "蜘蛛是昆虫。",
+            "ja": "クモは昆虫です。",
+            "ar": "العناكب حشرات."
+        },
+        "correct_answer": false
+    },
+    {
+        "category": "geography_travel",
+        "question": {
+            "en": "Alaska is the largest state in the US.",
+            "tr": "Alaska, ABD'nin en büyük eyaletidir.",
+            "fr": "L'Alaska est le plus grand État des États-Unis.",
+            "es": "Alaska es el estado más grande de los EE. UU.",
+            "de": "Alaska ist der größte Bundesstaat der USA.",
+            "it": "L'Alaska è lo stato più grande degli Stati Uniti.",
+            "hi": "अलास्का अमेरिका का सबसे बड़ा राज्य है।",
+            "ru": "Аляска — самый большой штат в США.",
+            "zh": "阿拉斯加是美国最大的州。",
+            "ja": "アラスカは米国で最大の州です。",
+            "ar": "ألاسكا هي أكبر ولاية في الولايات المتحدة."
+        },
+        "correct_answer": true
+    },
+    {
+        "category": "mythology",
+        "question": {
+            "en": "Apollo is the twin brother of Artemis.",
+            "tr": "Apollo, Artemis'in ikiz kardeşidir.",
+            "fr": "Apollon est le frère jumeau d'Artémis.",
+            "es": "Apolo es el hermano gemelo de Artemisa.",
+            "de": "Apollo ist der Zwillingsbruder von Artemis.",
+            "it": "Apollo è il fratello gemello di Artemide.",
+            "hi": "अपोलो आर्टेमिस का जुड़वां भाई है।",
+            "ru": "Аполлон — брат-близнец Артемиды.",
+            "zh": "阿波罗是阿尔忒弥斯的孪生兄弟。",
+            "ja": "アポロンはアルテミスの双子の兄弟です。",
+            "ar": "أبولو هو الأخ التوأم لأرتميس."
+        },
+        "correct_answer": true
+    },
+    {
+        "category": "philosophy",
+        "question": {
+            "en": "Socrates was the teacher of Plato.",
+            "tr": "Sokrates, Platon'un hocasıydı.",
+            "fr": "Socrate était le professeur de Platon.",
+            "es": "Sócrates fue el maestro de Platón.",
+            "de": "Sokrates war der Lehrer von Platon.",
+            "it": "Socrate fu il maestro di Platone.",
+            "hi": "सुकरात प्लेटो के गुरु थे।",
+            "ru": "Сократ был учителем Платона.",
+            "zh": "苏格拉底是柏拉图的老师。",
+            "ja": "ソクラテスはプラトンの師でした。",
+            "ar": "كان سقراط معلم أفلاطون."
+        },
+        "correct_answer": true
+    },
+    {
+        "category": "literature",
+        "question": {
+            "en": "'The Odyssey' was written by Homer.",
+            "tr": "'Odysseia' Homeros tarafından yazılmıştır.",
+            "fr": "'L'Odyssée' a été écrite par Homère.",
+            "es": "'La Odisea' fue escrita por Homero.",
+            "de": "'Die Odyssee' wurde von Homer geschrieben.",
+            "it": "'L'Odissea' è stata scritta da Omero.",
+            "hi": "'ओडिसी' होमर द्वारा लिखी गई थी।",
+            "ru": "«Одиссея» была написана Гомером.",
+            "zh": "《奥德赛》是荷马写的。",
+            "ja": "『オデュッセイア』はホメロスによって書かれました。",
+            "ar": "كتب هوميروس 'الأوديسة'."
+        },
+        "correct_answer": true
+    },
+    {
+        "category": "health_fitness",
+        "question": {
+            "en": "Humans have 23 pairs of chromosomes.",
+            "tr": "İnsanlarda 23 çift kromozom bulunur.",
+            "fr": "Les humains ont 23 paires de chromosomes.",
+            "es": "Los humanos tienen 23 pares de cromosomas.",
+            "de": "Menschen haben 23 Chromosomenpaare.",
+            "it": "Gli esseri umani hanno 23 coppie di cromosomi.",
+            "hi": "मनुष्यों में गुणसूत्रों (chromosomes) के 23 जोड़े होते हैं।",
+            "ru": "У человека 23 пары хромосом.",
+            "zh": "人类有23对染色体。",
+            "ja": "人間は23対の染色体を持っています。",
+            "ar": "لدى البشر 23 زوجًا من الكروموسومات."
+        },
+        "correct_answer": true
+    },
+    {
+        "category": "economics_finance",
+        "question": {
+            "en": "Supply and demand determine market prices.",
+            "tr": "Arz ve talep piyasa fiyatlarını belirler.",
+            "fr": "L'offre et la demande déterminent les prix du marché.",
+            "es": "La oferta y la demanda determinan los precios del mercado.",
+            "de": "Angebot und Nachfrage bestimmen die Marktpreise.",
+            "it": "Domanda e offerta determinano i prezzi di mercato.",
+            "hi": "आपूर्ति और मांग बाजार की कीमतें निर्धारित करती हैं।",
+            "ru": "Спрос и предложение определяют рыночные цены.",
+            "zh": "供求关系决定市场价格。",
+            "ja": "需要と供給が市場価格を決定します。",
+            "ar": "العرض والطلب يحددان أسعار السوق."
+        },
+        "correct_answer": true
+    },
+    {
+        "category": "architecture",
+        "question": {
+            "en": "The Empire State Building is in New York City.",
+            "tr": "Empire State Binası New York'tadır.",
+            "fr": "L'Empire State Building est à New York.",
+            "es": "El Empire State Building está en la ciudad de Nueva York.",
+            "de": "Das Empire State Building befindet sich in New York City.",
+            "it": "L'Empire State Building si trova a New York.",
+            "hi": "एम्पायर स्टेट बिल्डिंग न्यूयॉर्क शहर में है।",
+            "ru": "Эмпайр-стейт-билдинг находится в Нью-Йорке.",
+            "zh": "帝国大厦位于纽约市。",
+            "ja": "エンパイア・ステート・ビルディングはニューヨーク市にあります。",
+            "ar": "مبنى إمباير ستيت يقع في مدينة نيويورك."
+        },
+        "correct_answer": true
+    },
+    {
+        "category": "video_games",
+        "question": {
+            "en": "'Minecraft' was created by Markus Persson.",
+            "tr": "'Minecraft' Markus Persson tarafından yaratılmıştır.",
+            "fr": "'Minecraft' a été créé par Markus Persson.",
+            "es": "'Minecraft' fue creado por Markus Persson.",
+            "de": "'Minecraft' wurde von Markus Persson entwickelt.",
+            "it": "'Minecraft' è stato creato da Markus Persson.",
+            "hi": "'माइनक्राफ्ट' मार्कस पर्सन द्वारा बनाया गया था।",
+            "ru": "«Minecraft» был создан Маркусом Перссоном.",
+            "zh": "《我的世界》是由马库斯·佩尔松创造的。",
+            "ja": "『マインクラフト』はマルクス・ペルソンによって作られました。",
+            "ar": "تم إنشاء 'ماين كرافت' بواسطة ماركوس بيرسون."
+        },
+        "correct_answer": true
+    },
+    {
+        "category": "fun_facts",
+        "question": {
+            "en": "A blue whale's heart is the size of a small car.",
+            "tr": "Bir mavi balinanın kalbi küçük bir araba büyüklüğündedir.",
+            "fr": "Le cœur d'une baleine bleue a la taille d'une petite voiture.",
+            "es": "El corazón de una ballena azul es del tamaño de un coche pequeño.",
+            "de": "Das Herz eines Blauwals hat die Größe eines Kleinwagens.",
+            "it": "Il cuore di una balenottera azzurra ha le dimensioni di una piccola auto.",
+            "hi": "नीली व्हेल का दिल एक छोटी कार के आकार का होता है।",
+            "ru": "Сердце синего кита размером с небольшой автомобиль.",
+            "zh": "蓝鲸的心脏有一辆小汽车那么大。",
+            "ja": "シロナガスクジラの心臓は小型車くらいの大きさです。",
+            "ar": "قلب الحوت الأزرق بحجم سيارة صغيرة."
+        },
+        "correct_answer": true
+    },
+    {
+        "category": "general_culture",
+        "question": {
+            "en": "Cinco de Mayo is Mexico's Independence Day.",
+            "tr": "Cinco de Mayo, Meksika'nın Bağımsızlık Günüdür.",
+            "fr": "Cinco de Mayo est le jour de l'indépendance du Mexique.",
+            "es": "El Cinco de Mayo es el Día de la Independencia de México.",
+            "de": "Cinco de Mayo ist der Unabhängigkeitstag Mexikos.",
+            "it": "Il Cinco de Mayo è il giorno dell'indipendenza del Messico.",
+            "hi": "सिंको डे मेयो मैक्सिको का स्वतंत्रता दिवस है।",
+            "ru": "Синко де Майо — День независимости Мексики.",
+            "zh": "五月五日节是墨西哥的独立日。",
+            "ja": "シンコ・デ・マヨはメキシコの独立記念日です。",
+            "ar": "سينكو دي مايو هو يوم استقلال المكسيك."
+        },
+        "correct_answer": false
+    },
+    {
+        "category": "history",
+        "question": {
+            "en": "The Vikings reached North America before Christopher Columbus.",
+            "tr": "Vikingler, Kristof Kolomb'dan önce Kuzey Amerika'ya ulaşmıştır.",
+            "fr": "Les Vikings ont atteint l'Amérique du Nord avant Christophe Colomb.",
+            "es": "Los vikingos llegaron a América del Norte antes que Cristóbal Colón.",
+            "de": "Die Wikinger erreichten Nordamerika vor Christoph Kolumbus.",
+            "it": "I Vichinghi raggiunsero il Nord America prima di Cristoforo Colombo.",
+            "hi": "वाइकिंग्स क्रिस्टोफर कोलंबस से पहले उत्तरी अमेरिका पहुंचे थे।",
+            "ru": "Викинги достигли Северной Америки раньше Христофора Колумба.",
+            "zh": "维京人比克里斯托弗·哥伦布更早到达北美。",
+            "ja": "ヴァイキングはクリストファー・コロンブスより先に北米に到達しました。",
+            "ar": "وصل الفايكنج إلى أمريكا الشمالية قبل كريستوفر كولومبوس."
+        },
+        "correct_answer": true
+    },
+    {
+        "category": "science",
+        "question": {
+            "en": "The chemical symbol for Iron is 'Fe'.",
+            "tr": "Demirin kimyasal sembolü 'Fe'dir.",
+            "fr": "Le symbole chimique du fer est 'Fe'.",
+            "es": "El símbolo químico del hierro es 'Fe'.",
+            "de": "Das chemische Symbol für Eisen ist 'Fe'.",
+            "it": "Il simbolo chimico del ferro è 'Fe'.",
+            "hi": "लोहे का रासायनिक प्रतीक 'Fe' है।",
+            "ru": "Химический символ железа — «Fe».",
+            "zh": "铁的化学符号是“Fe”。",
+            "ja": "鉄の化学記号は「Fe」です。",
+            "ar": "الرمز الكيميائي للحديد هو 'Fe'."
+        },
+        "correct_answer": true
+    },
+    {
+        "category": "art",
+        "question": {
+            "en": "Frida Kahlo was a Mexican artist known for her self-portraits.",
+            "tr": "Frida Kahlo, otoportreleriyle tanınan Meksikalı bir sanatçıydı.",
+            "fr": "Frida Kahlo était une artiste mexicaine connue pour ses autoportraits.",
+            "es": "Frida Kahlo fue una artista mexicana conocida por sus autorretratos.",
+            "de": "Frida Kahlo war eine mexikanische Künstlerin, die für ihre Selbstporträts bekannt war.",
+            "it": "Frida Kahlo era un'artista messicana nota per i suoi autoritratti.",
+            "hi": "फ्रिडा काहलो एक मैक्सिकन कलाकार थीं जो अपने आत्म-चित्रों के लिए जानी जाती थीं।",
+            "ru": "Фрида Кало была мексиканской художницей, известной своими автопортретами.",
+            "zh": "弗里达·卡罗是一位以自画像闻名的墨西哥艺术家。",
+            "ja": "フリーダ・カーロは自画像で知られるメキシコの芸術家でした。",
+            "ar": "كانت فريدا كاهلو فنانة مكسيكية معروفة بصورها الذاتية."
+        },
+        "correct_answer": true
+    },
+    {
+        "category": "sports",
+        "question": {
+            "en": "In chess, the Queen is the most powerful piece.",
+            "tr": "Satrançta Vezir en güçlü taştır.",
+            "fr": "Aux échecs, la Reine est la pièce la plus puissante.",
+            "es": "En el ajedrez, la Reina es la pieza más poderosa.",
+            "de": "Im Schach ist die Dame die stärkste Figur.",
+            "it": "Negli scacchi, la Regina è il pezzo più potente.",
+            "hi": "शतरंज में वजीर (Queen) सबसे शक्तिशाली मोहरा है।",
+            "ru": "В шахматах ферзь — самая сильная фигура.",
+            "zh": "在国际象棋中，皇后是最强大的棋子。",
+            "ja": "チェスでは、クイーンが最も強力な駒です。",
+            "ar": "في الشطرنج، الوزير (الملكة) هي أقوى قطعة."
+        },
+        "correct_answer": true
+    },
+    {
+        "category": "technology",
+        "question": {
+            "en": "Steve Jobs is the creator of the Linux operating system.",
+            "tr": "Steve Jobs, Linux işletim sisteminin yaratıcısıdır.",
+            "fr": "Steve Jobs est le créateur du système d'exploitation Linux.",
+            "es": "Steve Jobs es el creador del sistema operativo Linux.",
+            "de": "Steve Jobs ist der Schöpfer des Linux-Betriebssystems.",
+            "it": "Steve Jobs è il creatore del sistema operativo Linux.",
+            "hi": "स्टीव जॉब्स लिनक्स ऑपरेटिंग सिस्टम के निर्माता हैं।",
+            "ru": "Стив Джобс — создатель операционной системы Linux.",
+            "zh": "史蒂夫·乔布斯是Linux操作系统的创造者。",
+            "ja": "スティーブ・ジョブズはLinuxオペレーティングシステムの作成者です。",
+            "ar": "ستيف جوبز هو منشئ نظام التشغيل لينكس."
+        },
+        "correct_answer": false
+    },
+    {
+        "category": "cinema_tv",
+        "question": {
+            "en": "The character 'Darth Vader' appears in 'Star Trek'.",
+            "tr": "'Darth Vader' karakteri 'Star Trek'te (Uzay Yolu) yer alır.",
+            "fr": "Le personnage de 'Darth Vader' apparaît dans 'Star Trek'.",
+            "es": "El personaje de 'Darth Vader' aparece en 'Star Trek'.",
+            "de": "Die Figur 'Darth Vader' kommt in 'Star Trek' vor.",
+            "it": "Il personaggio di 'Darth Vader' appare in 'Star Trek'.",
+            "hi": "'डार्थ वाडर' चरित्र 'स्टार ट्रेक' में दिखाई देता है।",
+            "ru": "Персонаж Дарт Вейдер появляется в «Звездном пути».",
+            "zh": "角色“达斯·维达”出现在《星际迷航》中。",
+            "ja": "キャラクター「ダース・ベイダー」は『スタートレック』に登場します。",
+            "ar": "تظهر شخصية 'دارث فيدر' في 'ستار تريك'."
+        },
+        "correct_answer": false
+    },
+    {
+        "category": "music",
+        "question": {
+            "en": "A standard violin bow is made of horsehair.",
+            "tr": "Standart bir keman yayı at kılından yapılır.",
+            "fr": "Un archet de violon standard est fait de crin de cheval.",
+            "es": "Un arco de violín estándar está hecho de crin de caballo.",
+            "de": "Ein Standard-Geigenbogen besteht aus Rosshaar.",
+            "it": "Un archetto di violino standard è fatto di crine di cavallo.",
+            "hi": "एक मानक वायलिन धनुष घोड़े के बाल से बना होता है।",
+            "ru": "Стандартный смычок для скрипки сделан из конского волоса.",
+            "zh": "标准的小提琴弓是由马尾毛制成的。",
+            "ja": "標準的なバイオリンの弓は馬の毛で作られています。",
+            "ar": "يصنع قوس الكمان القياسي من شعر الخيل."
+        },
+        "correct_answer": true
+    },
+    {
+        "category": "nature_animals",
+        "question": {
+            "en": "Male seahorses carry and give birth to their young.",
+            "tr": "Erkek denizatı yavrularını taşır ve doğurur.",
+            "fr": "Les hippocampes mâles portent et donnent naissance à leurs petits.",
+            "es": "Los caballitos de mar machos cargan y dan a luz a sus crías.",
+            "de": "Männliche Seepferdchen tragen ihre Jungen aus und gebären sie.",
+            "it": "I cavallucci marini maschi portano e danno alla luce i loro piccoli.",
+            "hi": "नर समुद्री घोड़े (seahorses) अपने बच्चों को ले जाते हैं और उन्हें जन्म देते हैं।",
+            "ru": "Самцы морских коньков вынашивают и рожают детенышей.",
+            "zh": "雄性海马携带并生下幼崽。",
+            "ja": "オスのタツノオトシゴは子供を身ごもり、出産します。",
+            "ar": "ذكور فرس البحر تحمل وتلد صغارها."
+        },
+        "correct_answer": true
+    },
+    {
+        "category": "geography_travel",
+        "question": {
+            "en": "Japan is an archipelago consisting of thousands of islands.",
+            "tr": "Japonya binlerce adadan oluşan bir takımadadır.",
+            "fr": "Le Japon est un archipel composé de milliers d'îles.",
+            "es": "Japón es un archipiélago formado por miles de islas.",
+            "de": "Japan ist ein Archipel, das aus Tausenden von Inseln besteht.",
+            "it": "Il Giappone è un arcipelago composto da migliaia di isole.",
+            "hi": "जापान हजारों द्वीपों से बना एक द्वीपसमूह है।",
+            "ru": "Япония — это архипелаг, состоящий из тысяч островов.",
+            "zh": "日本是由数千个岛屿组成的群岛。",
+            "ja": "日本は数千の島々からなる列島です。",
+            "ar": "اليابان عبارة عن أرخبيل يتكون من آلاف الجزر."
+        },
+        "correct_answer": true
+    },
+    {
+        "category": "mythology",
+        "question": {
+            "en": "The Minotaur is half man and half bull.",
+            "tr": "Minotor yarı insan yarı boğadır.",
+            "fr": "Le Minotaure est mi-homme mi-taureau.",
+            "es": "El Minotauro es mitad hombre y mitad toro.",
+            "de": "Der Minotaurus ist halb Mensch und halb Stier.",
+            "it": "Il Minotauro è metà uomo e metà toro.",
+            "hi": "मिनोटौर आधा इंसान और आधा सांड है।",
+            "ru": "Минотавр — наполовину человек, наполовину бык.",
+            "zh": "弥诺陶洛斯是半人半牛的怪物。",
+            "ja": "ミノタウロスは半人半牛です。",
+            "ar": "المينوتور هو نصف رجل ونصف ثور."
+        },
+        "correct_answer": true
+    },
+    {
+        "category": "philosophy",
+        "question": {
+            "en": "'The Republic' is a famous work by Plato.",
+            "tr": "'Devlet' (The Republic), Platon'un ünlü bir eseridir.",
+            "fr": "'La République' est une œuvre célèbre de Platon.",
+            "es": "'La República' es una obra famosa de Platón.",
+            "de": "'Der Staat' ist ein berühmtes Werk von Platon.",
+            "it": "'La Repubblica' è una famosa opera di Platone.",
+            "hi": "'गणतंत्र' (The Republic) प्लेटो की एक प्रसिद्ध कृति है।",
+            "ru": "«Государство» — известное произведение Платона.",
+            "zh": "《理想国》是柏拉图的著名作品。",
+            "ja": "『国家』はプラトンの有名な著作です。",
+            "ar": "'الجمهورية' هو عمل مشهور لأفلاطون."
+        },
+        "correct_answer": true
+    },
+    {
+        "category": "literature",
+        "question": {
+            "en": "'Pride and Prejudice' is a novel by Jane Austen.",
+            "tr": "'Gurur ve Önyargı' Jane Austen'in bir romanıdır.",
+            "fr": "'Orgueil et Préjugés' est un roman de Jane Austen.",
+            "es": "'Orgullo y prejuicio' es una novela de Jane Austen.",
+            "de": "'Stolz und Vorurteil' ist ein Roman von Jane Austen.",
+            "it": "'Orgoglio e pregiudizio' è un romanzo di Jane Austen.",
+            "hi": "'प्राइड एंड प्रेजुडिस' जेन ऑस्टेन का एक उपन्यास है।",
+            "ru": "«Гордость и предубеждение» — роман Джейн Остин.",
+            "zh": "《傲慢与偏见》是简·奥斯汀的小说。",
+            "ja": "『高慢と偏見』はジェーン・オースティンの小説です。",
+            "ar": "'كبرياء وتحامل' هي رواية لجين أوستن."
+        },
+        "correct_answer": true
+    },
+    {
+        "category": "space_astronomy",
+        "question": {
+            "en": "Astronauts cannot cry properly in space because there is no gravity.",
+            "tr": "Astronotlar yerçekimi olmadığı için uzayda düzgün bir şekilde ağlayamazlar (gözyaşları akmaz).",
+            "fr": "Les astronautes ne peuvent pas pleurer correctement dans l'espace car il n'y a pas de gravité.",
+            "es": "Los astronautas no pueden llorar adecuadamente en el espacio porque no hay gravedad.",
+            "de": "Astronauten können im Weltraum nicht richtig weinen, weil es keine Schwerkraft gibt.",
+            "it": "Gli astronauti non possono piangere correttamente nello spazio perché non c'è gravità.",
+            "hi": "अंतरिक्ष यात्री अंतरिक्ष में ठीक से रो नहीं सकते क्योंकि वहां गुरुत्वाकर्षण नहीं है।",
+            "ru": "Космонавты не могут нормально плакать в космосе, потому что там нет гравитации.",
+            "zh": "宇航员在太空中无法正常哭泣，因为没有重力。",
+            "ja": "宇宙飛行士は重力がないため、宇宙で適切に泣くことができません（涙が落ちない）。",
+            "ar": "لا يستطيع رواد الفضاء البكاء بشكل صحيح في الفضاء لعدم وجود جاذبية."
+        },
+        "correct_answer": true
+    },
+    {
+        "category": "health_fitness",
+        "question": {
+            "en": "The skin is the largest organ of the human body.",
+            "tr": "Deri, insan vücudunun en büyük organıdır.",
+            "fr": "La peau est le plus grand organe du corps humain.",
+            "es": "La piel es el órgano más grande del cuerpo humano.",
+            "de": "Die Haut ist das größte Organ des menschlichen Körpers.",
+            "it": "La pelle è l'organo più esteso del corpo umano.",
+            "hi": "त्वचा मानव शरीर का सबसे बड़ा अंग है।",
+            "ru": "Кожа — самый большой орган человеческого тела.",
+            "zh": "皮肤是人体最大的器官。",
+            "ja": "皮膚は人体の最大の器官です。",
+            "ar": "الجلد هو أكبر عضو في جسم الإنسان."
+        },
+        "correct_answer": true
+    },
+    {
+        "category": "economics_finance",
+        "question": {
+            "en": "The Great Depression began in the year 1929.",
+            "tr": "Büyük Buhran 1929 yılında başladı.",
+            "fr": "La Grande Dépression a commencé en 1929.",
+            "es": "La Gran Depresión comenzó en el año 1929.",
+            "de": "Die Weltwirtschaftskrise begann im Jahr 1929.",
+            "it": "La Grande Depressione iniziò nell'anno 1929.",
+            "hi": "महामंदी वर्ष 1929 में शुरू हुई थी।",
+            "ru": "Великая депрессия началась в 1929 году.",
+            "zh": "大萧条始于1929年。",
+            "ja": "世界恐慌は1929年に始まりました。",
+            "ar": "بدأ الكساد الكبير في عام 1929."
+        },
+        "correct_answer": true
+    },
+    {
+        "category": "architecture",
+        "question": {
+            "en": "The Eiffel Tower was originally intended to be a temporary structure.",
+            "tr": "Eyfel Kulesi'nin başlangıçta geçici bir yapı olması amaçlanmıştı.",
+            "fr": "La tour Eiffel était à l'origine destinée à être une structure temporaire.",
+            "es": "La Torre Eiffel fue pensada originalmente para ser una estructura temporal.",
+            "de": "Der Eiffelturm war ursprünglich als temporäres Bauwerk gedacht.",
+            "it": "La Torre Eiffel era originariamente destinata a essere una struttura temporanea.",
+            "hi": "एफिल टॉवर मूल रूप से एक अस्थायी संरचना होने का इरादा था।",
+            "ru": "Эйфелева башня изначально задумывалась как временное сооружение.",
+            "zh": "埃菲尔铁塔最初原本是一座临时建筑。",
+            "ja": "エッフェル塔はもともと一時的な建造物となる予定でした。",
+            "ar": "كان المقصود من برج إيفل في الأصل أن يكون هيكلًا مؤقتًا."
+        },
+        "correct_answer": true
+    },
+    {
+        "category": "video_games",
+        "question": {
+            "en": "The ghosts in 'Pac-Man' are named Blinky, Pinky, Inky, and Clyde.",
+            "tr": "'Pac-Man'deki hayaletlerin isimleri Blinky, Pinky, Inky ve Clyde'dır.",
+            "fr": "Les fantômes de 'Pac-Man' s'appellent Blinky, Pinky, Inky et Clyde.",
+            "es": "Los fantasmas en 'Pac-Man' se llaman Blinky, Pinky, Inky y Clyde.",
+            "de": "Die Geister in 'Pac-Man' heißen Blinky, Pinky, Inky und Clyde.",
+            "it": "I fantasmi in 'Pac-Man' si chiamano Blinky, Pinky, Inky e Clyde.",
+            "hi": "'पैक-मैन' में भूतों का नाम ब्लिंकी, पिंकी, इंकी और क्लाइड है।",
+            "ru": "Призраков в «Pac-Man» зовут Блинки, Пинки, Инки и Клайд.",
+            "zh": "《吃豆人》中的鬼魂分别叫Blinky、Pinky、Inky和Clyde。",
+            "ja": "『パックマン』のゴーストの名前は、ブリンキー、ピンキー、インキー、クライドです。",
+            "ar": "أسماء الأشباح في 'باك مان' هي بلينكي وبينكي وإنكي وكلايد."
+        },
+        "correct_answer": true
+    },
+    {
+        "category": "general_culture",
+        "question": {
+            "en": "The word 'Karaoke' means 'empty orchestra' in Japanese.",
+            "tr": "'Karaoke' kelimesi Japoncada 'boş orkestra' anlamına gelir.",
+            "fr": "Le mot 'Karaoké' signifie 'orchestre vide' en japonais.",
+            "es": "La palabra 'Karaoke' significa 'orquesta vacía' en japonés.",
+            "de": "Das Wort 'Karaoke' bedeutet auf Japanisch 'leeres Orchester'.",
+            "it": "La parola 'Karaoke' significa 'orchestra vuota' in giapponese.",
+            "hi": "जापानी भाषा में 'कराओके' शब्द का अर्थ 'खाली ऑर्केस्ट्रा' होता है।",
+            "ru": "Слово «караоке» по-японски означает «пустой оркестр».",
+            "zh": "“卡拉OK”一词在日语中的意思是“空管弦乐队”。",
+            "ja": "「カラオケ」という言葉は、日本語で「空のオーケストラ」を意味します。",
+            "ar": "كلمة 'كاريوكي' تعني 'أوركسترا فارغة' باللغة اليابانية."
+        },
+        "correct_answer": true
+    },
+    {
+        "category": "fun_facts",
+        "question": {
+            "en": "Slugs have four noses.",
+            "tr": "Sümüklü böceklerin dört burnu vardır.",
+            "fr": "Les limaces ont quatre nez.",
+            "es": "Las babosas tienen cuatro narices.",
+            "de": "Nacktschnecken haben vier Nasen.",
+            "it": "Le lumache hanno quattro nasi.",
+            "hi": "स्लग (slugs) की चार नाक होती हैं।",
+            "ru": "У слизней четыре носа.",
+            "zh": "蛞蝓有四个鼻子。",
+            "ja": "ナメクジには4つの鼻があります。",
+            "ar": "البزاقات لها أربعة أنوف."
+        },
+        "correct_answer": true
+    },
+    {
+        "category": "history",
+        "question": {
+            "en": "The Wright brothers are credited with inventing the airplane.",
+            "tr": "Wright kardeşler uçağı icat etmekle tanınırlar.",
+            "fr": "Les frères Wright sont crédités de l'invention de l'avion.",
+            "es": "A los hermanos Wright se les atribuye la invención del avión.",
+            "de": "Den Gebrüdern Wright wird die Erfindung des Flugzeugs zugeschrieben.",
+            "it": "Ai fratelli Wright è attribuita l'invenzione dell'aeroplano.",
+            "hi": "राइट बंधुओं को हवाई जहाज के आविष्कार का श्रेय दिया जाता है।",
+            "ru": "Братьям Райт приписывают изобретение самолета.",
+            "zh": "莱特兄弟被认为是飞机的发明者。",
+            "ja": "ライト兄弟は飛行機を発明したことで知られています。",
+            "ar": "يُنسب للأخوين رايت اختراع الطائرة."
+        },
+        "correct_answer": true
+    },
+    {
+        "category": "science",
+        "question": {
+            "en": "Helium is a noble gas.",
+            "tr": "Helyum bir soy gazdır.",
+            "fr": "L'hélium est un gaz noble.",
+            "es": "El helio es un gas noble.",
+            "de": "Helium ist ein Edelgas.",
+            "it": "L'elio è un gas nobile.",
+            "hi": "हैलियम एक नोबल गैस है।",
+            "ru": "Гелий — благородный газ.",
+            "zh": "氦气是一种稀有气体。",
+            "ja": "ヘリウムは希ガスです。",
+            "ar": "الهيليوم هو غاز نبيل."
+        },
+        "correct_answer": true
+    },
+    {
+        "category": "art",
+        "question": {
+            "en": "The primary colors are red, yellow, and blue.",
+            "tr": "Ana renkler kırmızı, sarı ve mavidir.",
+            "fr": "Les couleurs primaires sont le rouge, le jaune et le bleu.",
+            "es": "Los colores primarios son rojo, amarillo y azul.",
+            "de": "Die Primärfarben sind Rot, Gelb und Blau.",
+            "it": "I colori primari sono rosso, giallo e blu.",
+            "hi": "प्राथमिक रंग लाल, पीला और नीला हैं।",
+            "ru": "Основные цвета — красный, желтый и синий.",
+            "zh": "三原色是红、黄、蓝。",
+            "ja": "三原色は赤、黄、青です。",
+            "ar": "الألوان الأساسية هي الأحمر والأصفر والأزرق."
+        },
+        "correct_answer": true
+    },
+    {
+        "category": "sports",
+        "question": {
+            "en": "In boxing, a standard round lasts three minutes.",
+            "tr": "Boksta standart bir raunt üç dakika sürer.",
+            "fr": "En boxe, un round standard dure trois minutes.",
+            "es": "En el boxeo, un asalto estándar dura tres minutos.",
+            "de": "Beim Boxen dauert eine Standardrunde drei Minuten.",
+            "it": "Nella boxe, un round standard dura tre minuti.",
+            "hi": "मुक्केबाजी में, एक मानक दौर तीन मिनट तक चलता है।",
+            "ru": "В боксе стандартный раунд длится три минуты.",
+            "zh": "在拳击比赛中，标准回合持续三分钟。",
+            "ja": "ボクシングでは、標準的なラウンドは3分間続きます。",
+            "ar": "في الملاكمة، تستغرق الجولة القياسية ثلاث دقائق."
+        },
+        "correct_answer": true
+    },
+    {
+        "category": "technology",
+        "question": {
+            "en": "'www' stands for 'World Wide Web'.",
+            "tr": "'www', 'World Wide Web' (Dünya Çapında Ağ) anlamına gelir.",
+            "fr": "'www' signifie 'World Wide Web'.",
+            "es": "'www' significa 'World Wide Web'.",
+            "de": "'www' steht für 'World Wide Web'.",
+            "it": "'www' sta per 'World Wide Web'.",
+            "hi": "'www' का मतलब 'वर्ल्ड वाइड वेब' है।",
+            "ru": "«www» означает «World Wide Web» (Всемирная паутина).",
+            "zh": "“www”代表“万维网”。",
+            "ja": "「www」は「World Wide Web」の略です。",
+            "ar": "'www' تعني 'الشبكة العنكبوتية العالمية'."
+        },
+        "correct_answer": true
+    },
+    {
+        "category": "nature_animals",
+        "question": {
+            "en": "Tigers are native to Africa.",
+            "tr": "Kaplanlar Afrika'ya özgüdür.",
+            "fr": "Les tigres sont originaires d'Afrique.",
+            "es": "Los tigres son nativos de África.",
+            "de": "Tiger sind in Afrika heimisch.",
+            "it": "Le tigri sono native dell'Africa.",
+            "hi": "बाघ अफ्रीका के मूल निवासी हैं।",
+            "ru": "Тигры обитают в Африке.",
+            "zh": "老虎原产于非洲。",
+            "ja": "トラはアフリカ原産です。",
+            "ar": "النمور موطنها الأصلي أفريقيا."
+        },
+        "correct_answer": false
+    },
+    {
+        "category": "geography_travel",
+        "question": {
+            "en": "The capital of Egypt is Cairo.",
+            "tr": "Mısır'ın başkenti Kahire'dir.",
+            "fr": "La capitale de l'Égypte est Le Caire.",
+            "es": "La capital de Egipto es El Cairo.",
+            "de": "Die Hauptstadt von Ägypten ist Kairo.",
+            "it": "La capitale dell'Egitto è Il Cairo.",
+            "hi": "मिस्र की राजधानी काहिरा है।",
+            "ru": "Столица Египта — Каир.",
+            "zh": "埃及的首都是开罗。",
+            "ja": "エジプトの首都はカイロです。",
+            "ar": "عاصمة مصر هي القاهرة."
+        },
+        "correct_answer": true
+    },
+    {
+        "category": "mythology",
+        "question": {
+            "en": "Aphrodite is the Greek goddess of love.",
+            "tr": "Afrodit, Yunan aşk tanrıçasıdır.",
+            "fr": "Aphrodite est la déesse grecque de l'amour.",
+            "es": "Afrodita es la diosa griega del amor.",
+            "de": "Aphrodite ist die griechische Göttin der Liebe.",
+            "it": "Afrodite è la dea greca dell'amore.",
+            "hi": "एफ्रोडाइट प्रेम की ग्रीक देवी हैं।",
+            "ru": "Афродита — греческая богиня любви.",
+            "zh": "阿佛洛狄忒是希腊的爱神。",
+            "ja": "アフロディーテはギリシャ神話の愛の女神です。",
+            "ar": "أفروديت هي إلهة الحب اليونانية."
+        },
+        "correct_answer": true
+    },
+    {
+        "category": "literature",
+        "question": {
+            "en": "Mark Twain wrote 'The Adventures of Tom Sawyer'.",
+            "tr": "'Tom Sawyer'ın Maceraları'nı Mark Twain yazmıştır.",
+            "fr": "Mark Twain a écrit 'Les Aventures de Tom Sawyer'.",
+            "es": "Mark Twain escribió 'Las aventuras de Tom Sawyer'.",
+            "de": "Mark Twain schrieb 'Die Abenteuer des Tom Sawyer'.",
+            "it": "Mark Twain ha scritto 'Le avventure di Tom Sawyer'.",
+            "hi": "मार्क ट्वेन ने 'द एडवेंचर्स ऑफ टॉम सॉयर' लिखा था।",
+            "ru": "Марк Твен написал «Приключения Тома Сойера».",
+            "zh": "马克·吐温写了《汤姆·索亚历险记》。",
+            "ja": "マーク・トウェインは『トム・ソーヤーの冒険』を書きました。",
+            "ar": "كتب مارك توين 'مغامرات توم سوير'."
+        },
+        "correct_answer": true
+    },
+    {
+        "category": "space_astronomy",
+        "question": {
+            "en": "The Milky Way is the only galaxy in the universe.",
+            "tr": "Samanyolu evrendeki tek galaksidir.",
+            "fr": "La Voie lactée est la seule galaxie de l'univers.",
+            "es": "La Vía Láctea es la única galaxia del universo.",
+            "de": "Die Milchstraße ist die einzige Galaxie im Universum.",
+            "it": "La Via Lattea è l'unica galassia dell'universo.",
+            "hi": "आकाशगंगा ब्रह्मांड की एकमात्र आकाशगंगा है।",
+            "ru": "Млечный Путь — единственная галактика во Вселенной.",
+            "zh": "银河系是宇宙中唯一的星系。",
+            "ja": "天の川銀河は宇宙で唯一の銀河です。",
+            "ar": "درب التبانة هي المجرة الوحيدة في الكون."
+        },
+        "correct_answer": false
+    },
+    {
+        "category": "health_fitness",
+        "question": {
+            "en": "The human brain is divided into two hemispheres.",
+            "tr": "İnsan beyni iki yarım küreye ayrılmıştır.",
+            "fr": "Le cerveau humain est divisé en deux hémisphères.",
+            "es": "El cerebro humano se divide en dos hemisferios.",
+            "de": "Das menschliche Gehirn ist in zwei Hemisphären unterteilt.",
+            "it": "Il cervello umano è diviso in due emisferi.",
+            "hi": "मानव मस्तिष्क दो गोलार्द्धों में विभाजित है।",
+            "ru": "Человеческий мозг разделен на два полушария.",
+            "zh": "人脑分为两个半球。",
+            "ja": "人間の脳は2つの半球に分かれています。",
+            "ar": "ينقسم الدماغ البشري إلى نصفين."
+        },
+        "correct_answer": true
+    },
+    {
+        "category": "architecture",
+        "question": {
+            "en": "The Colosseum is located in Rome.",
+            "tr": "Kolezyum Roma'da bulunmaktadır.",
+            "fr": "Le Colisée est situé à Rome.",
+            "es": "El Coliseo se encuentra en Roma.",
+            "de": "Das Kolosseum befindet sich in Rom.",
+            "it": "Il Colosseo si trova a Roma.",
+            "hi": "कोलोसियम रोम में स्थित है।",
+            "ru": "Колизей находится в Риме.",
+            "zh": "斗兽场位于罗马。",
+            "ja": "コロッセオはローマにあります。",
+            "ar": "يقع الكولوسيوم في روما."
+        },
+        "correct_answer": true
+    },
+    {
+        "category": "video_games",
+        "question": {
+            "en": "'Overwatch' is a first-person shooter game.",
+            "tr": "'Overwatch' bir birinci şahıs nişancı oyunudur.",
+            "fr": "'Overwatch' est un jeu de tir à la première personne.",
+            "es": "'Overwatch' es un juego de disparos en primera persona.",
+            "de": "'Overwatch' ist ein Ego-Shooter-Spiel.",
+            "it": "'Overwatch' è uno sparatutto in prima persona.",
+            "hi": "'ओवरवॉच' एक प्रथम-व्यक्ति शूटर गेम है।",
+            "ru": "«Overwatch» — шутер от первого лица.",
+            "zh": "《守望先锋》是一款第一人称射击游戏。",
+            "ja": "『オーバーウォッチ』はファーストパーソン・シューティングゲームです。",
+            "ar": "'أوفرواتش' هي لعبة إطلاق نار من منظور الشخص الأول."
+        },
+        "correct_answer": true
+    },
+    {
+        "category": "general_culture",
+        "question": {
+            "en": "'Namaste' is a common greeting in India.",
+            "tr": "'Namaste', Hindistan'da yaygın bir selamlamadır.",
+            "fr": "'Namaste' est une salutation courante en Inde.",
+            "es": "'Namaste' es un saludo común en la India.",
+            "de": "'Namaste' ist ein gebräuchlicher Gruß in Indien.",
+            "it": "'Namaste' è un saluto comune in India.",
+            "hi": "'नमस्ते' भारत में एक आम अभिवादन है।",
+            "ru": "«Намасте» — распространенное приветствие в Индии.",
+            "zh": "“Namaste”是印度常见的问候语。",
+            "ja": "「ナマステ」はインドで一般的な挨拶です。",
+            "ar": "'ناماستي' هي تحية شائعة في الهند."
+        },
+        "correct_answer": true
+    },
+    {
+        "category": "fun_facts",
+        "question": {
+            "en": "Bananas are botanically classified as berries.",
+            "tr": "Muzlar botanik olarak üzümsü meyve (berry) olarak sınıflandırılır.",
+            "fr": "Les bananes sont classées botaniquement comme des baies.",
+            "es": "Los plátanos se clasifican botánicamente como bayas.",
+            "de": "Bananen werden botanisch als Beeren klassifiziert.",
+            "it": "Le banane sono classificate botanicamente come bacche.",
+            "hi": "केले को वानस्पतिक रूप से बेरी के रूप में वर्गीकृत किया गया है।",
+            "ru": "Бананы ботанически классифицируются как ягоды.",
+            "zh": "香蕉在植物学上被归类为浆果。",
+            "ja": "バナナは植物学的にはベリー（液果）に分類されます。",
+            "ar": "يصنف الموز نباتيا على أنه توت."
+        },
+        "correct_answer": true
+    },
+    {
+        "category": "music",
+        "question": {
+            "en": "The clarinet is a woodwind instrument.",
+            "tr": "Klarnet bir tahta nefesli çalgıdır.",
+            "fr": "La clarinette est un instrument à vent de la famille des bois.",
+            "es": "El clarinete es un instrumento de viento-madera.",
+            "de": "Die Klarinette ist ein Holzblasinstrument.",
+            "it": "Il clarinetto è uno strumento a fiato.",
+            "hi": "क्लैरिनेट एक वुडविंड वाद्ययंत्र है।",
+            "ru": "Кларнет — деревянный духовой инструмент.",
+            "zh": "单簧管是一种木管乐器。",
+            "ja": "クラリネットは木管楽器です。",
+            "ar": "الكلارينيت هو آلة نفخ خشبية."
+        },
+        "correct_answer": true
+    },
+    {
+        "category": "cinema_tv",
+        "question": {
+            "en": "The movie 'The Wizard of Oz' was released in 1939.",
+            "tr": "'Oz Büyücüsü' filmi 1939 yılında vizyona girmiştir.",
+            "fr": "Le film 'Le Magicien d'Oz' est sorti en 1939.",
+            "es": "La película 'El Mago de Oz' se estrenó en 1939.",
+            "de": "Der Film 'Der Zauberer von Oz' wurde 1939 veröffentlicht.",
+            "it": "Il film 'Il Mago di Oz' è uscito nel 1939.",
+            "hi": "फिल्म 'द विजार्ड ऑफ ओज़' 1939 में रिलीज़ हुई थी।",
+            "ru": "Фильм «Волшебник страны Оз» вышел на экраны в 1939 году.",
+            "zh": "电影《绿野仙踪》于1939年上映。",
+            "ja": "映画『オズの魔法使』は1939年に公開されました。",
+            "ar": "تم إصدار فيلم 'ساحر أوز' في عام 1939."
+        },
+        "correct_answer": true
+    },
+    {
+        "category": "history",
+        "question": {
+            "en": "The Mayflower ship transported the Pilgrims to the New World in 1620.",
+            "tr": "Mayflower gemisi, 1620'de Hacıları (Pilgrims) Yeni Dünya'ya taşıdı.",
+            "fr": "Le navire Mayflower a transporté les pèlerins vers le Nouveau Monde en 1620.",
+            "es": "El barco Mayflower transportó a los peregrinos al Nuevo Mundo en 1620.",
+            "de": "Das Schiff Mayflower transportierte die Pilgerväter 1620 in die Neue Welt.",
+            "it": "La nave Mayflower trasportò i Padri Pellegrini nel Nuovo Mondo nel 1620.",
+            "hi": "मेफ्लावर जहाज 1620 में तीर्थयात्रियों को नई दुनिया में ले गया।",
+            "ru": "Корабль «Мейфлауэр» перевез пилигримов в Новый Свет в 1620 году.",
+            "zh": "五月花号船于1620年将朝圣者运送到新大陆。",
+            "ja": "メイフラワー号は1620年に巡礼者を新世界へと運びました。",
+            "ar": "نقلت سفينة ماي فلاور الحجاج إلى العالم الجديد عام 1620."
+        },
+        "correct_answer": true
+    },
+    {
+        "category": "science",
+        "question": {
+            "en": "The nucleus of an atom consists of protons and neutrons.",
+            "tr": "Bir atomun çekirdeği proton ve nötronlardan oluşur.",
+            "fr": "Le noyau d'un atome est constitué de protons et de neutrons.",
+            "es": "El núcleo de un átomo consta de protones y neutrones.",
+            "de": "Der Kern eines Atoms besteht aus Protonen und Neutronen.",
+            "it": "Il nucleo di un atomo è costituito da protoni e neutroni.",
+            "hi": "परमाणु के नाभिक में प्रोटॉन और न्यूट्रॉन होते हैं।",
+            "ru": "Ядро атома состоит из протонов и нейтронов.",
+            "zh": "原子核由质子和中子组成。",
+            "ja": "原子核は陽子と中性子で構成されています。",
+            "ar": "تتكون نواة الذرة من البروتونات والنيوترونات."
+        },
+        "correct_answer": true
+    },
+    {
+        "category": "art",
+        "question": {
+            "en": "Andy Warhol is a famous figure in the Pop Art movement.",
+            "tr": "Andy Warhol, Pop Art akımının ünlü bir figürüdür.",
+            "fr": "Andy Warhol est une figure célèbre du mouvement Pop Art.",
+            "es": "Andy Warhol es una figura famosa del movimiento Pop Art.",
+            "de": "Andy Warhol ist eine berühmte Figur der Pop-Art-Bewegung.",
+            "it": "Andy Warhol è una figura famosa del movimento Pop Art.",
+            "hi": "एंडी वारहोल पॉप आर्ट आंदोलन में एक प्रसिद्ध व्यक्ति हैं।",
+            "ru": "Энди Уорхол — известная фигура в движении поп-арт.",
+            "zh": "安迪·沃霍尔是波普艺术运动的著名人物。",
+            "ja": "アンディ・ウォーホルはポップアート運動の有名な人物です。",
+            "ar": "آندي وارهول هو شخصية مشهورة في حركة فن البوب."
+        },
+        "correct_answer": true
+    },
+    {
+        "category": "sports",
+        "question": {
+            "en": "The Super Bowl is the annual championship game of the National Football League (NFL).",
+            "tr": "Super Bowl, Ulusal Futbol Ligi'nin (NFL) yıllık şampiyonluk maçıdır.",
+            "fr": "Le Super Bowl est le match de championnat annuel de la Ligue nationale de football (NFL).",
+            "es": "El Super Bowl es el partido de campeonato anual de la Liga Nacional de Fútbol Americano (NFL).",
+            "de": "Der Super Bowl ist das jährliche Meisterschaftsspiel der National Football League (NFL).",
+            "it": "Il Super Bowl è la partita di campionato annuale della National Football League (NFL).",
+            "hi": "सुपर बाउल नेशनल फुटबॉल लीग (NFL) का वार्षिक चैंपियनशिप खेल है।",
+            "ru": "Супербоул — ежегодная чемпионская игра Национальной футбольной лиги (НФЛ).",
+            "zh": "超级碗是国家橄榄球联盟（NFL）的年度冠军赛。",
+            "ja": "スーパーボウルは、ナショナル・フットボール・リーグ（NFL）の毎年の優勝決定戦です。",
+            "ar": "سوبر بول هي مباراة البطولة السنوية للرابطة الوطنية لكرة القدم (NFL)."
+        },
+        "correct_answer": true
+    },
+    {
+        "category": "technology",
+        "question": {
+            "en": "The programming language 'Java' was originally named 'Oak'.",
+            "tr": "'Java' programlama dilinin orijinal adı 'Oak' idi.",
+            "fr": "Le langage de programmation 'Java' s'appelait à l'origine 'Oak'.",
+            "es": "El lenguaje de programación 'Java' se llamaba originalmente 'Oak'.",
+            "de": "Die Programmiersprache 'Java' hieß ursprünglich 'Oak'.",
+            "it": "Il linguaggio di programmazione 'Java' era originariamente chiamato 'Oak'.",
+            "hi": "'जावा' प्रोग्रामिंग भाषा का मूल नाम 'ओक' था।",
+            "ru": "Язык программирования Java изначально назывался Oak.",
+            "zh": "编程语言“Java”最初被命名为“Oak”。",
+            "ja": "プログラミング言語「Java」はもともと「Oak」という名前でした。",
+            "ar": "كانت لغة البرمجة 'جافا' تسمى في الأصل 'Oak'."
+        },
+        "correct_answer": true
+    },
+    {
+        "category": "cinema_tv",
+        "question": {
+            "en": "Daniel Radcliffe played the character Harry Potter in the film series.",
+            "tr": "Daniel Radcliffe, film serisinde Harry Potter karakterini canlandırmıştır.",
+            "fr": "Daniel Radcliffe a joué le personnage de Harry Potter dans la série de films.",
+            "es": "Daniel Radcliffe interpretó al personaje de Harry Potter en la serie de películas.",
+            "de": "Daniel Radcliffe spielte die Rolle des Harry Potter in der Filmreihe.",
+            "it": "Daniel Radcliffe ha interpretato il personaggio di Harry Potter nella serie di film.",
+            "hi": "डैनियल रैडक्लिफ ने फिल्म श्रृंखला में हैरी पॉटर का किरदार निभाया था।",
+            "ru": "Дэниел Рэдклифф сыграл персонажа Гарри Поттера в серии фильмов.",
+            "zh": "丹尼尔·雷德克里夫在电影系列中饰演了哈利·波特这个角色。",
+            "ja": "ダニエル・ラドクリフは映画シリーズでハリー・ポッター役を演じました。",
+            "ar": "لعب دانيال رادكليف دور شخصية هاري بوتر في سلسلة الأفلام."
+        },
+        "correct_answer": true
+    },
+    {
+        "category": "music",
+        "question": {
+            "en": "The cello is played while seated.",
+            "tr": "Çello oturarak çalınır.",
+            "fr": "Le violoncelle se joue assis.",
+            "es": "El violonchelo se toca sentado.",
+            "de": "Das Cello wird im Sitzen gespielt.",
+            "it": "Il violoncello si suona da seduti.",
+            "hi": "सेलो बैठकर बजाया जाता है।",
+            "ru": "На виолончели играют сидя.",
+            "zh": "大提琴是坐着演奏的。",
+            "ja": "チェロは座って演奏します。",
+            "ar": "يتم العزف على التشيلو أثناء الجلوس."
+        },
+        "correct_answer": true
+    },
+    {
+        "category": "nature_animals",
+        "question": {
+            "en": "In a lion pride, the females do the majority of the hunting.",
+            "tr": "Bir aslan sürüsünde avlanmanın çoğunu dişiler yapar.",
+            "fr": "Dans une troupe de lions, les femelles effectuent la majorité de la chasse.",
+            "es": "En una manada de leones, las hembras realizan la mayor parte de la caza.",
+            "de": "In einem Löwenrudel übernehmen die Weibchen den Großteil der Jagd.",
+            "it": "In un branco di leoni, le femmine fanno la maggior parte della caccia.",
+            "hi": "शेर के झुंड में, मादाएं अधिकांश शिकार करती हैं।",
+            "ru": "В львином прайде большую часть охоты выполняют самки.",
+            "zh": "在狮群中，雌狮承担了大部分的狩猎工作。",
+            "ja": "ライオンの群れでは、雌が狩りの大部分を行います。",
+            "ar": "في قطيع الأسود، تقوم الإناث بغالبية الصيد."
+        },
+        "correct_answer": true
+    },
+    {
+        "category": "geography_travel",
+        "question": {
+            "en": "Abu Dhabi is the capital of the United Arab Emirates.",
+            "tr": "Abu Dabi, Birleşik Arap Emirlikleri'nin başkentidir.",
+            "fr": "Abou Dabi est la capitale des Émirats arabes unis.",
+            "es": "Abu Dabi es la capital de los Emiratos Árabes Unidos.",
+            "de": "Abu Dhabi ist die Hauptstadt der Vereinigten Arabischen Emirate.",
+            "it": "Abu Dhabi è la capitale degli Emirati Arabi Uniti.",
+            "hi": "अबू धाबी संयुक्त अरब अमीरात की राजधानी है।",
+            "ru": "Абу-Даби — столица Объединенных Арабских Эмиратов.",
+            "zh": "阿布扎比是阿拉伯联合酋长国的首都。",
+            "ja": "アブダビはアラブ首長国連邦の首都です。",
+            "ar": "أبو ظبي هي عاصمة دولة الإمارات العربية المتحدة."
+        },
+        "correct_answer": true
+    },
+    {
+        "category": "mythology",
+        "question": {
+            "en": "Mars is the Roman god of war.",
+            "tr": "Mars, Roma savaş tanrısıdır.",
+            "fr": "Mars est le dieu romain de la guerre.",
+            "es": "Marte es el dios romano de la guerra.",
+            "de": "Mars ist der römische Kriegsgott.",
+            "it": "Marte è il dio romano della guerra.",
+            "hi": "मंगल युद्ध के रोमन देवता हैं।",
+            "ru": "Марс — римский бог войны.",
+            "zh": "马尔斯是罗马的战神。",
+            "ja": "マルスはローマの戦いの神です。",
+            "ar": "المريخ هو إله الحرب الروماني."
+        },
+        "correct_answer": true
+    },
+    {
+        "category": "literature",
+        "question": {
+            "en": "'The Chronicles of Narnia' was written by C.S. Lewis.",
+            "tr": "'Narnia Günlükleri' C.S. Lewis tarafından yazılmıştır.",
+            "fr": "'Le Monde de Narnia' a été écrit par C.S. Lewis.",
+            "es": "'Las Crónicas de Narnia' fue escrita por C.S. Lewis.",
+            "de": "'Die Chroniken von Narnia' wurden von C.S. Lewis geschrieben.",
+            "it": "'Le cronache di Narnia' è stato scritto da C.S. Lewis.",
+            "hi": "'द क्रॉनिकल्स ऑफ नार्निया' सी.एस. लुईस द्वारा लिखी गई थी।",
+            "ru": "«Хроники Нарнии» были написаны К.С. Льюисом.",
+            "zh": "《纳尼亚传奇》是由C.S.路易斯创作的。",
+            "ja": "『ナルニア国物語』はC.S.ルイスによって書かれました。",
+            "ar": "كتب سي إس لويس 'سجلات نارنيا'."
+        },
+        "correct_answer": true
+    },
+    {
+        "category": "space_astronomy",
+        "question": {
+            "en": "The Moon reflects light from the Sun.",
+            "tr": "Ay, Güneş'ten gelen ışığı yansıtır.",
+            "fr": "La Lune reflète la lumière du Soleil.",
+            "es": "La Luna refleja la luz del Sol.",
+            "de": "Der Mond reflektiert das Licht der Sonne.",
+            "it": "La Luna riflette la luce del Sole.",
+            "hi": "चंद्रमा सूर्य के प्रकाश को परावर्तित करता है।",
+            "ru": "Луна отражает свет Солнца.",
+            "zh": "月球反射来自太阳的光。",
+            "ja": "月は太陽からの光を反射します。",
+            "ar": "يعكس القمر الضوء من الشمس."
+        },
+        "correct_answer": true
+    },
+    {
+        "category": "health_fitness",
+        "question": {
+            "en": "Red blood cells carry oxygen throughout the body.",
+            "tr": "Kırmızı kan hücreleri vücuda oksijen taşır.",
+            "fr": "Les globules rouges transportent l'oxygène dans tout le corps.",
+            "es": "Los glóbulos rojos transportan oxígeno por todo el cuerpo.",
+            "de": "Rote Blutkörperchen transportieren Sauerstoff durch den Körper.",
+            "it": "I globuli rossi trasportano l'ossigeno in tutto il corpo.",
+            "hi": "लाल रक्त कोशिकाएं पूरे शरीर में ऑक्सीजन पहुंचाती हैं।",
+            "ru": "Красные кровяные тельца переносят кислород по всему организму.",
+            "zh": "红细胞将氧气输送到全身。",
+            "ja": "赤血球は体中に酸素を運びます。",
+            "ar": "خلايا الدم الحمراء تحمل الأكسجين في جميع أنحاء الجسم."
+        },
+        "correct_answer": true
+    },
+    {
+        "category": "economics_finance",
+        "question": {
+            "en": "A tariff is a tax imposed on imported goods.",
+            "tr": "Tarife, ithal edilen mallara uygulanan bir vergidir.",
+            "fr": "Un tarif est une taxe imposée sur les marchandises importées.",
+            "es": "Un arancel es un impuesto que se aplica a los bienes importados.",
+            "de": "Ein Zoll ist eine Steuer, die auf importierte Waren erhoben wird.",
+            "it": "Un dazio è una tassa imposta sulle merci importate.",
+            "hi": "टैरिफ आयातित वस्तुओं पर लगाया जाने वाला कर है।",
+            "ru": "Тариф — это налог, налагаемый на импортируемые товары.",
+            "zh": "关税是对进口商品征收的一种税。",
+            "ja": "関税は輸入品に課される税金です。",
+            "ar": "التعريفة هي ضريبة مفروضة على السلع المستوردة."
+        },
+        "correct_answer": true
+    },
+    {
+        "category": "architecture",
+        "question": {
+            "en": "The Parthenon is located in Athens, Greece.",
+            "tr": "Parthenon, Yunanistan'ın Atina kentinde bulunur.",
+            "fr": "Le Parthénon est situé à Athènes, en Grèce.",
+            "es": "El Partenón se encuentra en Atenas, Grecia.",
+            "de": "Der Parthenon befindet sich in Athen, Griechenland.",
+            "it": "Il Partenone si trova ad Atene, in Grecia.",
+            "hi": "पार्थेनन एथेंस, ग्रीस में स्थित है।",
+            "ru": "Парфенон находится в Афинах, Греция.",
+            "zh": "帕特农神庙位于希腊雅典。",
+            "ja": "パルテノン神殿はギリシャのアテネにあります。",
+            "ar": "يقع البارثينون في أثينا، اليونان."
+        },
+        "correct_answer": true
+    },
+    {
+        "category": "video_games",
+        "question": {
+            "en": "'Pokémon Go' is an augmented reality mobile game.",
+            "tr": "'Pokémon Go', bir artırılmış gerçeklik mobil oyunudur.",
+            "fr": "'Pokémon Go' est un jeu mobile en réalité augmentée.",
+            "es": "'Pokémon Go' es un juego móvil de realidad aumentada.",
+            "de": "'Pokémon Go' ist ein Augmented-Reality-Handyspiel.",
+            "it": "'Pokémon Go' è un gioco mobile in realtà aumentata.",
+            "hi": "'पोकेमॉन गो' एक संवर्धित वास्तविकता मोबाइल गेम है।",
+            "ru": "«Pokémon Go» — мобильная игра с дополненной реальностью.",
+            "zh": "《精灵宝可梦Go》是一款增强现实手机游戏。",
+            "ja": "『ポケモンGO』は拡張現実モバイルゲームです。",
+            "ar": "'بوكيمون غو' هي لعبة محمولة تعتمد على الواقع المعزز."
+        },
+        "correct_answer": true
+    },
+    {
+        "category": "general_culture",
+        "question": {
+            "en": "'Bonjour' is the French word for 'Hello'.",
+            "tr": "'Bonjour', Fransızcada 'Merhaba' demektir.",
+            "fr": "'Bonjour' est le mot français pour 'Hello'.",
+            "es": "'Bonjour' es la palabra francesa para 'Hola'.",
+            "de": "'Bonjour' ist das französische Wort für 'Hallo'.",
+            "it": "'Bonjour' è la parola francese per 'Ciao'.",
+            "hi": "'बोनजोर' (Bonjour) 'हैलो' के लिए फ्रांसीसी शब्द है।",
+            "ru": "«Bonjour» — это французское слово, означающее «Привет».",
+            "zh": "“Bonjour”是法语中“你好”的意思。",
+            "ja": "「Bonjour」はフランス語で「こんにちは」という意味です。",
+            "ar": "'بونجور' هي الكلمة الفرنسية التي تعني 'مرحبا'."
+        },
+        "correct_answer": true
+    },
+    {
+        "category": "fun_facts",
+        "question": {
+            "en": "The fingerprints of a koala are very similar to those of a human.",
+            "tr": "Bir koalanın parmak izleri bir insanınkine çok benzer.",
+            "fr": "Les empreintes digitales d'un koala sont très similaires à celles d'un humain.",
+            "es": "Las huellas dactilares de un koala son muy similares a las de un humano.",
+            "de": "Die Fingerabdrücke eines Koalas sind denen eines Menschen sehr ähnlich.",
+            "it": "Le impronte digitali di un koala sono molto simili a quelle di un essere umano.",
+            "hi": "कोआला के उंगलियों के निशान इंसान के निशान से बहुत मिलते-जुलते होते हैं।",
+            "ru": "Отпечатки пальцев коалы очень похожи на человеческие.",
+            "zh": "考拉的指纹与人类的非常相似。",
+            "ja": "コアラの指紋は人間の指紋と非常によく似ています。",
+            "ar": "بصمات أصابع الكوالا تشبه إلى حد كبير بصمات الإنسان."
+        },
+        "correct_answer": true
+    },
+    {
+        "category": "science",
+        "question": {
+            "en": "Vinegar is an acid.",
+            "tr": "Sirke bir asittir.",
+            "fr": "Le vinaigre est un acide.",
+            "es": "El vinagre es un ácido.",
+            "de": "Essig ist eine Säure.",
+            "it": "L'aceto è un acido.",
+            "hi": "सिरका एक एसिड है।",
+            "ru": "Уксус — это кислота.",
+            "zh": "醋是一种酸。",
+            "ja": "酢は酸です。",
+            "ar": "الخل حمض."
+        },
+        "correct_answer": true
+    },
+    {
+        "category": "geography_travel",
+        "question": {
+            "en": "Greenland is the largest island in the world.",
+            "tr": "Grönland dünyanın en büyük adasıdır.",
+            "fr": "Le Groenland est la plus grande île du monde.",
+            "es": "Groenlandia es la isla más grande del mundo.",
+            "de": "Grönland ist die größte Insel der Welt.",
+            "it": "La Groenlandia è l'isola più grande del mondo.",
+            "hi": "ग्रीनलैंड दुनिया का सबसे बड़ा द्वीप है।",
+            "ru": "Гренландия — самый большой остров в мире.",
+            "zh": "格陵兰岛是世界上最大的岛屿。",
+            "ja": "グリーンランドは世界最大の島です。",
+            "ar": "جرينلاند هي أكبر جزيرة في العالم."
+        },
+        "correct_answer": true
+    },
+    {
+        "category": "science",
+        "question": {
+            "en": "A light-year is a unit of time.",
+            "tr": "Işık yılı bir zaman birimidir.",
+            "fr": "Une année-lumière est une unité de temps.",
+            "es": "Un año luz es una unidad de tiempo.",
+            "de": "Ein Lichtjahr ist eine Zeiteinheit.",
+            "it": "Un anno luce è un'unità di tempo.",
+            "hi": "प्रकाश-वर्ष समय की एक इकाई है।",
+            "ru": "Световой год — это единица времени.",
+            "zh": "光年是时间单位。",
+            "ja": "光年は時間の単位です。",
+            "ar": "السنة الضوئية هي وحدة زمنية."
+        },
+        "correct_answer": false
+    },
+    {
+        "category": "geography_travel",
+        "question": {
+            "en": "Mount Everest is the highest peak on Earth.",
+            "tr": "Everest Dağı, Dünya'nın en yüksek zirvesidir.",
+            "fr": "Le mont Everest est le plus haut sommet de la Terre.",
+            "es": "El Monte Everest es el pico más alto de la Tierra.",
+            "de": "Der Mount Everest ist der höchste Gipfel der Erde.",
+            "it": "Il Monte Everest è la vetta più alta della Terra.",
+            "hi": "माउंट एवरेस्ट पृथ्वी की सबसे ऊंची चोटी है।",
+            "ru": "Эверест — самая высокая вершина на Земле.",
+            "zh": "珠穆朗玛峰是地球上的最高峰。",
+            "ja": "エベレストは地球上で最も高い山です。",
+            "ar": "جبل إيفرست هو أعلى قمة على وجه الأرض."
+        },
+        "correct_answer": true
+    },
+    {
+        "category": "literature",
+        "question": {
+            "en": "Ernest Hemingway wrote 'The Old Man and the Sea'.",
+            "tr": "'Yaşlı Adam ve Deniz' kitabını Ernest Hemingway yazmıştır.",
+            "fr": "Ernest Hemingway a écrit 'Le Vieil Homme et la Mer'.",
+            "es": "Ernest Hemingway escribió 'El viejo y el mar'.",
+            "de": "Ernest Hemingway schrieb 'Der alte Mann und das Meer'.",
+            "it": "Ernest Hemingway ha scritto 'Il vecchio e il mare'.",
+            "hi": "अर्नेस्ट हेमिंग्वे ने 'द ओल्ड मैन एंड द सी' लिखी थी।",
+            "ru": "Эрнест Хемингуэй написал «Старик и море».",
+            "zh": "欧内斯特·海明威写了《老人与海》。",
+            "ja": "アーネスト・ヘミングウェイは『老人と海』を書きました。",
+            "ar": "كتب إرنست همنغواي 'الشيخ والبحر'."
+        },
+        "correct_answer": true
+    },
+    {
+        "category": "science",
+        "question": {
+            "en": "Deoxygenated blood is blue.",
+            "tr": "Oksijensiz kan mavidir.",
+            "fr": "Le sang désoxygéné est bleu.",
+            "es": "La sangre desoxigenada es azul.",
+            "de": "Sauerstoffarmes Blut ist blau.",
+            "it": "Il sangue deossigenato è blu.",
+            "hi": "ऑक्सीजन रहित रक्त नीला होता है।",
+            "ru": "Деоксигенированная кровь имеет синий цвет.",
+            "zh": "脱氧血液是蓝色的。",
+            "ja": "脱酸素化された血液は青色です。",
+            "ar": "الدم غير المؤكسج أزرق."
+        },
+        "correct_answer": false
+    },
+    {
+        "category": "economics_finance",
+        "question": {
+            "en": "Stocks represent ownership in a company.",
+            "tr": "Hisse senetleri bir şirketteki mülkiyeti temsil eder.",
+            "fr": "Les actions représentent la propriété d'une entreprise.",
+            "es": "Las acciones representan la propiedad de una empresa.",
+            "de": "Aktien repräsentieren das Eigentum an einem Unternehmen.",
+            "it": "Le azioni rappresentano la proprietà di una società.",
+            "hi": "स्टॉक एक कंपनी में स्वामित्व का प्रतिनिधित्व करते हैं।",
+            "ru": "Акции представляют собой долю собственности в компании.",
+            "zh": "股票代表公司的所有权。",
+            "ja": "株式は会社の所有権を表します。",
+            "ar": "الأسهم تمثل الملكية في الشركة."
+        },
+        "correct_answer": true
+    },
+    {
+        "category": "architecture",
+        "question": {
+            "en": "The Louvre Museum is the largest art museum in the world.",
+            "tr": "Louvre Müzesi dünyanın en büyük sanat müzesidir.",
+            "fr": "Le musée du Louvre est le plus grand musée d'art du monde.",
+            "es": "El Museo del Louvre es el museo de arte más grande del mundo.",
+            "de": "Das Louvre-Museum ist das größte Kunstmuseum der Welt.",
+            "it": "Il Museo del Louvre è il più grande museo d'arte del mondo.",
+            "hi": "लौवर संग्रहालय दुनिया का सबसे बड़ा कला संग्रहालय है।",
+            "ru": "Лувр — самый большой художественный музей в мире.",
+            "zh": "卢浮宫博物馆是世界上最大的艺术博物馆。",
+            "ja": "ルーヴル美術館は世界最大の美術館です。",
+            "ar": "متحف اللوفر هو أكبر متحف فني في العالم."
+        },
+        "correct_answer": true
+    },
+    {
+        "category": "video_games",
+        "question": {
+            "en": "Nintendo was originally founded as a playing card company.",
+            "tr": "Nintendo başlangıçta bir oyun kağıdı şirketi olarak kurulmuştu.",
+            "fr": "Nintendo a été fondée à l'origine en tant que société de cartes à jouer.",
+            "es": "Nintendo se fundó originalmente como una empresa de naipes.",
+            "de": "Nintendo wurde ursprünglich als Spielkartenunternehmen gegründet.",
+            "it": "Nintendo è stata originariamente fondata come azienda di carte da gioco.",
+            "hi": "निन्टेंडो की स्थापना मूल रूप से ताश के पत्तों की कंपनी के रूप में की गई थी।",
+            "ru": "Изначально Nintendo была основана как компания по производству игральных карт.",
+            "zh": "任天堂最初是一家扑克牌公司。",
+            "ja": "任天堂はもともと花札（トランプ）の会社として設立されました。",
+            "ar": "تأسست نينتندو في الأصل كشركة لبطاقات اللعب."
+        },
+        "correct_answer": true
+    },
+    {
+        "category": "general_culture",
+        "question": {
+            "en": "Portuguese is the official language of Brazil.",
+            "tr": "Portekizce, Brezilya'nın resmi dilidir.",
+            "fr": "Le portugais est la langue officielle du Brésil.",
+            "es": "El portugués es el idioma oficial de Brasil.",
+            "de": "Portugiesisch ist die Amtssprache Brasiliens.",
+            "it": "Il portoghese è la lingua ufficiale del Brasile.",
+            "hi": "पुर्तगाली ब्राजील की आधिकारिक भाषा है।",
+            "ru": "Португальский язык является официальным языком Бразилии.",
+            "zh": "葡萄牙语是巴西的官方语言。",
+            "ja": "ポルトガル語はブラジルの公用語です。",
+            "ar": "البرتغالية هي اللغة الرسمية للبرازيل."
+        },
+        "correct_answer": true
+    },
+    {
+        "category": "fun_facts",
+        "question": {
+            "en": "Bulls are enraged by the color red.",
+            "tr": "Boğalar kırmızı renge öfkelenir.",
+            "fr": "Les taureaux sont enragés par la couleur rouge.",
+            "es": "A los toros les enfurece el color rojo.",
+            "de": "Stiere werden durch die Farbe Rot wütend gemacht.",
+            "it": "I tori sono infuriati dal colore rosso.",
+            "hi": "सांड लाल रंग से क्रोधित होते हैं।",
+            "ru": "Быков злит красный цвет.",
+            "zh": "公牛会被红色激怒。",
+            "ja": "雄牛は赤色に激怒します。",
+            "ar": "تثار الثيران باللون الأحمر."
+        },
+        "correct_answer": false
+    },
+    {
+        "category": "nature_animals",
+        "question": {
+            "en": "Owls can rotate their heads 360 degrees.",
+            "tr": "Baykuşlar kafalarını 360 derece döndürebilirler.",
+            "fr": "Les hiboux peuvent tourner leur tête à 360 degrés.",
+            "es": "Los búhos pueden girar la cabeza 360 grados.",
+            "de": "Eulen können ihren Kopf um 360 Grad drehen.",
+            "it": "I gufi possono ruotare la testa di 360 gradi.",
+            "hi": "उल्लू अपना सिर 360 डिग्री घुमा सकते हैं।",
+            "ru": "Совы могут поворачивать голову на 360 градусов.",
+            "zh": "猫头鹰可以将头旋转360度。",
+            "ja": "フクロウは頭を360度回転させることができます。",
+            "ar": "تستطيع البوم تدوير رؤوسها 360 درجة."
+        },
+        "correct_answer": false
+    },
+    {
+        "category": "history",
+        "question": {
+            "en": "Christopher Columbus discovered the route to India.",
+            "tr": "Kristof Kolomb Hindistan'a giden yolu keşfetti.",
+            "fr": "Christophe Colomb a découvert la route vers l'Inde.",
+            "es": "Cristóbal Colón descubrió la ruta a la India.",
+            "de": "Christoph Kolumbus entdeckte den Seeweg nach Indien.",
+            "it": "Cristoforo Colombo scoprì la rotta per l'India.",
+            "hi": "क्रिस्टोफर कोलंबस ने भारत के रास्ते की खोज की।",
+            "ru": "Христофор Колумб открыл путь в Индию.",
+            "zh": "克里斯托弗·哥伦布发现了通往印度的航线。",
+            "ja": "クリストファー・コロンブスはインドへの航路を発見しました。",
+            "ar": "اكتشف كريستوفر كولومبوس الطريق إلى الهند."
+        },
+        "correct_answer": false
+    },
+    {
+        "category": "science",
+        "question": {
+            "en": "Oil dissolves easily in water.",
+            "tr": "Yağ suda kolayca çözünür.",
+            "fr": "L'huile se dissout facilement dans l'eau.",
+            "es": "El aceite se disuelve fácilmente en agua.",
+            "de": "Öl löst sich leicht in Wasser.",
+            "it": "L'olio si dissolve facilmente in acqua.",
+            "hi": "तेल पानी में आसानी से घुल जाता है।",
+            "ru": "Масло легко растворяется в воде.",
+            "zh": "油很容易溶解在水中。",
+            "ja": "油は水に簡単に溶けます。",
+            "ar": "يذوب الزيت بسهولة في الماء."
+        },
+        "correct_answer": false
+    },
+    {
+        "category": "art",
+        "question": {
+            "en": "Leonardo da Vinci painted the 'Mona Lisa'.",
+            "tr": "'Mona Lisa' tablosunu Leonardo da Vinci yapmıştır.",
+            "fr": "Léonard de Vinci a peint la 'Mona Lisa'.",
+            "es": "Leonardo da Vinci pintó la 'Mona Lisa'.",
+            "de": "Leonardo da Vinci malte die 'Mona Lisa'.",
+            "it": "Leonardo da Vinci ha dipinto la 'Gioconda'.",
+            "hi": "लियोनार्डो दा विंची ने 'मोना लिसा' को चित्रित किया था।",
+            "ru": "Леонардо да Винчи написал «Мона Лизу».",
+            "zh": "列奥纳多·达·芬奇创作了《蒙娜丽莎》。",
+            "ja": "レオナルド・ダ・ヴィンチは『モナ・リザ』を描きました。",
+            "ar": "رسم ليوناردو دافنشي 'الموناليزا'."
+        },
+        "correct_answer": true
+    },
+    {
+        "category": "sports",
+        "question": {
+            "en": "The five Olympic rings represent the five inhabited continents.",
+            "tr": "Beş Olimpiyat halkası, üzerinde yaşam olan beş kıtayı temsil eder.",
+            "fr": "Les cinq anneaux olympiques représentent les cinq continents habités.",
+            "es": "Los cinco anillos olímpicos representan los cinco continentes habitados.",
+            "de": "Die fünf olympischen Ringe repräsentieren die fünf bewohnten Kontinente.",
+            "it": "I cinque anelli olimpici rappresentano i cinque continenti abitati.",
+            "hi": "पांच ओलंपिक छल्ले पांच बसे हुए महाद्वीपों का प्रतिनिधित्व करते हैं।",
+            "ru": "Пять олимпийских колец символизируют пять обитаемых континентов.",
+            "zh": "奥林匹克五环代表五个有人居住的大陆。",
+            "ja": "5つのオリンピックの輪は、人が住む5つの大陸を表しています。",
+            "ar": "تمثل الحلقات الأولمبية الخمس القارات الخمس المأهولة."
+        },
+        "correct_answer": true
+    },
+    {
+        "category": "technology",
+        "question": {
+            "en": "PDF stands for Portable Document Format.",
+            "tr": "PDF, 'Portable Document Format' (Taşınabilir Belge Formatı) anlamına gelir.",
+            "fr": "PDF signifie Portable Document Format.",
+            "es": "PDF significa Formato de Documento Portátil.",
+            "de": "PDF steht für Portable Document Format.",
+            "it": "PDF sta per Portable Document Format.",
+            "hi": "PDF का मतलब पोर्टेबल डॉक्यूमेंट फॉर्मेट है।",
+            "ru": "PDF означает Portable Document Format (формат переносимых документов).",
+            "zh": "PDF代表便携式文档格式。",
+            "ja": "PDFはPortable Document Formatの略です。",
+            "ar": "PDF تعني تنسيق المستندات المحمولة."
+        },
+        "correct_answer": true
+    },
+    {
+        "category": "music",
+        "question": {
+            "en": "The harp is a percussion instrument.",
+            "tr": "Arp bir vurmalı çalgıdır.",
+            "fr": "La harpe est un instrument de percussion.",
+            "es": "El arpa es un instrumento de percusión.",
+            "de": "Die Harfe ist ein Schlaginstrument.",
+            "it": "L'arpa è uno strumento a percussione.",
+            "hi": "वीणा (Harp) एक ताल वाद्य है।",
+            "ru": "Арфа — ударный инструмент.",
+            "zh": "竖琴是一种打击乐器。",
+            "ja": "ハープは打楽器です。",
+            "ar": "القيثارة هي آلة إيقاعية."
+        },
+        "correct_answer": false
+    },
+    {
+        "category": "cinema_tv",
+        "question": {
+            "en": "Shrek is a green ogre.",
+            "tr": "Shrek yeşil bir devdir (ogre).",
+            "fr": "Shrek est un ogre vert.",
+            "es": "Shrek es un ogro verde.",
+            "de": "Shrek ist ein grüner Oger.",
+            "it": "Shrek è un orco verde.",
+            "hi": "श्रेक एक हरा ओग्रे है।",
+            "ru": "Шрек — зеленый огр.",
+            "zh": "史莱克是一个绿色的食人魔。",
+            "ja": "シュレックは緑色のオーガです。",
+            "ar": "شريك هو غول أخضر."
+        },
+        "correct_answer": true
+    },
+    {
+        "category": "mythology",
+        "question": {
+            "en": "Pegasus is a horse with wings.",
+            "tr": "Pegasus kanatlı bir attır.",
+            "fr": "Pégase est un cheval ailé.",
+            "es": "Pegaso es un caballo con alas.",
+            "de": "Pegasus ist ein Pferd mit Flügeln.",
+            "it": "Pegaso è un cavallo alato.",
+            "hi": "पेगासस पंखों वाला घोड़ा है।",
+            "ru": "Пегас — конь с крыльями.",
+            "zh": "珀加索斯是一匹长翅膀的马。",
+            "ja": "ペガサスは翼のある馬です。",
+            "ar": "بيغاسوس هو حصان له أجنحة."
+        },
+        "correct_answer": true
+    },
+    {
+        "category": "philosophy",
+        "question": {
+            "en": "Friedrich Nietzsche wrote 'Thus Spoke Zarathustra'.",
+            "tr": "'Böyle Buyurdu Zerdüşt' kitabını Friedrich Nietzsche yazmıştır.",
+            "fr": "Friedrich Nietzsche a écrit 'Ainsi parlait Zarathoustra'.",
+            "es": "Friedrich Nietzsche escribió 'Así habló Zaratustra'.",
+            "de": "Friedrich Nietzsche schrieb 'Also sprach Zarathustra'.",
+            "it": "Friedrich Nietzsche ha scritto 'Così parlò Zarathustra'.",
+            "hi": "फ्रेडरिक नीत्शे ने 'द स्पोक जरथुस्त्र' लिखा था।",
+            "ru": "Фридрих Ницше написал «Так говорил Заратустра».",
+            "zh": "弗里德里希·尼采写了《查拉图斯特拉如是说》。",
+            "ja": "フリードリヒ・ニーチェは『ツァラトゥストラはかく語りき』を書きました。",
+            "ar": "كتب فريدريك نيتشه 'هكذا تكلم زرادشت'."
+        },
+        "correct_answer": true
+    },
+    {
+        "category": "history",
+        "question": {
+            "en": "Nelson Mandela was the first black president of South Africa.",
+            "tr": "Nelson Mandela, Güney Afrika'nın ilk siyahi devlet başkanıydı.",
+            "fr": "Nelson Mandela a été le premier président noir d'Afrique du Sud.",
+            "es": "Nelson Mandela fue el primer presidente negro de Sudáfrica.",
+            "de": "Nelson Mandela war der erste schwarze Präsident Südafrikas.",
+            "it": "Nelson Mandela è stato il primo presidente nero del Sudafrica.",
+            "hi": "नेल्सन मंडेला दक्षिण अफ्रीका के पहले अश्वेत राष्ट्रपति थे।",
+            "ru": "Нельсон Мандела был первым чернокожим президентом ЮАР.",
+            "zh": "纳尔逊·曼德拉是南非第一位黑人总统。",
+            "ja": "ネルソン・マンデラは南アフリカ初の黒人大統領でした。",
+            "ar": "كان نيلسون مانديلا أول رئيس أسود لجنوب إفريقيا."
+        },
+        "correct_answer": true
+    },
+    {
+        "category": "science",
+        "question": {
+            "en": "The Earth has a magnetic field.",
+            "tr": "Dünya'nın bir manyetik alanı vardır.",
+            "fr": "La Terre possède un champ magnétique.",
+            "es": "La Tierra tiene un campo magnético.",
+            "de": "Die Erde hat ein Magnetfeld.",
+            "it": "La Terra ha un campo magnetico.",
+            "hi": "पृथ्वी का एक चुंबकीय क्षेत्र है।",
+            "ru": "У Земли есть магнитное поле.",
+            "zh": "地球有一个磁场。",
+            "ja": "地球には磁場があります。",
+            "ar": "للأرض مجال مغناطيسي."
+        },
+        "correct_answer": true
+    },
+    {
+        "category": "art",
+        "question": {
+            "en": "The 'Mona Lisa' has no eyebrows.",
+            "tr": "'Mona Lisa'nın kaşları yoktur.",
+            "fr": "La 'Mona Lisa' n'a pas de sourcils.",
+            "es": "La 'Mona Lisa' no tiene cejas.",
+            "de": "Die 'Mona Lisa' hat keine Augenbrauen.",
+            "it": "La 'Gioconda' non ha sopracciglia.",
+            "hi": "'मोना लिसा' की भौहें नहीं हैं।",
+            "ru": "У «Мона Лизы» нет бровей.",
+            "zh": "《蒙娜丽莎》没有眉毛。",
+            "ja": "『モナ・リザ』には眉毛がありません。",
+            "ar": "'الموناليزا' ليس لها حواجب."
+        },
+        "correct_answer": true
+    },
+    {
+        "category": "sports",
+        "question": {
+            "en": "The Summer Olympics are held every four years.",
+            "tr": "Yaz Olimpiyatları dört yılda bir düzenlenir.",
+            "fr": "Les Jeux olympiques d'été ont lieu tous les quatre ans.",
+            "es": "Los Juegos Olímpicos de Verano se celebran cada cuatro años.",
+            "de": "Die Olympischen Sommerspiele finden alle vier Jahre statt.",
+            "it": "I Giochi Olimpici estivi si tengono ogni quattro anni.",
+            "hi": "ग्रीष्मकालीन ओलंपिक हर चार साल में आयोजित किए जाते हैं।",
+            "ru": "Летние Олимпийские игры проводятся раз в четыре года.",
+            "zh": "夏季奥运会每四年举办一次。",
+            "ja": "夏季オリンピックは4年ごとに開催されます。",
+            "ar": "تقام الألعاب الأولمبية الصيفية كل أربع سنوات."
+        },
+        "correct_answer": true
+    },
+    {
+        "category": "technology",
+        "question": {
+            "en": "Google was founded in 1998.",
+            "tr": "Google 1998 yılında kuruldu.",
+            "fr": "Google a été fondé en 1998.",
+            "es": "Google fue fundada en 1998.",
+            "de": "Google wurde 1998 gegründet.",
+            "it": "Google è stata fondata nel 1998.",
+            "hi": "Google की स्थापना 1998 में हुई थी।",
+            "ru": "Google была основана в 1998 году.",
+            "zh": "谷歌成立于1998年。",
+            "ja": "Googleは1998年に設立されました。",
+            "ar": "تأسست جوجل في عام 1998."
+        },
+        "correct_answer": true
+    },
+    {
+        "category": "music",
+        "question": {
+            "en": "Michael Jackson released the album 'Thriller'.",
+            "tr": "Michael Jackson 'Thriller' albümünü yayınladı.",
+            "fr": "Michael Jackson a sorti l'album 'Thriller'.",
+            "es": "Michael Jackson lanzó el álbum 'Thriller'.",
+            "de": "Michael Jackson veröffentlichte das Album 'Thriller'.",
+            "it": "Michael Jackson ha pubblicato l'album 'Thriller'.",
+            "hi": "माइकल जैक्सन ने 'थ्रिलर' एल्बम जारी किया।",
+            "ru": "Майкл Джексон выпустил альбом «Thriller».",
+            "zh": "迈克尔·杰克逊发行了专辑《Thriller》。",
+            "ja": "マイケル・ジャクソンはアルバム『スリラー』をリリースしました。",
+            "ar": "أصدر مايكل جاكسون ألبوم 'ثريلر'."
+        },
+        "correct_answer": true
+    },
+    {
+        "category": "nature_animals",
+        "question": {
+            "en": "Polar bears eat penguins.",
+            "tr": "Kutup ayıları penguen yer.",
+            "fr": "Les ours polaires mangent des manchots.",
+            "es": "Los osos polares comen pingüinos.",
+            "de": "Eisbären fressen Pinguine.",
+            "it": "Gli orsi polari mangiano i pinguini.",
+            "hi": "ध्रुवीय भालू पेंगुइन खाते हैं।",
+            "ru": "Белые медведи едят пингвинов.",
+            "zh": "北极熊吃企鹅。",
+            "ja": "ホッキョクグマはペンギンを食べます。",
+            "ar": "الدببة القطبية تأكل طيور البطريق."
+        },
+        "correct_answer": false
+    },
+    {
+        "category": "geography_travel",
+        "question": {
+            "en": "Mount Everest is located on the border of Nepal and China.",
+            "tr": "Everest Dağı, Nepal ve Çin sınırında yer almaktadır.",
+            "fr": "Le mont Everest est situé à la frontière du Népal et de la Chine.",
+            "es": "El Monte Everest se encuentra en la frontera entre Nepal y China.",
+            "de": "Der Mount Everest liegt an der Grenze zwischen Nepal und China.",
+            "it": "Il Monte Everest si trova al confine tra Nepal e Cina.",
+            "hi": "माउंट एवरेस्ट नेपाल और चीन की सीमा पर स्थित है।",
+            "ru": "Эверест находится на границе Непала и Китая.",
+            "zh": "珠穆朗玛峰位于尼泊尔和中国的边境上。",
+            "ja": "エベレストはネパールと中国の国境に位置しています。",
+            "ar": "يقع جبل إيفرست على الحدود بين نيبال والصين."
+        },
+        "correct_answer": true
+    },
+    {
+        "category": "mythology",
+        "question": {
+            "en": "Jupiter is the Roman king of the gods.",
+            "tr": "Jüpiter, Roma tanrılarının kralıdır.",
+            "fr": "Jupiter est le roi romain des dieux.",
+            "es": "Júpiter es el rey romano de los dioses.",
+            "de": "Jupiter ist der römische Göttervater.",
+            "it": "Giove è il re romano degli dei.",
+            "hi": "बृहस्पति देवताओं के रोमन राजा हैं।",
+            "ru": "Юпитер — римский царь богов.",
+            "zh": "朱庇特是罗马的众神之王。",
+            "ja": "ユピテルはローマの神々の王です。",
+            "ar": "جوبيتر هو ملك الآلهة الروماني."
+        },
+        "correct_answer": true
+    },
+    {
+        "category": "philosophy",
+        "question": {
+            "en": "Plato was a student of Socrates.",
+            "tr": "Platon, Sokrates'in öğrencisiydi.",
+            "fr": "Platon était un élève de Socrate.",
+            "es": "Platón fue alumno de Sócrates.",
+            "de": "Platon war ein Schüler von Sokrates.",
+            "it": "Platone era un allievo di Socrate.",
+            "hi": "प्लेटो सुकरात के छात्र थे।",
+            "ru": "Платон был учеником Сократа.",
+            "zh": "柏拉图是苏格拉底的学生。",
+            "ja": "プラトンはソクラテスの弟子でした。",
+            "ar": "كان أفلاطون تلميذا لسقراط."
+        },
+        "correct_answer": true
+    },
+    {
+        "category": "literature",
+        "question": {
+            "en": "Frankenstein is the name of the monster.",
+            "tr": "Frankenstein canavarın adıdır.",
+            "fr": "Frankenstein est le nom du monstre.",
+            "es": "Frankenstein es el nombre del monstruo.",
+            "de": "Frankenstein ist der Name des Monsters.",
+            "it": "Frankenstein è il nome del mostro.",
+            "hi": "फ्रेंकेंस्टीन राक्षस का नाम है।",
+            "ru": "Франкенштейн — это имя монстра.",
+            "zh": "弗兰肯斯坦是怪物的名字。",
+            "ja": "フランケンシュタインは怪物の名前です。",
+            "ar": "فرانكشتاين هو اسم الوحش."
+        },
+        "correct_answer": false
+    },
+    {
+        "category": "space_astronomy",
+        "question": {
+            "en": "The Earth is the third planet from the Sun.",
+            "tr": "Dünya, Güneş'e en yakın üçüncü gezegendir.",
+            "fr": "La Terre est la troisième planète à partir du Soleil.",
+            "es": "La Tierra es el tercer planeta desde el Sol.",
+            "de": "Die Erde ist der dritte Planet von der Sonne aus.",
+            "it": "La Terra è il terzo pianeta dal Sole.",
+            "hi": "पृथ्वी सूर्य से तीसरा ग्रह है।",
+            "ru": "Земля — третья планета от Солнца.",
+            "zh": "地球是离太阳第三近的行星。",
+            "ja": "地球は太陽から3番目の惑星です。",
+            "ar": "الأرض هي الكوكب الثالث من الشمس."
+        },
+        "correct_answer": true
+    },
+    {
+        "category": "health_fitness",
+        "question": {
+            "en": "Human ears never stop growing.",
+            "tr": "İnsan kulakları büyümeyi asla durdurmaz.",
+            "fr": "Les oreilles humaines ne cessent jamais de grandir.",
+            "es": "Las orejas humanas nunca dejan de crecer.",
+            "de": "Menschliche Ohren hören nie auf zu wachsen.",
+            "it": "Le orecchie umane non smettono mai di crescere.",
+            "hi": "मानव कान कभी भी बढ़ना बंद नहीं करते हैं।",
+            "ru": "Человеческие уши никогда не перестают расти.",
+            "zh": "人的耳朵从未停止生长。",
+            "ja": "人間の耳は成長し続けます。",
+            "ar": "لا تتوقف آذان الإنسان عن النمو أبدًا."
+        },
+        "correct_answer": true
+    },
+    {
+        "category": "economics_finance",
+        "question": {
+            "en": "A 'bear market' is characterized by falling prices.",
+            "tr": "'Ayı piyasası', düşen fiyatlarla karakterize edilir.",
+            "fr": "Un 'marché baissier' est caractérisé par une baisse des prix.",
+            "es": "Un 'mercado bajista' se caracteriza por la caída de precios.",
+            "de": "Ein 'Bärenmarkt' ist durch fallende Preise gekennzeichnet.",
+            "it": "Un 'mercato orso' è caratterizzato da prezzi in calo.",
+            "hi": "'मंदी का बाजार' (bear market) गिरती कीमतों की विशेषता है।",
+            "ru": "«Медвежий рынок» характеризуется падением цен.",
+            "zh": "“熊市”的特征是价格下跌。",
+            "ja": "「弱気相場」は価格の下落を特徴とします。",
+            "ar": "يتميز 'السوق الهابط' بانخفاض الأسعار."
+        },
+        "correct_answer": true
+    },
+    {
+        "category": "architecture",
+        "question": {
+            "en": "The Taj Mahal is a mosque.",
+            "tr": "Tac Mahal bir camidir.",
+            "fr": "Le Taj Mahal est une mosquée.",
+            "es": "El Taj Mahal es una mezquita.",
+            "de": "Das Taj Mahal ist eine Moschee.",
+            "it": "Il Taj Mahal è una moschea.",
+            "hi": "ताजमहल एक मस्जिद है।",
+            "ru": "Тадж-Махал — это мечеть.",
+            "zh": "泰姬陵是一座清真寺。",
+            "ja": "タージ・マハルはモスクです。",
+            "ar": "تاج محل مسجد."
+        },
+        "correct_answer": false
+    },
+    {
+        "category": "video_games",
+        "question": {
+            "en": "Mario wears a red hat.",
+            "tr": "Mario kırmızı bir şapka takar.",
+            "fr": "Mario porte un chapeau rouge.",
+            "es": "Mario lleva un sombrero rojo.",
+            "de": "Mario trägt eine rote Mütze.",
+            "it": "Mario indossa un cappello rosso.",
+            "hi": "मारियो लाल टोपी पहनता है।",
+            "ru": "Марио носит красную кепку.",
+            "zh": "马里奥戴着红帽子。",
+            "ja": "マリオは赤い帽子をかぶっています。",
+            "ar": "يرتدي ماريو قبعة حمراء."
+        },
+        "correct_answer": true
+    },
+    {
+        "category": "general_culture",
+        "question": {
+            "en": "Spanish is the official language of Brazil.",
+            "tr": "İspanyolca, Brezilya'nın resmi dilidir.",
+            "fr": "L'espagnol est la langue officielle du Brésil.",
+            "es": "El español es el idioma oficial de Brasil.",
+            "de": "Spanisch ist die Amtssprache Brasiliens.",
+            "it": "Lo spagnolo è la lingua ufficiale del Brasile.",
+            "hi": "स्पेनिश ब्राजील की आधिकारिक भाषा है।",
+            "ru": "Испанский язык является официальным языком Бразилии.",
+            "zh": "西班牙语是巴西的官方语言。",
+            "ja": "スペイン語はブラジルの公用語です。",
+            "ar": "الإسبانية هي اللغة الرسمية للبرازيل."
+        },
+        "correct_answer": false
+    },
+    {
+        "category": "fun_facts",
+        "question": {
+            "en": "A 'jiffy' is an actual unit of time.",
+            "tr": "'Jiffy' gerçek bir zaman birimidir.",
+            "fr": "Un 'jiffy' est une unité de temps réelle.",
+            "es": "Un 'jiffy' es una unidad de tiempo real.",
+            "de": "Ein 'Jiffy' ist eine tatsächliche Zeiteinheit.",
+            "it": "Un 'jiffy' è un'unità di tempo reale.",
+            "hi": "'जिफी' (jiffy) समय की एक वास्तविक इकाई है।",
+            "ru": "«Джиффи» (миг) — это реальная единица времени.",
+            "zh": "“Jiffy”是一个实际的时间单位。",
+            "ja": "「ジフィ（jiffy）」は実際の時間の単位です。",
+            "ar": "'Jiffy' هي وحدة زمنية فعلية."
+        },
+        "correct_answer": true
+    },
+    {
+        "category": "nature_animals",
+        "question": {
+            "en": "Sharks are mammals.",
+            "tr": "Köpekbalıkları memelidir.",
+            "fr": "Les requins sont des mammifères.",
+            "es": "Los tiburones son mamíferos.",
+            "de": "Haie sind Säugetiere.",
+            "it": "Gli squali sono mammiferi.",
+            "hi": "शार्क स्तनधारी हैं।",
+            "ru": "Акулы — млекопитающие.",
+            "zh": "鲨鱼是哺乳动物。",
+            "ja": "サメは哺乳類です。",
+            "ar": "أسماك القرش من الثدييات."
+        },
+        "correct_answer": false
+    },
+    {
+        "category": "science",
+        "question": {
+            "en": "The chemical symbol for Sodium is 'S'.",
+            "tr": "Sodyumun kimyasal sembolü 'S'dir.",
+            "fr": "Le symbole chimique du sodium est 'S'.",
+            "es": "El símbolo químico del sodio es 'S'.",
+            "de": "Das chemische Symbol für Natrium ist 'S'.",
+            "it": "Il simbolo chimico del sodio è 'S'.",
+            "hi": "सोडियम का रासायनिक प्रतीक 'S' है।",
+            "ru": "Химический символ натрия — «S».",
+            "zh": "钠的化学符号是“S”。",
+            "ja": "ナトリウムの化学記号は「S」です。",
+            "ar": "الرمز الكيميائي للصوديوم هو 'S'."
+        },
+        "correct_answer": false
+    },
+    {
+        "category": "history",
+        "question": {
+            "en": "The Magna Carta was signed in 1215.",
+            "tr": "Magna Carta 1215 yılında imzalandı.",
+            "fr": "La Magna Carta a été signée en 1215.",
+            "es": "La Carta Magna se firmó en 1215.",
+            "de": "Die Magna Carta wurde 1215 unterzeichnet.",
+            "it": "La Magna Carta fu firmata nel 1215.",
+            "hi": "मैग्ना कार्टा पर 1215 में हस्ताक्षर किए गए थे।",
+            "ru": "Великая хартия вольностей была подписана в 1215 году.",
+            "zh": "《大宪章》签署于1215年。",
+            "ja": "マグナ・カルタは1215年に署名されました。",
+            "ar": "تم التوقيع على الماجنا كارتا عام 1215."
+        },
+        "correct_answer": true
+    },
+    {
+        "category": "science",
+        "question": {
+            "en": "A hexagon has six sides.",
+            "tr": "Bir altıgenin altı kenarı vardır.",
+            "fr": "Un hexagone a six côtés.",
+            "es": "Un hexágono tiene seis lados.",
+            "de": "Ein Sechseck hat sechs Seiten.",
+            "it": "Un esagono ha sei lati.",
+            "hi": "षट्कोण की छह भुजाएँ होती हैं।",
+            "ru": "У шестиугольника шесть сторон.",
+            "zh": "六边形有六条边。",
+            "ja": "六角形には6つの辺があります。",
+            "ar": "المسدس له ستة أضلاع."
+        },
+        "correct_answer": true
+    },
+    {
+        "category": "art",
+        "question": {
+            "en": "Vincent van Gogh was a Dutch painter.",
+            "tr": "Vincent van Gogh Hollandalı bir ressamdı.",
+            "fr": "Vincent van Gogh était un peintre néerlandais.",
+            "es": "Vincent van Gogh fue un pintor holandés.",
+            "de": "Vincent van Gogh war ein niederländischer Maler.",
+            "it": "Vincent van Gogh era un pittore olandese.",
+            "hi": "विंसेंट वान गॉग एक डच चित्रकार थे।",
+            "ru": "Винсент Ван Гог был голландским художником.",
+            "zh": "文森特·梵高是一位荷兰画家。",
+            "ja": "フィンセント・ファン・ゴッホはオランダの画家でした。",
+            "ar": "كان فنسنت فان جوخ رسامًا هولنديًا."
+        },
+        "correct_answer": true
+    },
+    {
+        "category": "sports",
+        "question": {
+            "en": "The NBA stands for National Basketball Association.",
+            "tr": "NBA, Ulusal Basketbol Birliği anlamına gelir.",
+            "fr": "La NBA signifie National Basketball Association.",
+            "es": "La NBA significa Asociación Nacional de Baloncesto.",
+            "de": "Die NBA steht für National Basketball Association.",
+            "it": "NBA sta per National Basketball Association.",
+            "hi": "NBA का मतलब नेशनल बास्केटबॉल एसोसिएशन है।",
+            "ru": "НБА расшифровывается как Национальная баскетбольная ассоциация.",
+            "zh": "NBA代表国家篮球协会。",
+            "ja": "NBAはナショナル・バスケットボール・アソシエーションの略です。",
+            "ar": "NBA تعني الرابطة الوطنية لكرة السلة."
+        },
+        "correct_answer": true
+    },
+    {
+        "category": "technology",
+        "question": {
+            "en": "Tim Berners-Lee invented the World Wide Web.",
+            "tr": "Tim Berners-Lee, World Wide Web'i (Dünya Çapında Ağ) icat etti.",
+            "fr": "Tim Berners-Lee a inventé le World Wide Web.",
+            "es": "Tim Berners-Lee inventó la World Wide Web.",
+            "de": "Tim Berners-Lee hat das World Wide Web erfunden.",
+            "it": "Tim Berners-Lee ha inventato il World Wide Web.",
+            "hi": "टिम बर्नर्स-ली ने वर्ल्ड वाइड वेब का आविष्कार किया।",
+            "ru": "Тим Бернерс-Ли изобрел Всемирную паутину.",
+            "zh": "蒂姆·伯纳斯-李发明了万维网。",
+            "ja": "ティム・バーナーズ＝リーはワールドワイドウェブを発明しました。",
+            "ar": "اخترع تيم بيرنرز لي الشبكة العنكبوتية العالمية."
+        },
+        "correct_answer": true
+    },
+    {
+        "category": "cinema_tv",
+        "question": {
+            "en": "George Lucas created 'Star Wars'.",
+            "tr": "'Star Wars'u (Yıldız Savaşları) George Lucas yaratmıştır.",
+            "fr": "George Lucas a créé 'Star Wars'.",
+            "es": "George Lucas creó 'Star Wars'.",
+            "de": "George Lucas hat 'Star Wars' erschaffen.",
+            "it": "George Lucas ha creato 'Guerre Stellari'.",
+            "hi": "जॉर्ज लुकास ने 'स्टार वार्स' बनाया।",
+            "ru": "Джордж Лукас создал «Звездные войны».",
+            "zh": "乔治·卢卡斯创作了《星球大战》。",
+            "ja": "ジョージ・ルーカスは『スター・ウォーズ』を制作しました。",
+            "ar": "أنشأ جورج لوكاس 'حرب النجوم'."
+        },
+        "correct_answer": true
+    },
+    {
+        "category": "music",
+        "question": {
+            "en": "Jazz originated in New Orleans.",
+            "tr": "Caz müziği New Orleans'ta ortaya çıkmıştır.",
+            "fr": "Le jazz est né à la Nouvelle-Orléans.",
+            "es": "El jazz se originó en Nueva Orleans.",
+            "de": "Jazz entstand in New Orleans.",
+            "it": "Il jazz è nato a New Orleans.",
+            "hi": "जैज़ की उत्पत्ति न्यू ऑरलियन्स में हुई थी।",
+            "ru": "Джаз зародился в Новом Орлеане.",
+            "zh": "爵士乐起源于新奥尔良。",
+            "ja": "ジャズはニューオーリンズで生まれました。",
+            "ar": "نشأت موسيقى الجاز في نيو أورلينز."
+        },
+        "correct_answer": true
+    },
+    {
+        "category": "nature_animals",
+        "question": {
+            "en": "Cheetahs are the fastest land animals.",
+            "tr": "Çitalar en hızlı kara hayvanlarıdır.",
+            "fr": "Les guépards sont les animaux terrestres les plus rapides.",
+            "es": "Los guepardos son los animales terrestres más rápidos.",
+            "de": "Geparden sind die schnellsten Landtiere.",
+            "it": "I ghepardi sono gli animali terrestri più veloci.",
+            "hi": "चीते सबसे तेज जमीनी जानवर हैं।",
+            "ru": "Гепарды — самые быстрые сухопутные животные.",
+            "zh": "猎豹是陆地上跑得最快的动物。",
+            "ja": "チーターは最も速い陸上動物です。",
+            "ar": "الفهود هي أسرع الحيوانات البرية."
+        },
+        "correct_answer": true
+    },
+    {
+        "category": "geography_travel",
+        "question": {
+            "en": "The capital of Germany is Berlin.",
+            "tr": "Almanya'nın başkenti Berlin'dir.",
+            "fr": "La capitale de l'Allemagne est Berlin.",
+            "es": "La capital de Alemania es Berlín.",
+            "de": "Die Hauptstadt von Deutschland ist Berlin.",
+            "it": "La capitale della Germania è Berlino.",
+            "hi": "जर्मनी की राजधानी बर्लिन है।",
+            "ru": "Столица Германии — Берлин.",
+            "zh": "德国的首都是柏林。",
+            "ja": "ドイツの首都はベルリンです。",
+            "ar": "عاصمة ألمانيا هي برلين."
+        },
+        "correct_answer": true
+    },
+    {
+        "category": "mythology",
+        "question": {
+            "en": "Poseidon's weapon is a trident.",
+            "tr": "Poseidon'un silahı bir üç dişli mızraktır (trident).",
+            "fr": "L'arme de Poséidon est un trident.",
+            "es": "El arma de Poseidón es un tridente.",
+            "de": "Poseidons Waffe ist ein Dreizack.",
+            "it": "L'arma di Poseidone è un tridente.",
+            "hi": "पोसीडॉन का हथियार त्रिशूल है।",
+            "ru": "Оружие Посейдона — трезубец.",
+            "zh": "波塞冬的武器是三叉戟。",
+            "ja": "ポセイドンの武器はトライデント（三叉の槍）です。",
+            "ar": "سلاح بوسيدون هو رمح ثلاثي الشعب."
+        },
+        "correct_answer": true
+    },
+    {
+        "category": "philosophy",
+        "question": {
+            "en": "Aristotle wrote 'Nicomachean Ethics'.",
+            "tr": "'Nikomakhos'a Etik' kitabını Aristoteles yazmıştır.",
+            "fr": "Aristote a écrit 'Éthique à Nicomaque'.",
+            "es": "Aristóteles escribió 'Ética a Nicómaco'.",
+            "de": "Aristoteles schrieb die 'Nikomachische Ethik'.",
+            "it": "Aristotele ha scritto l''Etica Nicomachea'.",
+            "hi": "अरस्तू ने 'निकोमैकियन एथिक्स' लिखी थी।",
+            "ru": "Аристотель написал «Никомахову этику».",
+            "zh": "亚里士多德写了《尼各马可伦理学》。",
+            "ja": "アリストテレスは『ニコマコス倫理学』を書きました。",
+            "ar": "كتب أرسطو 'الأخلاق النيقوماخية'."
+        },
+        "correct_answer": true
+    },
+    {
+        "category": "literature",
+        "question": {
+            "en": "William Shakespeare was born in Stratford-upon-Avon.",
+            "tr": "William Shakespeare Stratford-upon-Avon'da doğmuştur.",
+            "fr": "William Shakespeare est né à Stratford-upon-Avon.",
+            "es": "William Shakespeare nació en Stratford-upon-Avon.",
+            "de": "William Shakespeare wurde in Stratford-upon-Avon geboren.",
+            "it": "William Shakespeare nacque a Stratford-upon-Avon.",
+            "hi": "विलियम शेक्सपियर का जन्म स्ट्रैटफ़ोर्ड-अपॉन-एवन में हुआ था।",
+            "ru": "Уильям Шекспир родился в Стратфорде-на-Эйвоне.",
+            "zh": "威廉·莎士比亚出生在埃文河畔斯特拉特福。",
+            "ja": "ウィリアム・シェイクスピアはストラトフォード・アポン・エイヴォンで生まれました。",
+            "ar": "ولد ويليام شكسبير في ستراتفورد أبون آفون."
+        },
+        "correct_answer": true
+    },
+    {
+        "category": "space_astronomy",
+        "question": {
+            "en": "Venus is the closest planet to the Sun.",
+            "tr": "Venüs, Güneş'e en yakın gezegendir.",
+            "fr": "Vénus est la planète la plus proche du Soleil.",
+            "es": "Venus es el planeta más cercano al Sol.",
+            "de": "Venus ist der sonnennächste Planet.",
+            "it": "Venere è il pianeta più vicino al Sole.",
+            "hi": "शुक्र सूर्य का सबसे निकटतम ग्रह है।",
+            "ru": "Венера — самая близкая к Солнцу планета.",
+            "zh": "金星是离太阳最近的行星。",
+            "ja": "金星は太陽に最も近い惑星です。",
+            "ar": "الزهرة هو الكوكب الأقرب إلى الشمس."
+        },
+        "correct_answer": false
+    },
+    {
+        "category": "economics_finance",
+        "question": {
+            "en": "The Euro is the official currency of the United Kingdom.",
+            "tr": "Euro, Birleşik Krallık'ın resmi para birimidir.",
+            "fr": "L'euro est la monnaie officielle du Royaume-Uni.",
+            "es": "El euro es la moneda oficial del Reino Unido.",
+            "de": "Der Euro ist die offizielle Währung des Vereinigten Königreichs.",
+            "it": "L'Euro è la valuta ufficiale del Regno Unito.",
+            "hi": "यूरो यूनाइटेड किंगडम की आधिकारिक मुद्रा है।",
+            "ru": "Евро — официальная валюта Соединенного Королевства.",
+            "zh": "欧元是英国的官方货币。",
+            "ja": "ユーロは英国の公式通貨です。",
+            "ar": "اليورو هو العملة الرسمية للمملكة المتحدة."
+        },
+        "correct_answer": false
+    },
+    {
+        "category": "architecture",
+        "question": {
+            "en": "The Sphinx has the body of a lion.",
+            "tr": "Sfenks bir aslanın vücuduna sahiptir.",
+            "fr": "Le Sphinx a le corps d'un lion.",
+            "es": "La Esfinge tiene el cuerpo de un león.",
+            "de": "Die Sphinx hat den Körper eines Löwen.",
+            "it": "La Sfinge ha il corpo di un leone.",
+            "hi": "स्फिंक्स का शरीर शेर का है।",
+            "ru": "Сфинкс имеет тело льва.",
+            "zh": "狮身人面像有狮子的身体。",
+            "ja": "スフィンクスはライオンの体を持っています。",
+            "ar": "أبو الهول له جسد أسد."
+        },
+        "correct_answer": true
+    },
+    {
+        "category": "video_games",
+        "question": {
+            "en": "Lara Croft is the main character of the 'Tomb Raider' series.",
+            "tr": "Lara Croft, 'Tomb Raider' serisinin ana karakteridir.",
+            "fr": "Lara Croft est le personnage principal de la série 'Tomb Raider'.",
+            "es": "Lara Croft es el personaje principal de la serie 'Tomb Raider'.",
+            "de": "Lara Croft ist die Hauptfigur der 'Tomb Raider'-Serie.",
+            "it": "Lara Croft è il personaggio principale della serie 'Tomb Raider'.",
+            "hi": "लारा क्रॉफ्ट 'टॉम्ब रेडर' श्रृंखला की मुख्य पात्र हैं।",
+            "ru": "Лара Крофт — главная героиня серии «Tomb Raider».",
+            "zh": "劳拉·克劳馥是《古墓丽影》系列的主角。",
+            "ja": "ララ・クロフトは『トゥームレイダー』シリーズの主人公です。",
+            "ar": "لارا كروفت هي الشخصية الرئيسية في سلسلة 'تومب رايدر'."
+        },
+        "correct_answer": true
+    },
+    {
+        "category": "general_culture",
+        "question": {
+            "en": "Halloween is celebrated on October 31st.",
+            "tr": "Cadılar Bayramı 31 Ekim'de kutlanır.",
+            "fr": "Halloween est célébré le 31 octobre.",
+            "es": "Halloween se celebra el 31 de octubre.",
+            "de": "Halloween wird am 31. Oktober gefeiert.",
+            "it": "Halloween si festeggia il 31 ottobre.",
+            "hi": "हेलोवीन 31 अक्टूबर को मनाया जाता है।",
+            "ru": "Хэллоуин отмечается 31 октября.",
+            "zh": "万圣节在10月31日庆祝。",
+            "ja": "ハロウィーンは10月31日に祝われます。",
+            "ar": "يتم الاحتفال بعيد الهالوين في 31 أكتوبر."
+        },
+        "correct_answer": true
+    },
+    {
+        "category": "fun_facts",
+        "question": {
+            "en": "Pigs can look up at the sky.",
+            "tr": "Domuzlar gökyüzüne bakabilir.",
+            "fr": "Les cochons peuvent regarder le ciel.",
+            "es": "Los cerdos pueden mirar al cielo.",
+            "de": "Schweine können in den Himmel schauen.",
+            "it": "I maiali possono guardare il cielo.",
+            "hi": "सूअर आसमान की ओर देख सकते हैं।",
+            "ru": "Свиньи могут смотреть в небо.",
+            "zh": "猪可以抬头看天。",
+            "ja": "豚は空を見上げることができます。",
+            "ar": "يمكن للخنازير أن تنظر إلى السماء."
+        },
+        "correct_answer": false
+    },
+    {
+        "category": "health_fitness",
+        "question": {
+            "en": "Vitamin D is produced by the body when exposed to sunlight.",
+            "tr": "D vitamini, güneş ışığına maruz kaldığında vücut tarafından üretilir.",
+            "fr": "La vitamine D est produite par le corps lorsqu'il est exposé au soleil.",
+            "es": "La vitamina D es producida por el cuerpo cuando se expone a la luz solar.",
+            "de": "Vitamin D wird vom Körper produziert, wenn er Sonnenlicht ausgesetzt ist.",
+            "it": "La vitamina D viene prodotta dal corpo quando esposto alla luce solare.",
+            "hi": "धूप के संपर्क में आने पर शरीर द्वारा विटामिन डी का उत्पादन किया जाता है।",
+            "ru": "Витамин D вырабатывается организмом под воздействием солнечного света.",
+            "zh": "当暴露在阳光下时，身体会产生维生素D。",
+            "ja": "ビタミンDは、日光に当たると体内で生成されます。",
+            "ar": "ينتج الجسم فيتامين د عند التعرض لأشعة الشمس."
+        },
+        "correct_answer": true
     }
 ]

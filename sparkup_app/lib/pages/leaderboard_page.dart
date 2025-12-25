@@ -1018,6 +1018,15 @@ class _HeaderRow extends StatelessWidget {
               current: currentEnergy.clamp(0, maxEnergy),
               max: maxEnergy,
               theme: theme),
+          SizedBox(height: 6.h),
+          // Show refill info: how many energy units are granted per day for this subscription
+          Align(
+            alignment: Alignment.centerLeft,
+            child: Text(
+              'Refills daily: ${maxEnergy} per day',
+              style: TextStyle(color: Colors.white38, fontSize: 11.sp),
+            ),
+          ),
         ]
       ],
     );

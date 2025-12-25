@@ -77,6 +77,9 @@ class _TrueFalsePageState extends State<TrueFalsePage>
   // --- 1. JSON YÜKLEME (DATA KLASÖRÜNDEN) ---
   Future<void> _loadQuestions() async {
     setState(() => _isLoading = true);
+    // Capture localization and user provider before any awaits to avoid using BuildContext across async gaps
+    final loc = AppLocalizations.of(context);
+    final userProvNow = Provider.of<UserProvider>(context, listen: false);
     try {
       final api = ApiService();
       final list = await api.getManualTrueFalse(idToken: widget.idToken);
@@ -94,17 +97,12 @@ class _TrueFalsePageState extends State<TrueFalsePage>
         _questions = [];
       });
 
-      // Prepare dialog text before any async refresh so we don't use BuildContext across async gaps
-      final loc = AppLocalizations.of(context);
-      final msg = e.toString();
-      final bool isLimitErr = e is QuizLimitException ||
-          msg.toLowerCase().contains('429') ||
-          msg.toLowerCase().contains('limit');
+      // Prepare dialog text before showing dialog
+      final bool isLimitErr = (userProvNow.profile?.remainingEnergy ?? 0) <= 0;
 
       // Try to refresh user profile to correct optimistic energy changes
       try {
-        final userProv = Provider.of<UserProvider>(context, listen: false);
-        await userProv.loadProfile(widget.idToken);
+        await userProvNow.loadProfile(widget.idToken);
       } catch (_) {}
 
       // Show a user-friendly dialog (limit or generic) without throwing further
@@ -567,12 +565,12 @@ class _TrueFalsePageState extends State<TrueFalsePage>
       _isLoading = true;
     });
     final userProv = Provider.of<UserProvider>(context, listen: false);
+    final loc = AppLocalizations.of(context);
     // optimistic UI update: consume 1 energy locally
     userProv.consumeEnergyOptimistic();
 
     // Load questions from server (this call will consume 1 energy on the backend)
     _loadQuestions().then((_) {
-      final userProv = Provider.of<UserProvider>(context, listen: false);
       final secFromProfile = userProv.profile?.sessionSeconds;
       int sec = secFromProfile ?? 60;
       if (_questions.isNotEmpty) {
@@ -600,11 +598,7 @@ class _TrueFalsePageState extends State<TrueFalsePage>
         try {
           userProv.loadProfile(widget.idToken);
         } catch (_) {}
-        final loc = AppLocalizations.of(context);
-        final msg = e?.toString() ?? '';
-        final bool isLimitErr = e is QuizLimitException ||
-            msg.toLowerCase().contains('429') ||
-            msg.toLowerCase().contains('limit');
+        final bool isLimitErr = (userProv.profile?.remainingEnergy ?? 0) <= 0;
         showDialog(
           context: context,
           barrierDismissible: true,
