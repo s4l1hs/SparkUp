@@ -266,7 +266,9 @@ class _QuizPageState extends State<QuizPage> with TickerProviderStateMixin {
               .toList();
           final profile = userProvider.profile;
           _currentIndex = 0;
-          _sessionScore = profile?.dailyPoints ?? 0;
+          // If this is a preview load (not starting a live session), show
+          // the user's daily total; otherwise keep/reset session score
+          _sessionScore = isPreview ? (profile?.dailyPoints ?? 0) : 0;
           _wrongAnswers = 0;
           _answered = false;
           _selectedAnswerIndex = null;

@@ -29,6 +29,7 @@ class _TrueFalsePageState extends State<TrueFalsePage>
   int _streak = 0;
   int _wrongCount = 0;
   bool _processingAnswer = false;
+  bool _sessionEnding = false;
   int _timeLeft = 0;
   int _sessionDuration = 60;
 
@@ -86,6 +87,11 @@ class _TrueFalsePageState extends State<TrueFalsePage>
       final list = await api.getManualTrueFalse(idToken: widget.idToken);
       final data = list.isNotEmpty ? List<dynamic>.from(list) : <dynamic>[];
       if (data.isNotEmpty) data.shuffle();
+      // If session is ending or not active anymore, discard fetched data
+      if (_sessionEnding || !_isQuizActive) {
+        setState(() => _isLoading = false);
+        return;
+      }
       setState(() {
         _questions = data;
         _isLoading = false;
@@ -148,60 +154,69 @@ class _TrueFalsePageState extends State<TrueFalsePage>
 
   // --- 3. OYUN MANTIĞI ---
   Future<void> _answerQuestion(bool userSaidTrue) async {
-    if (_processingAnswer) return;
-    _processingAnswer = true;
-    final currentQ = _questions[_currentIndex];
-    final bool isCorrectAnswer = currentQ['correct_answer'];
-
-    bool isUserCorrect = (userSaidTrue == isCorrectAnswer);
-
-    if (isUserCorrect) {
-      setState(() {
-        _score += 10 + (_streak * 2);
-        _streak++;
-        _wrongCount = 0;
-      });
-      debugPrint('TF: correct answer — reset _wrongCount to 0');
-    } else {
-      setState(() {
-        _streak = 0;
-        _wrongCount++;
-      });
-      debugPrint('TF: wrong answer — _wrongCount is now $_wrongCount');
-    }
-
-    // Notify analysis provider to refresh immediately after an answer
+    if (!_isQuizActive || _processingAnswer || _sessionEnding) return;
+    setState(() => _processingAnswer = true);
     try {
-      final analysisProv =
-          Provider.of<AnalysisProvider>(context, listen: false);
-      analysisProv.refresh(widget.idToken);
-    } catch (_) {}
+      final currentQ = _questions[_currentIndex];
+      final bool isCorrectAnswer = currentQ['correct_answer'];
 
-    if (_wrongCount >= 3) {
-      // Ensure timer is stopped and session ends immediately on 3 wrong answers
-      _cancelTimer();
-      debugPrint('TF: reached 3 wrong answers — ending session');
-      try {
-        await _handleQuizCompletion();
-      } finally {
-        _processingAnswer = false;
+      final bool isUserCorrect = (userSaidTrue == isCorrectAnswer);
+
+      if (isUserCorrect) {
+        setState(() {
+          _score += 10 + (_streak * 2);
+          _streak++;
+          _wrongCount = 0;
+        });
+      } else {
+        setState(() {
+          _streak = 0;
+          _wrongCount++;
+        });
       }
-      return;
+
+      // Notify analysis provider to refresh immediately after an answer
+      try {
+        final analysisProv =
+            Provider.of<AnalysisProvider>(context, listen: false);
+        analysisProv.refresh(widget.idToken);
+      } catch (_) {}
+
+      if (_wrongCount >= 3) {
+        await _endSessionNow();
+        return;
+      }
+
+      if (_currentIndex < _questions.length - 1) {
+        setState(() => _currentIndex++);
+      } else {
+        // Reached end of batch: try loading more questions and continue session
+        try {
+          await _fetchMoreQuestionsTF();
+        } catch (e) {
+          // If fetching fails, end session gracefully
+          await _handleQuizCompletion();
+        }
+      }
+    } finally {
+      if (mounted) setState(() => _processingAnswer = false);
     }
+  }
 
-    if (_currentIndex < _questions.length - 1) {
-      setState(() => _currentIndex++);
-      _processingAnswer = false;
-    } else {
-      // Reached end of batch: try loading more questions and continue session
-      try {
-        await _fetchMoreQuestionsTF();
-      } catch (e) {
-        // If fetching fails, end session gracefully
-        await _handleQuizCompletion();
-      } finally {
-        _processingAnswer = false;
-      }
+  Future<void> _endSessionNow() async {
+    if (!_isQuizActive && !_sessionEnding) {
+      // defensive: ensure we still run completion
+      setState(() => _sessionEnding = true);
+    }
+    setState(() {
+      _sessionEnding = true;
+      _isQuizActive = false;
+    });
+    _cancelTimer();
+    try {
+      await _handleQuizCompletion();
+    } finally {
+      if (mounted) setState(() => _sessionEnding = false);
     }
   }
 
@@ -215,6 +230,11 @@ class _TrueFalsePageState extends State<TrueFalsePage>
       final data = list.isNotEmpty ? List<dynamic>.from(list) : <dynamic>[];
       if (data.isNotEmpty) data.shuffle();
       if (!mounted) return;
+      // If session ended while fetching, do not apply fetched questions
+      if (_sessionEnding || !_isQuizActive) {
+        setState(() => _isLoading = false);
+        return;
+      }
       setState(() {
         _questions = data;
         _currentIndex = 0;
@@ -544,13 +564,19 @@ class _TrueFalsePageState extends State<TrueFalsePage>
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceAround,
             children: [
-              Expanded(
+                Expanded(
                   child: _buildTFButton(Icons.check, Colors.green, 'TRUE',
-                      () => _answerQuestion(true))),
+                    () {
+                  if (!_isQuizActive || _processingAnswer || _sessionEnding) return;
+                  _answerQuestion(true);
+                  })),
               SizedBox(width: 16.w),
-              Expanded(
+                Expanded(
                   child: _buildTFButton(Icons.close, Colors.red, 'FALSE',
-                      () => _answerQuestion(false))),
+                    () {
+                  if (!_isQuizActive || _processingAnswer || _sessionEnding) return;
+                  _answerQuestion(false);
+                  })),
             ],
           ),
         ],
@@ -624,6 +650,7 @@ class _TrueFalsePageState extends State<TrueFalsePage>
     setState(() {
       _currentIndex = 0;
       _score = 0;
+      _wrongCount = 0;
       _streak = 0;
       _isQuizActive = true;
       _isLoading = true;
@@ -699,6 +726,7 @@ class _TrueFalsePageState extends State<TrueFalsePage>
     // ensure quiz is marked inactive so Start view returns like in QuizPage
     setState(() {
       _isQuizActive = false;
+      _wrongCount = 0;
     });
     final theme = Theme.of(context);
     await showDialog(
@@ -725,7 +753,11 @@ class _TrueFalsePageState extends State<TrueFalsePage>
       ),
     );
     if (mounted) {
-      await _loadQuestions();
+      // After completion show Start view; clear loaded questions so Start view appears.
+      setState(() {
+        _questions = [];
+        _currentIndex = 0;
+      });
     }
   }
 }
