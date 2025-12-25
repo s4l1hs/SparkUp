@@ -377,13 +377,22 @@ class _SubscriptionPageState extends State<SubscriptionPage>
                       .map((feature) {
                     final bool featureActive =
                         !(planLevel == 'free' && !(feature['is_pro'] as bool));
-                    final Color iconColor = featureActive
-                        ? (planLevel == 'ultra'
-                            ? theme.colorScheme.secondary
-                            : (planLevel == 'pro'
-                                ? theme.colorScheme.primary
-                                : Colors.grey))
-                        : Colors.grey;
+                    Color iconColor;
+                    final isBolt =
+                        (feature['icon'] as IconData) == Icons.bolt_outlined ||
+                            (feature['icon'] as IconData) == Icons.bolt_rounded;
+                    if (isBolt) {
+                      iconColor =
+                          featureActive ? const Color(0xFFFFD700) : Colors.grey;
+                    } else {
+                      iconColor = featureActive
+                          ? (planLevel == 'ultra'
+                              ? theme.colorScheme.secondary
+                              : (planLevel == 'pro'
+                                  ? theme.colorScheme.primary
+                                  : Colors.grey))
+                          : Colors.grey;
+                    }
                     final Color textColor =
                         featureActive ? Colors.white : Colors.grey.shade500;
                     return Padding(

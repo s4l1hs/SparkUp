@@ -1056,7 +1056,8 @@ class _EnergySliderState extends State<_EnergySlider>
   Color _getEnergyColor(double percentage) {
     if (percentage <= 0.25) return Colors.redAccent;
     if (percentage <= 0.50) return Colors.orangeAccent;
-    return const Color(0xFF00E5FF); // Cyan / Electric Blue for high energy
+    // Neon yellow/gold for energy (bright, attention-grabbing)
+    return const Color(0xFFFFD700);
     // Veya temanın rengini kullanmak istersen:
     // return widget.theme.colorScheme.primary;
   }
@@ -1084,7 +1085,7 @@ class _EnergySliderState extends State<_EnergySlider>
                   Text(
                     AppLocalizations.of(context)?.energyLabel ?? 'Energy',
                     style: TextStyle(
-                      color: Colors.white.withOpacity(0.9),
+                      color: colorWithOpacity(Colors.white, 0.9),
                       fontSize: 14.sp,
                       fontWeight: FontWeight.bold,
                       letterSpacing: 0.5,
@@ -1095,9 +1096,9 @@ class _EnergySliderState extends State<_EnergySlider>
               Container(
                 padding: EdgeInsets.symmetric(horizontal: 10.w, vertical: 4.h),
                 decoration: BoxDecoration(
-                  color: activeColor.withOpacity(0.1),
+                  color: colorWithOpacity(activeColor, 0.1),
                   borderRadius: BorderRadius.circular(12.r),
-                  border: Border.all(color: activeColor.withOpacity(0.3)),
+                  border: Border.all(color: colorWithOpacity(activeColor, 0.3)),
                 ),
                 child: Text(
                   '${widget.current}/${widget.max}',
@@ -1157,13 +1158,17 @@ class _EnergySliderState extends State<_EnergySlider>
           decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(4.r),
             gradient: LinearGradient(
-              colors: [color.withOpacity(0.7), color, color.withOpacity(0.7)],
+              colors: [
+                colorWithOpacity(color, 0.7),
+                color,
+                colorWithOpacity(color, 0.7)
+              ],
               begin: Alignment.centerLeft,
               end: Alignment.centerRight,
             ),
             boxShadow: [
               BoxShadow(
-                color: color.withOpacity(0.6),
+                color: colorWithOpacity(color, 0.6),
                 blurRadius: 8.r, // Glow efekti
                 offset: const Offset(0, 0),
                 spreadRadius: 1,
@@ -1188,9 +1193,9 @@ class _EnergySliderState extends State<_EnergySlider>
                           decoration: BoxDecoration(
                             gradient: LinearGradient(
                               colors: [
-                                Colors.white.withOpacity(0.0),
-                                Colors.white.withOpacity(0.4),
-                                Colors.white.withOpacity(0.0)
+                                colorWithOpacity(Colors.white, 0.0),
+                                colorWithOpacity(Colors.white, 0.4),
+                                colorWithOpacity(Colors.white, 0.0)
                               ],
                               stops: const [0.0, 0.5, 1.0],
                             ),
@@ -1211,9 +1216,9 @@ class _EnergySliderState extends State<_EnergySlider>
   Widget _buildInactiveSegment() {
     return Container(
       decoration: BoxDecoration(
-        color: Colors.white.withOpacity(0.1), // Sönük arka plan
+        color: colorWithOpacity(Colors.white, 0.1), // Sönük arka plan
         borderRadius: BorderRadius.circular(4.r),
-        border: Border.all(color: Colors.white.withOpacity(0.05)),
+        border: Border.all(color: colorWithOpacity(Colors.white, 0.05)),
       ),
     );
   }

@@ -94,6 +94,13 @@ class _TrueFalsePageState extends State<TrueFalsePage>
         _questions = [];
       });
 
+      // Prepare dialog text before any async refresh so we don't use BuildContext across async gaps
+      final loc = AppLocalizations.of(context);
+      final msg = e.toString();
+      final bool isLimitErr = e is QuizLimitException ||
+          msg.toLowerCase().contains('429') ||
+          msg.toLowerCase().contains('limit');
+
       // Try to refresh user profile to correct optimistic energy changes
       try {
         final userProv = Provider.of<UserProvider>(context, listen: false);
@@ -102,11 +109,6 @@ class _TrueFalsePageState extends State<TrueFalsePage>
 
       // Show a user-friendly dialog (limit or generic) without throwing further
       if (mounted) {
-        final loc = AppLocalizations.of(context);
-        final msg = e.toString();
-        final bool isLimitErr = e is QuizLimitException ||
-            msg.toLowerCase().contains('429') ||
-            msg.toLowerCase().contains('limit');
         showDialog(
           context: context,
           barrierDismissible: true,
@@ -214,7 +216,8 @@ class _TrueFalsePageState extends State<TrueFalsePage>
                 Text(loc?.quizCouldNotStart ?? 'Quiz could not start',
                     textAlign: TextAlign.center,
                     style: TextStyle(
-                        color: theme.colorScheme.onSurface.withOpacity(0.7),
+                        color:
+                            colorWithOpacity(theme.colorScheme.onSurface, 0.7),
                         fontSize: 14.sp)),
                 SizedBox(height: 18.h),
                 ElevatedButton(
@@ -312,7 +315,7 @@ class _TrueFalsePageState extends State<TrueFalsePage>
     return Container(
       padding: EdgeInsets.symmetric(horizontal: 12.w, vertical: 8.h),
       decoration: BoxDecoration(
-        color: color.withOpacity(0.1),
+        color: colorWithOpacity(color, 0.1),
         borderRadius: BorderRadius.circular(12.r),
       ),
       child: Row(
@@ -534,7 +537,7 @@ class _TrueFalsePageState extends State<TrueFalsePage>
           color: color,
           boxShadow: [
             BoxShadow(
-                color: color.withOpacity(0.3),
+                color: colorWithOpacity(color, 0.3),
                 blurRadius: 8.r,
                 offset: const Offset(0, 4))
           ],

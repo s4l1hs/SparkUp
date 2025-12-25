@@ -157,7 +157,7 @@ class _QuizPageState extends State<QuizPage> with TickerProviderStateMixin {
     return Container(
       padding: EdgeInsets.symmetric(horizontal: 12.w, vertical: 8.h),
       decoration: BoxDecoration(
-        color: color.withOpacity(0.1),
+        color: colorWithOpacity(color, 0.1),
         borderRadius: BorderRadius.circular(12.r),
       ),
       child: Row(
@@ -243,9 +243,9 @@ class _QuizPageState extends State<QuizPage> with TickerProviderStateMixin {
     final theme = Theme.of(context);
     final messenger = ScaffoldMessenger.of(context);
     final userProvider = Provider.of<UserProvider>(context, listen: false);
+    final localeProvider = Provider.of<LocaleProvider>(context, listen: false);
     // Ensure we have the latest profile so we can use user's language preference
     await userProvider.loadProfile(widget.idToken);
-    final localeProvider = Provider.of<LocaleProvider>(context, listen: false);
     setState(() {
       _isLoading = true;
     });
@@ -335,6 +335,7 @@ class _QuizPageState extends State<QuizPage> with TickerProviderStateMixin {
 
     final localizations = AppLocalizations.of(context);
     final userProvider = Provider.of<UserProvider>(context, listen: false);
+      final analysisProv = Provider.of<AnalysisProvider>(context, listen: false);
     try {
       final questionId = _questions[_currentIndex]['id'] as int;
       final response = await _apiServiceSafe(
@@ -360,8 +361,6 @@ class _QuizPageState extends State<QuizPage> with TickerProviderStateMixin {
 
         // Notify analysis provider to refresh immediately after an answer
         try {
-          final analysisProv =
-              Provider.of<AnalysisProvider>(context, listen: false);
           analysisProv.refresh(widget.idToken);
         } catch (_) {}
 

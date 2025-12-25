@@ -3,6 +3,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:provider/provider.dart';
 import '../providers/analysis_provider.dart';
 import '../l10n/app_localizations.dart';
+import '../utils/color_utils.dart';
 
 class AnalysisPage extends StatefulWidget {
   final String idToken;
@@ -107,7 +108,7 @@ class _AnalysisPageState extends State<AnalysisPage> {
               height: 300.w,
               decoration: BoxDecoration(
                 shape: BoxShape.circle,
-                color: theme.colorScheme.primary.withOpacity(0.05),
+                color: colorWithOpacity(theme.colorScheme.primary, 0.05),
               ),
             ),
           ),
@@ -133,7 +134,8 @@ class _AnalysisPageState extends State<AnalysisPage> {
                   Text(
                     loc.performance_subtitle,
                     style: TextStyle(
-                        color: theme.colorScheme.onSurface.withOpacity(0.6),
+                        color:
+                            colorWithOpacity(theme.colorScheme.onSurface, 0.6),
                         fontSize: 14.sp),
                   ),
 
@@ -155,7 +157,8 @@ class _AnalysisPageState extends State<AnalysisPage> {
                       borderRadius: BorderRadius.circular(24.r),
                       boxShadow: [
                         BoxShadow(
-                          color: theme.colorScheme.primary.withOpacity(0.4),
+                          color:
+                              colorWithOpacity(theme.colorScheme.primary, 0.4),
                           blurRadius: 20.r,
                           offset: Offset(0, 10.h),
                         ),
@@ -170,7 +173,7 @@ class _AnalysisPageState extends State<AnalysisPage> {
                             Text(
                               loc.overall_score,
                               style: TextStyle(
-                                  color: Colors.white.withOpacity(0.9),
+                                  color: colorWithOpacity(Colors.white, 0.9),
                                   fontSize: 16.sp,
                                   fontWeight: FontWeight.w600),
                             ),
@@ -195,7 +198,7 @@ class _AnalysisPageState extends State<AnalysisPage> {
                               padding: EdgeInsets.symmetric(
                                   horizontal: 8.w, vertical: 4.h),
                               decoration: BoxDecoration(
-                                color: Colors.white.withOpacity(0.2),
+                                color: colorWithOpacity(Colors.white, 0.2),
                                 borderRadius: BorderRadius.circular(8.r),
                               ),
                               child: Text(
@@ -220,7 +223,8 @@ class _AnalysisPageState extends State<AnalysisPage> {
                               CircularProgressIndicator(
                                 value: avgPercent / 100,
                                 strokeWidth: 8.w,
-                                backgroundColor: Colors.white.withOpacity(0.2),
+                                backgroundColor:
+                                    colorWithOpacity(Colors.white, 0.2),
                                 valueColor:
                                     const AlwaysStoppedAnimation(Colors.white),
                                 strokeCap: StrokeCap.round,
@@ -270,13 +274,14 @@ class _AnalysisPageState extends State<AnalysisPage> {
                                 children: [
                                   Icon(Icons.analytics_outlined,
                                       size: 64.sp,
-                                      color: theme.colorScheme.onSurface
-                                          .withOpacity(0.2)),
+                                      color: colorWithOpacity(
+                                          theme.colorScheme.onSurface, 0.2)),
                                   SizedBox(height: 16.h),
                                   Text(loc.no_data_available_yet,
                                       style: TextStyle(
-                                          color: theme.colorScheme.onSurface
-                                              .withOpacity(0.5))),
+                                          color: colorWithOpacity(
+                                              theme.colorScheme.onSurface,
+                                              0.5))),
                                 ],
                               ),
                             )
@@ -319,14 +324,15 @@ class _AnalysisPageState extends State<AnalysisPage> {
                                       borderRadius: BorderRadius.circular(20.r),
                                       boxShadow: [
                                         BoxShadow(
-                                          color: Colors.black.withOpacity(0.04),
+                                          color: colorWithOpacity(
+                                              Colors.black, 0.04),
                                           blurRadius: 10.r,
                                           offset: const Offset(0, 4),
                                         ),
                                       ],
                                       border: Border.all(
-                                          color: theme.colorScheme.outline
-                                              .withOpacity(0.05)),
+                                          color: colorWithOpacity(
+                                              theme.colorScheme.outline, 0.05)),
                                     ),
                                     child: Column(
                                       children: [
@@ -352,9 +358,10 @@ class _AnalysisPageState extends State<AnalysisPage> {
                                                   '$correct / $total ${loc.correct_label}',
                                                   style: TextStyle(
                                                       fontSize: 12.sp,
-                                                      color: theme
-                                                          .colorScheme.onSurface
-                                                          .withOpacity(0.5),
+                                                      color: colorWithOpacity(
+                                                          theme.colorScheme
+                                                              .onSurface,
+                                                          0.5),
                                                       fontWeight:
                                                           FontWeight.w500),
                                                 ),
@@ -365,10 +372,11 @@ class _AnalysisPageState extends State<AnalysisPage> {
                                                   horizontal: 10.w,
                                                   vertical: 6.h),
                                               decoration: BoxDecoration(
-                                                color: _getPerformanceColor(
+                                                color: colorWithOpacity(
+                                                    _getPerformanceColor(
                                                         percent,
-                                                        theme.colorScheme)
-                                                    .withOpacity(0.1),
+                                                        theme.colorScheme),
+                                                    0.1),
                                                 borderRadius:
                                                     BorderRadius.circular(12.r),
                                               ),
