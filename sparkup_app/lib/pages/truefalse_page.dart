@@ -630,93 +630,160 @@ class _TrueFalsePageState extends State<TrueFalsePage>
     );
   }
 
-  // --- New: Start view and Quiz UI for True/False (button-driven) ---
   Widget _buildStartView(ThemeData theme) {
-    final mq = MediaQuery.of(context);
-    final width = mq.size.width * 0.92;
-    final height = mq.size.height * 0.72;
+    final userProv = Provider.of<UserProvider>(context);
+    final loc = AppLocalizations.of(context);
+    final sessionSec = userProv.profile?.sessionSeconds ?? 60;
+
     return Align(
-        alignment: const Alignment(0, -0.18),
-        child: Center(
-          key: const ValueKey('startView'),
-          child: _isLoading
-              ? CircularProgressIndicator(color: theme.colorScheme.primary)
-              : SizedBox(
-                  width: width,
-                  height: height,
-                  child: AnimatedGlassCard(
-                    padding:
-                        EdgeInsets.symmetric(horizontal: 20.w, vertical: 18.h),
-                    borderRadius: BorderRadius.circular(18.r),
-                    child: Column(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        Column(
+      alignment: const Alignment(0, -0.1), 
+      key: const ValueKey('startView'),
+      child: _isLoading
+          ? CircularProgressIndicator(color: theme.colorScheme.primary)
+          : TweenAnimationBuilder<double>(
+              tween: Tween(begin: 0.0, end: 1.0),
+              duration: const Duration(milliseconds: 600),
+              curve: Curves.elasticOut,
+              builder: (context, value, child) {
+                return Opacity(
+                  opacity: value.clamp(0.0, 1.0),
+                  child: Transform.translate(
+                    offset: Offset(0, 30 * (1 - value)),
+                    child: Padding(
+                      padding: EdgeInsets.symmetric(horizontal: 24.w),
+                      child: AnimatedGlassCard(
+                        padding: EdgeInsets.symmetric(horizontal: 20.w, vertical: 32.h),
+                        borderRadius: BorderRadius.circular(28.r),
+                        child: Column(
+                          mainAxisSize: MainAxisSize.min,
                           children: [
+                            // 1. İKON
+                            AnimatedBuilder(
+                              animation: _backgroundController,
+                              builder: (context, child) {
+                                final scale = 1.0 + (0.04 * (_backgroundAnimation1.value.x).abs());
+                                return Transform.scale(
+                                  scale: scale,
+                                  child: Container(
+                                    padding: EdgeInsets.all(22.r),
+                                    decoration: BoxDecoration(
+                                      shape: BoxShape.circle,
+                                      color: Colors.orange.withOpacity(0.1),
+                                      border: Border.all(color: Colors.orange.withOpacity(0.3), width: 1),
+                                      boxShadow: [
+                                        BoxShadow(
+                                          color: Colors.orange.withOpacity(0.25),
+                                          blurRadius: 30,
+                                          spreadRadius: 8,
+                                        )
+                                      ],
+                                    ),
+                                    child: Icon(Icons.flaky_rounded, size: 52.sp, color: Colors.orangeAccent),
+                                  ),
+                                );
+                              },
+                            ),
+                            SizedBox(height: 24.h),
+
+                            // 2. BAŞLIK
                             Text(
-                                AppLocalizations.of(context)
-                                        ?.startTrueFalseProblems ??
-                                    'Start True/False Problems',
-                                textAlign: TextAlign.center,
-                                style: TextStyle(
-                                    fontSize: 26.sp,
-                                    fontWeight: FontWeight.w900)),
-                            SizedBox(height: 12.h),
-                            SizedBox(height: 20.h),
-                          ],
-                        ),
-                        Column(
-                          children: [
+                              loc?.startTrueFalseProblems ?? 'True or False?',
+                              textAlign: TextAlign.center,
+                              style: TextStyle(
+                                fontSize: 26.sp,
+                                fontWeight: FontWeight.w900,
+                                color: Colors.white,
+                                letterSpacing: 0.8,
+                              ),
+                            ),
+                            SizedBox(height: 8.h),
+                            Text(
+                              "Fast decisions, high rewards!",
+                              style: TextStyle(
+                                color: Colors.white70,
+                                fontSize: 15.sp,
+                                fontWeight: FontWeight.w500,
+                              ),
+                            ),
+
+                            SizedBox(height: 28.h),
+
+                            // 3. DASHBOARD (YENİLENDİ: 3 CAN GÖSTERGESİ)
+                            Container(
+                              padding: EdgeInsets.symmetric(vertical: 12.h, horizontal: 16.w),
+                              decoration: BoxDecoration(
+                                color: Colors.black.withOpacity(0.2),
+                                borderRadius: BorderRadius.circular(16.r),
+                                border: Border.all(color: Colors.white.withOpacity(0.08)),
+                              ),
+                              child: Row(
+                                mainAxisAlignment: MainAxisAlignment.spaceAround,
+                                children: [
+                                  _buildDashboardItem(Icons.bolt_rounded, "1 Energy", Colors.orangeAccent),
+                                  Container(width: 1, height: 24.h, color: Colors.white12),
+                                  _buildDashboardItem(Icons.timer_outlined, "${sessionSec}s", Colors.greenAccent),
+                                  Container(width: 1, height: 24.h, color: Colors.white12),
+                                  
+                                  // --- YENİ: YAZISIZ CAN GÖSTERGESİ ---
+                                  Column(
+                                    mainAxisSize: MainAxisSize.min,
+                                    children: [
+                                      // Üst ikon
+                                      Icon(Icons.favorite_border_rounded, color: Colors.redAccent, size: 22.sp),
+                                      SizedBox(height: 6.h),
+                                      // Alt görsel (3 tane dolu kalp)
+                                      Row(
+                                        mainAxisSize: MainAxisSize.min,
+                                        children: [
+                                          Icon(Icons.favorite, size: 12.sp, color: Colors.redAccent),
+                                          SizedBox(width: 2.w),
+                                          Icon(Icons.favorite, size: 12.sp, color: Colors.redAccent),
+                                          SizedBox(width: 2.w),
+                                          Icon(Icons.favorite, size: 12.sp, color: Colors.redAccent),
+                                        ],
+                                      )
+                                    ],
+                                  ),
+                                ],
+                              ),
+                            ),
+
+                            SizedBox(height: 32.h),
+
+                            // 4. BUTON
                             MorphingGradientButton.icon(
-                              icon: Icon(Icons.play_arrow_rounded,
-                                  size: 26.sp, color: Colors.white),
+                              icon: Icon(Icons.play_arrow_rounded, size: 30.sp, color: Colors.white),
                               label: Text(
-                                  AppLocalizations.of(context)
-                                          ?.startWithOneBolt ??
-                                      'Start with 1 ⚡',
-                                  style: TextStyle(
-                                      fontSize: 18.sp,
-                                      fontWeight: FontWeight.bold)),
-                              colors: [
-                                theme.colorScheme.secondary,
-                                theme.colorScheme.primary
-                              ],
+                                  loc?.startWithOneBolt ?? 'Start Game',
+                                  style: TextStyle(fontSize: 19.sp, fontWeight: FontWeight.bold)),
+                              colors: [Colors.orange, Colors.deepOrange],
                               onPressed: () {
-                                final userProv = Provider.of<UserProvider>(
-                                    context,
-                                    listen: false);
+                                final userProv = Provider.of<UserProvider>(context, listen: false);
                                 final rem = userProv.profile?.remainingEnergy;
                                 if (rem != null && rem <= 0) {
-                                  final loc = AppLocalizations.of(context);
                                   showDialog(
                                     context: context,
                                     builder: (ctx) => AlertDialog(
-                                      title: Text(loc?.insufficientEnergy ??
-                                          'Insufficient energy ⚡'),
-                                      content: Text(loc?.insufficientEnergy ??
-                                          'Insufficient energy ⚡'),
-                                      actions: [
-                                        TextButton(
-                                            onPressed: () =>
-                                                Navigator.of(ctx).pop(),
-                                            child: Text(loc?.cancel ?? 'OK'))
-                                      ],
+                                      title: Text(loc?.insufficientEnergy ?? 'Insufficient energy ⚡'),
+                                      content: Text(loc?.insufficientEnergy ?? 'Insufficient energy ⚡'),
+                                      actions: [TextButton(onPressed: () => Navigator.of(ctx).pop(), child: Text(loc?.cancel ?? 'OK'))],
                                     ),
                                   );
                                   return;
                                 }
                                 _startSession();
                               },
-                              padding: EdgeInsets.symmetric(
-                                  horizontal: 36.w, vertical: 16.h),
+                              padding: EdgeInsets.symmetric(horizontal: 56.w, vertical: 20.h),
                             ),
                           ],
                         ),
-                      ],
+                      ),
                     ),
                   ),
-                ),
-        ));
+                );
+              },
+            ),
+    );
   }
 
   Widget _buildQuizView(ThemeData theme) {
@@ -861,6 +928,18 @@ class _TrueFalsePageState extends State<TrueFalsePage>
           ],
         ),
       ),
+    );
+  }
+
+  // Dashboard item helper
+  Widget _buildDashboardItem(IconData icon, String text, Color color) {
+    return Column(
+      mainAxisSize: MainAxisSize.min,
+      children: [
+        Icon(icon, color: color, size: 22.sp),
+        SizedBox(height: 6.h),
+        Text(text, style: TextStyle(color: Colors.white.withOpacity(0.9), fontSize: 13.sp, fontWeight: FontWeight.bold)),
+      ],
     );
   }
 
