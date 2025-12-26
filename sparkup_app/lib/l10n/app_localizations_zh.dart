@@ -48,7 +48,7 @@ class AppLocalizationsZh extends AppLocalizations {
   String get trueFalseTitle => '对 / 错';
 
   @override
-  String get startTrueFalseProblems => '开始判断题';
+  String get startTrueFalseProblems => '判断题测验';
 
   @override
   String get trueLabel => '对';

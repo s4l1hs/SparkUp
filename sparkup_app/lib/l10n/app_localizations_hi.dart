@@ -48,7 +48,7 @@ class AppLocalizationsHi extends AppLocalizations {
   String get trueFalseTitle => 'सही / गलत';
 
   @override
-  String get startTrueFalseProblems => 'सही/गलत प्रश्न शुरू करें';
+  String get startTrueFalseProblems => 'सही/गलत परीक्षण';
 
   @override
   String get trueLabel => 'सही';

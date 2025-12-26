@@ -48,7 +48,7 @@ class AppLocalizationsAr extends AppLocalizations {
   String get trueFalseTitle => 'صحيح / خطأ';
 
   @override
-  String get startTrueFalseProblems => 'ابدأ أسئلة صحيح/خطأ';
+  String get startTrueFalseProblems => 'اختبار صح/خطأ';
 
   @override
   String get trueLabel => 'صحيح';

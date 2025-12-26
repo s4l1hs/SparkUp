@@ -48,7 +48,7 @@ class AppLocalizationsRu extends AppLocalizations {
   String get trueFalseTitle => 'Верно / Неверно';
 
   @override
-  String get startTrueFalseProblems => 'Начать задания «Верно/Неверно»';
+  String get startTrueFalseProblems => 'Тест «Верно/Неверно»';
 
   @override
   String get trueLabel => 'Верно';

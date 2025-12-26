@@ -48,7 +48,7 @@ class AppLocalizationsJa extends AppLocalizations {
   String get trueFalseTitle => '正しい / 間違い';
 
   @override
-  String get startTrueFalseProblems => '正誤問題を始める';
+  String get startTrueFalseProblems => '正誤テスト';
 
   @override
   String get trueLabel => '正しい';

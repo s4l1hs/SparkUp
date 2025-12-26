@@ -49,7 +49,7 @@ class AppLocalizationsTr extends AppLocalizations {
   String get trueFalseTitle => 'Doğru / Yanlış';
 
   @override
-  String get startTrueFalseProblems => 'Doğru/Yanlış Sorularına Başla';
+  String get startTrueFalseProblems => 'Doğru/Yanlış Testi';
 
   @override
   String get trueLabel => 'Doğru';
