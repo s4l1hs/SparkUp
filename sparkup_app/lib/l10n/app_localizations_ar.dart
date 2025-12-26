@@ -33,6 +33,9 @@ class AppLocalizationsAr extends AppLocalizations {
   String get startNewQuiz => 'اختبار الدماغ';
 
   @override
+  String get startNewQuizSubtitle => 'أظهر عبقريتك 🔥';
+
+  @override
   String get startWithOneBolt => 'ابدأ بـ 1 ⚡';
 
   @override
@@ -49,6 +52,9 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String get startTrueFalseProblems => 'اختبار صح/خطأ';
+
+  @override
+  String get startTrueFalseSubtitle => 'فكّر بسرعة واربح 🔥';
 
   @override
   String get trueLabel => 'صحيح';

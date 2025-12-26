@@ -33,6 +33,9 @@ class AppLocalizationsJa extends AppLocalizations {
   String get startNewQuiz => 'ブレインクイズ';
 
   @override
+  String get startNewQuizSubtitle => '天才を見せて🔥';
+
+  @override
   String get startWithOneBolt => '1 ⚡で始める';
 
   @override
@@ -49,6 +52,9 @@ class AppLocalizationsJa extends AppLocalizations {
 
   @override
   String get startTrueFalseProblems => '正誤テスト';
+
+  @override
+  String get startTrueFalseSubtitle => '素早く考えて勝て🔥';
 
   @override
   String get trueLabel => '正しい';

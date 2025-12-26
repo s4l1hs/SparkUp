@@ -34,6 +34,9 @@ class AppLocalizationsTr extends AppLocalizations {
   String get startNewQuiz => 'Beyin Testi';
 
   @override
+  String get startNewQuizSubtitle => 'Dehanı göster🔥';
+
+  @override
   String get startWithOneBolt => '1 ⚡ ile Başla';
 
   @override
@@ -50,6 +53,9 @@ class AppLocalizationsTr extends AppLocalizations {
 
   @override
   String get startTrueFalseProblems => 'Doğru/Yanlış Testi';
+
+  @override
+  String get startTrueFalseSubtitle => 'Hızlı düşün ve kazan🔥';
 
   @override
   String get trueLabel => 'Doğru';

@@ -33,6 +33,9 @@ class AppLocalizationsHi extends AppLocalizations {
   String get startNewQuiz => 'ब्रेन क्विज़';
 
   @override
+  String get startNewQuizSubtitle => 'अपनी प्रतिभा दिखाओ 🔥';
+
+  @override
   String get startWithOneBolt => '1 ⚡ से शुरू करें';
 
   @override
@@ -49,6 +52,9 @@ class AppLocalizationsHi extends AppLocalizations {
 
   @override
   String get startTrueFalseProblems => 'सही/गलत परीक्षण';
+
+  @override
+  String get startTrueFalseSubtitle => 'तेज़ सोचो और जीतो 🔥';
 
   @override
   String get trueLabel => 'सही';

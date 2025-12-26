@@ -33,6 +33,9 @@ class AppLocalizationsEs extends AppLocalizations {
   String get startNewQuiz => 'Quiz Cerebral';
 
   @override
+  String get startNewQuizSubtitle => 'Muestra tu genio 🔥';
+
+  @override
   String get startWithOneBolt => 'Comenzar con 1 ⚡';
 
   @override
@@ -49,6 +52,9 @@ class AppLocalizationsEs extends AppLocalizations {
 
   @override
   String get startTrueFalseProblems => 'Prueba Verdadero/Falso';
+
+  @override
+  String get startTrueFalseSubtitle => 'Piensa rápido y gana 🔥';
 
   @override
   String get trueLabel => 'Verdadero';

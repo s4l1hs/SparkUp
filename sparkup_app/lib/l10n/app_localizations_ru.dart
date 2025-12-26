@@ -33,6 +33,9 @@ class AppLocalizationsRu extends AppLocalizations {
   String get startNewQuiz => 'Мозговой квиз';
 
   @override
+  String get startNewQuizSubtitle => 'Покажи свой гений 🔥';
+
+  @override
   String get startWithOneBolt => 'Начать за 1 ⚡';
 
   @override
@@ -49,6 +52,9 @@ class AppLocalizationsRu extends AppLocalizations {
 
   @override
   String get startTrueFalseProblems => 'Тест «Верно/Неверно»';
+
+  @override
+  String get startTrueFalseSubtitle => 'Думай быстро и побеждай 🔥';
 
   @override
   String get trueLabel => 'Верно';

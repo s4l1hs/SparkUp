@@ -698,7 +698,7 @@ class _TrueFalsePageState extends State<TrueFalsePage>
                             ),
                             SizedBox(height: 8.h),
                             Text(
-                              "Fast decisions, high rewards!",
+                              loc?.startTrueFalseSubtitle ?? 'Think fast and win 🔥',
                               style: TextStyle(
                                 color: Colors.white70,
                                 fontSize: 15.sp,

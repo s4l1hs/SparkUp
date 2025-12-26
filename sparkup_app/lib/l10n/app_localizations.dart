@@ -164,6 +164,12 @@ abstract class AppLocalizations {
   /// **'Brain Quiz'**
   String get startNewQuiz;
 
+  /// No description provided for @startNewQuizSubtitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Show your genius 🔥'**
+  String get startNewQuizSubtitle;
+
   /// No description provided for @startWithOneBolt.
   ///
   /// In en, this message translates to:
@@ -199,6 +205,12 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'True/False Test'**
   String get startTrueFalseProblems;
+
+  /// No description provided for @startTrueFalseSubtitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Think fast and win 🔥'**
+  String get startTrueFalseSubtitle;
 
   /// No description provided for @trueLabel.
   ///

@@ -9,12 +9,14 @@
   "noChallengeAvailable": "لا يوجد تحدي جديد متاح.",
   "challengeCouldNotBeLoaded": "تعذر تحميل التحدي.",
   "startNewQuiz": "اختبار الدماغ",
+  "startNewQuizSubtitle": "أظهر عبقريتك 🔥",
   "energyLabel": "طاقة",
   "quizFinished": "انتهى الاختبار!",
   "yourScore": "درجتك",
     "startWithOneBolt": "ابدأ بـ 1 ⚡",
   "trueFalseTitle": "صحيح / خطأ",
   "startTrueFalseProblems": "اختبار صح/خطأ",
+  "startTrueFalseSubtitle": "فكّر بسرعة واربح 🔥",
   "trueLabel": "صحيح",
   "falseLabel": "خطأ",
   "categoryLabel": "الفئة",

@@ -922,7 +922,7 @@ class _QuizPageState extends State<QuizPage> with TickerProviderStateMixin {
                             ),
                             SizedBox(height: 8.h),
                             Text(
-                              streak > 2 ? "Keep the fire burning! 🔥" : "Challenge yourself!",
+                              localizations?.startNewQuizSubtitle ?? (streak > 2 ? "Keep the fire burning! 🔥" : "Challenge yourself!"),
                               style: TextStyle(
                                 color: Colors.white70,
                                 fontSize: 15.sp,

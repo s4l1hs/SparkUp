@@ -33,6 +33,9 @@ class AppLocalizationsZh extends AppLocalizations {
   String get startNewQuiz => '脑力测验';
 
   @override
+  String get startNewQuizSubtitle => '展示你的才华 🔥';
+
+  @override
   String get startWithOneBolt => '用 1 ⚡ 开始';
 
   @override
@@ -49,6 +52,9 @@ class AppLocalizationsZh extends AppLocalizations {
 
   @override
   String get startTrueFalseProblems => '判断题测验';
+
+  @override
+  String get startTrueFalseSubtitle => '快速思考并获胜 🔥';
 
   @override
   String get trueLabel => '对';
