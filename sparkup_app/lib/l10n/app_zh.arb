@@ -1,14 +1,7 @@
 {
   "@@locale": "zh",
-  
   "appName": "Spark Up",
   "appSlogan": "您每日的知识、挑战和测验。",
-  "dailyFact": "每日事实",
-  "source": "来源",
-  "tapToLoadNewChallenge": "点击加载新挑战",
-  "noChallengeAvailable": "暂无新挑战。",
-  "challengeCouldNotBeLoaded": "挑战加载失败。",
-  
   "startNewQuiz": "脑力测验",
   "startNewQuizSubtitle": "展示你的才华 🔥",
   "startWithOneBolt": "用 1 ⚡ 开始",
@@ -20,28 +13,13 @@
   "startTrueFalseSubtitle": "快速思考并获胜 🔥",
   "trueLabel": "对",
   "falseLabel": "错",
-  "categoryLabel": "类别",
   "great": "太棒了!",
-  "question": "问题",
   "quizCouldNotStart": "测验无法启动",
-  "questionDataIsEmpty": "测验数据为空。",
-
   "navMainMenu": "主题",
-  "navInfo": "事实",
   "navQuiz": "测验",
-  "navChallenge": "挑战",
   "navSettings": "设置",
-
   "loginFailedMessage": "登录失败。请检查您的网络并重试。",
-  "continueWithGoogle": "继续使用 Google",
-  "infoNotFound": "未找到您偏爱主题的知识。",
-  "selectYourInterests": "选择您的兴趣",
-  "preferencesSaved": "偏好设置已成功保存!",
-  "preferencesCouldNotBeSaved": "偏好设置无法保存。",
   "error": "错误",
-  "saving": "正在保存",
-  
-  "settings": "设置",
   "general": "通用",
   "applicationLanguage": "应用语言",
   "notifications": "通知",
@@ -49,20 +27,8 @@
   "account": "账户",
   "signOut": "退出登录",
   "cancel": "取消",
-  "save": "保存",
-  "language": "中文 (简体)",
-  "selectLanguage": "选择语言",
-  "refresh": "刷新",
-
-  "noDataFound": "未找到数据",
-  "navLeaderboard": "排行榜",
-  "deleteAccount": "删除账户",
-  "deleteAccountConfirmation": "您确定要删除您的账户吗？此操作不可逆，您的所有数据（包括您的分数）都将被永久删除。",
-  "delete": "删除",
   "signOutConfirmation": "您确定要退出吗？",
   "noDataAvailable": "没有可用数据",
-  "errorCouldNotSaveChanges": "无法保存更改",
-  "selected": "已选择",
   "yourRank": "你的排名",
   "rankMaster": "大师",
   "rankDiamond": "钻石",
@@ -70,7 +36,6 @@
   "rankSilver": "白银",
   "rankBronze": "青铜",
   "rankIron": "铁",
-  "subscriptions": "订阅",
   "chooseYourPlan": "选择您的计划",
   "planFree": "免费计划",
   "planPro": "专业计划",
@@ -85,51 +50,25 @@
   "unlimitedChallenges": "无限挑战",
   "purchaseSuccess": "订阅已成功更新。",
   "purchaseError": "购买失败",
-  "current": "当前",
   "active": "活跃",
   "freeTrial": "免费层级",
   "upgrade": "升级",
-  "subscriptionNote": "这是购买模拟。必须与真实支付系统集成。",
-  "limitExceeded": "超出限制",
   "insufficientEnergy": "能量不足 ⚡",
   "streak": "连击",
-  "streakBonus": "连击奖励",
-  "maxStreak": "最大连击",
-  "streakBroken": "连击中断",
   "points": "积分",
   "pointsEarned": "赢得积分",
   "pointsPerQuestion": "每题得分",
-  "errorSubmittingAnswer": "提交答案时出错。",
-  "wrongAnswerResetStreak": "回答错误！连击已重置。",
   "correct": "正确",
   "incorrect": "错误",
   "secondsSuffix": "秒",
   "unstoppable": "不可阻挡 🔥",
-  "livesLeft": "还剩 {count} 次生命",
-  "pointsGain": "+{points} 分",
-  "streakBonus": "连胜奖励 x{streak}",
-  "streakBonusFire": "连胜奖励 x{streak} 🔥",
   "errorCouldNotLoadData": "无法加载数据。",
   "topPlayers": "排行榜前列",
-
-  "yourName": "您的姓名",
-  "changeLanguage": "更改语言",
   "memberSince": "会员自",
   "anonymous": "匿名",
-  "help": "帮助",
-  "failedToSaveName": "无法保存名称",
-  "saved": "已保存",
-  "enterValidName": "请输入有效名称",
   "failedToSaveNotification": "无法保存通知设置",
   "failedToSaveLanguage": "无法保存语言",
   "failedToLoadProfile": "无法加载个人资料",
-  "copiedToClipboard": "已复制到剪贴板",
-  "loading": "加载中",
-  "pleaseWait": "请稍候",
-  "challenge": "挑战",
-  "hintTapToReload": "点击以重新加载",
-  "loadNewChallenge": "加载新挑战",
-  "challengeIntro": "获取简短、有吸引力的创意挑战以提升您的技能。",
   "leaderboard": "排行榜",
   "limited": "受限",
   "category_history": "历史",
@@ -158,5 +97,33 @@
   "no_data_available_yet": "暂无数据",
   "correct_label": "正确",
   "excellent_job": "干得好！ 🚀",
-  "keep_pushing": "继续努力！ 💪"
+  "keep_pushing": "继续努力！ 💪",
+  "dart": "Dart"
+  ,
+  "continueWithGoogle": "使用 Google 登录",
+  "refresh": "刷新",
+  "pointsGain": "获得 {points} 分!",
+  "@pointsGain": {
+    "placeholders": {
+      "points": {}
+    }
+  },
+  "livesLeft": "剩余 {count} 条命",
+  "@livesLeft": {
+    "placeholders": {
+      "count": {}
+    }
+  },
+  "streakBonus": "连胜奖励: {bonus}",
+  "@streakBonus": {
+    "placeholders": {
+      "bonus": {}
+    }
+  },
+  "streakBonusFire": "🔥 连胜奖励: {bonus}",
+  "@streakBonusFire": {
+    "placeholders": {
+      "bonus": {}
+    }
+  }
 }

@@ -1,14 +1,7 @@
 {
   "@@locale": "fr",
-  
   "appName": "Spark Up",
   "appSlogan": "Votre dose quotidienne de connaissances, de défis et de quiz.",
-  "dailyFact": "Fait quotidien",
-  "source": "Source",
-  "tapToLoadNewChallenge": "Appuyez pour charger un nouveau défi",
-  "noChallengeAvailable": "Aucun nouveau défi disponible.",
-  "challengeCouldNotBeLoaded": "Le défi n'a pas pu être chargé.",
-  
   "startNewQuiz": "Quiz Cérébral",
   "startNewQuizSubtitle": "Montre ton génie 🔥",
   "startWithOneBolt": "Commencer avec 1 ⚡",
@@ -20,28 +13,13 @@
   "startTrueFalseSubtitle": "Pense vite et gagne 🔥",
   "trueLabel": "Vrai",
   "falseLabel": "Faux",
-  "categoryLabel": "Catégorie",
   "great": "Génial!",
-  "question": "Question",
   "quizCouldNotStart": "Le quiz n'a pas pu démarrer",
-  "questionDataIsEmpty": "Les données du quiz sont vides.",
-
   "navMainMenu": "Sujets",
-  "navInfo": "Fait",
   "navQuiz": "Quiz",
-  "navChallenge": "Défi",
   "navSettings": "Paramètres",
-
   "loginFailedMessage": "Échec de la connexion. Veuillez vérifier votre réseau et réessayer.",
-  "continueWithGoogle": "Continuer avec Google",
-  "infoNotFound": "Aucune connaissance trouvée pour vos sujets préférés.",
-  "selectYourInterests": "Sélectionnez vos intérêts",
-  "preferencesSaved": "Préférences enregistrées avec succès!",
-  "preferencesCouldNotBeSaved": "Les préférences n'ont pas pu être enregistrées.",
   "error": "Erreur",
-  "saving": "Sauvegarde",
-  
-  "settings": "Paramètres",
   "general": "Général",
   "applicationLanguage": "Langue de l'application",
   "notifications": "Notifications",
@@ -49,20 +27,8 @@
   "account": "Compte",
   "signOut": "Se déconnecter",
   "cancel": "Annuler",
-  "save": "Enregistrer",
-  "language": "Français",
-  "selectLanguage": "Sélectionner la langue",
-  "refresh": "Actualiser",
-
-  "noDataFound": "Aucune donnée trouvée",
-  "navLeaderboard": "Classement",
-  "deleteAccount": "Supprimer le compte",
-  "deleteAccountConfirmation": "Êtes-vous sûr de vouloir supprimer votre compte ? Cette action est irréversible et toutes vos données, y compris votre score, seront définitivement perdues.",
-  "delete": "Supprimer",
   "signOutConfirmation": "Êtes-vous sûr de vouloir vous déconnecter ?",
   "noDataAvailable": "Aucune donnée disponible",
-  "errorCouldNotSaveChanges": "Impossible d'enregistrer les modifications",
-  "selected": "sélectionné",
   "yourRank": "Votre Rang",
   "rankMaster": "Maître",
   "rankDiamond": "Diamant",
@@ -70,7 +36,6 @@
   "rankSilver": "Argent",
   "rankBronze": "Bronze",
   "rankIron": "Fer",
-  "subscriptions": "Abonnements",
   "chooseYourPlan": "Choisissez votre plan",
   "planFree": "Plan Gratuit",
   "planPro": "Plan Pro",
@@ -85,52 +50,26 @@
   "unlimitedChallenges": "Défis Illimités",
   "purchaseSuccess": "Abonnement mis à jour avec succès.",
   "purchaseError": "Achat échoué",
-  "current": "Actuel",
   "active": "Actif",
   "freeTrial": "Niveau Gratuit",
   "upgrade": "Mise à niveau",
-  "subscriptionNote": "Ceci est une simulation d'achat. Doit être intégré à un véritable système de paiement.",
-  "limitExceeded": "Limite Dépassée",
   "insufficientEnergy": "Énergie insuffisante ⚡",
   "streak": "Série",
-  "streakBonus": "Bonus de Série",
-  "maxStreak": "Série Max",
-  "streakBroken": "Série Rompue",
   "points": "Points",
   "pointsEarned": "Points Gagnés",
   "pointsPerQuestion": "points par question",
-  "errorSubmittingAnswer": "Erreur lors de l'envoi de la réponse.",
-  "wrongAnswerResetStreak": "Mauvaise réponse ! Série réinitialisée.",
   "correct": "Correct",
   "incorrect": "Incorrect",
   "secondsSuffix": "s",
   "unstoppable": "INARRÊTABLE 🔥",
-  "livesLeft": "Il reste {count} vies",
-  "pointsGain": "+{points} Points",
-  "streakBonus": "Bonus de série x{streak}",
-  "streakBonusFire": "Bonus de série x{streak} 🔥",
   "errorCouldNotLoadData": "Impossible de charger les données.",
   "topPlayers": "Meilleurs joueurs",
-
-  "yourName": "Votre nom",
-  "changeLanguage": "Changer la langue",
   "memberSince": "Membre depuis",
   "anonymous": "Anonyme",
-  "help": "Aide",
-  "failedToSaveName": "Impossible d'enregistrer le nom",
-  "saved": "Enregistré",
-  "enterValidName": "Entrez un nom valide",
   "failedToSaveNotification": "Impossible d'enregistrer la notification",
   "failedToSaveLanguage": "Impossible d'enregistrer la langue",
   "failedToLoadProfile": "Échec du chargement du profil",
-  "copiedToClipboard": "Copié dans le presse-papiers",
-  "loading": "Chargement",
   "missingKeyExample": "Traduction française",
-  "pleaseWait": "Veuillez patienter",
-  "challenge": "Défi",
-  "hintTapToReload": "Appuyez pour recharger",
-  "loadNewChallenge": "Charger un nouveau défi",
-  "challengeIntro": "Recevez de courtes missions engageantes pour stimuler vos compétences.",
   "leaderboard": "Classement",
   "limited": "Limité",
   "category_history": "Histoire",
@@ -159,5 +98,33 @@
   "no_data_available_yet": "Aucune donnée disponible pour l'instant",
   "correct_label": "Correct",
   "excellent_job": "Excellent ! 🚀",
-  "keep_pushing": "Continuez comme ça ! 💪"
+  "keep_pushing": "Continuez comme ça ! 💪",
+  "dart": "Dart"
+  ,
+  "continueWithGoogle": "Continuer avec Google",
+  "refresh": "Actualiser",
+  "pointsGain": "{points} points gagnés!",
+  "@pointsGain": {
+    "placeholders": {
+      "points": {}
+    }
+  },
+  "livesLeft": "{count} vies restantes",
+  "@livesLeft": {
+    "placeholders": {
+      "count": {}
+    }
+  },
+  "streakBonus": "Bonus de série : {bonus}",
+  "@streakBonus": {
+    "placeholders": {
+      "bonus": {}
+    }
+  },
+  "streakBonusFire": "🔥 Bonus de série : {bonus}",
+  "@streakBonusFire": {
+    "placeholders": {
+      "bonus": {}
+    }
+  }
 }

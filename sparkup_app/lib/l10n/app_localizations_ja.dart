@@ -15,21 +15,6 @@ class AppLocalizationsJa extends AppLocalizations {
   String get appSlogan => '知識、チャレンジ、クイズの毎日の摂取量。';
 
   @override
-  String get dailyFact => '今日の事実';
-
-  @override
-  String get source => '情報源';
-
-  @override
-  String get tapToLoadNewChallenge => 'タップして新しいチャレンジをロード';
-
-  @override
-  String get noChallengeAvailable => '新しいチャレンジはありません。';
-
-  @override
-  String get challengeCouldNotBeLoaded => 'チャレンジをロードできませんでした。';
-
-  @override
   String get startNewQuiz => 'ブレインクイズ';
 
   @override
@@ -63,31 +48,16 @@ class AppLocalizationsJa extends AppLocalizations {
   String get falseLabel => '間違い';
 
   @override
-  String get categoryLabel => 'カテゴリ';
-
-  @override
   String get great => '素晴らしい！';
-
-  @override
-  String get question => '質問';
 
   @override
   String get quizCouldNotStart => 'クイズを開始できませんでした';
 
   @override
-  String get questionDataIsEmpty => 'クイズデータが空です。';
-
-  @override
   String get navMainMenu => 'トピック';
 
   @override
-  String get navInfo => '事実';
-
-  @override
   String get navQuiz => 'クイズ';
-
-  @override
-  String get navChallenge => 'チャレンジ';
 
   @override
   String get navSettings => '設定';
@@ -96,28 +66,7 @@ class AppLocalizationsJa extends AppLocalizations {
   String get loginFailedMessage => 'サインインに失敗しました。ネットワークを確認して再試行してください。';
 
   @override
-  String get continueWithGoogle => 'Google で続行';
-
-  @override
-  String get infoNotFound => 'お気に入りのトピックに関する知識は見つかりませんでした。';
-
-  @override
-  String get selectYourInterests => '興味を選択';
-
-  @override
-  String get preferencesSaved => '設定が正常に保存されました！';
-
-  @override
-  String get preferencesCouldNotBeSaved => '設定を保存できませんでした。';
-
-  @override
   String get error => 'エラー';
-
-  @override
-  String get saving => '保存中';
-
-  @override
-  String get settings => '設定';
 
   @override
   String get general => '一般';
@@ -141,44 +90,10 @@ class AppLocalizationsJa extends AppLocalizations {
   String get cancel => 'キャンセル';
 
   @override
-  String get save => '保存';
-
-  @override
-  String get language => '日本語';
-
-  @override
-  String get selectLanguage => '言語を選択';
-
-  @override
-  String get refresh => '更新';
-
-  @override
-  String get noDataFound => 'データが見つかりませんでした';
-
-  @override
-  String get navLeaderboard => 'リーダーボード';
-
-  @override
-  String get deleteAccount => 'アカウントを削除';
-
-  @override
-  String get deleteAccountConfirmation =>
-      '本当にアカウントを削除しますか？この操作は元に戻せません。スコアを含むすべてのデータが完全に失われます。';
-
-  @override
-  String get delete => '削除';
-
-  @override
   String get signOutConfirmation => '本当にサインアウトしますか？';
 
   @override
   String get noDataAvailable => 'データがありません';
-
-  @override
-  String get errorCouldNotSaveChanges => '変更を保存できませんでした';
-
-  @override
-  String get selected => '選択済み';
 
   @override
   String get yourRank => 'あなたのランク';
@@ -200,9 +115,6 @@ class AppLocalizationsJa extends AppLocalizations {
 
   @override
   String get rankIron => 'アイアン';
-
-  @override
-  String get subscriptions => 'サブスクリプション';
 
   @override
   String get chooseYourPlan => 'プランを選択してください';
@@ -247,9 +159,6 @@ class AppLocalizationsJa extends AppLocalizations {
   String get purchaseError => '購入に失敗しました';
 
   @override
-  String get current => '現在';
-
-  @override
   String get active => 'アクティブ';
 
   @override
@@ -259,27 +168,10 @@ class AppLocalizationsJa extends AppLocalizations {
   String get upgrade => 'アップグレード';
 
   @override
-  String get subscriptionNote => 'これは購入シミュレーションです。実際の決済システムとの統合が必要です。';
-
-  @override
-  String get limitExceeded => '制限を超過しました';
-
-  @override
   String get insufficientEnergy => 'エネルギー不足 ⚡';
 
   @override
   String get streak => '連勝';
-
-  @override
-  String streakBonus(Object streak) {
-    return '連勝ボーナス x$streak';
-  }
-
-  @override
-  String get maxStreak => '最大連勝';
-
-  @override
-  String get streakBroken => '連勝中断';
 
   @override
   String get points => 'ポイント';
@@ -289,12 +181,6 @@ class AppLocalizationsJa extends AppLocalizations {
 
   @override
   String get pointsPerQuestion => '1問あたりのポイント';
-
-  @override
-  String get errorSubmittingAnswer => '回答送信エラーです。';
-
-  @override
-  String get wrongAnswerResetStreak => '不正解！連勝がリセットされました。';
 
   @override
   String get correct => '正解';
@@ -309,49 +195,16 @@ class AppLocalizationsJa extends AppLocalizations {
   String get unstoppable => '無敵 🔥';
 
   @override
-  String livesLeft(Object count) {
-    return '残り $count ライフ';
-  }
-
-  @override
-  String pointsGain(Object points) {
-    return '+$points ポイント';
-  }
-
-  @override
-  String streakBonusFire(Object streak) {
-    return '連勝ボーナス x$streak 🔥';
-  }
-
-  @override
   String get errorCouldNotLoadData => 'データを読み込めませんでした。';
 
   @override
   String get topPlayers => 'トッププレイヤー';
 
   @override
-  String get yourName => 'あなたの名前';
-
-  @override
-  String get changeLanguage => '言語を変更';
-
-  @override
   String get memberSince => '会員登録日';
 
   @override
   String get anonymous => '匿名';
-
-  @override
-  String get help => 'ヘルプ';
-
-  @override
-  String get failedToSaveName => '名前の保存に失敗しました';
-
-  @override
-  String get saved => '保存しました';
-
-  @override
-  String get enterValidName => '有効な名前を入力してください';
 
   @override
   String get failedToSaveNotification => '通知設定の保存に失敗しました';
@@ -361,27 +214,6 @@ class AppLocalizationsJa extends AppLocalizations {
 
   @override
   String get failedToLoadProfile => 'プロフィールを読み込めませんでした';
-
-  @override
-  String get copiedToClipboard => 'クリップボードにコピーしました';
-
-  @override
-  String get loading => '読み込み中';
-
-  @override
-  String get pleaseWait => 'しばらくお待ちください';
-
-  @override
-  String get challenge => 'チャレンジ';
-
-  @override
-  String get hintTapToReload => '再読み込みするにはタップ';
-
-  @override
-  String get loadNewChallenge => '新しいチャレンジを読み込む';
-
-  @override
-  String get challengeIntro => 'スキルを向上させる短く魅力的なチャレンジを取得しましょう。';
 
   @override
   String get leaderboard => 'リーダーボード';
@@ -469,4 +301,33 @@ class AppLocalizationsJa extends AppLocalizations {
 
   @override
   String get keep_pushing => '頑張り続けましょう！ 💪';
+
+  @override
+  String get dart => 'Dart';
+
+  @override
+  String get continueWithGoogle => 'Googleで続行';
+
+  @override
+  String get refresh => '更新';
+
+  @override
+  String pointsGain(Object points) {
+    return '$pointsポイント獲得!';
+  }
+
+  @override
+  String livesLeft(Object count) {
+    return '残り$countライフ';
+  }
+
+  @override
+  String streakBonus(Object bonus) {
+    return '連続ボーナス: $bonus';
+  }
+
+  @override
+  String streakBonusFire(Object bonus) {
+    return '🔥 連続ボーナス: $bonus';
+  }
 }

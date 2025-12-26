@@ -158,7 +158,9 @@ class _QuizPageState extends State<QuizPage> with TickerProviderStateMixin {
     // Use backend/user language only if supported and either it's not 'en' or the user explicitly chose it
     if (userLang != null &&
         supported.contains(userLang) &&
-        (allowBackendEn || userLang != 'en')) return userLang;
+        (allowBackendEn || userLang != 'en')) {
+      return userLang;
+    }
     if (supported.contains(deviceLang)) return deviceLang;
     return 'en';
   }
@@ -695,8 +697,8 @@ class _QuizPageState extends State<QuizPage> with TickerProviderStateMixin {
                     filter: ui.ImageFilter.blur(sigmaX: 6.0, sigmaY: 6.0),
                     child: Container(
                       color: _lastAnswerCorrect
-                          ? Colors.green.withOpacity(0.1)
-                          : Colors.red.withOpacity(0.1),
+                          ? Colors.green.withAlpha(26)
+                          : Colors.red.withAlpha(26),
                     ),
                   ),
 
@@ -734,19 +736,19 @@ class _QuizPageState extends State<QuizPage> with TickerProviderStateMixin {
                               padding: EdgeInsets.symmetric(
                                   horizontal: 40.w, vertical: 32.h),
                               decoration: BoxDecoration(
-                                color: theme.colorScheme.surface.withOpacity(0.95),
+                                color: theme.colorScheme.surface.withAlpha(243),
                                 borderRadius: BorderRadius.circular(24.r),
                                 border: Border.all(
                                   color: _lastAnswerCorrect
-                                      ? (currentStreak >= 2 ? Colors.orange : Colors.green.withOpacity(0.5))
-                                      : Colors.red.withOpacity(0.5),
+                                      ? (currentStreak >= 2 ? Colors.orange : Colors.green.withAlpha(128))
+                                      : Colors.red.withAlpha(128),
                                   width: 2,
                                 ),
                                 boxShadow: [
                                   BoxShadow(
                                     color: _lastAnswerCorrect
-                                        ? (currentStreak >= 2 ? Colors.orange.withOpacity(0.5) : Colors.green.withOpacity(0.5))
-                                        : Colors.red.withOpacity(0.5),
+                                        ? (currentStreak >= 2 ? Colors.orange.withAlpha(128) : Colors.green.withAlpha(128))
+                                        : Colors.red.withAlpha(128),
                                     blurRadius: 30,
                                     spreadRadius: 2,
                                   ),
@@ -766,8 +768,8 @@ class _QuizPageState extends State<QuizPage> with TickerProviderStateMixin {
                                     decoration: BoxDecoration(
                                       shape: BoxShape.circle,
                                       color: _lastAnswerCorrect
-                                          ? Colors.green.withOpacity(0.15)
-                                          : Colors.red.withOpacity(0.15),
+                                          ? Colors.green.withAlpha(38)
+                                          : Colors.red.withAlpha(38),
                                     ),
                                     child: Icon(
                                       _lastAnswerCorrect
@@ -811,7 +813,7 @@ class _QuizPageState extends State<QuizPage> with TickerProviderStateMixin {
                                       "${3 - _wrongAnswers} chances left",
                                       style: TextStyle(
                                         color: theme.colorScheme.onSurface
-                                            .withOpacity(0.6),
+                                            .withAlpha(153),
                                         fontSize: 16.sp,
                                       ),
                                     ),
@@ -822,9 +824,9 @@ class _QuizPageState extends State<QuizPage> with TickerProviderStateMixin {
                                       margin: EdgeInsets.only(top: 12.h),
                                       padding: EdgeInsets.symmetric(horizontal: 12.w, vertical: 6.h),
                                       decoration: BoxDecoration(
-                                        color: Colors.orange.withOpacity(0.15),
+                                        color: Colors.orange.withAlpha(38),
                                         borderRadius: BorderRadius.circular(10.r),
-                                        border: Border.all(color: Colors.orange.withOpacity(0.5)),
+                                        border: Border.all(color: Colors.orange.withAlpha(128)),
                                       ),
                                       child: Builder(builder: (ctx) {
                                         final localized = AppLocalizations.of(ctx)?.streakBonusFire(currentStreak).replaceAll('{streak}', currentStreak.toString());
@@ -892,11 +894,11 @@ class _QuizPageState extends State<QuizPage> with TickerProviderStateMixin {
                                     padding: EdgeInsets.all(22.r),
                                     decoration: BoxDecoration(
                                       shape: BoxShape.circle,
-                                      color: theme.colorScheme.primary.withOpacity(0.1),
-                                      border: Border.all(color: theme.colorScheme.primary.withOpacity(0.3), width: 1),
+                                      color: theme.colorScheme.primary.withAlpha(26),
+                                      border: Border.all(color: theme.colorScheme.primary.withAlpha(77), width: 1),
                                       boxShadow: [
                                         BoxShadow(
-                                          color: theme.colorScheme.primary.withOpacity(0.25),
+                                          color: theme.colorScheme.primary.withAlpha(64),
                                           blurRadius: 30,
                                           spreadRadius: 8,
                                         )
@@ -936,9 +938,9 @@ class _QuizPageState extends State<QuizPage> with TickerProviderStateMixin {
                             Container(
                               padding: EdgeInsets.symmetric(vertical: 12.h, horizontal: 16.w),
                               decoration: BoxDecoration(
-                                color: Colors.black.withOpacity(0.2),
+                                color: Colors.black.withAlpha(51),
                                 borderRadius: BorderRadius.circular(16.r),
-                                border: Border.all(color: Colors.white.withOpacity(0.08)),
+                                border: Border.all(color: Colors.white.withAlpha(20)),
                               ),
                               child: Row(
                                 mainAxisAlignment: MainAxisAlignment.spaceAround,
@@ -1028,7 +1030,7 @@ class _QuizPageState extends State<QuizPage> with TickerProviderStateMixin {
       children: [
         Icon(icon, color: color, size: 22.sp),
         SizedBox(height: 6.h),
-        Text(text, style: TextStyle(color: Colors.white.withOpacity(0.9), fontSize: 13.sp, fontWeight: FontWeight.bold)),
+        Text(text, style: TextStyle(color: Colors.white.withAlpha(230), fontSize: 13.sp, fontWeight: FontWeight.bold)),
       ],
     );
   }

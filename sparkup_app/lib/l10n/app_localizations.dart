@@ -128,36 +128,6 @@ abstract class AppLocalizations {
   /// **'Your daily dose of knowledge, challenge, and quiz.'**
   String get appSlogan;
 
-  /// No description provided for @dailyFact.
-  ///
-  /// In en, this message translates to:
-  /// **'Daily Fact'**
-  String get dailyFact;
-
-  /// No description provided for @source.
-  ///
-  /// In en, this message translates to:
-  /// **'Source'**
-  String get source;
-
-  /// No description provided for @tapToLoadNewChallenge.
-  ///
-  /// In en, this message translates to:
-  /// **'Tap to load a new challenge'**
-  String get tapToLoadNewChallenge;
-
-  /// No description provided for @noChallengeAvailable.
-  ///
-  /// In en, this message translates to:
-  /// **'No new challenge available.'**
-  String get noChallengeAvailable;
-
-  /// No description provided for @challengeCouldNotBeLoaded.
-  ///
-  /// In en, this message translates to:
-  /// **'Challenge could not be loaded.'**
-  String get challengeCouldNotBeLoaded;
-
   /// No description provided for @startNewQuiz.
   ///
   /// In en, this message translates to:
@@ -224,23 +194,11 @@ abstract class AppLocalizations {
   /// **'False'**
   String get falseLabel;
 
-  /// No description provided for @categoryLabel.
-  ///
-  /// In en, this message translates to:
-  /// **'Category'**
-  String get categoryLabel;
-
   /// No description provided for @great.
   ///
   /// In en, this message translates to:
   /// **'Great!'**
   String get great;
-
-  /// No description provided for @question.
-  ///
-  /// In en, this message translates to:
-  /// **'Question'**
-  String get question;
 
   /// No description provided for @quizCouldNotStart.
   ///
@@ -248,35 +206,17 @@ abstract class AppLocalizations {
   /// **'Quiz could not start'**
   String get quizCouldNotStart;
 
-  /// No description provided for @questionDataIsEmpty.
-  ///
-  /// In en, this message translates to:
-  /// **'Question data is empty.'**
-  String get questionDataIsEmpty;
-
   /// No description provided for @navMainMenu.
   ///
   /// In en, this message translates to:
   /// **'Main Menu'**
   String get navMainMenu;
 
-  /// No description provided for @navInfo.
-  ///
-  /// In en, this message translates to:
-  /// **'Fact'**
-  String get navInfo;
-
   /// No description provided for @navQuiz.
   ///
   /// In en, this message translates to:
   /// **'Quiz'**
   String get navQuiz;
-
-  /// No description provided for @navChallenge.
-  ///
-  /// In en, this message translates to:
-  /// **'Challenge'**
-  String get navChallenge;
 
   /// No description provided for @navSettings.
   ///
@@ -290,53 +230,11 @@ abstract class AppLocalizations {
   /// **'Sign-in failed. Please check your network and try again.'**
   String get loginFailedMessage;
 
-  /// No description provided for @continueWithGoogle.
-  ///
-  /// In en, this message translates to:
-  /// **'Continue with Google'**
-  String get continueWithGoogle;
-
-  /// No description provided for @infoNotFound.
-  ///
-  /// In en, this message translates to:
-  /// **'Knowledge not found for your preferred topics.'**
-  String get infoNotFound;
-
-  /// No description provided for @selectYourInterests.
-  ///
-  /// In en, this message translates to:
-  /// **'Select Your Interests'**
-  String get selectYourInterests;
-
-  /// No description provided for @preferencesSaved.
-  ///
-  /// In en, this message translates to:
-  /// **'Preferences saved successfully!'**
-  String get preferencesSaved;
-
-  /// No description provided for @preferencesCouldNotBeSaved.
-  ///
-  /// In en, this message translates to:
-  /// **'Preferences could not be saved.'**
-  String get preferencesCouldNotBeSaved;
-
   /// No description provided for @error.
   ///
   /// In en, this message translates to:
   /// **'Error'**
   String get error;
-
-  /// No description provided for @saving.
-  ///
-  /// In en, this message translates to:
-  /// **'Saving'**
-  String get saving;
-
-  /// No description provided for @settings.
-  ///
-  /// In en, this message translates to:
-  /// **'Settings'**
-  String get settings;
 
   /// No description provided for @general.
   ///
@@ -380,60 +278,6 @@ abstract class AppLocalizations {
   /// **'Cancel'**
   String get cancel;
 
-  /// No description provided for @save.
-  ///
-  /// In en, this message translates to:
-  /// **'Save'**
-  String get save;
-
-  /// No description provided for @language.
-  ///
-  /// In en, this message translates to:
-  /// **'English'**
-  String get language;
-
-  /// No description provided for @selectLanguage.
-  ///
-  /// In en, this message translates to:
-  /// **'Select Language'**
-  String get selectLanguage;
-
-  /// No description provided for @refresh.
-  ///
-  /// In en, this message translates to:
-  /// **'Refresh'**
-  String get refresh;
-
-  /// No description provided for @noDataFound.
-  ///
-  /// In en, this message translates to:
-  /// **'No data found'**
-  String get noDataFound;
-
-  /// No description provided for @navLeaderboard.
-  ///
-  /// In en, this message translates to:
-  /// **'Leaderboard'**
-  String get navLeaderboard;
-
-  /// No description provided for @deleteAccount.
-  ///
-  /// In en, this message translates to:
-  /// **'Delete Account'**
-  String get deleteAccount;
-
-  /// No description provided for @deleteAccountConfirmation.
-  ///
-  /// In en, this message translates to:
-  /// **'Are you sure you want to delete your account? This action is irreversible and all your data, including your score, will be permanently lost.'**
-  String get deleteAccountConfirmation;
-
-  /// No description provided for @delete.
-  ///
-  /// In en, this message translates to:
-  /// **'Delete'**
-  String get delete;
-
   /// No description provided for @signOutConfirmation.
   ///
   /// In en, this message translates to:
@@ -445,18 +289,6 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'No data available'**
   String get noDataAvailable;
-
-  /// No description provided for @errorCouldNotSaveChanges.
-  ///
-  /// In en, this message translates to:
-  /// **'Could not save changes'**
-  String get errorCouldNotSaveChanges;
-
-  /// No description provided for @selected.
-  ///
-  /// In en, this message translates to:
-  /// **'selected'**
-  String get selected;
 
   /// No description provided for @yourRank.
   ///
@@ -499,12 +331,6 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Iron'**
   String get rankIron;
-
-  /// No description provided for @subscriptions.
-  ///
-  /// In en, this message translates to:
-  /// **'Subscriptions'**
-  String get subscriptions;
 
   /// No description provided for @chooseYourPlan.
   ///
@@ -590,12 +416,6 @@ abstract class AppLocalizations {
   /// **'Purchase failed'**
   String get purchaseError;
 
-  /// No description provided for @current.
-  ///
-  /// In en, this message translates to:
-  /// **'Current'**
-  String get current;
-
   /// No description provided for @active.
   ///
   /// In en, this message translates to:
@@ -614,18 +434,6 @@ abstract class AppLocalizations {
   /// **'Upgrade'**
   String get upgrade;
 
-  /// No description provided for @subscriptionNote.
-  ///
-  /// In en, this message translates to:
-  /// **'This is a purchase simulation. Must be integrated with a real payment system.'**
-  String get subscriptionNote;
-
-  /// No description provided for @limitExceeded.
-  ///
-  /// In en, this message translates to:
-  /// **'Limit Exceeded'**
-  String get limitExceeded;
-
   /// No description provided for @insufficientEnergy.
   ///
   /// In en, this message translates to:
@@ -637,24 +445,6 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Streak'**
   String get streak;
-
-  /// No description provided for @streakBonus.
-  ///
-  /// In en, this message translates to:
-  /// **'Streak Bonus x{streak}'**
-  String streakBonus(Object streak);
-
-  /// No description provided for @maxStreak.
-  ///
-  /// In en, this message translates to:
-  /// **'Max Streak'**
-  String get maxStreak;
-
-  /// No description provided for @streakBroken.
-  ///
-  /// In en, this message translates to:
-  /// **'Streak Broken'**
-  String get streakBroken;
 
   /// No description provided for @points.
   ///
@@ -673,18 +463,6 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'points per question'**
   String get pointsPerQuestion;
-
-  /// No description provided for @errorSubmittingAnswer.
-  ///
-  /// In en, this message translates to:
-  /// **'Error submitting answer.'**
-  String get errorSubmittingAnswer;
-
-  /// No description provided for @wrongAnswerResetStreak.
-  ///
-  /// In en, this message translates to:
-  /// **'Wrong answer! Streak reset.'**
-  String get wrongAnswerResetStreak;
 
   /// No description provided for @correct.
   ///
@@ -710,24 +488,6 @@ abstract class AppLocalizations {
   /// **'UNSTOPPABLE 🔥'**
   String get unstoppable;
 
-  /// No description provided for @livesLeft.
-  ///
-  /// In en, this message translates to:
-  /// **'{count} lives left'**
-  String livesLeft(Object count);
-
-  /// No description provided for @pointsGain.
-  ///
-  /// In en, this message translates to:
-  /// **'+{points} Points'**
-  String pointsGain(Object points);
-
-  /// No description provided for @streakBonusFire.
-  ///
-  /// In en, this message translates to:
-  /// **'Streak Bonus x{streak} 🔥'**
-  String streakBonusFire(Object streak);
-
   /// No description provided for @errorCouldNotLoadData.
   ///
   /// In en, this message translates to:
@@ -740,18 +500,6 @@ abstract class AppLocalizations {
   /// **'Top Players'**
   String get topPlayers;
 
-  /// No description provided for @yourName.
-  ///
-  /// In en, this message translates to:
-  /// **'Your name'**
-  String get yourName;
-
-  /// No description provided for @changeLanguage.
-  ///
-  /// In en, this message translates to:
-  /// **'Change Language'**
-  String get changeLanguage;
-
   /// No description provided for @memberSince.
   ///
   /// In en, this message translates to:
@@ -763,30 +511,6 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Anonymous'**
   String get anonymous;
-
-  /// No description provided for @help.
-  ///
-  /// In en, this message translates to:
-  /// **'Help'**
-  String get help;
-
-  /// No description provided for @failedToSaveName.
-  ///
-  /// In en, this message translates to:
-  /// **'Failed to save name'**
-  String get failedToSaveName;
-
-  /// No description provided for @saved.
-  ///
-  /// In en, this message translates to:
-  /// **'Saved'**
-  String get saved;
-
-  /// No description provided for @enterValidName.
-  ///
-  /// In en, this message translates to:
-  /// **'Enter a valid name'**
-  String get enterValidName;
 
   /// No description provided for @failedToSaveNotification.
   ///
@@ -805,48 +529,6 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Failed to load profile'**
   String get failedToLoadProfile;
-
-  /// No description provided for @copiedToClipboard.
-  ///
-  /// In en, this message translates to:
-  /// **'Copied to clipboard'**
-  String get copiedToClipboard;
-
-  /// No description provided for @loading.
-  ///
-  /// In en, this message translates to:
-  /// **'Loading'**
-  String get loading;
-
-  /// No description provided for @pleaseWait.
-  ///
-  /// In en, this message translates to:
-  /// **'Please wait'**
-  String get pleaseWait;
-
-  /// No description provided for @challenge.
-  ///
-  /// In en, this message translates to:
-  /// **'Challenge'**
-  String get challenge;
-
-  /// No description provided for @hintTapToReload.
-  ///
-  /// In en, this message translates to:
-  /// **'Tap to reload'**
-  String get hintTapToReload;
-
-  /// No description provided for @loadNewChallenge.
-  ///
-  /// In en, this message translates to:
-  /// **'Load new challenge'**
-  String get loadNewChallenge;
-
-  /// No description provided for @challengeIntro.
-  ///
-  /// In en, this message translates to:
-  /// **'Get short, engaging creative challenges to boost your skills.'**
-  String get challengeIntro;
 
   /// No description provided for @leaderboard.
   ///
@@ -1021,6 +703,48 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Keep Pushing! 💪'**
   String get keep_pushing;
+
+  /// No description provided for @dart.
+  ///
+  /// In en, this message translates to:
+  /// **'Dart'**
+  String get dart;
+
+  /// No description provided for @continueWithGoogle.
+  ///
+  /// In en, this message translates to:
+  /// **'Continue with Google'**
+  String get continueWithGoogle;
+
+  /// No description provided for @refresh.
+  ///
+  /// In en, this message translates to:
+  /// **'Refresh'**
+  String get refresh;
+
+  /// No description provided for @pointsGain.
+  ///
+  /// In en, this message translates to:
+  /// **'{points} points!'**
+  String pointsGain(Object points);
+
+  /// No description provided for @livesLeft.
+  ///
+  /// In en, this message translates to:
+  /// **'{count} lives left'**
+  String livesLeft(Object count);
+
+  /// No description provided for @streakBonus.
+  ///
+  /// In en, this message translates to:
+  /// **'Streak bonus: {bonus}'**
+  String streakBonus(Object bonus);
+
+  /// No description provided for @streakBonusFire.
+  ///
+  /// In en, this message translates to:
+  /// **'🔥 Streak bonus: {bonus}'**
+  String streakBonusFire(Object bonus);
 }
 
 class _AppLocalizationsDelegate

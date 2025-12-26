@@ -231,8 +231,10 @@ class _TrueFalsePageState extends State<TrueFalsePage>
 
       // Analysis provider güncellemesi
       try {
-        final analysisProv = Provider.of<AnalysisProvider>(context, listen: false);
-        analysisProv.refresh(widget.idToken);
+        if (mounted) {
+          final analysisProv = Provider.of<AnalysisProvider>(context, listen: false);
+          analysisProv.refresh(widget.idToken);
+        }
       } catch (_) {}
 
       // Bir sonraki soruya geçiş
@@ -447,8 +449,8 @@ class _TrueFalsePageState extends State<TrueFalsePage>
                     filter: ui.ImageFilter.blur(sigmaX: 8.0, sigmaY: 8.0),
                     child: Container(
                       color: _lastAnswerCorrect
-                          ? Colors.green.withOpacity(0.15)
-                          : Colors.red.withOpacity(0.15),
+                          ? Colors.green.withAlpha(38)
+                          : Colors.red.withAlpha(38),
                     ),
                   ),
                   
@@ -479,19 +481,19 @@ class _TrueFalsePageState extends State<TrueFalsePage>
                             child: Container(
                               padding: EdgeInsets.symmetric(horizontal: 40.w, vertical: 30.h),
                               decoration: BoxDecoration(
-                                color: theme.colorScheme.surface.withOpacity(0.95),
+                                color: theme.colorScheme.surface.withAlpha(243),
                                 borderRadius: BorderRadius.circular(30.r),
                                 border: Border.all(
                                   color: _lastAnswerCorrect 
-                                    ? (_streak >= 2 ? Colors.orange : Colors.green.withOpacity(0.5)) 
-                                    : Colors.red.withOpacity(0.5),
+                                    ? (_streak >= 2 ? Colors.orange : Colors.green.withAlpha(128)) 
+                                    : Colors.red.withAlpha(128),
                                   width: 2,
                                 ),
                                 boxShadow: [
                                   BoxShadow(
                                     color: _lastAnswerCorrect 
-                                      ? (_streak >= 2 ? Colors.orange.withOpacity(0.6) : Colors.green.withOpacity(0.6)) 
-                                      : Colors.red.withOpacity(0.6),
+                                      ? (_streak >= 2 ? Colors.orange.withAlpha(153) : Colors.green.withAlpha(153)) 
+                                      : Colors.red.withAlpha(153),
                                     blurRadius: 40,
                                     spreadRadius: 5,
                                   ),
@@ -510,7 +512,7 @@ class _TrueFalsePageState extends State<TrueFalsePage>
                                     padding: EdgeInsets.all(16.r),
                                     decoration: BoxDecoration(
                                       shape: BoxShape.circle,
-                                      color: _lastAnswerCorrect ? Colors.green.withOpacity(0.1) : Colors.red.withOpacity(0.1),
+                                      color: _lastAnswerCorrect ? Colors.green.withAlpha(26) : Colors.red.withAlpha(26),
                                     ),
                                     child: Icon(
                                       _lastAnswerCorrect
@@ -560,7 +562,7 @@ class _TrueFalsePageState extends State<TrueFalsePage>
                                       return Text(
                                         localized ?? '$lives lives left',
                                         style: TextStyle(
-                                          color: theme.colorScheme.onSurface.withOpacity(0.6),
+                                          color: theme.colorScheme.onSurface.withAlpha(153),
                                           fontSize: 16.sp,
                                         ),
                                       );
@@ -572,9 +574,9 @@ class _TrueFalsePageState extends State<TrueFalsePage>
                                       margin: EdgeInsets.only(top: 12.h),
                                       padding: EdgeInsets.symmetric(horizontal: 14.w, vertical: 6.h),
                                       decoration: BoxDecoration(
-                                        color: Colors.deepOrange.withOpacity(0.1),
+                                        color: Colors.deepOrange.withAlpha(26),
                                         borderRadius: BorderRadius.circular(12.r),
-                                        border: Border.all(color: Colors.deepOrange.withOpacity(0.6)),
+                                        border: Border.all(color: Colors.deepOrange.withAlpha(153)),
                                       ),
                                       child: Row(
                                         mainAxisSize: MainAxisSize.min,
@@ -668,11 +670,11 @@ class _TrueFalsePageState extends State<TrueFalsePage>
                                     padding: EdgeInsets.all(22.r),
                                     decoration: BoxDecoration(
                                       shape: BoxShape.circle,
-                                      color: Colors.orange.withOpacity(0.1),
-                                      border: Border.all(color: Colors.orange.withOpacity(0.3), width: 1),
+                                      color: Colors.orange.withAlpha(26),
+                                      border: Border.all(color: Colors.orange.withAlpha(77), width: 1),
                                       boxShadow: [
                                         BoxShadow(
-                                          color: Colors.orange.withOpacity(0.25),
+                                          color: Colors.orange.withAlpha(64),
                                           blurRadius: 30,
                                           spreadRadius: 8,
                                         )
@@ -712,9 +714,9 @@ class _TrueFalsePageState extends State<TrueFalsePage>
                             Container(
                               padding: EdgeInsets.symmetric(vertical: 12.h, horizontal: 16.w),
                               decoration: BoxDecoration(
-                                color: Colors.black.withOpacity(0.2),
+                                color: Colors.black.withAlpha(51),
                                 borderRadius: BorderRadius.circular(16.r),
-                                border: Border.all(color: Colors.white.withOpacity(0.08)),
+                                border: Border.all(color: Colors.white.withAlpha(20)),
                               ),
                               child: Row(
                                 mainAxisAlignment: MainAxisAlignment.spaceAround,
@@ -944,7 +946,7 @@ class _TrueFalsePageState extends State<TrueFalsePage>
       children: [
         Icon(icon, color: color, size: 22.sp),
         SizedBox(height: 6.h),
-        Text(text, style: TextStyle(color: Colors.white.withOpacity(0.9), fontSize: 13.sp, fontWeight: FontWeight.bold)),
+        Text(text, style: TextStyle(color: Colors.white.withAlpha(230), fontSize: 13.sp, fontWeight: FontWeight.bold)),
       ],
     );
   }

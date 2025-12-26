@@ -3,41 +3,24 @@
   "@@textDirection": "rtl",
   "appName": "Spark Up",
   "appSlogan": "جرعتك اليومية من المعرفة والتحدي والاختبار.",
-  "dailyFact": "حقيقة اليوم",
-  "source": "المصدر",
-  "tapToLoadNewChallenge": "انقر لتحميل تحدي جديد",
-  "noChallengeAvailable": "لا يوجد تحدي جديد متاح.",
-  "challengeCouldNotBeLoaded": "تعذر تحميل التحدي.",
   "startNewQuiz": "اختبار الدماغ",
   "startNewQuizSubtitle": "أظهر عبقريتك 🔥",
   "energyLabel": "طاقة",
   "quizFinished": "انتهى الاختبار!",
   "yourScore": "درجتك",
-    "startWithOneBolt": "ابدأ بـ 1 ⚡",
+  "startWithOneBolt": "ابدأ بـ 1 ⚡",
   "trueFalseTitle": "صحيح / خطأ",
   "startTrueFalseProblems": "اختبار صح/خطأ",
   "startTrueFalseSubtitle": "فكّر بسرعة واربح 🔥",
   "trueLabel": "صحيح",
   "falseLabel": "خطأ",
-  "categoryLabel": "الفئة",
   "great": "عظيم!",
-  "question": "سؤال",
   "quizCouldNotStart": "تعذر بدء الاختبار",
-  "questionDataIsEmpty": "بيانات الاختبار فارغة.",
   "navMainMenu": "المواضيع",
-  "navInfo": "حقيقة",
   "navQuiz": "اختبار",
-  "navChallenge": "تحدي",
   "navSettings": "الإعدادات",
   "loginFailedMessage": "فشل تسجيل الدخول. يرجى التحقق من شبكتك والمحاولة مرة أخرى.",
-  "continueWithGoogle": "المتابعة باستخدام جوجل",
-  "infoNotFound": "لم يتم العثور على معلومات لمواضيعك المفضلة.",
-  "selectYourInterests": "حدد اهتماماتك",
-  "preferencesSaved": "تم حفظ التفضيلات بنجاح!",
-  "preferencesCouldNotBeSaved": "تعذر حفظ التفضيلات.",
   "error": "خطأ",
-  "saving": "جارٍ الحفظ",
-  "settings": "الإعدادات",
   "general": "عام",
   "applicationLanguage": "لغة التطبيق",
   "notifications": "الإشعارات",
@@ -45,19 +28,8 @@
   "account": "الحساب",
   "signOut": "تسجيل الخروج",
   "cancel": "إلغاء",
-  "save": "حفظ",
-  "language": "العربية",
-  "selectLanguage": "اختيار اللغة",
-  "refresh": "تحديث",
-  "noDataFound": "لم يتم العثور على بيانات",
-  "navLeaderboard": "لوحة المتصدرين",
-  "deleteAccount": "حذف الحساب",
-  "deleteAccountConfirmation": "هل أنت متأكد أنك تريد حذف حسابك؟ هذا الإجراء لا يمكن التراجع عنه وسيتم فقدان جميع بياناتك بشكل دائم، بما في ذلك نتيجتك.",
-  "delete": "حذف",
   "signOutConfirmation": "هل أنت متأكد أنك تريد تسجيل الخروج؟",
   "noDataAvailable": "لا تتوفر بيانات",
-  "errorCouldNotSaveChanges": "تعذر حفظ التغييرات",
-  "selected": "محدد",
   "yourRank": "رتبتك",
   "rankMaster": "الماستر",
   "rankDiamond": "الماس",
@@ -65,7 +37,6 @@
   "rankSilver": "الفضة",
   "rankBronze": "البرونز",
   "rankIron": "الحديد",
-  "subscriptions": "الاشتراكات",
   "chooseYourPlan": "اختر خطتك",
   "planFree": "الخطة المجانية",
   "planPro": "الخطة الاحترافية",
@@ -80,50 +51,25 @@
   "unlimitedChallenges": "تحديات غير محدودة",
   "purchaseSuccess": "تم تحديث الاشتراك بنجاح.",
   "purchaseError": "فشل الشراء",
-  "current": "الحالي",
   "active": "نشط",
   "freeTrial": "المستوى المجاني",
   "upgrade": "ترقية",
-  "subscriptionNote": "هذه محاكاة للشراء. يجب دمجها مع نظام دفع حقيقي.",
-  "limitExceeded": "تم تجاوز الحد",
   "streak": "سلسلة",
-  "streakBonus": "مكافأة السلسلة",
-    "insufficientEnergy": "طاقة غير كافية ⚡",
-  "maxStreak": "أقصى سلسلة",
-  "streakBroken": "تم كسر السلسلة",
+  "insufficientEnergy": "طاقة غير كافية ⚡",
   "points": "نقاط",
   "pointsEarned": "النقاط المكتسبة",
   "pointsPerQuestion": "النقاط لكل سؤال",
-  "errorSubmittingAnswer": "خطأ في إرسال الإجابة.",
-  "wrongAnswerResetStreak": "إجابة خاطئة! تمت إعادة تعيين السلسلة.",
   "correct": "صحيح",
   "incorrect": "غير صحيح",
   "secondsSuffix": "ث",
   "unstoppable": "لا يمكن إيقافه 🔥",
-  "livesLeft": "تبقى {count} حياة",
-  "pointsGain": "+{points} نقاط",
-  "streakBonus": "مكافأة السلسلة x{streak}",
-  "streakBonusFire": "مكافأة السلسلة x{streak} 🔥",
   "errorCouldNotLoadData": "تعذر تحميل البيانات.",
   "topPlayers": "أفضل اللاعبين",
-  "yourName": "اسمك",
-  "changeLanguage": "تغيير اللغة",
   "memberSince": "عضو منذ",
   "anonymous": "مجهول",
-  "help": "مساعدة",
-  "failedToSaveName": "فشل في حفظ الاسم",
-  "saved": "تم الحفظ",
-  "enterValidName": "أدخل اسمًا صالحًا",
   "failedToSaveNotification": "فشل في حفظ إعدادات الإشعارات",
   "failedToSaveLanguage": "فشل في حفظ اللغة",
   "failedToLoadProfile": "فشل في تحميل الملف الشخصي",
-  "copiedToClipboard": "تم النسخ إلى الحافظة",
-  "loading": "جارٍ التحميل",
-  "pleaseWait": "يرجى الانتظار",
-  "challenge": "تحدي",
-  "hintTapToReload": "انقر لإعادة التحميل",
-  "loadNewChallenge": "تحميل تحدٍ جديد",
-  "challengeIntro": "احصل على تحديات قصيرة وجذابة لتعزيز مهاراتك.",
   "leaderboard": "لوحة المتصدرين",
   "limited": "محدود",
   "category_history": "تاريخ",
@@ -152,5 +98,33 @@
   "no_data_available_yet": "لا توجد بيانات حتى الآن",
   "correct_label": "صحيح",
   "excellent_job": "عمل رائع! 🚀",
-  "keep_pushing": "استمر هكذا! 💪"
+  "keep_pushing": "استمر هكذا! 💪",
+  "dart": "Dart"
+  ,
+  "continueWithGoogle": "المتابعة عبر Google",
+  "refresh": "تحديث",
+  "pointsGain": "{points} نقطة!",
+  "@pointsGain": {
+    "placeholders": {
+      "points": {}
+    }
+  },
+  "livesLeft": "{count} حياة متبقية",
+  "@livesLeft": {
+    "placeholders": {
+      "count": {}
+    }
+  },
+  "streakBonus": "مكافأة السلسلة: {bonus}",
+  "@streakBonus": {
+    "placeholders": {
+      "bonus": {}
+    }
+  },
+  "streakBonusFire": "🔥 مكافأة السلسلة: {bonus}",
+  "@streakBonusFire": {
+    "placeholders": {
+      "bonus": {}
+    }
+  }
 }

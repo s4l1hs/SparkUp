@@ -125,16 +125,15 @@ class _LoginPageState extends State<LoginPage> with TickerProviderStateMixin {
       }
     } catch (e) {
       debugPrint("Login Error: $e");
-      if (mounted) {
-        final msg = AppLocalizations.of(context)?.loginFailedMessage ??
-            'Login failed. Please try again.';
-        ScaffoldMessenger.of(context).showSnackBar(
-          SnackBar(
-            content: Text(msg),
-            backgroundColor: Theme.of(context).colorScheme.error,
-          ),
-        );
-      }
+      if (!mounted) return;
+      final msg = AppLocalizations.of(context)?.loginFailedMessage ??
+          'Login failed. Please try again.';
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(
+          content: Text(msg),
+          backgroundColor: Theme.of(context).colorScheme.error,
+        ),
+      );
     } finally {
       if (mounted) {
         setState(() => _isSigningIn = false);
@@ -247,17 +246,17 @@ class _LoginPageState extends State<LoginPage> with TickerProviderStateMixin {
                               begin: Alignment.topLeft,
                               end: Alignment.bottomRight,
                               colors: [
-                                theme.colorScheme.primary.withOpacity(0.2),
-                                theme.colorScheme.secondary.withOpacity(0.2),
+                                theme.colorScheme.primary.withAlpha(51),
+                                theme.colorScheme.secondary.withAlpha(51),
                               ],
                             ),
                             border: Border.all(
-                              color: Colors.white.withOpacity(0.2),
+                              color: Colors.white.withAlpha(51),
                               width: 1.5,
                             ),
                             boxShadow: [
                               BoxShadow(
-                                color: theme.colorScheme.primary.withOpacity(0.3),
+                                color: theme.colorScheme.primary.withAlpha(77),
                                 blurRadius: 40,
                                 spreadRadius: 0,
                                 offset: const Offset(0, 10),
@@ -301,7 +300,7 @@ class _LoginPageState extends State<LoginPage> with TickerProviderStateMixin {
                         textAlign: TextAlign.center,
                         style: TextStyle(
                           fontSize: 16.sp,
-                          color: Colors.white.withOpacity(0.7),
+                          color: Colors.white.withAlpha(179),
                           fontWeight: FontWeight.w500,
                           letterSpacing: 0.5,
                         ),
@@ -319,10 +318,10 @@ class _LoginPageState extends State<LoginPage> with TickerProviderStateMixin {
                             padding: EdgeInsets.symmetric(
                                 horizontal: 24.w, vertical: 32.h),
                             decoration: BoxDecoration(
-                              color: Colors.white.withOpacity(0.08),
+                              color: Colors.white.withAlpha(20),
                               borderRadius: BorderRadius.circular(24.r),
                               border: Border.all(
-                                color: Colors.white.withOpacity(0.12),
+                                color: Colors.white.withAlpha(31),
                                 width: 1,
                               ),
                             ),
@@ -356,7 +355,7 @@ class _LoginPageState extends State<LoginPage> with TickerProviderStateMixin {
                                         boxShadow: [
                                           BoxShadow(
                                             color: theme.colorScheme.primary
-                                                .withOpacity(0.4),
+                                                .withAlpha(102),
                                             blurRadius: 16,
                                             offset: const Offset(0, 8),
                                           ),

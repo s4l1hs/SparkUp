@@ -15,21 +15,6 @@ class AppLocalizationsHi extends AppLocalizations {
   String get appSlogan => 'ज्ञान, चुनौती और प्रश्नोत्तरी की आपकी दैनिक खुराक।';
 
   @override
-  String get dailyFact => 'दैनिक तथ्य';
-
-  @override
-  String get source => 'स्रोत';
-
-  @override
-  String get tapToLoadNewChallenge => 'नई चुनौती लोड करने के लिए टैप करें';
-
-  @override
-  String get noChallengeAvailable => 'कोई नई चुनौती उपलब्ध नहीं है।';
-
-  @override
-  String get challengeCouldNotBeLoaded => 'चुनौती लोड नहीं की जा सकी।';
-
-  @override
   String get startNewQuiz => 'ब्रेन क्विज़';
 
   @override
@@ -63,31 +48,16 @@ class AppLocalizationsHi extends AppLocalizations {
   String get falseLabel => 'गलत';
 
   @override
-  String get categoryLabel => 'श्रेणी';
-
-  @override
   String get great => 'महान!';
-
-  @override
-  String get question => 'प्रश्न';
 
   @override
   String get quizCouldNotStart => 'प्रश्नोत्तरी शुरू नहीं हो सकी';
 
   @override
-  String get questionDataIsEmpty => 'प्रश्नोत्तरी डेटा खाली है।';
-
-  @override
   String get navMainMenu => 'विषय';
 
   @override
-  String get navInfo => 'तथ्य';
-
-  @override
   String get navQuiz => 'प्रश्नोत्तरी';
-
-  @override
-  String get navChallenge => 'चुनौती';
 
   @override
   String get navSettings => 'सेटिंग्स';
@@ -97,28 +67,7 @@ class AppLocalizationsHi extends AppLocalizations {
       'साइन-इन विफल रहा। कृपया अपना नेटवर्क जांचें और पुनः प्रयास करें।';
 
   @override
-  String get continueWithGoogle => 'Google के साथ जारी रखें';
-
-  @override
-  String get infoNotFound => 'आपके पसंदीदा विषयों के लिए ज्ञान नहीं मिला।';
-
-  @override
-  String get selectYourInterests => 'अपनी रुचि चुनें';
-
-  @override
-  String get preferencesSaved => 'प्राथमिकताएँ सफलतापूर्वक सहेजी गईं!';
-
-  @override
-  String get preferencesCouldNotBeSaved => 'प्राथमिकताएँ सहेजी नहीं जा सकीं।';
-
-  @override
   String get error => 'त्रुटि';
-
-  @override
-  String get saving => 'सहेजा जा रहा है';
-
-  @override
-  String get settings => 'सेटिंग्स';
 
   @override
   String get general => 'सामान्य';
@@ -142,44 +91,10 @@ class AppLocalizationsHi extends AppLocalizations {
   String get cancel => 'रद्द करें';
 
   @override
-  String get save => 'सहेजें';
-
-  @override
-  String get language => 'हिन्दी';
-
-  @override
-  String get selectLanguage => 'भाषा चुनें';
-
-  @override
-  String get refresh => 'ताज़ा करें';
-
-  @override
-  String get noDataFound => 'कोई डेटा नहीं मिला';
-
-  @override
-  String get navLeaderboard => 'लीडरबोर्ड';
-
-  @override
-  String get deleteAccount => 'खाता हटाएं';
-
-  @override
-  String get deleteAccountConfirmation =>
-      'क्या आप वाकई अपना खाता हटाना चाहते हैं? यह कार्रवाई अपरिवर्तनीय है और आपका स्कोर सहित आपका सारा डेटा स्थायी रूप से नष्ट हो जाएगा।';
-
-  @override
-  String get delete => 'हटाएं';
-
-  @override
   String get signOutConfirmation => 'क्या आप वाकई साइन आउट करना चाहते हैं?';
 
   @override
   String get noDataAvailable => 'कोई डेटा उपलब्ध नहीं है';
-
-  @override
-  String get errorCouldNotSaveChanges => 'बदलाव सेव नहीं किए जा सके';
-
-  @override
-  String get selected => 'चयनित';
 
   @override
   String get yourRank => 'आपकी रैंक';
@@ -201,9 +116,6 @@ class AppLocalizationsHi extends AppLocalizations {
 
   @override
   String get rankIron => 'लोहा';
-
-  @override
-  String get subscriptions => 'सदस्यताएँ';
 
   @override
   String get chooseYourPlan => 'अपनी योजना चुनें';
@@ -248,9 +160,6 @@ class AppLocalizationsHi extends AppLocalizations {
   String get purchaseError => 'खरीद विफल';
 
   @override
-  String get current => 'वर्तमान';
-
-  @override
   String get active => 'सक्रिय';
 
   @override
@@ -260,28 +169,10 @@ class AppLocalizationsHi extends AppLocalizations {
   String get upgrade => 'अपग्रेड करें';
 
   @override
-  String get subscriptionNote =>
-      'यह एक खरीद सिमुलेशन है। इसे वास्तविक भुगतान प्रणाली के साथ एकीकृत किया जाना चाहिए।';
-
-  @override
-  String get limitExceeded => 'सीमा पार हो गई';
-
-  @override
   String get insufficientEnergy => 'पर्याप्त ऊर्जा नहीं ⚡';
 
   @override
   String get streak => 'स्ट्रीक';
-
-  @override
-  String streakBonus(Object streak) {
-    return 'स्ट्रीक बोनस x$streak';
-  }
-
-  @override
-  String get maxStreak => 'अधिकतम स्ट्रीक';
-
-  @override
-  String get streakBroken => 'स्ट्रीक टूटी';
 
   @override
   String get points => 'अंक';
@@ -291,12 +182,6 @@ class AppLocalizationsHi extends AppLocalizations {
 
   @override
   String get pointsPerQuestion => 'प्रत्येक प्रश्न के अंक';
-
-  @override
-  String get errorSubmittingAnswer => 'उत्तर सबमिट करने में त्रुटि।';
-
-  @override
-  String get wrongAnswerResetStreak => 'गलत उत्तर! स्ट्रीक रीसेट हुई।';
 
   @override
   String get correct => 'सही';
@@ -311,49 +196,16 @@ class AppLocalizationsHi extends AppLocalizations {
   String get unstoppable => 'अजेय 🔥';
 
   @override
-  String livesLeft(Object count) {
-    return 'बचे हुए $count जीवन';
-  }
-
-  @override
-  String pointsGain(Object points) {
-    return '+$points अंक';
-  }
-
-  @override
-  String streakBonusFire(Object streak) {
-    return 'स्ट्रीक बोनस x$streak 🔥';
-  }
-
-  @override
   String get errorCouldNotLoadData => 'डेटा लोड नहीं हो सका।';
 
   @override
   String get topPlayers => 'शीर्ष खिलाड़ी';
 
   @override
-  String get yourName => 'आपका नाम';
-
-  @override
-  String get changeLanguage => 'भाषा बदलें';
-
-  @override
   String get memberSince => 'सदस्यता से';
 
   @override
   String get anonymous => 'गुमनाम';
-
-  @override
-  String get help => 'मदद';
-
-  @override
-  String get failedToSaveName => 'नाम सहेजा नहीं जा सका';
-
-  @override
-  String get saved => 'सहेजा गया';
-
-  @override
-  String get enterValidName => 'मान्य नाम दर्ज करें';
 
   @override
   String get failedToSaveNotification => 'सूचना सेटिंग सहेजी नहीं जा सकी';
@@ -363,28 +215,6 @@ class AppLocalizationsHi extends AppLocalizations {
 
   @override
   String get failedToLoadProfile => 'प्रोफ़ाइल लोड नहीं हो सकी';
-
-  @override
-  String get copiedToClipboard => 'क्लिपबोर्ड पर कॉपी किया गया';
-
-  @override
-  String get loading => 'लोड हो रहा है';
-
-  @override
-  String get pleaseWait => 'कृपया प्रतीक्षा करें';
-
-  @override
-  String get challenge => 'चुनौती';
-
-  @override
-  String get hintTapToReload => 'रिलोड करने के लिए टैप करें';
-
-  @override
-  String get loadNewChallenge => 'नई चुनौती लोड करें';
-
-  @override
-  String get challengeIntro =>
-      'अपनी क्षमताओं बढ़ाने के लिए छोटे रुचिकर चुनौतियाँ प्राप्त करें।';
 
   @override
   String get leaderboard => 'लीडरबोर्ड';
@@ -472,4 +302,33 @@ class AppLocalizationsHi extends AppLocalizations {
 
   @override
   String get keep_pushing => 'ऐसे ही जारी रखें! 💪';
+
+  @override
+  String get dart => 'Dart';
+
+  @override
+  String get continueWithGoogle => 'Google के साथ जारी रखें';
+
+  @override
+  String get refresh => 'ताज़ा करें';
+
+  @override
+  String pointsGain(Object points) {
+    return '$points अंक प्राप्त!';
+  }
+
+  @override
+  String livesLeft(Object count) {
+    return '$count जीवन शेष';
+  }
+
+  @override
+  String streakBonus(Object bonus) {
+    return 'स्ट्रीक बोनस: $bonus';
+  }
+
+  @override
+  String streakBonusFire(Object bonus) {
+    return '🔥 स्ट्रीक बोनस: $bonus';
+  }
 }

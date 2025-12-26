@@ -15,21 +15,6 @@ class AppLocalizationsEs extends AppLocalizations {
   String get appSlogan => 'Tu dosis diaria de conocimiento, desafío y quiz.';
 
   @override
-  String get dailyFact => 'Hecho diario';
-
-  @override
-  String get source => 'Fuente';
-
-  @override
-  String get tapToLoadNewChallenge => 'Toca para cargar un nuevo desafío';
-
-  @override
-  String get noChallengeAvailable => 'No hay un nuevo desafío disponible.';
-
-  @override
-  String get challengeCouldNotBeLoaded => 'No se pudo cargar el desafío.';
-
-  @override
   String get startNewQuiz => 'Quiz Cerebral';
 
   @override
@@ -63,31 +48,16 @@ class AppLocalizationsEs extends AppLocalizations {
   String get falseLabel => 'Falso';
 
   @override
-  String get categoryLabel => 'Categoría';
-
-  @override
   String get great => '¡Genial!';
-
-  @override
-  String get question => 'Pregunta';
 
   @override
   String get quizCouldNotStart => 'No se pudo iniciar el quiz';
 
   @override
-  String get questionDataIsEmpty => 'Los datos del quiz están vacíos.';
-
-  @override
   String get navMainMenu => 'Temas';
 
   @override
-  String get navInfo => 'Hecho';
-
-  @override
   String get navQuiz => 'Quiz';
-
-  @override
-  String get navChallenge => 'Desafío';
 
   @override
   String get navSettings => 'Configuración';
@@ -97,30 +67,7 @@ class AppLocalizationsEs extends AppLocalizations {
       'Fallo al iniciar sesión. Por favor, comprueba tu red y vuelve a intentarlo.';
 
   @override
-  String get continueWithGoogle => 'Continuar con Google';
-
-  @override
-  String get infoNotFound =>
-      'No se encontraron conocimientos para tus temas preferidos.';
-
-  @override
-  String get selectYourInterests => 'Selecciona tus intereses';
-
-  @override
-  String get preferencesSaved => '¡Preferencias guardadas con éxito!';
-
-  @override
-  String get preferencesCouldNotBeSaved =>
-      'No se pudieron guardar las preferencias.';
-
-  @override
   String get error => 'Error';
-
-  @override
-  String get saving => 'Guardando';
-
-  @override
-  String get settings => 'Configuración';
 
   @override
   String get general => 'General';
@@ -144,45 +91,11 @@ class AppLocalizationsEs extends AppLocalizations {
   String get cancel => 'Cancelar';
 
   @override
-  String get save => 'Guardar';
-
-  @override
-  String get language => 'Español';
-
-  @override
-  String get selectLanguage => 'Seleccionar idioma';
-
-  @override
-  String get refresh => 'Actualizar';
-
-  @override
-  String get noDataFound => 'No se encontraron datos';
-
-  @override
-  String get navLeaderboard => 'Clasificación';
-
-  @override
-  String get deleteAccount => 'Eliminar cuenta';
-
-  @override
-  String get deleteAccountConfirmation =>
-      '¿Estás seguro de que quieres eliminar tu cuenta? Esta acción es irreversible y todos tus datos, incluida tu puntuación, se perderán permanentemente.';
-
-  @override
-  String get delete => 'Eliminar';
-
-  @override
   String get signOutConfirmation =>
       '¿Estás seguro de que quieres cerrar sesión?';
 
   @override
   String get noDataAvailable => 'No hay datos disponibles';
-
-  @override
-  String get errorCouldNotSaveChanges => 'No se pudieron guardar los cambios';
-
-  @override
-  String get selected => 'seleccionado';
 
   @override
   String get yourRank => 'Tu Rango';
@@ -204,9 +117,6 @@ class AppLocalizationsEs extends AppLocalizations {
 
   @override
   String get rankIron => 'Hierro';
-
-  @override
-  String get subscriptions => 'Suscripciones';
 
   @override
   String get chooseYourPlan => 'Elija su plan';
@@ -251,9 +161,6 @@ class AppLocalizationsEs extends AppLocalizations {
   String get purchaseError => 'Compra fallida';
 
   @override
-  String get current => 'Actual';
-
-  @override
   String get active => 'Activo';
 
   @override
@@ -263,28 +170,10 @@ class AppLocalizationsEs extends AppLocalizations {
   String get upgrade => 'Actualizar';
 
   @override
-  String get subscriptionNote =>
-      'Esto es una simulación de compra. Debe integrarse con un sistema de pago real.';
-
-  @override
-  String get limitExceeded => 'Límite Excedido';
-
-  @override
   String get insufficientEnergy => 'Energía insuficiente ⚡';
 
   @override
   String get streak => 'Racha';
-
-  @override
-  String streakBonus(Object streak) {
-    return 'Bono de racha x$streak';
-  }
-
-  @override
-  String get maxStreak => 'Racha Máx.';
-
-  @override
-  String get streakBroken => 'Racha Rota';
 
   @override
   String get points => 'Puntos';
@@ -294,13 +183,6 @@ class AppLocalizationsEs extends AppLocalizations {
 
   @override
   String get pointsPerQuestion => 'puntos por pregunta';
-
-  @override
-  String get errorSubmittingAnswer => 'Error al enviar la respuesta.';
-
-  @override
-  String get wrongAnswerResetStreak =>
-      'Respuesta incorrecta! Racha reiniciada.';
 
   @override
   String get correct => 'Correcto';
@@ -315,49 +197,16 @@ class AppLocalizationsEs extends AppLocalizations {
   String get unstoppable => 'IMPARABLE 🔥';
 
   @override
-  String livesLeft(Object count) {
-    return 'Quedan $count vidas';
-  }
-
-  @override
-  String pointsGain(Object points) {
-    return '+$points Puntos';
-  }
-
-  @override
-  String streakBonusFire(Object streak) {
-    return 'Bono de racha x$streak 🔥';
-  }
-
-  @override
   String get errorCouldNotLoadData => 'No se pudieron cargar los datos.';
 
   @override
   String get topPlayers => 'Mejores jugadores';
 
   @override
-  String get yourName => 'Tu nombre';
-
-  @override
-  String get changeLanguage => 'Cambiar idioma';
-
-  @override
   String get memberSince => 'Miembro desde';
 
   @override
   String get anonymous => 'Anónimo';
-
-  @override
-  String get help => 'Ayuda';
-
-  @override
-  String get failedToSaveName => 'No se pudo guardar el nombre';
-
-  @override
-  String get saved => 'Guardado';
-
-  @override
-  String get enterValidName => 'Introduce un nombre válido';
 
   @override
   String get failedToSaveNotification => 'No se pudo guardar la notificación';
@@ -367,28 +216,6 @@ class AppLocalizationsEs extends AppLocalizations {
 
   @override
   String get failedToLoadProfile => 'Error al cargar el perfil';
-
-  @override
-  String get copiedToClipboard => 'Copiado al portapapeles';
-
-  @override
-  String get loading => 'Cargando';
-
-  @override
-  String get pleaseWait => 'Espere por favor';
-
-  @override
-  String get challenge => 'Desafío';
-
-  @override
-  String get hintTapToReload => 'Toca para recargar';
-
-  @override
-  String get loadNewChallenge => 'Cargar nuevo desafío';
-
-  @override
-  String get challengeIntro =>
-      'Recibe desafíos cortos y atractivos para mejorar tus habilidades.';
 
   @override
   String get leaderboard => 'Clasificación';
@@ -476,4 +303,33 @@ class AppLocalizationsEs extends AppLocalizations {
 
   @override
   String get keep_pushing => '¡Sigue así! 💪';
+
+  @override
+  String get dart => 'Dart';
+
+  @override
+  String get continueWithGoogle => 'Continuar con Google';
+
+  @override
+  String get refresh => 'Actualizar';
+
+  @override
+  String pointsGain(Object points) {
+    return '¡$points puntos!';
+  }
+
+  @override
+  String livesLeft(Object count) {
+    return '$count vidas restantes';
+  }
+
+  @override
+  String streakBonus(Object bonus) {
+    return 'Bono de racha: $bonus';
+  }
+
+  @override
+  String streakBonusFire(Object bonus) {
+    return '🔥 Bono de racha: $bonus';
+  }
 }

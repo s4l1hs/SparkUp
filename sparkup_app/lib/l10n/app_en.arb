@@ -1,14 +1,7 @@
 {
   "@@locale": "en",
-  
   "appName": "Spark Up",
   "appSlogan": "Your daily dose of knowledge, challenge, and quiz.",
-  "dailyFact": "Daily Fact",
-  "source": "Source",
-  "tapToLoadNewChallenge": "Tap to load a new challenge",
-  "noChallengeAvailable": "No new challenge available.",
-  "challengeCouldNotBeLoaded": "Challenge could not be loaded.",
-  
   "startNewQuiz": "Brain Quiz",
   "startNewQuizSubtitle": "Show your genius 🔥",
   "startWithOneBolt": "Start with 1 ⚡",
@@ -20,28 +13,13 @@
   "startTrueFalseSubtitle": "Think fast and win 🔥",
   "trueLabel": "True",
   "falseLabel": "False",
-  "categoryLabel": "Category",
   "great": "Great!",
-  "question": "Question",
   "quizCouldNotStart": "Quiz could not start",
-  "questionDataIsEmpty": "Question data is empty.",
-
   "navMainMenu": "Main Menu",
-  "navInfo": "Fact",
   "navQuiz": "Quiz",
-  "navChallenge": "Challenge",
   "navSettings": "Settings",
-
   "loginFailedMessage": "Sign-in failed. Please check your network and try again.",
-  "continueWithGoogle": "Continue with Google",
-  "infoNotFound": "Knowledge not found for your preferred topics.",
-  "selectYourInterests": "Select Your Interests",
-  "preferencesSaved": "Preferences saved successfully!",
-  "preferencesCouldNotBeSaved": "Preferences could not be saved.",
   "error": "Error",
-  "saving": "Saving",
-  
-  "settings": "Settings",
   "general": "General",
   "applicationLanguage": "Application Language",
   "notifications": "Notifications",
@@ -49,21 +27,8 @@
   "account": "Account",
   "signOut": "Sign Out",
   "cancel": "Cancel",
-  "save": "Save",
-  "language": "English",
-  "selectLanguage": "Select Language",
-  "refresh": "Refresh",
-
-  
-  "noDataFound": "No data found",
-  "navLeaderboard": "Leaderboard",
-  "deleteAccount": "Delete Account",
-  "deleteAccountConfirmation": "Are you sure you want to delete your account? This action is irreversible and all your data, including your score, will be permanently lost.",
-  "delete": "Delete",
   "signOutConfirmation": "Are you sure you want to sign out?",
   "noDataAvailable": "No data available",
-  "errorCouldNotSaveChanges": "Could not save changes",
-  "selected": "selected",
   "yourRank": "Your Rank",
   "rankMaster": "Master",
   "rankDiamond": "Diamond",
@@ -71,7 +36,6 @@
   "rankSilver": "Silver",
   "rankBronze": "Bronze",
   "rankIron": "Iron",
-  "subscriptions": "Subscriptions",
   "chooseYourPlan": "Choose Your Plan",
   "planFree": "Free Plan",
   "planPro": "Pro Plan",
@@ -86,54 +50,27 @@
   "unlimitedChallenges": "Unlimited Challenges",
   "purchaseSuccess": "Subscription successfully updated.",
   "purchaseError": "Purchase failed",
-  "current": "Current",
   "active": "Active",
   "freeTrial": "Free Tier",
   "upgrade": "Upgrade",
-  "subscriptionNote": "This is a purchase simulation. Must be integrated with a real payment system.",
-  "limitExceeded": "Limit Exceeded",
   "insufficientEnergy": "Insufficient energy ⚡",
   "streak": "Streak",
-  "streakBonus": "Streak Bonus",
-  "maxStreak": "Max Streak",
-  "streakBroken": "Streak Broken",
   "points": "Points",
   "pointsEarned": "Points Earned",
   "pointsPerQuestion": "points per question",
-  "errorSubmittingAnswer": "Error submitting answer.",
-  "wrongAnswerResetStreak": "Wrong answer! Streak reset.",
   "correct": "Correct",
   "incorrect": "Incorrect",
   "secondsSuffix": "s",
   "unstoppable": "UNSTOPPABLE 🔥",
-  "livesLeft": "{count} lives left",
-  "pointsGain": "+{points} Points",
-  "streakBonus": "Streak Bonus x{streak}",
-  "streakBonusFire": "Streak Bonus x{streak} 🔥",
   "errorCouldNotLoadData": "Could not load data.",
   "topPlayers": "Top Players",
-
-  "yourName": "Your name",
-  "changeLanguage": "Change Language",
   "memberSince": "Member since",
   "anonymous": "Anonymous",
-  "help": "Help",
-  "failedToSaveName": "Failed to save name",
-  "saved": "Saved",
-  "enterValidName": "Enter a valid name",
   "failedToSaveNotification": "Failed to save notification setting",
   "failedToSaveLanguage": "Failed to save language",
   "failedToLoadProfile": "Failed to load profile",
-  "copiedToClipboard": "Copied to clipboard",
-  "loading": "Loading",
-  "pleaseWait": "Please wait",
-  "challenge": "Challenge",
-  "hintTapToReload": "Tap to reload",
-  "loadNewChallenge": "Load new challenge",
-  "challengeIntro": "Get short, engaging creative challenges to boost your skills.",
   "leaderboard": "Leaderboard",
-  "limited": "Limited"
-,
+  "limited": "Limited",
   "category_history": "History",
   "category_science": "Science",
   "category_art": "Art",
@@ -152,8 +89,7 @@
   "category_architecture": "Architecture",
   "category_video_games": "Video Games",
   "category_general_culture": "General Culture",
-  "category_fun_facts": "Fun Facts"
-  ,
+  "category_fun_facts": "Fun Facts",
   "performance_title": "Performance",
   "performance_subtitle": "Track your progress and improve.",
   "overall_score": "Overall Score",
@@ -161,5 +97,33 @@
   "no_data_available_yet": "No data available yet",
   "correct_label": "Correct",
   "excellent_job": "Excellent Job! 🚀",
-  "keep_pushing": "Keep Pushing! 💪"
+  "keep_pushing": "Keep Pushing! 💪",
+  "dart": "Dart"
+  ,
+  "continueWithGoogle": "Continue with Google",
+  "refresh": "Refresh",
+  "pointsGain": "{points} points!",
+  "@pointsGain": {
+    "placeholders": {
+      "points": {}
+    }
+  },
+  "livesLeft": "{count} lives left",
+  "@livesLeft": {
+    "placeholders": {
+      "count": {}
+    }
+  },
+  "streakBonus": "Streak bonus: {bonus}",
+  "@streakBonus": {
+    "placeholders": {
+      "bonus": {}
+    }
+  },
+  "streakBonusFire": "🔥 Streak bonus: {bonus}",
+  "@streakBonusFire": {
+    "placeholders": {
+      "bonus": {}
+    }
+  }
 }

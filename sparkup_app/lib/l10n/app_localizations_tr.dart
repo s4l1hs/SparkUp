@@ -15,22 +15,6 @@ class AppLocalizationsTr extends AppLocalizations {
   String get appSlogan => 'Günlük bilgi, meydan okuma ve sınav dozunuz.';
 
   @override
-  String get dailyFact => 'Günün Bilgisi';
-
-  @override
-  String get source => 'Kaynak';
-
-  @override
-  String get tapToLoadNewChallenge =>
-      'Yeni bir meydan okuma yüklemek için dokunun';
-
-  @override
-  String get noChallengeAvailable => 'Yeni meydan okuma mevcut değil.';
-
-  @override
-  String get challengeCouldNotBeLoaded => 'Meydan okuma yüklenemedi.';
-
-  @override
   String get startNewQuiz => 'Beyin Testi';
 
   @override
@@ -64,31 +48,16 @@ class AppLocalizationsTr extends AppLocalizations {
   String get falseLabel => 'Yanlış';
 
   @override
-  String get categoryLabel => 'Kategori';
-
-  @override
   String get great => 'Harika!';
-
-  @override
-  String get question => 'Soru';
 
   @override
   String get quizCouldNotStart => 'Sınav başlatılamadı';
 
   @override
-  String get questionDataIsEmpty => 'Sınav verisi boş.';
-
-  @override
   String get navMainMenu => 'Konular';
 
   @override
-  String get navInfo => 'Bilgi';
-
-  @override
   String get navQuiz => 'Sınav';
-
-  @override
-  String get navChallenge => 'Meydan Okuma';
 
   @override
   String get navSettings => 'Ayarlar';
@@ -98,28 +67,7 @@ class AppLocalizationsTr extends AppLocalizations {
       'Giriş başarısız oldu. Lütfen ağ bağlantınızı kontrol edin ve tekrar deneyin.';
 
   @override
-  String get continueWithGoogle => 'Google ile Devam Et';
-
-  @override
-  String get infoNotFound => 'Tercih ettiğiniz konular için bilgi bulunamadı.';
-
-  @override
-  String get selectYourInterests => 'İlgi Alanlarınızı Seçin';
-
-  @override
-  String get preferencesSaved => 'Tercihler başarıyla kaydedildi!';
-
-  @override
-  String get preferencesCouldNotBeSaved => 'Tercihler kaydedilemedi.';
-
-  @override
   String get error => 'Hata';
-
-  @override
-  String get saving => 'Kaydediliyor';
-
-  @override
-  String get settings => 'Ayarlar';
 
   @override
   String get general => 'Genel';
@@ -143,44 +91,10 @@ class AppLocalizationsTr extends AppLocalizations {
   String get cancel => 'İptal';
 
   @override
-  String get save => 'Kaydet';
-
-  @override
-  String get language => 'Türkçe';
-
-  @override
-  String get selectLanguage => 'Dil Seçin';
-
-  @override
-  String get refresh => 'Yenile';
-
-  @override
-  String get noDataFound => 'Veri bulunamadı';
-
-  @override
-  String get navLeaderboard => 'Liderlik Tablosu';
-
-  @override
-  String get deleteAccount => 'Hesabı Sil';
-
-  @override
-  String get deleteAccountConfirmation =>
-      'Hesabınızı silmek istediğinizden emin misiniz? Bu işlem geri alınamaz ve puanınız dahil tüm verileriniz kalıcı olarak kaybolacaktır.';
-
-  @override
-  String get delete => 'Sil';
-
-  @override
   String get signOutConfirmation => 'Çıkış yapmak istediğinizden emin misiniz?';
 
   @override
   String get noDataAvailable => 'Veri mevcut değil';
-
-  @override
-  String get errorCouldNotSaveChanges => 'Değişiklikler kaydedilemedi';
-
-  @override
-  String get selected => 'seçili';
 
   @override
   String get yourRank => 'Sıralaman';
@@ -202,9 +116,6 @@ class AppLocalizationsTr extends AppLocalizations {
 
   @override
   String get rankIron => 'Demir';
-
-  @override
-  String get subscriptions => 'Abonelikler';
 
   @override
   String get chooseYourPlan => 'Size Uygun Planı Seçin';
@@ -249,9 +160,6 @@ class AppLocalizationsTr extends AppLocalizations {
   String get purchaseError => 'Satın alma başarısız oldu';
 
   @override
-  String get current => 'Aktif';
-
-  @override
   String get active => 'Aktif';
 
   @override
@@ -261,28 +169,10 @@ class AppLocalizationsTr extends AppLocalizations {
   String get upgrade => 'Yükselt';
 
   @override
-  String get subscriptionNote =>
-      'Satın alma simülasyonudur. Gerçek ödeme sistemi ile entegrasyon yapılmalıdır.';
-
-  @override
-  String get limitExceeded => 'Limit Aşıldı';
-
-  @override
   String get insufficientEnergy => 'Yetersiz enerji ⚡';
 
   @override
   String get streak => 'Seri';
-
-  @override
-  String streakBonus(Object streak) {
-    return 'Seri Bonusu x$streak';
-  }
-
-  @override
-  String get maxStreak => 'Maksimum Seri';
-
-  @override
-  String get streakBroken => 'Seri Bozuldu';
 
   @override
   String get points => 'Puan';
@@ -292,12 +182,6 @@ class AppLocalizationsTr extends AppLocalizations {
 
   @override
   String get pointsPerQuestion => 'soru başına puan';
-
-  @override
-  String get errorSubmittingAnswer => 'Cevap gönderilirken hata oluştu.';
-
-  @override
-  String get wrongAnswerResetStreak => 'Yanlış cevap! Seri sıfırlandı.';
 
   @override
   String get correct => 'Doğru';
@@ -312,49 +196,16 @@ class AppLocalizationsTr extends AppLocalizations {
   String get unstoppable => 'DURDURULAMAZ 🔥';
 
   @override
-  String livesLeft(Object count) {
-    return '$count can kaldı';
-  }
-
-  @override
-  String pointsGain(Object points) {
-    return '+$points Puan';
-  }
-
-  @override
-  String streakBonusFire(Object streak) {
-    return 'Seri Bonusu x$streak 🔥';
-  }
-
-  @override
   String get errorCouldNotLoadData => 'Veriler yüklenemedi.';
 
   @override
   String get topPlayers => 'En İyi Oyuncular';
 
   @override
-  String get yourName => 'Adınız';
-
-  @override
-  String get changeLanguage => 'Dili Değiştir';
-
-  @override
   String get memberSince => 'Üyelik tarihi';
 
   @override
   String get anonymous => 'Anonim';
-
-  @override
-  String get help => 'Yardım';
-
-  @override
-  String get failedToSaveName => 'İsim kaydedilemedi';
-
-  @override
-  String get saved => 'Kaydedildi';
-
-  @override
-  String get enterValidName => 'Geçerli bir isim girin';
 
   @override
   String get failedToSaveNotification => 'Bildirim ayarı kaydedilemedi';
@@ -364,28 +215,6 @@ class AppLocalizationsTr extends AppLocalizations {
 
   @override
   String get failedToLoadProfile => 'Profil yüklenemedi';
-
-  @override
-  String get copiedToClipboard => 'Panoya kopyalandı';
-
-  @override
-  String get loading => 'Yükleniyor';
-
-  @override
-  String get pleaseWait => 'Lütfen bekleyin';
-
-  @override
-  String get challenge => 'Meydan Okuma';
-
-  @override
-  String get hintTapToReload => 'Yenilemek için dokunun';
-
-  @override
-  String get loadNewChallenge => 'Yeni meydan okuma yükle';
-
-  @override
-  String get challengeIntro =>
-      'Becerilerinizi geliştirecek kısa ve ilgi çekici meydan okumalar alın.';
 
   @override
   String get leaderboard => 'Liderlik Tablosu';
@@ -473,4 +302,33 @@ class AppLocalizationsTr extends AppLocalizations {
 
   @override
   String get keep_pushing => 'Devam Et! 💪';
+
+  @override
+  String get dart => 'Dart';
+
+  @override
+  String get continueWithGoogle => 'Google ile devam et';
+
+  @override
+  String get refresh => 'Yenile';
+
+  @override
+  String pointsGain(Object points) {
+    return '$points puan kazandın!';
+  }
+
+  @override
+  String livesLeft(Object count) {
+    return '$count can kaldı';
+  }
+
+  @override
+  String streakBonus(Object bonus) {
+    return 'Seri bonusu: $bonus';
+  }
+
+  @override
+  String streakBonusFire(Object bonus) {
+    return '🔥 Seri bonusu: $bonus';
+  }
 }

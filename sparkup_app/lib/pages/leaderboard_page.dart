@@ -275,8 +275,9 @@ class _LeaderboardPageState extends State<LeaderboardPage>
         entry.email == fbEmail) {
       return fbName;
     }
-    if (entry.username != null && entry.username!.trim().isNotEmpty)
+    if (entry.username != null && entry.username!.trim().isNotEmpty) {
       return entry.username!;
+    }
     return _maskEmail(entry.email);
   }
 
@@ -965,11 +966,13 @@ class _HeaderRow extends StatelessWidget {
     int maxEnergy = 5;
     if (profile != null) {
       final level = profile.subscriptionLevel.toLowerCase();
-      if (level == 'free')
+      if (level == 'free') {
         maxEnergy = 3;
-      else if (level == 'pro')
+      } else if (level == 'pro') {
         maxEnergy = 5;
-      else if (level == 'ultra') maxEnergy = 5;
+      } else if (level == 'ultra') {
+        maxEnergy = 5;
+      }
     }
     final currentEnergy = profile?.remainingEnergy ?? 0;
 
