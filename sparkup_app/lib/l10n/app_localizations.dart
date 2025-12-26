@@ -161,7 +161,7 @@ abstract class AppLocalizations {
   /// No description provided for @startNewQuiz.
   ///
   /// In en, this message translates to:
-  /// **'Start New Quiz'**
+  /// **'Brain Quiz'**
   String get startNewQuiz;
 
   /// No description provided for @startWithOneBolt.

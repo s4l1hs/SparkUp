@@ -30,7 +30,7 @@ class AppLocalizationsAr extends AppLocalizations {
   String get challengeCouldNotBeLoaded => 'تعذر تحميل التحدي.';
 
   @override
-  String get startNewQuiz => 'ابدأ اختباراً جديداً';
+  String get startNewQuiz => 'اختبار الدماغ';
 
   @override
   String get startWithOneBolt => 'ابدأ بـ 1 ⚡';

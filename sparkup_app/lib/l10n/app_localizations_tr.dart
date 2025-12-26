@@ -31,7 +31,7 @@ class AppLocalizationsTr extends AppLocalizations {
   String get challengeCouldNotBeLoaded => 'Meydan okuma yüklenemedi.';
 
   @override
-  String get startNewQuiz => 'Yeni Sınav Başlat';
+  String get startNewQuiz => 'Beyin Testi';
 
   @override
   String get startWithOneBolt => '1 ⚡ ile Başla';

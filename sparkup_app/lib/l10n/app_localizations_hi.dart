@@ -30,7 +30,7 @@ class AppLocalizationsHi extends AppLocalizations {
   String get challengeCouldNotBeLoaded => 'चुनौती लोड नहीं की जा सकी।';
 
   @override
-  String get startNewQuiz => 'नई प्रश्नोत्तरी शुरू करें';
+  String get startNewQuiz => 'ब्रेन क्विज़';
 
   @override
   String get startWithOneBolt => '1 ⚡ से शुरू करें';

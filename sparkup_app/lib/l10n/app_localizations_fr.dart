@@ -31,7 +31,7 @@ class AppLocalizationsFr extends AppLocalizations {
   String get challengeCouldNotBeLoaded => 'Le défi n\'a pas pu être chargé.';
 
   @override
-  String get startNewQuiz => 'Commencer un nouveau quiz';
+  String get startNewQuiz => 'Quiz Cérébral';
 
   @override
   String get startWithOneBolt => 'Commencer avec 1 ⚡';

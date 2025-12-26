@@ -30,7 +30,7 @@ class AppLocalizationsZh extends AppLocalizations {
   String get challengeCouldNotBeLoaded => '挑战加载失败。';
 
   @override
-  String get startNewQuiz => '开始新测验';
+  String get startNewQuiz => '脑力测验';
 
   @override
   String get startWithOneBolt => '用 1 ⚡ 开始';

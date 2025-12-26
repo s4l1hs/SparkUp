@@ -943,7 +943,13 @@ class _QuizPageState extends State<QuizPage> with TickerProviderStateMixin {
                               child: Row(
                                 mainAxisAlignment: MainAxisAlignment.spaceAround,
                                 children: [
-                                  _buildDashboardItem(Icons.bolt_rounded, "1 Energy", Colors.orangeAccent),
+                                  // Brain icon only (no text)
+                                  Column(
+                                    mainAxisSize: MainAxisSize.min,
+                                    children: [
+                                      Icon(Icons.psychology, color: theme.colorScheme.primary, size: 22.sp),
+                                    ],
+                                  ),
                                   Container(width: 1, height: 24.h, color: Colors.white12),
                                   _buildDashboardItem(Icons.timer_outlined, "60s", theme.colorScheme.tertiary),
                                   Container(width: 1, height: 24.h, color: Colors.white12),

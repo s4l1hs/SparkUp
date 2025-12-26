@@ -30,7 +30,7 @@ class AppLocalizationsRu extends AppLocalizations {
   String get challengeCouldNotBeLoaded => 'Не удалось загрузить вызов.';
 
   @override
-  String get startNewQuiz => 'Начать новую викторину';
+  String get startNewQuiz => 'Мозговой квиз';
 
   @override
   String get startWithOneBolt => 'Начать за 1 ⚡';

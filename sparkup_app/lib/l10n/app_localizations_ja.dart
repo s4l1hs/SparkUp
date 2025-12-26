@@ -30,7 +30,7 @@ class AppLocalizationsJa extends AppLocalizations {
   String get challengeCouldNotBeLoaded => 'チャレンジをロードできませんでした。';
 
   @override
-  String get startNewQuiz => '新しいクイズを開始';
+  String get startNewQuiz => 'ブレインクイズ';
 
   @override
   String get startWithOneBolt => '1 ⚡で始める';
