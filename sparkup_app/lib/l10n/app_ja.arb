@@ -97,6 +97,7 @@
   "wrongAnswerResetStreak": "不正解！連勝がリセットされました。",
   "correct": "正解",
   "incorrect": "不正解",
+  "secondsSuffix": "秒",
   "unstoppable": "無敵 🔥",
   "livesLeft": "残り {count} ライフ",
   "pointsGain": "+{points} ポイント",

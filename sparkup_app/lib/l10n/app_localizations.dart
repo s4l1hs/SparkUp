@@ -698,6 +698,12 @@ abstract class AppLocalizations {
   /// **'Incorrect'**
   String get incorrect;
 
+  /// No description provided for @secondsSuffix.
+  ///
+  /// In en, this message translates to:
+  /// **'s'**
+  String get secondsSuffix;
+
   /// No description provided for @unstoppable.
   ///
   /// In en, this message translates to:

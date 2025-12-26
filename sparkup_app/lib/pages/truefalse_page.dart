@@ -727,7 +727,7 @@ class _TrueFalsePageState extends State<TrueFalsePage>
                                     ],
                                   ),
                                   Container(width: 1, height: 24.h, color: Colors.white12),
-                                  _buildDashboardItem(Icons.timer_outlined, "${sessionSec}s", Colors.greenAccent),
+                                  _buildDashboardItem(Icons.timer_outlined, "${sessionSec}${loc?.secondsSuffix ?? 's'}", Colors.greenAccent),
                                   Container(width: 1, height: 24.h, color: Colors.white12),
                                   
                                   // --- YENİ: YAZISIZ CAN GÖSTERGESİ ---
@@ -814,7 +814,7 @@ class _TrueFalsePageState extends State<TrueFalsePage>
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              _buildInfoChip(Icons.timer, '$_timeLeft s',
+                _buildInfoChip(Icons.timer, '$_timeLeft${AppLocalizations.of(context)?.secondsSuffix ?? 's'}',
                   _timeLeft < 10 ? Colors.red : theme.colorScheme.primary),
               Flexible(
                 child: Center(

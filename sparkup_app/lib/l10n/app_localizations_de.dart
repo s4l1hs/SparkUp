@@ -312,6 +312,9 @@ class AppLocalizationsDe extends AppLocalizations {
   String get incorrect => 'Falsch';
 
   @override
+  String get secondsSuffix => 's';
+
+  @override
   String get unstoppable => 'UNAUFHALTSAM 🔥';
 
   @override

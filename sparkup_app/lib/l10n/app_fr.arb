@@ -103,6 +103,7 @@
   "wrongAnswerResetStreak": "Mauvaise réponse ! Série réinitialisée.",
   "correct": "Correct",
   "incorrect": "Incorrect",
+  "secondsSuffix": "s",
   "unstoppable": "INARRÊTABLE 🔥",
   "livesLeft": "Il reste {count} vies",
   "pointsGain": "+{points} Points",

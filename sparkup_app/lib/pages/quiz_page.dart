@@ -951,7 +951,10 @@ class _QuizPageState extends State<QuizPage> with TickerProviderStateMixin {
                                     ],
                                   ),
                                   Container(width: 1, height: 24.h, color: Colors.white12),
-                                  _buildDashboardItem(Icons.timer_outlined, "60s", theme.colorScheme.tertiary),
+                                    _buildDashboardItem(
+                                      Icons.timer_outlined,
+                                      '${userProv.profile?.sessionSeconds ?? 60}${localizations?.secondsSuffix ?? 's'}',
+                                      theme.colorScheme.tertiary),
                                   Container(width: 1, height: 24.h, color: Colors.white12),
                                   
                                   // --- YENİ: YAZISIZ CAN GÖSTERGESİ ---
@@ -1065,11 +1068,11 @@ class _QuizPageState extends State<QuizPage> with TickerProviderStateMixin {
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     _buildInfoChip(
-                        Icons.timer,
-                        '$_timeLeft s',
-                        _timeLeft < 10
-                            ? Colors.red
-                            : theme.colorScheme.primary),
+                      Icons.timer,
+                      '$_timeLeft${localizations?.secondsSuffix ?? 's'}',
+                      _timeLeft < 10
+                        ? Colors.red
+                        : theme.colorScheme.primary),
                     Flexible(
                       child: Center(
                         child: Text(

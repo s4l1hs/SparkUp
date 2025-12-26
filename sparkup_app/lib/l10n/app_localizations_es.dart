@@ -309,6 +309,9 @@ class AppLocalizationsEs extends AppLocalizations {
   String get incorrect => 'Incorrecto';
 
   @override
+  String get secondsSuffix => 's';
+
+  @override
   String get unstoppable => 'IMPARABLE 🔥';
 
   @override

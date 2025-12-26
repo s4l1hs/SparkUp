@@ -98,6 +98,7 @@
   "wrongAnswerResetStreak": "إجابة خاطئة! تمت إعادة تعيين السلسلة.",
   "correct": "صحيح",
   "incorrect": "غير صحيح",
+  "secondsSuffix": "ث",
   "unstoppable": "لا يمكن إيقافه 🔥",
   "livesLeft": "تبقى {count} حياة",
   "pointsGain": "+{points} نقاط",

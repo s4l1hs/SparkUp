@@ -103,6 +103,7 @@
   "wrongAnswerResetStreak": "回答错误！连击已重置。",
   "correct": "正确",
   "incorrect": "错误",
+  "secondsSuffix": "秒",
   "unstoppable": "不可阻挡 🔥",
   "livesLeft": "还剩 {count} 次生命",
   "pointsGain": "+{points} 分",

@@ -306,6 +306,9 @@ class AppLocalizationsTr extends AppLocalizations {
   String get incorrect => 'Yanlış';
 
   @override
+  String get secondsSuffix => 'sn';
+
+  @override
   String get unstoppable => 'DURDURULAMAZ 🔥';
 
   @override

@@ -303,6 +303,9 @@ class AppLocalizationsJa extends AppLocalizations {
   String get incorrect => '不正解';
 
   @override
+  String get secondsSuffix => '秒';
+
+  @override
   String get unstoppable => '無敵 🔥';
 
   @override

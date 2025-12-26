@@ -303,6 +303,9 @@ class AppLocalizationsZh extends AppLocalizations {
   String get incorrect => '错误';
 
   @override
+  String get secondsSuffix => '秒';
+
+  @override
   String get unstoppable => '不可阻挡 🔥';
 
   @override

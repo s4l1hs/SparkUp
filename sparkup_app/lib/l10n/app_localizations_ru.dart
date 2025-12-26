@@ -305,6 +305,9 @@ class AppLocalizationsRu extends AppLocalizations {
   String get incorrect => 'Неверно';
 
   @override
+  String get secondsSuffix => 'с';
+
+  @override
   String get unstoppable => 'НЕОСТАНАВЛИМЫЙ 🔥';
 
   @override

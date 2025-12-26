@@ -305,6 +305,9 @@ class AppLocalizationsHi extends AppLocalizations {
   String get incorrect => 'गलत';
 
   @override
+  String get secondsSuffix => 'से';
+
+  @override
   String get unstoppable => 'अजेय 🔥';
 
   @override

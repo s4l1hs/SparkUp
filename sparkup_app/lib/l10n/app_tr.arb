@@ -97,6 +97,7 @@
   "wrongAnswerResetStreak": "Yanlış cevap! Seri sıfırlandı.",
   "correct": "Doğru",
   "incorrect": "Yanlış",
+  "secondsSuffix": "sn",
   "unstoppable": "DURDURULAMAZ 🔥",
   "livesLeft": "{count} can kaldı",
   "pointsGain": "+{points} Puan",

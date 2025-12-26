@@ -103,6 +103,7 @@
   "wrongAnswerResetStreak": "Falsche Antwort! Serie zurückgesetzt.",
   "correct": "Richtig",
   "incorrect": "Falsch",
+  "secondsSuffix": "s",
   "unstoppable": "UNAUFHALTSAM 🔥",
   "livesLeft": "{count} Leben übrig",
   "pointsGain": "+{points} Punkte",

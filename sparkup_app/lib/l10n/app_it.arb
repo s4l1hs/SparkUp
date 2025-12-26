@@ -97,6 +97,7 @@
   "wrongAnswerResetStreak": "Risposta sbagliata! Striscia azzerata.",
   "correct": "Corretto",
   "incorrect": "Errato",
+  "secondsSuffix": "s",
   "unstoppable": "INARRESTABILE 🔥",
   "livesLeft": "Rimangono {count} vite",
   "pointsGain": "+{points} Punti",

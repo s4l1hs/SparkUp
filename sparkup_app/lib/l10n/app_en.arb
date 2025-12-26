@@ -104,6 +104,7 @@
   "wrongAnswerResetStreak": "Wrong answer! Streak reset.",
   "correct": "Correct",
   "incorrect": "Incorrect",
+  "secondsSuffix": "s",
   "unstoppable": "UNSTOPPABLE 🔥",
   "livesLeft": "{count} lives left",
   "pointsGain": "+{points} Points",

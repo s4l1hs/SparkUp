@@ -97,6 +97,7 @@
   "wrongAnswerResetStreak": "Неверный ответ! Серия сброшена.",
   "correct": "Верно",
   "incorrect": "Неверно",
+  "secondsSuffix": "с",
   "unstoppable": "НЕОСТАНАВЛИМЫЙ 🔥",
   "livesLeft": "Осталось {count} жизней",
   "pointsGain": "+{points} Очков",

@@ -305,6 +305,9 @@ class AppLocalizationsAr extends AppLocalizations {
   String get incorrect => 'غير صحيح';
 
   @override
+  String get secondsSuffix => 'ث';
+
+  @override
   String get unstoppable => 'لا يمكن إيقافه 🔥';
 
   @override
