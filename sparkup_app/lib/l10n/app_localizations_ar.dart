@@ -267,7 +267,9 @@ class AppLocalizationsAr extends AppLocalizations {
   String get streak => 'سلسلة';
 
   @override
-  String get streakBonus => 'مكافأة السلسلة';
+  String streakBonus(Object streak) {
+    return 'مكافأة السلسلة x$streak';
+  }
 
   @override
   String get maxStreak => 'أقصى سلسلة';
@@ -295,6 +297,24 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String get incorrect => 'غير صحيح';
+
+  @override
+  String get unstoppable => 'لا يمكن إيقافه 🔥';
+
+  @override
+  String livesLeft(Object count) {
+    return 'تبقى $count حياة';
+  }
+
+  @override
+  String pointsGain(Object points) {
+    return '+$points نقاط';
+  }
+
+  @override
+  String streakBonusFire(Object streak) {
+    return 'مكافأة السلسلة x$streak 🔥';
+  }
 
   @override
   String get errorCouldNotLoadData => 'تعذر تحميل البيانات.';

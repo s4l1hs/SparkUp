@@ -96,6 +96,11 @@
   "wrongAnswerResetStreak": "إجابة خاطئة! تمت إعادة تعيين السلسلة.",
   "correct": "صحيح",
   "incorrect": "غير صحيح",
+  "unstoppable": "لا يمكن إيقافه 🔥",
+  "livesLeft": "تبقى {count} حياة",
+  "pointsGain": "+{points} نقاط",
+  "streakBonus": "مكافأة السلسلة x{streak}",
+  "streakBonusFire": "مكافأة السلسلة x{streak} 🔥",
   "errorCouldNotLoadData": "تعذر تحميل البيانات.",
   "topPlayers": "أفضل اللاعبين",
   "yourName": "اسمك",

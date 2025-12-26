@@ -720,7 +720,7 @@ class _QuizPageState extends State<QuizPage> with TickerProviderStateMixin {
                         if (!_lastAnswerCorrect) {
                           titleText = localizations?.incorrect ?? 'WRONG!';
                         } else if (currentStreak >= 2) {
-                          titleText = "UNSTOPPABLE! 🔥"; // Alternatif gaz sözü
+                          titleText = localizations?.unstoppable ?? 'UNSTOPPABLE 🔥';
                         } else {
                           titleText = localizations?.correct ?? 'CORRECT!';
                         }
@@ -825,14 +825,17 @@ class _QuizPageState extends State<QuizPage> with TickerProviderStateMixin {
                                         borderRadius: BorderRadius.circular(10.r),
                                         border: Border.all(color: Colors.orange.withOpacity(0.5)),
                                       ),
-                                      child: Text(
-                                        "Streak Bonus x$currentStreak 🔥",
-                                        style: TextStyle(
-                                          color: Colors.orange,
-                                          fontSize: 14.sp,
-                                          fontWeight: FontWeight.w900,
-                                        ),
-                                      ),
+                                      child: Builder(builder: (ctx) {
+                                        final localized = AppLocalizations.of(ctx)?.streakBonusFire(currentStreak).replaceAll('{streak}', currentStreak.toString());
+                                        return Text(
+                                          localized ?? 'Streak Bonus x$currentStreak 🔥',
+                                          style: TextStyle(
+                                            color: Colors.orange,
+                                            fontSize: 14.sp,
+                                            fontWeight: FontWeight.w900,
+                                          ),
+                                        );
+                                      }),
                                     ),
                                 ],
                               ),

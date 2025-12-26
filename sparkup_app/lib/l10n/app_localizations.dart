@@ -629,8 +629,8 @@ abstract class AppLocalizations {
   /// No description provided for @streakBonus.
   ///
   /// In en, this message translates to:
-  /// **'Streak Bonus'**
-  String get streakBonus;
+  /// **'Streak Bonus x{streak}'**
+  String streakBonus(Object streak);
 
   /// No description provided for @maxStreak.
   ///
@@ -685,6 +685,30 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Incorrect'**
   String get incorrect;
+
+  /// No description provided for @unstoppable.
+  ///
+  /// In en, this message translates to:
+  /// **'UNSTOPPABLE 🔥'**
+  String get unstoppable;
+
+  /// No description provided for @livesLeft.
+  ///
+  /// In en, this message translates to:
+  /// **'{count} lives left'**
+  String livesLeft(Object count);
+
+  /// No description provided for @pointsGain.
+  ///
+  /// In en, this message translates to:
+  /// **'+{points} Points'**
+  String pointsGain(Object points);
+
+  /// No description provided for @streakBonusFire.
+  ///
+  /// In en, this message translates to:
+  /// **'Streak Bonus x{streak} 🔥'**
+  String streakBonusFire(Object streak);
 
   /// No description provided for @errorCouldNotLoadData.
   ///

@@ -467,7 +467,7 @@ class _TrueFalsePageState extends State<TrueFalsePage>
                         if (!_lastAnswerCorrect) {
                           titleText = AppLocalizations.of(context)?.incorrect ?? 'OOPS!';
                         } else if (_streak >= 2) {
-                          titleText = "UNSTOPPABLE! 🔥"; // Alternatif gaz sözü
+                          titleText = AppLocalizations.of(context)?.unstoppable ?? 'UNSTOPPABLE 🔥';
                         } else {
                           titleText = AppLocalizations.of(context)?.correct ?? 'AWESOME!';
                         }
@@ -541,22 +541,30 @@ class _TrueFalsePageState extends State<TrueFalsePage>
 
                                   // Alt Bilgi (Puan)
                                   if (_lastAnswerCorrect)
-                                     Text(
-                                      "+${10 + (_streak > 0 ? (_streak-1)*2 : 0)} Points", // Tahmini puan hesabı görseli
-                                      style: TextStyle(
-                                        color: theme.colorScheme.onSurface,
-                                        fontSize: 20.sp,
-                                        fontWeight: FontWeight.bold,
-                                      ),
-                                    )
+                                    Builder(builder: (ctx) {
+                                      final pts = 10 + (_streak > 0 ? (_streak - 1) * 2 : 0);
+                                      final localized = AppLocalizations.of(ctx)?.pointsGain(pts.toString());
+                                      return Text(
+                                        localized ?? '+$pts Points',
+                                        style: TextStyle(
+                                          color: theme.colorScheme.onSurface,
+                                          fontSize: 20.sp,
+                                          fontWeight: FontWeight.bold,
+                                        ),
+                                      );
+                                    })
                                   else
-                                    Text(
-                                      "${3 - _wrongCount} lives left",
-                                      style: TextStyle(
-                                        color: theme.colorScheme.onSurface.withOpacity(0.6),
-                                        fontSize: 16.sp,
-                                      ),
-                                    ),
+                                    Builder(builder: (ctx) {
+                                      final lives = 3 - _wrongCount;
+                                      final localized = AppLocalizations.of(ctx)?.livesLeft(lives.toString());
+                                      return Text(
+                                        localized ?? '$lives lives left',
+                                        style: TextStyle(
+                                          color: theme.colorScheme.onSurface.withOpacity(0.6),
+                                          fontSize: 16.sp,
+                                        ),
+                                      );
+                                    }),
 
                                   // STREAK BONUS KUTUSU
                                   if (_lastAnswerCorrect && _streak > 1) 
@@ -573,14 +581,17 @@ class _TrueFalsePageState extends State<TrueFalsePage>
                                         children: [
                                           Icon(Icons.bolt, color: Colors.deepOrange, size: 18.sp),
                                           SizedBox(width: 4.w),
-                                          Text(
-                                            "Streak Bonus x$_streak",
-                                            style: TextStyle(
-                                              color: Colors.deepOrange,
-                                              fontSize: 16.sp,
-                                              fontWeight: FontWeight.w800,
-                                            ),
-                                          ),
+                                          Builder(builder: (ctx) {
+                                            final localized = AppLocalizations.of(ctx)?.streakBonus(_streak.toString());
+                                            return Text(
+                                              localized ?? 'Streak Bonus x$_streak',
+                                              style: TextStyle(
+                                                color: Colors.deepOrange,
+                                                fontSize: 16.sp,
+                                                fontWeight: FontWeight.w800,
+                                              ),
+                                            );
+                                          }),
                                         ],
                                       ),
                                     ),
@@ -772,15 +783,15 @@ class _TrueFalsePageState extends State<TrueFalsePage>
             mainAxisAlignment: MainAxisAlignment.spaceAround,
             children: [
                 Expanded(
-                  child: _buildTFButton(Icons.check, Colors.green, 'TRUE',
-                    () {
+                  child: _buildTFButton(Icons.check, Colors.green,
+                    AppLocalizations.of(context)?.trueLabel ?? 'True', () {
                   if (!_isQuizActive || _processingAnswer || _sessionEnding || _forceEnded) return;
                   _answerQuestion(true);
                   })),
               SizedBox(width: 16.w),
                 Expanded(
-                  child: _buildTFButton(Icons.close, Colors.red, 'FALSE',
-                    () {
+                  child: _buildTFButton(Icons.close, Colors.red,
+                    AppLocalizations.of(context)?.falseLabel ?? 'False', () {
                   if (!_isQuizActive || _processingAnswer || _sessionEnding || _forceEnded) return;
                   _answerQuestion(false);
                   })),

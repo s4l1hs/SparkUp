@@ -274,7 +274,9 @@ class AppLocalizationsDe extends AppLocalizations {
   String get streak => 'Serie';
 
   @override
-  String get streakBonus => 'Serienbonus';
+  String streakBonus(Object streak) {
+    return 'Serienbonus x$streak';
+  }
 
   @override
   String get maxStreak => 'Max. Serie';
@@ -302,6 +304,24 @@ class AppLocalizationsDe extends AppLocalizations {
 
   @override
   String get incorrect => 'Falsch';
+
+  @override
+  String get unstoppable => 'UNAUFHALTSAM 🔥';
+
+  @override
+  String livesLeft(Object count) {
+    return '$count Leben übrig';
+  }
+
+  @override
+  String pointsGain(Object points) {
+    return '+$points Punkte';
+  }
+
+  @override
+  String streakBonusFire(Object streak) {
+    return 'Serienbonus x$streak 🔥';
+  }
 
   @override
   String get errorCouldNotLoadData => 'Daten konnten nicht geladen werden.';

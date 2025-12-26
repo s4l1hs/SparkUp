@@ -265,7 +265,9 @@ class AppLocalizationsJa extends AppLocalizations {
   String get streak => '連勝';
 
   @override
-  String get streakBonus => '連勝ボーナス';
+  String streakBonus(Object streak) {
+    return '連勝ボーナス x$streak';
+  }
 
   @override
   String get maxStreak => '最大連勝';
@@ -293,6 +295,24 @@ class AppLocalizationsJa extends AppLocalizations {
 
   @override
   String get incorrect => '不正解';
+
+  @override
+  String get unstoppable => '無敵 🔥';
+
+  @override
+  String livesLeft(Object count) {
+    return '残り $count ライフ';
+  }
+
+  @override
+  String pointsGain(Object points) {
+    return '+$points ポイント';
+  }
+
+  @override
+  String streakBonusFire(Object streak) {
+    return '連勝ボーナス x$streak 🔥';
+  }
 
   @override
   String get errorCouldNotLoadData => 'データを読み込めませんでした。';

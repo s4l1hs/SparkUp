@@ -101,6 +101,11 @@
   "wrongAnswerResetStreak": "Mauvaise réponse ! Série réinitialisée.",
   "correct": "Correct",
   "incorrect": "Incorrect",
+  "unstoppable": "INARRÊTABLE 🔥",
+  "livesLeft": "Il reste {count} vies",
+  "pointsGain": "+{points} Points",
+  "streakBonus": "Bonus de série x{streak}",
+  "streakBonusFire": "Bonus de série x{streak} 🔥",
   "errorCouldNotLoadData": "Impossible de charger les données.",
   "topPlayers": "Meilleurs joueurs",
 

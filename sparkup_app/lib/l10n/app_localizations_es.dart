@@ -270,7 +270,9 @@ class AppLocalizationsEs extends AppLocalizations {
   String get streak => 'Racha';
 
   @override
-  String get streakBonus => 'Bono de Racha';
+  String streakBonus(Object streak) {
+    return 'Bono de racha x$streak';
+  }
 
   @override
   String get maxStreak => 'Racha Máx.';
@@ -299,6 +301,24 @@ class AppLocalizationsEs extends AppLocalizations {
 
   @override
   String get incorrect => 'Incorrecto';
+
+  @override
+  String get unstoppable => 'IMPARABLE 🔥';
+
+  @override
+  String livesLeft(Object count) {
+    return 'Quedan $count vidas';
+  }
+
+  @override
+  String pointsGain(Object points) {
+    return '+$points Puntos';
+  }
+
+  @override
+  String streakBonusFire(Object streak) {
+    return 'Bono de racha x$streak 🔥';
+  }
 
   @override
   String get errorCouldNotLoadData => 'No se pudieron cargar los datos.';

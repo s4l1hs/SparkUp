@@ -265,7 +265,9 @@ class AppLocalizationsZh extends AppLocalizations {
   String get streak => '连击';
 
   @override
-  String get streakBonus => '连击奖励';
+  String streakBonus(Object streak) {
+    return '连胜奖励 x$streak';
+  }
 
   @override
   String get maxStreak => '最大连击';
@@ -293,6 +295,24 @@ class AppLocalizationsZh extends AppLocalizations {
 
   @override
   String get incorrect => '错误';
+
+  @override
+  String get unstoppable => '不可阻挡 🔥';
+
+  @override
+  String livesLeft(Object count) {
+    return '还剩 $count 次生命';
+  }
+
+  @override
+  String pointsGain(Object points) {
+    return '+$points 分';
+  }
+
+  @override
+  String streakBonusFire(Object streak) {
+    return '连胜奖励 x$streak 🔥';
+  }
 
   @override
   String get errorCouldNotLoadData => '无法加载数据。';

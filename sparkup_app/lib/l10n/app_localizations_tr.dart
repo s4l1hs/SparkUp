@@ -268,7 +268,9 @@ class AppLocalizationsTr extends AppLocalizations {
   String get streak => 'Seri';
 
   @override
-  String get streakBonus => 'Seri Bonusu';
+  String streakBonus(Object streak) {
+    return 'Seri Bonusu x$streak';
+  }
 
   @override
   String get maxStreak => 'Maksimum Seri';
@@ -296,6 +298,24 @@ class AppLocalizationsTr extends AppLocalizations {
 
   @override
   String get incorrect => 'Yanlış';
+
+  @override
+  String get unstoppable => 'DURDURULAMAZ 🔥';
+
+  @override
+  String livesLeft(Object count) {
+    return '$count can kaldı';
+  }
+
+  @override
+  String pointsGain(Object points) {
+    return '+$points Puan';
+  }
+
+  @override
+  String streakBonusFire(Object streak) {
+    return 'Seri Bonusu x$streak 🔥';
+  }
 
   @override
   String get errorCouldNotLoadData => 'Veriler yüklenemedi.';

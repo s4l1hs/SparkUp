@@ -102,6 +102,11 @@
   "wrongAnswerResetStreak": "Wrong answer! Streak reset.",
   "correct": "Correct",
   "incorrect": "Incorrect",
+  "unstoppable": "UNSTOPPABLE 🔥",
+  "livesLeft": "{count} lives left",
+  "pointsGain": "+{points} Points",
+  "streakBonus": "Streak Bonus x{streak}",
+  "streakBonusFire": "Streak Bonus x{streak} 🔥",
   "errorCouldNotLoadData": "Could not load data.",
   "topPlayers": "Top Players",
 

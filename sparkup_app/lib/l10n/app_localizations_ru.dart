@@ -267,7 +267,9 @@ class AppLocalizationsRu extends AppLocalizations {
   String get streak => 'Серия';
 
   @override
-  String get streakBonus => 'Бонус Серии';
+  String streakBonus(Object streak) {
+    return 'Бонус серии x$streak';
+  }
 
   @override
   String get maxStreak => 'Макс. Серия';
@@ -295,6 +297,24 @@ class AppLocalizationsRu extends AppLocalizations {
 
   @override
   String get incorrect => 'Неверно';
+
+  @override
+  String get unstoppable => 'НЕОСТАНАВЛИМЫЙ 🔥';
+
+  @override
+  String livesLeft(Object count) {
+    return 'Осталось $count жизней';
+  }
+
+  @override
+  String pointsGain(Object points) {
+    return '+$points Очков';
+  }
+
+  @override
+  String streakBonusFire(Object streak) {
+    return 'Бонус серии x$streak 🔥';
+  }
 
   @override
   String get errorCouldNotLoadData => 'Не удалось загрузить данные.';

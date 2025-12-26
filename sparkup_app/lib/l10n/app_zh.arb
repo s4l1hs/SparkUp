@@ -101,6 +101,11 @@
   "wrongAnswerResetStreak": "回答错误！连击已重置。",
   "correct": "正确",
   "incorrect": "错误",
+  "unstoppable": "不可阻挡 🔥",
+  "livesLeft": "还剩 {count} 次生命",
+  "pointsGain": "+{points} 分",
+  "streakBonus": "连胜奖励 x{streak}",
+  "streakBonusFire": "连胜奖励 x{streak} 🔥",
   "errorCouldNotLoadData": "无法加载数据。",
   "topPlayers": "排行榜前列",
 
