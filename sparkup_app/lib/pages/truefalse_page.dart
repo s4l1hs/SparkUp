@@ -138,7 +138,18 @@ class _TrueFalsePageState extends State<TrueFalsePage>
             actions: [
               TextButton(
                   onPressed: () => Navigator.of(ctx).pop(),
-                  child: Text(loc?.cancel ?? 'OK'))
+                  child: Text(loc?.cancel ?? 'OK')),
+              ElevatedButton.icon(
+                onPressed: () {
+                  Navigator.of(ctx).pop();
+                  ScaffoldMessenger.of(context).showSnackBar(
+                      const SnackBar(content: Text('Watch an ad to earn energy')));
+                },
+                icon: const Icon(Icons.ondemand_video),
+                label: const Text('Watch Ad'),
+                style: ElevatedButton.styleFrom(
+                    backgroundColor: Colors.orange),
+              ),
             ],
           ),
         );
@@ -775,7 +786,18 @@ class _TrueFalsePageState extends State<TrueFalsePage>
                                     builder: (ctx) => AlertDialog(
                                       title: Text(loc?.insufficientEnergy ?? 'Insufficient energy ⚡'),
                                       content: Text(loc?.insufficientEnergyBody ?? 'You can try again when your energy refills, or earn energy by watching a video.'),
-                                      actions: [TextButton(onPressed: () => Navigator.of(ctx).pop(), child: Text(loc?.cancel ?? 'OK'))],
+                                      actions: [
+                                        TextButton(onPressed: () => Navigator.of(ctx).pop(), child: Text(loc?.cancel ?? 'OK')),
+                                        ElevatedButton.icon(
+                                          onPressed: () {
+                                            Navigator.of(ctx).pop();
+                                            ScaffoldMessenger.of(context).showSnackBar(const SnackBar(content: Text('Watch an ad to earn energy')));
+                                          },
+                                          icon: const Icon(Icons.ondemand_video),
+                                          label: const Text('Watch Ad'),
+                                          style: ElevatedButton.styleFrom(backgroundColor: Colors.orange),
+                                        ),
+                                      ],
                                     ),
                                   );
                                   return;
@@ -1024,6 +1046,15 @@ class _TrueFalsePageState extends State<TrueFalsePage>
               TextButton(
                   onPressed: () => Navigator.of(ctx).pop(),
                   child: Text(loc?.cancel ?? 'OK')),
+              ElevatedButton.icon(
+                onPressed: () {
+                  Navigator.of(ctx).pop();
+                  ScaffoldMessenger.of(context).showSnackBar(const SnackBar(content: Text('Watch an ad to earn energy')));
+                },
+                icon: const Icon(Icons.ondemand_video),
+                label: const Text('Watch Ad'),
+                style: ElevatedButton.styleFrom(backgroundColor: Colors.orange),
+              ),
             ],
           ),
         );

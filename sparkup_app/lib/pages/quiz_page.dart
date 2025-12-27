@@ -1002,7 +1002,18 @@ class _QuizPageState extends State<QuizPage> with TickerProviderStateMixin {
                                     builder: (ctx) => AlertDialog(
                                       title: Text(loc?.insufficientEnergy ?? 'Insufficient energy ⚡'),
                                       content: Text(loc?.insufficientEnergyBody ?? 'You can try again when your energy refills, or earn energy by watching a video.'),
-                                      actions: [TextButton(onPressed: () => Navigator.of(ctx).pop(), child: Text(loc?.cancel ?? 'OK'))],
+                                      actions: [
+                                        TextButton(onPressed: () => Navigator.of(ctx).pop(), child: Text(loc?.cancel ?? 'OK')),
+                                        ElevatedButton.icon(
+                                          onPressed: () {
+                                            Navigator.of(ctx).pop();
+                                            ScaffoldMessenger.of(context).showSnackBar(const SnackBar(content: Text('Watch an ad to earn energy')));
+                                          },
+                                          icon: const Icon(Icons.ondemand_video),
+                                          label: const Text('Watch Ad'),
+                                          style: ElevatedButton.styleFrom(backgroundColor: Colors.orange),
+                                        ),
+                                      ],
                                     ),
                                   );
                                   return;
@@ -1119,28 +1130,29 @@ class _QuizPageState extends State<QuizPage> with TickerProviderStateMixin {
 
     final theme = Theme.of(context);
 
-    return Column(
+    return SingleChildScrollView(
       key: key,
-      // place items from top so question container height increase pushes content downward naturally
-      mainAxisAlignment: MainAxisAlignment.start,
-      children: [
-        SizedBox(height: 12.h), // push question box slightly down
-        // question container (glass)
-        AnimatedGlassCard(
-          padding: EdgeInsets.symmetric(horizontal: 14.w, vertical: 16.h),
-          borderRadius: BorderRadius.circular(16.r),
-          child: SizedBox(
-            height: 220.h, // increased fixed height so options don't shift
-            child: Center(
-                child: Text(questionText,
-                    textAlign: TextAlign.center,
-                    style: theme.textTheme.titleLarge
-                        ?.copyWith(fontWeight: FontWeight.w900, height: 1.25))),
+      child: Column(
+        // place items from top so question container height increase pushes content downward naturally
+        mainAxisAlignment: MainAxisAlignment.start,
+        children: [
+          SizedBox(height: 12.h), // push question box slightly down
+          // question container (glass)
+          AnimatedGlassCard(
+            padding: EdgeInsets.symmetric(horizontal: 14.w, vertical: 16.h),
+            borderRadius: BorderRadius.circular(16.r),
+            child: SizedBox(
+              height: 220.h, // increased fixed height so options don't shift
+              child: Center(
+                  child: Text(questionText,
+                      textAlign: TextAlign.center,
+                      style: theme.textTheme.titleLarge
+                          ?.copyWith(fontWeight: FontWeight.w900, height: 1.25))),
+            ),
           ),
-        ),
-        SizedBox(
-            height: 16.h), // biraz artırıldı: soru ile seçenekler arası mesafe
-        ...List.generate(options.length, (index) {
+          SizedBox(
+              height: 16.h), // biraz artırıldı: soru ile seçenekler arası mesafe
+          ...List.generate(options.length, (index) {
           final isCorrect =
               index == (currentQuestion['correct_answer_index'] as int);
           final isSelected = index == _selectedAnswerIndex;
@@ -1215,7 +1227,8 @@ class _QuizPageState extends State<QuizPage> with TickerProviderStateMixin {
             ),
           );
         }),
-      ],
+        ],
+      ),
     );
   }
 }
