@@ -847,6 +847,12 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'You can try again when your energy refills, or earn energy by watching a video.'**
   String get insufficientEnergyBody;
+
+  /// No description provided for @watchAd.
+  ///
+  /// In en, this message translates to:
+  /// **'Watch Ad'**
+  String get watchAd;
 }
 
 class _AppLocalizationsDelegate

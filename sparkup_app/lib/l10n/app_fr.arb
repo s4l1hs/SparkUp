@@ -69,6 +69,7 @@
   "failedToSaveNotification": "Impossible d'enregistrer la notification",
   "failedToSaveLanguage": "Impossible d'enregistrer la langue",
   "failedToLoadProfile": "Échec du chargement du profil",
+  "watchAd": "Regarder la publicité",
   "missingKeyExample": "Traduction française",
   "leaderboard": "Classement",
   "limited": "Limité",

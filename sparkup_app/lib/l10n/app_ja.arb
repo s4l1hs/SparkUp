@@ -143,5 +143,6 @@
   "onboarding_skip": "スキップ",
   "onboarding_get_started": "始める",
   "onboarding_next": "次へ",
-  "insufficientEnergyBody": "エネルギーが回復したら再度試すか、ビデオを見てエネルギーを獲得できます。"
+  "insufficientEnergyBody": "エネルギーが回復したら再度試すか、ビデオを見てエネルギーを獲得できます。",
+  "watchAd": "広告を見る"
 }

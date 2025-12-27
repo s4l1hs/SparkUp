@@ -388,4 +388,7 @@ class AppLocalizationsIt extends AppLocalizations {
   @override
   String get insufficientEnergyBody =>
       'Puoi riprovare quando la tua energia sarà ricaricata, oppure guadagnare energia guardando un video.';
+
+  @override
+  String get watchAd => 'Guarda l\'annuncio';
 }

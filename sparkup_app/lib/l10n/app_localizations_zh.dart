@@ -381,4 +381,7 @@ class AppLocalizationsZh extends AppLocalizations {
 
   @override
   String get insufficientEnergyBody => '当你的能量恢复时，你可以再次尝试，或通过观看视频获得能量。';
+
+  @override
+  String get watchAd => '观看广告';
 }

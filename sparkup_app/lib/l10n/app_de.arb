@@ -144,5 +144,6 @@
   "onboarding_get_started": "Loslegen",
   "onboarding_next": "Weiter"
   ,
-  "insufficientEnergyBody": "Du kannst es erneut versuchen, wenn deine Energie wieder aufgefüllt ist, oder Energie durch Ansehen eines Videos gewinnen."
+  "insufficientEnergyBody": "Du kannst es erneut versuchen, wenn deine Energie wieder aufgefüllt ist, oder Energie durch Ansehen eines Videos gewinnen.",
+  "watchAd": "Werbung ansehen"
 }

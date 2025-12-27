@@ -143,5 +143,6 @@
   "onboarding_skip": "跳过",
   "onboarding_get_started": "开始",
   "onboarding_next": "下一步",
-  "insufficientEnergyBody": "当你的能量恢复时，你可以再次尝试，或通过观看视频获得能量。"
+  "insufficientEnergyBody": "当你的能量恢复时，你可以再次尝试，或通过观看视频获得能量。",
+  "watchAd": "观看广告"
 }

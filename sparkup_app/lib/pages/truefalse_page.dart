@@ -34,127 +34,41 @@ class _TrueFalsePageState extends State<TrueFalsePage>
   // Session token used to invalidate in-flight fetches when a session ends.
   int _sessionToken = 0;
   bool _forceEnded = false;
-  bool _showFeedback = false;
-  bool _lastAnswerCorrect = false;
-  late final AnimationController _feedbackAnimController;
+
+  // Timing & animation state (restored defaults)
   int _timeLeft = 0;
   int _sessionDuration = 60;
-
   late final AnimationController _backgroundController;
   late final Animation<Alignment> _backgroundAnimation1;
   late final Animation<Alignment> _backgroundAnimation2;
+  late final AnimationController _feedbackAnimController;
+  bool _showFeedback = false;
+  bool _lastAnswerCorrect = false;
+  int lives = 3;
 
   @override
   void initState() {
     super.initState();
-    _backgroundController =
-        AnimationController(vsync: this, duration: const Duration(seconds: 25))
-          ..repeat(reverse: true);
-    _backgroundAnimation1 = TweenSequence<Alignment>([
-      TweenSequenceItem(
-          tween: AlignmentTween(
-              begin: Alignment.topLeft, end: Alignment.bottomRight),
-          weight: 1),
-      TweenSequenceItem(
-          tween: AlignmentTween(
-              begin: Alignment.bottomRight, end: Alignment.topLeft),
-          weight: 1),
-    ]).animate(_backgroundController);
-    _backgroundAnimation2 = TweenSequence<Alignment>([
-      TweenSequenceItem(
-          tween: AlignmentTween(
-              begin: Alignment.topRight, end: Alignment.bottomLeft),
-          weight: 1),
-      TweenSequenceItem(
-          tween: AlignmentTween(
-              begin: Alignment.bottomLeft, end: Alignment.topRight),
-          weight: 1),
-    ]).animate(_backgroundController);
-
-    WidgetsBinding.instance.addPostFrameCallback((_) {
-      // Intentionally left blank; do not auto-start the session here.
-    });
-    _feedbackAnimController =
-        AnimationController(vsync: this, duration: const Duration(milliseconds: 420));
+    _backgroundController = AnimationController(vsync: this, duration: const Duration(seconds: 6))..repeat(reverse: true);
+    _backgroundAnimation1 = Tween<Alignment>(begin: const Alignment(-0.3, -0.2), end: const Alignment(0.3, 0.2))
+      .animate(CurvedAnimation(parent: _backgroundController, curve: Curves.easeInOut));
+    _backgroundAnimation2 = Tween<Alignment>(begin: const Alignment(0.4, -0.3), end: const Alignment(-0.4, 0.3))
+      .animate(CurvedAnimation(parent: _backgroundController, curve: Curves.easeInOut));
+    _feedbackAnimController = AnimationController(vsync: this, duration: const Duration(milliseconds: 700));
+    _timeLeft = _sessionDuration;
   }
 
   @override
   void dispose() {
-    _timer?.cancel();
     _backgroundController.dispose();
     _feedbackAnimController.dispose();
+    _timer?.cancel();
     super.dispose();
   }
 
-  // --- 1. JSON YÜKLEME (DATA KLASÖRÜNDEN) ---
+  // Basic loader that defers to the paginated fetch implementation
   Future<void> _loadQuestions() async {
-    setState(() => _isLoading = true);
-    // Capture localization and user provider before any awaits to avoid using BuildContext across async gaps
-    final loc = AppLocalizations.of(context);
-    final userProvNow = Provider.of<UserProvider>(context, listen: false);
-    final int token = _sessionToken;
-    try {
-      final api = ApiService();
-      final list = await api.getManualTrueFalse(idToken: widget.idToken);
-      final data = list.isNotEmpty ? List<dynamic>.from(list) : <dynamic>[];
-      if (data.isNotEmpty) data.shuffle();
-      // If session is ending or not active anymore, or token invalidated, discard fetched data
-      if (_sessionEnding || !_isQuizActive || token != _sessionToken || _wrongCount >= 3 || _forceEnded) {
-        setState(() => _isLoading = false);
-        return;
-      }
-      setState(() {
-        _questions = data;
-        _isLoading = false;
-      });
-      // Do not auto-start the session; user will start via Start button
-    } catch (e) {
-      debugPrint("Hata: manual true/false yüklenemedi: $e");
-      setState(() {
-        _isLoading = false;
-        _questions = [];
-      });
-
-      // Prepare dialog text before showing dialog
-      final bool isLimitErr = (userProvNow.profile?.remainingEnergy ?? 0) <= 0;
-
-      // Try to refresh user profile to correct optimistic energy changes
-      try {
-        await userProvNow.loadProfile(widget.idToken);
-      } catch (_) {}
-
-      // Show a user-friendly dialog (limit or generic) without throwing further
-      if (mounted) {
-        showDialog(
-          context: context,
-          barrierDismissible: true,
-          builder: (ctx) => AlertDialog(
-            title: Text(isLimitErr
-                ? (loc?.insufficientEnergy ?? 'Insufficient energy ⚡')
-                : (loc?.error ?? 'Error')),
-            content: Text(isLimitErr
-              ? (loc?.insufficientEnergyBody ?? 'You can try again when your energy refills, or earn energy by watching a video.')
-              : (loc?.quizCouldNotStart ?? 'Could not load questions.')),
-            actions: [
-              TextButton(
-                  onPressed: () => Navigator.of(ctx).pop(),
-                  child: Text(loc?.cancel ?? 'OK')),
-              ElevatedButton.icon(
-                onPressed: () {
-                  Navigator.of(ctx).pop();
-                  ScaffoldMessenger.of(context).showSnackBar(
-                      const SnackBar(content: Text('Watch an ad to earn energy')));
-                },
-                icon: const Icon(Icons.ondemand_video),
-                label: const Text('Watch Ad'),
-                style: ElevatedButton.styleFrom(
-                    backgroundColor: Colors.orange),
-              ),
-            ],
-          ),
-        );
-      }
-    }
+    await _fetchMoreQuestionsTF();
   }
 
   // --- 2. ZAMANLAYICI ---
@@ -569,18 +483,15 @@ class _TrueFalsePageState extends State<TrueFalsePage>
                                     })
                                   else
                                     Builder(builder: (ctx) {
-                                      final lives = 3 - _wrongCount;
                                       final localized = AppLocalizations.of(ctx)?.livesLeft(lives.toString());
                                       return Text(
-                                        localized ?? '$lives lives left',
+                                        localized ?? 'Lives left: $lives',
                                         style: TextStyle(
-                                          color: theme.colorScheme.onSurface.withAlpha(153),
+                                          color: theme.colorScheme.onSurface,
                                           fontSize: 16.sp,
                                         ),
                                       );
                                     }),
-
-                                  // STREAK BONUS KUTUSU
                                   if (_lastAnswerCorrect && _streak > 1) 
                                     Container(
                                       margin: EdgeInsets.only(top: 12.h),
@@ -743,25 +654,19 @@ class _TrueFalsePageState extends State<TrueFalsePage>
                                   Container(width: 1, height: 24.h, color: Colors.white12),
                                   _buildDashboardItem(Icons.timer_outlined, "$sessionSec${loc?.secondsSuffix ?? 's'}", Colors.greenAccent),
                                   Container(width: 1, height: 24.h, color: Colors.white12),
-                                  
-                                  // --- YENİ: YAZISIZ CAN GÖSTERGESİ ---
+                                  // Lives indicator (icons only)
                                   Column(
                                     mainAxisSize: MainAxisSize.min,
                                     children: [
-                                      // Üst ikon
                                       Icon(Icons.favorite_border_rounded, color: Colors.redAccent, size: 22.sp),
                                       SizedBox(height: 6.h),
-                                      // Alt görsel (3 tane dolu kalp)
-                                      Row(
-                                        mainAxisSize: MainAxisSize.min,
-                                        children: [
-                                          Icon(Icons.favorite, size: 12.sp, color: Colors.redAccent),
-                                          SizedBox(width: 2.w),
-                                          Icon(Icons.favorite, size: 12.sp, color: Colors.redAccent),
-                                          SizedBox(width: 2.w),
-                                          Icon(Icons.favorite, size: 12.sp, color: Colors.redAccent),
-                                        ],
-                                      )
+                                      Row(mainAxisSize: MainAxisSize.min, children: [
+                                        Icon(Icons.favorite, size: 12.sp, color: Colors.redAccent),
+                                        SizedBox(width: 2.w),
+                                        Icon(Icons.favorite, size: 12.sp, color: Colors.redAccent),
+                                        SizedBox(width: 2.w),
+                                        Icon(Icons.favorite, size: 12.sp, color: Colors.redAccent),
+                                      ]),
                                     ],
                                   ),
                                 ],
@@ -783,22 +688,52 @@ class _TrueFalsePageState extends State<TrueFalsePage>
                                 if (rem != null && rem <= 0) {
                                   showDialog(
                                     context: context,
-                                    builder: (ctx) => AlertDialog(
-                                      title: Text(loc?.insufficientEnergy ?? 'Insufficient energy ⚡'),
-                                      content: Text(loc?.insufficientEnergyBody ?? 'You can try again when your energy refills, or earn energy by watching a video.'),
-                                      actions: [
-                                        TextButton(onPressed: () => Navigator.of(ctx).pop(), child: Text(loc?.cancel ?? 'OK')),
-                                        ElevatedButton.icon(
-                                          onPressed: () {
-                                            Navigator.of(ctx).pop();
-                                            ScaffoldMessenger.of(context).showSnackBar(const SnackBar(content: Text('Watch an ad to earn energy')));
-                                          },
-                                          icon: const Icon(Icons.ondemand_video),
-                                          label: const Text('Watch Ad'),
-                                          style: ElevatedButton.styleFrom(backgroundColor: Colors.orange),
+                                    builder: (ctx) {
+                                      final theme = Theme.of(ctx);
+                                      final l = AppLocalizations.of(ctx) ?? loc;
+                                      return Dialog(
+                                        backgroundColor: Colors.transparent,
+                                        child: Container(
+                                          padding: EdgeInsets.all(18.w),
+                                          decoration: BoxDecoration(
+                                            color: theme.colorScheme.surface,
+                                            borderRadius: BorderRadius.circular(16.r),
+                                            boxShadow: [BoxShadow(color: Colors.black26, blurRadius: 18.r, offset: const Offset(0,8))],
+                                          ),
+                                          child: Column(
+                                            mainAxisSize: MainAxisSize.min,
+                                            children: [
+                                              Container(
+                                                padding: EdgeInsets.all(12.r),
+                                                decoration: BoxDecoration(
+                                                  shape: BoxShape.circle,
+                                                  gradient: LinearGradient(colors: [Colors.orange.shade400, Colors.deepOrange.shade300]),
+                                                ),
+                                                child: Icon(Icons.bolt, color: Colors.white, size: 36.sp),
+                                              ),
+                                              SizedBox(height: 12.h),
+                                              Text(l?.insufficientEnergy ?? 'Insufficient energy ⚡', textAlign: TextAlign.center, style: TextStyle(fontSize: 18.sp, fontWeight: FontWeight.w800, color: theme.colorScheme.primary)),
+                                              SizedBox(height: 8.h),
+                                              Text(l?.insufficientEnergyBody ?? 'You can try again when your energy refills, or earn energy by watching a video.', textAlign: TextAlign.center, style: TextStyle(color: theme.colorScheme.onSurface.withOpacity(0.9), fontSize: 14.sp)),
+                                              SizedBox(height: 16.h),
+                                              Row(children: [
+                                                Expanded(child: ElevatedButton.icon(
+                                                  onPressed: () {
+                                                    Navigator.of(ctx).pop();
+                                                    ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text(l?.insufficientEnergyBody ?? 'You can try again when your energy refills, or earn energy by watching a video.')));
+                                                  },
+                                                  icon: const Icon(Icons.ondemand_video),
+                                                  label: Text(l?.watchAd ?? 'Watch Ad'),
+                                                  style: ElevatedButton.styleFrom(backgroundColor: Colors.orange, padding: EdgeInsets.symmetric(vertical: 12.h), shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10.r))),
+                                                )),
+                                                SizedBox(width: 12.w),
+                                                TextButton(onPressed: () => Navigator.of(ctx).pop(), child: Text(l?.cancel ?? 'Cancel', style: TextStyle(color: theme.colorScheme.onSurface)))
+                                              ])
+                                            ],
+                                          ),
                                         ),
-                                      ],
-                                    ),
+                                      );
+                                    }
                                   );
                                   return;
                                 }
@@ -839,22 +774,9 @@ class _TrueFalsePageState extends State<TrueFalsePage>
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-                _buildInfoChip(Icons.timer, '$_timeLeft${AppLocalizations.of(context)?.secondsSuffix ?? 's'}',
+              _buildInfoChip(Icons.timer, '$_timeLeft${AppLocalizations.of(context)?.secondsSuffix ?? 's'}',
                   _timeLeft < 10 ? Colors.red : theme.colorScheme.primary),
-              Flexible(
-                child: Center(
-                  child: Text(
-                    '${AppLocalizations.of(context)?.streak ?? 'Streak'}: $_streak 🔥',
-                    style: TextStyle(
-                        fontSize: 16.sp,
-                        fontWeight: FontWeight.bold,
-                        color: Colors.orange),
-                    overflow: TextOverflow.ellipsis,
-                  ),
-                ),
-              ),
-              _buildInfoChip(
-                  Icons.star, '$_score', theme.colorScheme.secondary),
+              _buildInfoChip(Icons.star, '$_score', theme.colorScheme.secondary),
             ],
           ),
           SizedBox(height: 12.h),
@@ -1049,10 +971,10 @@ class _TrueFalsePageState extends State<TrueFalsePage>
               ElevatedButton.icon(
                 onPressed: () {
                   Navigator.of(ctx).pop();
-                  ScaffoldMessenger.of(context).showSnackBar(const SnackBar(content: Text('Watch an ad to earn energy')));
+                  ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text(loc?.insufficientEnergyBody ?? 'You can try again when your energy refills, or earn energy by watching a video.')));
                 },
                 icon: const Icon(Icons.ondemand_video),
-                label: const Text('Watch Ad'),
+                label: Text(loc?.watchAd ?? 'Watch Ad'),
                 style: ElevatedButton.styleFrom(backgroundColor: Colors.orange),
               ),
             ],

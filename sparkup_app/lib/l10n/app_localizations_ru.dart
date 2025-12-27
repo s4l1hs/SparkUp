@@ -388,4 +388,7 @@ class AppLocalizationsRu extends AppLocalizations {
   @override
   String get insufficientEnergyBody =>
       'Вы можете попробовать снова, когда ваша энергия восстановится, или получить энергию, посмотрев видео.';
+
+  @override
+  String get watchAd => 'Посмотреть рекламу';
 }

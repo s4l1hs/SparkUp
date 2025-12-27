@@ -383,4 +383,7 @@ class AppLocalizationsJa extends AppLocalizations {
 
   @override
   String get insufficientEnergyBody => 'エネルギーが回復したら再度試すか、ビデオを見てエネルギーを獲得できます。';
+
+  @override
+  String get watchAd => '広告を見る';
 }

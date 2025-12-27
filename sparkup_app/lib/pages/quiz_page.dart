@@ -995,26 +995,38 @@ class _QuizPageState extends State<QuizPage> with TickerProviderStateMixin {
                               onPressed: () {
                                 final userProv = Provider.of<UserProvider>(context, listen: false);
                                 final rem = userProv.profile?.remainingEnergy;
-                                if (rem != null && rem <= 0) {
+                                  if (rem != null && rem <= 0) {
                                   final loc = AppLocalizations.of(context);
                                   showDialog(
                                     context: context,
-                                    builder: (ctx) => AlertDialog(
-                                      title: Text(loc?.insufficientEnergy ?? 'Insufficient energy ⚡'),
-                                      content: Text(loc?.insufficientEnergyBody ?? 'You can try again when your energy refills, or earn energy by watching a video.'),
-                                      actions: [
-                                        TextButton(onPressed: () => Navigator.of(ctx).pop(), child: Text(loc?.cancel ?? 'OK')),
-                                        ElevatedButton.icon(
-                                          onPressed: () {
-                                            Navigator.of(ctx).pop();
-                                            ScaffoldMessenger.of(context).showSnackBar(const SnackBar(content: Text('Watch an ad to earn energy')));
-                                          },
-                                          icon: const Icon(Icons.ondemand_video),
-                                          label: const Text('Watch Ad'),
-                                          style: ElevatedButton.styleFrom(backgroundColor: Colors.orange),
+                                    builder: (ctx) {
+                                      final theme = Theme.of(ctx);
+                                      final l = AppLocalizations.of(ctx) ?? loc;
+                                      return Dialog(
+                                        backgroundColor: Colors.transparent,
+                                        child: Container(
+                                          padding: EdgeInsets.all(18.w),
+                                          decoration: BoxDecoration(
+                                            color: theme.colorScheme.surface,
+                                            borderRadius: BorderRadius.circular(16.r),
+                                            boxShadow: [BoxShadow(color: Colors.black26, blurRadius: 18.r, offset: const Offset(0,8))],
+                                          ),
+                                          child: Column(mainAxisSize: MainAxisSize.min, children: [
+                                            Container(padding: EdgeInsets.all(12.r), decoration: BoxDecoration(shape: BoxShape.circle, gradient: LinearGradient(colors: [Colors.orange.shade400, Colors.deepOrange.shade300])), child: Icon(Icons.bolt, color: Colors.white, size: 36.sp)),
+                                            SizedBox(height: 12.h),
+                                            Text(l?.insufficientEnergy ?? 'Insufficient energy ⚡', textAlign: TextAlign.center, style: TextStyle(fontSize: 18.sp, fontWeight: FontWeight.w800, color: theme.colorScheme.primary)),
+                                            SizedBox(height: 8.h),
+                                            Text(l?.insufficientEnergyBody ?? 'You can try again when your energy refills, or earn energy by watching a video.', textAlign: TextAlign.center, style: TextStyle(color: theme.colorScheme.onSurface.withOpacity(0.9), fontSize: 14.sp)),
+                                            SizedBox(height: 16.h),
+                                            Row(children: [
+                                              Expanded(child: ElevatedButton.icon(onPressed: () { Navigator.of(ctx).pop(); ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text(l?.insufficientEnergyBody ?? 'You can try again when your energy refills, or earn energy by watching a video.'))); }, icon: const Icon(Icons.ondemand_video), label: Text(l?.watchAd ?? 'Watch Ad'), style: ElevatedButton.styleFrom(backgroundColor: Colors.orange, padding: EdgeInsets.symmetric(vertical: 12.h), shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10.r)))),),
+                                              SizedBox(width: 12.w),
+                                              TextButton(onPressed: () => Navigator.of(ctx).pop(), child: Text(l?.cancel ?? 'Cancel', style: TextStyle(color: theme.colorScheme.onSurface)))
+                                            ])
+                                          ]),
                                         ),
-                                      ],
-                                    ),
+                                      );
+                                    }
                                   );
                                   return;
                                 }
