@@ -330,4 +330,52 @@ class AppLocalizationsZh extends AppLocalizations {
   String streakBonusFire(Object bonus) {
     return '🔥 连胜奖励: $bonus';
   }
+
+  @override
+  String get onboarding_title_0 => '欢迎来到 SparkUp';
+
+  @override
+  String get onboarding_body_0 => '在享受乐趣的同时学习新知识，拓宽你的视野，并在排行榜上占有一席之地';
+
+  @override
+  String get onboarding_title_1 => '解答有趣的测验';
+
+  @override
+  String get onboarding_body_1 => '以测验和判断题进行挑战，争取破纪录的分数，但无论如何不要错 3 次！';
+
+  @override
+  String get onboarding_title_2 => '分析你自己';
+
+  @override
+  String get onboarding_body_2 => '在分析页面查看你的知识水平。';
+
+  @override
+  String get onboarding_title_3 => '成为最强';
+
+  @override
+  String get onboarding_body_3 => '你每天有 3 点能量，谨慎使用！';
+
+  @override
+  String get onboarding_title_4 => '超值订阅';
+
+  @override
+  String get onboarding_body_4 => '升级你的订阅计划以获得更多每日能量和在判断题与测验中的更多时间。';
+
+  @override
+  String get onboarding_tag_more_time => '更多时间';
+
+  @override
+  String get onboarding_tag_best_offer => '最佳优惠';
+
+  @override
+  String get onboarding_tag_energy => '能量';
+
+  @override
+  String get onboarding_skip => '跳过';
+
+  @override
+  String get onboarding_get_started => '开始';
+
+  @override
+  String get onboarding_next => '下一步';
 }

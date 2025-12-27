@@ -330,4 +330,54 @@ class AppLocalizationsJa extends AppLocalizations {
   String streakBonusFire(Object bonus) {
     return '🔥 連続ボーナス: $bonus';
   }
+
+  @override
+  String get onboarding_title_0 => 'SparkUpへようこそ';
+
+  @override
+  String get onboarding_body_0 => '楽しみながら新しいことを学び、視野を広げ、リーダーボードで自分の場所を確保しましょう';
+
+  @override
+  String get onboarding_title_1 => '楽しいクイズを解く';
+
+  @override
+  String get onboarding_body_1 =>
+      'クイズや〇✕問題でチャレンジ、記録的スコアを目指し、何をしても3回間違えないでください！';
+
+  @override
+  String get onboarding_title_2 => '自分を分析する';
+
+  @override
+  String get onboarding_body_2 => '分析ページで自分の知識レベルを確認しましょう。';
+
+  @override
+  String get onboarding_title_3 => '最高になろう';
+
+  @override
+  String get onboarding_body_3 => '1日に3つのエネルギーポイントがあります、大切に使ってください！';
+
+  @override
+  String get onboarding_title_4 => 'お得なサブスクリプション';
+
+  @override
+  String get onboarding_body_4 =>
+      'サブスクリプションをアップグレードして、毎日のエネルギーやクイズ・〇✕問題の時間を増やしましょう。';
+
+  @override
+  String get onboarding_tag_more_time => '時間延長';
+
+  @override
+  String get onboarding_tag_best_offer => 'ベストオファー';
+
+  @override
+  String get onboarding_tag_energy => 'エネルギー';
+
+  @override
+  String get onboarding_skip => 'スキップ';
+
+  @override
+  String get onboarding_get_started => '始める';
+
+  @override
+  String get onboarding_next => '次へ';
 }

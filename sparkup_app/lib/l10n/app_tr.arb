@@ -126,4 +126,21 @@
       "bonus": {}
     }
   }
+  ,
+  "onboarding_title_0": "SparkUp'a hoş geldiniz",
+  "onboarding_body_0": "Eğlenirken yeni şeyler öğrenin, ufkunuzu genişletin ve liderlik tablosunda yerinizi alın",
+  "onboarding_title_1": "Eğlenceli quizleri çöz",
+  "onboarding_body_1": "Quiz ve doğru/yanlış sorularıyla meydan okuma zamanı, rekor skorları hedefleyin ve ne yaparsanız yapın 3 kez yanlış yapmayın!",
+  "onboarding_title_2": "Kendini analiz et",
+  "onboarding_body_2": "Analiz sayfasında ne kadar bilgili olduğunu gör.",
+  "onboarding_title_3": "En iyisi ol",
+  "onboarding_body_3": "Günde 3 enerji puanın var, bunları idareli kullan!",
+  "onboarding_title_4": "Ucuz abonelikler",
+  "onboarding_body_4": "Günlük daha fazla enerji ve doğru/yanlış ile quiz sorularında daha fazla zaman elde etmek için abonelik planınızı yükseltin.",
+  "onboarding_tag_more_time": "Daha fazla süre",
+  "onboarding_tag_best_offer": "En iyi teklif",
+  "onboarding_tag_energy": "Enerji",
+  "onboarding_skip": "Atla",
+  "onboarding_get_started": "Başla",
+  "onboarding_next": "İleri"
 }

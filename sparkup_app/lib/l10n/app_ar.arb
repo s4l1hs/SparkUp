@@ -127,4 +127,21 @@
       "bonus": {}
     }
   }
+  ,
+  "onboarding_title_0": "مرحبًا بك في SparkUp",
+  "onboarding_body_0": "تعلم أشياء جديدة أثناء المرح، وسّع آفاقك، وتولَّ مكانك في لوحة المتصدرين",
+  "onboarding_title_1": "حل مسابقات ممتعة",
+  "onboarding_body_1": "وقت التحدي مع أسئلة الاختبار والصحيح/الخاطئ، هدَف إلى نتائج قياسية، ومهما فعلت لا تخطئ 3 مرات!",
+  "onboarding_title_2": "حلل نفسك",
+  "onboarding_body_2": "اطّلع على مدى معرفتك عبر صفحة التحليلات.",
+  "onboarding_title_3": "كن الأفضل",
+  "onboarding_body_3": "لديك 3 نقاط طاقة يوميًا، استخدمها بحكمة!",
+  "onboarding_title_4": "اشتراكات رخيصة",
+  "onboarding_body_4": "قم بترقية خطة الاشتراك للحصول على مزيد من الطاقة اليومية والمزيد من الوقت في أسئلة الصح/الخطأ والاختبارات.",
+  "onboarding_tag_more_time": "مزيد من الوقت",
+  "onboarding_tag_best_offer": "أفضل عرض",
+  "onboarding_tag_energy": "الطاقة",
+  "onboarding_skip": "تخطي",
+  "onboarding_get_started": "ابدأ",
+  "onboarding_next": "التالي"
 }

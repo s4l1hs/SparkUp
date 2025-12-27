@@ -126,4 +126,21 @@
       "bonus": {}
     }
   }
+  ,
+  "onboarding_title_0": "Willkommen bei SparkUp",
+  "onboarding_body_0": "Lerne Neues beim Spaß haben, erweitere deinen Horizont und erobere die Bestenliste",
+  "onboarding_title_1": "Löse spaßige Quizze",
+  "onboarding_body_1": "Herausforderung mit Quiz- und Wahr/Falsch-Fragen, strebe nach Rekordwerten und vermeide es, 3 Fehler zu machen!",
+  "onboarding_title_2": "Analysiere dich",
+  "onboarding_body_2": "Sieh nach, wie wissend du bist, auf der Analyse-Seite.",
+  "onboarding_title_3": "Sei der Beste",
+  "onboarding_body_3": "Du hast 3 Energiepunkte pro Tag, nutze sie sparsam!",
+  "onboarding_title_4": "Günstige Abonnements",
+  "onboarding_body_4": "Aktualisiere dein Abonnement, um mehr tägliche Energie und mehr Zeit für Wahr/Falsch- und Quizfragen zu erhalten.",
+  "onboarding_tag_more_time": "Mehr Zeit",
+  "onboarding_tag_best_offer": "Bestes Angebot",
+  "onboarding_tag_energy": "Energie",
+  "onboarding_skip": "Überspringen",
+  "onboarding_get_started": "Loslegen",
+  "onboarding_next": "Weiter"
 }

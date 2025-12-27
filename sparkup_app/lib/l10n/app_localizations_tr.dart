@@ -331,4 +331,57 @@ class AppLocalizationsTr extends AppLocalizations {
   String streakBonusFire(Object bonus) {
     return '🔥 Seri bonusu: $bonus';
   }
+
+  @override
+  String get onboarding_title_0 => 'SparkUp\'a hoş geldiniz';
+
+  @override
+  String get onboarding_body_0 =>
+      'Eğlenirken yeni şeyler öğrenin, ufkunuzu genişletin ve liderlik tablosunda yerinizi alın';
+
+  @override
+  String get onboarding_title_1 => 'Eğlenceli quizleri çöz';
+
+  @override
+  String get onboarding_body_1 =>
+      'Quiz ve doğru/yanlış sorularıyla meydan okuma zamanı, rekor skorları hedefleyin ve ne yaparsanız yapın 3 kez yanlış yapmayın!';
+
+  @override
+  String get onboarding_title_2 => 'Kendini analiz et';
+
+  @override
+  String get onboarding_body_2 =>
+      'Analiz sayfasında ne kadar bilgili olduğunu gör.';
+
+  @override
+  String get onboarding_title_3 => 'En iyisi ol';
+
+  @override
+  String get onboarding_body_3 =>
+      'Günde 3 enerji puanın var, bunları idareli kullan!';
+
+  @override
+  String get onboarding_title_4 => 'Ucuz abonelikler';
+
+  @override
+  String get onboarding_body_4 =>
+      'Günlük daha fazla enerji ve doğru/yanlış ile quiz sorularında daha fazla zaman elde etmek için abonelik planınızı yükseltin.';
+
+  @override
+  String get onboarding_tag_more_time => 'Daha fazla süre';
+
+  @override
+  String get onboarding_tag_best_offer => 'En iyi teklif';
+
+  @override
+  String get onboarding_tag_energy => 'Enerji';
+
+  @override
+  String get onboarding_skip => 'Atla';
+
+  @override
+  String get onboarding_get_started => 'Başla';
+
+  @override
+  String get onboarding_next => 'İleri';
 }

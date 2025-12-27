@@ -331,4 +331,55 @@ class AppLocalizationsAr extends AppLocalizations {
   String streakBonusFire(Object bonus) {
     return '🔥 مكافأة السلسلة: $bonus';
   }
+
+  @override
+  String get onboarding_title_0 => 'مرحبًا بك في SparkUp';
+
+  @override
+  String get onboarding_body_0 =>
+      'تعلم أشياء جديدة أثناء المرح، وسّع آفاقك، وتولَّ مكانك في لوحة المتصدرين';
+
+  @override
+  String get onboarding_title_1 => 'حل مسابقات ممتعة';
+
+  @override
+  String get onboarding_body_1 =>
+      'وقت التحدي مع أسئلة الاختبار والصحيح/الخاطئ، هدَف إلى نتائج قياسية، ومهما فعلت لا تخطئ 3 مرات!';
+
+  @override
+  String get onboarding_title_2 => 'حلل نفسك';
+
+  @override
+  String get onboarding_body_2 => 'اطّلع على مدى معرفتك عبر صفحة التحليلات.';
+
+  @override
+  String get onboarding_title_3 => 'كن الأفضل';
+
+  @override
+  String get onboarding_body_3 => 'لديك 3 نقاط طاقة يوميًا، استخدمها بحكمة!';
+
+  @override
+  String get onboarding_title_4 => 'اشتراكات رخيصة';
+
+  @override
+  String get onboarding_body_4 =>
+      'قم بترقية خطة الاشتراك للحصول على مزيد من الطاقة اليومية والمزيد من الوقت في أسئلة الصح/الخطأ والاختبارات.';
+
+  @override
+  String get onboarding_tag_more_time => 'مزيد من الوقت';
+
+  @override
+  String get onboarding_tag_best_offer => 'أفضل عرض';
+
+  @override
+  String get onboarding_tag_energy => 'الطاقة';
+
+  @override
+  String get onboarding_skip => 'تخطي';
+
+  @override
+  String get onboarding_get_started => 'ابدأ';
+
+  @override
+  String get onboarding_next => 'التالي';
 }

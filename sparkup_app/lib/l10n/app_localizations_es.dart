@@ -332,4 +332,56 @@ class AppLocalizationsEs extends AppLocalizations {
   String streakBonusFire(Object bonus) {
     return '🔥 Bono de racha: $bonus';
   }
+
+  @override
+  String get onboarding_title_0 => 'Bienvenido a SparkUp';
+
+  @override
+  String get onboarding_body_0 =>
+      'Aprende cosas nuevas mientras te diviertes, amplía tus horizontes y toma tu lugar en la clasificación';
+
+  @override
+  String get onboarding_title_1 => 'Resuelve quizzes divertidos';
+
+  @override
+  String get onboarding_body_1 =>
+      'Tiempo de desafío con preguntas de quiz y verdadero/falso, apunta a puntuaciones récord y, haga lo que hagas, ¡no te equivoques 3 veces!';
+
+  @override
+  String get onboarding_title_2 => 'Analízate';
+
+  @override
+  String get onboarding_body_2 => 'Mira cuánto sabes en la página de análisis.';
+
+  @override
+  String get onboarding_title_3 => 'Sé el mejor';
+
+  @override
+  String get onboarding_body_3 =>
+      'Tienes 3 puntos de energía por día, ¡úsalos con moderación!';
+
+  @override
+  String get onboarding_title_4 => 'Suscripciones baratas';
+
+  @override
+  String get onboarding_body_4 =>
+      'Actualiza tu plan de suscripción para obtener más energía diaria y más tiempo en preguntas de verdadero/falso y quiz.';
+
+  @override
+  String get onboarding_tag_more_time => 'Más tiempo';
+
+  @override
+  String get onboarding_tag_best_offer => 'Mejor oferta';
+
+  @override
+  String get onboarding_tag_energy => 'Energía';
+
+  @override
+  String get onboarding_skip => 'Saltar';
+
+  @override
+  String get onboarding_get_started => 'Comenzar';
+
+  @override
+  String get onboarding_next => 'Siguiente';
 }

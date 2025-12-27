@@ -5,8 +5,8 @@ import 'package:google_fonts/google_fonts.dart';
 import 'dart:ui';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import '../l10n/app_localizations.dart';
 import '../auth_gate.dart';
-// localization temporarily unused in onboarding; using plain text for now
 import '../services/api_service.dart';
 
 class OnboardingScreen extends StatefulWidget {
@@ -190,7 +190,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> with TickerProvider
 
   // Yenilenmiş Estetik Grafik Yapısı (1-4. Sayfalar için)
   Widget _buildAestheticGraphic(int index, double delta) {
-    return Container(
+    return SizedBox(
       height: 260.h,
       width: 260.w,
       child: Stack(
@@ -290,7 +290,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> with TickerProvider
   Widget _buildDataInfoGraphic(int index) {
     double delta = index - _currentPage;
     
-    return Container(
+    return SizedBox(
       height: 260.h,
       width: 260.w,
       child: Stack(
@@ -369,9 +369,9 @@ class _OnboardingScreenState extends State<OnboardingScreen> with TickerProvider
           ),
 
           // Yüzen Etiketler - Artık daha estetik ve ana yapıya uygun
-          _aestheticFloatingTag('More time', -85.w, -75.h, Icons.timer, const Color.fromARGB(255, 67, 34, 255)),
-          _aestheticFloatingTag('Best offer', 95.w, -35.h, Icons.favorite, const Color.fromARGB(255, 255, 23, 23)),
-          _aestheticFloatingTag('Energy', 60.w, 90.h, Icons.energy_savings_leaf, const Color.fromARGB(255, 244, 140, 3)),
+          _aestheticFloatingTag(AppLocalizations.of(context)?.onboarding_tag_more_time ?? 'More time', -85.w, -75.h, Icons.timer, const Color.fromARGB(255, 67, 34, 255)),
+          _aestheticFloatingTag(AppLocalizations.of(context)?.onboarding_tag_best_offer ?? 'Best offer', 95.w, -35.h, Icons.favorite, const Color.fromARGB(255, 255, 23, 23)),
+          _aestheticFloatingTag(AppLocalizations.of(context)?.onboarding_tag_energy ?? 'Energy', 60.w, 90.h, Icons.energy_savings_leaf, const Color.fromARGB(255, 244, 140, 3)),
         ],
       ),
     );
@@ -437,7 +437,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> with TickerProvider
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
           Text(
-            'SparkUp',
+            AppLocalizations.of(context)?.appName ?? 'SparkUp',
             style: GoogleFonts.outfit(
               fontWeight: FontWeight.bold,
               fontSize: 26.sp,
@@ -448,8 +448,8 @@ class _OnboardingScreenState extends State<OnboardingScreen> with TickerProvider
           if (_currentPage.round() < _content.length - 1)
             GestureDetector(
               onTap: _finish,
-              child: Text(
-                'Skip',
+                child: Text(
+                AppLocalizations.of(context)?.onboarding_skip ?? 'Skip',
                 style: GoogleFonts.plusJakartaSans(
                   color: Colors.grey[400],
                   fontWeight: FontWeight.bold,
@@ -499,20 +499,20 @@ class _OnboardingScreenState extends State<OnboardingScreen> with TickerProvider
                       }
                     },
               style: ButtonStyle(
-                backgroundColor: MaterialStateProperty.resolveWith<Color?>((states) {
+                backgroundColor: WidgetStateProperty.resolveWith<Color?>((states) {
                   // Always use the same background color even when disabled
                   return _content[_currentPage.round()].color;
                 }),
-                foregroundColor: MaterialStateProperty.all<Color>(Colors.white),
-                padding: MaterialStateProperty.all<EdgeInsets>(
+                foregroundColor: WidgetStateProperty.all<Color>(Colors.white),
+                padding: WidgetStateProperty.all<EdgeInsets>(
                     EdgeInsets.symmetric(horizontal: isLast ? 35.w : 25.w, vertical: 18.h)),
-                shape: MaterialStateProperty.all<RoundedRectangleBorder>(
+                shape: WidgetStateProperty.all<RoundedRectangleBorder>(
                     RoundedRectangleBorder(borderRadius: BorderRadius.circular(24))),
-                elevation: MaterialStateProperty.all<double>(10),
-                shadowColor: MaterialStateProperty.all<Color>(_content[_currentPage.round()].color.withAlpha((0.4 * 255).round())),
+                elevation: WidgetStateProperty.all<double>(10),
+                shadowColor: WidgetStateProperty.all<Color>(_content[_currentPage.round()].color.withAlpha((0.4 * 255).round())),
               ),
                 child: Text(
-                isLast ? 'Get Started' : 'Next',
+                isLast ? (AppLocalizations.of(context)?.onboarding_get_started ?? 'Get Started') : (AppLocalizations.of(context)?.onboarding_next ?? 'Next'),
                 style: GoogleFonts.plusJakartaSans(fontWeight: FontWeight.w800, fontSize: 15.sp),
               ),
             ),
@@ -561,34 +561,36 @@ class OnboardingData {
 // Localization helpers
 extension _OnboardingLocalizations on _OnboardingScreenState {
   String _localizedTitle(BuildContext context, int index) {
+    final loc = AppLocalizations.of(context);
     switch (index) {
       case 0:
-        return 'Welcome to SparkUp';
+        return loc?.onboarding_title_0 ?? 'Welcome to SparkUp';
       case 1:
-        return 'Solve fun quizzes';
+        return loc?.onboarding_title_1 ?? 'Solve fun quizzes';
       case 2:
-        return 'Analyze yourself';
+        return loc?.onboarding_title_2 ?? 'Analyze yourself';
       case 3:
-        return 'Be the best';
+        return loc?.onboarding_title_3 ?? 'Be the best';
       case 4:
-        return 'Cheap subscriptions';
+        return loc?.onboarding_title_4 ?? 'Cheap subscriptions';
       default:
         return '';
     }
   }
 
   String _localizedBody(BuildContext context, int index) {
+    final loc = AppLocalizations.of(context);
     switch (index) {
       case 0:
-        return 'Learn new things while having fun, broaden your horizons, and take your place on the leadership board';
+        return loc?.onboarding_body_0 ?? 'Learn new things while having fun, broaden your horizons, and take your place on the leadership board';
       case 1:
-        return 'Challenge time with quiz and true-false questions, aim for record-breaking scores, and whatever you do, do not get 3 wrong!';
+        return loc?.onboarding_body_1 ?? 'Challenge time with quiz and true-false questions, aim for record-breaking scores, and whatever you do, do not get 3 wrong!';
       case 2:
-        return 'See how knowledgeable you are with the analytics page.';
+        return loc?.onboarding_body_2 ?? 'See how knowledgeable you are with the analytics page.';
       case 3:
-        return 'You have 3 energy points per day, use them sparingly!';
+        return loc?.onboarding_body_3 ?? 'You have 3 energy points per day, use them sparingly!';
       case 4:
-        return 'Upgrade your subscription plan to get more daily energy and time on true-false and quiz questions.';
+        return loc?.onboarding_body_4 ?? 'Upgrade your subscription plan to get more daily energy and time on true-false and quiz questions.';
       default:
         return '';
     }

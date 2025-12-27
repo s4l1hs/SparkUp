@@ -126,4 +126,21 @@
       "bonus": {}
     }
   }
+  ,
+  "onboarding_title_0": "Welcome to SparkUp",
+  "onboarding_body_0": "Learn new things while having fun, broaden your horizons, and take your place on the leadership board",
+  "onboarding_title_1": "Solve fun quizzes",
+  "onboarding_body_1": "Challenge time with quiz and true-false questions, aim for record-breaking scores, and whatever you do, do not get 3 wrong!",
+  "onboarding_title_2": "Analyze yourself",
+  "onboarding_body_2": "See how knowledgeable you are with the analytics page.",
+  "onboarding_title_3": "Be the best",
+  "onboarding_body_3": "You have 3 energy points per day, use them sparingly!",
+  "onboarding_title_4": "Cheap subscriptions",
+  "onboarding_body_4": "Upgrade your subscription plan to get more daily energy and time on true-false and quiz questions.",
+  "onboarding_tag_more_time": "More time",
+  "onboarding_tag_best_offer": "Best offer",
+  "onboarding_tag_energy": "Energy",
+  "onboarding_skip": "Skip",
+  "onboarding_get_started": "Get Started",
+  "onboarding_next": "Next"
 }

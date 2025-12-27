@@ -745,6 +745,102 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'🔥 Streak bonus: {bonus}'**
   String streakBonusFire(Object bonus);
+
+  /// No description provided for @onboarding_title_0.
+  ///
+  /// In en, this message translates to:
+  /// **'Welcome to SparkUp'**
+  String get onboarding_title_0;
+
+  /// No description provided for @onboarding_body_0.
+  ///
+  /// In en, this message translates to:
+  /// **'Learn new things while having fun, broaden your horizons, and take your place on the leadership board'**
+  String get onboarding_body_0;
+
+  /// No description provided for @onboarding_title_1.
+  ///
+  /// In en, this message translates to:
+  /// **'Solve fun quizzes'**
+  String get onboarding_title_1;
+
+  /// No description provided for @onboarding_body_1.
+  ///
+  /// In en, this message translates to:
+  /// **'Challenge time with quiz and true-false questions, aim for record-breaking scores, and whatever you do, do not get 3 wrong!'**
+  String get onboarding_body_1;
+
+  /// No description provided for @onboarding_title_2.
+  ///
+  /// In en, this message translates to:
+  /// **'Analyze yourself'**
+  String get onboarding_title_2;
+
+  /// No description provided for @onboarding_body_2.
+  ///
+  /// In en, this message translates to:
+  /// **'See how knowledgeable you are with the analytics page.'**
+  String get onboarding_body_2;
+
+  /// No description provided for @onboarding_title_3.
+  ///
+  /// In en, this message translates to:
+  /// **'Be the best'**
+  String get onboarding_title_3;
+
+  /// No description provided for @onboarding_body_3.
+  ///
+  /// In en, this message translates to:
+  /// **'You have 3 energy points per day, use them sparingly!'**
+  String get onboarding_body_3;
+
+  /// No description provided for @onboarding_title_4.
+  ///
+  /// In en, this message translates to:
+  /// **'Cheap subscriptions'**
+  String get onboarding_title_4;
+
+  /// No description provided for @onboarding_body_4.
+  ///
+  /// In en, this message translates to:
+  /// **'Upgrade your subscription plan to get more daily energy and time on true-false and quiz questions.'**
+  String get onboarding_body_4;
+
+  /// No description provided for @onboarding_tag_more_time.
+  ///
+  /// In en, this message translates to:
+  /// **'More time'**
+  String get onboarding_tag_more_time;
+
+  /// No description provided for @onboarding_tag_best_offer.
+  ///
+  /// In en, this message translates to:
+  /// **'Best offer'**
+  String get onboarding_tag_best_offer;
+
+  /// No description provided for @onboarding_tag_energy.
+  ///
+  /// In en, this message translates to:
+  /// **'Energy'**
+  String get onboarding_tag_energy;
+
+  /// No description provided for @onboarding_skip.
+  ///
+  /// In en, this message translates to:
+  /// **'Skip'**
+  String get onboarding_skip;
+
+  /// No description provided for @onboarding_get_started.
+  ///
+  /// In en, this message translates to:
+  /// **'Get Started'**
+  String get onboarding_get_started;
+
+  /// No description provided for @onboarding_next.
+  ///
+  /// In en, this message translates to:
+  /// **'Next'**
+  String get onboarding_next;
 }
 
 class _AppLocalizationsDelegate

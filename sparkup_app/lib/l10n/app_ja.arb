@@ -126,4 +126,21 @@
       "bonus": {}
     }
   }
+  ,
+  "onboarding_title_0": "SparkUpへようこそ",
+  "onboarding_body_0": "楽しみながら新しいことを学び、視野を広げ、リーダーボードで自分の場所を確保しましょう",
+  "onboarding_title_1": "楽しいクイズを解く",
+  "onboarding_body_1": "クイズや〇✕問題でチャレンジ、記録的スコアを目指し、何をしても3回間違えないでください！",
+  "onboarding_title_2": "自分を分析する",
+  "onboarding_body_2": "分析ページで自分の知識レベルを確認しましょう。",
+  "onboarding_title_3": "最高になろう",
+  "onboarding_body_3": "1日に3つのエネルギーポイントがあります、大切に使ってください！",
+  "onboarding_title_4": "お得なサブスクリプション",
+  "onboarding_body_4": "サブスクリプションをアップグレードして、毎日のエネルギーやクイズ・〇✕問題の時間を増やしましょう。",
+  "onboarding_tag_more_time": "時間延長",
+  "onboarding_tag_best_offer": "ベストオファー",
+  "onboarding_tag_energy": "エネルギー",
+  "onboarding_skip": "スキップ",
+  "onboarding_get_started": "始める",
+  "onboarding_next": "次へ"
 }
