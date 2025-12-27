@@ -13,7 +13,7 @@ class AppLocalizationsFr extends AppLocalizations {
 
   @override
   String get appSlogan =>
-      'Votre dose quotidienne de connaissances, de défis et de quiz.';
+      'Votre source quotidienne de connaissances et de développement';
 
   @override
   String get startNewQuiz => 'Quiz Cérébral';

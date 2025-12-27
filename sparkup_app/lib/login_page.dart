@@ -393,7 +393,7 @@ class _LoginPageState extends State<LoginPage> with TickerProviderStateMixin {
                                                       width: 20.w,
                                                       height: 20.w,
                                                       child:
-                                                          CircularProgressIndicator(
+                                                          const CircularProgressIndicator(
                                                         strokeWidth: 2.5,
                                                         color: Colors.white,
                                                       ),

@@ -12,7 +12,7 @@ class AppLocalizationsZh extends AppLocalizations {
   String get appName => 'Spark Up';
 
   @override
-  String get appSlogan => '您每日的知识、挑战和测验。';
+  String get appSlogan => '您每日的知识与成长来源';
 
   @override
   String get startNewQuiz => '脑力测验';

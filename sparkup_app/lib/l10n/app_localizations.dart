@@ -125,7 +125,7 @@ abstract class AppLocalizations {
   /// No description provided for @appSlogan.
   ///
   /// In en, this message translates to:
-  /// **'Your daily dose of knowledge, challenge, and quiz.'**
+  /// **'Your daily source of knowledge and growth'**
   String get appSlogan;
 
   /// No description provided for @startNewQuiz.

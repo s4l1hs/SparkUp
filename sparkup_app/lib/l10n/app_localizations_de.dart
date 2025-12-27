@@ -12,8 +12,7 @@ class AppLocalizationsDe extends AppLocalizations {
   String get appName => 'Spark Up';
 
   @override
-  String get appSlogan =>
-      'Ihre tägliche Dosis Wissen, Herausforderung und Quiz.';
+  String get appSlogan => 'Ihre tägliche Quelle für Wissen und Entwicklung';
 
   @override
   String get startNewQuiz => 'Gehirn-Quiz';
