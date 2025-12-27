@@ -1,7 +1,9 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import 'main_screen.dart'; // Yeni ana ekran yapısı
 import 'login_page.dart';
+import 'pages/onboarding.dart';
 
 class AuthGate extends StatelessWidget {
   const AuthGate({super.key});
@@ -42,8 +44,26 @@ class AuthGate extends StatelessWidget {
 
             // Token başarılı bir şekilde alınmışsa
             if (token != null) {
-              // Token başarılı! MainScreen'e yönlendir ve token'ı ilet.
-              return MainScreen(idToken: token);
+              // Check local prefs to decide whether to show onboarding.
+              return FutureBuilder<SharedPreferences>(
+                future: SharedPreferences.getInstance(),
+                builder: (context, spSnap) {
+                  if (spSnap.connectionState == ConnectionState.waiting) {
+                    return const Scaffold(
+                      body: Center(child: CircularProgressIndicator(color: Colors.amber)),
+                    );
+                  }
+                  final prefs = spSnap.data;
+                  final userId = user.uid;
+                  final seenGlobal = prefs?.getBool('seen_onboarding') ?? false;
+                  final seenPerUser = prefs?.getBool('seen_onboarding_uid_${userId}') ?? false;
+                  final shouldShowOnboarding = !(seenGlobal || seenPerUser);
+                  if (shouldShowOnboarding) {
+                    return const OnboardingScreen();
+                  }
+                  return MainScreen(idToken: token);
+                },
+              );
             }
 
             // Token alınamazsa (çok nadir, ağ sorunu vb.) Login'e dön

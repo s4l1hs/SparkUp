@@ -131,6 +131,12 @@ class UserSeenInfo(SQLModel, table=True):
     shown_at: Optional[date] = Field(default_factory=date.today)
 
 
+class UserOnboarding(SQLModel, table=True):
+    """Per-user persistent flag indicating whether the onboarding was completed/seen."""
+    user_id: int = Field(foreign_key="user.id", primary_key=True)
+    seen_at: Optional[date] = Field(default_factory=date.today)
+
+
 class NotificationMetric(SQLModel, table=True):
     id: Optional[int] = Field(default=None, primary_key=True)
     metric_date: date = Field(default_factory=date.today)

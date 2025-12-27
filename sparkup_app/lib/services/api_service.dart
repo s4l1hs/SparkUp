@@ -32,6 +32,19 @@ class ApiService {
     }
   }
 
+  // Notify backend that onboarding was seen/completed for the authenticated user
+  Future<void> updateOnboarding(String idToken, bool seen) async {
+    final uri = Uri.parse('$backendBaseUrl/me/onboarding');
+    final resp = await http.post(
+      uri,
+      headers: _getAuthHeaders(idToken),
+      body: jsonEncode({'seen': seen}),
+    );
+    if (resp.statusCode != 200) {
+      throw Exception('Failed to update onboarding seen flag (${resp.statusCode})');
+    }
+  }
+
   // Konu başlıklarını getirir (auth gerektirmez)
   Future<Map<String, String>> getTopics() async {
     final uri = Uri.parse("$backendBaseUrl/topics/");

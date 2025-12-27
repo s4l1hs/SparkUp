@@ -13,6 +13,7 @@ from .models import (
     UserAnsweredQuestion, UserAnswerRecord, QuizQuestion, AnswerPayload, AnswerResponse,
     UserScoreHistory, DeviceToken, DeviceTokenPayload, NotificationMetric, UserSeenInfo
 )
+from .models import UserEnergy, UserOnboarding
 from .models import UserEnergy
 import os
 from .config import TRANSLATIONS, MANUAL_INFOS, NOTIFICATION_FREQUENCY, MANUAL_TRUEFALSE, load_manual_truefalse
@@ -284,6 +285,35 @@ def set_user_language(language_code: str = Query(...), db_user: User = Depends(g
     except Exception as e:
         session.rollback()
         raise HTTPException(status_code=500, detail=f"Failed to update language: {e}")
+
+
+
+@router.post("/me/onboarding")
+def set_my_onboarding(payload: dict, db_user: User = Depends(get_current_user), session = Depends(get_session)):
+    """Record that the authenticated user has seen/completed onboarding.
+
+    Client should POST JSON {"seen": true} to mark as seen. Posting {"seen": false}
+    will clear the record.
+    """
+    try:
+        seen = bool(payload.get('seen'))
+        existing = session.exec(select(UserOnboarding).where(UserOnboarding.user_id == db_user.id)).first()
+        if seen:
+            if not existing:
+                session.add(UserOnboarding(user_id=db_user.id))
+                session.commit()
+            else:
+                existing.seen_at = date.today()
+                session.add(existing); session.commit()
+            return {"seen": True}
+        else:
+            if existing:
+                session.exec(delete(UserOnboarding).where(UserOnboarding.user_id == db_user.id))
+                session.commit()
+            return {"seen": False}
+    except Exception as e:
+        session.rollback()
+        raise HTTPException(status_code=500, detail=str(e))
 
 
 
