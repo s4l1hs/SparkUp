@@ -316,6 +316,16 @@ def set_my_onboarding(payload: dict, db_user: User = Depends(get_current_user), 
         raise HTTPException(status_code=500, detail=str(e))
 
 
+@router.get("/me/onboarding")
+def get_my_onboarding(db_user: User = Depends(get_current_user), session = Depends(get_session)):
+    """Return whether the authenticated user has seen onboarding."""
+    try:
+        existing = session.exec(select(UserOnboarding).where(UserOnboarding.user_id == db_user.id)).first()
+        return {"seen": bool(existing)}
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
 
 
 

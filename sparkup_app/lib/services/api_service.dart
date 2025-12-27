@@ -45,6 +45,18 @@ class ApiService {
     }
   }
 
+  // Query whether onboarding was marked seen on the server for this user
+  Future<bool> getOnboardingStatus(String idToken) async {
+    final uri = Uri.parse('$backendBaseUrl/me/onboarding');
+    final resp = await http.get(uri, headers: _getAuthHeaders(idToken));
+    if (resp.statusCode == 200) {
+      final data = jsonDecode(resp.body) as Map<String, dynamic>;
+      return data['seen'] == true;
+    } else {
+      throw Exception('Failed to get onboarding status (${resp.statusCode})');
+    }
+  }
+
   // Konu başlıklarını getirir (auth gerektirmez)
   Future<Map<String, String>> getTopics() async {
     final uri = Uri.parse("$backendBaseUrl/topics/");
