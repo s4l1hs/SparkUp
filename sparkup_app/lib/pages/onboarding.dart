@@ -34,32 +34,32 @@ class _OnboardingScreenState extends State<OnboardingScreen> with TickerProvider
     OnboardingData(
       title: '',
       body: '',
-      emoji: '⚡',
-      color: const Color(0xFF00E5FF),
-    ),
-    OnboardingData(
-      title: '',
-      body: '',
-      emoji: '🌿',
-      color: const Color(0xFF7C4DFF),
+      emoji: '💡',
+      color: const Color(0xFF00B8D4), // darker cyan
     ),
     OnboardingData(
       title: '',
       body: '',
       emoji: '🔥',
-      color: const Color(0xFF00BFA5),
+      color: const Color(0xFFFF5722), // deeper purple
     ),
     OnboardingData(
       title: '',
       body: '',
-      emoji: '🍎',
-      color: const Color(0xFF66BB6A),
+      emoji: '📈',
+      color: const Color.fromARGB(255, 121, 83, 0), // darker teal
     ),
     OnboardingData(
       title: '',
       body: '',
-      emoji: '⭐',
-      color: const Color(0xFFB388FF),
+      emoji: '⚡',
+      color: const Color.fromARGB(255, 46, 125, 50), // richer green
+    ),
+    OnboardingData(
+      title: '',
+      body: '',
+      emoji: '👑',
+      color: const Color(0xFFFFD700), // muted accent
       isIntroToData: true,
     ),
   ];
@@ -100,7 +100,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> with TickerProvider
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.white,
+      backgroundColor: Theme.of(context).colorScheme.surface,
       body: Stack(
         children: [
           // Arka plan soft geçişi
@@ -111,8 +111,8 @@ class _OnboardingScreenState extends State<OnboardingScreen> with TickerProvider
                 begin: Alignment.topCenter,
                 end: Alignment.bottomCenter,
                 colors: [
-                  _content[_currentPage.round()].color.withAlpha((0.12 * 255).round()),
-                  Colors.white,
+                  _content[_currentPage.round()].color.withAlpha((0.10 * 255).round()),
+                  Theme.of(context).colorScheme.surface,
                 ],
               ),
             ),
@@ -158,27 +158,27 @@ class _OnboardingScreenState extends State<OnboardingScreen> with TickerProvider
               offset: Offset(0, delta * 20),
               child: Column(
                 children: [
-                  Text(
-                    _localizedTitle(context, index),
-                    textAlign: TextAlign.center,
-                    style: GoogleFonts.outfit(
-                      fontSize: 32.sp,
-                      fontWeight: FontWeight.w900,
-                      letterSpacing: -1,
-                      color: const Color(0xFF1A1A1A),
+                    Text(
+                      _localizedTitle(context, index),
+                      textAlign: TextAlign.center,
+                      style: GoogleFonts.outfit(
+                        fontSize: 32.sp,
+                        fontWeight: FontWeight.w900,
+                        letterSpacing: -1,
+                        color: Colors.white,
+                      ),
                     ),
-                  ),
                   SizedBox(height: 18.h),
-                  Text(
-                    _localizedBody(context, index),
-                    textAlign: TextAlign.center,
-                    style: GoogleFonts.plusJakartaSans(
-                      fontSize: 16.sp,
-                      color: Colors.black54,
-                      height: 1.6,
-                      fontWeight: FontWeight.w500,
+                    Text(
+                      _localizedBody(context, index),
+                      textAlign: TextAlign.center,
+                      style: GoogleFonts.plusJakartaSans(
+                        fontSize: 16.sp,
+                        color: Colors.white70,
+                        height: 1.6,
+                        fontWeight: FontWeight.w500,
+                      ),
                     ),
-                  ),
                 ],
               ),
             ),
@@ -323,18 +323,18 @@ class _OnboardingScreenState extends State<OnboardingScreen> with TickerProvider
                 filter: ImageFilter.blur(sigmaX: 10, sigmaY: 10),
                 child: Container(
                   alignment: Alignment.center,
-                  decoration: BoxDecoration(
-                    shape: BoxShape.circle,
-                    gradient: LinearGradient(
-                      colors: [
-                        Colors.white.withAlpha((0.9 * 255).round()),
-                        _content[index].color.withAlpha((0.1 * 255).round()),
-                      ],
-                    ),
+                    decoration: BoxDecoration(
+                      shape: BoxShape.circle,
+                      gradient: LinearGradient(
+                        colors: [
+                          Theme.of(context).colorScheme.surface.withAlpha((0.95 * 255).round()),
+                          _content[index].color.withAlpha((0.12 * 255).round()),
+                        ],
+                      ),
                   ),
                   child: Text(
                     _content[index].emoji,
-                    style: TextStyle(fontSize: 75.sp),
+                      style: TextStyle(fontSize: 75.sp, color: Colors.white),
                   ),
                 ),
               ),
@@ -342,9 +342,9 @@ class _OnboardingScreenState extends State<OnboardingScreen> with TickerProvider
           ),
 
           // Yüzen Etiketler - Artık daha estetik ve ana yapıya uygun
-          _aestheticFloatingTag('Age', -85.w, -75.h, Icons.cake_rounded, _content[index].color),
-          _aestheticFloatingTag('Height', 95.w, -35.h, Icons.height_rounded, _content[index].color),
-          _aestheticFloatingTag('Weight', 60.w, 90.h, Icons.monitor_weight_rounded, _content[index].color),
+          _aestheticFloatingTag('', -85.w, -75.h, Icons.timer, const Color.fromARGB(255, 67, 34, 255)),
+          _aestheticFloatingTag('', 95.w, -35.h, Icons.favorite, const Color.fromARGB(255, 255, 23, 23)),
+          _aestheticFloatingTag('', 60.w, 90.h, Icons.energy_savings_leaf, const Color.fromARGB(255, 244, 140, 3)),
         ],
       ),
     );
@@ -467,17 +467,17 @@ class _OnboardingScreenState extends State<OnboardingScreen> with TickerProvider
                       }
                     },
               style: ButtonStyle(
-                backgroundColor: MaterialStateProperty.resolveWith<Color?>((states) {
+                backgroundColor: WidgetStateProperty.resolveWith<Color?>((states) {
                   // Always use the same background color even when disabled
                   return _content[_currentPage.round()].color;
                 }),
-                foregroundColor: MaterialStateProperty.all<Color>(Colors.white),
-                padding: MaterialStateProperty.all<EdgeInsets>(
+                foregroundColor: WidgetStateProperty.all<Color>(Colors.white),
+                padding: WidgetStateProperty.all<EdgeInsets>(
                     EdgeInsets.symmetric(horizontal: isLast ? 35.w : 25.w, vertical: 18.h)),
-                shape: MaterialStateProperty.all<RoundedRectangleBorder>(
+                shape: WidgetStateProperty.all<RoundedRectangleBorder>(
                   RoundedRectangleBorder(borderRadius: BorderRadius.circular(24))),
-                elevation: MaterialStateProperty.all<double>(10),
-                shadowColor: MaterialStateProperty.all<Color>(_content[_currentPage.round()].color.withAlpha((0.4 * 255).round())),
+                elevation: WidgetStateProperty.all<double>(10),
+                shadowColor: WidgetStateProperty.all<Color>(_content[_currentPage.round()].color.withAlpha((0.4 * 255).round())),
               ),
                 child: Text(
                 isLast ? 'Get Started' : 'Next',
@@ -533,13 +533,13 @@ extension _OnboardingLocalizations on _OnboardingScreenState {
       case 0:
         return 'Welcome to SparkUp';
       case 1:
-        return 'Track Your Progress';
+        return 'Solve fun quizzes';
       case 2:
-        return 'Build Healthy Habits';
+        return 'Analyze yourself';
       case 3:
-        return 'Daily Challenges';
+        return 'Be the best';
       case 4:
-        return 'Personalize Your Experience';
+        return 'Cheap subscriptions';
       default:
         return '';
     }
@@ -548,15 +548,15 @@ extension _OnboardingLocalizations on _OnboardingScreenState {
   String _localizedBody(BuildContext context, int index) {
     switch (index) {
       case 0:
-        return 'Quick micro-quizzes and tips to boost your knowledge.';
+        return 'Learn new things while having fun, broaden your horizons, and take your place on the leadership board';
       case 1:
-        return 'Monitor streaks, points and see your daily progress.';
+        return 'Challenge time with quiz and true-false questions, aim for record-breaking scores, and whatever you do, do not get 3 wrong!';
       case 2:
-        return 'Complete simple actions to earn points and level up.';
+        return 'See how knowledgeable you are with the analytics page.';
       case 3:
-        return 'Join daily challenges and compete on leaderboards.';
+        return 'You have 3 energy points per day, use them sparingly!';
       case 4:
-        return 'We ask a few details to personalize recommendations for you.';
+        return 'Upgrade your subscription plan to get more daily energy and time on true-false and quiz questions.';
       default:
         return '';
     }
