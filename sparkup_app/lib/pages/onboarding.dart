@@ -228,29 +228,39 @@ class _OnboardingScreenState extends State<OnboardingScreen> with TickerProvider
               child: ClipRRect(
                 borderRadius: BorderRadius.circular(100),
                 child: BackdropFilter(
-                  filter: ImageFilter.blur(sigmaX: 10, sigmaY: 10),
+                  filter: ImageFilter.blur(sigmaX: 12, sigmaY: 12),
                   child: Container(
                     alignment: Alignment.center,
                     decoration: BoxDecoration(
                       shape: BoxShape.circle,
-                      gradient: LinearGradient(
+                      gradient: RadialGradient(
                         colors: [
-                          Colors.white.withAlpha((0.8 * 255).round()),
-                          _content[index].color.withAlpha((0.1 * 255).round()),
+                          Theme.of(context).colorScheme.surface.withAlpha((0.88 * 255).round()),
+                          _content[index].color.withAlpha((0.14 * 255).round()),
                         ],
-                        begin: Alignment.topLeft,
-                        end: Alignment.bottomRight,
+                        center: Alignment.topLeft,
+                        radius: 0.9,
                       ),
+                      boxShadow: [
+                        BoxShadow(
+                          color: Colors.black.withAlpha(90),
+                          blurRadius: 30,
+                          offset: const Offset(0, 18),
+                        ),
+                      ],
                     ),
-                    child: Text(
-                      _content[index].emoji,
-                      style: TextStyle(fontSize: 95.sp, shadows: [
-                        Shadow(
-                          color: Colors.black.withAlpha((0.1 * 255).round()),
-                          blurRadius: 10,
-                          offset: const Offset(0, 10),
-                        )
-                      ]),
+                    child: Transform.scale(
+                      scale: 1 + (1 - delta.abs()) * 0.06,
+                      child: Text(
+                        _content[index].emoji,
+                        style: TextStyle(fontSize: 95.sp, color: Colors.white, shadows: [
+                          Shadow(
+                            color: Colors.black.withAlpha((0.25 * 255).round()),
+                            blurRadius: 12,
+                            offset: const Offset(0, 8),
+                          )
+                        ]),
+                      ),
                     ),
                   ),
                 ),
@@ -317,24 +327,41 @@ class _OnboardingScreenState extends State<OnboardingScreen> with TickerProvider
                 ),
               ],
             ),
-            child: ClipRRect(
+              child: ClipRRect(
               borderRadius: BorderRadius.circular(100),
               child: BackdropFilter(
-                filter: ImageFilter.blur(sigmaX: 10, sigmaY: 10),
+                filter: ImageFilter.blur(sigmaX: 12, sigmaY: 12),
                 child: Container(
                   alignment: Alignment.center,
                     decoration: BoxDecoration(
                       shape: BoxShape.circle,
-                      gradient: LinearGradient(
+                      gradient: RadialGradient(
                         colors: [
-                          Theme.of(context).colorScheme.surface.withAlpha((0.95 * 255).round()),
-                          _content[index].color.withAlpha((0.12 * 255).round()),
+                          Theme.of(context).colorScheme.surface.withAlpha((0.92 * 255).round()),
+                          _content[index].color.withAlpha((0.16 * 255).round()),
                         ],
+                        radius: 0.9,
                       ),
+                      boxShadow: [
+                        BoxShadow(
+                          color: Colors.black.withAlpha(70),
+                          blurRadius: 22,
+                          offset: const Offset(0, 10),
+                        ),
+                      ],
                   ),
-                  child: Text(
-                    _content[index].emoji,
-                      style: TextStyle(fontSize: 75.sp, color: Colors.white),
+                  child: Transform.scale(
+                    scale: 1 + (1 - delta.abs()) * 0.04,
+                    child: Text(
+                      _content[index].emoji,
+                      style: TextStyle(fontSize: 75.sp, color: Colors.white, shadows: [
+                        Shadow(
+                          color: Colors.black.withAlpha((0.2 * 255).round()),
+                          blurRadius: 10,
+                          offset: const Offset(0, 6),
+                        )
+                      ]),
+                    ),
                   ),
                 ),
               ),
@@ -342,9 +369,9 @@ class _OnboardingScreenState extends State<OnboardingScreen> with TickerProvider
           ),
 
           // Yüzen Etiketler - Artık daha estetik ve ana yapıya uygun
-          _aestheticFloatingTag('', -85.w, -75.h, Icons.timer, const Color.fromARGB(255, 67, 34, 255)),
-          _aestheticFloatingTag('', 95.w, -35.h, Icons.favorite, const Color.fromARGB(255, 255, 23, 23)),
-          _aestheticFloatingTag('', 60.w, 90.h, Icons.energy_savings_leaf, const Color.fromARGB(255, 244, 140, 3)),
+          _aestheticFloatingTag('More time', -85.w, -75.h, Icons.timer, const Color.fromARGB(255, 67, 34, 255)),
+          _aestheticFloatingTag('Best offer', 95.w, -35.h, Icons.favorite, const Color.fromARGB(255, 255, 23, 23)),
+          _aestheticFloatingTag('Energy', 60.w, 90.h, Icons.energy_savings_leaf, const Color.fromARGB(255, 244, 140, 3)),
         ],
       ),
     );
@@ -365,28 +392,33 @@ class _OnboardingScreenState extends State<OnboardingScreen> with TickerProvider
             ),
           ],
         ),
-        child: ClipRRect(
+              child: ClipRRect(
           borderRadius: BorderRadius.circular(20),
           child: BackdropFilter(
-            filter: ImageFilter.blur(sigmaX: 5, sigmaY: 5),
+            filter: ImageFilter.blur(sigmaX: 6, sigmaY: 6),
             child: Container(
-              padding: EdgeInsets.symmetric(horizontal: 14.w, vertical: 8.h),
+              padding: EdgeInsets.symmetric(horizontal: 12.w, vertical: 8.h),
               decoration: BoxDecoration(
-                color: Colors.white.withAlpha((0.8 * 255).round()),
+                color: Theme.of(context).colorScheme.surface.withAlpha((0.22 * 255).round()),
                 borderRadius: BorderRadius.circular(20),
-                border: Border.all(color: Colors.white.withAlpha((0.5 * 255).round())),
+                border: Border.all(color: Theme.of(context).colorScheme.surface.withAlpha((0.14 * 255).round())),
               ),
               child: Row(
                 mainAxisSize: MainAxisSize.min,
                 children: [
-                  Icon(icon, size: 16.sp, color: color),
-                  SizedBox(width: 6.w),
+                  Container(
+                    width: 20.w,
+                    height: 20.w,
+                    decoration: BoxDecoration(shape: BoxShape.circle, color: color),
+                    child: Icon(icon, size: 12.sp, color: Colors.white),
+                  ),
+                  SizedBox(width: 8.w),
                   Text(
                     label,
                     style: GoogleFonts.plusJakartaSans(
                       fontSize: 12.sp,
-                      fontWeight: FontWeight.bold,
-                      color: Colors.black87,
+                      fontWeight: FontWeight.w600,
+                      color: Colors.white,
                     ),
                   ),
                 ],
@@ -467,17 +499,17 @@ class _OnboardingScreenState extends State<OnboardingScreen> with TickerProvider
                       }
                     },
               style: ButtonStyle(
-                backgroundColor: WidgetStateProperty.resolveWith<Color?>((states) {
+                backgroundColor: MaterialStateProperty.resolveWith<Color?>((states) {
                   // Always use the same background color even when disabled
                   return _content[_currentPage.round()].color;
                 }),
-                foregroundColor: WidgetStateProperty.all<Color>(Colors.white),
-                padding: WidgetStateProperty.all<EdgeInsets>(
+                foregroundColor: MaterialStateProperty.all<Color>(Colors.white),
+                padding: MaterialStateProperty.all<EdgeInsets>(
                     EdgeInsets.symmetric(horizontal: isLast ? 35.w : 25.w, vertical: 18.h)),
-                shape: WidgetStateProperty.all<RoundedRectangleBorder>(
-                  RoundedRectangleBorder(borderRadius: BorderRadius.circular(24))),
-                elevation: WidgetStateProperty.all<double>(10),
-                shadowColor: WidgetStateProperty.all<Color>(_content[_currentPage.round()].color.withAlpha((0.4 * 255).round())),
+                shape: MaterialStateProperty.all<RoundedRectangleBorder>(
+                    RoundedRectangleBorder(borderRadius: BorderRadius.circular(24))),
+                elevation: MaterialStateProperty.all<double>(10),
+                shadowColor: MaterialStateProperty.all<Color>(_content[_currentPage.round()].color.withAlpha((0.4 * 255).round())),
               ),
                 child: Text(
                 isLast ? 'Get Started' : 'Next',
