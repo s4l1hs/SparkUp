@@ -143,4 +143,6 @@
   "onboarding_skip": "छोड़ें",
   "onboarding_get_started": "शुरू करें",
   "onboarding_next": "अगला"
+  ,
+  "insufficientEnergyBody": "आप तब फिर से प्रयास कर सकते हैं जब आपकी ऊर्जा भर जाएगी, या वीडियो देखकर ऊर्जा कमा सकते हैं।"
 }

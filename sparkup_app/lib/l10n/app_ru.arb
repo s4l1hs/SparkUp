@@ -142,5 +142,6 @@
   "onboarding_tag_energy": "Энергия",
   "onboarding_skip": "Пропустить",
   "onboarding_get_started": "Начать",
-  "onboarding_next": "Далее"
+  "onboarding_next": "Далее",
+  "insufficientEnergyBody": "Вы можете попробовать снова, когда ваша энергия восстановится, или получить энергию, посмотрев видео."
 }

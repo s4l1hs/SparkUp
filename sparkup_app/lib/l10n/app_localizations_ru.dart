@@ -384,4 +384,8 @@ class AppLocalizationsRu extends AppLocalizations {
 
   @override
   String get onboarding_next => 'Далее';
+
+  @override
+  String get insufficientEnergyBody =>
+      'Вы можете попробовать снова, когда ваша энергия восстановится, или получить энергию, посмотрев видео.';
 }

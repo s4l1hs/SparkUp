@@ -144,4 +144,6 @@
   "onboarding_skip": "تخطي",
   "onboarding_get_started": "ابدأ",
   "onboarding_next": "التالي"
+  ,
+  "insufficientEnergyBody": "يمكنك المحاولة مرة أخرى عندما يتم شحن طاقتك، أو كسب الطاقة بمشاهدة فيديو." 
 }

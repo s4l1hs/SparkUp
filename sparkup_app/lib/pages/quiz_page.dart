@@ -1001,7 +1001,7 @@ class _QuizPageState extends State<QuizPage> with TickerProviderStateMixin {
                                     context: context,
                                     builder: (ctx) => AlertDialog(
                                       title: Text(loc?.insufficientEnergy ?? 'Insufficient energy ⚡'),
-                                      content: Text(loc?.insufficientEnergy ?? 'Insufficient energy ⚡'),
+                                      content: Text(loc?.insufficientEnergyBody ?? 'You can try again when your energy refills, or earn energy by watching a video.'),
                                       actions: [TextButton(onPressed: () => Navigator.of(ctx).pop(), child: Text(loc?.cancel ?? 'OK'))],
                                     ),
                                   );

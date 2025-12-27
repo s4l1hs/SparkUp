@@ -133,8 +133,8 @@ class _TrueFalsePageState extends State<TrueFalsePage>
                 ? (loc?.insufficientEnergy ?? 'Insufficient energy ⚡')
                 : (loc?.error ?? 'Error')),
             content: Text(isLimitErr
-                ? (loc?.insufficientEnergy ?? 'Insufficient energy ⚡')
-                : (loc?.quizCouldNotStart ?? 'Could not load questions.')),
+              ? (loc?.insufficientEnergyBody ?? 'You can try again when your energy refills, or earn energy by watching a video.')
+              : (loc?.quizCouldNotStart ?? 'Could not load questions.')),
             actions: [
               TextButton(
                   onPressed: () => Navigator.of(ctx).pop(),
@@ -299,8 +299,9 @@ class _TrueFalsePageState extends State<TrueFalsePage>
         final first = _questions.firstWhere(
             (e) => e.containsKey('session_seconds'),
             orElse: () => null);
-        if (first != null && first['session_seconds'] is int)
+        if (first != null && first['session_seconds'] is int) {
           sec = first['session_seconds'] as int;
+        }
       }
       setState(() {
         _timeLeft = sec;
@@ -729,7 +730,7 @@ class _TrueFalsePageState extends State<TrueFalsePage>
                                     ],
                                   ),
                                   Container(width: 1, height: 24.h, color: Colors.white12),
-                                  _buildDashboardItem(Icons.timer_outlined, "${sessionSec}${loc?.secondsSuffix ?? 's'}", Colors.greenAccent),
+                                  _buildDashboardItem(Icons.timer_outlined, "$sessionSec${loc?.secondsSuffix ?? 's'}", Colors.greenAccent),
                                   Container(width: 1, height: 24.h, color: Colors.white12),
                                   
                                   // --- YENİ: YAZISIZ CAN GÖSTERGESİ ---
@@ -764,7 +765,7 @@ class _TrueFalsePageState extends State<TrueFalsePage>
                               label: Text(
                                   loc?.startWithOneBolt ?? 'Start Game',
                                   style: TextStyle(fontSize: 19.sp, fontWeight: FontWeight.bold)),
-                              colors: [Colors.orange, Colors.deepOrange],
+                              colors: const [Colors.orange, Colors.deepOrange],
                               onPressed: () {
                                 final userProv = Provider.of<UserProvider>(context, listen: false);
                                 final rem = userProv.profile?.remainingEnergy;
@@ -773,7 +774,7 @@ class _TrueFalsePageState extends State<TrueFalsePage>
                                     context: context,
                                     builder: (ctx) => AlertDialog(
                                       title: Text(loc?.insufficientEnergy ?? 'Insufficient energy ⚡'),
-                                      content: Text(loc?.insufficientEnergy ?? 'Insufficient energy ⚡'),
+                                      content: Text(loc?.insufficientEnergyBody ?? 'You can try again when your energy refills, or earn energy by watching a video.'),
                                       actions: [TextButton(onPressed: () => Navigator.of(ctx).pop(), child: Text(loc?.cancel ?? 'OK'))],
                                     ),
                                   );
@@ -976,8 +977,9 @@ class _TrueFalsePageState extends State<TrueFalsePage>
         final first = _questions.firstWhere(
             (e) => e.containsKey('session_seconds'),
             orElse: () => null);
-        if (first != null && first['session_seconds'] is int)
+        if (first != null && first['session_seconds'] is int) {
           sec = first['session_seconds'] as int;
+        }
       }
       setState(() {
         _timeLeft = sec;
@@ -1013,7 +1015,7 @@ class _TrueFalsePageState extends State<TrueFalsePage>
             ),
             content: Text(
               isLimitErr
-                  ? (loc?.insufficientEnergy ?? 'Insufficient energy ⚡')
+                  ? (loc?.insufficientEnergyBody ?? 'You can try again when your energy refills, or earn energy by watching a video.')
                   : (loc?.quizCouldNotStart ??
                       'Could not start quiz. Please try again later.'),
               style: TextStyle(color: Theme.of(ctx).colorScheme.onSurface),

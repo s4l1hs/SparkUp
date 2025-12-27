@@ -380,4 +380,7 @@ class AppLocalizationsJa extends AppLocalizations {
 
   @override
   String get onboarding_next => '次へ';
+
+  @override
+  String get insufficientEnergyBody => 'エネルギーが回復したら再度試すか、ビデオを見てエネルギーを獲得できます。';
 }

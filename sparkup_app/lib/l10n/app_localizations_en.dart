@@ -384,4 +384,8 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get onboarding_next => 'Next';
+
+  @override
+  String get insufficientEnergyBody =>
+      'You can try again when your energy refills, or earn energy by watching a video.';
 }

@@ -142,5 +142,6 @@
   "onboarding_tag_energy": "能量",
   "onboarding_skip": "跳过",
   "onboarding_get_started": "开始",
-  "onboarding_next": "下一步"
+  "onboarding_next": "下一步",
+  "insufficientEnergyBody": "当你的能量恢复时，你可以再次尝试，或通过观看视频获得能量。"
 }

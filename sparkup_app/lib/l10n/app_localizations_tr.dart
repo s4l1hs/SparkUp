@@ -384,4 +384,8 @@ class AppLocalizationsTr extends AppLocalizations {
 
   @override
   String get onboarding_next => 'İleri';
+
+  @override
+  String get insufficientEnergyBody =>
+      'Enerjin dolduğunda tekrar deneyebilir veya video izleyerek enerji kazanabilirsin.';
 }

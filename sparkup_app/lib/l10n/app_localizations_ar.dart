@@ -382,4 +382,8 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String get onboarding_next => 'التالي';
+
+  @override
+  String get insufficientEnergyBody =>
+      'يمكنك المحاولة مرة أخرى عندما يتم شحن طاقتك، أو كسب الطاقة بمشاهدة فيديو.';
 }

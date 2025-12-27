@@ -142,5 +142,6 @@
   "onboarding_tag_energy": "Enerji",
   "onboarding_skip": "Atla",
   "onboarding_get_started": "Başla",
-  "onboarding_next": "İleri"
+  "onboarding_next": "İleri",
+  "insufficientEnergyBody": "Enerjin dolduğunda tekrar deneyebilir veya video izleyerek enerji kazanabilirsin."
 }

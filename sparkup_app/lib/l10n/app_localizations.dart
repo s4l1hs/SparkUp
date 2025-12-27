@@ -841,6 +841,12 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Next'**
   String get onboarding_next;
+
+  /// No description provided for @insufficientEnergyBody.
+  ///
+  /// In en, this message translates to:
+  /// **'You can try again when your energy refills, or earn energy by watching a video.'**
+  String get insufficientEnergyBody;
 }
 
 class _AppLocalizationsDelegate

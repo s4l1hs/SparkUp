@@ -142,5 +142,6 @@
     "onboarding_tag_energy": "Energia",
     "onboarding_skip": "Salta",
     "onboarding_get_started": "Inizia",
-    "onboarding_next": "Avanti"
+    "onboarding_next": "Avanti",
+    "insufficientEnergyBody": "Puoi riprovare quando la tua energia sarà ricaricata, oppure guadagnare energia guardando un video."
 }
